@@ -316,14 +316,15 @@ end
 Citizen.CreateThread(function()
     for k, v in pairs (Config.Stores) do
         if Config.Stores[k].shopType == "clothing" then
-            local clothingShop = AddBlipForCoord(Config.Stores[k].coords)
-            SetBlipSprite(clothingShop, 366)
-            SetBlipColour(clothingShop, 47)
-            SetBlipScale  (clothingShop, 0.7)
-            SetBlipAsShortRange(clothingShop, true)
+            local clothingBlip = AddBlipForCoord(Config.Stores[k].coords)
+            SetBlipAsFriendly(clothingBlip, true)
+            SetBlipSprite(clothingBlip, 73)
+            SetBlipColour(clothingBlip, 3)
+            SetBlipScale(clothingBlips, 0.7)
+            SetBlipAsShortRange(clothingBlip,true)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Clothing store")
-            EndTextCommandSetBlipName(clothingShop)
+            AddTextComponentString(tostring("Clothing Store"))
+            EndTextCommandSetBlipName(clothingBlip)
         end
         
         if Config.Stores[k].shopType == "barber" then
