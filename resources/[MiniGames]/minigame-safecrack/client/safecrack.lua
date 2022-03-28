@@ -15,9 +15,9 @@ local Framework = nil
 
 RegisterNetEvent('Framework:Client:OnPlayerLoaded')
 AddEventHandler('Framework:Client:OnPlayerLoaded', function()
- 	Citizen.SetTimeout(1250, function()
- 	  TriggerEvent("Framework:GetObject", function(obj) Framework = obj end)    
- 	end)
+	Citizen.SetTimeout(1250, function()
+		TriggerEvent("Framework:GetObject", function(obj) Framework = obj end)    
+	end)
 end)
 
 -- Code
