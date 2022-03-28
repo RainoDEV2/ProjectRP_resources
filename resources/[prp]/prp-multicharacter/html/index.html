@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="reset.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>prp-Multicharacter</title>
+    <script src="https://kit.fontawesome.com/1344d4a6c6.js" crossorigin="anonymous"></script>
+</head>
+    <body>
+        <div class="container">
+            <div class="main-screen">
+                <div class="welcomescreen">
+                    <div class="loading-rondje">
+                        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+                        <p id="loading-text">Loading Characters</p>
+                    </div>
+                </div>
+
+                <div class="character-info">
+                    <div id="in_chi_top">
+                        <div id="in_chi_cont">
+                            <div class="character-info-valid">
+                                <div class="in_chi_empty">Select a slot to see all the informations about your character</div>
+                            </div>
+                        </div>
+                    </div> 
+                    <div id="in_chi_bot"><div class="in_chi_logo"></div></div>
+                </div>
+
+                <div class="character-register">
+                    <div id="in_chi_bot"><div class="in_chi_logo"></div></div>
+                    <div id="in_chi_top">
+                        <div id="in_chi_cont">
+                            <div class="in_chi_register">
+                                <div class="in_chi_empty">
+                                    <p class="in_chi_title"><span class="green_clr">•</span> CREATE YOUR CHARACTER TO JOIN THE CITY <span class="green_clr">•</span></p>
+                                    <input type="text" id="first_name" placeholder="FIRST NAME" class="in_chi_input">
+                                    <input type="text" id="last_name" placeholder="LAST NAME" class="in_chi_input">
+                                    <input type="text" id="nationality" placeholder="NATIONALITY" class="in_chi_input">
+                                    <input type="date" id="birthdate" placeholder="BIRTH DATE" min="1900-01-01" max="2999-12-31" class="in_chi_input">
+                                    <select id="gender" name="gender">
+                                        <option value="Male" selected>Man</option>
+                                        <option value="Female">Woman</option>
+                                    </select>
+                                    <button id="create" class="in_button green">CREATE MY CHARACTER</button>
+                                    <hr class="in_space">
+                                    <button id="close-reg" class="in_button red">CLOSE MENU</button>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="characters-list">
+                    <div id="in_head"><div id="in_head_image"></div></div>
+                    <div id="in_mid">
+                        <div id="in_mid_cont">
+                            <div class="character" id="char-1" data-cid=""><span id="slot-name">Create New Character<span id="cid"></span></span></div>
+                            <div class="character clr" id="char-2" data-cid=""><span id="slot-name">Create New Character<span id="cid"></span></span></div>
+                            <div class="character" id="char-3" data-cid=""><span id="slot-name">Create New Character<span id="cid"></span></span></div>
+                            <div class="character clr" id="char-4" data-cid=""><span id="slot-name">Create New Character<span id="cid"></span></span></div>
+                            <div class="character" id="char-5" data-cid=""><span id="slot-name">Create New Character<span id="cid"></span></span></div>
+                        </div>         
+                    </div>
+                    <div id="in_end">   
+                        <div id="in_end_cont">
+                            <button class="in_button green" id="play">JOIN THE CITY</button>
+                            <hr class="in_space">
+                            <button class="in_button red" id="delete">DELETE CHARACTER</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-delete">
+                    <button id="accept-delete" class="in_button green">CONFIRM</button>
+                    <hr class="in_space">
+                    <button id="cancel-delete" class="in_button red">CANCEL</button>        
+                </div>
+
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</html>

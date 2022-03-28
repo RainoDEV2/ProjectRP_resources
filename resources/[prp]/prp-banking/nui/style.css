@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:500,700');
+* {
+    font-family: 'Roboto', sans-serif;
+
+}
+
+body {
+    background: transparent !important;
+    margin-top: 80px;
+}
+
+#bankingContainer {
+    background: #21263C;
+    border-radius: 7px;
+    min-height: 800px;
+    max-height: 800px;
+    display: none;
+}
+
+#ATMContainer {
+    background: rgba(0, 0, 0, 0.8) !important;
+    border-radius: 20px;
+    min-height: 800px;
+    max-height: 800px;
+    display: none;
+    border: 2px solid red;
+}
+
+.statement:hover {
+    background: rgba(150, 149, 149, 0.5) !important;
+}
+
+#v-pills-tabContent,
+#v-pills-tabContent-atm {
+    overflow-y: scroll;
+    min-height: 100%;
+}
+
+#v-pills-tabContent::-webkit-scrollbar-track,
+#v-pills-tabContent-atm::-webkit-scrollbar-track {
+    background-color: transparent;
+    border: none;
+}
+
+#v-pills-tabContent::-webkit-scrollbar-thumb,
+#v-pills-tabContent-atm::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: none;
+}
+
+#v-pills-tabContent::-webkit-scrollbar,
+#v-pills-tabContent-atm::-webkit-scrollbar {
+    width: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-color: transparent
+}
+
+.title {
+    color: white;
+    margin-bottom: 15px;
+    font-weight: bolder;
+    border-left: 2px solid #861bf2;
+}
+
+.content {
+    color: white;
+    font-size: 20px;
+}
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 255, 144, 0.8);
+}
+
+.btn-primary {
+    color: rgb(255, 255, 255);
+    background-color: #DC143C;
+    border-color: transparent;
+    margin-bottom: 15px;
+}
+
+.btn-primary:hover {
+    color: rgb(255, 255, 255);
+    background-color: #21263C;
+    border-color: #21263C;
+}
+
+.btn-secondary {
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 255, 144, 0.8);
+}
+
+.btn-secondary:hover {
+    background-color: #21263C;
+    border-color: #21263C;
+}
+
+.small,
+small {
+    font-size: 95%;
+    font-weight: bolder;
+}
+
+#savingsBalance {
+    color: #28a745;
+}
+

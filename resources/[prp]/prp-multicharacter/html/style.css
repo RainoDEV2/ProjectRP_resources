@@ -1,0 +1,345 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "sans-serif";
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently */
+}
+
+.container {
+    display: none;
+}
+
+.characters-list{
+    width: 31.250vw;
+    height: 100%;
+    background-color: #21263C;
+}
+
+#in_head{
+    width: 100%;
+    height: 30.556vh;
+    background-color: #1E2237;    
+}
+
+#in_head_image {
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 273px;
+    height: 167px; 
+    background-image: url("./in_files/in_logo.png"); 
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-top: 0px;
+    transform: translate(-50%, -50%);
+}
+
+#in_mid {
+    width: 100%;
+    height: 52.778vh; 
+}
+
+#in_end {
+
+    width: 100%;
+    height: 16.667vh; 
+}
+
+#in_mid_cont{
+    width: 20.833vw;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.character {
+    background-color: #1E2237;
+    width: 100%;
+    height: 7.407vh;
+    margin-bottom: 1.852vh;
+    border-radius: 0.926vw;
+}
+
+.character>span {
+    color: #ededed;
+    text-transform: uppercase;
+    font-family: "sans-serif";
+}
+
+.char-selected {
+    background-color: #1A1D30;
+}
+
+#in_end_cont {
+    width: 20.833vw;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.in_button {
+    background-color: blanchedalmond;
+    width: 100%;
+    height: 4.630vh;
+    border: none;
+    outline: none;
+    border-radius: 0.521vw;
+    color: white;
+    opacity: 70%;
+}
+
+.in_button:hover {
+    opacity: 100%;
+}
+
+.in_space {
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 1.852vh;
+}
+
+.green {
+    background-color: #861bf2;
+}
+
+.red {
+    background-color: #DC143C;
+}
+
+#slot-name {
+    position: relative;
+    line-height: 7.407vh;
+    left: 1.042vw;
+    font-size: 0.729vw;
+}
+
+#cid {
+    position: relative;
+    float: right;    
+    right: 2.083vw;
+    color: #861bf2;
+}
+
+.character-info {
+    position: relative;
+    float: right;  
+    width: 31.250vw;
+    height: 100%;
+    background-color: #21263C; 
+}
+
+#in_chi_top {
+    width: 100%;
+    height: 50vh;
+    background-color: transparent;
+}
+
+#in_chi_bot {
+    width: 100%;
+    height: 50vh;
+    background-color: #1A1D30;
+}
+
+.in_chi_logo {
+    position: relative;
+    width: 8.698vw;
+    height: 31.574vh;
+    top: 50%;
+    left: 50%;
+    background-image: url("./in_files/in_logo_2.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+}
+
+#in_chi_cont {
+    position: relative;
+    width: 20.833vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.in_chi_in {
+    color: white;
+    background-color: #1E2237;
+    height: 4.074vh;
+    border-radius: 0.7vh;
+    margin-bottom: 15px;
+    font-size: 0.677vw;
+    line-height: 2.292vw;
+    padding-left: 1.563vw;
+}
+
+.in_chi_in_v {
+    float: right;
+    padding-right: 1.563vw;
+    color: #861bf2;
+}
+
+.in_chi_empty {
+    color: white;
+    text-align: center;
+    font-size: 0.677vw;    
+}
+
+.character-register {
+    position: relative;
+    float: right;  
+    width: 31.250vw;
+    height: 100%;
+    background-color: #21263C; 
+}
+
+.in_chi_title {
+    margin-bottom: 1.042vw;
+}
+
+.in_chi_input {
+    background-color: #1A1D30;
+    width: 20.833vw;
+    height: 4.074vh;
+    outline: none;
+    border: none;
+    color: white;
+    border-radius: 0.521vw;
+    margin-bottom: 0.781vw;
+    text-align: center;
+}
+.green_clr {
+    color: #861bf2;
+}
+
+::placeholder {
+    color: white;
+    opacity: 0.6;
+}
+
+#gender {
+    background-color: #1A1D30;
+    color: white;
+    width: 20.833vw;
+    height: 4.074vh;
+    border-radius: 0.521vw;
+    border-width: 0.104vw;
+    border-color: #861bf2;
+    margin-bottom: 1.563vw;
+    padding-left: 1.042vw;
+}
+
+input[type="date"] {
+    color: #ededed;
+    text-align: center;
+}
+input[type=date]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+input[type=date]::-webkit-inner-spin-button,
+input[type=date]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="date"]::-webkit-input-placeholder {
+    visibility: hidden !important;
+}
+input[type="date"]::-webkit-clear-button {
+    display: none;
+}
+
+.character-delete {
+    display: none;
+    position: fixed;
+    background-color: #21263C;
+    width: 13.021vw;
+    height: 9.259vh;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 0.926vh;
+    padding: 4.630vh;
+}
+
+.disabled {
+    background-color: rgba(0, 0, 0, 0.691);
+}
+
+.clr {
+    background-color: #1A1D30;
+}
+
+
+
+
+.loading-rondje {
+    position: absolute;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    transform: translateY(-50%);
+    text-align: center;
+    padding: 1vh;
+}
+
+.loading-rondje > p {
+    color: white;
+    margin-top: 1vh;
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 1px 1px 0px #00000085;
+}
+
+.lds-ring {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ring div {
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    width: 64px;
+    height: 64px;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+}
+
+.lds-ring div:nth-child(1) {
+    animation-delay: -0.45s;
+}
+
+.lds-ring div:nth-child(2) {
+    animation-delay: -0.3s;
+}
+
+.lds-ring div:nth-child(3) {
+    animation-delay: -0.15s;
+}
+
+@keyframes lds-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.fas {
+    margin-top: 0.185vh;
+    margin-right: 0.185vh;
+    color: #861bf2;
+}
