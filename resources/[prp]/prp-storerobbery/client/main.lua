@@ -295,27 +295,45 @@ RegisterNetEvent('prp-storerobbery:client:robberyCall', function(type, key, stre
         else
             cameraId = Config.Registers[key].camId
         end
-        PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-        TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-            timeOut = 5000,
-            alertTitle = "10-31 | Shop Robbery",
-            coords = {
-                x = coords.x,
-                y = coords.y,
-                z = coords.z,
-            },
-            details = {
-                [1] = {
-                    icon = '<i class="fas fa-video"></i>',
-                    detail = cameraId,
-                },
-                [2] = {
-                    icon = '<i class="fas fa-globe-europe"></i>',
-                    detail = streetLabel,
-                },
-            },
-            callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+        local data = exports['cd_dispatch']:GetPlayerInfo()
+        TriggerServerEvent('cd_dispatch:AddNotification', {
+            job_table = {'police'}, 
+            coords = data.coords,
+            title = '10-15 - Store Robbery',
+            message = 'A '..data.sex..' robbing a store at '..data.street, 
+            flash = 0,
+            unique_id = tostring(math.random(0000000,9999999)),
+            blip = {
+                sprite = 431,
+                scale = 1.2, 
+                colour = 3,
+                flashes = false, 
+                text = '911 - Store Robbery',
+                time = (5*60*1000),
+                sound = 1,
+            }
         })
+        -- PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
+        -- TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
+        --     timeOut = 5000,
+        --     alertTitle = "10-31 | Shop Robbery",
+        --     coords = {
+        --         x = coords.x,
+        --         y = coords.y,
+        --         z = coords.z,
+        --     },
+        --     details = {
+        --         [1] = {
+        --             icon = '<i class="fas fa-video"></i>',
+        --             detail = cameraId,
+        --         },
+        --         [2] = {
+        --             icon = '<i class="fas fa-globe-europe"></i>',
+        --             detail = streetLabel,
+        --         },
+        --     },
+        --     callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+        -- })
 
         local transG = 250
         local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
