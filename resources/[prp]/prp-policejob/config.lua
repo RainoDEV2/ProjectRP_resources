@@ -343,7 +343,7 @@ Config.Items = {
             authorizedJobGrades = {5, 6, 7, 8, 9}
         },
         [6] = {
-            name = "weapon_mk47fm",
+            name = "WEAPON_SPECIALCARBINE_MK2",
             price = 0,
             amount = 1,
             info = {
