@@ -272,7 +272,7 @@ end)
 
 ProjectRP.Functions.CreateUseableItem("heavyarmor", function(source, item)
     local src = source
-    TriggerClientEvent("consumables:client:UseHeavyArmor", src)
+    TriggerClientEvent("consumables:client:UseArmor", src)
 end)
 
 ProjectRP.Commands.Add("resetarmor", "Resets Vest (Police Only)", {}, false, function(source, args)

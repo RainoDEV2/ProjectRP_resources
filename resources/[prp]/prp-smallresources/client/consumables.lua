@@ -105,7 +105,6 @@ end)
 -- end)
 
 RegisterNetEvent('consumables:client:UseArmor', function()
-    if GetPedArmour(PlayerPedId()) >= 75 then ProjectRP.Functions.Notify('You already have enough armor on!', 'error') return end
     ProjectRP.Functions.Progressbar("use_armor", "Putting on the body armour..", 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
@@ -113,43 +112,12 @@ RegisterNetEvent('consumables:client:UseArmor', function()
 		disableCombat = true,
     }, {}, {}, {}, function() -- Done
         TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["armor"], "remove")
-        TriggerServerEvent('hospital:server:SetArmor', 75)
+        TriggerServerEvent('hospital:server:SetArmor', 100)
         TriggerServerEvent("ProjectRP:Server:RemoveItem", "armor", 1)
         SetPedArmour(PlayerPedId(), 75)
     end)
 end)
 
-local currentVest = nil
-local currentVestTexture = nil
-
-RegisterNetEvent('consumables:client:UseHeavyArmor', function()
-    if GetPedArmour(PlayerPedId()) == 100 then ProjectRP.Functions.Notify('You already have enough armor on!', 'error') return end
-    local ped = PlayerPedId()
-    local PlayerData = ProjectRP.Functions.GetPlayerData()
-    ProjectRP.Functions.Progressbar("use_heavyarmor", "Putting on body armour..", 5000, false, true, {
-        disableMovement = false,
-        disableCarMovement = false,
-		disableMouse = false,
-		disableCombat = true,
-    }, {}, {}, {}, function() -- Done
-        if PlayerData.charinfo.gender == 0 then
-            currentVest = GetPedDrawableVariation(ped, 9)
-            currentVestTexture = GetPedTextureVariation(ped, 9)
-            if GetPedDrawableVariation(ped, 9) == 7 then
-                SetPedComponentVariation(ped, 9, 19, GetPedTextureVariation(ped, 9), 2)
-            else
-                SetPedComponentVariation(ped, 9, 5, 2, 2) -- Blue
-            end
-        else
-            currentVest = GetPedDrawableVariation(ped, 30)
-            currentVestTexture = GetPedTextureVariation(ped, 30)
-            SetPedComponentVariation(ped, 9, 30, 0, 2)
-        end
-        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["heavyarmor"], "remove")
-        TriggerServerEvent("ProjectRP:Server:RemoveItem", "heavyarmor", 1)
-        SetPedArmour(ped, 100)
-    end)
-end)
 
 RegisterNetEvent('prp-items:client:eat')
 AddEventHandler('prp-items:client:eat', function(ItemName, PropName)
