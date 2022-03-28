@@ -8,11 +8,10 @@ CreateThread(function()
     end
 end)
 
-
 CreateThread(function()
     while true do
         Wait(0)
-        if LocalPlayer.state['isLoggedIn'] and Player.PlayerData.job.onduty then
+        if LocalPlayer.state['isLoggedIn'] and ProjectRP.Functions.GetPlayerData().job.onduty then
             Wait((1000 * 60) * ProjectRP.Config.UpdateSalary)
             TriggerServerEvent('ProjectRP:UpdatePlayerSalary')
         end

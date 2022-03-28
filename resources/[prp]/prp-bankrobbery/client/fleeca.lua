@@ -323,9 +323,9 @@ RegisterNetEvent('electronickit:UseElectronickit', function()
                                             TriggerEvent('inventory:client:ItemBox', ProjectRP.Shared.Items["trojan_usb"], "remove")
 
 
-                                          --  exports['hacking']:hacking(function(Success)
+                                        --  exports['hacking']:hacking(function(Success)
                                             --    if Success then 
-                                              --      TriggerServerEvent('prp-bankrobbery:server:setBankState', "pacific", true)
+                                            --      TriggerServerEvent('prp-bankrobbery:server:setBankState', "pacific", true)
                                                 --else 
                                                     --ProjectRP.Functions.Notify("YTrmt gustavo..", "error")
                                                 --end
@@ -338,7 +338,7 @@ RegisterNetEvent('electronickit:UseElectronickit', function()
                                             function() -- failure
                                                 ProjectRP.Functions.Notify("Canceled..", "error")
                                             end)
-                                          --  TriggerEvent("mhacking:start", math.random(6, 7), math.random(12, 15), OnHackDone)
+                                            --  TriggerEvent("mhacking:start", math.random(6, 7), math.random(12, 15), OnHackDone)
                                             if not copsCalled then
                                                 local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                                                 local street1 = GetStreetNameFromHashKey(s1)

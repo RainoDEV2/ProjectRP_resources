@@ -270,7 +270,7 @@ local function OpenPhone()
     ProjectRP.Functions.TriggerCallback('prp-phone:server:HasPhone', function(HasPhone)
         if HasPhone then
             PhoneData.PlayerData = ProjectRP.Functions.GetPlayerData()
-    	    SetNuiFocus(true, true)
+            SetNuiFocus(true, true)
             SendNUIMessage({
                 action = "open",
                 Tweets = PhoneData.Tweets,
