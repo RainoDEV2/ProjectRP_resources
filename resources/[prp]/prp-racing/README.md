@@ -32,9 +32,9 @@ You only need either this resource, or prp-lapraces, not both. I have not tested
 4. Add the item images to your inventory image folder
 5. Until my [prp-menu pull request](https://github.com/PRPCore-framework/prp-menu/pull/23) is approved (or denied), permission enable/disable config support will not work. You can either wait for the PR, just make the changes in the PR to your version, or implement your own logic in the script.
 
-## Dependencies
-* [prp-menu](https://github.com/PRPCore-framework/prp-menu)
-* [prp-input](https://github.com/qbcore-framework/prp-input)
+## Dependencies 
+* [prp-menu](https://github.com/qbcore-framework/qb-menu)
+* [prp-input](https://github.com/qbcore-framework/qb-input)
 
 ## Features
 * Standalone racing script not requiring prp-phone to utilize

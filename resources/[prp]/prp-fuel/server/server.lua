@@ -1,6 +1,6 @@
 -- Variables
 
-local PRPCore = exports['prp-core']:GetCoreObject()
+local ProjectRP = exports['prp-core']:GetCoreObject()
 
 -- Functions
 
@@ -14,7 +14,7 @@ end
 RegisterNetEvent("prp-fuel:server:OpenMenu", function (amount, inGasStation)
 	local src = source
 	if not src then return end
-	local player = PRPCore.Functions.GetPlayer(src)
+	local player = ProjectRP.Functions.GetPlayer(src)
 	if not player then return end
 	local tax = GlobalTax(amount)
 	local total = math.ceil(amount + tax)
@@ -47,7 +47,7 @@ end)
 RegisterNetEvent("prp-fuel:server:PayForFuel", function (amount)
 	local src = source
 	if not src then return end
-	local player = PRPCore.Functions.GetPlayer(src)
+	local player = ProjectRP.Functions.GetPlayer(src)
 	if not player then return end
 	player.Functions.RemoveMoney('cash', amount)
 end)

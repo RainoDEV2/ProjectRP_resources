@@ -1,6 +1,6 @@
 -- Variables
 
-local PRPCore = exports['prp-core']:GetCoreObject()
+local ProjectRP = exports['prp-core']:GetCoreObject()
 local fuelSynced = false
 local inBlacklisted = false
 local inGasStation = false
@@ -52,6 +52,27 @@ CreateThread(function()
 		}
 	},
 		distance = 1.5,
+	})
+end)
+
+CreateThread(function()
+	-- Target Export
+	exports['prp-target']:AddTargetModel(props, {
+		options = {
+			{
+				type = "client",
+				event = "prp-fuel:client:buyCanMenu",
+				icon = "fas fa-burn",
+				label = "Buy Jerry Can",
+			},
+			{
+				type = "client",
+				event = "prp-fuel:client:refuelCanMenu",
+				icon = "fas fa-gas-pump",
+				label = "Refuel Jerry Can",
+			},
+		},
+		distance = 2.0
 	})
 end)
 
@@ -175,13 +196,13 @@ end)
 
 RegisterNetEvent('prp-fuel:client:buyCan', function()
     if not HasPedGotWeapon(ped, 883325847) then
-		if PRPCore.Functions.GetPlayerData().money['cash'] >= Config.canCost then
-			TriggerServerEvent('PRPCore:Server:AddItem', "weapon_petrolcan", 1)
+		if ProjectRP.Functions.GetPlayerData().money['cash'] >= Config.canCost then
+			TriggerServerEvent('ProjectRP:Server:AddItem', "weapon_petrolcan", 1)
 			SetPedAmmo(ped, 883325847, 4500)
-			TriggerEvent("inventory:client:ItemBox", PRPCore.Shared.Items["weapon_petrolcan"], "add")
+			TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["weapon_petrolcan"], "add")
 			TriggerServerEvent('prp-fuel:server:PayForFuel', Config.canCost, GetPlayerServerId(PlayerId()))
 		else
-			PRPCore.Functions.Notify("You don't have enough money", "error")
+			ProjectRP.Functions.Notify("You don't have enough money", "error")
 		end
     end
 end)
@@ -199,7 +220,7 @@ RegisterNetEvent('prp-fuel:client:refuelCanMenu', function()
 end)
 
 RegisterNetEvent('prp-fuel:client:refuelCan', function()
-	local vehicle = PRPCore.Functions.GetClosestVehicle()
+	local vehicle = ProjectRP.Functions.GetClosestVehicle()
 	local ped = PlayerPedId()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	if HasPedGotWeapon(ped, 883325847) then
@@ -207,7 +228,7 @@ RegisterNetEvent('prp-fuel:client:refuelCan', function()
 		RequestAnimDict("weapon@w_sp_jerrycan")
 		while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Wait(100) end
 			TaskPlayAnim(ped, "weapon@w_sp_jerrycan", "fire", 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
-			PRPCore.Functions.Progressbar("refuel-car", "Refueling", 10000, false, true, {
+			ProjectRP.Functions.Progressbar("refuel-car", "Refueling", 10000, false, true, {
 			disableMovement = true,
 			disableCarMovement = true,
 			disableMouse = false,
@@ -218,28 +239,28 @@ RegisterNetEvent('prp-fuel:client:refuelCan', function()
 			PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 		end, function() -- Cancel
-			PRPCore.Functions.Notify("Refueling Canceled", "error")
+			ProjectRP.Functions.Notify("Refueling Canceled", "error")
 			StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 			end)
 		else 
-			PRPCore.Functions.Notify("This jerry can is already full", "error")
+			ProjectRP.Functions.Notify("This jerry can is already full", "error")
 		end
 	end
 end)
 
 RegisterNetEvent('prp-fuel:client:SendMenuToServer', function()
-	local vehicle = PRPCore.Functions.GetClosestVehicle()
+	local vehicle = ProjectRP.Functions.GetClosestVehicle()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	local refillCost = Round(Config.RefillCost - CurFuel) * Config.CostMultiplier
 	if CurFuel < 95 then
 		TriggerServerEvent('prp-fuel:server:OpenMenu', refillCost, inGasStation)
 	else
-		PRPCore.Functions.Notify("This vehicle is already full", "error")
+		ProjectRP.Functions.Notify("This vehicle is already full", "error")
 	end
 end)
 
 RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
-	local vehicle = PRPCore.Functions.GetClosestVehicle()
+	local vehicle = ProjectRP.Functions.GetClosestVehicle()
 	local ped = PlayerPedId()
 	local CurFuel = GetVehicleFuelLevel(vehicle)
 	local time = (100 - CurFuel) * 400
@@ -261,7 +282,7 @@ RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
 					return
 				end
 			end
-			PRPCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
+			ProjectRP.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 				disableMovement = true,
 				disableCarMovement = true,
 				disableMouse = false,
@@ -272,14 +293,14 @@ RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
 				PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 			end, function() -- Cancel
-				PRPCore.Functions.Notify("Refueling Canceled", "error")
+				ProjectRP.Functions.Notify("Refueling Canceled", "error")
 				StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 			end)
 		else
 		if inGasStation then
 			if isCloseVeh() then
-				if PRPCore.Functions.GetPlayerData().money['cash'] <= refillCost then 
-					PRPCore.Functions.Notify("You don't have enough money", "error")
+				if ProjectRP.Functions.GetPlayerData().money['cash'] <= refillCost then 
+					ProjectRP.Functions.Notify("You don't have enough money", "error")
 				else
 				RequestAnimDict("weapon@w_sp_jerrycan")
 				while not HasAnimDictLoaded('weapon@w_sp_jerrycan') do Wait(100) end
@@ -291,7 +312,7 @@ RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
 						return
 					end
 				end
-				PRPCore.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
+				ProjectRP.Functions.Progressbar("refuel-car", "Refueling", time, false, true, {
 					disableMovement = true,
 					disableCarMovement = true,
 					disableMouse = false,
@@ -302,7 +323,7 @@ RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
 					PlaySound(-1, "5_SEC_WARNING", "HUD_MINI_GAME_SOUNDSET", 0, 0, 1)
 					StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 				end, function() -- Cancel
-					PRPCore.Functions.Notify("Refueling Canceled", "error")
+					ProjectRP.Functions.Notify("Refueling Canceled", "error")
 					StopAnimTask(ped, "weapon@w_sp_jerrycan", "fire", 3.0, 3.0, -1, 2, 0, 0, 0, 0)
 					end)
 				end
@@ -310,23 +331,3 @@ RegisterNetEvent('prp-fuel:client:RefuelVehicle', function(refillCost)
 		end
 	end
 end)
-
--- Target Export
-
-exports['prp-target']:AddTargetModel(props, {
-	options = {
-		{
-			type = "client",
-			event = "prp-fuel:client:buyCanMenu",
-			icon = "fas fa-burn",
-			label = "Buy Jerry Can",
-		},
-		{
-			type = "client",
-			event = "prp-fuel:client:refuelCanMenu",
-			icon = "fas fa-gas-pump",
-			label = "Refuel Jerry Can",
-		},
-	},
-		distance = 2.0
-})
