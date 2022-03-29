@@ -45,7 +45,7 @@ RegisterNetEvent("mc-storage/server/setup-containers", function()
 				TriggerClientEvent('mc-storage/client/update-config', -1, Config.StorageContainers)
 			end
 		else
- 			print('No data found..')
+			print('No data found..')
 		end
 	end)
 end)

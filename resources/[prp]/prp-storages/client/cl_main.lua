@@ -1,10 +1,10 @@
 local ProjectRP, LoggedIn = Config.CoreExport, false
 local CurrentStorageId = nil
 
-RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
+RegisterNetEvent('ProjectRP:Client:OnPlayerLoaded', function()
     Citizen.SetTimeout(1250, function() 
         ProjectRP.Functions.TriggerCallback('mc-storage/server/get-config', function(ConfigData)
-           Config = ConfigData
+            Config = ConfigData
         end)
         Citizen.Wait(250)
         TriggerServerEvent('mc-storage/server/setup-containers')
@@ -13,7 +13,7 @@ RegisterNetEvent('QBCore:Client:OnPlayerLoaded', function()
     end)
 end)
 
-RegisterNetEvent('QBCore:Client:OnPlayerUnload', function()
+RegisterNetEvent('ProjectRP:Client:OnPlayerUnload', function()
     LoggedIn = false
 end)
 
@@ -90,7 +90,7 @@ end
 local function IsRealEstate()
     local Retval = false
     if ProjectRP.Functions.GetPlayerData().job.name == Config.EstateJob then
-      Retval = true
+        Retval = true
     end
     return Retval
 end
