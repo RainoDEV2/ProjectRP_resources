@@ -183,19 +183,19 @@ Config.PanicButton = {
 Config.small_ui = {
     ENABLE = true,
     command = 'dispatchsmall', --The chat command.
-    key = 'u', --The key press.
+    key = 'F6', --The key press.
     description = L('dispatchsmall_description'), --The description for the chat message.
 }
 Config.large_ui = {
     ENABLE = true,
     command = 'dispatchlarge',
-    key = 'l',
+    key = 'F7',
     description = L('dispatchlarge_description'),
 }
 Config.respond = {
     ENABLE = true,
     command = 'respond', 
-    key = 'g',
+    key = 'o',
     description = L('respond_description'),
 }
 Config.move_mode = {
@@ -277,7 +277,7 @@ Config.PoliceAlerts = {
 
     --[[SPEEDTRAP CONFIG]]--
     SpeedTrap = {
-        ENABLE = true, ----Do you want speeding vehicles to alert police?
+        ENABLE = false, ----Do you want speeding vehicles to alert police?
         cooldown = 10, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
 
         Blip = {

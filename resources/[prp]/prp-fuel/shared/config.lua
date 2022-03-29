@@ -1,5 +1,5 @@
 Config = {}
-Config.ShowNearestGasStationOnly = true -- show nearest gas stations when close enough
+Config.ShowNearestGasStationOnly = false -- show nearest gas stations when close enough
 Config.ShowAllGasStations = true -- show all gas stations around map
 Config.LeaveEngineRunning = true -- when set to true vehicle engine will run upon exiting vehicle
 Config.VehicleBlowUp = true -- when set to true vehicle has a chance to blow up if engine is left running
