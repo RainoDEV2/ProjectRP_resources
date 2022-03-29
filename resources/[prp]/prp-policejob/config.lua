@@ -274,7 +274,7 @@ Config.Items = {
     slots = 30,
     items = {
         [1] = {
-            name = "weapon_pistol",
+            name = "weapon_glock",
             price = 0,
             amount = 1,
             info = {
@@ -328,7 +328,7 @@ Config.Items = {
             authorizedJobGrades = {3, 4, 5, 6, 7, 8, 9}
         },
         [5] = {
-            name = "weapon_carbinerifle",
+            name = "weapon_m4",
             price = 0,
             amount = 1,
             info = {

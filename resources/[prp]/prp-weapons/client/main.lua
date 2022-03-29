@@ -73,6 +73,7 @@ RegisterNetEvent('weapons:client:SetWeaponQuality', function(amount)
     end
 end)
 
+
 RegisterNetEvent('weapon:client:AddAmmo', function(type, amount, itemData)
     local ped = PlayerPedId()
     local weapon = GetSelectedPedWeapon(ped)
