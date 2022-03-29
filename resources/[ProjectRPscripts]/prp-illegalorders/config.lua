@@ -19,7 +19,7 @@ Config.PayoutForFifthOrder = 2500
 Config.PayoutForSixthOrder = 1800
 Config.PayoutForSeventhOrder = 2200
 
-Config.RequiredCops = 0
+Config.RequiredCops = 1
 
 Config.illegalorders = {
 	['BossSpawn'] = { --the place where you start and finish your work

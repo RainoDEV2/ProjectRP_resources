@@ -33,9 +33,9 @@ ProjectRP.Commands.Add('invoice', 'Invoice A Player', {{
     local customer = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
     local amount = tonumber(args[2])
 
-    if worker.PlayerData.job.name == "vu" then 
+    -- if worker.PlayerData.job.name == "vu" then 
         if customer then
-            if worker.PlayerData.citizenid ~= customer.PlayerData.citizenid then
+            -- if worker.PlayerData.citizenid ~= customer.PlayerData.citizenid then
                 if amount and amount > 0 then
                     exports.oxmysql:insert(
                         'INSERT INTO phone_invoices (citizenid, amount, society, sender, sendercitizenid) VALUES (?, ?, ?, ?, ?)',
@@ -47,13 +47,13 @@ ProjectRP.Commands.Add('invoice', 'Invoice A Player', {{
                 else
                     TriggerClientEvent('ProjectRP:Notify', source, 'Must Be A Valid Amount Above 0', 'error')
                 end
-            else
-                TriggerClientEvent('ProjectRP:Notify', source, 'You Cannot Invoice Yourself', 'error')
-            end
+            -- else
+            --     TriggerClientEvent('ProjectRP:Notify', source, 'You Cannot Invoice Yourself', 'error')
+            -- end
         else
             TriggerClientEvent('ProjectRP:Notify', source, 'Player Not Online', 'error')
         end
-    else
-        TriggerClientEvent('ProjectRP:Notify', source, 'No Access', 'error')
-    end
+    -- else
+    --     TriggerClientEvent('ProjectRP:Notify', source, 'No Access', 'error')
+    -- end
 end)

@@ -10,7 +10,7 @@ Keys = {
 }
 
 Config = {}
-Config.RequiredCops = 0
+Config.RequiredCops = 1
 
 Config.Payout = 3000
 

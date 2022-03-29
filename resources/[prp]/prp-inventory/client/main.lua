@@ -902,53 +902,6 @@ CreateThread(function()
     end
 end)
 
---[[CreateThread(function()
-	while true do
-		Wait(0)
-		local pos, awayFromObject = GetEntityCoords(PlayerPedId()), true
-		local craftObject = GetClosestObjectOfType(pos, 2.0, -573669520, false, false, false)
-		if craftObject ~= 0 then
-			local objectPos = GetEntityCoords(craftObject)
-			if #(pos - objectPos) < 1.5 then
-				awayFromObject = false
-				DrawText3Ds(objectPos.x, objectPos.y, objectPos.z + 1.0, "~g~E~w~ - Craft")
-				if IsControlJustReleased(0, 38) then
-					local crafting = {}
-					crafting.label = "Crafting"
-					crafting.items = GetThresholdItems()
-					TriggerServerEvent("inventory:server:OpenInventory", "crafting", math.random(1, 99), crafting)
-				end
-			end
-		end
-		if awayFromObject then
-			Wait(1000)
-		end
-	end
-end)
-CreateThread(function()
-	while true do
-		local pos = GetEntityCoords(PlayerPedId())
-		local inRange = false
-		local distance = #(pos - Config.AttachmentCrafting.location)
-		if distance < 10 then
-			inRange = true
-			if distance < 1.5 then
-				DrawText3Ds(Config.AttachmentCrafting["location"].x, Config.AttachmentCrafting["location"].y, Config.AttachmentCrafting["location"].z, "~g~E~w~ - Craft")
-				if IsControlJustPressed(0, 38) then
-					local crafting = {}
-					crafting.label = "Attachment Crafting"
-					crafting.items = GetAttachmentThresholdItems()
-					TriggerServerEvent("inventory:server:OpenInventory", "attachment_crafting", math.random(1, 99), crafting)
-				end
-			end
-		end
-		if not inRange then
-			Wait(1000)
-		end
-		Wait(3)
-	end
-end)]]--
-
 --prp-target
 RegisterNetEvent("inventory:client:Crafting", function(dropId)
     local crafting = {}

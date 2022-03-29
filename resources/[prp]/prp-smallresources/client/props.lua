@@ -36,21 +36,8 @@ function RequestModelHash(Model)
     end
 end
 
-RegisterCommand('detatchprops', function(source, args)
-	obj = args[1]
-	local position = GetEntityCoords(GetPlayerPed(PlayerId()), false)
-	local object = GetClosestObjectOfType(position.x, position.y, position.z, 15.0, GetHashKey(obj), false, false, false)
-	if object ~= 0 then
-		DeleteObject(object)
-	end
-end)
-
-RegisterCommand('detatchphone', function(source)
-	local position = GetEntityCoords(GetPlayerPed(PlayerId()), false)
-	local object = GetClosestObjectOfType(position.x, position.y, position.z, 15.0, GetHashKey("prop_npc_phone_02"), false, false, false)
-	if object ~= 0 then
-		DeleteObject(object)
-	end
+RegisterCommand('detachprops', function(source, args)
+	RemoveProp()
 end)
 
 AddEventHandler('onResourceStop', function(resource)
