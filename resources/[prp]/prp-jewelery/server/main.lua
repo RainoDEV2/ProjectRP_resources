@@ -59,7 +59,7 @@ AddEventHandler('prp-jewellery:server:PoliceAlertMessage', function(title, coord
     local alertData = {
         title = title,
         coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = "Possible robbery going on at Vangelico Jewelry Store<br>Available camera's: 31, 32, 33, 34",
+        description = "Possible robbery at Vangelico Jewelry Store<br>Available camera's: 31, 32, 33, 34",
     }
 
     for k, v in pairs(ProjectRP.Functions.GetPlayers()) do

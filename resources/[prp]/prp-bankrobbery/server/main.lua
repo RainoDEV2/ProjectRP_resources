@@ -132,12 +132,12 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
         if tierChance < 50 then tier = 1 elseif tierChance >= 50 and tierChance < 80 then tier = 2 elseif tierChance >= 80 and tierChance < 95 then tier = 3 else tier = 4 end
         if WeaponChance ~= odd1 then
             if tier ~= 4 then
-                 if Config.RewardTypes[itemType].type == "item" then
-                     local item = Config.LockerRewards["tier"..tier][math.random(#Config.LockerRewards["tier"..tier])]
-                     local itemAmount = math.random(item.minAmount, item.maxAmount)
-                     ply.Functions.AddItem(item.item, itemAmount)
-                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
-                 elseif Config.RewardTypes[itemType].type == "money" then
+                if Config.RewardTypes[itemType].type == "item" then
+                    local item = Config.LockerRewards["tier"..tier][math.random(#Config.LockerRewards["tier"..tier])]
+                    local itemAmount = math.random(item.minAmount, item.maxAmount)
+                    ply.Functions.AddItem(item.item, itemAmount)
+                    TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
+                elseif Config.RewardTypes[itemType].type == "money" then
                     local info = {
                         worth = math.random(2300, 3200)
                     }
@@ -161,19 +161,19 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
         if tierChance < 25 then tier = 1 elseif tierChance >= 25 and tierChance < 70 then tier = 2 elseif tierChance >= 70 and tierChance < 95 then tier = 3 else tier = 4 end
         if WeaponChance ~= odd1 then
             if tier ~= 4 then
-                 if Config.RewardTypes[itemType].type == "item" then
-                     local item = Config.LockerRewardsPaleto["tier"..tier][math.random(#Config.LockerRewardsPaleto["tier"..tier])]
-                     local itemAmount = math.random(item.minAmount, item.maxAmount)
+                if Config.RewardTypes[itemType].type == "item" then
+                    local item = Config.LockerRewardsPaleto["tier"..tier][math.random(#Config.LockerRewardsPaleto["tier"..tier])]
+                    local itemAmount = math.random(item.minAmount, item.maxAmount)
 
-                     ply.Functions.AddItem(item.item, itemAmount)
-                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
-                 elseif Config.RewardTypes[itemType].type == "money" then
-                     local info = {
-                         worth = math.random(4000, 6000)
-                     }
+                    ply.Functions.AddItem(item.item, itemAmount)
+                    TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
+                elseif Config.RewardTypes[itemType].type == "money" then
+                    local info = {
+                        worth = math.random(4000, 6000)
+                    }
                     ply.Functions.AddItem('markedbills', math.random(1,4), false, info)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
-                 end
+                end
             else
                 ply.Functions.AddItem('security_card_02', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['security_card_02'], "add")
@@ -201,24 +201,24 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
                     ply.Functions.AddItem(item.item, itemAmount)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
                 elseif Config.RewardTypes[itemType].type == "money" then
-                     local moneyAmount = math.random(1200, 7000)
-                     local info = {
-                         worth = math.random(19000, 21000)
-                     }
+                    local moneyAmount = math.random(1200, 7000)
+                    local info = {
+                        worth = math.random(19000, 21000)
+                    }
                     ply.Functions.AddItem('markedbills', math.random(1,4), false, info)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
                 end
             else
-                 local info = {
-                     worth = math.random(19000, 21000)
-                 }
+                local info = {
+                    worth = math.random(19000, 21000)
+                }
                 ply.Functions.AddItem('markedbills', math.random(1,4), false, info)
                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
-                 local info = {
-                     crypto = math.random(1, 3)
-                 }
-                 ply.Functions.AddItem("cryptostick", 1, false, info)
-                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['cryptostick'], "add")
+                local info = {
+                    crypto = math.random(1, 3)
+                }
+                ply.Functions.AddItem("cryptostick", 1, false, info)
+                TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['cryptostick'], "add")
             end
         else
             local chance = math.random(1, 2)
@@ -280,8 +280,8 @@ RegisterNetEvent('prp-bankrobbery:server:SetSmallbankTimeout', function(BankId)
 
                 timeOut = false
                 robberyBusy = false
-            	TriggerClientEvent('prp-bankrobbery:client:ResetFleecaLockers', -1, BankId)
-            	TriggerEvent('prp-banking:server:SetBankClosed', BankId, false)
+                TriggerClientEvent('prp-bankrobbery:client:ResetFleecaLockers', -1, BankId)
+                TriggerEvent('prp-banking:server:SetBankClosed', BankId, false)
             end)
 		end
     end
@@ -303,13 +303,7 @@ RegisterNetEvent('prp-bankrobbery:server:callCops', function(type, bank, streetL
         bankLabel = "Pacific Standard Bank"
         msg = "The Alarm has been activated at "..bankLabel.. " Alta St (CAMERA ID: 1/2/3)"
     end
-    local alertData = {
-        title = "Bank robbery",
-        coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = msg,
-    }
-    TriggerClientEvent("prp-bankrobbery:client:robberyCall", -1, type, bank, streetLabel, coords)
-    TriggerClientEvent("prp-phone:client:addPoliceAlert", -1, alertData)
+    TriggerClientEvent("prp-bankrobbery:client:robberyCall", -1, type, bank, streetLabel, coords, msg)
 end)
 
 RegisterNetEvent('prp-bankrobbery:server:SetStationStatus', function(key, isHit)

@@ -428,122 +428,64 @@ RegisterNetEvent('prp-bankrobbery:client:ResetFleecaLockers', function(BankId)
     end
 end)
 
-RegisterNetEvent('prp-bankrobbery:client:robberyCall', function(type, key, streetLabel, coords)
+RegisterNetEvent('prp-bankrobbery:client:robberyCall', function(type, key, streetLabel, coords, msg)
     if PlayerJob.name == "police" and onDuty then
         local cameraId = 4
         local bank = "Fleeca"
         if type == "small" then
-            cameraId = Config.SmallBanks[key]["camId"]
-            bank = "Fleeca"
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-                timeOut = 10000,
-                alertTitle = "Fleeca bank robbery attempt",
-                coords = {
-                    x = coords.x,
-                    y = coords.y,
-                    z = coords.z,
-                },
-                details = {
-                    [1] = {
-                        icon = '<i class="fas fa-university"></i>',
-                        detail = bank,
-                    },
-                    [2] = {
-                        icon = '<i class="fas fa-video"></i>',
-                        detail = cameraId,
-                    },
-                    [3] = {
-                        icon = '<i class="fas fa-globe-europe"></i>',
-                        detail = streetLabel,
-                    },
-                },
-                callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police'}, 
+                coords = coords,
+                title = '10-90 - Fleeca bank robbery attempt',
+                message = msg,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Blain County Savings bank robbery attempt',
+                    time = (5*60*1000),
+                    sound = 1,
+                }
             })
         elseif type == "paleto" then
-            cameraId = Config.BigBanks["paleto"]["camId"]
-            bank = "Blaine County Savings"
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            Wait(100)
-            PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
-            Wait(100)
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            Wait(100)
-            PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
-            TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-                timeOut = 10000,
-                alertTitle = "Blain County Savings bank robbery attempt",
-                coords = {
-                    x = coords.x,
-                    y = coords.y,
-                    z = coords.z,
-                },
-                details = {
-                    [1] = {
-                        icon = '<i class="fas fa-university"></i>',
-                        detail = bank,
-                    },
-                    [2] = {
-                        icon = '<i class="fas fa-video"></i>',
-                        detail = cameraId,
-                    },
-                },
-                callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police'}, 
+                coords = coords,
+                title = '10-90 - Blain County Savings bank robbery attempt',
+                message = msg,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Blain County Savings bank robbery attempt',
+                    time = (5*60*1000),
+                    sound = 2,
+                }
             })
         elseif type == "pacific" then
-            bank = "Pacific Standard Bank"
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            Wait(100)
-            PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
-            Wait(100)
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            Wait(100)
-            PlaySoundFrontend( -1, "Beep_Red", "DLC_HEIST_HACKING_SNAKE_SOUNDS", 1 )
-            TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-                timeOut = 10000,
-                alertTitle = "Pacific Standard Bank robbery attempt",
-                coords = {
-                    x = coords.x,
-                    y = coords.y,
-                    z = coords.z,
-                },
-                details = {
-                    [1] = {
-                        icon = '<i class="fas fa-university"></i>',
-                        detail = bank,
-                    },
-                    [2] = {
-                        icon = '<i class="fas fa-video"></i>',
-                        detail = "1 | 2 | 3",
-                    },
-                    [3] = {
-                        icon = '<i class="fas fa-globe-europe"></i>',
-                        detail = "Alta St",
-                    },
-                },
-                callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police'}, 
+                coords = coords,
+                title = '10-90 - Pacific Standard Bank robbery attempt',
+                message = msg,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Pacific Standard Bank robbery attempt',
+                    time = (5*60*1000),
+                    sound = 2,
+                }
             })
-        end
-        local transG = 250
-        local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-        SetBlipSprite(blip, 487)
-        SetBlipColour(blip, 4)
-        SetBlipDisplay(blip, 4)
-        SetBlipAlpha(blip, transG)
-        SetBlipScale(blip, 1.2)
-        SetBlipFlashes(blip, true)
-        BeginTextCommandSetBlipName('STRING')
-        AddTextComponentString("10-90: Bank Robbery")
-        EndTextCommandSetBlipName(blip)
-        while transG ~= 0 do
-            Wait(180 * 4)
-            transG = transG - 1
-            SetBlipAlpha(blip, transG)
-            if transG == 0 then
-                SetBlipSprite(blip, 2)
-                RemoveBlip(blip)
-                return
-            end
         end
     end
 end)
