@@ -15,17 +15,6 @@ CreateThread(function()
 	end
 end)
 
--- Citizen.CreateThread(function()
--- 	while true do
--- 		Citizen.Wait(0)
--- 		if NetworkIsSessionStarted() then
--- 			TriggerEvent('prp-multicharacter:client:chooseChar')
---             ExecuteCommand('closeinv')
--- 			return
--- 		end
--- 	end
--- end)
-
 -- Functions
 
 local function skyCam(bool)
@@ -48,50 +37,55 @@ local function skyCam(bool)
 end
 
 local function openCharMenu(bool)
-    SetNuiFocus(bool, bool)
-    SendNUIMessage({
-        action = "ui",
-        toggle = bool,
-    })
-    skyCam(bool)
+    ProjectRP.Functions.TriggerCallback("prp-multicharacter:server:GetNumberOfCharacters", function(result)
+        SetNuiFocus(bool, bool)
+        SendNUIMessage({
+            action = "ui",
+            toggle = bool,
+            nChar = result,
+        })
+        skyCam(bool)
+    end)
 end
 
 -- Events
 
 RegisterNetEvent('prp-multicharacter:client:closeNUIdefault', function() -- This event is only for no starting apartments
+    DeleteEntity(charPed)
     SetNuiFocus(false, false)
     DoScreenFadeOut(500)
-    Citizen.Wait(2000)
+    Wait(2000)
     SetEntityCoords(PlayerPedId(), Config.DefaultSpawn.x, Config.DefaultSpawn.y, Config.DefaultSpawn.z)
     TriggerServerEvent('ProjectRP:Server:OnPlayerLoaded')
     TriggerEvent('ProjectRP:Client:OnPlayerLoaded')
     TriggerServerEvent('prp-houses:server:SetInsideMeta', 0, false)
     TriggerServerEvent('prp-apartments:server:SetInsideMeta', 0, 0, false)
-    Citizen.Wait(500)
+    Wait(500)
     openCharMenu()
     SetEntityVisible(PlayerPedId(), true)
-    Citizen.Wait(500)
+    Wait(500)
     DoScreenFadeIn(250)
     TriggerEvent('prp-weathersync:client:EnableSync')
     TriggerEvent('prp-clothes:client:CreateFirstCharacter')
 end)
 
 RegisterNetEvent('prp-multicharacter:client:closeNUI', function()
+    DeleteEntity(charPed)
     SetNuiFocus(false, false)
 end)
 
 RegisterNetEvent('prp-multicharacter:client:chooseChar', function()
     SetNuiFocus(false, false)
     DoScreenFadeOut(10)
-    Citizen.Wait(1000)
+    Wait(1000)
     local interior = GetInteriorAtCoords(Config.Interior.x, Config.Interior.y, Config.Interior.z - 18.9)
     LoadInterior(interior)
     while not IsInteriorReady(interior) do
-        Citizen.Wait(1000)
+        Wait(1000)
     end
     FreezeEntityPosition(PlayerPedId(), true)
     SetEntityCoords(PlayerPedId(), Config.HiddenCoords.x, Config.HiddenCoords.y, Config.HiddenCoords.z)
-    Citizen.Wait(1500)
+    Wait(1500)
     ShutdownLoadingScreen()
     ShutdownLoadingScreenNui()
     openCharMenu(true)
@@ -126,10 +120,10 @@ RegisterNUICallback('cDataPed', function(data)
         ProjectRP.Functions.TriggerCallback('prp-multicharacter:server:getSkin', function(model, data)
             model = model ~= nil and tonumber(model) or false
             if model ~= nil then
-                Citizen.CreateThread(function()
+                CreateThread(function()
                     RequestModel(model)
                     while not HasModelLoaded(model) do
-                        Citizen.Wait(0)
+                        Wait(0)
                     end
                     charPed = CreatePed(2, model, Config.PedCoords.x, Config.PedCoords.y, Config.PedCoords.z - 0.98, Config.PedCoords.w, false, true)
                     SetPedComponentVariation(charPed, 0, 0, 0, 2)
@@ -141,7 +135,7 @@ RegisterNUICallback('cDataPed', function(data)
                     TriggerEvent('prp-clothing:client:loadPlayerClothing', data, charPed)
                 end)
             else
-                Citizen.CreateThread(function()
+                CreateThread(function()
                     local randommodels = {
                         "mp_m_freemode_01",
                         "mp_f_freemode_01",
@@ -149,7 +143,7 @@ RegisterNUICallback('cDataPed', function(data)
                     local model = GetHashKey(randommodels[math.random(1, #randommodels)])
                     RequestModel(model)
                     while not HasModelLoaded(model) do
-                        Citizen.Wait(0)
+                        Wait(0)
                     end
                     charPed = CreatePed(2, model, Config.PedCoords.x, Config.PedCoords.y, Config.PedCoords.z - 0.98, Config.PedCoords.w, false, true)
                     SetPedComponentVariation(charPed, 0, 0, 0, 2)
@@ -161,7 +155,7 @@ RegisterNUICallback('cDataPed', function(data)
             end
         end, cData.citizenid)
     else
-        Citizen.CreateThread(function()
+        CreateThread(function()
             local randommodels = {
                 "mp_m_freemode_01",
                 "mp_f_freemode_01",
@@ -169,7 +163,7 @@ RegisterNUICallback('cDataPed', function(data)
             local model = GetHashKey(randommodels[math.random(1, #randommodels)])
             RequestModel(model)
             while not HasModelLoaded(model) do
-                Citizen.Wait(0)
+                Wait(0)
             end
             charPed = CreatePed(2, model, Config.PedCoords.x, Config.PedCoords.y, Config.PedCoords.z - 0.98, Config.PedCoords.w, false, true)
             SetPedComponentVariation(charPed, 0, 0, 0, 2)
@@ -203,7 +197,7 @@ RegisterNUICallback('createNewCharacter', function(data)
         cData.gender = 1
     end
     TriggerServerEvent('prp-multicharacter:server:createCharacter', cData)
-    Citizen.Wait(500)
+    Wait(500)
 end)
 
 RegisterNUICallback('removeCharacter', function(data)
