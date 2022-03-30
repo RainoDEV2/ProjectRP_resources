@@ -136,7 +136,7 @@ ProjectRP.Functions.CreateUseableItem("snikkel_candy", function(source, item)
     end
 end)
 
-ProjectRP.Functions.CreateUseableItem("tosti", function(source, item)
+ProjectRP.Functions.CreateUseableItem("toastie", function(source, item)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
@@ -220,7 +220,7 @@ ProjectRP.Functions.CreateUseableItem("coffee", function(source, item)
     end
 end)
 
-ProjectRP.Functions.CreateUseableItem("kurkakola", function(source, item)
+ProjectRP.Functions.CreateUseableItem("cola", function(source, item)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
