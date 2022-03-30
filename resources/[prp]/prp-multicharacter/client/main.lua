@@ -4,9 +4,9 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 
 -- Main Thread
 
-Citizen.CreateThread(function()
+CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Wait(0)
 		if NetworkIsSessionStarted() then
 			TriggerEvent('prp-multicharacter:client:chooseChar')
             ExecuteCommand('closeinv')
@@ -14,6 +14,17 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+-- Citizen.CreateThread(function()
+-- 	while true do
+-- 		Citizen.Wait(0)
+-- 		if NetworkIsSessionStarted() then
+-- 			TriggerEvent('prp-multicharacter:client:chooseChar')
+--             ExecuteCommand('closeinv')
+-- 			return
+-- 		end
+-- 	end
+-- end)
 
 -- Functions
 
