@@ -14,7 +14,7 @@ Config.CraftingObject = `prop_toolchest_05` -- Only needed if not using target |
 
 Config.VendingItem = {
     [1] = {
-        name = "kurkakola",
+        name = "cola",
         price = 4,
         amount = 50,
         info = {},

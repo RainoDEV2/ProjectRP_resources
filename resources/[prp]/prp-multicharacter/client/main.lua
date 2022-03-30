@@ -10,7 +10,6 @@ Citizen.CreateThread(function()
 		if NetworkIsSessionStarted() then
 			TriggerEvent('prp-multicharacter:client:chooseChar')
             ExecuteCommand('closeinv')
-            print('PUSSY')
 			return
 		end
 	end
