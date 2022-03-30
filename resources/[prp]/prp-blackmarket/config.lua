@@ -1,5 +1,5 @@
 Config = {
-    ['Test_Command'] = true, -- /market
+    ['Test_Command'] = false, -- /market
     ['items'] = {
         -----------ITEMS-------------
         [1] = {
