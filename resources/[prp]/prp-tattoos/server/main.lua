@@ -4,10 +4,9 @@ RegisterNetEvent("Mx :: GetTattoos")
 AddEventHandler("Mx :: GetTattoos", function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    local citizenid = Player.PlayerData.citizenid
-    if Player  then
-        exports.oxmysql:execute("SELECT * FROM tattoos where identifier = @identifier",
-        {['@identifier'] = citizenid},
+    if Player then
+        local citizenid = Player.PlayerData.citizenid
+        exports.oxmysql:execute("SELECT * FROM tattoos where identifier = @identifier", {['@identifier'] = citizenid},
         function(result)
             if result and #result > 0 then
                 for i,k in pairs(result) do
