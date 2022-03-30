@@ -2,7 +2,6 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 
 
 local isLoggedIn = false
-local AlertActive = false
 PlayerData = {}
 PlayerJob = {}
 
@@ -91,34 +90,6 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
                 }
             })
         end 
-    end
-
-    AlertActive = true
-    SetTimeout(data.timeOut, function()
-        AlertActive = false
-    end)
-end)
-
-Citizen.CreateThread(function()
-    while true do
-        if AlertActive then
-            if IsControlJustPressed(0, Keys["LEFTALT"]) then
-                SetNuiFocus(true, true)
-                SetNuiFocusKeepInput(true, false)
-                SetCursorLocation(0.965, 0.12)
-                MouseActive = true
-            end
-        end
-
-        if MouseActive then
-            if IsControlJustReleased(0, Keys["LEFTALT"]) then
-                SetNuiFocus(false, false)
-                SetNuiFocusKeepInput(false, false)
-                MouseActive = false
-            end
-        end
-
-        Citizen.Wait(6)
     end
 end)
 

@@ -17,11 +17,11 @@ Config.PhoneApplications = {
         slot = 1,
         Alerts = 0,
     },
-    ["whatsapp"] = {
-        app = "whatsapp",
+    ["messages"] = {
+        app = "messages",
         color = "#25d366",
         icon = "fas fa-comment",
-        tooltipText = "Whatsapp",
+        tooltipText = "Messages",
         tooltipPos = "top",
         style = "font-size: 2.8vh";
         job = false,
