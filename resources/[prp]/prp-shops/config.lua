@@ -284,7 +284,7 @@ Config.Products = {
         },
         [3] = {
             name = "fishingrod",
-            price = 4000,
+            price = 2000,
             amount = 50,
             info = {},
             type = "item",
@@ -370,7 +370,7 @@ Config.Products = {
         },
         [5] = {
             name = "weapon_snspistol",
-            price = 1500,
+            price = 1250,
             amount = 5,
             info = {},
             type = "item",
@@ -379,7 +379,7 @@ Config.Products = {
         },
         [6] = {
             name = "weapon_vintagepistol",
-            price = 4000,
+            price = 2500,
             amount = 5,
             info = {},
             type = "item",
@@ -388,12 +388,12 @@ Config.Products = {
         },
         [7] = {
             name = "pistol_ammo",
-            price = 250,
+            price = 100,
             amount = 250,
             info = {},
             type = "item",
             slot = 7,
-            requiresLicense = true
+            requiresLicense = false
         },
     },
     ["coffeeplace"] = {
@@ -436,15 +436,15 @@ Config.Locations = {
         ["products"] = Config.Products["coffeeplace"],
         ["showblip"] = true,
     },
-    ["casino"] = {
-        ["label"] = "Diamond Casino",
-        ["type"] = "normal",
-        ["coords"] = {
-            [1] = vector3(948.3834, 34.21247, 71.839)
-        },
-        ["products"] = Config.Products["casino"],
-        ["showblip"] = true,
-    },
+    -- ["casino"] = {
+    --     ["label"] = "Diamond Casino",
+    --     ["type"] = "normal",
+    --     ["coords"] = {
+    --         [1] = vector3(948.3834, 34.21247, 71.839)
+    --     },
+    --     ["products"] = Config.Products["casino"],
+    --     ["showblip"] = true,
+    -- },
     ["ltdgasoline"] = {
         ["label"] = "LTD Gasoline",
         ["type"] = "normal",

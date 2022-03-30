@@ -111,7 +111,7 @@ Config.CornerSellingDrugsList = {
 Config.DrugsPrice = {
     ["weed_white-widow"] = {
         min = 15,
-        max = 24,
+        max = 25,
     },
     ["weed_og-kush"] = {
         min = 15,
@@ -134,16 +134,16 @@ Config.DrugsPrice = {
         max = 40,
     },
     ["crack_baggy"] = {
-        min = 18,
-        max = 34,
+        min = 65,
+        max = 98,
     },
     ["cokebaggy"] = {
-        min = 18,
-        max = 37,
+        min = 85,
+        max = 135,
     },
     ["meth"] = {
-        min = 18,
-        max = 40,
+        min = 70,
+        max = 118,
     },
 }
 
@@ -174,8 +174,8 @@ Config.CornerSellingZones = {
     [1] = {
         ["coords"] = vector3(-1415.53, -1041.51, 4.62),
         ["time"] = {
-            ["min"] = 12,
-            ["max"] = 18,
+            ["min"] = 10,
+            ["max"] = 23,
         },
     },
 }

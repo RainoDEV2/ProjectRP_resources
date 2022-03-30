@@ -21,14 +21,14 @@ AddEventHandler('prp-jewellery:server:vitrineReward', function()
         if Player.Functions.AddItem(Config.VitrineRewards[item]["item"], amount) then
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[Config.VitrineRewards[item]["item"]], 'add')
         else
-            TriggerClientEvent('ProjectRP:Notify', src, 'You have to much in your pocket', 'error')
+            TriggerClientEvent('ProjectRP:Notify', src, 'You have too much in your pocket', 'error')
         end
     else
         local amount = math.random(2, 4)
         if Player.Functions.AddItem("10kgoldchain", amount) then
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["10kgoldchain"], 'add')
         else
-            TriggerClientEvent('ProjectRP:Notify', src, 'You have to much in your pocket..', 'error')
+            TriggerClientEvent('ProjectRP:Notify', src, 'You have too much in your pocket..', 'error')
         end
     end
 end)
