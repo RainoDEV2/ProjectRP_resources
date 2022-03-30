@@ -181,70 +181,41 @@ end)
 RegisterNetEvent('prp-jewellery:client:PoliceAlertMessage')
 AddEventHandler('prp-jewellery:client:PoliceAlertMessage', function(title, coords, blip)
     if blip then
-        TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-            timeOut = 5000,
-            alertTitle = title,
-            details = {
-                [1] = {
-                    icon = '<i class="fas fa-gem"></i>',
-                    detail = "Vangelico Jeweler",
-                },
-                [2] = {
-                    icon = '<i class="fas fa-video"></i>',
-                    detail = "31 | 32 | 33 | 34",
-                },
-                [3] = {
-                    icon = '<i class="fas fa-globe-europe"></i>',
-                    detail = "Rockford Dr",
-                },
-            },
-            callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+        TriggerServerEvent('cd_dispatch:AddNotification', {
+            job_table = {'police'}, 
+            coords = coords,
+            title = '10-31 - Vangelico Jewelry robbery attempt',
+            message = 'Possible robbery at Vangelico Jewelry Store<br>Available cameras: 31, 32, 33, 34',
+            flash = 0,
+            unique_id = tostring(math.random(0000000,9999999)),
+            blip = {
+                sprite = 431, 
+                scale = 1.2, 
+                colour = 3,
+                flashes = false, 
+                text = '911 - Vangelico Jewelry robbery attempt',
+                time = (5*60*1000),
+                sound = 1,
+            }
         })
-        PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-        Citizen.Wait(100)
-        PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-        Citizen.Wait(100)
-        PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-        local transG = 100
-        local blip = AddBlipForRadius(coords.x, coords.y, coords.z, 100.0)
-        SetBlipSprite(blip, 9)
-        SetBlipColour(blip, 1)
-        SetBlipAlpha(blip, transG)
-        SetBlipAsShortRange(blip, false)
-        BeginTextCommandSetBlipName('STRING')
-        AddTextComponentString("911 - Suspicious Situation at Jewelry Store")
-        EndTextCommandSetBlipName(blip)
-        while transG ~= 0 do
-            Wait(180 * 4)
-            transG = transG - 1
-            SetBlipAlpha(blip, transG)
-            if transG == 0 then
-                SetBlipSprite(blip, 2)
-                RemoveBlip(blip)
-                return
-            end
-        end
     else
         if not robberyAlert then
-            PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-            TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-                timeOut = 5000,
-                alertTitle = title,
-                details = {
-                    [1] = {
-                        icon = '<i class="fas fa-gem"></i>',
-                        detail = "Vangelico Jewelry",
-                    },
-                    [2] = {
-                        icon = '<i class="fas fa-video"></i>',
-                        detail = "31 | 32 | 33 | 34",
-                    },
-                    [3] = {
-                        icon = '<i class="fas fa-globe-europe"></i>',
-                        detail = "Rockford Dr",
-                    },
-                },
-                callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police'}, 
+                coords = coords,
+                title = '10-31 - Vangelico Jewelry robbery attempt',
+                message = 'Possible robbery at Vangelico Jewelry Store<br>Available cameras: 31, 32, 33, 34',
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Vangelico Jewelry robbery attempt',
+                    time = (5*60*1000),
+                    sound = 1,
+                }
             })
             robberyAlert = true
         end

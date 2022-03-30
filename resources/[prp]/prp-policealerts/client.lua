@@ -48,11 +48,22 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
             else
                 PlaySound(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0, 0, 1)
             end
-            data.callSign = data.callSign ~= nil and data.callSign or PlayerData.metadata["callsign"]
-            data.alertId = math.random(11111, 99999)
-            SendNUIMessage({
-                action = "add",
-                data = data,
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'ambulance'}, 
+                coords = data.coords,
+                title = data.alertTitle,
+                message = data.msg,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Blain County Savings bank robbery attempt',
+                    time = (5*60*1000),
+                    sound = 3,
+                }
             })
         end
     else
@@ -62,11 +73,22 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
             else
                 PlaySound(-1, "Event_Start_Text", "GTAO_FM_Events_Soundset", 0, 0, 1)
             end
-            data.callSign = data.callSign ~= nil and data.callSign or PlayerData.metadata["callsign"]
-            data.alertId = math.random(11111, 99999)
-            SendNUIMessage({
-                action = "add",
-                data = data,
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police', 'ambulance'}, 
+                coords = data.coords,
+                title = data.alertTitle,
+                message = data.msg,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 431, 
+                    scale = 1.2, 
+                    colour = 3,
+                    flashes = false, 
+                    text = '911 - Blain County Savings bank robbery attempt',
+                    time = (5*60*1000),
+                    sound = 3,
+                }
             })
         end 
     end

@@ -397,28 +397,23 @@ end
 
 RegisterNetEvent('prp-drugs:client:robberyCall')
 AddEventHandler('prp-drugs:client:robberyCall', function(msg, streetLabel, coords)
-    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-    TriggerEvent("chatMessage", "911-ALERT", "error", msg)
-    local transG = 250
-    local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-    SetBlipSprite(blip, 458)
-    SetBlipColour(blip, 1)
-    SetBlipDisplay(blip, 4)
-    SetBlipAlpha(blip, transG)
-    SetBlipScale(blip, 1.0)
-    BeginTextCommandSetBlipName('STRING')
-    AddTextComponentString("911: Drug Dealing")
-    EndTextCommandSetBlipName(blip)
-    while transG ~= 0 do
-        Wait(180 * 4)
-        transG = transG - 1
-        SetBlipAlpha(blip, transG)
-        if transG == 0 then
-            SetBlipSprite(blip, 2)
-            RemoveBlip(blip)
-            return
-        end
-    end
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police'},
+        coords = coords,
+        title = 'Drug Dealing',
+        message = msg,
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+            sprite = 431,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = '911 - Drug Dealing',
+            time = (5*60*1000),
+            sound = 1,
+        }
+    })
 end)
 
 RegisterNetEvent('prp-drugs:client:sendDeliveryMail')

@@ -74,21 +74,22 @@ RegisterNetEvent('prison:client:SetLockDown', function(isLockdown)
 end)
 
 RegisterNetEvent('prison:client:PrisonBreakAlert', function()
-    -- TriggerEvent("chatMessage", "ALERT", "error", "Attentie alle eenheden! Poging tot uitbraak in de gevangenis!")
-    TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-        timeOut = 10000,
-        alertTitle = "Prison outbreak",
-        details = {
-            [1] = {
-                icon = '<i class="fas fa-lock"></i>',
-                detail = "Boilingbroke Penitentiary",
-            },
-            [2] = {
-                icon = '<i class="fas fa-globe-europe"></i>',
-                detail = "Route 68",
-            },
-        },
-        callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police'},
+        coords = coords,
+        title = '10-98 - Prison Outbreak',
+        message = 'Someone is attempting to escape Boilingbroke Penitentiary',
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+            sprite = 431,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = '911 - Prison outbreak',
+            time = (5*60*1000),
+            sound = 1,
+        }
     })
 
     local BreakBlip = AddBlipForCoord(Config.Locations["middle"].coords.x, Config.Locations["middle"].coords.y, Config.Locations["middle"].coords.z)

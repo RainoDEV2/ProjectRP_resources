@@ -173,7 +173,7 @@ CreateThread(function()
                             end
                         end
                     else
-			            local weapon = GetSelectedPedWeapon(ped)
+                        local weapon = GetSelectedPedWeapon(ped)
                         if weapon ~= -1569615261 then
                             TriggerEvent('inventory:client:CheckWeapon', ProjectRP.Shared.Weapons[weapon]["name"])
                             ProjectRP.Functions.Notify("This weapon is broken and can not be used.", "error")

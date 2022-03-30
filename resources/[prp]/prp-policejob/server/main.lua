@@ -656,8 +656,6 @@ RegisterNetEvent('police:server:policeAlert', function(text)
     local players = ProjectRP.Functions.GetPRPPlayers()
     for k,v in pairs(players) do
         if v.PlayerData.job.name == 'police' and v.PlayerData.job.onduty then
-            local alertData = {title = 'New Call', coords = {coords.x, coords.y, coords.z}, description = text}
-            TriggerClientEvent("prp-phone:client:addPoliceAlert", v.PlayerData.source, alertData)
             TriggerClientEvent('police:client:policeAlert', v.PlayerData.source, coords, text)
         end
     end

@@ -56,24 +56,16 @@ end)
 RegisterServerEvent('prp-jewellery:server:PoliceAlertMessage')
 AddEventHandler('prp-jewellery:server:PoliceAlertMessage', function(title, coords, blip)
     local src = source
-    local alertData = {
-        title = title,
-        coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = "Possible robbery at Vangelico Jewelry Store<br>Available camera's: 31, 32, 33, 34",
-    }
-
     for k, v in pairs(ProjectRP.Functions.GetPlayers()) do
         local Player = ProjectRP.Functions.GetPlayer(v)
-        if Player ~= nil then 
+        if Player ~= nil then
             if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
                 if blip then
                     if not alarmTriggered then
-                        TriggerClientEvent("prp-phone:client:addPoliceAlert", v, alertData)
                         TriggerClientEvent("prp-jewellery:client:PoliceAlertMessage", v, title, coords, blip)
                         alarmTriggered = true
                     end
                 else
-                    TriggerClientEvent("prp-phone:client:addPoliceAlert", v, alertData)
                     TriggerClientEvent("prp-jewellery:client:PoliceAlertMessage", v, title, coords, blip)
                 end
             end
