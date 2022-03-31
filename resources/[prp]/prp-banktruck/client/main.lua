@@ -4,13 +4,13 @@ local CurrentCops = nil
 
 RegisterNetEvent("ProjectRP:Client:OnPlayerLoaded")
 AddEventHandler("ProjectRP:Client:OnPlayerLoaded", function()
-  Citizen.SetTimeout(1000, function()
+    Citizen.SetTimeout(1000, function()
     --   TriggerEvent('ProjectRP:GetObject', function(obj) ProjectRP = obj end)
     --   Citizen.Wait(150)
-      ProjectRP.Functions.TriggerCallback('prp-banktruck:server:GetConfig', function(config)
-          config = Config
-      end)
-  end)
+        ProjectRP.Functions.TriggerCallback('prp-banktruck:server:GetConfig', function(config)
+            config = Config
+        end)
+    end)
 end)
 
 RegisterNetEvent('prp-police:SetCopCount')
@@ -29,10 +29,10 @@ AddEventHandler('prp-truckrob:client:UseCard', function()
     local TruckDist = GetDistanceBetweenCoords(PedPos.x, PedPos.y, PedPos.z, GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, true)
     local Plate = GetVehicleNumberPlateText(Vehicle)
 
-         --   local StreetLabel = ProjectRP.Functions.GetStreetLabel()
-            TriggerEvent('prp-inventory:client:set:busy', true)
-         --   TriggerServerEvent('prp-police:server:send:banktruck:alert', GetEntityCoords(PlayerPedId()), Plate, StreetLabel)
-            StartRobbingVan(Vehicle)
+    --   local StreetLabel = ProjectRP.Functions.GetStreetLabel()
+    TriggerEvent('prp-inventory:client:set:busy', true)
+    --   TriggerServerEvent('prp-police:server:send:banktruck:alert', GetEntityCoords(PlayerPedId()), Plate, StreetLabel)
+    StartRobbingVan(Vehicle)
 
 end)
 
@@ -86,7 +86,7 @@ function SearchAnim()
             TaskPlayAnim(PlayerPedId(), "anim@gangops@facility@servers@", "hotwire", 3.0, 3.0, -1, 16, 0, 0, 0, 0)
             Citizen.Wait(1000)
         end
-   end)
+    end)
 end
 
 RegisterNetEvent('prp-banktruck:client:OpenTruck')
@@ -127,16 +127,16 @@ AddEventHandler('prp-banktruck:client:OpenTruck', function(Veh)
             local GetTruckCoords = GetOffsetFromEntityInWorldCoords(Veh, 0.0, -3.5, 0.5)
             local TruckDist = GetDistanceBetweenCoords(PedPos.x, PedPos.y, PedPos.z, GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, true)
             if TruckDist <= 4.2 then
-            if not Config.RobbedPlates[Plate] then
-             DrawText3D(GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, '~g~E~s~ - Steal things')
-             DrawMarker(2, GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 255, 255, 255, 255, false, false, false, 1, false, false, false)
-             if IsControlJustPressed(0, 38) then
-                TriggerServerEvent('prp-banktruck:server:updateplates', Plate)
-                RobbingVan = false
-                KankerJanken()
-             end
+                if not Config.RobbedPlates[Plate] then
+                    DrawText3D(GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, '~g~E~s~ - Steal things')
+                    DrawMarker(2, GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 255, 255, 255, 255, false, false, false, 1, false, false, false)
+                    if IsControlJustPressed(0, 38) then
+                        TriggerServerEvent('prp-banktruck:server:updateplates', Plate)
+                        RobbingVan = false
+                        KankerJanken()
+                    end
+                end
             end
-          end
         end
     end)
 end)
@@ -156,10 +156,10 @@ function KankerJanken()
         anim = "grab",
         flags = 16,
     }, {
-       model = "prop_cs_heist_bag_02",
-       bone = 57005,
-       coords = { x = -0.005, y = 0.00, z = -0.16 },
-       rotation = { x = 250.0, y = -30.0, z = 0.0 },
+        model = "prop_cs_heist_bag_02",
+        bone = 57005,
+        coords = { x = -0.005, y = 0.00, z = -0.16 },
+        rotation = { x = 250.0, y = -30.0, z = 0.0 },
     }, {}, function() -- Done
         LeegTrekken = false
         StopAnimTask(PlayerPedId(), "anim@heists@ornate_bank@grab_cash_heels", "grab", 1.0)
@@ -185,18 +185,18 @@ function KankerJanken()
 end
 
 function DrawText3D(x, y, z, text)
-  SetTextScale(0.35, 0.35)
-  SetTextFont(4)
-  SetTextProportional(1)
-  SetTextColour(255, 255, 255, 215)
-  SetTextEntry("STRING")
-  SetTextCentre(true)
-  AddTextComponentString(text)
-  SetDrawOrigin(x,y,z, 0)
-  DrawText(0.0, 0.0)
-  local factor = (string.len(text)) / 370
-  DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
-  ClearDrawOrigin()
+    SetTextScale(0.35, 0.35)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(true)
+    AddTextComponentString(text)
+    SetDrawOrigin(x,y,z, 0)
+    DrawText(0.0, 0.0)
+    local factor = (string.len(text)) / 370
+    DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
+    ClearDrawOrigin()
 end
 
 function IsWearingHandshoes()

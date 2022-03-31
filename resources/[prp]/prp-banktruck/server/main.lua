@@ -9,21 +9,19 @@ Citizen.CreateThread(function()
         Citizen.Wait(1000 * 60 * 30)
         TriggerClientEvent("prp-pacific:client:enableAllBankSecurity", -1)
         TriggerClientEvent("police:client:EnableAllCameras", -1)
-        
         TriggerEvent('prp-board:server:SetActivityBusy', "banktruck", true)
     end
 end)
 RegisterServerEvent('prp-banktruck:server:OpenTruck')
 AddEventHandler('prp-banktruck:server:OpenTruck', function(Veh) 
     TriggerClientEvent('prp-banktruck:client:OpenTruck', source, Veh)
-    
     TriggerEvent('prp-board:server:SetActivityBusy', "banktruck", false)
 end)
 
 RegisterServerEvent('prp-banktruck:server:updateplates')
 AddEventHandler('prp-banktruck:server:updateplates', function(Plate)
- Config.RobbedPlates[Plate] = true
- TriggerClientEvent('prp-banktruck:plate:table', -1, Plate)
+    Config.RobbedPlates[Plate] = true
+    TriggerClientEvent('prp-banktruck:plate:table', -1, Plate)
 end)
 
 RegisterServerEvent('prp-banktruck:sever:send:cop:alert')
@@ -41,8 +39,8 @@ end)
 RegisterServerEvent('prp-bankrob:server:remove:card')
 AddEventHandler('prp-bankrob:server:remove:card', function()
 local Player = ProjectRP.Functions.GetPlayer(source)
- Player.Functions.RemoveItem('green-card', 1)
- TriggerClientEvent('prp-inventory:client:ItemBox', source, ProjectRP.Shared.Items['green-card'], "remove")
+    Player.Functions.RemoveItem('green-card', 1)
+    TriggerClientEvent('prp-inventory:client:ItemBox', source, ProjectRP.Shared.Items['green-card'], "remove")
 end)
 
 RegisterServerEvent('prp-kanker:jemoederbakker')

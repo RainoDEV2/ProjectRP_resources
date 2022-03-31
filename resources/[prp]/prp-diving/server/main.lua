@@ -90,24 +90,13 @@ RegisterNetEvent('prp-diving:server:SetBoatState', function(plate, state, boatho
     end
 end)
 
-RegisterNetEvent('prp-diving:server:CallCops', function(Coords)
+RegisterNetEvent('prp-diving:server:CallCops', function(coords)
     local src = source
     for k, v in pairs(ProjectRP.Functions.GetPlayers()) do
         local Player = ProjectRP.Functions.GetPlayer(v)
         if Player ~= nil then
             if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
-                local msg = "This coral may be stolen"
-                TriggerClientEvent('prp-diving:client:CallCops', Player.PlayerData.source, Coords, msg)
-                local alertData = {
-                    title = "Illegal diving",
-                    coords = {
-                        x = Coords.x,
-                        y = Coords.y,
-                        z = Coords.z
-                    },
-                    description = msg
-                }
-                TriggerClientEvent("prp-phone:client:addPoliceAlert", -1, alertData)
+                TriggerClientEvent('prp-diving:client:CallCops', Player.PlayerData.source, coords)
             end
         end
     end

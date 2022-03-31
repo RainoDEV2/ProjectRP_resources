@@ -24,7 +24,7 @@ Base scripts for prp-Core Framework :building_construction:
 - [prp-core](https://github.com/ProjectRP-framework/prp-core)
 
 ## Features
-- Consumeable foods/beverages/drinks/drugs (sandwich, water_bottle, tosti, beer, vodka etc.)
+- Consumeable foods/beverages/drinks/drugs (sandwich, water_bottle, toastie, beer, vodka etc.)
 - Removal of GTA's default weapons drops
 - Drug effects
 - Removal of GTA's default vehicle spawns (planes, helicopters, emergency vehicles etc.)

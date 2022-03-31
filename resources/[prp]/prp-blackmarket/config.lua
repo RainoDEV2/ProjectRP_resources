@@ -15,10 +15,10 @@ Config = {
             itemscode = "security_card_02"---
         },
         [3] = {
-            price = 1.234,
-            name = 'Thermite',
-            image = 'images/thermite.png',
-            itemscode = "thermite"---
+            price = 9.834,
+            name = 'Trojan USB',
+            image = 'images/usb_device.png',
+            itemscode = "trojan_usb"---
         },
         -----------GUNS--------------
         [4] = {

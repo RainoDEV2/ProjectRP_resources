@@ -3,7 +3,7 @@ Config.MaxWidth = 5.0
 Config.MaxHeight = 5.0
 Config.MaxLength = 5.0
 Config.DamageNeeded = 100.0
-Config.EnableProne = true
+Config.EnableProne = false
 Config.JointEffectTime = 45
 Config.RemoveWeaponDrops = true
 Config.RemoveWeaponDropsTimer = 25
@@ -11,7 +11,7 @@ Config.DefaultPrice = 20 -- carwash
 
 ConsumeablesEat = {
     ["sandwich"] = math.random(35, 54),
-    ["tosti"] = math.random(40, 50),
+    ["toastie"] = math.random(40, 50),
     ["twerks_candy"] = math.random(35, 54),
     ["snikkel_candy"] = math.random(40, 50),
     ["crisps"] = math.random(10, 20),
@@ -19,7 +19,7 @@ ConsumeablesEat = {
 
 ConsumeablesDrink = {
     ["water_bottle"] = math.random(35, 54),
-    ["kurkakola"] = math.random(35, 54),
+    ["cola"] = math.random(35, 54),
     ["coffee"] = math.random(40, 50),
 }
 

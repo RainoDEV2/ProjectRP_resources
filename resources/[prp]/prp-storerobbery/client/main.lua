@@ -287,74 +287,25 @@ RegisterNetEvent('prp-storerobbery:client:setSafeStatus', function(safe, bool)
     Config.Safes[safe].robbed = bool
 end)
 
-RegisterNetEvent('prp-storerobbery:client:robberyCall', function(type, key, streetLabel, coords)
+RegisterNetEvent('prp-storerobbery:client:robberyCall', function(type, cameraId, description, coords)
     if PlayerJob.name == "police" or PlayerJob.name == "bcso" and onDuty then
-        local cameraId = 4
-        if type == "safe" then
-            cameraId = Config.Safes[key].camId
-        else
-            cameraId = Config.Registers[key].camId
-        end
-        local data = exports['cd_dispatch']:GetPlayerInfo()
         TriggerServerEvent('cd_dispatch:AddNotification', {
             job_table = {'police'}, 
-            coords = data.coords,
-            title = '10-15 - Store Robbery',
-            message = 'A '..data.sex..' robbing a store at '..data.street, 
+            coords = coords,
+            title = '10-33 - Store Robbery',
+            message = description, 
             flash = 0,
             unique_id = tostring(math.random(0000000,9999999)),
             blip = {
                 sprite = 431,
-                scale = 1.2, 
+                scale = 1.2,
                 colour = 3,
-                flashes = false, 
+                flashes = false,
                 text = '911 - Store Robbery',
                 time = (5*60*1000),
                 sound = 1,
             }
         })
-        -- PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-        -- TriggerEvent('prp-policealerts:client:AddPoliceAlert', {
-        --     timeOut = 5000,
-        --     alertTitle = "10-31 | Shop Robbery",
-        --     coords = {
-        --         x = coords.x,
-        --         y = coords.y,
-        --         z = coords.z,
-        --     },
-        --     details = {
-        --         [1] = {
-        --             icon = '<i class="fas fa-video"></i>',
-        --             detail = cameraId,
-        --         },
-        --         [2] = {
-        --             icon = '<i class="fas fa-globe-europe"></i>',
-        --             detail = streetLabel,
-        --         },
-        --     },
-        --     callSign = ProjectRP.Functions.GetPlayerData().metadata["callsign"],
-        -- })
-
-        local transG = 250
-        local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-        SetBlipSprite(blip, 458)
-        SetBlipColour(blip, 1)
-        SetBlipDisplay(blip, 4)
-        SetBlipAlpha(blip, transG)
-        SetBlipScale(blip, 1.0)
-        BeginTextCommandSetBlipName('STRING')
-        AddTextComponentString("10-31 | Shop Robbery")
-        EndTextCommandSetBlipName(blip)
-        while transG ~= 0 do
-            Wait(180 * 4)
-            transG = transG - 1
-            SetBlipAlpha(blip, transG)
-            if transG == 0 then
-                SetBlipSprite(blip, 2)
-                RemoveBlip(blip)
-                return
-            end
-        end
     end
 end)
 --// EVENTS \\ --

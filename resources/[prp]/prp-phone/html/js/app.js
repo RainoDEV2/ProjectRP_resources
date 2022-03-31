@@ -146,7 +146,7 @@ $(document).on('click', '.phone-application', function(e){
                     $.post('https://prp-phone/GetInvoices', JSON.stringify({}), function(invoices){
                         PRP.Phone.Functions.LoadBankInvoices(invoices);
                     });
-                } else if (PressedApplication == "whatsapp") {
+                } else if (PressedApplication == "messages") {
                     $.post('https://prp-phone/GetWhatsappChats', JSON.stringify({}), function(chats){
                         PRP.Phone.Functions.LoadWhatsappChats(chats);
                     });
@@ -265,17 +265,17 @@ $(document).on('click', '.phone-home-container', function(event){
         }, 400)
         PRP.Phone.Functions.HeaderTextColor("white", 300);
 
-        if (PRP.Phone.Data.currentApplication == "whatsapp") {
+        if (PRP.Phone.Data.currentApplication == "messages") {
             if (OpenedChatData.number !== null) {
                 setTimeout(function(){
-                    $(".whatsapp-chats").css({"display":"block"});
-                    $(".whatsapp-chats").animate({
+                    $(".messages-chats").css({"display":"block"});
+                    $(".messages-chats").animate({
                         left: 0+"vh"
                     }, 1);
-                    $(".whatsapp-openedchat").animate({
+                    $(".messages-openedchat").animate({
                         left: -30+"vh"
                     }, 1, function(){
-                        $(".whatsapp-openedchat").css({"display":"none"});
+                        $(".messages-openedchat").css({"display":"none"});
                     });
                     OpenedChatPicture = null;
                     OpenedChatData.number = null;
@@ -322,23 +322,23 @@ PRP.Phone.Functions.ToggleApp = function(app, show) {
 
 PRP.Phone.Functions.Close = function() {
 
-    if (PRP.Phone.Data.currentApplication == "whatsapp") {
+    if (PRP.Phone.Data.currentApplication == "messages") {
         setTimeout(function(){
             PRP.Phone.Animations.TopSlideUp('.phone-application-container', 400, -160);
             PRP.Phone.Animations.TopSlideUp('.'+PRP.Phone.Data.currentApplication+"-app", 400, -160);
-            $(".whatsapp-app").css({"display":"none"});
+            $(".messages-app").css({"display":"none"});
             PRP.Phone.Functions.HeaderTextColor("white", 300);
 
             if (OpenedChatData.number !== null) {
                 setTimeout(function(){
-                    $(".whatsapp-chats").css({"display":"block"});
-                    $(".whatsapp-chats").animate({
+                    $(".messages-chats").css({"display":"block"});
+                    $(".messages-chats").animate({
                         left: 0+"vh"
                     }, 1);
-                    $(".whatsapp-openedchat").animate({
+                    $(".messages-openedchat").animate({
                         left: -30+"vh"
                     }, 1, function(){
-                        $(".whatsapp-openedchat").css({"display":"none"});
+                        $(".messages-openedchat").css({"display":"none"});
                     });
                     OpenedChatData.number = null;
                 }, 450);
@@ -576,7 +576,7 @@ $(document).ready(function(){
                 $(".bank-app-account-balance").data('balance', event.data.NewBalance);
                 break;
             case "UpdateChat":
-                if (PRP.Phone.Data.currentApplication == "whatsapp") {
+                if (PRP.Phone.Data.currentApplication == "messages") {
                     if (OpenedChatData.number !== null && OpenedChatData.number == event.data.chatNumber) {
                         PRP.Phone.Functions.SetupChatMessages(event.data.chatData);
                     } else {

@@ -68,13 +68,8 @@ RegisterNetEvent('prp-storerobbery:server:callCops', function(type, safe, street
     else
         cameraId = Config.Registers[safe].camId
     end
-    local alertData = {
-        title = "10-33 | Shop Robbery",
-        coords = {x = coords.x, y = coords.y, z = coords.z},
-        description = "Someone Is Trying To Rob A Store At "..streetLabel.." (CAMERA ID: "..cameraId..")"
-    }
-    TriggerClientEvent("prp-storerobbery:client:robberyCall", -1, type, safe, streetLabel, coords)
-    TriggerClientEvent("prp-phone:client:addPoliceAlert", -1, alertData)
+    local description = "Someone Is Trying To Rob A Store At "..streetLabel.." (CAMERA ID: "..cameraId..")"
+    TriggerClientEvent("prp-storerobbery:client:robberyCall", -1, type, cameraId, description, coords)
 end)
 
 CreateThread(function()

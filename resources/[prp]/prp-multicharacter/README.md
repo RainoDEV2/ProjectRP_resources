@@ -1,5 +1,7 @@
 # prp-multicharacter
-Multi Character Feature for prp-Core Framework :people_holding_hands:
+Multi Character Feature for QB-Core Framework :people_holding_hands:
+
+Added support for setting default number of characters per player per Rockstar license
 
 # License
 
@@ -21,11 +23,11 @@ Multi Character Feature for prp-Core Framework :people_holding_hands:
 
 
 ## Dependencies
-- [prp-core](https://github.com/ProjectRP-framework/prp-core)
-- [prp-spawn](https://github.com/ProjectRP-framework/prp-spawn) - Spawn selector
-- [prp-apartments](https://github.com/ProjectRP-framework/prp-apartments) - For giving the player a apartment after creating a character.
-- [prp-clothing](https://github.com/ProjectRP-framework/prp-clothing) - For the character creation and saving outfits.
-- [prp-weathersync](https://github.com/ProjectRP-framework/prp-weathersync) - For adjusting the weather while player is creating a character.
+- [prp-core](https://github.com/qbcore-framework/prp-core)
+- [prp-spawn](https://github.com/qbcore-framework/prp-spawn) - Spawn selector
+- [prp-apartments](https://github.com/qbcore-framework/prp-apartments) - For giving the player a apartment after creating a character.
+- [prp-clothing](https://github.com/qbcore-framework/prp-clothing) - For the character creation and saving outfits.
+- [prp-weathersync](https://github.com/qbcore-framework/prp-weathersync) - For adjusting the weather while player is creating a character.
 
 ## Screenshots
 ![Character Selection](https://i.imgur.com/EUB5X6Y.png)

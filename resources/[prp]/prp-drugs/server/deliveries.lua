@@ -110,21 +110,11 @@ end)
 RegisterServerEvent('prp-drugs:server:callCops')
 AddEventHandler('prp-drugs:server:callCops', function(streetLabel, coords)
     local msg = "A suspicious situation has been located at " .. streetLabel .. ", possibly drug dealing."
-    local alertData = {
-        title = "Drug Dealing",
-        coords = {
-            x = coords.x,
-            y = coords.y,
-            z = coords.z
-        },
-        description = msg
-    }
     for k, v in pairs(ProjectRP.Functions.GetPlayers()) do
         local Player = ProjectRP.Functions.GetPlayer(v)
         if Player ~= nil then
             if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
                 TriggerClientEvent("prp-drugs:client:robberyCall", Player.PlayerData.source, msg, streetLabel, coords)
-                TriggerClientEvent("prp-phone:client:addPoliceAlert", Player.PlayerData.source, alertData)
             end
         end
     end

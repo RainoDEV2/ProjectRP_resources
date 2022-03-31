@@ -603,9 +603,9 @@ RegisterNUICallback('SharedLocation', function(data)
     SendNUIMessage({
         action = "PhoneNotification",
         PhoneNotify = {
-            title = "Whatsapp",
+            title = "Messages",
             text = "Location has been set!",
-            icon = "fab fa-whatsapp",
+            icon = "fab fa-messages",
             color = "#25D366",
             timeout = 1500,
         },
@@ -632,9 +632,9 @@ RegisterNUICallback('ClearAlerts', function(data, cb)
     local ChatKey = GetKeyByNumber(chat)
 
     if PhoneData.Chats[ChatKey].Unread ~= nil then
-        local newAlerts = (Config.PhoneApplications['whatsapp'].Alerts - PhoneData.Chats[ChatKey].Unread)
-        Config.PhoneApplications['whatsapp'].Alerts = newAlerts
-        TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "whatsapp", newAlerts)
+        local newAlerts = (Config.PhoneApplications['messages'].Alerts - PhoneData.Chats[ChatKey].Unread)
+        Config.PhoneApplications['messages'].Alerts = newAlerts
+        TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "messages", newAlerts)
 
         PhoneData.Chats[ChatKey].Unread = 0
 
@@ -1766,9 +1766,9 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-messages",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1777,9 +1777,9 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-messages",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1802,15 +1802,15 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
 	    SendNUIMessage({
 	        action = "PhoneNotification",
 	        PhoneNotify = {
-		    title = "Whatsapp",
+		    title = "Messages",
 		    text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-		    icon = "fab fa-whatsapp",
+		    icon = "fab fa-messages",
 		    color = "#25D366",
 		    timeout = 3500,
 	        },
 	    })
-            Config.PhoneApplications['whatsapp'].Alerts = Config.PhoneApplications['whatsapp'].Alerts + 1
-            TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "whatsapp")
+            Config.PhoneApplications['messages'].Alerts = Config.PhoneApplications['messages'].Alerts + 1
+            TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "messages")
         end
     else
         PhoneData.Chats[NumberKey].messages = ChatMessages
@@ -1826,9 +1826,9 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-messages",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1837,9 +1837,9 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 SendNUIMessage({
                     action = "PhoneNotification",
                     PhoneNotify = {
-                        title = "Whatsapp",
+                        title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-messages",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1862,9 +1862,9 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
             SendNUIMessage({
                 action = "PhoneNotification",
                 PhoneNotify = {
-                    title = "Whatsapp",
+                    title = "Messages",
                     text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                    icon = "fab fa-whatsapp",
+                    icon = "fab fa-messages",
                     color = "#25D366",
                     timeout = 3500,
                 },
@@ -1873,8 +1873,8 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
             NumberKey = GetKeyByNumber(SenderNumber)
             ReorganizeChats(NumberKey)
 
-            Config.PhoneApplications['whatsapp'].Alerts = Config.PhoneApplications['whatsapp'].Alerts + 1
-            TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "whatsapp")
+            Config.PhoneApplications['messages'].Alerts = Config.PhoneApplications['messages'].Alerts + 1
+            TriggerServerEvent('prp-phone:server:SetPhoneAlerts', "messages")
         end
     end
 end)

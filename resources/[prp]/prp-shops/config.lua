@@ -3,7 +3,7 @@ Config = {}
 Config.Products = {
     ["normal"] = {
         [1] = {
-            name = "tosti",
+            name = "toastie",
             price = 2,
             amount = 50,
             info = {},
@@ -19,7 +19,7 @@ Config.Products = {
             slot = 2,
         },
         [3] = {
-            name = "kurkakola",
+            name = "cola",
             price = 2,
             amount = 50,
             info = {},

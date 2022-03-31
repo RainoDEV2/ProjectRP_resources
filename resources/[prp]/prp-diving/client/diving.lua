@@ -101,28 +101,24 @@ RegisterNetEvent('prp-diving:client:UpdateCoral', function(Area, Coral, Bool)
     PRPDiving.Locations[Area].coords.Coral[Coral].PickedUp = Bool
 end)
 
-RegisterNetEvent('prp-diving:server:CallCops', function(Coords, msg)
-    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-    TriggerEvent("chatMessage", "911 MESSAGE", "error", msg)
-    local transG = 100
-    local blip = AddBlipForRadius(Coords.x, Coords.y, Coords.z, 100.0)
-    SetBlipSprite(blip, 9)
-    SetBlipColour(blip, 1)
-    SetBlipAlpha(blip, transG)
-    SetBlipAsShortRange(blip, false)
-    BeginTextCommandSetBlipName('STRING')
-    AddTextComponentString("911 - Dive site")
-    EndTextCommandSetBlipName(blip)
-    while transG ~= 0 do
-        Wait(180 * 4)
-        transG = transG - 1
-        SetBlipAlpha(blip, transG)
-        if transG == 0 then
-            SetBlipSprite(blip, 2)
-            RemoveBlip(blip)
-            return
-        end
-    end
+RegisterNetEvent('prp-diving:client:CallCops', function(coords)
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police'},
+        coords = coords,
+        title = '10-31 - Potential Illegal diving',
+        message = 'This coral may be stolen',
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+            sprite = 431, 
+            scale = 1.2, 
+            colour = 3,
+            flashes = false, 
+            text = '911 - Illegal diving',
+            time = (5*60*1000),
+            sound = 1,
+        }
+    })
 end)
 
 RegisterNetEvent('prp-diving:client:UseGear', function(bool)

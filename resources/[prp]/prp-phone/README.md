@@ -34,7 +34,7 @@ Advanced Phone for prp-Core Framework :iphone:
 ## Screenshots
 ![Home](https://imgur.com/ceEIvEk.png)
 ![Bank](https://imgur.com/tArcik2.png)
-![Whatsapp](https://imgur.com/C9aIinK.png)
+![Messages](https://imgur.com/C9aIinK.png)
 ![Phone](https://imgur.com/ic2zySK.png)
 ![Settings](https://imgur.com/jqC5Y8C.png)
 ![MEOS](https://imgur.com/VP7gPRPf.png)

@@ -28,7 +28,7 @@ end
 local function loadHouseData()
     local HouseGarages = {}
     local Houses = {}
-    local result = exports.oxmysql:executeSync('SELECT * FROM houselocations', {})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM houselocations', {})
     if result[1] ~= nil then
         for k, v in pairs(result) do
             local owned = false
@@ -41,7 +41,7 @@ local function loadHouseData()
                 owned = v.owned,
                 price = v.price,
                 locked = true,
-                adress = v.label, 
+                adress = v.label,
                 tier = v.tier,
                 garage = garage,
                 decorations = {},
@@ -82,9 +82,8 @@ RegisterNetEvent('prp-multicharacter:server:loadUserData', function(cData)
         print('^2[prp-core]^7 '..GetPlayerName(src)..' (Citizen ID: '..cData.citizenid..') has succesfully loaded!')
         ProjectRP.Commands.Refresh(src)
         loadHouseData()
-        --TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
-        TriggerClientEvent('nvd-select:set', src)
-        TriggerEvent("prp-log:server:CreateLog", "joinleave", "Loaded", "green", "**".. GetPlayerName(src) .. "** ("..cData.citizenid.." | "..src..") loaded..")
+        TriggerClientEvent('apartments:client:setupSpawnUI', src, cData)
+        TriggerEvent("prp-log:server:CreateLog", "joinleave", "Loaded", "green", "**".. GetPlayerName(src) .. "** ("..(ProjectRP.Functions.GetIdentifier(src, 'discord') or 'undefined') .." |  ||"  ..(ProjectRP.Functions.GetIdentifier(src, 'ip') or 'undefined') ..  "|| | " ..(ProjectRP.Functions.GetIdentifier(src, 'license') or 'undefined') .." | " ..cData.citizenid.." | "..src..") loaded..")
 	end
 end)
 
@@ -124,21 +123,40 @@ ProjectRP.Functions.CreateCallback("prp-multicharacter:server:GetUserCharacters"
     local src = source
     local license = ProjectRP.Functions.GetIdentifier(src, 'license')
 
-    exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result)
+    MySQL.Async.execute('SELECT * FROM players WHERE license = ?', {license}, function(result)
         cb(result)
     end)
 end)
 
 ProjectRP.Functions.CreateCallback("prp-multicharacter:server:GetServerLogs", function(source, cb)
-    exports.oxmysql:execute('SELECT * FROM server_logs', {}, function(result)
+    MySQL.Async.execute('SELECT * FROM server_logs', {}, function(result)
         cb(result)
     end)
+end)
+
+ProjectRP.Functions.CreateCallback("prp-multicharacter:server:GetNumberOfCharacters", function(source, cb)
+    local license = ProjectRP.Functions.GetIdentifier(source, 'license')
+    local numOfChars = 0
+
+    if next(Config.PlayersNumberOfCharacters) then
+        for i, v in pairs(Config.PlayersNumberOfCharacters) do
+            if v.license == license then
+                numOfChars = v.numberOfChars
+                break
+            else 
+                numOfChars = Config.DefaultNumberOfCharacters
+            end
+        end
+    else
+        numOfChars = Config.DefaultNumberOfCharacters
+    end
+    cb(numOfChars)
 end)
 
 ProjectRP.Functions.CreateCallback("prp-multicharacter:server:setupCharacters", function(source, cb)
     local license = ProjectRP.Functions.GetIdentifier(source, 'license')
     local plyChars = {}
-    exports.oxmysql:execute('SELECT * FROM players WHERE license = ?', {license}, function(result)
+    MySQL.Async.fetchAll('SELECT * FROM players WHERE license = ?', {license}, function(result)
         for i = 1, (#result), 1 do
             result[i].charinfo = json.decode(result[i].charinfo)
             result[i].money = json.decode(result[i].money)
@@ -150,7 +168,7 @@ ProjectRP.Functions.CreateCallback("prp-multicharacter:server:setupCharacters", 
 end)
 
 ProjectRP.Functions.CreateCallback("prp-multicharacter:server:getSkin", function(source, cb, cid)
-    local result = exports.oxmysql:executeSync('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM playerskins WHERE citizenid = ? AND active = ?', {cid, 1})
     if result[1] ~= nil then
         cb(result[1].model, result[1].skin)
     else

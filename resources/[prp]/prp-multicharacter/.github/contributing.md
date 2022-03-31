@@ -37,9 +37,9 @@ These guidelines will help you help us in the best way possible regardless of yo
 
 > **Note:** Please don't file an issue to ask a question. You'll get faster results by using the resources below.
 
-* [ProjectRP Website](https://ProjectRP.org)
-* [ProjectRP Discord](https://discord.gg/ProjectRP)
-* [FiveM Discord - #ProjectRP channel](https://discord.gg/fivem)
+* [ProjectRP Website](https://qbcore.org)
+* [ProjectRP Discord](https://discord.gg/qbcore)
+* [FiveM Discord - #qbcore channel](https://discord.gg/fivem)
 
 
 
@@ -63,9 +63,9 @@ Before creating bug reports, please check [this list](#before-submitting-a-bug-r
 #### Before Submitting A Bug Report
 
 * **Check the docs** There's a chance what you see as a bug might just work differently than you expect and if you think it could work better consider a feature enhancement report instead.
-* **Search the [discord](https://discord.gg/ProjectRP)** to see if anyone else has run into the issue and see if it was solved through user error or code changes. (if the code change isn't pending a PR and you know what you're doing consider submitting one following [Pull Requests](#pull-requests) )
+* **Search the [discord](https://discord.gg/qbcore)** to see if anyone else has run into the issue and see if it was solved through user error or code changes. (if the code change isn't pending a PR and you know what you're doing consider submitting one following [Pull Requests](#pull-requests) )
 * **Determine which resource the problem should be reported in**. If the bug is related to the inventory for example report this bug under prp-inventory rather than under prp-core or some other resource.
-* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3AProjectRP-framework)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
+* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Aqbcore-framework)** to see if the problem has already been reported. If it has **and the issue is still open**, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Bug Report?
 
@@ -105,10 +105,10 @@ Before creating enhancement suggestions, please check [this list](#before-submit
 
 #### Before Submitting An Enhancement Suggestion
 
-* **Make sure it doesn't already exist.** Sounds silly, but there's a lot of features built in to ProjectRP that people don't realize so take a look through the docs and stuff to make sure it's not already there.
+* **Make sure it doesn't already exist.** Sounds silly, but there's a lot of features built in to qbcore that people don't realize so take a look through the docs and stuff to make sure it's not already there.
 * **Check if there's already PR which provides that enhancement.**
 * **Determine which resource the enhancement should be suggested in.** if it fits with another resource suggest it in that resource. if it would be it's own resource suggest it in the main prp-core repository.
-* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3AProjectRP-framework)** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
+* **Perform a [cursory search](https://github.com/search?q=+is%3Aissue+user%3Aqbcore-framework)** to see if the enhancement has already been suggested. If it has, add a comment to the existing issue instead of opening a new one.
 
 #### How Do I Submit A (Good) Enhancement Suggestion?
 

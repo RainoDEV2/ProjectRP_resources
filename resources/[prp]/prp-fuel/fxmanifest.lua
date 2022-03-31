@@ -16,7 +16,6 @@ server_scripts {
 }
 
 shared_scripts {
-	'@prp-core/shared/locale.lua',
 	'shared/config.lua',
 }
 
