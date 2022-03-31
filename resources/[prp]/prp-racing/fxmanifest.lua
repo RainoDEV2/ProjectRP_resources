@@ -10,7 +10,6 @@ ui_page 'html/index.html'
 
 shared_scripts {
     'config.lua',
-    '@prp-core/shared/locale.lua',
 }
 
 client_script 'client/main.lua'

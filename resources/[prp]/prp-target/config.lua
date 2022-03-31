@@ -43,154 +43,154 @@ Config.CircleZones = {
 Config.BoxZones = {
 	-- Burgershot
 	["fries"] = {
-        name = "fries",
-        coords = vector3(-1202.0, -898.69, 13.98),
-        length = 1.7,
-        width = 1,
-        heading = 35,
-        debugPoly = false,
-        minZ=10.18,
-        maxZ=14.18,
-        options = {
-            {
-              type = "client",
-              event = "prp-burgershot:client:bake:fries",
-              icon = "fas fa-drumstick-bite",
-              label = "Frying french fries",
-              job = "burger",
-            },
+      name = "fries",
+      coords = vector3(-1202.0, -898.69, 13.98),
+      length = 1.7,
+      width = 1,
+      heading = 35,
+      debugPoly = false,
+      minZ=10.18,
+      maxZ=14.18,
+      options = {
+        {
+          type = "client",
+          event = "prp-burgershot:client:bake:fries",
+          icon = "fas fa-drumstick-bite",
+          label = "Frying french fries",
+          job = "burger",
         },
-        distance = 2.0
+      },
+      distance = 2.0
     },
     ["meat"] = {
-        name = "meat",
-        coords = vector3(-1203.0, -897.32, 13.98),
-        length = 1.7,
-        width = 1,
-        heading = 35,
-        debugPoly = false,
-        minZ=10.38,
-        maxZ=14.38,
-        options = {
-            {
-              type = "client",
-              event = "prp-burgershot:client:create:meat1",
-              icon = "fas fa-drumstick-bite",
-              label = "Bake Meat Carcass 1 Star",
-              job = "burger",
-            },
-            {
-              type = "client",
-              event = "prp-burgershot:client:create:meat2",
-              icon = "fas fa-drumstick-bite",
-              label = "Bake Meat Carcass 2 Stars",
-              job = "burger",
-            },
-            {
-              type = "client",
-              event = "prp-burgershot:client:create:meat3",
-              icon = "fas fa-drumstick-bite",
-              label = "Bake Meat Carcass 3 Stars",
-              job = "burger",
-            },
+      name = "meat",
+      coords = vector3(-1203.0, -897.32, 13.98),
+      length = 1.7,
+      width = 1,
+      heading = 35,
+      debugPoly = false,
+      minZ=10.38,
+      maxZ=14.38,
+      options = {
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:meat1",
+          icon = "fas fa-drumstick-bite",
+          label = "Bake Meat Carcass 1 Star",
+          job = "burger",
         },
-        distance = 1.0
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:meat2",
+          icon = "fas fa-drumstick-bite",
+          label = "Bake Meat Carcass 2 Stars",
+          job = "burger",
+        },
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:meat3",
+          icon = "fas fa-drumstick-bite",
+          label = "Bake Meat Carcass 3 Stars",
+          job = "burger",
+        },
+      },
+      distance = 1.0
     },
 	["drinks"] = {
-        name = "drinks",
-        coords = vector3(-1200.04, -895.42, 13.98),
-        length = 2.5,
-        width = 1,
-        heading = 35,
-        debugPoly = false,
-        minZ=10.98,
-        maxZ=14.98,
-        options = {
-            {
-              type = "client",
-              event = "prp-burgershot:client:create:soda",
-              icon = "fas fa-wine-bottle",
-              label = "Make Soda",
-              job = "burger",
-            },
-			{
-				type = "client",
-				event = "prp-burgershot:client:create:coffee",
-				icon = "fas fa-wine-bottle",
-				label = "Make Coffee",
-				job = "burger",
-			  },
+      name = "drinks",
+      coords = vector3(-1200.04, -895.42, 13.98),
+      length = 2.5,
+      width = 1,
+      heading = 35,
+      debugPoly = false,
+      minZ=10.98,
+      maxZ=14.98,
+      options = {
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:soda",
+          icon = "fas fa-wine-bottle",
+          label = "Make Soda",
+          job = "burger",
         },
-        distance = 1.0
-    },
-	["burgers"] = {
-        name = "burgers",
-        coords = vector3(-1198.37, -898.0, 13.98),
-        length = 1.7,
-        width = 1,
-        heading = 35,
-        debugPoly = false,
-		minZ=10.18,
-		maxZ=14.18,
-        options = {
-            {
-              type = "client",
-              event = "prp-burgershot:client:create:burgerbleeder",
-              icon = "fas fa-wine-bottle",
-              label = "Make Burger Bleeder",
-              job = "burger",
-            },
-			{
-              type = "client",
-              event = "prp-burgershot:client:create:burger-heartstopper",
-              icon = "fas fa-wine-bottle",
-              label = "Make Burger HeartStopper",
-              job = "burger",
-            },
-			{
-				type = "client",
-				event = "prp-burgershot:client:create:burger-moneyshot",
-				icon = "fas fa-wine-bottle",
-				label = "Make Burger MoneyShot",
-				job = "burger",
-			},
-			{
-				type = "client",
-				event = "prp-burgershot:client:create:burger-torpedo",
-				icon = "fas fa-wine-bottle",
-				label = "Make Burger Torpedo",
-				job = "burger",
-			  },
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:coffee",
+          icon = "fas fa-wine-bottle",
+          label = "Make Coffee",
+          job = "burger",
         },
-        distance = 1.0
+      },
+      distance = 1.0
     },
-	["register"] = {
-        name = "register",
-        coords = vector3(-1196.34, -890.9, 13.98),
-        length = 0.5,
-        width = 1,
-        heading = 35,
-        debugPoly = false,
-        minZ=10.58,
-        maxZ=14.58,
-        options = {
-            {
-              type = "client",
-              event = "prp-burgershot:client:open:register",
-              icon = "fas fa-coins",
-              label = "Register",
-              job = "burger",
-            },
-			{
-				type = "client",
-				event = "prp-burgershot:client:open:payment",
-				icon = "fas fa-coins",
-				label = "Payment",
-			  },
+    ["burgers"] = {
+      name = "burgers",
+      coords = vector3(-1198.37, -898.0, 13.98),
+      length = 1.7,
+      width = 1,
+      heading = 35,
+      debugPoly = false,
+      minZ=10.18,
+      maxZ=14.18,
+      options = {
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:burgerbleeder",
+          icon = "fas fa-wine-bottle",
+          label = "Make Burger Bleeder",
+          job = "burger",
         },
-        distance = 1.5
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:burger-heartstopper",
+          icon = "fas fa-wine-bottle",
+          label = "Make Burger HeartStopper",
+          job = "burger",
+        },
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:burger-moneyshot",
+          icon = "fas fa-wine-bottle",
+          label = "Make Burger MoneyShot",
+          job = "burger",
+        },
+        {
+          type = "client",
+          event = "prp-burgershot:client:create:burger-torpedo",
+          icon = "fas fa-wine-bottle",
+          label = "Make Burger Torpedo",
+          job = "burger",
+        },
+      },
+      distance = 1.0
     },
-	["sell"] = {
+    ["register"] = {
+      name = "register",
+      coords = vector3(-1196.34, -890.9, 13.98),
+      length = 0.5,
+      width = 1,
+      heading = 35,
+      debugPoly = false,
+      minZ=10.58,
+      maxZ=14.58,
+      options = {
+        {
+          type = "client",
+          event = "prp-burgershot:client:open:register",
+          icon = "fas fa-coins",
+          label = "Register",
+          job = "burger",
+        },
+        {
+          type = "client",
+          event = "prp-burgershot:client:open:payment",
+          icon = "fas fa-coins",
+          label = "Payment",
+        },
+      },
+      distance = 1.5
+    },
+    ["sell"] = {
         name = "sell",
         coords = vector3(-1194.91, -892.83, 13.98),
         length = 1,
@@ -461,9 +461,6 @@ Config.BoxZones = {
     },
     distance = 2.0
   },
-  
-  
-
 }
 
 Config.PolyZones = {
@@ -482,41 +479,51 @@ Config.TargetModels = {
 	["atm"] = {
 		models = {-870868698, -1126237515, -1364697528, 506770882},
 		options = {
-		  {
-			type = 'command',
-			event = 'atm',
-			icon = 'fab fa-cc-visa',
-			label = 'Use ATM'
-		  }
+      {
+        type = 'command',
+        event = 'atm',
+        icon = 'fab fa-cc-visa',
+        label = 'Use ATM'
+      }
 		},
-		distance = 1.0
-	  },
-    ["hotdog"] = {
-      models = {-1581502570},
-      options = {
-        {
+    distance = 1.0
+  },
+  ["hotdog"] = {
+    models = {-1581502570},
+    options = {
+      {
         type = 'client',
         event = 'prp-hotdog:client:hotdogshop',
         icon = 'fas fa-hotdog',
         label = 'Buy Hotdog'
-        }
+      }
+    },
+    distance = 1.0
+  },
+  ["jerrycan"] = {
+    models = {-531344027},
+    options = {
+      {
+        type = 'client',
+        event = 'prp-fuel:client:fuelshop',
+        icon = 'fas fa-hotdog',
+        label = 'Buy JerryCan'
+      }
+    },
+    distance = 1.0
+  },
+  ["VehicleRental"] = {
+    models = {`a_m_y_business_03`},
+    options = {
+      {
+        type = "client",
+        event = "prp-rental:openMenu",
+        icon = "fas fa-car",
+        label = "Rent Vehicle",
       },
-      distance = 1.0
-      },
-      ["jerrycan"] = {
-        models = {-531344027},
-        options = {
-          {
-          type = 'client',
-          event = 'prp-fuel:client:fuelshop',
-          icon = 'fas fa-hotdog',
-          label = 'Buy JerryCan'
-          }
-        },
-        distance = 1.0
-        },
-
-      
+    },
+    distance = 4.0
+  },
 }
 
 Config.GlobalPedOptions = {

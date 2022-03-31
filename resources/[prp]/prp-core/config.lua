@@ -1,6 +1,6 @@
 PRPConfig = {}
 
-PRPConfig.MaxPlayers = GetConvarInt('sv_maxclients', 255) -- Gets max players from config file, default 64
+PRPConfig.MaxPlayers = GetConvarInt('sv_maxclients', 64) -- Gets max players from config file, default 64
 PRPConfig.DefaultSpawn = vector4(-1035.71, -2731.87, 12.86, 0.0)
 PRPConfig.UpdateInterval = 5
 PRPConfig.UpdateSalary = 15 -- how often to update player data in minutes
@@ -32,7 +32,7 @@ PRPConfig.Server.closed = false -- Set server closed (no one can join except peo
 PRPConfig.Server.closedReason = "Server Closed" -- Reason message to display when people can't join the server
 PRPConfig.Server.uptime = 0 -- Time the server has been up.
 PRPConfig.Server.whitelist = false -- Enable or disable whitelist on the server
-PRPConfig.Server.discord = "" -- Discord invite link
+PRPConfig.Server.discord = "https://discord.gg/cmtqfbwZcG" -- Discord invite link
 PRPConfig.Server.PermissionList = {} -- permission list
 
 PRPConfig.Notify = {}
