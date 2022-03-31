@@ -227,14 +227,14 @@ Config.CarItems = {
     },
     [4] = {
         name = "spikestrip",
-        amount = 20,
+        amount = 3,
         info = {},
         type = "item",
         slot = 4,
     },
     [5] = {
         name = "bandage",
-        amount = 5,
+        amount = 10,
         info = {},
         type = "item",
         slot = 5,
@@ -327,21 +327,21 @@ Config.Items = {
             slot = 4,
             authorizedJobGrades = {3, 4, 5, 6, 7, 8, 9}
         },
-        [5] = {
-            name = "weapon_m4",
-            price = 0,
-            amount = 1,
-            info = {
-                serie = "",
-                attachments = {
-                    {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
-                    {component = "COMPONENT_AT_SCOPE_MEDIUM", label = "3x Scope"},
-                }
-            },
-            type = "weapon",
-            slot = 5,
-            authorizedJobGrades = {5, 6, 7, 8, 9}
-        },
+        -- [5] = {
+        --     name = "weapon_m4",
+        --     price = 0,
+        --     amount = 1,
+        --     info = {
+        --         serie = "",
+        --         attachments = {
+        --             {component = "COMPONENT_AT_AR_FLSH", label = "Flashlight"},
+        --             {component = "COMPONENT_AT_SCOPE_MEDIUM", label = "3x Scope"},
+        --         }
+        --     },
+        --     type = "weapon",
+        --     slot = 5,
+        --     authorizedJobGrades = {5, 6, 7, 8, 9}
+        -- },
         [6] = {
             name = "WEAPON_SPECIALCARBINE_MK2",
             price = 0,
@@ -452,14 +452,14 @@ Config.Items = {
             slot = 17,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
         },
-        [18] = {
-            name = "heavyarmor",
-            price = 0,
-            amount = 50,
-            info = {},
-            type = "item",
-            slot = 18,
-            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
-        },
+        -- [18] = {
+        --     name = "heavyarmor",
+        --     price = 0,
+        --     amount = 50,
+        --     info = {},
+        --     type = "item",
+        --     slot = 18,
+        --     authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}
+        -- },
     }
 }

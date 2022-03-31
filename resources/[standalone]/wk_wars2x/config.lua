@@ -44,7 +44,7 @@ CONFIG.fast_limit_first_in_menu = false
 
 -- Radar only lock players with auto fast locking
 -- When enabled, the radar will only automatically lock a speed if the caught vehicle has a real player in it.
-CONFIG.only_lock_players = false
+CONFIG.only_lock_players = true
 
 -- In-game first time quick start video
 -- When enabled, the player will be asked if they'd like to view the quick start video the first time they

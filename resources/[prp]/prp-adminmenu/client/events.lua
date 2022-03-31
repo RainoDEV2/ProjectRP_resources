@@ -74,7 +74,7 @@ end)
 local function LoadPlayerModel(skin)
     RequestModel(skin)
     while not HasModelLoaded(skin) do
-      Citizen.Wait(0)
+        Citizen.Wait(0)
     end
 end
 

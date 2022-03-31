@@ -51,7 +51,7 @@ Config.RewardPool = {
 	'carbon', 'carbon', 'carbon', 'carbon', --4x
 	'copperore', 'copperore', 'copperore', 'copperore', 'copperore', 'copperore', -- 6x
 	'goldore', 'goldore', 'goldore', --'goldore', -- 3x
-	'ironore', 'ironore', 'ironore', 'ironore', -- 'ironore', 'ironore', -- 6x
+	'ironore', 'ironore', 'ironore', 'ironore', -- 4x
     'metalscrap',
 	'uncut_ruby',
 	'uncut_emerald',

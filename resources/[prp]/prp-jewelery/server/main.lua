@@ -24,7 +24,7 @@ AddEventHandler('prp-jewellery:server:vitrineReward', function()
             TriggerClientEvent('ProjectRP:Notify', src, 'You have too much in your pocket', 'error')
         end
     else
-        local amount = math.random(2, 4)
+        local amount = math.random(1, 3)
         if Player.Functions.AddItem("10kgoldchain", amount) then
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["10kgoldchain"], 'add')
         else
