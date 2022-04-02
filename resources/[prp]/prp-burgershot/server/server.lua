@@ -11,18 +11,20 @@ ProjectRP.Commands.Add("refreshburgerprops", "Reset burgershot props", {}, false
 end, "admin")
 
 ProjectRP.Functions.CreateCallback('prp-burgershot:server:has:burger:items', function(source, cb)
- local src = source
- local count = 0
- local Player = ProjectRP.Functions.GetPlayer(src)
- for k, v in pairs(Config.BurgerItems) do
-     local BurgerData = Player.Functions.GetItemByName(v)
-     if BurgerData ~= nil then
-        count = count + 1
-        if count == 3 then
-            cb(true)
+    local src = source
+    local count = 0
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    for k, v in pairs(Config.BurgerItems) do
+        local BurgerData = Player.Functions.GetItemByName(v)
+        if BurgerData ~= nil then
+            count = count + 1
+            if count == 3 then
+                cb(true)
+            else
+                cb(false)
+            end
         end
-     end
- end
+    end
 end)
 
 RegisterServerEvent('prp-burgershot:server:finish:burgerbleeder')
@@ -81,9 +83,6 @@ AddEventHandler('prp-burgershot:server:finish:burger-torpedo', function()
     end)
 end)
 
-
-
-
 RegisterServerEvent('prp-burgershot:server:finish:fries')
 AddEventHandler('prp-burgershot:server:finish:fries', function()
     local src = source
@@ -106,7 +105,6 @@ AddEventHandler('prp-burgershot:server:finish:patty1', function()
     end
 end)
 
-
 RegisterServerEvent('prp-burgershot:server:finish:patty2')
 AddEventHandler('prp-burgershot:server:finish:patty2', function()
     local src = source
@@ -117,7 +115,6 @@ AddEventHandler('prp-burgershot:server:finish:patty2', function()
         TriggerClientEvent('prp-inventory:client:ItemBox', src, ProjectRP.Shared.Items['burger-meat'], "add")
     end
 end)
-
 
 RegisterServerEvent('prp-burgershot:server:finish:patty3')
 AddEventHandler('prp-burgershot:server:finish:patty3', function()
@@ -130,7 +127,6 @@ AddEventHandler('prp-burgershot:server:finish:patty3', function()
     end
 end)
 
-
 RegisterServerEvent('prp-burgershot:server:finish:drinksoda')
 AddEventHandler('prp-burgershot:server:finish:drinksoda', function(DrinkName)
     local src = source
@@ -138,7 +134,6 @@ AddEventHandler('prp-burgershot:server:finish:drinksoda', function(DrinkName)
     Player.Functions.AddItem('burger-softdrink', 1)
     TriggerClientEvent('prp-inventory:client:ItemBox', src, ProjectRP.Shared.Items['burger-softdrink'], "add")
 end)
-
 
 RegisterServerEvent('prp-burgershot:server:finish:drinkcoffee')
 AddEventHandler('prp-burgershot:server:finish:drinkcoffee', function(DrinkName)
@@ -194,9 +189,9 @@ AddEventHandler('prp-burgershot:server:sell:tickets', function()
     local Player = ProjectRP.Functions.GetPlayer(src)
     for k, v in pairs(Player.PlayerData.items) do
         if v.name == 'burger-ticket' then
-            for i = 1, v.amount do 
+            for i = 1, v.amount do
                 Player.Functions.RemoveItem('burger-ticket', 1)
-                Player.Functions.AddMoney('cash', math.random(2, 59), 'burgershot-payment')
+                Player.Functions.AddMoney('cash', math.random(54, 109), 'burgershot-payment')
                 -- TriggerEvent('prp-bossmenu:server:addAccountMoney', 'burger', math.random(60, 150))
                 Citizen.Wait(1000)
             end

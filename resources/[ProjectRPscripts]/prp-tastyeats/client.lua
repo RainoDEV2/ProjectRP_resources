@@ -459,9 +459,9 @@ Citizen.CreateThread(function()
                             if (#(coords - vector3(icfg.TastyEats["Base"].Garage.Coords.ReturnVehicle.x, icfg.TastyEats["Base"].Garage.Coords.ReturnVehicle.y, icfg.TastyEats["Base"].Garage.Coords.ReturnVehicle.z)) < 1.6) then
 
                                 if inOrderMenu then
-                        
+
                                     inOrderMenu = false
-            
+
                                 end
 
                                 refresh = 4
@@ -645,7 +645,7 @@ Citizen.CreateThread(function()
                                     SetEntityHeading(ped, 243.49)
                                     RequestAnimDict('mp_common')
                                     while not HasAnimDictLoaded('mp_common') do
-                                      Citizen.Wait(0)
+                                        Citizen.Wait(0)
                                     end
                                     TaskPlayAnim(ped, 'mp_common', 'givetake1_a', 8.0, -8.0, -1, 2, 0, false, false, false)
                                     Citizen.Wait(750)
@@ -688,7 +688,7 @@ Citizen.CreateThread(function()
                                     SetEntityHeading(ped, 50.26)
                                     RequestAnimDict('mp_common')
                                     while not HasAnimDictLoaded('mp_common') do
-                                      Citizen.Wait(0)
+                                        Citizen.Wait(0)
                                     end
                                     TaskPlayAnim(ped, 'mp_common', 'givetake1_a', 8.0, -8.0, -1, 2, 0, false, false, false)
                                     Citizen.Wait(750)
@@ -731,7 +731,7 @@ Citizen.CreateThread(function()
                                     SetEntityHeading(ped, 121.90)
                                     RequestAnimDict('mp_common')
                                     while not HasAnimDictLoaded('mp_common') do
-                                      Citizen.Wait(0)
+                                        Citizen.Wait(0)
                                     end
                                     TaskPlayAnim(ped, 'mp_common', 'givetake1_a', 8.0, -8.0, -1, 2, 0, false, false, false)
                                     Citizen.Wait(750)
@@ -774,7 +774,7 @@ Citizen.CreateThread(function()
                                     SetEntityHeading(ped, 341.74)
                                     RequestAnimDict('mp_common')
                                     while not HasAnimDictLoaded('mp_common') do
-                                      Citizen.Wait(0)
+                                        Citizen.Wait(0)
                                     end
                                     TaskPlayAnim(ped, 'mp_common', 'givetake1_a', 8.0, -8.0, -1, 2, 0, false, false, false)
                                     Citizen.Wait(750)
@@ -817,7 +817,7 @@ Citizen.CreateThread(function()
                                     SetEntityHeading(ped, 122.42)
                                     RequestAnimDict('mp_common')
                                     while not HasAnimDictLoaded('mp_common') do
-                                      Citizen.Wait(0)
+                                        Citizen.Wait(0)
                                     end
                                     TaskPlayAnim(ped, 'mp_common', 'givetake1_a', 8.0, -8.0, -1, 2, 0, false, false, false)
                                     Citizen.Wait(750)
@@ -858,9 +858,9 @@ Citizen.CreateThread(function()
                         if (#(coords - vector3(vehcoords.x, vehcoords.y, vehcoords.z)) < 0.8) then
 
                             if inOrderMenu then
-                        
+
                                 inOrderMenu = false
-        
+
                             end
 
                             DrawText3D(vehcoords.x, vehcoords.y, vehcoords.z + 0.1, "Press [~g~E~s~] to put away Bag with Food")
@@ -872,7 +872,7 @@ Citizen.CreateThread(function()
                                 Citizen.Wait(250)
                                 RequestAnimDict('anim@heists@money_grab@briefcase')
                                 while not HasAnimDictLoaded('anim@heists@money_grab@briefcase') do
-                                  Citizen.Wait(0)
+                                    Citizen.Wait(0)
                                 end
                                 TaskPlayAnim(ped, 'anim@heists@money_grab@briefcase', 'put_down_case', 8.0, -8.0, -1, 2, 0, false, false, false)
                                 Citizen.Wait(700)
@@ -915,7 +915,7 @@ Citizen.CreateThread(function()
 
                                 ComingToCustomer = false
                                 exports.pNotify:SendNotification({text = "<b>Tasty Eats</b></br></br>You are close to the Delivery Point, Park the Vehicle and Deliver the Food", timeout = 5000})
-            
+
                             end
 
                         Citizen.Wait(refresh)
@@ -936,9 +936,9 @@ Citizen.CreateThread(function()
                                     if (#(coords - vector3(vehcoords.x, vehcoords.y, vehcoords.z)) < 0.8) then
 
                                         if inOrderMenu then
-                        
+
                                             inOrderMenu = false
-                    
+
                                         end
 
                                         DrawText3D(vehcoords.x, vehcoords.y, vehcoords.z + 0.1, "Press [~r~E~s~] to take Bag with Food")
@@ -950,7 +950,7 @@ Citizen.CreateThread(function()
                                             Citizen.Wait(250)
                                             RequestAnimDict('anim@heists@money_grab@briefcase')
                                             while not HasAnimDictLoaded('anim@heists@money_grab@briefcase') do
-                                              Citizen.Wait(0)
+                                                Citizen.Wait(0)
                                             end
                                             TaskPlayAnim(ped, 'anim@heists@money_grab@briefcase', 'put_down_case', 8.0, -8.0, -1, 2, 0, false, false, false)
                                             Citizen.Wait(350)
@@ -976,9 +976,9 @@ Citizen.CreateThread(function()
                                     refresh = 4
 
                                     if inOrderMenu then
-                        
+
                                         inOrderMenu = false
-                
+
                                     end
 
                                     if not hasKnockedDoor then
@@ -993,7 +993,7 @@ Citizen.CreateThread(function()
                                             SetEntityHeading(ped, DeliveryPlace.h)
                                             RequestAnimDict('timetable@jimmy@doorknock@')
                                             while not HasAnimDictLoaded('timetable@jimmy@doorknock@') do
-                                              Citizen.Wait(0)
+                                                Citizen.Wait(0)
                                             end
                                             TaskPlayAnim(ped, 'timetable@jimmy@doorknock@', 'knockdoor_idle', 8.0, -8.0, -1, 2, 0, false, false, false)
                                             Citizen.Wait(2500)
@@ -1001,13 +1001,13 @@ Citizen.CreateThread(function()
                                             hasKnockedDoor = true
                                             CustomerComingDoor = true
                                             FreezeEntityPosition(ped, true)
-        
+
                                             Citizen.CreateThread(function()
 
                                                 Citizen.Wait(icfg.CustomerComingToDoor)
                                                 RequestAnimDict('anim@heists@money_grab@briefcase')
                                                 while not HasAnimDictLoaded('anim@heists@money_grab@briefcase') do
-                                                  Citizen.Wait(0)
+                                                    Citizen.Wait(0)
                                                 end
                                                 TaskPlayAnim(ped, 'anim@heists@money_grab@briefcase', 'put_down_case', 8.0, -8.0, -1, 2, 0, false, false, false)
                                                 Citizen.Wait(700)

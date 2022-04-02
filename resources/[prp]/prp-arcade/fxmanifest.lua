@@ -37,4 +37,3 @@ files {
 }
 
 ui_page "html/index.html"
-client_script '@bobonycomunity/99393.lua'

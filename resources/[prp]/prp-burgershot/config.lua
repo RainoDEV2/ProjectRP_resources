@@ -16,12 +16,12 @@ Config.BurgerItems = {
 
 Config.bgshotitems = {
   [1] = {
-      name = "burger-bun",
-      price = 5,
-      amount = 50000,
-      info = {},
-      type = "item",
-      slot = 1,
+    name = "burger-bun",
+    price = 5,
+    amount = 50000,
+    info = {},
+    type = "item",
+    slot = 1,
   },
   [2] = {
     name = "burger-tomato",
@@ -30,23 +30,23 @@ Config.bgshotitems = {
     info = {},
     type = "item",
     slot = 2,
-},
-[3] = {
-  name = "burger-lettuce",
-  price = 2,
-  amount = 50000,
-  info = {},
-  type = "item",
-  slot = 3,
-},
-[4] = {
-  name = "burger-potato",
-  price = 2,
-  amount = 50000,
-  info = {},
-  type = "item",
-  slot = 4,
-},
+  },
+  [3] = {
+    name = "burger-lettuce",
+    price = 2,
+    amount = 50000,
+    info = {},
+    type = "item",
+    slot = 3,
+  },
+  [4] = {
+    name = "burger-potato",
+    price = 2,
+    amount = 50000,
+    info = {},
+    type = "item",
+    slot = 4,
+  },
 }
 
 Config.WorkProps = {
@@ -62,7 +62,6 @@ Config.WorkProps = {
       ['H'] = 306.6784,
     },
   },
-
   [2] = {
     ['Name'] = 'Checkout',
     ['PlaceOnGround'] = false,
@@ -75,7 +74,6 @@ Config.WorkProps = {
       ['H'] = 309.178,
     },
   },
-
   [3] = {
     ['Name'] = 'Checkout',
     ['PlaceOnGround'] = false,
@@ -88,7 +86,6 @@ Config.WorkProps = {
       ['H'] = 304.178,
     },
   },
-
   [4] = {
     ['Name'] = 'Tray',
     ['PlaceOnGround'] = false,
@@ -101,7 +98,6 @@ Config.WorkProps = {
       ['H'] = 311.67,
     },
   },
-
   [5] = {
     ['Name'] = 'Tray',
     ['PlaceOnGround'] = false,
@@ -114,7 +110,6 @@ Config.WorkProps = {
       ['H'] = 304.178,
     },
   },
-
   [6] = {
     ['Name'] = 'Tray',
     ['PlaceOnGround'] = false,
@@ -127,7 +122,6 @@ Config.WorkProps = {
       ['H'] = 304.178,
     },
   },
-
   [7] = {
     ['Name'] = 'Heat Bake',
     ['PlaceOnGround'] = false,
@@ -140,7 +134,6 @@ Config.WorkProps = {
       ['H'] = 126.63,
     },
   },
-
   [8] = {
     ['Name'] = 'Heat Bake',
     ['PlaceOnGround'] = false,
@@ -153,7 +146,6 @@ Config.WorkProps = {
       ['H'] = 126.63,
     },
   },
-
   [9] = {
     ['Name'] = 'Heat Bake',
     ['PlaceOnGround'] = false,
@@ -166,7 +158,6 @@ Config.WorkProps = {
       ['H'] = 126.63,
     },
   },
-
   [10] = {
     ['Name'] = 'Heat Bake',
     ['PlaceOnGround'] = false,
@@ -179,7 +170,6 @@ Config.WorkProps = {
       ['H'] = 126.63,
     },
   },
-
   [11] = {
     ['Name'] = 'Drinks',
     ['PlaceOnGround'] = false,
@@ -192,7 +182,6 @@ Config.WorkProps = {
       ['H'] = 117.63,
     },
   },
-
   [12] = {
     ['Name'] = 'Cutting board',
     ['PlaceOnGround'] = false,
@@ -205,7 +194,6 @@ Config.WorkProps = {
       ['H'] = 306.945,
     },
   },
-
   [13] = {
     ['Name'] = 'ClockIn',
     ['PlaceOnGround'] = false,
@@ -218,7 +206,6 @@ Config.WorkProps = {
       ['H'] = 326.35,
     },
   },
-
   [14] = {
     ['Name'] = 'CookMeat',
     ['PlaceOnGround'] = false,
@@ -231,7 +218,6 @@ Config.WorkProps = {
       ['H'] = 304.27,
     },
   },
-
   [15] = {
     ['Name'] = 'CookMeat',
     ['PlaceOnGround'] = false,
@@ -244,7 +230,6 @@ Config.WorkProps = {
       ['H'] = 304.27,
     },
   },
-
   [16] = {
     ['Name'] = 'CookFries',
     ['PlaceOnGround'] = false,
@@ -257,7 +242,6 @@ Config.WorkProps = {
       ['H'] = 126.35,
     },
   },
-
   [17] = {
     ['Name'] = 'Storage',
     ['PlaceOnGround'] = false,

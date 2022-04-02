@@ -4,7 +4,7 @@ TDPD.Config = {}
 -- WHERE THE REQUEST POPUP IS LOCATED.
 -- DEFAULT: {name='MRPD', coords=vector3(441.73, -982.03, 30.73)}
 TDPD.Config.Locations = {
-    {name='MRPD', coords=vector3(-1095.64, -817.62, 19.04)}
+    {name='MRPD', coords=vector3(441.73, -982.03, 30.73)}
 }
 
 -- COOLDOWN PERIOD TO REQUEST ASSISTANCE AGAIN; THIS IS IN SECONDS.
@@ -35,7 +35,7 @@ TDPD.Config.EmailSubject = 'Assistance Required'
 
 -- THE EMAIL MESSAGE FOR THE POLICE EMAIL.
 -- DEFAULT: 'Officer,<br/>There is an individual at the police department desk requesting the assistance of a present officer.'
-TDPD.Config.EmailMessage = 'Officer,<br/>There is an individual requesting the assistance of a present officer at '
+TDPD.Config.EmailMessage = 'Officer,<br/>There is an individual requesting the assistance of a present officer at MRPD'
 
 -- JOB NAMES FOR POLICE. DOES ACCEPT MULTIPLE JOBS (lspd, bcso, etc.).
 -- DEFAULT: { 'police' }

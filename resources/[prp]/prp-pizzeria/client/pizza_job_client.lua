@@ -21,10 +21,6 @@ AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
 	isLoggedIn = true    
 end)
 
-
-
-
-
 RegisterNetEvent('ProjectRP:Client:OnPlayerUnload')
 AddEventHandler('ProjectRP:Client:OnPlayerUnload', function()
     isLoggedIn = false
@@ -35,59 +31,52 @@ AddEventHandler('ProjectRP:Client:OnJobUpdate', function(JobInfo)
     PlayerJob = JobInfo
 end)
 
-
 local DropOffs = {
-	[1] =  { ['x'] = 142.79,['y'] = -832.47,['z'] = 31.18,['h'] = 0.0, ['info'] = 'Blokkenpark mansion richard'},
-	[2] =  { ['x'] = -122.49,['y'] = -887.97,['z'] = 29.67,['h'] = 0.0, ['info'] = 'ALTA STREET'},
-	[3] =  { ['x'] = 372.65,['y'] = -1073.33,['z'] = 29.73,['h'] = 0.0, ['info'] = 'Downtown liquor'},
-	[4] =  { ['x'] = 494.03,['y'] = -729.42,['z'] = 24.89,['h'] = 0.0, ['info'] = 'Material Wealth'},
-	[5] =  { ['x'] = 222.38,['y'] = -595.41,['z'] = 43.87,['h'] = 0.0, ['info'] = 'Swiss Street'},
-	[6] =  { ['x'] = 269.02,['y'] = -433.34,['z'] = 45.32,['h'] = 0.0, ['info'] = 'Atlee Street 1'},
-	[7] =  { ['x'] = 241.06,['y'] = -1378.91,['z'] = 33.74,['h'] = 0.0, ['info'] = 'Cursade road'},
-	--[8] =  { ['x'] = -657.77,['y'] = -679.26,['z'] = 31.47,['h'] = 0.0, ['info'] = 'Palomino Avenue 1'},
-	--[9] =  { ['x'] = -814.18,['y'] = -1114.65,['z'] = 11.18,['h'] = 0.0, ['info'] = 'South Rockford Drive 1'},
-	--[10] =  { ['x'] = -697.63,['y'] = -1182.29,['z'] = 10.71,['h'] = 0.0, ['info'] = 'South Rockford Drive 2'},
-	--[11] =  { ['x'] = -1268.93,['y'] = -877.842,['z'] = 11.93,['h'] = 0.0, ['info'] = 'San Andreas 1'},
-	--[12] =  { ['x'] = -601.30,['y'] = 279.34,['z'] = 82.03,['h'] = 0.0, ['info'] = 'West Eclipse Boulevard 1'},
-	--[13] =  { ['x'] = -257.57,['y'] = 245.03,['z'] = 91.87,['h'] = 0.0, ['info'] = 'West Eclipse Boulevard 2'},
-	--[14] =  { ['x'] = -1469.06,['y'] = -197.62,['z'] = 48.83,['h'] = 0.0, ['info'] = 'Cougar Avenue 1'},
-	--[15] =  { ['x'] = -1580.60,['y'] = -34.07,['z'] = 57.56,['h'] = 0.0, ['info'] = 'Sam Austin Dr 1'},
-	--[16] =  { ['x'] = -458.23,['y'] = 264.30,['z'] = 83.14,['h'] = 0.0, ['info'] = 'Eclipse Boulevard 1'},
-	--[17] =  { ['x'] = 751.50,['y'] = 223.92,['z'] = 87.42,['h'] = 0.0, ['info'] = 'Clinton Avenue 1'},
-	--[18] =  { ['x'] = 1199.87,['y'] = -501.53,['z'] = 65.17,['h'] = 0.0, ['info'] = 'Mirror Park Boulevard 1'},
+	[1] =  { ['x'] = 142.79, ['y'] = -832.47, ['z'] = 31.18, ['h'] = 0.0, ['info'] = 'Blokkenpark mansion richard'},
+	[2] =  { ['x'] = -122.49, ['y'] = -887.97, ['z'] = 29.67, ['h'] = 0.0, ['info'] = 'ALTA STREET'},
+	[3] =  { ['x'] = 372.65, ['y'] = -1073.33, ['z'] = 29.73, ['h'] = 0.0, ['info'] = 'Downtown liquor'},
+	[4] =  { ['x'] = 494.03, ['y'] = -729.42, ['z'] = 24.89, ['h'] = 0.0, ['info'] = 'Material Wealth'},
+	[5] =  { ['x'] = 222.38, ['y'] = -595.41, ['z'] = 43.87, ['h'] = 0.0, ['info'] = 'Swiss Street'},
+	[6] =  { ['x'] = 269.02, ['y'] = -433.34, ['z'] = 45.32, ['h'] = 0.0, ['info'] = 'Atlee Street 1'},
+	[7] =  { ['x'] = 241.06, ['y'] = -1378.91, ['z'] = 33.74, ['h'] = 0.0, ['info'] = 'Cursade road'},
+	[8] =  { ['x'] = -657.77, ['y'] = -679.26, ['z'] = 31.47, ['h'] = 0.0, ['info'] = 'Palomino Avenue 1'},
+	[9] =  { ['x'] = -814.18, ['y'] = -1114.65, ['z'] = 11.18, ['h'] = 0.0, ['info'] = 'South Rockford Drive 1'},
+	[10] =  { ['x'] = -697.63, ['y'] = -1182.29, ['z'] = 10.71,['h'] = 0.0, ['info'] = 'South Rockford Drive 2'},
+	[11] =  { ['x'] = -1268.93, ['y'] = -877.842, ['z'] = 11.93, ['h'] = 0.0, ['info'] = 'San Andreas 1'},
+	[12] =  { ['x'] = -601.30, ['y'] = 279.34, ['z'] = 82.03, ['h'] = 0.0, ['info'] = 'West Eclipse Boulevard 1'},
+	[13] =  { ['x'] = -257.57, ['y'] = 245.03, ['z'] = 91.87, ['h'] = 0.0, ['info'] = 'West Eclipse Boulevard 2'},
+	[14] =  { ['x'] = -1469.06, ['y'] = -197.62, ['z'] = 48.83, ['h'] = 0.0, ['info'] = 'Cougar Avenue 1'},
+	[15] =  { ['x'] = -1580.60, ['y'] = -34.07, ['z'] = 57.56, ['h'] = 0.0, ['info'] = 'Sam Austin Dr 1'},
+	[16] =  { ['x'] = -458.23, ['y'] = 264.30, ['z'] = 83.14, ['h'] = 0.0, ['info'] = 'Eclipse Boulevard 1'},
+	[17] =  { ['x'] = 751.50, ['y'] = 223.92, ['z'] = 87.42, ['h'] = 0.0, ['info'] = 'Clinton Avenue 1'},
+	[18] =  { ['x'] = 1199.87, ['y'] = -501.53, ['z'] = 65.17, ['h'] = 0.0, ['info'] = 'Mirror Park Boulevard 1'},
 }
 
 local pizzaShop = {
-	[1] =  { ['x'] = 292.09,['y'] = -984.84,['z'] = 29.43,['h'] = 0.0, ['info'] = 'pizzeria'},
+	[1] =  { ['x'] = 292.09, ['y'] = -984.84, ['z'] = 29.43, ['h'] = 0.0, ['info'] = 'pizzeria'},
 }
 -- Code
-
-
 
 local JobBusy = false
 local Tasks = false
 local rnd = 0
 
-RegisterNetEvent('prp-pizzeria:client:bezorgen')
-AddEventHandler('prp-pizzeria:client:bezorgen', function(PidId)
+RegisterNetEvent('prp-pizzeria:client:todeliver')
+AddEventHandler('prp-pizzeria:client:todeliver', function(PidId)
 	ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
 		if JobBusy == false then
 			if HasItem then
-			    JobBusy = true
-		        TriggerServerEvent('prp-pizza:server:start:black')
+				JobBusy = true
+				TriggerServerEvent('prp-pizza:server:start:black')
 				TriggerServerEvent('prp-pizzeria:server:rem:pizza')
 			else
                 ProjectRP.Functions.Notify("Go delivery a empty box??", "error")			
-            end				
-           			
+            end
 		else
 			ProjectRP.Functions.Notify("You still have an order!", "error")
-		end 
- 	end, 'pizza')
-	
+		end
+	end, 'pizza')
 end)
-
-
 
 
 RegisterNetEvent('prp-pizza:start:black:job')
@@ -110,7 +99,7 @@ AddEventHandler('prp-pizza:start:black:job', function()
 					if not IsPedInAnyVehicle(PlayerPedId(), false) then
 						EndJob()
 					else
-			        	ProjectRP.Functions.Notify("You cannot deliver in your vehicle.", "error")
+						ProjectRP.Functions.Notify("You cannot deliver in your vehicle.", "error")
 				end
 			end
 		else
@@ -120,11 +109,9 @@ AddEventHandler('prp-pizza:start:black:job', function()
 end)
 
 
-
-
-function Animatie()
-	loadAnimDict( "mp_safehouselost@" )
-    TaskPlayAnim( PlayerPedId(), "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0 )
+function Animation()
+	loadAnimDict("mp_safehouselost@")
+    TaskPlayAnim(PlayerPedId(), "mp_safehouselost@", "package_dropoff", 8.0, 1.0, -1, 16, 0, 0, 0, 0)
 end
 
 function loadAnimDict(dict)
@@ -161,7 +148,7 @@ function EndJob()
 			JobBusy = false
 			TriggerEvent('prp-sound:client:play', 'house-doorbell', 0.5)
 			Citizen.Wait(1000)
-			Animatie()
+			Animation()
 			Citizen.Wait(200)
 			DeleteBlip()
 			TriggerServerEvent('prp-pizza:server:reward:money')
@@ -169,5 +156,5 @@ function EndJob()
 		else
 			ProjectRP.Functions.Notify("You didn't even bring the order.", "error")
 		end 
- 	end, 'pizza-doos')
+	end, 'pizza-doos')
 end

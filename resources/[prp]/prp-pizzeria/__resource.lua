@@ -5,9 +5,9 @@ description "pizza Job"
 ui_page {'html/index.html'}
 
 exports {
- 'StorePizzascooter',
- 'Pizzascooter',
- 'GetActiveRegister',
+  'StorePizzascooter',
+  'Pizzascooter',
+  'GetActiveRegister',
 }
 
 client_scripts {
@@ -20,7 +20,6 @@ server_scripts {
   'server/pizza_server.lua',
   'config.lua',
 }
-
 
 files {
   'html/index.html',

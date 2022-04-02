@@ -1,17 +1,15 @@
 local CurrentWorkObject = {}
 local LoggedIn = false
 local InRange = false
--- local ProjectRP = nil  
+-- local ProjectRP = nil
 
 ProjectRP = exports["prp-core"]:GetCoreObject()
 RegisterNetEvent('ProjectRP:Client:OnPlayerLoaded')
 AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
     Citizen.SetTimeout(500, function()
-        -- TriggerEvent("ProjectRP:GetObject", function(obj) ProjectRP = obj end)    
-        Citizen.Wait(450)
-        LoggedIn = true
-      
-	      PlayerData = ProjectRP.Functions.GetPlayerData()
+      Citizen.Wait(450)
+      LoggedIn = true
+      PlayerData = ProjectRP.Functions.GetPlayerData()
     end)
 end)
 
@@ -80,23 +78,21 @@ CreateThread(function()
 
       if PlayerData.job.name == 'burger' then
       local boss = Config.Locations['boss']
-              if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 10) and PlayerData.job.isboss then
-                letSleep = false
-                DrawMarker(2, boss.x, boss.y, boss.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 1.5) then
-                    ProjectRP.Functions.DrawText3D(boss.x, boss.y, boss.z, "~p~E~w~ - Boss menu")
-                    if IsControlJustReleased(0, 38) then
-                        TriggerServerEvent("prp-bossmenu:server:openMenu")
-                    end
-                end  
-              end
+        if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 10) and PlayerData.job.isboss then
+          letSleep = false
+          DrawMarker(2, boss.x, boss.y, boss.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
+          if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 1.5) then
+            ProjectRP.Functions.DrawText3D(boss.x, boss.y, boss.z, "~p~E~w~ - Boss menu")
+            if IsControlJustReleased(0, 38) then
+              TriggerServerEvent("prp-bossmenu:server:openMenu")
+            end
+          end  
+        end
       end
-      
       if letSleep then
         Wait(3000)
       end
-      
-	  end
+    end
   end
 end)
 
@@ -105,10 +101,10 @@ end)
 RegisterNetEvent('prp-burgershot:client:refresh:props')
 AddEventHandler('prp-burgershot:client:refresh:props', function()
   if InRange and Config.EntitysSpawned then
-     RemoveWorkObjects()
-     Citizen.SetTimeout(1000, function()
-        SpawnWorkObjects()
-     end)
+    RemoveWorkObjects()
+    Citizen.SetTimeout(1000, function()
+      SpawnWorkObjects()
+    end)
   end
 end)
 
@@ -169,9 +165,9 @@ RegisterNetEvent('prp-burgershot:client:create:burgerbleeder')
 AddEventHandler('prp-burgershot:client:create:burgerbleeder', function(BurgerType)
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
     if HasBurgerItems then
-       MakeBurgerBleeder()
+      MakeBurgerBleeder()
     else
-      ProjectRP.Functions.Notify("Error", "error")
+      ProjectRP.Functions.Notify("You're missing ingredients to make this burger..", "error")
     end
   end)
 end)
@@ -180,9 +176,9 @@ RegisterNetEvent('prp-burgershot:client:create:burger-heartstopper')
 AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function(BurgerType)
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
     if HasBurgerItems then
-       MakeBurgerHeart()
+      MakeBurgerHeart()
     else
-      ProjectRP.Functions.Notify("You miss ingredients to make this burger..", "error")
+      ProjectRP.Functions.Notify("You're missing ingredients needed to make this burger..", "error")
     end
   end)
 end)
@@ -191,9 +187,9 @@ RegisterNetEvent('prp-burgershot:client:create:burger-moneyshot')
 AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function(BurgerType)
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
     if HasBurgerItems then
-       MakeBurgerMoneyshot()
+      MakeBurgerMoneyshot()
     else
-      ProjectRP.Functions.Notify("You miss ingredients to make this burger..", "error")
+      ProjectRP.Functions.Notify("You're missing ingredients needed to make this burger..", "error")
     end
   end)
 end)
@@ -202,47 +198,63 @@ RegisterNetEvent('prp-burgershot:client:create:burger-torpedo')
 AddEventHandler('prp-burgershot:client:create:burger-torpedo', function(BurgerType)
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
     if HasBurgerItems then
-       MakeBurgerTorpedo()
+      MakeBurgerTorpedo()
     else
-      ProjectRP.Functions.Notify("You miss ingredients to make this burger..", "error")
+      ProjectRP.Functions.Notify("You're missing ingredients needed to make this burger..", "error")
     end
   end)
 end)
 
-
-
 RegisterNetEvent('prp-burgershot:client:create:soda')
 AddEventHandler('prp-burgershot:client:create:soda', function()
-      MakeDrinkSoda()
+  MakeDrinkSoda()
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:coffee')
 AddEventHandler('prp-burgershot:client:create:coffee', function()
-      MakeDrinkCoffee()
+  MakeDrinkCoffee()
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:meat1')
 AddEventHandler('prp-burgershot:client:create:meat1', function()
+  ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
+    if HasItem then
       MakePatty1()
+    else
+      ProjectRP.Functions.Notify("You're missing potatoes..", "error")
+    end
+  end, 'huntingcarcass1')
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:meat2')
 AddEventHandler('prp-burgershot:client:create:meat2', function()
+  ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
+    if HasItem then
       MakePatty2()
+    else
+      ProjectRP.Functions.Notify("You're missing potatoes..", "error")
+    end
+  end, 'huntingcarcass2')
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:meat3')
 AddEventHandler('prp-burgershot:client:create:meat3', function()
+  ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
+    if HasItem then
       MakePatty3()
+    else
+      ProjectRP.Functions.Notify("You're missing potatoes..", "error")
+    end
+  end, 'huntingcarcass3')
 end)
 
 RegisterNetEvent('prp-burgershot:client:bake:fries')
 AddEventHandler('prp-burgershot:client:bake:fries', function()
   ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
     if HasItem then
-       MakeFries()
+        MakeFries()
     else
-      ProjectRP.Functions.Notify("Youre missing fries..", "error")
+      ProjectRP.Functions.Notify("You're missing potatoes..", "error")
     end
   end, 'burger-potato')
 end)
@@ -251,9 +263,9 @@ RegisterNetEvent('prp-burgershot:client:bake:meat')
 AddEventHandler('prp-burgershot:client:bake:meat', function()
   ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
     if HasItem then
-       MakePatty()
+        MakePatty()
     else
-      ProjectRP.Functions.Notify("You miss meat..", "error")
+      ProjectRP.Functions.Notify("You're missing meat..", "error")
     end
   end, 'burger-raw')
 end)
@@ -266,10 +278,10 @@ function SpawnWorkObjects()
     WorkObject = CreateObject(GetHashKey(v['Prop']), v["Coords"]["X"], v["Coords"]["Y"], v["Coords"]["Z"], false, false, false)
     SetEntityHeading(WorkObject, v['Coords']['H'])
     if v['PlaceOnGround'] then
-    	PlaceObjectOnGroundProperly(WorkObject)
+      PlaceObjectOnGroundProperly(WorkObject)
     end
     if not v['ShowItem'] then
-    	SetEntityVisible(WorkObject, false)
+      SetEntityVisible(WorkObject, false)
     end
     SetModelAsNoLongerNeeded(WorkObject)
     FreezeEntityPosition(WorkObject, true)
@@ -285,18 +297,18 @@ function MakeBurgerBleeder()
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
     ProjectRP.Functions.Progressbar("open-brick", "Creating burger..", 7500, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true,
+      disableMovement = true,
+      disableCarMovement = false,
+      disableMouse = false,
+      disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerServerEvent('prp-burgershot:server:finish:burgerbleeder')
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerServerEvent('prp-burgershot:server:finish:burgerbleeder')
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end, function()
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        ProjectRP.Functions.Notify("Cancelled..", "error")
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      ProjectRP.Functions.Notify("Cancelled..", "error")
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end)
   end)
 end
@@ -307,18 +319,18 @@ function MakeBurgerHeart()
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
     ProjectRP.Functions.Progressbar("open-brick", "Creating burger..", 7500, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true,
+      disableMovement = true,
+      disableCarMovement = false,
+      disableMouse = false,
+      disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerServerEvent('prp-burgershot:server:finish:burger-heartstopper')
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerServerEvent('prp-burgershot:server:finish:burger-heartstopper')
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end, function()
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        ProjectRP.Functions.Notify("Cancelled..", "error")
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      ProjectRP.Functions.Notify("Cancelled..", "error")
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end)
   end)
 end
@@ -329,18 +341,18 @@ function MakeBurgerMoneyshot()
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
     ProjectRP.Functions.Progressbar("open-brick", "Creating burger..", 7500, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true,
+      disableMovement = true,
+      disableCarMovement = false,
+      disableMouse = false,
+      disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerServerEvent('prp-burgershot:server:finish:burger-moneyshot')
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerServerEvent('prp-burgershot:server:finish:burger-moneyshot')
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end, function()
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        ProjectRP.Functions.Notify("Cancelled..", "error")
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      ProjectRP.Functions.Notify("Cancelled..", "error")
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end)
   end)
 end
@@ -351,18 +363,18 @@ function MakeBurgerTorpedo()
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
     ProjectRP.Functions.Progressbar("open-brick", "Creating burger..", 7500, false, true, {
-        disableMovement = true,
-        disableCarMovement = false,
-        disableMouse = false,
-        disableCombat = true,
+      disableMovement = true,
+      disableCarMovement = false,
+      disableMouse = false,
+      disableCombat = true,
     }, {}, {}, {}, function() -- Done
-        TriggerServerEvent('prp-burgershot:server:finish:burger-torpedo')
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerServerEvent('prp-burgershot:server:finish:burger-torpedo')
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end, function()
-        TriggerEvent('prp-inventory:client:set:busy', false)
-        ProjectRP.Functions.Notify("Cancelled..", "error")
-        StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
+      TriggerEvent('prp-inventory:client:set:busy', false)
+      ProjectRP.Functions.Notify("Cancelled..", "error")
+      StopAnimTask(PlayerPedId(), "mini@repair", "fixing_a_ped", 1.0)
     end)
   end)
 end
@@ -373,23 +385,23 @@ function MakeFries()
   exports['prp-smallresources']:RequestAnimationDict("amb@prop_human_bbq@male@base")
   TaskPlayAnim(PlayerPedId(), "amb@prop_human_bbq@male@base", "base" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Baking Fries..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {
-      model = "prop_cs_fork",
-      bone = 28422,
-      coords = { x = -0.005, y = 0.00, z = 0.00 },
-      rotation = { x = 175.0, y = 160.0, z = 0.0 },
+    model = "prop_cs_fork",
+    bone = 28422,
+    coords = { x = -0.005, y = 0.00, z = 0.00 },
+    rotation = { x = 175.0, y = 160.0, z = 0.0 },
   }, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:fries')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:fries')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end)
 end
 
@@ -399,26 +411,25 @@ function MakePatty1()
   exports['prp-smallresources']:RequestAnimationDict("amb@prop_human_bbq@male@base")
   TaskPlayAnim(PlayerPedId(), "amb@prop_human_bbq@male@base", "base" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Baking Meat..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {
-      model = "prop_cs_fork",
-      bone = 28422,
-      coords = { x = -0.005, y = 0.00, z = 0.00},
-      rotation = { x = 175.0, y = 160.0, z = 0.0},
+    model = "prop_cs_fork",
+    bone = 28422,
+    coords = { x = -0.005, y = 0.00, z = 0.00},
+    rotation = { x = 175.0, y = 160.0, z = 0.0},
   }, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:patty1')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:patty1')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end)
 end
-
 
 function MakePatty2()
   TriggerEvent('prp-inventory:client:set:busy', true)
@@ -426,23 +437,23 @@ function MakePatty2()
   exports['prp-smallresources']:RequestAnimationDict("amb@prop_human_bbq@male@base")
   TaskPlayAnim(PlayerPedId(), "amb@prop_human_bbq@male@base", "base" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Baking Meat..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {
-      model = "prop_cs_fork",
-      bone = 28422,
-      coords = { x = -0.005, y = 0.00, z = 0.00},
-      rotation = { x = 175.0, y = 160.0, z = 0.0},
+    model = "prop_cs_fork",
+    bone = 28422,
+    coords = { x = -0.005, y = 0.00, z = 0.00},
+    rotation = { x = 175.0, y = 160.0, z = 0.0},
   }, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:patty2')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:patty2')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end)
 end
 
@@ -452,23 +463,23 @@ function MakePatty3()
   exports['prp-smallresources']:RequestAnimationDict("amb@prop_human_bbq@male@base")
   TaskPlayAnim(PlayerPedId(), "amb@prop_human_bbq@male@base", "base" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Baking Meat..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {
-      model = "prop_cs_fork",
-      bone = 28422,
-      coords = { x = -0.005, y = 0.00, z = 0.00},
-      rotation = { x = 175.0, y = 160.0, z = 0.0},
+    model = "prop_cs_fork",
+    bone = 28422,
+    coords = { x = -0.005, y = 0.00, z = 0.00},
+    rotation = { x = 175.0, y = 160.0, z = 0.0},
   }, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:patty3')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:patty3')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
   end)
 end
 
@@ -478,21 +489,20 @@ function MakeDrinkSoda()
   exports['prp-smallresources']:RequestAnimationDict("amb@world_human_hang_out_street@female_hold_arm@idle_a")
   TaskPlayAnim(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Tapping Drinks..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {}, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:drinksoda')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:drinksoda')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
   end)
 end
-
 
 function MakeDrinkCoffee()
   TriggerEvent('prp-inventory:client:set:busy', true)
@@ -500,31 +510,31 @@ function MakeDrinkCoffee()
   exports['prp-smallresources']:RequestAnimationDict("amb@world_human_hang_out_street@female_hold_arm@idle_a")
   TaskPlayAnim(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a" ,3.0, 3.0, -1, 8, 0, false, false, false)
   ProjectRP.Functions.Progressbar("open-brick", "Tapping Drinks..", 6500, false, true, {
-      disableMovement = true,
-      disableCarMovement = false,
-      disableMouse = false,
-      disableCombat = true,
+    disableMovement = true,
+    disableCarMovement = false,
+    disableMouse = false,
+    disableCombat = true,
   }, {}, {}, {}, function() -- Done
-      TriggerServerEvent('prp-burgershot:server:finish:drinkcoffee')
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
+    TriggerServerEvent('prp-burgershot:server:finish:drinkcoffee')
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
   end, function()
-      TriggerEvent('prp-inventory:client:set:busy', false)
-      ProjectRP.Functions.Notify("Cancelled..", "error")
-      StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
+    TriggerEvent('prp-inventory:client:set:busy', false)
+    ProjectRP.Functions.Notify("Cancelled..", "error")
+    StopAnimTask(PlayerPedId(), "amb@world_human_hang_out_street@female_hold_arm@idle_a", "idle_a", 1.0)
   end)
 end
 
 function CheckDuty()
   if ProjectRP.Functions.GetPlayerData().job.name =='burger' and ProjectRP.Functions.GetPlayerData().job.onduty then
-     TriggerServerEvent('ProjectRP:ToggleDuty')
-     ProjectRP.Functions.Notify("You are too far away from your work while you are clocked in!", "error")
+    TriggerServerEvent('ProjectRP:ToggleDuty')
+    ProjectRP.Functions.Notify("You are too far away from your work while you are clocked in!", "error")
   end
 end
 
 function RemoveWorkObjects()
   for k, v in pairs(CurrentWorkObject) do
-  	 DeleteEntity(v)
+    DeleteEntity(v)
   end
 end
 

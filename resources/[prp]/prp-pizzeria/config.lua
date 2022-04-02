@@ -17,33 +17,33 @@ Config.Boss = {
 
 Config.WorkProps = {
     [1] = {
-      ['Name'] = 'Checkout',
-      ['PlaceOnGround'] = false,
-      ['ShowItem'] = false,
-      ['Prop'] = 'v_ind_bin_01',
-      ['Coords'] = {
+        ['Name'] = 'Checkout',
+        ['PlaceOnGround'] = false,
+        ['ShowItem'] = false,
+        ['Prop'] = 'v_ind_bin_01',
+        ['Coords'] = {
         ['X'] = 290.4109,
         ['Y'] = -976.7841,
         ['Z'] = 19.736,
         ['H'] = 189,
-      },
+        },
     },
     [2] = {
-      ['Name'] = 'Checkout',
-      ['PlaceOnGround'] = false,
-      ['ShowItem'] = false,
-      ['Prop'] = 'v_ind_bin_01',
-      ['Coords'] = {
+        ['Name'] = 'Checkout',
+        ['PlaceOnGround'] = false,
+        ['ShowItem'] = false,
+        ['Prop'] = 'v_ind_bin_01',
+        ['Coords'] = {
         ['X'] = 287.3003,
         ['Y'] = -977.0709,
         ['Z'] = 19.736,
         ['H'] = 165,
-      },
+        },
     },
 }
 
 
-Config.drankjes = {
+Config.drinks = {
     [1] = {
         name = "water_bottle",
         price = 100,
@@ -117,7 +117,3 @@ Config.drankjes = {
         slot = 9,
     },
 }
-
-
-
-

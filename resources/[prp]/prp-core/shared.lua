@@ -187,7 +187,7 @@ PRPShared.Items = {
 	["pizzameat"] 		 			 	 = {["name"] = "pizzameat",       		    ["label"] = "Pizza Meat",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizzameat.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Pizza meat"},
 	["groenten"] 						 = {["name"] = "groenten", 			  	  	["label"] = "Pizza Vegetables", 				["weight"] = 100, 		["type"] = "item", 		["image"] = "groenten.png", 	    	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Fresh vegetables"},
 	["pizza-vooraad"] 	 			 	 = {["name"] = "pizza-vooraad",       		["label"] = "Pizza box",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizavooraad.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,    ["expire"] = 5,	  ["description"] = "Stock box for the pizza shop"},
-	["pizza-doos"] 	 			 	 	 = {["name"] = "pizza-doos",       			["label"] = "Box of Pizza",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizzadoos.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Deliver this delicious pizza"},
+	["pizza-box"] 	 			 	 	 = {["name"] = "pizza-box",       			["label"] = "Box of Pizza",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizzadoos.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Deliver this delicious pizza"},
 	["pizza-box"] 					 = {["name"] = "pizza-box", 			 	  	["label"] = "Pizza box", 			    ["weight"] = 7500, 	["type"] = "item", 		["image"] = "pizza-box.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Sow this one is heavy."},
 	["mojito"] 						 = {["name"] = "mojito", 			 	  	  	["label"] = "Mojito Cocktail", 					["weight"] = 125, 		["type"] = "item", 		["image"] = "mojito.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "A nice cocktail."},
 	["slushy"] 						 = {["name"] = "slushy", 			 	  	  	["label"] = "Slushy", 					["weight"] = 125, 		["type"] = "item", 		["image"] = "slushy.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Watch out for a brain freeze."},
@@ -803,24 +803,24 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Recruit',
-                payment = 0
+                payment = 100
             },
 			['1'] = {
                 name = 'House Sales',
-                payment = 0
+                payment = 130
             },
 			['2'] = {
                 name = 'Business Sales',
-                payment = 0
+                payment = 150
             },
 			['3'] = {
                 name = 'Broker',
-                payment = 0
+                payment = 180
             },
 			['4'] = {
                 name = 'Manager',
 				isboss = true,
-                payment = 0
+                payment = 200
             },
         },
 	},
@@ -857,24 +857,24 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Recruit',
-                payment = 0
+                payment = 50
             },
 			['1'] = {
                 name = 'Driver',
-                payment = 0
+                payment = 100
             },
 			['2'] = {
                 name = 'Event Driver',
-                payment = 0
+                payment = 100
             },
 			['3'] = {
                 name = 'Sales',
-                payment = 0
+                payment = 125
             },
 			['4'] = {
                 name = 'Manager',
 				isboss = true,
-                payment = 0
+                payment = 150
             },
         },
 	},
@@ -939,12 +939,16 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = "Employee",
-                payment = 55
+                payment = 75
 			},
-			['1'] = {
+            ['1'] = {
+                name = "Manager",
+                payment = 100
+			},
+			['2'] = {
 				name = "Boss",
 				isboss = true,
-                payment = 100
+                payment = 125
             },
 		},
 	},
@@ -954,7 +958,7 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Judge',
-                payment = 0
+                payment = 200
             },
         },
 	},
@@ -1035,28 +1039,29 @@ PRPShared.Jobs = {
 		grades = {
 			['0'] = {
 				name = "Security",
-				payment = 0
+				payment = 100
 			},
 			['1'] = {
 				name = "Bartender",
-				payment = 0
+				payment = 100
 			},
 			['2'] = {
 				name = "DJ",
-				payment = 0
+				payment = 100
 			},
 			['3'] = {
 				name = "Stripper",
-				payment = 0
+				payment = 100
 			},
 			['4'] = {
 				name = "Manager",
-				payment = 0
+				isboss = true,
+				payment = 125
 			},
 			['5'] = {
 				name = "Owner",
 				isboss = true,
-				payment = 0
+				payment = 125
 			},
 		},
 	},

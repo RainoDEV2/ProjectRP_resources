@@ -16,10 +16,10 @@ function TDPD.Utils.DrawText3Ds(coords, text)
 end
 
 function TDPD.Utils.hasJob(jobName)
-    for _, value in ipairs(TDPD.Config.PoliceJobs) do
-      if value == jobName then
-        return true
-      end
+  for _, value in ipairs(TDPD.Config.PoliceJobs) do
+    if value == jobName then
+      return true
     end
-    return false
+  end
+  return false
 end

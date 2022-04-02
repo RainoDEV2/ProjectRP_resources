@@ -79,16 +79,13 @@ ProjectRP.Functions.CreateCallback('prp-pizzeria:server:CheckBail', function(sou
 end)
 
 
-
-
-
 RegisterServerEvent('prp-pizza:server:start:black')
 AddEventHandler('prp-pizza:server:start:black', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
     TriggerClientEvent('prp-pizza:start:black:job', src)
-    Player.Functions.AddItem("pizza-doos", 1)
-    TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-doos'], 'add')
+    Player.Functions.AddItem("pizza-box", 1)
+    TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-box'], 'add')
 end)
 
 ProjectRP.Functions.CreateCallback('prp-pizzeria:server:GetConfig', function(source, cb)
@@ -100,14 +97,14 @@ AddEventHandler('prp-pizza:server:reward:money', function()
     local Player = ProjectRP.Functions.GetPlayer(source)
     Player.Functions.AddMoney('cash', math.random(360, 500), "pizza-shop-reward")
     TriggerClientEvent('ProjectRP:Notify', source, "Pizza delivered! Go back to the Pizza Shop for a new delivery.")
-    Player.Functions.RemoveItem('pizza-doos', 1)
-    TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-doos'], 'remove')
+    Player.Functions.RemoveItem('pizza-box', 1)
+    TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-box'], 'remove')
 
 end)
 
 
-RegisterServerEvent('prp-pizzeria:server:remove:verpak')
-AddEventHandler('prp-pizzeria:server:remove:verpak', function()
+RegisterServerEvent('prp-pizzeria:server:remove:pack')
+AddEventHandler('prp-pizzeria:server:remove:pack', function()
     local Player = ProjectRP.Functions.GetPlayer(source)
     
     if Player ~= nil then
@@ -115,13 +112,13 @@ AddEventHandler('prp-pizzeria:server:remove:verpak', function()
     end
 end)
 
-RegisterServerEvent('prp-pizzeria:server:add:doos')
-AddEventHandler('prp-pizzeria:server:add:doos', function()
+RegisterServerEvent('prp-pizzeria:server:add:box')
+AddEventHandler('prp-pizzeria:server:add:box', function()
     local Player = ProjectRP.Functions.GetPlayer(source)
     
     if Player ~= nil then
-        Player.Functions.AddItem('pizza-doos', 1)
-        TriggerClientEvent('prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-doos'], 'add')
+        Player.Functions.AddItem('pizza-box', 1)
+        TriggerClientEvent('prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['pizza-box'], 'add')
     end
 end)
 
@@ -161,7 +158,7 @@ RegisterServerEvent('prp-pizzeria:server:rem:stuff')
 AddEventHandler('prp-pizzeria:server:rem:stuff', function(what)
     local Player = ProjectRP.Functions.GetPlayer(source)
     
-   -- if Player ~= nil then
+    -- if Player ~= nil then
     if Player ~= nil and what == "pizzameat" or what == "groenten" or what == "pizza-vooraad" or what == "pizza" then
         Player.Functions.RemoveItem(what, 1)
         TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['what'], 'add')
@@ -178,9 +175,6 @@ AddEventHandler('prp-pizzeria:server:add:stuff', function(what)
     end
 end)
 
-
-
-
 ProjectRP.Functions.CreateCallback('prp-pizza:server:get:ingredient', function(source, cb)
     local src = source
     local Ply = ProjectRP.Functions.GetPlayer(src)
@@ -193,8 +187,6 @@ ProjectRP.Functions.CreateCallback('prp-pizza:server:get:ingredient', function(s
     end
 end)
 
-
-
 ProjectRP.Functions.CreateCallback('prp-pizza:server:get:pizzas', function(source, cb)
     local src = source
     local Ply = ProjectRP.Functions.GetPlayer(src)
@@ -206,13 +198,10 @@ ProjectRP.Functions.CreateCallback('prp-pizza:server:get:pizzas', function(sourc
     end
 end)
 
-ProjectRP.Functions.CreateUseableItem("pizza-doos", function(source, item)
+ProjectRP.Functions.CreateUseableItem("pizza-box", function(source, item)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
-	TriggerClientEvent("prp-inventory:client:ItemBox", source, ProjectRP.Shared.Items['pizza-doos'], "remove")
-	xPlayer.Functions.RemoveItem("pizza-doos", 1)
+	TriggerClientEvent("prp-inventory:client:ItemBox", source, ProjectRP.Shared.Items['pizza-box'], "remove")
+	xPlayer.Functions.RemoveItem("pizza-box", 1)
 	TriggerClientEvent("prp-inventory:client:ItemBox", source, ProjectRP.Shared.Items['pizza'], "add")
     xPlayer.Functions.AddItem('pizza', 1) 
 end)
-
-
-

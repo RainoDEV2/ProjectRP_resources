@@ -15,7 +15,7 @@ local isLoggedIn = false
 local PlayerData = {}
 local PlayerJob = {}
 local CurrentWorkObject_pizza = {}
-local Bezig = false
+local InProcess = false
 
 local Nearby = false
 
@@ -24,10 +24,10 @@ local InRange = false
 RegisterNetEvent('ProjectRP:Client:OnPlayerLoaded')
 AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
     Citizen.SetTimeout(1250, function()
-      ProjectRP.Functions.GetPlayerData(function(PlayerData)
-        PlayerJob, onDuty = PlayerData.job, PlayerData.job.onduty 
-        isLoggedIn = true 
-     end)
+		ProjectRP.Functions.GetPlayerData(function(PlayerData)
+			PlayerJob, onDuty = PlayerData.job, PlayerData.job.onduty 
+			isLoggedIn = true 
+		end)
     end) 
 end)
 
@@ -62,8 +62,8 @@ end)
 
 RegisterNetEvent('prp-pizzeria:client:open:payment')
 AddEventHandler('prp-pizzeria:client:open:payment', function()
-  SetNuiFocus(true, true)
-  SendNUIMessage({action = 'OpenPaymentPizza', payments = Config.ActivePaymentsPizza})
+	SetNuiFocus(true, true)
+	SendNUIMessage({action = 'OpenPaymentPizza', payments = Config.ActivePaymentsPizza})
 end)
 
 RegisterNetEvent('prp-pizzeria:client:open:register')
@@ -80,36 +80,36 @@ end)
 
 RegisterNetEvent('prp-pizzeria:client:sync:register')
 AddEventHandler('prp-pizzeria:client:sync:register', function(RegisterConfig)
-  Config.ActivePaymentsPizza = RegisterConfig
+	Config.ActivePaymentsPizza = RegisterConfig
 end)
 
 
 function GetActiveRegister()
 	return Config.ActivePaymentsPizza
-  end
-  
-  RegisterNUICallback('Click', function()
-	PlaySound(-1, "CLICK_BACK", "WEB_NAVIGATION_SOUNDS_PHONE", 0, 0, 1)
-  end)
-  
-  RegisterNUICallback('ErrorClick', function()
-	PlaySound(-1, "Place_Prop_Fail", "DLC_Dmod_Prop_Editor_Sounds", 0, 0, 1)
-  end)
-  
-  RegisterNUICallback('AddPrice', function(data)
-	TriggerServerEvent('prp-pizzeria:server:add:to:register', data.Price, data.Note)
-  end)
-  
-  RegisterNUICallback('PayReceipt', function(data)
-	TriggerServerEvent('prp-pizzeria:server:pay:receipt', data.Price, data.Note, data.Id)
-  end)
-  
-  RegisterNUICallback('CloseNui', function()
-	SetNuiFocus(false, false)
-  end)
+end
 
-RegisterNetEvent('prp-pizzeria:client:pizzabakken')
-AddEventHandler('prp-pizzeria:client:pizzabakken', function()
+RegisterNUICallback('Click', function()
+	PlaySound(-1, "CLICK_BACK", "WEB_NAVIGATION_SOUNDS_PHONE", 0, 0, 1)
+end)
+
+RegisterNUICallback('ErrorClick', function()
+	PlaySound(-1, "Place_Prop_Fail", "DLC_Dmod_Prop_Editor_Sounds", 0, 0, 1)
+end)
+
+RegisterNUICallback('AddPrice', function(data)
+	TriggerServerEvent('prp-pizzeria:server:add:to:register', data.Price, data.Note)
+end)
+
+RegisterNUICallback('PayReceipt', function(data)
+	TriggerServerEvent('prp-pizzeria:server:pay:receipt', data.Price, data.Note, data.Id)
+end)
+
+RegisterNUICallback('CloseNui', function()
+	SetNuiFocus(false, false)
+end)
+
+RegisterNetEvent('prp-pizzeria:client:bakingpizza')
+AddEventHandler('prp-pizzeria:client:bakingpizza', function()
 	ProjectRP.Functions.TriggerCallback('prp-pizza:server:get:ingredient', function(HasItems)  
 	if HasItems then
 	TriggerEvent('prp-inventory:client:busy:status', true)
@@ -129,7 +129,7 @@ AddEventHandler('prp-pizzeria:client:pizzabakken', function()
         coords = { x = -0.00, y = 0.00, z = 0.00 },
         rotation = { x = 0.0, y = 0.0, z = 0.0 },
 	}, {}, function() -- Done
-	    StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
+		StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
 		TriggerEvent('prp-inventory:client:busy:status', false)
 		TriggerServerEvent('prp-pizzeria:server:rem:stuff', "pizzameat")
 		TriggerServerEvent('prp-pizzeria:server:rem:stuff', "groenten")
@@ -137,19 +137,18 @@ AddEventHandler('prp-pizzeria:client:pizzabakken', function()
 		TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['pizzameat'], 'remove')
 		TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['groenten'], 'remove')
 		TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['pizza'], 'add')
-	    end, function()
-		    TriggerEvent('prp-inventory:client:busy:status', false)
-		    ProjectRP.Functions.Notify("Cancelled.", "error")
-	    end)
+		end, function()
+			TriggerEvent('prp-inventory:client:busy:status', false)
+			ProjectRP.Functions.Notify("Cancelled.", "error")
+		end)
     else
-	    ProjectRP.Functions.Notify("You don't have all the ingredients yet!", "error")
+		ProjectRP.Functions.Notify("You don't have all the ingredients yet!", "error")
         end
-   end)
-
+	end)
 end)	
 
-RegisterNetEvent('prp-pizzeria:client:snijdgroenten')
-AddEventHandler('prp-pizzeria:client:snijdgroenten', function()
+RegisterNetEvent('prp-pizzeria:client:cutvegetables')
+AddEventHandler('prp-pizzeria:client:cutvegetables', function()
 	TriggerEvent('prp-sound:client:play', 'Pizzameat', 0.7)
 	ProjectRP.Functions.Progressbar("pickup_sla", "Cutting Vegetables...", 5000, false, true, {
 		disableMovement = true,
@@ -169,10 +168,10 @@ AddEventHandler('prp-pizzeria:client:snijdgroenten', function()
 		StopAnimTask(PlayerPedId(), "amb@prop_human_bbq@male@base", "base", 1.0)
 		TriggerServerEvent('prp-pizzeria:server:add:stuff', 'groenten')
 		TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['groenten'], 'add')
-		Bezig = false
+		InProcess = false
 	end, function()
 		ProjectRP.Functions.Notify("Cancelled.", "error")
-		Bezig = false
+		InProcess = false
 	end)
 end)
 
@@ -180,26 +179,26 @@ end)
 RegisterNetEvent('prp-pizzeria:client:togo')
 AddEventHandler('prp-pizzeria:client:togo', function()
 	ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
-	    if HasItem then
-	        TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['pizza'], 'remove')
-	        TriggerServerEvent('prp-pizzeria:server:remove:verpak')
-	        ProjectRP.Functions.Progressbar("pickup_sla", "Packing pizza...", 4100, false, true, {
-		        disableMovement = true,
-		        disableCarMovement = false,
-		        disableMouse = false,
-		        disableCombat = false,
-	        }, {
-		        animDict = "amb@prop_human_bum_bin@idle_b",
-		        anim = "idle_d",
-		        flags = 10,
-	        }, {}, {}, function() -- Done
-		        StopAnimTask(PlayerPedId(), "amb@prop_human_bum_bin@idle_b", "idle_d", 1.0)
-	        end, function()
-		        ProjectRP.Functions.Notify("Cancelled.", "error")
-		        Bezig = false
-	        end)
-	        Citizen.Wait(4100)
-	        TriggerServerEvent('prp-pizzeria:server:add:doos')
+		if HasItem then
+			TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['pizza'], 'remove')
+			TriggerServerEvent('prp-pizzeria:server:remove:pack')
+			ProjectRP.Functions.Progressbar("pickup_sla", "Packing pizza...", 4100, false, true, {
+				disableMovement = true,
+				disableCarMovement = false,
+				disableMouse = false,
+				disableCombat = false,
+			}, {
+				animDict = "amb@prop_human_bum_bin@idle_b",
+				anim = "idle_d",
+				flags = 10,
+			}, {}, {}, function() -- Done
+				StopAnimTask(PlayerPedId(), "amb@prop_human_bum_bin@idle_b", "idle_d", 1.0)
+			end, function()
+				ProjectRP.Functions.Notify("Cancelled.", "error")
+				InProcess = false
+			end)
+			Citizen.Wait(4100)
+			TriggerServerEvent('prp-pizzeria:server:add:box')
         else
             ProjectRP.Functions.Notify("You don't have a pizza!", "error")
         end	
@@ -209,25 +208,23 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-
         inRange = false
-            if isLoggedIn then
-                
-            if (PlayerJob ~= nil) and PlayerJob.name == "pizza" then
-                    local ped = PlayerPedId()
-                    local pos = GetEntityCoords(ped)
-                    local Bosje = GetDistanceBetweenCoords(pos, Config.Boss["Menu"]["x"], Config.Boss["Menu"]["y"], Config.Boss["Menu"]["z"])
-                    if Bosje < 3 then
-                        inRange = true
-						ProjectRP.Functions.DrawText3D(Config.Boss["Menu"]["x"], Config.Boss["Menu"]["y"], Config.Boss["Menu"]["z"], 'Boss')
-                        if Bosje < 1.5 then
-                                if IsControlJustReleased(0, Keys["E"]) then
-									TriggerServerEvent('prp-bossmenu:server:openMenu')
-                                end
-                        end
+		if isLoggedIn then
+			if (PlayerJob ~= nil) and PlayerJob.name == "pizza" then
+				local ped = PlayerPedId()
+				local pos = GetEntityCoords(ped)
+				local Bosje = GetDistanceBetweenCoords(pos, Config.Boss["Menu"]["x"], Config.Boss["Menu"]["y"], Config.Boss["Menu"]["z"])
+				if Bosje < 3 then
+					inRange = true
+					ProjectRP.Functions.DrawText3D(Config.Boss["Menu"]["x"], Config.Boss["Menu"]["y"], Config.Boss["Menu"]["z"], 'Boss')
+					if Bosje < 1.5 then
+						if IsControlJustReleased(0, Keys["E"]) then
+							TriggerServerEvent('prp-bossmenu:server:openMenu')
+						end
 					end
-                end
-            end
+				end
+			end
+		end
 
         if not inRange then
             Citizen.Wait(3000)
@@ -238,18 +235,18 @@ Citizen.CreateThread(function()
 end)
 
 
-RegisterNetEvent('prp-pizzeria:client:drankjes')
-AddEventHandler('prp-pizzeria:client:drankjes', function()
+RegisterNetEvent('prp-pizzeria:client:drinks')
+AddEventHandler('prp-pizzeria:client:drinks', function()
     local ShopItems = {}
-    ShopItems.label = "Drankautomaat"
-    ShopItems.items = Config.drankjes
-    ShopItems.slots = #Config.drankjes
+    ShopItems.label = "Drinks Machine"
+    ShopItems.items = Config.drinks
+    ShopItems.slots = #Config.drinks
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "Drankjes_"..math.random(1, 99), ShopItems)
 end)
 
 
-RegisterNetEvent('prp-pizzeria:client:vleesnemen')
-AddEventHandler('prp-pizzeria:client:vleesnemen', function()
+RegisterNetEvent('prp-pizzeria:client:takemeat')
+AddEventHandler('prp-pizzeria:client:takemeat', function()
 	TriggerEvent('prp-sound:client:play', 'fridge', 0.5)
 	ProjectRP.Functions.Progressbar("pickup_sla", "Grabbing meat...", 4100, false, true, {
 		disableMovement = true,
@@ -266,13 +263,13 @@ AddEventHandler('prp-pizzeria:client:vleesnemen', function()
 		TriggerEvent('prp-inventory:client:ItemBox', ProjectRP.Shared.Items['pizzameat'], 'add')
 	end, function()
 		ProjectRP.Functions.Notify("Cancelled.", "error")
-		Bezig = false
+		InProcess = false
 	end)
 end)
 
 
 
----Voertuig
+---Vehicle
 function Pizzascooter()
     local PlayerCoords = GetEntityCoords(PlayerPedId())
     local ped = PlayerPedId()
@@ -330,44 +327,38 @@ AddEventHandler('prp-pizzeria:client:store', function(House)
     local Area = GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config.Locations["vehicle"].coords.x, Config.Locations["vehicle"].coords.y, Config.Locations["vehicle"].coords.z, true)
     local InVehicle = IsPedInAnyVehicle(PlayerPedId(), false)
     if Area < 10.0 then
-	    if InVehicle then
+		if InVehicle then
             ProjectRP.Functions.TriggerCallback('prp-pizzeria:server:CheckBail', function(DidBail)
                 if DidBail then
                     BringBackCar()
                     ProjectRP.Functions.Notify("You have received $ 500 deposit.")
                 else
                     ProjectRP.Functions.Notify("You have no deposit paid about this vehicle.")
-			    end	
+				end	
             end)
         end
     end
 end)
 
-
-
-
-RegisterNetEvent('prp-pizzeria:client:baasmenu')
-AddEventHandler('prp-pizzeria:client:baasmenu', function()
+RegisterNetEvent('prp-pizzeria:client:bossmenu')
+AddEventHandler('prp-pizzeria:client:bossmenu', function()
     if (PlayerJob ~= nil) and PlayerJob.name == "pizza" then
-	    TriggerServerEvent("prp-bossmenu:server:openMenu")
+		TriggerServerEvent("prp-bossmenu:server:openMenu")
 	end	
 end)
 
-RegisterNetEvent('prp-pizzeria:client:kluis')
-AddEventHandler('prp-pizzeria:client:kluis', function()
+RegisterNetEvent('prp-pizzeria:client:safe')
+AddEventHandler('prp-pizzeria:client:safe', function()
     if (PlayerJob ~= nil) and PlayerJob.name == "pizza" then
-	    TriggerServerEvent("prp-inventory:server:OpenInventory", "stash", "pizza")
+		TriggerServerEvent("prp-inventory:server:OpenInventory", "stash", "pizza")
         TriggerEvent("prp-inventory:client:SetCurrentStash", "pizza")
 	end	
 end)
-
-
 
 function BringBackCar()
     local veh = GetVehiclePedIsIn(PlayerPedId())
     DeleteVehicle(veh)
 end
-
 
 Citizen.CreateThread(function()
 	local blip = AddBlipForCoord(288.46,-972.12, 29.43)
