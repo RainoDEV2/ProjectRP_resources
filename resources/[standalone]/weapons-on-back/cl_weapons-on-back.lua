@@ -48,7 +48,6 @@ local attached_weapons = {}
 Citizen.CreateThread(function()
   while true do
       local me = GetPlayerPed(-1)
-      print('weapononback')
       ---------------------------------------
       -- attach if player has large weapon --
       ---------------------------------------
@@ -69,7 +68,7 @@ Citizen.CreateThread(function()
             attached_weapons[name] = nil
           end
       end
-  Wait(0)
+      Citizen.Wait(10)
   end
 end)
 
