@@ -1,4 +1,4 @@
-var WhatsappSearchActive = false;
+var MessagesSearchActive = false;
 var OpenedChatPicture = null;
 var ExtraButtonsOpen = false;
 
@@ -16,10 +16,10 @@ $(document).on('click', '#messages-search-chats', function(e){
 
     if ($("#messages-search-input").css('display') == "none") {
         $("#messages-search-input").fadeIn(150);
-        WhatsappSearchActive = true;
+        MessagesSearchActive = true;
     } else {
         $("#messages-search-input").fadeOut(150);
-        WhatsappSearchActive = false;
+        MessagesSearchActive = false;
     }
 });
 
@@ -35,7 +35,7 @@ $(document).on('click', '.messages-chat', function(e){
         number: ChatData.number
     }));
 
-    if (WhatsappSearchActive) {
+    if (MessagesSearchActive) {
         $("#messages-search-input").fadeOut(150);
     }
 
@@ -63,8 +63,8 @@ $(document).on('click', '.messages-chat', function(e){
 
 $(document).on('click', '#messages-openedchat-back', function(e){
     e.preventDefault();
-    $.post('https://prp-phone/GetWhatsappChats', JSON.stringify({}), function(chats){
-        PRP.Phone.Functions.LoadWhatsappChats(chats);
+    $.post('https://prp-phone/GetMessagesChats', JSON.stringify({}), function(chats){
+        PRP.Phone.Functions.LoadMessagesChats(chats);
     });
     OpenedChatData.number = null;
     $(".messages-chats").css({"display":"block"});
@@ -112,7 +112,7 @@ GetCurrentDateKey = function() {
     return CurDate;
 }
 
-PRP.Phone.Functions.LoadWhatsappChats = function(chats) {
+PRP.Phone.Functions.LoadMessagesChats = function(chats) {
     $(".messages-chats").html("");
     $.each(chats, function(i, chat){
         var profilepicture = "./img/default.png";
@@ -134,7 +134,7 @@ PRP.Phone.Functions.LoadWhatsappChats = function(chats) {
     });
 }
 
-PRP.Phone.Functions.ReloadWhatsappAlerts = function(chats) {
+PRP.Phone.Functions.ReloadMessagesAlerts = function(chats) {
     $.each(chats, function(i, chat){
         if (chat.Unread > 0 && chat.Unread !== undefined && chat.Unread !== null) {
             $(".unread-chat-id-"+i).html(chat.Unread);

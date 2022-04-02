@@ -147,8 +147,8 @@ $(document).on('click', '.phone-application', function(e){
                         PRP.Phone.Functions.LoadBankInvoices(invoices);
                     });
                 } else if (PressedApplication == "messages") {
-                    $.post('https://prp-phone/GetWhatsappChats', JSON.stringify({}), function(chats){
-                        PRP.Phone.Functions.LoadWhatsappChats(chats);
+                    $.post('https://prp-phone/GetMessagesChats', JSON.stringify({}), function(chats){
+                        PRP.Phone.Functions.LoadMessagesChats(chats);
                     });
                 } else if (PressedApplication == "phone") {
                     $.post('https://prp-phone/GetMissedCalls', JSON.stringify({}), function(recent){
@@ -580,15 +580,15 @@ $(document).ready(function(){
                     if (OpenedChatData.number !== null && OpenedChatData.number == event.data.chatNumber) {
                         PRP.Phone.Functions.SetupChatMessages(event.data.chatData);
                     } else {
-                        PRP.Phone.Functions.LoadWhatsappChats(event.data.Chats);
+                        PRP.Phone.Functions.LoadMessagesChats(event.data.Chats);
                     }
                 }
                 break;
             case "UpdateHashtags":
                 PRP.Phone.Notifications.LoadHashtags(event.data.Hashtags);
                 break;
-            case "RefreshWhatsappAlerts":
-                PRP.Phone.Functions.ReloadWhatsappAlerts(event.data.Chats);
+            case "RefreshMessagesAlerts":
+                PRP.Phone.Functions.ReloadMessagesAlerts(event.data.Chats);
                 break;
             case "CancelOutgoingCall":
                 $.post('https://prp-phone/HasPhone', JSON.stringify({}), function(HasPhone){

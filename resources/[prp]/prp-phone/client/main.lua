@@ -568,7 +568,7 @@ RegisterNUICallback('GetMails', function(data, cb)
     cb(PhoneData.Mails)
 end)
 
-RegisterNUICallback('GetWhatsappChat', function(data, cb)
+RegisterNUICallback('GetMessagesChat', function(data, cb)
     if PhoneData.Chats[data.phone] ~= nil then
         cb(PhoneData.Chats[data.phone])
     else
@@ -639,7 +639,7 @@ RegisterNUICallback('ClearAlerts', function(data, cb)
         PhoneData.Chats[ChatKey].Unread = 0
 
         SendNUIMessage({
-            action = "RefreshWhatsappAlerts",
+            action = "RefreshMessagesAlerts",
             Chats = PhoneData.Chats,
         })
         SendNUIMessage({ action = "RefreshAppAlerts", AppData = Config.PhoneApplications })
@@ -1177,7 +1177,7 @@ RegisterNUICallback('CanTransferMoney', function(data, cb)
     end
 end)
 
-RegisterNUICallback('GetWhatsappChats', function(data, cb)
+RegisterNUICallback('GetMessagesChats', function(data, cb)
     ProjectRP.Functions.TriggerCallback('prp-phone:server:GetContactPictures', function(Chats)
         cb(Chats)
     end, PhoneData.Chats)

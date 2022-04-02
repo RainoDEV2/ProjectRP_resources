@@ -227,8 +227,8 @@ $(document).on('click', '#new-chat-phone', function(e){
     var ContactData = $("[data-contactid='"+ContactId+"']").data('contactData');
 
     if (ContactData.number !== PRP.Phone.Data.PlayerData.charinfo.phone) {
-        $.post('https://prp-phone/GetWhatsappChats', JSON.stringify({}), function(chats){
-            PRP.Phone.Functions.LoadWhatsappChats(chats);
+        $.post('https://prp-phone/GetMessagesChats', JSON.stringify({}), function(chats){
+            PRP.Phone.Functions.LoadMessagesChats(chats);
         });
 
         $('.phone-application-container').animate({
@@ -244,7 +244,7 @@ $(document).on('click', '#new-chat-phone', function(e){
             PRP.Phone.Functions.ToggleApp("messages", "block");
             PRP.Phone.Data.currentApplication = "messages";
 
-            $.post('https://prp-phone/GetWhatsappChat', JSON.stringify({phone: ContactData.number}), function(chat){
+            $.post('https://prp-phone/GetMessagesChat', JSON.stringify({phone: ContactData.number}), function(chat){
                 PRP.Phone.Functions.SetupChatMessages(chat, {
                     name: ContactData.name,
                     number: ContactData.number
