@@ -59,7 +59,7 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 
-                    text = '911 - Blain County Savings bank robbery attempt',
+                    text = '911 - Assist collegue',
                     time = (5*60*1000),
                     sound = 3,
                 }
@@ -84,7 +84,7 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 
-                    text = '911 - Blain County Savings bank robbery attempt',
+                    text = '911 - Assist collegue',
                     time = (5*60*1000),
                     sound = 3,
                 }

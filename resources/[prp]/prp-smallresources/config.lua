@@ -49,21 +49,13 @@ Config.BlacklistedScenarios = {
 }
 
 Config.BlacklistedVehs = {
-    [`SHAMAL`] = true,
-    [`LUXOR`] = true,
-    [`LUXOR2`] = true,
     [`JET`] = true,
     [`LAZER`] = true,
-    [`BUZZARD`] = true,
     [`ANNIHILATOR`] = true,
     [`SAVAGE`] = true,
     [`TITAN`] = true,
-    [`RHINO`] = true,
-    [`FIRETRUK`] = true,
     [`MAVERICK`] = true,
     [`BLIMP`] = true,
-    [`AIRTUG`] = true,
-    [`CAMPER`] = true,    
 }
 
 Config.BlacklistedPeds = {

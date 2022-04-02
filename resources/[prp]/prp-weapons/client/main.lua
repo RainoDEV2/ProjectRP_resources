@@ -82,7 +82,7 @@ RegisterNetEvent('weapon:client:AddAmmo', function(type, amount, itemData)
             local total = GetAmmoInPedWeapon(ped, weapon)
             local found, maxAmmo = GetMaxAmmo(ped, weapon)
             if total < maxAmmo then
-                ProjectRP.Functions.Progressbar("taking_bullets", "Loading Bullets", math.random(4000, 6000), false, true, {
+                ProjectRP.Functions.Progressbar("taking_bullets", "Loading Bullets", math.random(2000, 4000), false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,

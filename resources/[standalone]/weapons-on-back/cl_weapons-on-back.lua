@@ -1,6 +1,5 @@
 -- this script puts certain large weapons on a player's back when it is not currently selected but still in there weapon wheel
 -- by: minipunch
--- originally made for USA Realism RP (https://usarrp.gg)
 
 -- Add weapons to the 'compatable_weapon_hashes' table below to make them show up on a player's back (can use GetHashKey(...) if you don't know the hash) --
 local SETTINGS = {
@@ -39,7 +38,8 @@ local SETTINGS = {
       ["w_sg_heavyshotgun"] = GetHashKey("WEAPON_HEAVYSHOTGUN"),
       -- ["w_sg_sawnoff"] = 2017895192 don't show, maybe too small?
       -- launchers:
-      ["w_lr_firework"] = 2138347493
+      ["w_lr_firework"] = 2138347493,
+      ["w_lr_rpg"] = GetHashKey("WEAPON_RPG")
     }
 }
 
@@ -48,6 +48,7 @@ local attached_weapons = {}
 Citizen.CreateThread(function()
   while true do
       local me = GetPlayerPed(-1)
+      print('weapononback')
       ---------------------------------------
       -- attach if player has large weapon --
       ---------------------------------------
