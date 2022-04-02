@@ -202,7 +202,7 @@ CreateThread(function()
                     if distance < 1 then
                         if data.IsRepairing then
                             if data.RepairingData.CitizenId ~= PlayerData.citizenid then
-                                DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, 'The repairshop in this moment is ~r~NOT~w~ usable.')
+                                DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, 'The repairshop is already repairing a weapon.')
                             else
                                 if not data.RepairingData.Ready then
                                     DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, 'Your weapon will be repaired.')
@@ -225,7 +225,7 @@ CreateThread(function()
                                     end
                                 else
                                     if data.RepairingData.CitizenId ~= PlayerData.citizenid then
-                                        DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, 'The repairshop is this moment ~r~NOT~w~ usable.')
+                                        DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, 'The repairshop is already repairing a weapon.')
                                     else
                                         DrawText3Ds(data.coords.x, data.coords.y, data.coords.z, '[E] - Take Weapon Back')
                                         if IsControlJustPressed(0, 38) then

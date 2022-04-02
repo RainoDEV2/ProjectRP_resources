@@ -109,7 +109,7 @@ ProjectRP.Functions.CreateCallback("weapons:server:RepairWeapon", function(sourc
                         TriggerEvent('prp-phone:server:sendNewMailToOffline', Player.PlayerData.citizenid, {
                             sender = "Tyrone",
                             subject = "Repair",
-                            message = "Your "..WeaponData.label.." is repaired u can pick it up at the location. <br><br> Peace out madafaka"
+                            message = "Ur "..WeaponData.label.." is repaired u can pick it up at the location. <br><br> Peace out madafaka"
                         })
                         SetTimeout(7 * 60000, function()
                             if Config.WeaponRepairPoints[RepairPoint].RepairingData.Ready then
