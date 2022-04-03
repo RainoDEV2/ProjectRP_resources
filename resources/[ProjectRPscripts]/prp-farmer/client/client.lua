@@ -489,7 +489,7 @@ end
 
 function ContainerBlip()
 	Containerblip = AddBlipForCoord(Container.Pos.x, Container.Pos.y, Container.Pos.z)
-  
+
 	SetBlipSprite (Containerblip, 479)
 	SetBlipDisplay(Containerblip, 4)
 	SetBlipScale  (Containerblip, 0.5)
@@ -503,7 +503,6 @@ end
 
 Citizen.CreateThread(function()
 	local blip = AddBlipForCoord(JobStart.Pos.x, JobStart.Pos.y, JobStart.Pos.z)
-  
 	SetBlipSprite (blip, 456)
 	SetBlipDisplay(blip, 4)
 	SetBlipScale  (blip, 1.2)

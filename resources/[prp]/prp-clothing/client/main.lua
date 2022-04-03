@@ -335,12 +335,12 @@ Citizen.CreateThread(function()
     for k, v in pairs (Config.Stores) do
         if Config.Stores[k].shopType == "clothing" then
             local clothingShop = AddBlipForCoord(Config.Stores[k].coords)
-            SetBlipSprite(clothingShop, 366)
-            SetBlipColour(clothingShop, 47)
-            SetBlipScale  (clothingShop, 0.7)
+            SetBlipSprite(clothingShop, 73)
+            SetBlipColour(clothingShop, 3)
+            SetBlipScale(clothingShop, 0.7)
             SetBlipAsShortRange(clothingShop, true)
             BeginTextCommandSetBlipName("STRING")
-            AddTextComponentString("Clothing store")
+            AddTextComponentString("Clothing Store")
             EndTextCommandSetBlipName(clothingShop)
         end
 
@@ -348,7 +348,7 @@ Citizen.CreateThread(function()
             local barberShop = AddBlipForCoord(Config.Stores[k].coords)
             SetBlipSprite(barberShop, 71)
             SetBlipColour(barberShop, 0)
-            SetBlipScale  (barberShop, 0.7)
+            SetBlipScale(barberShop, 0.7)
             SetBlipAsShortRange(barberShop, true)
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentString("Barber")
@@ -359,7 +359,7 @@ Citizen.CreateThread(function()
             local surgeonShop = AddBlipForCoord(Config.Stores[k].coords)
             SetBlipSprite(surgeonShop, 71)
             SetBlipColour(surgeonShop, 0)
-            SetBlipScale  (surgeonShop, 0.7)
+            SetBlipScale(surgeonShop, 0.7)
             SetBlipAsShortRange(surgeonShop, true)
             BeginTextCommandSetBlipName("STRING")
             AddTextComponentString("Surgeon")
@@ -382,7 +382,6 @@ RegisterNetEvent('prp-clothing:client:getOutfits', function(requiredJob, gradeLe
 end)
 
 if Config.UseTarget then
-
     CreateThread(function()
         for k, v in pairs(Config.Stores) do
             local opts = {}
@@ -475,10 +474,8 @@ if Config.UseTarget then
             })
         end
     end)
-
 else
     CreateThread(function()
-
         local zones = {}
         for k, v in pairs(Config.Stores) do
             zones[#zones+1] = BoxZone:Create(
