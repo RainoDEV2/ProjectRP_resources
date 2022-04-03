@@ -29,14 +29,6 @@ end
 
 -- Utility
 
-local function hideText()
-    SendNUIMessage({
-        action = 'HIDE_TEXT',
-    })
-end
-
-exports('HideText', hideText)
-
 function ProjectRP.Functions.DrawText(x, y, width, height, scale, r, g, b, a, text)
     -- Use local function instead
     SetTextFont(4)

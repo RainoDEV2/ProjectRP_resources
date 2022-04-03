@@ -336,7 +336,7 @@ Citizen.CreateThread(function()
                     if IsControlJustPressed(0, 38) then -- E
                         if CurrentApartment ~= nil then
                             TriggerServerEvent("inventory:server:OpenInventory", "stash", CurrentApartment)
-			                                            TriggerServerEvent("InteractSound_SV:PlayOnSource", "StashOpen", 0.4)
+                            TriggerServerEvent("InteractSound_SV:PlayOnSource", "StashOpen", 0.4)
                             TriggerEvent("inventory:client:SetCurrentStash", CurrentApartment)
                         end
                     end
@@ -357,12 +357,12 @@ Citizen.CreateThread(function()
 
                 --Logout
                 if logoutdist < 1.5 then
-                    DrawText3D(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.logout.x, Apartments.Locations[ClosestHouse].coords.enter.y + POIOffsets.logout.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.logout.z, '~g~E~w~ - Log out')
+                    DrawText3D(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.logout.x, Apartments.Locations[ClosestHouse].coords.enter.y + POIOffsets.logout.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.logout.z, '~g~E~w~ - Switch Character')
                     if IsControlJustPressed(0, 38) then -- E
                         TriggerServerEvent('prp-houses:server:LogoutLocation')
                     end
                 elseif logoutdist < 3 then
-                    DrawText3D(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.logout.x, Apartments.Locations[ClosestHouse].coords.enter.y + POIOffsets.logout.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.logout.z, 'Log out')
+                    DrawText3D(Apartments.Locations[ClosestHouse].coords.enter.x - POIOffsets.logout.x, Apartments.Locations[ClosestHouse].coords.enter.y + POIOffsets.logout.y, Apartments.Locations[ClosestHouse].coords.enter.z - CurrentOffset + POIOffsets.logout.z, 'Switch Character')
                 end
 
             else

@@ -73,18 +73,18 @@ local Extras = {
 	["Shirt"] = {
 		Drawable = 11,
 		Table = {
-			Standalone = true, Male = 252, Female = 74,
-			Extra = { 
-						{Drawable = 8, Id = 15, Tex = 0, Name = "Extra Undershirt"},
-			 			{Drawable = 3, Id = 15, Tex = 0, Name = "Extra Gloves"},
-			 			{Drawable = 10, Id = 0, Tex = 0, Name = "Extra Decals"},
-			  		}
+			Standalone = true, Male = 15, Female = 15,
+			Extra = {
+					{Drawable = 8, Id = 15, Tex = 0, Name = "Extra Undershirt"},
+					{Drawable = 3, Id = 15, Tex = 0, Name = "Extra Gloves"},
+					{Drawable = 10, Id = 0, Tex = 0, Name = "Extra Decals"},
+				}
 			},
 		Emote = {Dict = "clothingtie", Anim = "try_tie_negative_a", Move = 51, Dur = 1200}
 	},
 	["Pants"] = {
 		Drawable = 4,
-		Table = {Standalone = true, Male = 61, Female = 14},
+		Table = {Standalone = true, Male = 51, Female = 61},
 		Emote = {Dict = "re@construction", Anim = "out_of_breath", Move = 51, Dur = 1300}
 	},
 	["Bagoff"] = {

@@ -491,15 +491,15 @@ else
                 inZone = true
                 zoneName = zone.name
                 if zoneName == 'surgeon' then
-                    exports['prp-core']:DrawText('[E] - Plastic Surgery', 'left')
+                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get Plastic Surgery')
                 elseif zoneName == 'clothing' then
-                    exports['prp-core']:DrawText('[E] - Clothing Shop', 'left')
+                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Shop For Clothes')
                 elseif zoneName == 'barber' then
-                    exports['prp-core']:DrawText('[E] - Barber', 'left')
+                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get A Haircut')
                 end
             else
                 inZone = false
-                exports['prp-core']:HideText()
+                -- exports['prp-core']:HideText()
             end
         end)
 
@@ -518,11 +518,11 @@ else
                 zoneName = zone.name
                 if (PlayerData.job.name == Config.ClothingRooms[tonumber(string.sub(zone.name, 15))].requiredJob) then
                     inZone = true
-                    exports['prp-core']:DrawText('[E] - Clothing Shop', 'left')
+                    DrawText3Ds(Config.ClothingRooms[k].coords.x, Config.ClothingRooms[k].coords.y, Config.ClothingRooms[k].coords.z + 0.3, '~g~E~w~ - View Clothing')
                 end
             else
                 inZone = false
-                exports['prp-core']:HideText()
+                -- exports['prp-core']:HideText()
             end
         end)
     end)

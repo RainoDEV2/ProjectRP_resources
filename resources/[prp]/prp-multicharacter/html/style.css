@@ -80,7 +80,7 @@
 }
 
 .char-selected {
-    background-color: #dc143c;
+    background-color: #861bf2;
 }
 
 .disabled {
@@ -463,7 +463,7 @@ input[type="date"]::-webkit-clear-button {
     position: absolute;
     max-width: 87%;
     height: 4vh;
-    background-color: #dc143c;
+    background-color: #861bf2;
     border-radius: .3vh;
     bottom: 3vh;
     margin: 0 auto;
