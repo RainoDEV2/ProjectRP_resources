@@ -12,7 +12,7 @@
 
 --         -- Here you can add hover text for the "large" icon.
 --         SetDiscordRichPresenceAssetText('Professional FiveM Framework!')
-       
+
 --         -- Here you will have to put the image name for the "small" icon.
 --         SetDiscordRichPresenceAssetSmall('small_infinity')
 

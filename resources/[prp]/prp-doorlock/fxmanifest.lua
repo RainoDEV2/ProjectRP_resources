@@ -1,9 +1,26 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'prp-Doorlock'
-version '1.0.0'
+description 'Doorlock system for the ProjectRP Framework'
+version '2.0.0'
 
-shared_script 'config.lua'
+ui_page 'html/index.html'
+
+shared_scripts {
+    'config.lua',
+    'configs/*.lua',
+    '@prp-core/shared/locale.lua',
+    'locales/en.lua' -- Change this to your preferred language
+}
+
 server_script 'server/main.lua'
 client_script 'client/main.lua'
+
+files {
+	'html/*.html',
+	'html/*.js',
+	'html/*.css',
+	'html/sounds/*.ogg',
+}
+
+lua54 'yes'
