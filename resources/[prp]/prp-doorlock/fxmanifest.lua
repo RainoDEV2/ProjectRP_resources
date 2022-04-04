@@ -9,8 +9,6 @@ ui_page 'html/index.html'
 shared_scripts {
     'config.lua',
     'configs/*.lua',
-    '@prp-core/shared/locale.lua',
-    'locales/en.lua' -- Change this to your preferred language
 }
 
 server_script 'server/main.lua'

@@ -105,7 +105,7 @@ Config.DoorList['gabz mrpd captains office'] = {
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
 }
-s
+
 -- gabz mrpd mcd created by Milos
 Config.DoorList['gabz mrpd mcd'] = {
     pickable = false,

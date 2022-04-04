@@ -505,11 +505,11 @@ Config.ManPlayerModels = {
 Config.LoadedManModels = {}
 Config.LoadedWomanModels = {}
 
-Config.UseTarget = false
+Config.UseTarget = true
 
 -- width, length, minZ and maxZ are for the size and height of the PolyZone
 Config.Stores = {
-    [1] = {shopType = 'clothing', coords = vector3(1693.32, 4823.48, 41.06), width = 1, length = 1},
+    [1] = {shopType = 'clothing', coords = vector3(1693.32, 4823.48, 41.06), width = 5, length = 5},
     [2] = {shopType = 'clothing', coords = vector3(-712.215881, -155.352982, 37.4151268), width = 1, length = 1},
     [3] = {shopType = 'clothing', coords = vector3(-1192.94495, -772.688965, 17.3255997), width = 1, length = 1},
     [4] = {shopType = 'clothing', coords = vector3(425.236, -806.008, 28.491), width = 1, length = 1},
@@ -523,22 +523,22 @@ Config.Stores = {
     [12] = {shopType = 'clothing', coords = vector3(-3171.453, 1043.857, 19.863), width = 1, length = 1},
     [13] = {shopType = 'clothing', coords = vector3(-1100.959, 2710.211, 18.107), width = 1, length = 1},
     [14] = {shopType = 'clothing', coords = vector3(-1207.65, -1456.88, 4.3784737586975), width = 1, length = 1},
-    [15] = {shopType = 'clothing', coords = vector3(121.76, -224.6, 53.56), width = 1, length = 1},
-    [16] = {shopType = 'barber', coords = vector3(-814.3, -183.8, 36.6), width = 1, length = 1},
-    [17] = {shopType = 'barber', coords = vector3(136.8, -1708.4, 28.3), width = 1, length = 1},
-    [18] = {shopType = 'barber', coords = vector3(-1282.6, -1116.8, 6.0), width = 1, length = 1},
-    [19] = {shopType = 'barber', coords = vector3(1931.5, 3729.7, 31.8), width = 1, length = 1},
-    [20] = {shopType = 'barber', coords = vector3(1212.8, -472.9, 65.2), width = 1, length = 1},
-    [21] = {shopType = 'barber', coords = vector3(-32.9, -152.3, 56.1), width = 1, length = 1},
-    [22] = {shopType = 'barber', coords = vector3(-278.1, 6228.5, 30.7), width = 1, length = 1}
+    [15] = {shopType = 'clothing', coords = vector3(121.76, -224.6, 53.56), width = 5, length = 5},
+    [16] = {shopType = 'barber', coords = vector3(-814.3, -183.8, 36.6), width = 5, length = 5},
+    [17] = {shopType = 'barber', coords = vector3(136.8, -1708.4, 28.3), width = 5, length = 5},
+    [18] = {shopType = 'barber', coords = vector3(-1282.6, -1116.8, 6.0), width = 5, length = 5},
+    [19] = {shopType = 'barber', coords = vector3(1931.5, 3729.7, 31.8), width = 5, length = 5},
+    [20] = {shopType = 'barber', coords = vector3(1212.8, -472.9, 65.2), width = 5, length = 5},
+    [21] = {shopType = 'barber', coords = vector3(-32.9, -152.3, 56.1), width = 5, length = 5},
+    [22] = {shopType = 'barber', coords = vector3(-278.1, 6228.5, 30.7), width = 5, length = 5}
 }
 
 -- set isGang to true if the requiredJob is a gang
 Config.ClothingRooms = {
-    [1] = {requiredJob = 'police', isGang = false, coords = vector3(461.55, -998.99, 30.69), width = 1, length = 1, cameraLocation = vector4(461.55, -998.99, 30.69, 90.73)},
-    [2] = {requiredJob = 'police', isGang = false, coords = vector3(384.04, 794.19, 187.68), width = 1, length = 1, cameraLocation = vector4(384.04, 794.19, 187.68, 187.68)},
-    [3] = {requiredJob = 'ambulance', isGang = false, coords = vector3(314.1, -603.03, 43.29), width = 1, length = 1, cameraLocation = vector4(314.18, -602.9, 43.29, 161.26)},
-    [4] = {requiredJob = 'police', isGang = false, coords = vector3(-1185.88, -900.03, 13.98), width = 1, length = 1, cameraLocation = vector4(-1186.09, -900.26, 13.98, 127.55)},
+    [1] = {requiredJob = 'police', isGang = false, coords = vector3(461.55, -998.99, 30.69), width = 5, length = 5, cameraLocation = vector4(461.55, -998.99, 30.69, 90.73)},
+    [2] = {requiredJob = 'police', isGang = false, coords = vector3(384.04, 794.19, 187.68), width = 5, length = 5, cameraLocation = vector4(384.04, 794.19, 187.68, 187.68)},
+    [3] = {requiredJob = 'ambulance', isGang = false, coords = vector3(314.1, -603.03, 43.29), width = 5, length = 5, cameraLocation = vector4(314.18, -602.9, 43.29, 161.26)},
+    [4] = {requiredJob = 'police', isGang = false, coords = vector3(-1185.88, -900.03, 13.98), width = 5, length = 5, cameraLocation = vector4(-1186.09, -900.26, 13.98, 127.55)},
 }
 
 Config.Outfits = {

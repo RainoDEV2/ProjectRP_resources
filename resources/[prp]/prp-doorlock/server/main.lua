@@ -83,7 +83,10 @@ local function isAuthorized(Player, door, usedLockpick)
 
 	if Config.AdminAccess and ProjectRP.Functions.HasPermission(Player.PlayerData.source, Config.AdminPermission) then
 		if Config.Warnings then
-			showWarning(Lang:t("general.warn_admin_privilege_used", {player = Player.PlayerData.name, license = Player.PlayerData.license}))
+			local player = Player.PlayerData.name
+			local license = Player.PlayerData.license
+			-- showWarning(Lang:t("general.warn_admin_privilege_used", {player = Player.PlayerData.name, license = Player.PlayerData.license}))
+			showWarning(..player.." ("..license..") opened a door using admin privileges")
 		end
 		return true
 	end
@@ -144,28 +147,40 @@ RegisterNetEvent('prp-doorlock:server:updateState', function(doorID, locked, src
 	if not Player then return end
 	if type(doorID) ~= 'number' and type(doorID) ~= 'string' then
 		if Config.Warnings then
-			showWarning((Lang:t("general.warn_wrong_doorid_type", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID})))
+			local player = Player.PlayerData.name
+			local license = Player.PlayerData.license
+			-- showWarning((Lang:t("general.warn_wrong_doorid_type", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID})))
+			showWarning(..player.." ("..license..") didn't send an appropriate doorID (Sent: "..doorID..")")
 		end
 		return
 	end
 
 	if type(locked) ~= 'boolean' then
 		if Config.Warnings then
-			showWarning((Lang:t("general.warn_wrong_state", {player = Player.PlayerData.name, license = Player.PlayerData.license, state = locked})))
+			local player = Player.PlayerData.name
+			local license = Player.PlayerData.license
+			-- showWarning((Lang:t("general.warn_wrong_state", {player = Player.PlayerData.name, license = Player.PlayerData.license, state = locked})))
+			showWarning(..player.." ("..license..") attempted to update to an invalid state (Sent: "..locked..")")
 		end
 		return
 	end
 
 	if not Config.DoorList[doorID] then
 		if Config.Warnings then
-			showWarning(Lang:t("general.warn_wrong_doorid", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID}))
+			local player = Player.PlayerData.name
+			local license = Player.PlayerData.license
+			-- showWarning(Lang:t("general.warn_wrong_doorid", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID}))
+			showWarning(..player.." ("..license..") attempted to update invalid door (Sent: "..doorID..")")
 		end
 		return
 	end
 
 	if not unlockAnyway and not isAuthorized(Player, Config.DoorList[doorID], usedLockpick) then
 		if Config.Warnings then
-			showWarning(Lang:t("general.warn_no_authorisation", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID}))
+			local player = Player.PlayerData.name
+			local license = Player.PlayerData.license
+			-- showWarning(Lang:t("general.warn_no_authorisation", {player = Player.PlayerData.name, license = Player.PlayerData.license, doorID = doorID}))
+			showWarning(..player.." ("..license..") attempted to open a door without authorisation (Sent: "..doorID..")")
 		end
 		return
 	end
@@ -185,7 +200,11 @@ RegisterNetEvent('prp-doorlock:server:saveNewDoor', function(data, doubleDoor)
 	local src = source
 	if not ProjectRP.Functions.HasPermission(src, Config.CommandPermission) and not IsPlayerAceAllowed(src, 'command') then
 		if Config.Warnings then
-			showWarning(Lang:t("general.warn_no_permission_newdoor", {player = GetPlayerName(src), license = ProjectRP.Functions.GetIdentifier(src, 'license'), source = src}))
+			local player = GetPlayerName(src)
+			local license = ProjectRP.Functions.GetIdentifier(src, 'license')
+			local source = src
+			-- showWarning(Lang:t("general.warn_no_permission_newdoor", {player = GetPlayerName(src), license = ProjectRP.Functions.GetIdentifier(src, 'license'), source = src}))
+			showWarning(..player.." ("..license..") tried to add a new door without permission (source: "..source..")")
 		end
 		return
 	end
