@@ -21,7 +21,7 @@ function sendToDiscord(name, args, color)
             },
         }
     }
-    PerformHttpRequest('https://discord.com/api/webhooks/939200056408563752/N5oQMgffa8CMnjkaLL-itXTxDyrMMBWB0BDfOqyYBiPf-XycOr_q6OQJlEnP9A3CkZlG', function(err, text, headers) end, 'POST', json.encode({username = "Error Log", embeds = connect, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
+    PerformHttpRequest('https://discord.com/api/webhooks/960323026971422722/6YhrO5zWUer7d5U-x61odcEcd-Rx-7-dxL2L0zUKCf_7TMjtj5op7P3j8tKb708iv8gy', function(err, text, headers) end, 'POST', json.encode({username = "Error Log", embeds = connect, avatar_url = ""}), { ['Content-Type'] = 'application/json' })
 end
 
 
