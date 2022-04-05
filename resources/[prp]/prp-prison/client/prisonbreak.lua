@@ -27,7 +27,7 @@ local Gates = {
 local function OnHackDone(success)
     if success then
         TriggerServerEvent("prison:server:SetGateHit", currentGate)
-		TriggerServerEvent('prp-doorlock:server:updateState', Gates[currentGate].gatekey, false)
+		TriggerServerEvent('prp-doorlock:server:updateState', Gates[currentGate].gatekey, false, false, false, true)
 		TriggerEvent('mhacking:hide')
     else
         TriggerServerEvent("prison:server:SecurityLockdown")
@@ -57,10 +57,10 @@ RegisterNetEvent('electronickit:UseElectronickit', function()
                     TriggerEvent("mhacking:start", math.random(5, 9), math.random(10, 18), OnHackDone)
                 end, function() -- Cancel
                     StopAnimTask(PlayerPedId(), "anim@gangops@facility@servers@", "hotwire", 1.0)
-                    ProjectRP.Functions.Notify("Cancelled..", "error")
+                    ProjectRP.Functions.Notify("Process Canceled..", "error")
                 end)
             else
-                ProjectRP.Functions.Notify("You're missing an item..", "error")
+                ProjectRP.Functions.Notify("You are missing an Item..", "error")
             end
         end, "gatecrack")
     end
@@ -206,7 +206,9 @@ CreateThread(function()
             TriggerEvent('prison:client:PrisonBreakAlert')
             TriggerServerEvent("prison:server:SetJailStatus", 0)
             TriggerServerEvent("ProjectRP:Server:SetMetaData", "jailitems", {})
-            ProjectRP.Functions.Notify("You escaped... Get the hell out of here.!", "error")
+            ProjectRP.Functions.Notify("You escaped... Get the hell out of here!", "error")
+        else
+            Wait(1000)
 		end
 	end
 end)

@@ -32,6 +32,7 @@ Config.DurabilityMultiplier = {
 	['weapon_handcuffs'] 			 = 0.15,
 	['weapon_bread'] 				 = 0.15,
 	['weapon_stone_hatchet'] 		 = 0.15,
+	['weapon_katana'] 		         = 0.15,
 
 	-- Handguns
 	['weapon_pistol'] 				 = 0.15,

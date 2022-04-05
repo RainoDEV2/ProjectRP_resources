@@ -458,8 +458,8 @@ if Config.UseTarget then
             exports['prp-target']:AddBoxZone('clothing_' .. v.requiredJob .. k, v.coords, v.length, v.width, {
                 name = 'clothing_' .. v.requiredJob .. k,
                 debugPoly = false,
-                minZ = v.minZ,
-                maxZ = v.maxZ,
+                minZ = v.coords.z - 1,
+                maxZ = v.coords.z + 1,
             }, {
                 options = {
                     {
@@ -491,15 +491,15 @@ else
                 inZone = true
                 zoneName = zone.name
                 if zoneName == 'surgeon' then
-                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get Plastic Surgery')
+                    exports['prp-core']:DrawText('[E] - Plastic Surgery', 'left')
                 elseif zoneName == 'clothing' then
-                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Shop For Clothes')
+                    exports['prp-core']:DrawText('[E] - Clothing Shop', 'left')
                 elseif zoneName == 'barber' then
-                    DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get A Haircut')
+                    exports['prp-core']:DrawText('[E] - Barber', 'left')
                 end
             else
                 inZone = false
-                -- exports['prp-core']:HideText()
+                exports['prp-core']:HideText()
             end
         end)
 
@@ -518,11 +518,11 @@ else
                 zoneName = zone.name
                 if (PlayerData.job.name == Config.ClothingRooms[tonumber(string.sub(zone.name, 15))].requiredJob) then
                     inZone = true
-                    DrawText3Ds(Config.ClothingRooms[k].coords.x, Config.ClothingRooms[k].coords.y, Config.ClothingRooms[k].coords.z + 0.3, '~g~E~w~ - View Clothing')
+                    exports['prp-core']:DrawText('[E] - Clothing Shop', 'left')
                 end
             else
                 inZone = false
-                -- exports['prp-core']:HideText()
+                exports['prp-core']:HideText()
             end
         end)
     end)
@@ -572,6 +572,198 @@ else
         end
     end)
 end
+
+-- if Config.UseTarget then
+--     CreateThread(function()
+--         for k, v in pairs(Config.Stores) do
+--             local opts = {}
+--             if v.shopType == 'barber' then
+--                 opts = {
+--                     action = function(entity)
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "clothing", label = "Hair", selected = true},
+--                         })
+--                     end,
+--                     icon = "fas fa-chair-office",
+--                     label = "Barber",
+--                 }
+--             elseif v.shopType == 'clothing' then
+--                 opts = {
+--                     action = function(entity)
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "character", label = "Clothing", selected = true},
+--                             {menu = "accessoires", label = "Accessories", selected = false}
+--                         })
+--                     end,
+--                     icon = "fas fa-clothes-hanger",
+--                     label = "Clothing Store",
+--                 }
+--             elseif v.shopType == 'surgeon' then
+--                 opts = {
+--                     action = function(entity)
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "clothing", label = "Features", selected = true},
+--                         })
+--                     end,
+--                     icon = "fas fa-scalpel",
+--                     label = "Plastic Surgeon",
+--                 }
+--             end
+
+--             exports['prp-target']:AddBoxZone(v.shopType .. k, v.coords, v.length, v.width, {
+--                 name = v.shopType .. k,
+--                 debugPoly = false,
+--                 minZ = v.coords.z-1,
+--                 maxZ = v.coords.z+1,
+--             }, {
+--                 options = {
+--                     {
+--                         type = "client",
+--                         action = opts.action,
+--                         icon = opts.icon,
+--                         label = opts.label,
+--                     },
+--                 },
+--                 distance = 3
+--             })
+--         end
+
+--         for k, v in pairs(Config.ClothingRooms) do
+--             local action = nil
+--             if v.isGang then
+--                 action = function(entity)
+--                     customCamLocation = v.cameraLocation
+--                     local gradeLevel = PlayerData.gang.grade.level
+--                     TriggerEvent('prp-clothing:client:getOutfits', v.requiredJob, gradeLevel)
+--                 end
+--             else
+--                 action = function(entity)
+--                     customCamLocation = v.cameraLocation
+--                     local gradeLevel = PlayerData.job.grade.level
+--                     TriggerEvent('prp-clothing:client:getOutfits', v.requiredJob, gradeLevel)
+--                 end
+--             end
+
+--             exports['prp-target']:AddBoxZone('clothing_' .. v.requiredJob .. k, v.coords, v.length, v.width, {
+--                 name = 'clothing_' .. v.requiredJob .. k,
+--                 debugPoly = false,
+--                 minZ = v.minZ,
+--                 maxZ = v.maxZ,
+--             }, {
+--                 options = {
+--                     {
+--                         type = "client",
+--                         action = action,
+--                         icon = "fas fa-sign-in-alt",
+--                         label = "Clothing",
+--                         job = v.requiredJob
+--                     },
+--                 },
+--                 distance = 3
+--             })
+--         end
+--     end)
+-- else
+--     CreateThread(function()
+--         local zones = {}
+--         for k, v in pairs(Config.Stores) do
+--             zones[#zones+1] = BoxZone:Create(
+--                 v.coords, v.length, v.width, {
+--                 name = v.shopType,
+--                 debugPoly = false,
+--             })
+--         end
+
+--         local clothingCombo = ComboZone:Create(zones, {name = "clothingCombo", debugPoly = false})
+--         clothingCombo:onPlayerInOut(function(isPointInside, point, zone)
+--             if isPointInside then
+--                 inZone = true
+--                 zoneName = zone.name
+--                 if zoneName == 'surgeon' then
+--                     DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get Plastic Surgery')
+--                 elseif zoneName == 'clothing' then
+--                     DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Shop For Clothes')
+--                 elseif zoneName == 'barber' then
+--                     DrawText3Ds(Config.Stores[k].coords.x, Config.Stores[k].coords.y, Config.Stores[k].coords.z + 1.25, '~g~E~w~ - To Get A Haircut')
+--                 end
+--             else
+--                 inZone = false
+--                 -- exports['prp-core']:HideText()
+--             end
+--         end)
+
+--         local roomZones = {}
+--         for k, v in pairs(Config.ClothingRooms) do
+--             roomZones[#roomZones+1] = BoxZone:Create(
+--                 v.coords, v.length, v.width, {
+--                 name = 'ClothingRooms_' .. k,
+--                 debugPoly = false,
+--             })
+--         end
+
+--         local clothingRoomsCombo = ComboZone:Create(roomZones, {name = "clothingRoomsCombo", debugPoly = false})
+--         clothingRoomsCombo:onPlayerInOut(function(isPointInside, point, zone)
+--             if isPointInside then
+--                 zoneName = zone.name
+--                 if (PlayerData.job.name == Config.ClothingRooms[tonumber(string.sub(zone.name, 15))].requiredJob) then
+--                     inZone = true
+--                     DrawText3Ds(Config.ClothingRooms[k].coords.x, Config.ClothingRooms[k].coords.y, Config.ClothingRooms[k].coords.z + 0.3, '~g~E~w~ - View Clothing')
+--                 end
+--             else
+--                 inZone = false
+--                 -- exports['prp-core']:HideText()
+--             end
+--         end)
+--     end)
+
+--     -- Clothing Thread
+--     CreateThread(function ()
+--         Wait(1000)
+--         while true do
+--             local sleep = 1000
+--             if inZone then
+--                 sleep = 5
+--                 if string.find(zoneName, 'ClothingRooms_') then
+--                     if IsControlJustReleased(0, 38) then
+--                         local clothingRoom = Config.ClothingRooms[tonumber(string.sub(zoneName, 15))]
+--                         customCamLocation = clothingRoom.cameraLocation
+--                         local gradeLevel = 0
+--                         if clothingRoom.isGang then gradeLevel = PlayerData.gang.grade.level else gradeLevel = PlayerData.job.grade.level end
+--                         TriggerEvent('prp-clothing:client:getOutfits', clothingRoom.requiredJob, gradeLevel)
+--                     end
+--                 elseif zoneName == 'surgeon' then
+--                     if IsControlJustReleased(0, 38) then
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "clothing", label = "Features", selected = true},
+--                         })
+--                     end
+--                 elseif zoneName == 'clothing' then
+--                     if IsControlJustReleased(0, 38) then
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "character", label = "Clothing", selected = true},
+--                             {menu = "accessoires", label = "Accessories", selected = false}
+--                         })
+--                     end
+--                 elseif zoneName == 'barber' then
+--                     if IsControlJustReleased(0, 38) then
+--                         customCamLocation = nil
+--                         openMenu({
+--                             {menu = "clothing", label = "Hair", selected = true},
+--                         })
+--                     end
+--                 end
+--             else
+--                 sleep = 1000
+--             end
+--             Wait(sleep)
+--         end
+--     end)
+-- end
 
 RegisterNetEvent('prp-clothing:client:openOutfitMenu', function()
     ProjectRP.Functions.TriggerCallback('prp-clothing:server:getOutfits', function(result)

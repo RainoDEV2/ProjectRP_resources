@@ -15,7 +15,8 @@ client_scripts {
 	'client/main.lua',
 	'client/functions.lua',
 	'client/loops.lua',
-	'client/events.lua'
+	'client/events.lua',
+	'client/drawtext.lua'
 }
 
 server_scripts {

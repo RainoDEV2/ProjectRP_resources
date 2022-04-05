@@ -37,6 +37,7 @@ Config.WhitelistedWeaponArmed = { -- weapons specifically whitelisted to not sho
     `weapon_handcuffs`,
     `weapon_bread`,
     `weapon_stone_hatchet`,
+    `weapon_katana`,
     -- throwables
     `weapon_grenade`,
     `weapon_bzgas`,

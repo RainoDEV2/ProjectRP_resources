@@ -1,5 +1,5 @@
 # prp-prison
-Prison/Jailing Script for prp-Policejob
+Prison/Jailing Script for PRP-Policejob
 
 # License
 
