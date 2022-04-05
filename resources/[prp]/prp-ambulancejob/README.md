@@ -1,5 +1,23 @@
 # prp-ambulancejob
-EMS Job and Death/Wound Logic for prp-Core Framework :ambulance:
+EMS Job and Death/Wound Logic for QB-Core Framework :ambulance:
+
+## Dependencies
+- [prp-core](https://github.com/qbcore-framework/prp-core) (Required)
+- [prp-phone](https://github.com/qbcore-framework/prp-phone) (Required)
+- [prp-target](https://github.com/BerkieBb/prp-target) (Optional)
+- [PolyZone](https://github.com/mkafrin/PolyZone) (Required)
+
+# Server.cfg Convar Update
+- Global DrawTextUi Option
+```
+setr UseTarget false
+``` 
+
+- Global Target Option
+```
+setr UseTarget true
+```
+
 
 # License
 

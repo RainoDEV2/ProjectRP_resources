@@ -1,4 +1,3 @@
-local ProjectRP = exports['prp-core']:GetCoreObject()
 local prevPos = nil
 onPainKillers = false
 local painkillerAmount = 0
@@ -35,9 +34,39 @@ end
 
 -- Events
 
+RegisterNetEvent('hospital:client:UseIfaks', function()
+    local ped = PlayerPedId()
+    ProjectRP.Functions.Progressbar("use_bandage", 'Taking ifaks...', 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "mp_suicide",
+		anim = "pill",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        TriggerServerEvent("ProjectRP:Server:RemoveItem", "ifaks", 1)
+        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["ifaks"], "remove")
+        TriggerServerEvent('hud:server:RelieveStress', math.random(12, 24))
+        SetEntityHealth(ped, GetEntityHealth(ped) + 10)
+        onPainKillers = true
+        if painkillerAmount < 3 then
+            painkillerAmount = painkillerAmount + 1
+        end
+        if math.random(1, 100) < 50 then
+            RemoveBleed(1)
+        end
+    end, function() -- Cancel
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        ProjectRP.Functions.Notify('Canceled', "error")
+    end)
+end)
+
 RegisterNetEvent('hospital:client:UseBandage', function()
     local ped = PlayerPedId()
-    ProjectRP.Functions.Progressbar("use_bandage", "Using bandage..", 4000, false, true, {
+    ProjectRP.Functions.Progressbar("use_bandage", 'Using Bandage...', 4000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
 		disableMouse = false,
@@ -50,7 +79,7 @@ RegisterNetEvent('hospital:client:UseBandage', function()
         StopAnimTask(ped, "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
         TriggerServerEvent("ProjectRP:Server:RemoveItem", "bandage", 1)
         TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["bandage"], "remove")
-        SetEntityHealth(ped, GetEntityHealth(ped) + 25)
+        SetEntityHealth(ped, GetEntityHealth(ped) + 10)
         if math.random(1, 100) < 50 then
             RemoveBleed(1)
         end
@@ -59,13 +88,13 @@ RegisterNetEvent('hospital:client:UseBandage', function()
         end
     end, function() -- Cancel
         StopAnimTask(ped, "anim@amb@business@weed@weed_inspecting_high_dry@", "weed_inspecting_high_base_inspector", 1.0)
-        ProjectRP.Functions.Notify("Failed", "error")
+        ProjectRP.Functions.Notify('Canceled', "error")
     end)
 end)
 
 RegisterNetEvent('hospital:client:UsePainkillers', function()
     local ped = PlayerPedId()
-    ProjectRP.Functions.Progressbar("use_bandage", "Taking painkillers", 3000, false, true, {
+    ProjectRP.Functions.Progressbar("use_bandage", 'Taking Painkillers...', 3000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
 		disableMouse = false,
@@ -84,7 +113,7 @@ RegisterNetEvent('hospital:client:UsePainkillers', function()
         end
     end, function() -- Cancel
         StopAnimTask(ped, "mp_suicide", "pill", 1.0)
-        ProjectRP.Functions.Notify("Failed", "error")
+        ProjectRP.Functions.Notify('Canceled', "error")
     end)
 end)
 

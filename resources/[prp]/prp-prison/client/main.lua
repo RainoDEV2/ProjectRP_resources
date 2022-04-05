@@ -138,7 +138,7 @@ end)
 RegisterNetEvent('prison:client:Enter', function(time)
 	ProjectRP.Functions.Notify("You're in jail for " .. time .. " months..", "error")
 
-	TriggerEvent("chatMessage", "SYSTEM", "warning", "Your property has been seized, you'll get everything back when your time is up..")
+	ProjectRP.Functions.Notify("Your property has been seized, you'll get everything back when your time is up..")
 	DoScreenFadeOut(500)
 	while not IsScreenFadedOut() do
 		Wait(10)

@@ -14,7 +14,7 @@ AddEventHandler('prp-drugs:AddWeapons', function()
         price = 5000,
         amount = 1,
         info = {
-            serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+            serie = '-----'
         },
         type = "item",
         slot = 5,
@@ -25,7 +25,7 @@ AddEventHandler('prp-drugs:AddWeapons', function()
         price = 5000,
         amount = 1,
         info = {
-            serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+            serie = '-----'
         },
         type = "item",
         slot = 5,

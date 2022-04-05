@@ -6,11 +6,7 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 -- Compatibility with txAdmin Menu's heal options.
 -- This is an admin only server side event that will pass the target player id or -1.
 AddEventHandler('txAdmin:events:healedPlayer', function(eventData)
-	if
-		GetInvokingResource() ~= "monitor" or 
-		type(eventData) ~= "table" or
-		type(eventData.id) ~= "number" 
-	then
+	if GetInvokingResource() ~= "monitor" or type(eventData) ~= "table" or type(eventData.id) ~= "number" then
 		return
 	end
 
@@ -28,15 +24,6 @@ RegisterNetEvent('hospital:server:SendToBed', function(bedId, isRevive)
 	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
-RegisterNetEvent('hospital:server:LieInBed', function(bedId, isRevive)
-	local src = source
-	local Player = ProjectRP.Functions.GetPlayer(src)
-	TriggerClientEvent('hospital:client:SendToBed', src, bedId, Config.Locations["beds"][bedId], isRevive)
-	TriggerClientEvent('hospital:client:SetBed', -1, bedId, true)
-end)
-
-
-
 RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
@@ -46,8 +33,8 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 			TriggerClientEvent('hospital:client:SetBed', -1, k, true)
 			if Config.WipeInventoryOnRespawn then
 				Player.Functions.ClearInventory()
-				exports.oxmysql:execute('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
-				TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken..', 'error')
+				MySQL.Async.execute('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
+				TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken...', 'error')
 			end
 			Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned-at-hospital")
 			TriggerEvent('prp-bossmenu:server:addAccountMoney', "ambulance", Config.BillCost)
@@ -55,13 +42,14 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 			return
 		end
 	end
-	print("All beds were full, placing in first bed as fallback")
+	--print("All beds were full, placing in first bed as fallback")
+
 	TriggerClientEvent('hospital:client:SendToBed', src, 1, Config.Locations["beds"][1], true)
 	TriggerClientEvent('hospital:client:SetBed', -1, 1, true)
 	if Config.WipeInventoryOnRespawn then
 		Player.Functions.ClearInventory()
-		exports.oxmysql:execute('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
-		TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken..', 'error')
+		MySQL.Async.execute('UPDATE players SET inventory = ? WHERE citizenid = ?', { json.encode({}), Player.PlayerData.citizenid })
+		TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken...', 'error')
 	end
 	Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned-at-hospital")
 	TriggerEvent('prp-bossmenu:server:addAccountMoney', "ambulance", Config.BillCost)
@@ -72,10 +60,11 @@ RegisterNetEvent('hospital:server:ambulanceAlert', function(text)
     local src = source
     local ped = GetPlayerPed(src)
     local coords = GetEntityCoords(ped)
-    local players = ProjectRP.Functions.GetPRPPlayers()
+    local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
-        if v.PlayerData.job.name == 'ambulance' and v.PlayerData.job.onduty then
-            TriggerClientEvent('hospital:client:ambulanceAlert', v.PlayerData.source, coords, text)
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
+            TriggerClientEvent('hospital:client:ambulanceAlert', Player.PlayerData.source, coords, text)
         end
     end
 end)
@@ -88,7 +77,6 @@ RegisterNetEvent('hospital:server:SyncInjuries', function(data)
     local src = source
     PlayerInjuries[src] = data
 end)
-
 
 RegisterNetEvent('hospital:server:SetWeaponDamage', function(data)
 	local src = source
@@ -143,9 +131,10 @@ end)
 
 RegisterNetEvent('hospital:server:SetDoctor', function()
 	local amount = 0
-    local players = ProjectRP.Functions.GetPRPPlayers()
+    local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
-        if v.PlayerData.job.name == 'ambulance' and v.PlayerData.job.onduty then
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
             amount = amount + 1
         end
 	end
@@ -164,7 +153,7 @@ RegisterNetEvent('hospital:server:RevivePlayer', function(playerId, isOldMan)
 				TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['firstaid'], "remove")
 				TriggerClientEvent('hospital:client:Revive', Patient.PlayerData.source)
 			else
-				TriggerClientEvent('ProjectRP:Notify', src, "You don\'t have enough money on you..", "error")
+				TriggerClientEvent('ProjectRP:Notify', src, 'You don\'t have enough money on you...', "error")
 			end
 		else
 			Player.Functions.RemoveItem('firstaid', 1)
@@ -175,10 +164,11 @@ RegisterNetEvent('hospital:server:RevivePlayer', function(playerId, isOldMan)
 end)
 
 RegisterNetEvent('hospital:server:SendDoctorAlert', function()
-    local players = ProjectRP.Functions.GetPRPPlayers()
+    local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
-        if v.PlayerData.job.name == 'ambulance' and v.PlayerData.job.onduty then
-			TriggerClientEvent('ProjectRP:Notify', v.PlayerData.source, 'A doctor is needed at Pillbox Hospital', 'ambulance')
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
+			TriggerClientEvent('ProjectRP:Notify', Player.PlayerData.source, 'A doctor is needed at Pillbox Hospital', 'ambulance')
 		end
 	end
 end)
@@ -196,7 +186,7 @@ RegisterNetEvent('hospital:server:CanHelp', function(helperId, canHelp)
 	if canHelp then
 		TriggerClientEvent('hospital:client:HelpPerson', helperId, src)
 	else
-		TriggerClientEvent('ProjectRP:Notify', helperId, "You can\'t help this person..", "error")
+		TriggerClientEvent('ProjectRP:Notify', helperId, 'You can\'t help this person...', "error")
 	end
 end)
 
@@ -204,9 +194,10 @@ end)
 
 ProjectRP.Functions.CreateCallback('hospital:GetDoctors', function(source, cb)
 	local amount = 0
-    local players = ProjectRP.Functions.GetPRPPlayers()
+    local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
-        if v.PlayerData.job.name == 'ambulance' and v.PlayerData.job.onduty then
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
 			amount = amount + 1
 		end
 	end
@@ -246,115 +237,102 @@ ProjectRP.Functions.CreateCallback('hospital:GetPlayerBleeding', function(source
 	end
 end)
 
-ProjectRP.Functions.CreateCallback('hospital:server:HasBandage', function(source, cb)
-	local src = source
-    local player = ProjectRP.Functions.GetPlayer(src)
-    local bandage = player.Functions.GetItemByName("bandage")
-    if bandage ~= nil then cb(true) else cb(false) end
-end)
-
-ProjectRP.Functions.CreateCallback('hospital:server:HasFirstAid', function(source, cb)
-	local src = source
-    local player = ProjectRP.Functions.GetPlayer(src)
-    local firstaid = player.Functions.GetItemByName("firstaid")
-    if firstaid ~= nil then cb(true) else cb(false) end
-end)
-
 -- Commands
 
-ProjectRP.Commands.Add('911e', 'EMS Report', {{name='message', help='Message to be sent'}}, false, function(source, args)
+ProjectRP.Commands.Add('911e', 'EMS Report', {{name = 'message', help = 'Message to be sent'}}, false, function(source, args)
 	local src = source
 	if args[1] then message = table.concat(args, " ") else message = 'Civilian Call' end
     local ped = GetPlayerPed(src)
     local coords = GetEntityCoords(ped)
-    local players = ProjectRP.Functions.GetPRPPlayers()
+    local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
-        if v.PlayerData.job.name == 'ambulance' and v.PlayerData.job.onduty then
-            TriggerClientEvent('hospital:client:ambulanceAlert', v.PlayerData.source, coords, message)
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
+            TriggerClientEvent('hospital:client:ambulanceAlert', Player.PlayerData.source, coords, message)
         end
     end
 end)
 
-ProjectRP.Commands.Add("status", "Check A Players Health", {}, false, function(source, args)
+ProjectRP.Commands.Add("status", 'Check a Players Health', {}, false, function(source, args)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.PlayerData.job.name == "ambulance" then
 		TriggerClientEvent("hospital:client:CheckStatus", src)
 	else
-		TriggerClientEvent('ProjectRP:Notify', src, "You Are Not EMS", "error")
+		TriggerClientEvent('ProjectRP:Notify', src, 'You are not EMS or not signed in', "error")
 	end
 end)
 
-ProjectRP.Commands.Add("heal", "Heal A Player", {}, false, function(source, args)
+ProjectRP.Commands.Add("heal", 'Heal a Person', {}, false, function(source, args)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.PlayerData.job.name == "ambulance" then
 		TriggerClientEvent("hospital:client:TreatWounds", src)
 	else
-		TriggerClientEvent('ProjectRP:Notify', src, "You Are Not EMS", "error")
+		TriggerClientEvent('ProjectRP:Notify', src, 'You are not EMS or not signed in', "error")
 	end
 end)
 
-ProjectRP.Commands.Add("revivep", "Revive A Player", {}, false, function(source, args)
+ProjectRP.Commands.Add("revivep", 'Revive a Person', {}, false, function(source, args)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.PlayerData.job.name == "ambulance" then
 		TriggerClientEvent("hospital:client:RevivePlayer", src)
 	else
-		TriggerClientEvent('ProjectRP:Notify', src, "You Are Not EMS", "error")
+		TriggerClientEvent('ProjectRP:Notify', src, 'You are not EMS or not signed in', "error")
 	end
 end)
 
-ProjectRP.Commands.Add("revive", "Revive A Player or Yourself (Admin Only)", {{name="id", help="Player ID (may be empty)"}}, false, function(source, args)
+ProjectRP.Commands.Add("revive", 'Revive A Person or Yourself (Admin Only)', {{name = "id", help = 'Player ID (may be empty)'}}, false, function(source, args)
 	local src = source
 	if args[1] then
 		local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
 		if Player then
 			TriggerClientEvent('hospital:client:Revive', Player.PlayerData.source)
 		else
-			TriggerClientEvent('ProjectRP:Notify', src, "Player Not Online", "error")
+			TriggerClientEvent('ProjectRP:Notify', src, 'Player Not Online', "error")
 		end
 	else
 		TriggerClientEvent('hospital:client:Revive', src)
 	end
 end, "admin")
 
-ProjectRP.Commands.Add("setpain", "Set Yours or A Players Pain Level (Admin Only)", {{name="id", help="Player ID (may be empty)"}}, false, function(source, args)
+ProjectRP.Commands.Add("setpain", 'Set Yours or A Players Pain Level (Admin Only)', {{name = "id", help = 'Player ID (may be empty)'}}, false, function(source, args)
 	local src = source
 	if args[1] then
 		local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
 		if Player then
 			TriggerClientEvent('hospital:client:SetPain', Player.PlayerData.source)
 		else
-			TriggerClientEvent('ProjectRP:Notify', src, "Player Not Online", "error")
+			TriggerClientEvent('ProjectRP:Notify', src, 'Player Not Online', "error")
 		end
 	else
 		TriggerClientEvent('hospital:client:SetPain', src)
 	end
 end, "admin")
 
-ProjectRP.Commands.Add("kill", "Kill A Player or Yourself (Admin Only)", {{name="id", help="Player ID (may be empty)"}}, false, function(source, args)
+ProjectRP.Commands.Add("kill", 'Kill A Player or Yourself (Admin Only)', {{name = "id", help = 'Player ID (may be empty)'}}, false, function(source, args)
 	local src = source
 	if args[1] then
 		local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
 		if Player then
 			TriggerClientEvent('hospital:client:KillPlayer', Player.PlayerData.source)
 		else
-			TriggerClientEvent('ProjectRP:Notify', src, "Player Not Online", "error")
+			TriggerClientEvent('ProjectRP:Notify', src, 'Player Not Online', "error")
 		end
 	else
 		TriggerClientEvent('hospital:client:KillPlayer', src)
 	end
 end, "admin")
 
-ProjectRP.Commands.Add('aheal', 'Heal A Player or Yourself (Admin Only)', {{name='id', help='Player ID (may be empty)'}}, false, function(source, args)
+ProjectRP.Commands.Add('aheal', 'Heal A Player or Yourself (Admin Only)', {{name = 'id', help = 'Player ID (may be empty)'}}, false, function(source, args)
 	local src = source
 	if args[1] then
 		local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
 		if Player then
 			TriggerClientEvent('hospital:client:adminHeal', Player.PlayerData.source)
 		else
-			TriggerClientEvent('ProjectRP:Notify', src, "Player Not Online", "error")
+			TriggerClientEvent('ProjectRP:Notify', src, 'Player Not Online', "error")
 		end
 	else
 		TriggerClientEvent('hospital:client:adminHeal', src)
@@ -362,6 +340,14 @@ ProjectRP.Commands.Add('aheal', 'Heal A Player or Yourself (Admin Only)', {{name
 end, 'admin')
 
 -- Items
+
+ProjectRP.Functions.CreateUseableItem("ifaks", function(source, item)
+	local src = source
+	local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.GetItemByName(item.name) ~= nil then
+		TriggerClientEvent("hospital:client:UseIfaks", src)
+	end
+end)
 
 ProjectRP.Functions.CreateUseableItem("bandage", function(source, item)
 	local src = source

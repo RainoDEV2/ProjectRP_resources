@@ -158,7 +158,7 @@ Config.DeliveryLocations = {
     },
     [3] = {
         ["label"] = "Taxi",
-        ["coords"] = vector3(882.67, -160.26, 77.11),
+        ["coords"] = vector3(871.51, -157.96, 78.34),
     },
     [4] = {
         ["label"] = "Resort",

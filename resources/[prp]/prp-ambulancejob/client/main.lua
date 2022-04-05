@@ -1,4 +1,4 @@
-local ProjectRP = exports['prp-core']:GetCoreObject()
+ProjectRP = exports['prp-core']:GetCoreObject()
 
 local getOutDict = 'switch@franklin@bed'
 local getOutAnim = 'sleep_getup_rubeyes'
@@ -9,8 +9,10 @@ local bedOccupyingData = nil
 local closestBed = nil
 local doctorCount = 0
 local CurrentDamageList = {}
-inBedDict = "misslamar1dead_body"
-inBedAnim = "dead_idle"
+local inCheckin = false
+local inBed = false
+inBedDict = "anim@gangops@morgue@table@"
+inBedAnim = "body_search"
 isInHospitalBed = false
 isBleeding = 0
 bleedTickTimer, advanceBleedTimer = 0, 0
@@ -29,95 +31,41 @@ healAnim = "cpr_pumpchest"
 injured = {}
 
 BodyParts = {
-    ['HEAD'] = { label = 'head', causeLimp = false, isDamaged = false, severity = 0 },
-    ['NECK'] = { label = 'neck', causeLimp = false, isDamaged = false, severity = 0 },
-    ['SPINE'] = { label = 'spine', causeLimp = true, isDamaged = false, severity = 0 },
-    ['UPPER_BODY'] = { label = 'upper body', causeLimp = false, isDamaged = false, severity = 0 },
-    ['LOWER_BODY'] = { label = 'lower body', causeLimp = true, isDamaged = false, severity = 0 },
-    ['LARM'] = { label = 'left arm', causeLimp = false, isDamaged = false, severity = 0 },
-    ['LHAND'] = { label = 'left hand', causeLimp = false, isDamaged = false, severity = 0 },
-    ['LFINGER'] = { label = 'left fingers', causeLimp = false, isDamaged = false, severity = 0 },
-    ['LLEG'] = { label = 'left leg', causeLimp = true, isDamaged = false, severity = 0 },
-    ['LFOOT'] = { label = 'left foot', causeLimp = true, isDamaged = false, severity = 0 },
-    ['RARM'] = { label = 'right arm', causeLimp = false, isDamaged = false, severity = 0 },
-    ['RHAND'] = { label = 'right hand', causeLimp = false, isDamaged = false, severity = 0 },
-    ['RFINGER'] = { label = 'right fingers', causeLimp = false, isDamaged = false, severity = 0 },
-    ['RLEG'] = { label = 'right leg', causeLimp = true, isDamaged = false, severity = 0 },
-    ['RFOOT'] = { label = 'right foot', causeLimp = true, isDamaged = false, severity = 0 },
-}
-
-WeaponDamageList = {
-	["WEAPON_UNARMED"] = "Fist prints",
-	["WEAPON_ANIMAL"] = "Bite wound of an animal",
-	["WEAPON_COUGAR"] = "Bite wound of an animal",
-	["WEAPON_KNIFE"] = "Stab wound",
-	["WEAPON_NIGHTSTICK"] = "Bump from a stick or something similar",
-	["WEAPON_BREAD"] = "Dent in your head from a baguette!",
-	["WEAPON_HAMMER"] = "Bump from a stick or something similar",
-	["WEAPON_BAT"] = "Bump from a stick or something similar",
-	["WEAPON_GOLFCLUB"] = "Bump from a stick or something similar",
-	["WEAPON_CROWBAR"] = "Bump from a stick or something similar",
-	["WEAPON_PISTOL"] = "Pistol bullets in the body",
-	["WEAPON_COMBATPISTOL"] = "Pistol bullets in the body",
-	["WEAPON_APPISTOL"] = "Pistol bullets in the body",
-	["WEAPON_PISTOL50"] = "50 Cal Pistol bullets in the body",
-	["WEAPON_MICROSMG"] = "SMG bullets in the body",
-	["WEAPON_SMG"] = "SMG bullets in the body",
-	["WEAPON_ASSAULTSMG"] = "SMG bullets in the body",
-	["WEAPON_ASSAULTRIFLE"] = "Rifle bullets in the body",
-	["WEAPON_CARBINERIFLE"] = "Rifle bullets in the body",
-	["WEAPON_ADVANCEDRIFLE"] = "Rifle bullets in the body",
-	["WEAPON_MG"] = "Machine Gun bullets in the body",
-	["WEAPON_COMBATMG"] = "Machine Gun bullets in the body",
-	["WEAPON_PUMPSHOTGUN"] = "Shotgun bullets in the body",
-	["WEAPON_SAWNOFFSHOTGUN"] = "Shotgun bullets in the body",
-	["WEAPON_ASSAULTSHOTGUN"] = "Shotgun bullets in the body",
-	["WEAPON_BULLPUPSHOTGUN"] = "Shotgun bullets in the body",
-	["WEAPON_STUNGUN"] = "Taser prints",
-	["WEAPON_SNIPERRIFLE"] = "Sniper bullets in the body",
-	["WEAPON_HEAVYSNIPER"] = "Sniper bullets in the body",
-	["WEAPON_REMOTESNIPER"] = "Sniper bullets in the body",
-	["WEAPON_GRENADELAUNCHER"] = "Burns and fragments",
-	["WEAPON_GRENADELAUNCHER_SMOKE"] = "Smoke Damage",
-	["WEAPON_RPG"] = "Burns and fragments",
-	["WEAPON_STINGER"] = "Burns and fragments",
-	["WEAPON_MINIGUN"] = "Very much bullets in the body",
-	["WEAPON_GRENADE"] = "Burns and fragments",
-	["WEAPON_STICKYBOMB"] = "Burns and fragments",
-	["WEAPON_SMOKEGRENADE"] = "Smoke Damage",
-	["WEAPON_BZGAS"] = "Gas Damage",
-	["WEAPON_MOLOTOV"] = "Heavy Burns",
-	["WEAPON_FIREEXTINGUISHER"] = "Sprayed on :)",
-	["WEAPON_PETROLCAN"] = "Petrol Can Damage",
-	["WEAPON_FLARE"] = "Flare Damage",
-	["WEAPON_BARBED_WIRE"] = "Barbed Wire Damage",
-	["WEAPON_DROWNING"] = "Drowned",
-	["WEAPON_DROWNING_IN_VEHICLE"] = "Drowned",
-	["WEAPON_BLEEDING"] = "Lost a lot of blood",
-	["WEAPON_ELECTRIC_FENCE"] = "Electric Fence Wounds",
-	["WEAPON_EXPLOSION"] = "Many burns (from explosives)",
-	["WEAPON_FALL"] = "Broken bones",
-	["WEAPON_EXHAUSTION"] = "Died of Exhaustion",
-	["WEAPON_HIT_BY_WATER_CANNON"] = "Water Cannon Pelts",
-	["WEAPON_RAMMED_BY_CAR"] = "Car accident",
-	["WEAPON_RUN_OVER_BY_CAR"] = "Hit by a vehicle",
-	["WEAPON_HELI_CRASH"] = "Helicopter crash",
-	["WEAPON_FIRE"] = "Many burns",
+    ['HEAD'] =          { label = 'Head',          causeLimp = false, isDamaged = false, severity = 0 },
+    ['NECK'] =          { label = 'Neck',          causeLimp = false, isDamaged = false, severity = 0 },
+    ['SPINE'] =         { label = 'Spine',         causeLimp = true, isDamaged = false, severity = 0 },
+    ['UPPER_BODY'] =    { label = 'Upper Body',    causeLimp = false, isDamaged = false, severity = 0 },
+    ['LOWER_BODY'] =    { label = 'Lower Body',    causeLimp = true, isDamaged = false, severity = 0 },
+    ['LARM'] =          { label = 'Left Arm',      causeLimp = false, isDamaged = false, severity = 0 },
+    ['LHAND'] =         { label = 'Left Hand',     causeLimp = false, isDamaged = false, severity = 0 },
+    ['LFINGER'] =       { label = 'Left Fingers',  causeLimp = false, isDamaged = false, severity = 0 },
+    ['LLEG'] =          { label = 'Left Leg',      causeLimp = true, isDamaged = false, severity = 0 },
+    ['LFOOT'] =         { label = 'Left Foot',     causeLimp = true, isDamaged = false, severity = 0 },
+    ['RARM'] =          { label = 'Right Arm',     causeLimp = false, isDamaged = false, severity = 0 },
+    ['RHAND'] =         { label = 'Right Hand',    causeLimp = false, isDamaged = false, severity = 0 },
+    ['RFINGER'] =       { label = 'Right Fingers', causeLimp = false, isDamaged = false, severity = 0 },
+    ['RLEG'] =          { label = 'Right Leg',     causeLimp = true, isDamaged = false, severity = 0 },
+    ['RFOOT'] =         { label = 'Right Foot',    causeLimp = true, isDamaged = false, severity = 0 },
 }
 
 -- Functions
 
 local function GetAvailableBed(bedId)
+    local pos = GetEntityCoords(PlayerPedId())
     local retval = nil
     if bedId == nil then
         for k, v in pairs(Config.Locations["beds"]) do
             if not Config.Locations["beds"][k].taken then
-                retval = k
+                if #(pos - vector3(Config.Locations["beds"][k].coords.x, Config.Locations["beds"][k].coords.y, Config.Locations["beds"][k].coords.z)) < 500 then
+                        retval = k
+                end
             end
         end
     else
         if not Config.Locations["beds"][bedId].taken then
-            retval = bedId
+            if #(pos - vector3(Config.Locations["beds"][bedId].coords.x, Config.Locations["beds"][bedId].coords.y, Config.Locations["beds"][bedId].coords.z))  < 500 then
+                retval = bedId
+            end
         end
     end
     return retval
@@ -134,7 +82,6 @@ local function GetDamagingWeapon(ped)
 end
 
 local function IsDamagingEvent(damageDone, weapon)
-    math.randomseed(GetGameTimer())
     local luck = math.random(100)
     local multi = damageDone / Config.HealthDamage
 
@@ -147,22 +94,25 @@ local function DoLimbAlert()
             local limbDamageMsg = ''
             if #injured <= Config.AlertShowInfo then
                 for k, v in pairs(injured) do
-                    limbDamageMsg = limbDamageMsg .. "Your " .. v.label .. " feels "..Config.WoundStates[v.severity]
+                    local limb = v.label
+                    local severity = Config.WoundStates[v.severity]
+                    limbDamageMsg = limbDamageMsg..'Your ' .. limb .. ' feels ' .. severity
                     if k < #injured then
                         limbDamageMsg = limbDamageMsg .. " | "
                     end
                 end
             else
-                limbDamageMsg = "You have pain on many places.."
+                limbDamageMsg = 'You have pain in many places...'
             end
-            ProjectRP.Functions.Notify(limbDamageMsg, "primary", 5000)
+            ProjectRP.Functions.Notify(limbDamageMsg, "primary")
         end
     end
 end
 
 local function DoBleedAlert()
     if not isDead and tonumber(isBleeding) > 0 then
-        ProjectRP.Functions.Notify("You are "..Config.BleedingStates[tonumber(isBleeding)].label, "error", 5000)
+        local bleedstate = Config.BleedingStates[tonumber(isBleeding)].label
+        ProjectRP.Functions.Notify('You are ' .. bleedstate, "error")
     end
 end
 
@@ -369,21 +319,6 @@ local function LeaveBed()
     isInHospitalBed = false
 end
 
-local function DrawText3D(x, y, z, text)
-	SetTextScale(0.3, 0.3)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(true)
-    AddTextComponentString(text)
-    SetDrawOrigin(x,y,z, 0)
-    DrawText(0.0, 0.0)
-    local factor = (string.len(text)) / 400
-    DrawRect(0.0, 0.0+0.0110, 0.017+ factor, 0.03, 0, 0, 0, 75)
-    ClearDrawOrigin()
-end
-
 local function IsInDamageList(damage)
     local retval = false
     if CurrentDamageList then
@@ -398,18 +333,18 @@ end
 
 local function CheckWeaponDamage(ped)
     local detected = false
-    for k, v in pairs(WeaponDamageList) do
+    for k, v in pairs(ProjectRP.Shared.Weapons) do
         if HasPedBeenDamagedByWeapon(ped, GetHashKey(k), 0) then
             detected = true
             if not IsInDamageList(k) then
                 TriggerEvent('chat:addMessage', {
                     color = { 255, 0, 0},
                     multiline = false,
-                    args = {"Status", v}
+                    args = {'Status Check', v.damagereason}
                 })
                 CurrentDamageList[#CurrentDamageList+1] = k
             end
-	    end
+        end
     end
     if detected then
         TriggerServerEvent("hospital:server:SetWeaponDamage", CurrentDamageList)
@@ -592,41 +527,27 @@ end
 -- Events
 
 RegisterNetEvent('hospital:client:ambulanceAlert', function(coords, text)
-    local street1, street2 = GetStreetNameAtCoord(coords.x, coords.y, coords.z, Citizen.ResultAsInteger(), Citizen.ResultAsInteger())
+    local street1, street2 = GetStreetNameAtCoord(coords.x, coords.y, coords.z)
     local street1name = GetStreetNameFromHashKey(street1)
     local street2name = GetStreetNameFromHashKey(street2)
-    ProjectRP.Functions.Notify({text = text, caption = street1name.. ' ' ..street2name}, 'ambulance')
-    PlaySound(-1, "Lose_1st", "GTAO_FM_Events_Soundset", 0, 0, 1)
-    local transG = 250
-    local blip = AddBlipForCoord(coords.x, coords.y, coords.z)
-    local blip2 = AddBlipForCoord(coords.x, coords.y, coords.z)
-    local blipText = 'EMS Alert - ' ..text
-    SetBlipSprite(blip, 153)
-    SetBlipSprite(blip2, 161)
-    SetBlipColour(blip, 1)
-    SetBlipColour(blip2, 1)
-    SetBlipDisplay(blip, 4)
-    SetBlipDisplay(blip2, 8)
-    SetBlipAlpha(blip, transG)
-    SetBlipAlpha(blip2, transG)
-    SetBlipScale(blip, 0.8)
-    SetBlipScale(blip2, 2.0)
-    SetBlipAsShortRange(blip, false)
-    SetBlipAsShortRange(blip2, false)
-    PulseBlip(blip2)
-    BeginTextCommandSetBlipName('STRING')
-    AddTextComponentString(blipText)
-    EndTextCommandSetBlipName(blip)
-    while transG ~= 0 do
-        Wait(180 * 4)
-        transG = transG - 1
-        SetBlipAlpha(blip, transG)
-        SetBlipAlpha(blip2, transG)
-        if transG == 0 then
-            RemoveBlip(blip)
-            return
-        end
-    end
+
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'ambulance', 'police'}, 
+        coords = coords,
+        title = text,
+        message = street1name.. ' ' ..street2name,
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+            sprite = 153, 
+            scale = 1.2, 
+            colour = 1,
+            flashes = false, 
+            text = text,
+            time = (5*60*1000),
+            sound = 1,
+        }
+    })
 end)
 
 RegisterNetEvent('hospital:client:Revive', function()
@@ -657,10 +578,8 @@ RegisterNetEvent('hospital:client:Revive', function()
     TriggerServerEvent('hud:server:RelieveStress', 100)
     TriggerServerEvent("hospital:server:SetDeathStatus", false)
     TriggerServerEvent("hospital:server:SetLaststandStatus", false)
-
-    ProjectRP.Functions.Notify("You are completely healthy again!")
-
-    TriggerServerEvent('prp-walkstyles:server:walkstyles', 'get')
+    emsNotified = false
+    ProjectRP.Functions.Notify('You are completely healthy again!')
 end)
 
 RegisterNetEvent('hospital:client:SetPain', function()
@@ -702,7 +621,7 @@ RegisterNetEvent('hospital:client:HealInjuries', function(type)
         ResetPartial()
     end
     TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    ProjectRP.Functions.Notify("Your wounds have been healed!")
+    ProjectRP.Functions.Notify('Your wounds have been healed!', 'success')
 end)
 
 RegisterNetEvent('hospital:client:SendToBed', function(id, data, isRevive)
@@ -712,7 +631,7 @@ RegisterNetEvent('hospital:client:SendToBed', function(id, data, isRevive)
     CreateThread(function ()
         Wait(5)
         if isRevive then
-            ProjectRP.Functions.Notify("You are being helped..")
+            ProjectRP.Functions.Notify('You are being helped...', 'success')
             Wait(Config.AIHealTimer * 1000)
             TriggerEvent("hospital:client:Revive")
         else
@@ -725,7 +644,6 @@ RegisterNetEvent('hospital:client:SetBed', function(id, isTaken)
     Config.Locations["beds"][id].taken = isTaken
 end)
 
-
 RegisterNetEvent('hospital:client:RespawnAtHospital', function()
     TriggerServerEvent("hospital:server:RespawnAtHospital")
     if exports["prp-policejob"]:IsHandcuffed() then
@@ -736,15 +654,15 @@ end)
 
 RegisterNetEvent('hospital:client:SendBillEmail', function(amount)
     SetTimeout(math.random(2500, 4000), function()
-        local gender = "Mr."
+        local gender = 'Mr.'
         if ProjectRP.Functions.GetPlayerData().charinfo.gender == 1 then
-            gender = "Mrs."
+            gender = 'Mrs.'
         end
         local charinfo = ProjectRP.Functions.GetPlayerData().charinfo
         TriggerServerEvent('prp-phone:server:sendNewMail', {
-            sender = "Pillbox",
-            subject = "Hospital Costs",
-            message = "Dear " .. gender .. " " .. charinfo.lastname .. ",<br /><br />Hereby you received an email with the costs of the last hospital visit.<br />The final costs have become: <strong>$"..amount.."</strong><br /><br />We wish you a quick recovery!",
+            sender = 'Pillbox Hospital',
+            subject = 'Hospital Costs',
+            message = 'Dear ' .. gender .. ' ' ..charinfo.lastname.. ', <br /><br />Hereby you received an email with the costs of the last hospital visit.<br />The final costs have become: <strong>$' .. amount .. '</strong><br /><br />We wish you a quick recovery!',
             button = {}
         })
     end)
@@ -797,9 +715,11 @@ CreateThread(function()
         if isInHospitalBed and canLeaveBed then
             sleep = 0
             local pos = GetEntityCoords(PlayerPedId())
-            DrawText3D(pos.x, pos.y, pos.z, "~g~E~w~ - To get out of bed..")
+            exports['prp-core']:DrawText('[E] - To get out of bed..')
             if IsControlJustReleased(0, 38) then
+                exports['prp-core']:KeyPressed(38)
                 LeaveBed()
+                exports['prp-core']:HideText()
             end
         end
         Wait(sleep)
@@ -863,7 +783,6 @@ CreateThread(function()
                         end
 
                         if checkDamage then
-
                             if IsDamagingEvent(damageDone, weapon) then
                                 CheckDamage(ped, bone, weapon, damageDone)
                             end
@@ -892,66 +811,150 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
-    while true do
-        sleep = 1000
-        if LocalPlayer.state['isLoggedIn'] then
-            local pos = GetEntityCoords(PlayerPedId())
-
-            if #(pos - Config.Locations["checking"]) < 1.5 then
-                sleep = 7
-                if doctorCount >= Config.MinimalDoctors then
-                    DrawText3D(Config.Locations["checking"].x, Config.Locations["checking"].y, Config.Locations["checking"].z, "~g~E~w~ - Call doctor")
-                else
-                    DrawText3D(Config.Locations["checking"].x, Config.Locations["checking"].y, Config.Locations["checking"].z, "~g~E~w~ - Check in")
-                end
-                if IsControlJustReleased(0, 38) then
-                    if doctorCount >= Config.MinimalDoctors then
-                        TriggerServerEvent("hospital:server:SendDoctorAlert")
-                    else
-                        TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
-                        ProjectRP.Functions.Progressbar("hospital_checkin", "Checking in..", 2000, false, true, {
-                            disableMovement = true,
-                            disableCarMovement = true,
-                            disableMouse = false,
-                            disableCombat = true,
-                        }, {}, {}, {}, function() -- Done
-                            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-                            local bedId = GetAvailableBed()
-                            if bedId then
-                                TriggerServerEvent("hospital:server:SendToBed", bedId, true)
-                            else
-                                ProjectRP.Functions.Notify("Beds are occupied..", "error")
-                            end
-                        end, function() -- Cancel
-                            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-                            ProjectRP.Functions.Notify("Checking in failed!", "error")
-                        end)
-                    end
-                end
-            elseif #(pos - Config.Locations["checking"]) < 4.5 then
-                sleep = 7
-                if doctorCount >= Config.MinimalDoctors then
-                    DrawText3D(Config.Locations["checking"].x, Config.Locations["checking"].y, Config.Locations["checking"].z, "Call")
-                else
-                    DrawText3D(Config.Locations["checking"].x, Config.Locations["checking"].y, Config.Locations["checking"].z, "Check in")
+local listen = false
+    local function CheckInControls(variable)
+    CreateThread(function()
+        listen = true
+        while listen do
+            if IsControlJustPressed(0, 38) then
+                exports['prp-core']:KeyPressed(38)
+                if variable == "checkin" then
+                    TriggerEvent('prp-ambulancejob:checkin')
+                elseif variable == "beds" then
+                    TriggerEvent('prp-ambulancejob:beds')
                 end
             end
-
-            if closestBed and not isInHospitalBed then
-                if #(pos - vector3(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z)) < 1.5 then
-                    sleep = 7
-                    DrawText3D(Config.Locations["beds"][closestBed].coords.x, Config.Locations["beds"][closestBed].coords.y, Config.Locations["beds"][closestBed].coords.z + 0.3, "~g~E~w~ - To lie in bed")
-                    if IsControlJustReleased(0, 38) then
-                        if GetAvailableBed(closestBed) then
-                            TriggerServerEvent("hospital:server:LieInBed", closestBed, false)
-                        else
-                            ProjectRP.Functions.Notify("Beds are occupied..", "error")
-                        end
-                    end
-                end
-            end
+            Wait(1)
         end
-        Wait(sleep)
+    end)
+end 
+
+RegisterNetEvent('prp-ambulancejob:checkin', function()
+    if doctorCount >= Config.MinimalDoctors then
+        TriggerServerEvent("hospital:server:SendDoctorAlert")
+    else
+        TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
+        ProjectRP.Functions.Progressbar("hospital_checkin", 'Checking in...', 2000, false, true, {
+            disableMovement = true,
+            disableCarMovement = true,
+            disableMouse = false,
+            disableCombat = true,
+        }, {}, {}, {}, function() -- Done
+            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+            local bedId = GetAvailableBed()
+            if bedId then
+                TriggerServerEvent("hospital:server:SendToBed", bedId, true)
+            else
+                ProjectRP.Functions.Notify('Beds are occupied...', "error")
+            end
+        end, function() -- Cancel
+            TriggerEvent('animations:client:EmoteCommandStart', {"c"})
+            ProjectRP.Functions.Notify('Canceled', "error")
+        end)
     end
 end)
+
+RegisterNetEvent('prp-ambulancejob:beds', function()
+    if GetAvailableBed(closestBed) then
+        TriggerServerEvent("hospital:server:SendToBed", closestBed, false)
+    else
+        ProjectRP.Functions.Notify('Beds are occupied...', "error")
+    end
+end)
+
+-- Convar Turns into strings
+if Config.UseTarget == 'true' then
+    CreateThread(function()
+        for k, v in pairs(Config.Locations["checking"]) do
+            exports['prp-target']:AddBoxZone("checking"..k, vector3(v.x, v.y, v.z), 3.5, 2, {
+                name = "checkin"..k,
+                heading = -72,
+                debugPoly = false,
+                minZ = v.z - 2,
+                maxZ = v.z + 2,
+            }, {
+                options = {
+                    {
+                        type = "client",
+                        icon = "fa fa-clipboard",
+                        event = "prp-ambulancejob:checkin",
+                        label = "Check In",
+                    }
+                },
+                distance = 1.5
+            })
+        end
+
+        for k, v in pairs(Config.Locations["beds"]) do
+            exports['prp-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
+                name = "beds"..k,
+                heading = -20,
+                debugPoly = false,
+                minZ = v.coords.z - 1,
+                maxZ = v.coords.z + 1,
+            }, {
+                options = {
+                    {
+                        type = "client",
+                        event = "prp-ambulancejob:beds",
+                        icon = "fas fa-bed",
+                        label = "Layin Bed",
+                    }
+                },
+                distance = 1.5
+            })
+        end
+    end)
+else
+    CreateThread(function()
+        local checkingPoly = {}
+        for k, v in pairs(Config.Locations["checking"]) do
+            checkingPoly[#checkingPoly+1] = BoxZone:Create(vector3(v.x, v.y, v.z), 3.5, 2, {
+                heading = -72,
+                name="checkin"..k,
+                debugPoly = false,
+                minZ = v.z - 2,
+                maxZ = v.z + 2,
+            })
+            local checkingCombo = ComboZone:Create(checkingPoly, {name = "checkingCombo", debugPoly = false})
+            checkingCombo:onPlayerInOut(function(isPointInside)
+                if isPointInside then
+                    inCheckin = true
+                    if doctorCount >= Config.MinimalDoctors then
+                        exports['prp-core']:DrawText('[E] - Call doctor','left')
+                        CheckInControls("checkin")
+                    else
+                        exports['prp-core']:DrawText('[E] Check in', 'left')
+                        CheckInControls("checkin")
+                    end
+                else
+                    inCheckin = false
+                    listen = false
+                    exports['prp-core']:HideText()
+                end
+            end)
+        end
+        local bedPoly = {}
+        for k, v in pairs(Config.Locations["beds"]) do
+            bedPoly[#bedPoly+1] = BoxZone:Create(v.coords, 2.5, 2.3, {
+                name="beds"..k,
+                heading = -20,
+                debugPoly = false,
+                minZ = v.coords.z - 1,
+                maxZ = v.coords.z + 1,
+            })
+            local bedCombo = ComboZone:Create(bedPoly, {name = "bedCombo", debugPoly = false})
+            bedCombo:onPlayerInOut(function(isPointInside)
+                if isPointInside then
+                    inBed = true
+                    exports['prp-core']:DrawText('[E] - To lie in bed', 'left')
+                    CheckInControls("beds")
+                else
+                    inBed = false
+                    listen = false
+                    exports['prp-core']:HideText()
+                end
+            end)
+        end
+    end)
+end

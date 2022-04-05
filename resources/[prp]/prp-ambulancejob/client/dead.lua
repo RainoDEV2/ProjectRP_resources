@@ -1,5 +1,3 @@
-local ProjectRP = exports['prp-core']:GetCoreObject()
-
 local deadAnimDict = "dead"
 local deadAnim = "dead_a"
 local hold = 5
@@ -29,7 +27,21 @@ function OnDeath()
             local pos = GetEntityCoords(player)
             local heading = GetEntityHeading(player)
 
-            NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+            local ped = PlayerPedId()
+            if IsPedInAnyVehicle(ped) then
+                local veh = GetVehiclePedIsIn(ped)
+                local vehseats = GetVehicleModelNumberOfSeats(GetHashKey(GetEntityModel(veh)))
+                for i = -1, vehseats do
+                    local occupant = GetPedInVehicleSeat(veh, i)
+                    if occupant == ped then
+                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                        SetPedIntoVehicle(ped, veh, i)
+                    end
+                end
+            else
+                NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+            end
+			
             SetEntityInvincible(player, true)
             SetEntityHealth(player, GetEntityMaxHealth(player))
             if IsPedInAnyVehicle(player, false) then
@@ -102,10 +114,19 @@ CreateThread(function()
                 end
 
                 local killerId = NetworkGetPlayerIndexFromPed(killer)
-                local killerName = killerId ~= -1 and GetPlayerName(killerId) .. " " .. "("..GetPlayerServerId(killerId)..")" or "Himself or a NPC"
-                local weaponLabel = ProjectRP.Shared.Weapons?[killerWeapon]?.label or "Unknown"
-                local weaponName = ProjectRP.Shared.Weapons?[killerWeapon]?.name or "Unknown_Weapon"
-                TriggerServerEvent("prp-log:server:CreateLog", "death", GetPlayerName(-1) .. " ("..GetPlayerServerId(player)..") is dead", "red", "**".. killerName .. "** has killed ".. GetPlayerName(player) .." with a **".. weaponLabel .. "** (" .. weaponName .. ")")
+                local killerName = killerId ~= -1 and GetPlayerName(killerId) .. " " .. "("..GetPlayerServerId(killerId)..")" or 'Themselves or an NPC'
+                local weaponLabel = 'Unknown'
+                local weaponName = 'Unknown'
+                local weaponItem = ProjectRP.Shared.Weapons[killerWeapon]
+                if weaponItem then
+                    weaponLabel = weaponItem.label
+                    weaponName = weaponItem.name
+                end
+                titlePlayername = GetPlayerName(-1)
+                titlePlayerid = GetPlayerServerId(player)
+                logTitle = titlePlayername .. "(" .. titlePlayerid .. ") is dead"
+                logMessage = killerName .. "has killed " .. GetPlayerName(player) .. " with a **" .. weaponLabel .. "** (" .. weaponName .. ")"
+                TriggerServerEvent("prp-log:server:CreateLog", "death", titleText, "red", logMessage)
                 deathTime = Config.DeathTime
                 OnDeath()
                 DeathTimer()
@@ -114,11 +135,13 @@ CreateThread(function()
 	end
 end)
 
+emsNotified = false
+
 CreateThread(function()
 	while true do
         sleep = 1000
 		if isDead or InLaststand then
-            sleep = 7
+            sleep = 5
             local ped = PlayerPedId()
             DisableAllControlActions(0)
             EnableControlAction(0, 1, true)
@@ -129,15 +152,19 @@ CreateThread(function()
             EnableControlAction(0, 322, true)
             EnableControlAction(0, 288, true)
             EnableControlAction(0, 213, true)
-	        EnableControlAction(0, 249, true)
+            EnableControlAction(0, 249, true)
             EnableControlAction(0, 46, true)
+            EnableControlAction(0, 47, true)
 
             if isDead then
                 if not isInHospitalBed then
                     if deathTime > 0 then
-                        DrawTxt(0.93, 1.44, 1.0,1.0,0.6, "RESPAWN IN: ~r~" .. math.ceil(deathTime) .. "~w~ SECONDS", 255, 255, 255, 255)
+                        local deathtime = math.ceil(deathTime)
+                        DrawTxt(0.93, 1.44, 1.0,1.0,0.6, 'RESPAWN IN: ~r~' .. deathtime .. '~s~ SECONDS', 255, 255, 255, 255)
                     else
-                        DrawTxt(0.865, 1.44, 1.0, 1.0, 0.6, "~w~ HOLD ~r~[E] ("..hold..")~w~ TO RESPAWN ~r~($"..Config.BillCost..")~w~", 255, 255, 255, 255)
+                        local holdtime = hold
+                        local cost = Config.BillCost
+                        DrawTxt(0.865, 1.44, 1.0, 1.0, 0.6, 'HOLD [~r~E~s~] FOR ' .. holdtime .. ' SECONDS TO RESPAWN FOR ~r~$' .. cost .. '~s~', 255, 255, 255, 255)
                     end
                 end
 
@@ -162,23 +189,24 @@ CreateThread(function()
 
                 SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
             elseif InLaststand then
-                sleep = 7
-                DisableAllControlActions(0)
-                EnableControlAction(0, 1, true)
-                EnableControlAction(0, 2, true)
-                EnableControlAction(0, 245, true)
-                EnableControlAction(0, 38, true)
-                EnableControlAction(0, 0, true)
-                EnableControlAction(0, 322, true)
-                EnableControlAction(0, 288, true)
-                EnableControlAction(0, 213, true)
-		        EnableControlAction(0, 249, true)
-                EnableControlAction(0, 46, true)
+                sleep = 5
 
                 if LaststandTime > Laststand.MinimumRevive then
-                    DrawTxt(0.94, 1.44, 1.0, 1.0, 0.6, "YOU WILL BLEED OUT IN: ~r~" .. math.ceil(LaststandTime) .. "~w~ SECONDS", 255, 255, 255, 255)
+                    local time = math.ceil(LaststandTime)
+                    DrawTxt(0.94, 1.44, 1.0, 1.0, 0.6, 'YOU WILL BLEED OUT IN: ~r~' .. time .. '~s~ SECONDS', 255, 255, 255, 255)
                 else
-                    DrawTxt(0.845, 1.44, 1.0, 1.0, 0.6, "YOU WILL BLEED OUT IN: ~r~" .. math.ceil(LaststandTime) .. "~w~ SECONDS, YOU CAN BE HELPED", 255, 255, 255, 255)
+                    local time = math.ceil(LaststandTime)
+                    DrawTxt(0.845, 1.44, 1.0, 1.0, 0.6, 'YOU WILL BLEED OUT IN: ~r~' .. time .. '~s~ SECONDS, YOU CAN BE HELPED', 255, 255, 255, 255)
+                    if not emsNotified then
+                        DrawTxt(0.91, 1.40, 1.0, 1.0, 0.6, 'PRESS [~r~G~s~] TO REQUEST HELP', 255, 255, 255, 255)
+                    else
+                        DrawTxt(0.90, 1.40, 1.0, 1.0, 0.6, 'EMS PERSONNEL HAVE BEEN NOTIFIED', 255, 255, 255, 255)
+                    end
+
+                    if IsControlJustPressed(0, 47) and not emsNotified then
+                        TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Down')
+                        emsNotified = true
+                    end
                 end
 
                 if not isEscorted then

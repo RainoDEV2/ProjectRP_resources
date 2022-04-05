@@ -1,5 +1,3 @@
-local ProjectRP = exports['prp-core']:GetCoreObject()
-
 Laststand = Laststand or {}
 Laststand.ReviveInterval = 360
 Laststand.MinimumRevive = 300
@@ -55,7 +53,21 @@ function SetLaststand(bool, spawn)
 
         LaststandTime = Laststand.ReviveInterval
 
-        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+        local ped = PlayerPedId()
+        if IsPedInAnyVehicle(ped) then
+            local veh = GetVehiclePedIsIn(ped)
+            local vehseats = GetVehicleModelNumberOfSeats(GetHashKey(GetEntityModel(veh)))
+            for i = -1, vehseats do
+                local occupant = GetPedInVehicleSeat(veh, i)
+                if occupant == ped then
+                    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                    SetPedIntoVehicle(ped, veh, i)
+                end
+            end
+        else
+            NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+        end		
+		
         SetEntityHealth(ped, 150)
 
         if IsPedInAnyVehicle(ped, false) then
@@ -68,7 +80,7 @@ function SetLaststand(bool, spawn)
 
         InLaststand = true
 
-	TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Down')
+        TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Down')
 
         CreateThread(function()
             while InLaststand do
@@ -81,7 +93,7 @@ function SetLaststand(bool, spawn)
                     LaststandTime = LaststandTime - 1
                     Config.DeathTime = LaststandTime
                 elseif LaststandTime - 1 <= 0 then
-                    ProjectRP.Functions.Notify("You have bled out..", "error")
+                    ProjectRP.Functions.Notify('You have bled out...', "error")
                     SetLaststand(false)
                     local killer_2, killerWeapon = NetworkGetEntityKillerOfPlayer(player)
                     local killer = GetPedSourceOfDeath(ped)
@@ -91,10 +103,19 @@ function SetLaststand(bool, spawn)
                     end
 
                     local killerId = NetworkGetPlayerIndexFromPed(killer)
-                    local killerName = killerId ~= -1 and GetPlayerName(killerId) .. " " .. "("..GetPlayerServerId(killerId)..")" or "Himself or a NPC"
-                    local weaponLabel = ProjectRP.Shared.Weapons?[killerWeapon]?.label or "Unknown"
-                    local weaponName = ProjectRP.Shared.Weapons?[killerWeapon]?.name or "Unknown_Weapon"
-                    TriggerServerEvent("prp-log:server:CreateLog", "death", GetPlayerName(player) .. " ("..GetPlayerServerId(player)..") is dead", "red", "**".. killerName .. "** has killed  ".. GetPlayerName(player) .." with a **".. weaponLabel .. "** (" .. weaponName .. ")")
+                    local killerName = killerId ~= -1 and GetPlayerName(killerId) .. " " .. "("..GetPlayerServerId(killerId)..")" or 'Themselves or an NPC'
+                    local weaponLabel = 'Unknown'
+                    local weaponName = 'Unknown'
+                    local weaponItem = ProjectRP.Shared.Weapons[killerWeapon]
+                    if weaponItem then
+                        weaponLabel = weaponItem.label
+                        weaponName = weaponItem.name
+                    end
+                    titlePlayername = GetPlayerName(-1)
+                    titlePlayerid = GetPlayerServerId(player)
+                    logTitle = titlePlayername .. "(" .. titlePlayerid .. ") is dead"
+                    logMessage = killerName .. "has killed " .. GetPlayerName(player) .. " with a **" .. weaponLabel .. "** (" .. weaponName .. ")"
+                    TriggerServerEvent("prp-log:server:CreateLog", "death", titleText, "red", logMessage)
                     deathTime = 0
                     OnDeath()
                     DeathTimer()
@@ -128,7 +149,7 @@ RegisterNetEvent('hospital:client:UseFirstAid', function()
             TriggerServerEvent('hospital:server:UseFirstAid', playerId)
         end
     else
-        ProjectRP.Functions.Notify('Action impossible!', 'error')
+        ProjectRP.Functions.Notify('Action Impossible...', 'error')
     end
 end)
 
@@ -147,7 +168,7 @@ end)
 RegisterNetEvent('hospital:client:HelpPerson', function(targetId)
     local ped = PlayerPedId()
     isHealingPerson = true
-    ProjectRP.Functions.Progressbar("hospital_revive", "Reviving person..", math.random(30000, 60000), false, true, {
+    ProjectRP.Functions.Progressbar("hospital_revive", 'Reviving Person...', math.random(30000, 60000), false, true, {
         disableMovement = false,
         disableCarMovement = false,
         disableMouse = false,
@@ -159,11 +180,11 @@ RegisterNetEvent('hospital:client:HelpPerson', function(targetId)
     }, {}, {}, function() -- Done
         isHealingPerson = false
         ClearPedTasks(ped)
-        ProjectRP.Functions.Notify("You revived a person.")
+        ProjectRP.Functions.Notify('You revived a person', 'success')
         TriggerServerEvent("hospital:server:RevivePlayer", targetId)
     end, function() -- Cancel
         isHealingPerson = false
         ClearPedTasks(ped)
-        ProjectRP.Functions.Notify("Canceled!", "error")
+        ProjectRP.Functions.Notify('Canceled', "error")
     end)
 end)

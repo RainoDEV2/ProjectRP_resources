@@ -44,7 +44,7 @@ local function CreateApartmentFurnished(spawn)
     end
 	RequestModel(`furnitured_midapart`)
 	while not HasModelLoaded(`furnitured_midapart`) do
-	    Citizen.Wait(3)
+		Citizen.Wait(3)
 	end
 	local house = CreateObject(`furnitured_midapart`, spawn.x, spawn.y, spawn.z, false, false, false)
     FreezeEntityPosition(house, true)

@@ -79,7 +79,8 @@ CreateThread(function()
                             ProjectRP.Functions.TriggerCallback('prp-shops:server:getLicenseStatus', function(hasLicense, hasLicenseItem, MenuShowingCB)
                                 ShopItems.label = Config.Locations[shop]["label"]
                                 if Config.Locations[shop].type == "weapon" then
-                                    if hasLicense and hasLicenseItem then
+                                    -- if hasLicense and hasLicenseItem then -- Removes the need to have a physical licence to buy a gun
+                                    if hasLicense then
                                         ShopItems.items = SetupItems(shop)
                                         ProjectRP.Functions.Notify("The dealer verifies your license", "success")
                                         Wait(500)
