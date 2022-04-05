@@ -9,7 +9,7 @@ CreateThread(function()
     -- (11-11-2018) New Natives:
 
     -- Here you can add hover text for the "large" icon.
-    SetDiscordRichPresenceAssetText('projectrp')
+    SetDiscordRichPresenceAssetText('ProjectRP')
 
     -- Here you will have to put the image name for the "small" icon.
     SetDiscordRichPresenceAssetSmall('projectrp')
