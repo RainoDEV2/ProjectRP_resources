@@ -61,7 +61,6 @@ end)
 
 local AvailableJobs = {
     "farmer",
-    "tastyeats",
     "fruitpicker",
     "courier",
     "builder",

@@ -1087,17 +1087,6 @@ PRPShared.Jobs = {
 		},
 		defaultDuty = true,
 	},
-	["tastyeats"] = {
-		label = "tastyeats",
-		defaultDuty = true,
-		grades = {
-			['0'] = {
-				name = "Employee",
-				payment = 0
-			},
-		},
-		defaultDuty = true,
-	},
 	["warehouse"] = {
 		label = "Warehouse",
 		defaultDuty = true,
