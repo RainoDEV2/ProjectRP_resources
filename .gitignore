@@ -2,6 +2,8 @@ cache/
 server.cfg
 */prp-bossmenu/accounts.json
 */prp-walkingstyles/walkingstyles.json
+**/prp-bossmenu/accounts.json
+**/prp-walkingstyles/walkingstyles.json
 **/prp-clothes
 **/clothespack
 **/female-accs-pack
@@ -12,5 +14,6 @@ server.cfg
 **/male-accs-pack
 **/male-clothes-pack
 **/male-extra-pack
+**/male-extra2-pack
 **/male-jbib-pack
 **/male-lowr-pack
