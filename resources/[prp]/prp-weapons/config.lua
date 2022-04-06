@@ -54,6 +54,8 @@ Config.DurabilityMultiplier = {
 	['weapon_ceramicpistol'] 		 = 0.15,
 	['weapon_navyrevolver'] 		 = 0.15,
 	['weapon_gadgetpistol'] 		 = 0.15,
+    ['weapon_1911'] 		         = 0.15,
+
 
 	-- Submachine Guns
 	['weapon_microsmg'] 			 = 0.15,
