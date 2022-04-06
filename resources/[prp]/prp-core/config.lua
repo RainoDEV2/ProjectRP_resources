@@ -1,6 +1,6 @@
 PRPConfig = {}
 
-PRPConfig.MaxPlayers = GetConvarInt('sv_maxclients', 64) -- Gets max players from config file, default 64
+PRPConfig.MaxPlayers = GetConvarInt('sv_maxclients', 32) -- Gets max players from config file, default 64
 PRPConfig.DefaultSpawn = vector4(-1035.71, -2731.87, 12.86, 0.0)
 PRPConfig.UpdateInterval = 5
 PRPConfig.UpdateSalary = 15 -- how often to update player data in minutes
@@ -17,14 +17,7 @@ PRPConfig.Player.MaxInvSlots = 41 -- Max inventory slots for a player
 PRPConfig.Player.HungerRate = 4.2 -- Rate at which hunger goes down.
 PRPConfig.Player.ThirstRate = 3.8 -- Rate at which thirst goes down.
 PRPConfig.Player.Bloodtypes = {
-    "A+",
-    "A-",
-    "B+",
-    "B-",
-    "AB+",
-    "AB-",
-    "O+",
-    "O-",
+    "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-",
 }
 
 PRPConfig.Server = {} -- General server config

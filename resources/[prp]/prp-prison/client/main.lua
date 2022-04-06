@@ -76,13 +76,13 @@ RegisterNetEvent('ProjectRP:Client:OnPlayerLoaded', function()
 	while not HasModelLoaded('s_m_m_armoured_01') do
 		Wait(50)
 	end
-	canteen_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01') ,1786.19, 2557.77, 44.62, 186.04, false, true)
+	canteen_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01'), 1786.19, 2557.77, 44.62, 186.04, false, true)
 	FreezeEntityPosition(canteen_ped, true)
 	SetEntityInvincible(canteen_ped, true)
 	SetBlockingOfNonTemporaryEvents(canteen_ped, true)
 	TaskStartScenarioInPlace(canteen_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 
-	freedom_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01') , 1836.37, 2585.33, 44.88, 78.67, false, true)
+	freedom_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01'), 1807.29, 2590.59, 45.64, 137.27, false, true)
 	FreezeEntityPosition(freedom_ped, true)
 	SetEntityInvincible(freedom_ped, true)
 	SetBlockingOfNonTemporaryEvents(freedom_ped, true)
@@ -97,13 +97,13 @@ AddEventHandler('onResourceStart', function(resource)
 				TriggerEvent("prison:client:Enter", PlayerData.metadata["injail"])
 			end
 		end)
-	
+
 		ProjectRP.Functions.TriggerCallback('prison:server:IsAlarmActive', function(active)
 			if active then
 				TriggerEvent('prison:client:JailAlarm', true)
 			end
 		end)
-	
+
 		PlayerJob = ProjectRP.Functions.GetPlayerData().job
 
 		RequestModel("s_m_m_armoured_01")
@@ -115,7 +115,7 @@ AddEventHandler('onResourceStart', function(resource)
 		SetEntityInvincible(canteen_ped, true)
 		SetBlockingOfNonTemporaryEvents(canteen_ped, true)
 		TaskStartScenarioInPlace(canteen_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
-	
+
 		freedom_ped = CreatePed(5, GetHashKey('s_m_m_armoured_01') , 1836.37, 2585.33, 44.88, 78.67, false, true)
 		FreezeEntityPosition(freedom_ped, true)
 		SetEntityInvincible(freedom_ped, true)
@@ -262,8 +262,8 @@ freedom:onPlayerInOut(function(isPointInside)
 end)
 
 canteen = BoxZone:Create(vector3(Config.Locations["shop"].coords.x, Config.Locations["shop"].coords.y, Config.Locations["shop"].coords.z), 2.75, 7.75, {
-name="canteen",
-debugPoly = false,
+	name="canteen",
+	debugPoly = false,
 })
 canteen:onPlayerInOut(function(isPointInside)
 	if isPointInside then
@@ -276,45 +276,18 @@ canteen:onPlayerInOut(function(isPointInside)
 end)
 
 local function interaction()
-	if Config.UseTarget then
-			exports['prp-target']:AddTargetEntity(freedom_ped, {
-				options = {
-				{
-					type = "client",
-					event = "prison:client:Leave",
-					icon = 'fas fa-clipboard',
-					label = 'Check time',
-				}
-				},
-				distance = 2.5,
-			})
-			exports['prp-target']:AddTargetEntity(canteen_ped, {
-				options = {
-				{
-					type = "client",
-					event = "prison:client:canteen",
-					icon = 'fas fa-clipboard',
-					label = 'Get Food',
-				}
-				},
-				distance = 2.5,
-			})
-	else
-		if insidefreedom then
-			if IsControlJustReleased(0, 38) then
-				TriggerEvent("prison:client:Leave")
-			end
+	if insidefreedom then
+		if IsControlJustReleased(0, 38) then
+			TriggerEvent("prison:client:Leave")
 		end
+	end
 
-		if insidecanteen then
-			if IsControlJustReleased(0, 38) then
-				TriggerEvent("prison:client:canteen")
-			end
+	if insidecanteen then
+		if IsControlJustReleased(0, 38) then
+			TriggerEvent("prison:client:canteen")
 		end
 	end
 end
-
-
 
 CreateThread(function()
     while true do

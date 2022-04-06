@@ -55,13 +55,12 @@ CREATE TABLE `mdt_warrants` (
 );
 
 CREATE TABLE IF NOT EXISTS `fine_types` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
-  `amount` int(11) DEFAULT NULL,
-  `category` int(11) DEFAULT NULL,
-  `jailtime` int(11) DEFAULT NULL,
-	
-       PRIMARY KEY (`id`)
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`label` varchar(255) COLLATE utf8mb4_bin DEFAULT NULL,
+	`amount` int(11) DEFAULT NULL,
+	`category` int(11) DEFAULT NULL,
+	`jailtime` int(11) DEFAULT NULL,
+	PRIMARY KEY (`id`)
 );
 
 INSERT INTO `fine_types` (`id`, `label`, `amount`, `category`, `jailtime`) VALUES
