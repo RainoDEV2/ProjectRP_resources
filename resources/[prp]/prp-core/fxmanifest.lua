@@ -9,6 +9,7 @@ shared_scripts {
 	'config.lua',
 	'shared.lua',
 	'vehicles.lua',
+	'shared/gangs.lua',
 }
 
 client_scripts {
