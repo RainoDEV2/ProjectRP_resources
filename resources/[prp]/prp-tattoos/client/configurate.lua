@@ -18,15 +18,6 @@ list_cloth = {
 tattoos_list = {
     {title = "Hair Degrade", dlc = "hair_degrade", price = 5, qty = 65, acquired = 0, has = false, current = 0}, 
     
-    -- ### Necessary to Build FiveM (sv_enforceGameBuild 2189) ###
-    -- {title = "Heists2", dlc = "mpheist4_overlays", price = 100, qty = 66, acquired = 0, has = false, current = 0}, 
-    -- {title = "Heists", dlc = "mpheist3_overlays", price = 100, qty = 90, acquired = 0, has = false, current = 0}, 
-    -- {title = "Vinewood", dlc = "mpvinewood_overlays", price = 100, qty = 66, acquired = 0, has = false, current = 0}, 
-
-    -- New
-    {title = "Christmas2017", dlc = "mpchristmas2017_overlays", price = 1, qty = 60, acquired = 0, has = false, current = 0}, 
-    {title = "Christmas2018", dlc = "mpchristmas2018_overlays", price = 100, qty = 2, acquired = 0, has = false, current = 0}, 
-    
     -- Normal
     {title = "Beach", dlc = "mpbeach_overlays", price = 100, qty = 31, acquired = 0, has = false, current = 0}, 
     {title = "Business", dlc = "mpbusiness_overlays", price = 100, qty = 26, acquired = 0, has = false, current = 0}, 
@@ -43,6 +34,13 @@ tattoos_list = {
     {title = "Smuggler", dlc = "mpsmuggler_overlays", price = 100, qty = 52, acquired = 0, has = false, current = 0}, 
     {title = "Stunt", dlc = "mpstunt_overlays", price = 100, qty = 100, acquired = 0, has = false, current = 0}, 
     {title = "Multiplayer", dlc = "multiplayer_overlays", price = 100, qty = 132, acquired = 0, has = false, current = 0}, 
+    {title = "Heists", dlc = "mpheist3_overlays", price = 100, qty = 90, acquired = 0, has = false, current = 0}, 
+    {title = "Heists2", dlc = "mpheist4_overlays", price = 100, qty = 66, acquired = 0, has = false, current = 0}, 
+    {title = "Vinewood", dlc = "mpvinewood_overlays", price = 100, qty = 66, acquired = 0, has = false, current = 0}, 
+
+    -- New
+    {title = "Christmas2017", dlc = "mpchristmas2017_overlays", price = 1, qty = 60, acquired = 0, has = false, current = 0}, 
+    {title = "Christmas2018", dlc = "mpchristmas2018_overlays", price = 100, qty = 2, acquired = 0, has = false, current = 0}, 
 }
 
 -- Extra settings
