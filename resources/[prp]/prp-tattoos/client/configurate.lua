@@ -1,15 +1,15 @@
 
 -- Set the clothes IDs, in this case, leave the ped semi naked
 list_cloth = {
-    {name = "Hats", type = "Prop", item = 0, male_id = 11, female_id = 120},       
+    {name = "Hats", type = "Prop", item = 0, male_id = 11, female_id = -1},       
     {name = "Glasses", type = "Prop", item = 1, male_id = 14, female_id = 5},         
     {name = "Hats", type = "Variation", item = 1, male_id = 0, female_id = 0},     
     {name = "Shirts", type = "Variation", item = 8, male_id = 15, female_id = 15},  
     {name = "Trunk", type = "Variation", item = 3, male_id = 15, female_id = 15},   
-    {name = "Jackets", type = "Variation", item = 11, male_id = 15, female_id = 18},  
+    {name = "Jackets", type = "Variation", item = 11, male_id = 15, female_id = 15},  
     {name = "Trunk", type = "Variation", item = 3, male_id = 15, female_id = 15},   
     {name = "Pants", type = "Variation", item = 4, male_id = 14, female_id = 15},   
-    {name = "Shoes", type = "Variation", item = 6, male_id = 34, female_id = 5},   
+    {name = "Shoes", type = "Variation", item = 6, male_id = 73, female_id = 5},   
     {name = "Vest", type = "Variation", item = 9, male_id = 0, female_id = 0},     
     {name = "Bag", type = "Variation", item = 5, male_id = 0, female_id = 0},     
 }
