@@ -776,7 +776,7 @@ PRPShared.Jobs = {
 		defaultDuty = true,
 		grades = {
             ['0'] = {
-                name = 'Recruit',
+                name = 'EMT',
                 payment = 220
             },
 			['1'] = {
@@ -784,17 +784,31 @@ PRPShared.Jobs = {
                 payment = 245
             },
 			['2'] = {
-                name = 'Doctor',
+                name = 'Nurse',
                 payment = 270
             },
 			['3'] = {
-                name = 'Surgeon',
+                name = 'Student Doctor',
                 payment = 295
             },
 			['4'] = {
-                name = 'Chief',
+                name = 'Doctor',
+                payment = 325
+            },
+			['5'] = {
+                name = 'Head Physician',
 				isboss = true,
-                payment = 320
+                payment = 360
+            },
+			['6'] = {
+                name = 'Assistant Medical Director',
+				isboss = true,
+                payment = 380
+            },
+			['7'] = {
+                name = 'Medical Director',
+				isboss = true,
+                payment = 400
             },
         },
 	},
