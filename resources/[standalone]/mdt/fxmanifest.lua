@@ -17,9 +17,9 @@ files {
 }
 
 server_scripts {
+    "@oxmysql/lib/MySQL.lua",
     "sv_mdt.lua",
     "sv_vehcolors.lua"
 }
 
 client_script "cl_mdt.lua"
-shared_script '@prp-core/import.lua'

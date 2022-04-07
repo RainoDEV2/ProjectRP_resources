@@ -50,7 +50,7 @@ Config.Locations = {
 
 Config.ArmoryWhitelist = {}
 
-Config.Helicopter = "POLMAV"
+Config.Helicopter = "   POLMAV"
 
 Config.SecurityCameras = {
     hideradar = false,
@@ -95,86 +95,74 @@ Config.SecurityCameras = {
 Config.AuthorizedVehicles = {
 	-- Grade 0
 	[0] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 	},
 	-- Grade 1
 	[1] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 	},
 	-- Grade 2
 	[2] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 	},
 	-- Grade 3
 	[3] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 		["pol8"] = "Police Bike",
 	},
 	-- Grade 4
 	[4] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 		["pol8"] = "Police Bike",
-        ["npolvic"] = "Unmarked Crown Vic",
+		["pol5"] = "Police SUV",
 	},
 	-- Grade 5
 	[5] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
-		["pol8"] = "Police Bike",
 		["pol5"] = "Police SUV",
-        ["npolvic"] = "Unmarked Crown Vic",
+		["pol8"] = "Police Bike",
+		["pol9"] = "Police Raptor",
 	},
 	-- Grade 6
 	[6] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 		["pol5"] = "Police SUV",
 		["pol8"] = "Police Bike",
 		["pol9"] = "Police Raptor",
-        ["npolvic"] = "Unmarked Crown Vic",
+		-- ["npolvette"] = "HSIU Corvette",
+		-- ["npolstang"] = "HSIU Mustang",
+        -- ["npolchal"] = "HSIU Challenger",
+		-- ["police4"] = "Police HC Patrol", 
 	},
 	-- Grade 7
 	[7] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 		["pol5"] = "Police SUV",
 		["pol8"] = "Police Bike",
 		["pol9"] = "Police Raptor",
-        ["npolvic"] = "Unmarked Crown Vic",
-		["npolvette"] = "HSIU Corvette",
-		["npolstang"] = "HSIU Mustang",
-        ["npolchal"] = "HSIU Challenger",
-		["police4"] = "Police HC Patrol",
+		-- ["npolvette"] = "HSIU Corvette",
+		-- ["npolstang"] = "HSIU Mustang",
+        -- ["npolchal"] = "HSIU Challenger",
+		-- ["police4"] = "Police HC Patrol",
 	},
 	-- Grade 8
 	[8] = {
-		["pol2"] = "Crown Vic",
+		["npolvic"] = "Crown Vic",
 		["pol3"] = "Taurus",
 		["pol5"] = "Police SUV",
 		["pol8"] = "Police Bike",
 		["pol9"] = "Police Raptor",
-        ["npolvic"] = "Unmarked Crown Vic",
-		["npolvette"] = "HSIU Corvette",
-		["npolstang"] = "HSIU Mustang",
-        ["npolchal"] = "HSIU Challenger",
-		["police4"] = "Police HC Patrol",
-	},
-	-- Grade 9
-	[9] = {
-		["pol2"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol5"] = "Police SUV",
-		["pol8"] = "Police Bike",
-		["pol9"] = "Police Raptor",
-        ["npolvic"] = "Unmarked Crown Vic",
-		["npolvette"] = "HSIU Corvette",
-		["npolstang"] = "HSIU Mustang",
-        ["npolchal"] = "HSIU Challenger",
-		["police4"] = "Police HC Patrol",
+		-- ["npolvette"] = "HSIU Corvette",
+		-- ["npolstang"] = "HSIU Mustang",
+        -- ["npolchal"] = "HSIU Challenger",
+		-- ["police4"] = "Police HC Patrol",
 	}
 }
 

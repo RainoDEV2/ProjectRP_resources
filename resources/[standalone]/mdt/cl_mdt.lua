@@ -1,3 +1,4 @@
+local ProjectRP = exports['prp-core']:GetCoreObject()
 local isVisible = false
 local tabletObject = nil
 local callBip = nil

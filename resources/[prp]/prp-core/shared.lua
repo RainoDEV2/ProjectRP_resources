@@ -707,7 +707,7 @@ PRPShared.Weapons = {
 }
 
 -- Gangs
-PRPShared.Gangs = json.decode(LoadResourceFile("prp-gangs", "gangs.json"))
+-- PRPShared.Gangs = json.decode(LoadResourceFile("prp-gangs", "gangs.json"))
 
 -- Jobs
 PRPShared.ForceJobDefaultDutyAtLogin = true -- true: Force duty state to jobdefaultDuty | false: set duty state from database last saved
@@ -743,28 +743,24 @@ PRPShared.Jobs = {
                 payment = 261
             },
 			['4'] = {
-                name = 'Detective',
-                payment = 275
-            },
-			['5'] = {
                 name = 'Sergeant',
                 payment = 288
             },
-			['6'] = {
+			['5'] = {
                 name = 'Sergeant 2',
                 payment = 302
             },
-			['7'] = {
+			['6'] = {
                 name = 'Lieutenant',
 				isboss = true,
                 payment = 343
             },
-			['8'] = {
+			['7'] = {
                 name = 'Captain',
 				isboss = true,
                 payment = 357
             },
-			['9'] = {
+			['8'] = {
                 name = 'Chief',
 				isboss = true,
                 payment = 371

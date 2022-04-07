@@ -1,6 +1,6 @@
 CreateThread(function()
 	while true do
-		SetVehicleDensityMultiplierThisFrame(0.05)
+		SetVehicleDensityMultiplierThisFrame(0.10)
 		SetPedDensityMultiplierThisFrame(1.0)
 		SetParkedVehicleDensityMultiplierThisFrame(1.0)
 		Wait(3)
