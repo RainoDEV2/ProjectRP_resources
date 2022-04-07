@@ -1,17 +1,25 @@
 Config = {}
 
 Config.RestrictedChannels = {
-  [482] = {
-    police = true
-  },
-  [470] = {
-    ambulance = true
-  },
-  [858] = {
+  [1] = {
     police = true,
     ambulance = true
+  },
+  [2] = {
+    police = true,
+    ambulance = true
+  },
+  [3] = {
+    police = true,
+    ambulance = true
+  },
+  [4] = {
+    police = true
+  },
+  [5] = {
+    ambulance = true
   }
-} 
+}
 
 Config.MaxFrequency = 500
 
