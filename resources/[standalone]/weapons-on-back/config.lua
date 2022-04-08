@@ -40,7 +40,7 @@ Config = {
         ["weapon_assaultshotgun"] = { model = "w_sg_assaultshotgun", hash = -494615257},
         ["weapon_bullpupshotgun"] = { model = "w_sg_bullpupshotgun", hash = -1654528753},
         ["weapon_pumpshotgun"] = { model = "w_sg_pumpshotgun", hash = 487013001},
-        ["weapon_pumpshotgun_mk2"] = { model = "w_sg_pumpshotgun_mk2", hash = 487013001},
+        ["weapon_pumpshotgun_mk2"] = { model = "w_sg_pumpshotgunmk2", hash = GetHashKey("WEAPON_PUMPSHOTGUN_MK2")},
         ["weapon_musket"] = { model = "w_ar_musket", hash = -1466123874},
         ["weapon_heavyshotgun"] = { model = "w_sg_heavyshotgun", hash = GetHashKey("WEAPON_HEAVYSHOTGUN")},
         -- launchers

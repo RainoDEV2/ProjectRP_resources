@@ -66,7 +66,7 @@ function CreateOxyVehicle()
 
 	if DoesEntityExist(oxyVehicle) then
 
-	    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+		SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 		SetEntityAsNoLongerNeeded(oxyVehicle)
 		DeleteEntity(oxyVehicle)
 	end
@@ -79,7 +79,7 @@ function CreateOxyVehicle()
 
     local spawnpoint = 1
     for i = 1, #carspawns do
-	    local caisseo = GetClosestVehicle(carspawns[i]['coords']["x"], carspawns[i]['coords']["y"], carspawns[i]['coords']["z"], 3.500, 0, 70)
+		local caisseo = GetClosestVehicle(carspawns[i]['coords']["x"], carspawns[i]['coords']["y"], carspawns[i]['coords']["z"], 3.500, 0, 70)
 		if not DoesEntityExist(caisseo) then
 			spawnpoint = i
 		end
@@ -91,17 +91,15 @@ function CreateOxyVehicle()
 	TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(oxyVehicle))
 
     while true do
-    	Citizen.Wait(1)
-    	 DrawText3Ds(carspawns[spawnpoint]['coords']["x"], carspawns[spawnpoint]['coords']["y"], carspawns[spawnpoint]['coords']["z"], "Your Delivery Car (Stolen).")
-    	 if #(GetEntityCoords(PlayerPedId()) - vector3(carspawns[spawnpoint]['coords']["x"], carspawns[spawnpoint]['coords']["y"], carspawns[spawnpoint]['coords']["z"])) < 8.0 then
-    	 	return
-    	 end
+		Citizen.Wait(1)
+			DrawText3Ds(carspawns[spawnpoint]['coords']["x"], carspawns[spawnpoint]['coords']["y"], carspawns[spawnpoint]['coords']["z"], "Your Delivery Car (Stolen).")
+			if #(GetEntityCoords(PlayerPedId()) - vector3(carspawns[spawnpoint]['coords']["x"], carspawns[spawnpoint]['coords']["y"], carspawns[spawnpoint]['coords']["z"])) < 8.0 then
+			return
+		end
     end
-
 end
 
 function CreateOxyPed()
-
     local hashKey = `a_m_y_stwhi_01`
 
     local pedType = 5
@@ -112,9 +110,7 @@ function CreateOxyPed()
         Citizen.Wait(100)
     end
 
-
 	deliveryPed = CreatePed(pedType, hashKey, OxyDropOffs[rnd]['coords']["x"],OxyDropOffs[rnd]['coords']["y"],OxyDropOffs[rnd]['coords']["z"], OxyDropOffs[rnd]['coords']["w"], 0, 0)
-	
 
     ClearPedTasks(deliveryPed)
     ClearPedSecondaryTask(deliveryPed)
@@ -291,7 +287,7 @@ AddEventHandler("oxydelivery:client", function()
 		toolong = toolong - 1
 		if toolong < 0 then
 
-		    SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
+			SetVehicleHasBeenOwnedByPlayer(oxyVehicle,false)
 			SetEntityAsNoLongerNeeded(oxyVehicle)
 			tasking = false
 			OxyRun = false
@@ -324,8 +320,8 @@ Citizen.CreateThread(function()
 
     while true do
 
-	    Citizen.Wait(1)
-	    local dropOff6 = #(GetEntityCoords(PlayerPedId()) - vector3(pillWorker['coords']["x"],pillWorker['coords']["y"],pillWorker['coords']["z"]))
+		Citizen.Wait(1)
+		local dropOff6 = #(GetEntityCoords(PlayerPedId()) - vector3(pillWorker['coords']["x"],pillWorker['coords']["y"],pillWorker['coords']["z"]))
 
 		if dropOff6 < 1.6 and not OxyRun then
 
@@ -342,107 +338,81 @@ end)
 
 local firstdeal = false
 Citizen.CreateThread(function()
-
-
     while true do
-
         if drugdealer then
+			Citizen.Wait(1000)
 
-	        Citizen.Wait(1000)
+			if firstdeal then
+				Citizen.Wait(10000)
+			end
 
-	        if firstdeal then
-	        	Citizen.Wait(10000)
-	        end
+			TriggerEvent("drugdelivery:client")  
 
-	        TriggerEvent("drugdelivery:client")  
+			salecount = salecount + 1
+			if salecount == 12 then
+				Citizen.Wait(600000)
+				drugdealer = false
+			end
 
-		    salecount = salecount + 1
-		    if salecount == 12 then
-		    	Citizen.Wait(600000)
-		    	drugdealer = false
-		    end
-
-		    Citizen.Wait(150000)
-		    firstdeal = false
+			Citizen.Wait(150000)
+			firstdeal = false
 
 		elseif OxyRun then
-
 			if not DoesEntityExist(oxyVehicle) or GetVehicleEngineHealth(oxyVehicle) < 200.0 or GetVehicleBodyHealth(oxyVehicle) < 200.0 then
 				OxyRun = false
 				tasking = false
 				ProjectRP.Functions.Notify('The Car Is Too Damaged', 'error')
 			else
 				if tasking then
-			        Citizen.Wait(30000)
-			    else
-			        TriggerEvent("oxydelivery:client")  
-				    salecount = salecount + 1
-				    if salecount == Config.RunAmount then
-				    	Citizen.Wait(300000)
-				    	OxyRun = false
-				    end
+					Citizen.Wait(30000)
+				else
+					TriggerEvent("oxydelivery:client")  
+					salecount = salecount + 1
+					local runAmount = math.random(Config.RunAmountMin, Config.RunAmountMax)
+					if salecount == runAmount then
+						Citizen.Wait(300000)
+						OxyRun = false
+					end
 				end
 			end
+		else
+			local close = false
 
-	    else
-
-	    	local close = false
-
-	    	for i = 1, #drugLocs do
-
+			for i = 1, #drugLocs do
 				local plycoords = GetEntityCoords(PlayerPedId())
-
 				local dstcheck = #(plycoords - vector3(drugLocs[i]['coords']["x"],drugLocs[i]['coords']["y"],drugLocs[i]['coords']["z"])) 
-
-			
-
 				if dstcheck < 5.0 then
-
 					close = true
-
 					local job = ProjectRP.Functions.GetPlayerData().job.name
 
 					if job ~= "police" then
-
 						local price = 100
 
-			    		DrawText3Ds(drugLocs[i]['coords']["x"],drugLocs[i]['coords']["y"],drugLocs[i]['coords']["z"], "[E] $" .. price .. " offer to sell stolen goods (12).") 
-				    	
-				    	if IsControlJustReleased(0,38) then
+						DrawText3Ds(drugLocs[i]['coords']["x"],drugLocs[i]['coords']["y"],drugLocs[i]['coords']["z"], "[E] $" .. price .. " offer to sell stolen goods (12).") 
 
-				    		local countpolice = exports["isPed"]:isPed("countpolice")
-				    		local daytime = exports["isPed"]:isPed("daytime")
+						if IsControlJustReleased(0,38) then
+							local countpolice = exports["isPed"]:isPed("countpolice")
+							local daytime = exports["isPed"]:isPed("daytime")
 
 							if not daytime then
 								ProjectRP.Functions.Notify('Come Back During The Day', 'error')
-		            		else
-		            			mygang = drugLocs[i]["gang"]
-					    		TriggerServerEvent("drugdelivery:server",price,"robbery",50)
-					    		Citizen.Wait(1500)
-					    	end
-
-				    	end
-
-			    	else
-
-			    		Citizen.Wait(60000)
-
-			    	end
-
-			    	Citizen.Wait(1)
-
-			    end
-
+							else
+								mygang = drugLocs[i]["gang"]
+								TriggerServerEvent("drugdelivery:server",price,"robbery",50)
+								Citizen.Wait(1500)
+							end
+						end
+					else
+						Citizen.Wait(60000)
+					end
+					Citizen.Wait(1)
+				end
 			end
-
 			if not close then
 				Citizen.Wait(2000)
 			end
-
-	    end
-
+		end
     end
-
 end)
 
 RegisterNetEvent("oxydelivery:startDealing")

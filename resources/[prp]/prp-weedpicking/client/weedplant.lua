@@ -182,7 +182,6 @@ Citizen.CreateThread(function()
 		if GetDistanceBetweenCoords(coords, Config.CircleZones.WeedProcessing.coords, true) < 5 then
 			DrawMarker(2, Config.CircleZones.WeedProcessing.coords.x, Config.CircleZones.WeedProcessing.coords.y, Config.CircleZones.WeedProcessing.coords.z - 0.2 , 0, 0, 0, 0, 0, 0, 0.3, 0.2, 0.15, 255, 0, 0, 100, 0, 0, 0, true, 0, 0, 0)
 
-			
 			if not isProcessing and GetDistanceBetweenCoords(coords, Config.CircleZones.WeedProcessing.coords, true) <1 then
 				ProjectRP.Functions.DrawText3D(Config.CircleZones.WeedProcessing.coords.x, Config.CircleZones.WeedProcessing.coords.y, Config.CircleZones.WeedProcessing.coords.z, 'Press ~g~[E]~w~ to Process')
 			end
@@ -241,7 +240,7 @@ function Processweed()
 		disableCombat = true,
 		disableInventory = true,
 	}, {}, {}, {}, function()
-	 TriggerServerEvent('prp-weedpicking:processweed')
+	TriggerServerEvent('prp-weedpicking:processweed')
 
 		local timeLeft = Config.Delays.WeedProcessing / 1000
 
@@ -258,7 +257,7 @@ function Processweed()
 	end, function()
 		ClearPedTasks(PlayerPedId())
 	end) -- Cancel
-	
+
 	isProcessing = false
 end
 
@@ -274,7 +273,6 @@ Citizen.CreateThread(function()
 		if GetDistanceBetweenCoords(coords, Config.CircleZones.DrugDealer.coords, true) < 5 then
 			DrawMarker(2, Config.CircleZones.DrugDealer.coords.x, Config.CircleZones.DrugDealer.coords.y, Config.CircleZones.DrugDealer.coords.z - 0.2 , 0, 0, 0, 0, 0, 0, 0.3, 0.2, 0.15, 255, 0, 0, 100, 0, 0, 0, true, 0, 0, 0)
 
-			
 			if not isProcessing2 and GetDistanceBetweenCoords(coords, Config.CircleZones.DrugDealer.coords, true) <1 then
 				ProjectRP.Functions.DrawText3D(Config.CircleZones.DrugDealer.coords.x, Config.CircleZones.DrugDealer.coords.y, Config.CircleZones.DrugDealer.coords.z, 'Press ~g~[E]~w~ to Sell')
 			end
@@ -283,14 +281,13 @@ Citizen.CreateThread(function()
 				local hasWeed2 = false
 				local hasBag2 = false
 				local s3 = false
-				
+
 				ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(result)
 					hasWeed2 = result
 					hasBag2 = result
 					s3 = true
-					
 				end, 'weed_bag')
-				
+
 				while(not s3) do
 					Wait(100)
 				end
@@ -327,7 +324,7 @@ function SellDrug()
 		disableCombat = true,
 		disableInventory = true,
 	}, {}, {}, {}, function()
-	 TriggerServerEvent('prp-weedpicking:selld')
+	TriggerServerEvent('prp-weedpicking:selld')
 
 		local timeLeft = Config.Delays.WeedProcessing / 1000
 
