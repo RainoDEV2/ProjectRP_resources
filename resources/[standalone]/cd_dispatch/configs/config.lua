@@ -239,7 +239,7 @@ Config.PoliceAlerts = {
     --[[GUNSHOTS CONFIG]]--
     GunShots = {
         ENABLE = true, ---Do you want gunshots to alert police?
-        cooldown = 25, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
+        cooldown = 20, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
         
         WhitelistedZones = { --If the player is within the distance of these coords, gunshot alerts will not notify the police.
             [1] = {coords = vector3(0,0,0), distance = 10},
@@ -282,7 +282,7 @@ Config.PoliceAlerts = {
         cooldown = 10, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
 
         Blip = {
-            ENABLE = true, --Do you want speed traps to display on a players minimap?
+            ENABLE = false, --Do you want speed traps to display on a players minimap?
             sprite = 184, --Icon of the blip.
             scale = 0.7, --Size of the blip.
             colour = 0, --Colour of the blip.

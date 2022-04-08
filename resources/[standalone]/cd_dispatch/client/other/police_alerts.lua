@@ -9,7 +9,7 @@ if Config.PoliceAlerts.ENABLE then
         local job = GetJob()
         for c, d in pairs(Config.PoliceAlerts.whitelisted_jobs) do
             if job == d then
-               return false
+                return false
             end
         end
         return true
