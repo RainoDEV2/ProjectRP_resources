@@ -39,6 +39,7 @@ local weapons = {
 	'WEAPON_CARBINERIFLE',
 	'WEAPON_ADVANCEDRIFLE',
 	'WEAPON_SPECIALCARBINE',
+	'WEAPON_SPECIALCARBINE_MK2',
 	'WEAPON_BULLPUPRIFLE',
 	'WEAPON_COMPACTRIFLE',
 	'WEAPON_MG',
@@ -74,7 +75,7 @@ local weapons = {
 
 -- Wheapons that require the Police holster animation
 local holsterableWeapons = {
-	--'WEAPON_STUNGUN',
+	'WEAPON_STUNGUN',
 	'WEAPON_PISTOL',
 	'WEAPON_PISTOL_MK2',
 	'WEAPON_COMBATPISTOL',
@@ -84,6 +85,7 @@ local holsterableWeapons = {
 	'WEAPON_SNSPISTOL',
 	'WEAPON_HEAVYPISTOL',
 	'WEAPON_VINTAGEPISTOL'
+	'WEAPON_GLOCK'
 }
 
 local holstered = true
