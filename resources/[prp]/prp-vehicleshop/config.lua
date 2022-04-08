@@ -22,10 +22,10 @@ Config.Shops = {
             ['motorcycles'] = 'Motorcycles',
             ['vans'] = 'Vans'
         },
-        ['TestDriveTimeLimit'] = 1, -- Time in minutes until the vehicle gets deleted
+        ['TestDriveTimeLimit'] = 2, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(-45.67, -1098.34, 26.42), -- Blip Location
         ['ReturnLocation'] = vector3(-44.74, -1082.58, 26.68), -- Location to return vehicle, only enables if the vehicleshop has a job owned
-        ['VehicleSpawn'] = vector4(-56.79, -1109.85, 26.43, 71.5), -- Spawn location when vehicle is bought
+        ['VehicleSpawn'] = vector4(-15.59, -1102.16, 26.68, 160.87), -- Spawn location when vehicle is bought
         ['ShowroomVehicles'] = {
             [1] = {
                 coords = vector4(-43.05, -1094.49, 25.44, 247.43), -- where the vehicle will spawn on display
@@ -62,7 +62,7 @@ Config.Shops = {
             ['sports'] = 'Sports',
             ['vans'] = 'Vans'
         },
-        ['TestDriveTimeLimit'] = 1,
+        ['TestDriveTimeLimit'] = 2,
         ['Location'] = vector3(-63.59, 68.25, 73.06),
         ['ReturnLocation'] = vector3(-65.05, 81.23, 71.16),
         ['VehicleSpawn'] = vector4(-71.13, 84.04, 71.09, 65.23),

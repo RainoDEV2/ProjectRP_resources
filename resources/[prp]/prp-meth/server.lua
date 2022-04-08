@@ -13,7 +13,7 @@ AddEventHandler('prp-methcar:start', function()
 			Player.Functions.RemoveItem("acetone", 5, false)
 			Player.Functions.RemoveItem("lithium", 2, false)
 		else
-		TriggerClientEvent('ProjectRP:Notify', source, "U don't have enough ingredients to cook!", 'error')
+		TriggerClientEvent('ProjectRP:Notify', source, "You don't have enough ingredients to cook!", 'error')
 		end	
 	else
 	TriggerClientEvent('ProjectRP:Notify', source, "You're missing essential ingredients!", 'error')
@@ -66,4 +66,3 @@ AddEventHandler('prp-methcar:blow', function(posx, posy, posz)
 	end
 	xPlayer.Functions.RemoveItem('methlab', 1)
 end)
-

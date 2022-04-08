@@ -5063,7 +5063,7 @@ PRPShared.Vehicles = {
 		['price'] = 6500,
 		['category'] = 'vans',
 		['hash'] = `journey`,
-		['shop'] = 'pdm',
+		['shop'] = 'none',
 	},
 	['minivan'] = {
 		['name'] = 'Minivan',

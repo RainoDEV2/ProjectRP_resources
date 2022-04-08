@@ -259,6 +259,7 @@ Config.PoliceAlerts = {
             [`WEAPON_COMBATPISTOL`] = 'Combat Pistol',
             [`WEAPON_CARBINERIFLE`] = 'Carbine Rifle',
             [`WEAPON_CARBINERIFLE_MK2`] = 'Carbine Rifle mk2',
+            [`WEAPON_M4`] = 'M4 Carbine',
             [`WEAPON_HEAVYPISTOL`] = 'Heavy Pistol',
             [`WEAPON_MICROSMG`] = 'Mini Uzi',
             [`WEAPON_MUSKET`] = 'Musket Rifle',
