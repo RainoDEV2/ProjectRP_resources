@@ -13,7 +13,7 @@ RegisterNetEvent('prp-log:server:CreateLog', function(name, title, color, messag
             ['description'] = message,
             ['author'] = {
                 ['name'] = 'ProjectRP Logs',
-                ['icon_url'] = 'https://cdn.discordapp.com/attachments/939449273970487417/939449508398510170/fba5482d5d39e8456de27e9e5ddf53e0.png',
+                ['icon_url'] = 'https://imgur.com/HFPVGUc',
             },
         }
     }
