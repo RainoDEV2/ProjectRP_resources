@@ -29,7 +29,6 @@ Config = {
         ["weapon_bullpuprifle"] = { model = "w_ar_bullpuprifle", hash = 2132975508},
         ["weapon_advancedrifle"] = { model = "w_ar_advancedrifle", hash = -1357824103},
         -- sub machine guns:
-        ["weapon_appistol"] = { model = "w_pi_appistol", hash = 584646201},
         ["weapon_microsmg"] = { model = "w_sb_microsmg", hash = 324215364},
         ["weapon_assaultsmg"] = { model = "w_sb_assaultsmg", hash = -270015777},
         ["weapon_smg"] = { model = "w_sb_smg", hash = 736523883},
