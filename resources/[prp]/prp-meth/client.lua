@@ -546,7 +546,7 @@ Citizen.CreateThread(function(data)
 							params = {
 								event = "prp-methcar:q5",
 								args = {
-									message = "SUPER JOB, i'm proud!"
+									message = "SUPER JOB, I'm proud!"
 								}
 							}
 						},
@@ -596,7 +596,3 @@ Citizen.CreateThread(function()
 			end
 	end
 end)
-
-
-
-
