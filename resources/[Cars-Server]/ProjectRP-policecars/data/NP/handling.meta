@@ -3,7 +3,7 @@
   <HandlingData>
     <Item type="CHandlingData">
       <handlingName>NPOLVIC</handlingName>
-      <fMass value="1650.000000" />
+      <fMass value="1550.000000" />
       <fInitialDragCoeff value="6.400000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.250000" z="-0.450000" />
@@ -14,7 +14,7 @@
       <fDriveInertia value="1.00000" />
       <fClutchChangeRateScaleUpShift value="2.800500" />
       <fClutchChangeRateScaleDownShift value="2.800500" />
-      <fInitialDriveMaxFlatVel value="191.000000" />
+      <fInitialDriveMaxFlatVel value="210.000000" />
       <fBrakeForce value="1.300500" />
       <fBrakeBiasFront value="0.325000" />
       <fHandBrakeForce value="0.770000" />
