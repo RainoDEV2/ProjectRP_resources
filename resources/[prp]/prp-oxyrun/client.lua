@@ -60,6 +60,7 @@ local carpick = {
     [3] = "sultan",
     [4] = "granger",
     [5] = "tailgater",
+	[6] = "speedo2",
 }
 
 function CreateOxyVehicle()
