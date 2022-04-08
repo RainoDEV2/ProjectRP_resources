@@ -760,3 +760,11 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('cartel', 0, 'gang'),
 ('families', 0, 'gang'),
 ('triads', 0, 'gang');
+
+CREATE TABLE IF NOT EXISTS `cd_dispatch` (
+	`identifier` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',
+	`callsign` VARCHAR(100) NULL DEFAULT NULL COLLATE 'utf8mb4_general_ci'
+)
+COLLATE='utf8mb4_general_ci'
+ENGINE=InnoDB
+;
