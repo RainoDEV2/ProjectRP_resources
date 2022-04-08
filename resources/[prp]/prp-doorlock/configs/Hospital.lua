@@ -1,5 +1,3 @@
-
-
 -- critical care created by Milos
 Config.DoorList['critical care'] = {
     distance = 2,
@@ -9,11 +7,11 @@ Config.DoorList['critical care'] = {
     },
     doorRate = 1.0,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     doorType = 'double',
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- lower front desk created by Milos
@@ -25,11 +23,11 @@ Config.DoorList['lower front desk'] = {
     objName = -770740285,
     objYaw = 250.00004577637,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     fixText = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- morgue created by Milos
@@ -41,11 +39,11 @@ Config.DoorList['morgue'] = {
     },
     doorRate = 1.0,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     doorType = 'double',
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- double door garage created by Milos
@@ -57,11 +55,11 @@ Config.DoorList['double door garage'] = {
     },
     doorRate = 1.0,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     doorType = 'double',
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- garage door 1 created by Milos
@@ -73,11 +71,11 @@ Config.DoorList['garage door 1'] = {
     objName = -1196921358,
     objYaw = 159.93878173828,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     fixText = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- garage door 2 created by Milos
@@ -89,11 +87,11 @@ Config.DoorList['garage door 2'] = {
     objName = 1482782641,
     objYaw = 160.0612487793,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     fixText = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- morgue door2 created by Milos
@@ -105,11 +103,11 @@ Config.DoorList['morgue door2'] = {
     },
     doorRate = 1.0,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     doorType = 'double',
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- main staircase created by Milos
@@ -121,11 +119,11 @@ Config.DoorList['main staircase'] = {
     },
     doorRate = 1.0,
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
-    audioRemote = false,
+    audioRemote = true,
     doorType = 'double',
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- main locker room created by Milos
@@ -133,15 +131,15 @@ Config.DoorList['main locker room'] = {
     doorType = 'door',
     doorRate = 1.0,
     objCoords = vec3(311.857971, -599.006775, 43.312836),
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     fixText = false,
     objYaw = 71.658546447754,
     objName = -770740285,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- main locker room2 created by Milos
@@ -149,20 +147,20 @@ Config.DoorList['main locker room2'] = {
     doorType = 'door',
     doorRate = 1.0,
     objCoords = vec3(310.241425, -603.639160, 43.312836),
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     fixText = false,
     objYaw = 250.00003051758,
     objName = -770740285,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- surgery door 1 created by Milos
 Config.DoorList['surgery door 1'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 159.99992370605, objCoords = vec3(313.053131, -579.812805, 43.431892)},
@@ -170,15 +168,15 @@ Config.DoorList['surgery door 1'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- surgery door 2 created by Milos
 Config.DoorList['surgery door 2'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 69.999961853027, objCoords = vec3(332.484894, -571.685364, 43.432426)},
@@ -186,15 +184,15 @@ Config.DoorList['surgery door 2'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- ward door 1 created by Milos
 Config.DoorList['ward door 1'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 69.999961853027, objCoords = vec3(338.286530, -582.964966, 43.432426)},
@@ -202,15 +200,15 @@ Config.DoorList['ward door 1'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- ward door 2 created by Milos
 Config.DoorList['ward door 2'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 160.00009155273, objCoords = vec3(340.716919, -587.539978, 43.431892)},
@@ -218,10 +216,10 @@ Config.DoorList['ward door 2'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- security room door 1 created by Milos
@@ -229,20 +227,20 @@ Config.DoorList['security room door 1'] = {
     doorType = 'door',
     doorRate = 1.0,
     objCoords = vec3(342.628540, -579.917053, 43.302299),
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     fixText = false,
     objYaw = 69.999992370605,
     objName = -770740285,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- wards door 3 created by Milos
 Config.DoorList['wards door 3'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 249.99993896484, objCoords = vec3(358.567352, -583.947510, 43.432426)},
@@ -250,15 +248,15 @@ Config.DoorList['wards door 3'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- lab and records created by Milos
 Config.DoorList['lab and records'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -770740285, objYaw = 340.00003051758, objCoords = vec3(320.846710, -587.622437, 48.244530)},
@@ -266,15 +264,15 @@ Config.DoorList['lab and records'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- Offices door 1 created by Milos
 Config.DoorList['Offices door 1'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = -1143010057, objYaw = 69.999961853027, objCoords = vec3(338.269257, -582.960144, 48.374123)},
@@ -282,15 +280,15 @@ Config.DoorList['Offices door 1'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
 
 -- training class room created by Milos
 Config.DoorList['training class room'] = {
-    audioRemote = false,
+    audioRemote = true,
     distance = 2,
     doors = {
         {objName = 1647181300, objYaw = 340.00003051758, objCoords = vec3(331.763611, -577.048462, 48.382904)},
@@ -298,8 +296,8 @@ Config.DoorList['training class room'] = {
     },
     doorType = 'double',
     doorRate = 1.0,
-    authorizedJobs = { ['ambulance'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    autoLock = 1000,
 }
