@@ -71,6 +71,22 @@ Config.AuthorizedVehicles = {
 	[4] = {
 		["speedoambo"] = "Ambulance",
 	}
+	-- Grade 5
+	[5] = {
+		["speedoambo"] = "Ambulance",
+	}
+	-- Grade 6
+	[6] = {
+		["speedoambo"] = "Ambulance",
+	}
+	-- Grade 7
+	[7] = {
+		["speedoambo"] = "Ambulance",
+	}
+	-- Grade 8
+	[8] = {
+		["speedoambo"] = "Ambulance",
+	}
 }
 
 Config.Helicopter = "polmav"
