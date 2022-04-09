@@ -1,12 +1,10 @@
 local stage = 0
 local movingForward = false
-PlayerData = {}
 CreateThread(function()
     while true do
         Wait(1)
         local ped = PlayerPedId()
-        PlayerData = ProjectRP.Functions.GetPlayerData()
-        if not PlayerData.metadata['isdead'] not PlayerData.metadata['inlaststand'] and not IsPedSittingInAnyVehicle(ped) and not IsPedFalling(ped) and not IsPedSwimming(ped) and not IsPedSwimmingUnderWater(ped) then
+        if not IsPedSittingInAnyVehicle(ped) and not IsPedFalling(ped) and not IsPedSwimming(ped) and not IsPedSwimmingUnderWater(ped) then
             if IsControlJustReleased(0, 36) then
                 stage = stage + 1
                 if stage == 2 then

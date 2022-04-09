@@ -177,7 +177,7 @@ local function createVehZones(shopName, entity)
         combo:onPlayerInOut(function(isPointInside)
             local insideShop = getShopInsideOf()
             if isPointInside then
-                if PlayerData.job.name == Config.Shops[insideShop]['Job'] or Config.Shops[insideShop]['Job'] == 'none' then
+                if (PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[insideShop]['Job']) or Config.Shops[insideShop]['Job'] == 'none' then
                     exports['prp-menu']:showHeader(vehHeaderMenu)
                 end
             else

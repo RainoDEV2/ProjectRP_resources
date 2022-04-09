@@ -67,7 +67,7 @@ function SetLaststand(bool, spawn)
         else
             NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
         end		
-		
+
         SetEntityHealth(ped, 150)
 
         if IsPedInAnyVehicle(ped, false) then

@@ -113,7 +113,7 @@ RegisterNUICallback('selectCharacter', function(data)
 end)
 
 RegisterNUICallback('cDataPed', function(data)
-    local cData = data.cData  
+    local cData = data.cData
     SetEntityAsMissionEntity(charPed, true, true)
     DeleteEntity(charPed)
     if cData ~= nil then
