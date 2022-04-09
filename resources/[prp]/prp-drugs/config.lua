@@ -178,6 +178,26 @@ Config.DeliveryLocations = {
         ["label"] = "Bahama Mamas",
         ["coords"] = vector3(-1383.1, -639.99, 28.67),
     },
+    [6] = {
+        ["label"] = "GSF",
+        ["coords"] = vector3(-234.24, -1490.73, 32.96),
+    },
+    [7] = {
+        ["label"] = "Ballas",
+        ["coords"] = vector3(6.52, -1816.71, 25.35),
+    },
+    [8] = {
+        ["label"] = "Vagos",
+        ["coords"] = vector3(415.33, -2052.05, 22.22),
+    },
+    [9] = {
+        ["label"] = "Back of Church",
+        ["coords"] = vector3(-1679.63, -264.31, 51.88),
+    },
+    [10] = {
+        ["label"] = "Opposite MRPD",
+        ["coords"] = vector3(328.46, -994.62, 29.31),
+    },
 }
 
 Config.CornerSellingZones = {
