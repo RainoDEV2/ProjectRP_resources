@@ -248,23 +248,6 @@ RegisterNetEvent('police:client:KidnapPlayer', function()
     end
 end)
 
-RegisterCommand('carry', function()
-    TriggerEvent('police:client:CarryPlayer')
-end)
-RegisterNetEvent('police:client:CarryPlayer', function()
-    local player, distance = ProjectRP.Functions.GetClosestPlayer()
-    if player ~= -1 and distance < 2.5 then
-        local playerId = GetPlayerServerId(player)
-        if not IsPedInAnyVehicle(GetPlayerPed(player)) then
-            if not isHandcuffed and not isEscorted then
-                TriggerServerEvent("police:server:CarryPlayer", playerId)
-            end
-        end
-    else
-        ProjectRP.Functions.Notify("No one nearby!", "error")
-    end
-end)
-
 RegisterNetEvent('police:client:CuffPlayerSoft', function()
     if not IsPedRagdoll(PlayerPedId()) then
         local player, distance = ProjectRP.Functions.GetClosestPlayer()
@@ -383,57 +366,9 @@ RegisterNetEvent('police:client:GetKidnappedDragger', function(playerId)
     end)
 end)
 
-RegisterNetEvent('police:client:GetCarryTarget', function(playerId)
-    local ped = PlayerPedId()
-    ProjectRP.Functions.GetPlayerData(function(PlayerData)
-        if PlayerData.metadata["isdead"] or PlayerData.metadata["inlaststand"] or isHandcuffed then
-            if not isEscorted then
-                isEscorted = true
-                draggerId = playerId
-                local dragger = GetPlayerPed(GetPlayerFromServerId(playerId))
-                RequestAnimDict("nm")
-
-                while not HasAnimDictLoaded("nm") do
-                    Wait(10)
-                end
-                -- AttachEntityToEntity(PlayerPedId(), dragger, 11816, 0.45, 0.45, 0.0, 0.0, 0.0, 0.0, false, false, false, false, 2, true)
-                AttachEntityToEntity(ped, dragger, 0, 0.27, 0.15, 0.63, 0.5, 0.5, 0.0, false, false, false, false, 2, false)
-                TaskPlayAnim(ped, "nm", "firemans_carry", 8.0, -8.0, 100000, 33, 0, false, false, false)
-            else
-                isEscorted = false
-                DetachEntity(ped, true, false)
-                ClearPedTasksImmediately(ped)
-            end
-            TriggerEvent('hospital:client:isEscorted', isEscorted)
-        end
-    end)
-end)
-
-RegisterNetEvent('police:client:GetCarryPlayer', function(playerId)
-    ProjectRP.Functions.GetPlayerData(function(PlayerData)
-        if not isEscorting then
-            draggerId = playerId
-            local dragger = PlayerPedId()
-            RequestAnimDict("missfinale_c2mcs_1")
-
-            while not HasAnimDictLoaded("missfinale_c2mcs_1") do
-                Wait(10)
-            end
-            TaskPlayAnim(dragger, "missfinale_c2mcs_1", "fin_c2_mcs_1_camman", 8.0, -8.0, 100000, 49, 0, false, false, false)
-            isEscorting = true
-        else
-            local dragger = PlayerPedId()
-            ClearPedSecondaryTask(dragger)
-            ClearPedTasksImmediately(dragger)
-            isEscorting = false
-        end
-        TriggerEvent('hospital:client:SetEscortingState', isEscorting)
-        TriggerEvent('prp-kidnapping:client:SetKidnapping', isEscorting)
-    end)
-end)
-
 RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
     local ped = PlayerPedId()
+    
 
     if not isHandcuffed then
 
@@ -469,6 +404,7 @@ RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
         TriggerServerEvent("InteractSound_SV:PlayOnSource", "Uncuff", 0.2)
         ProjectRP.Functions.Notify("You are uncuffed!")
     end
+
 end)
 
 -- Threads

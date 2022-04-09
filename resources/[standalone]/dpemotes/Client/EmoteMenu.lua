@@ -47,9 +47,9 @@ mainMenu = NativeUI.CreateMenu("dp Emotes", "", menuPosition["x"], menuPosition[
 _menuPool:Add(mainMenu)
 
 function ShowNotification(text)
-    SetNotificationTextEntry("STRING")
-    AddTextComponentString(text)
-    DrawNotification(false, false)
+  SetNotificationTextEntry("STRING")
+  AddTextComponentString(text)
+  DrawNotification(false, false)
 end
 
 local EmoteTable = {}

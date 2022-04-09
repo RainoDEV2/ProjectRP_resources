@@ -22,7 +22,6 @@ local OxyDropOffs = {
 	[14] =  { ['coords'] = vector4(-1214.3, -317.57, 37.75, 18.39), ['info'] = ' ifthey6' },
 	[15] =  { ['coords'] = vector4(-822.83, -636.97, 27.9, 160.23), ['info'] = ' contain7' },
 	[16] =  { ['coords'] = vector4(308.04, -1386.09, 31.79, 47.23), ['info'] = ' chocolate' },
-
 }
 
 local carspawns = {

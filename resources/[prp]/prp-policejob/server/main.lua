@@ -717,16 +717,6 @@ RegisterNetEvent('police:server:KidnapPlayer', function(playerId)
     end
 end)
 
-RegisterNetEvent('police:server:CarryPlayer', function(playerId)
-    local src = source
-    local Player = ProjectRP.Functions.GetPlayer(source)
-    local CarryPlayer = ProjectRP.Functions.GetPlayer(playerId)
-    if CarryPlayer then
-        TriggerClientEvent("police:client:GetCarryTarget", CarryPlayer.PlayerData.source, Player.PlayerData.source)
-        TriggerClientEvent("police:client:GetCarryPlayer", Player.PlayerData.source, CarryPlayer.PlayerData.source)
-    end
-end)
-
 RegisterNetEvent('police:server:SetPlayerOutVehicle', function(playerId)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
