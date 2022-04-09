@@ -569,8 +569,8 @@ RegisterNetEvent('hospital:client:Revive', function()
     end
 
     -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    SetEntityMaxHealth(player, 50)
-    SetEntityHealth(player, 50)
+    SetEntityMaxHealth(player, 150)
+    SetEntityHealth(player, 150)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()
@@ -579,7 +579,6 @@ RegisterNetEvent('hospital:client:Revive', function()
     TriggerServerEvent("hospital:server:SetDeathStatus", false)
     TriggerServerEvent("hospital:server:SetLaststandStatus", false)
     emsNotified = false
-    ProjectRP.Functions.Notify('You are completely healthy again!')
 end)
 
 RegisterNetEvent('hospital:client:SetPain', function()
