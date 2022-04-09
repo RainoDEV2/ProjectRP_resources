@@ -1,6 +1,6 @@
 Config = {}
-Config.UsingTarget = true -- If you are using prp-target (uses entity zones to target vehicles)
-Config.Commission = 0.15 -- Percent that goes to sales person from a full car sale 10%
+Config.UsingTarget = true
+Config.Commission = 0.10 -- Percent that goes to sales person from a full car sale 10%
 Config.FinanceCommission = 0.05 -- Percent that goes to sales person from a finance sale 5%
 Config.FinanceZone = vector3(-29.53, -1103.67, 26.42) -- Where the finance menu is located
 Config.PaymentWarning = 10 -- time in minutes that player has to make payment before repo
@@ -9,8 +9,26 @@ Config.MinimumDown = 10 -- minimum percentage allowed down
 Config.MaximumPayments = 24 -- maximum payments allowed
 Config.Shops = {
     ['pdm'] = {
+        ['Type'] = 'free-use',  -- no player interaction is required to purchase a car
+        ['Zone'] = {
+            ['Shape'] = { --polygon that surrounds the shop
+                vector2(-56.727394104004, -1086.2325439453),
+                vector2(-60.612808227539, -1096.7795410156),
+                vector2(-58.26834487915, -1100.572265625),
+                vector2(-35.927803039551, -1109.0034179688),
+                vector2(-34.427627563477, -1108.5111083984),
+                vector2(-32.02657699585, -1101.5877685547),
+                vector2(-33.342102050781, -1101.0377197266),
+                vector2(-31.292987823486, -1095.3717041016)
+            },
+            ['minZ'] = 25.0,  -- min height of the shop zone
+            ['maxZ'] = 28.0  -- max height of the shop zone
+        },
         ['Job'] = 'none', -- Name of job or none
         ['ShopLabel'] = 'Premium Deluxe Motorsport', -- Blip name
+        ['showBlip'] = true,  -- true or false
+        ['blipSprite'] = 326,  -- Blip sprite
+        ['blipColor'] = 3,  -- Blip color
         ['Categories'] = { -- Categories available to browse
             ['sportsclassics'] = 'Sports Classics',
             ['sedans'] = 'Sedans',
@@ -20,7 +38,8 @@ Config.Shops = {
             ['muscle'] = 'Muscle',
             ['compacts'] = 'Compacts',
             ['motorcycles'] = 'Motorcycles',
-            ['vans'] = 'Vans'
+            ['vans'] = 'Vans',
+            ['cycles'] = 'Bicycles'
         },
         ['TestDriveTimeLimit'] = 2, -- Time in minutes until the vehicle gets deleted
         ['Location'] = vector3(-45.67, -1098.34, 26.42), -- Blip Location
@@ -55,12 +74,30 @@ Config.Shops = {
         },
     },
     ['luxury'] = {
+        ['Type'] = 'managed',  -- meaning a real player has to sell the car
+        ['Zone'] = {
+            ['Shape'] = {
+                vector2(-1260.6973876953, -349.21334838867),
+                vector2(-1268.6248779297, -352.87365722656),
+                vector2(-1274.1533203125, -358.29794311523),
+                vector2(-1273.8425292969, -362.73715209961),
+                vector2(-1270.5701904297, -368.6716003418),
+                vector2(-1266.0561523438, -375.14080810547),
+                vector2(-1244.3684082031, -362.70278930664),
+                vector2(-1249.8704833984, -352.03326416016),
+                vector2(-1252.9503173828, -345.85726928711)
+            },
+            ['minZ'] = 36.646457672119,
+            ['maxZ'] = 37.516143798828
+        },
         ['Job'] = 'cardealer', -- Name of job or none
         ['ShopLabel'] = 'Luxury Vehicle Shop',
+        ['showBlip'] = true,  -- true or false
+        ['blipSprite'] = 326,  -- Blip sprite
+        ['blipColor'] = 3,  -- Blip color
         ['Categories'] = {
             ['super'] = 'Super',
-            ['sports'] = 'Sports',
-            ['vans'] = 'Vans'
+            ['sports'] = 'Sports'
         },
         ['TestDriveTimeLimit'] = 2,
         ['Location'] = vector3(-63.59, 68.25, 73.06),

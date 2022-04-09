@@ -58,8 +58,6 @@ local function GetClosestPlayer() -- interactions, job, tracker
 end
 
 
-
-
 local function openFingerprintUI()
     SendNUIMessage({
         type = "fingerprintOpen"
@@ -164,6 +162,13 @@ function TakeOutVehicle(vehicleInfo)
         SetVehicleMod(veh, 0, 48)
         SetVehicleNumberPlateText(veh, "POLICE"..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
+        SetVehicleDirtLevel(veh, 0.0)
+        print(vehicleInfo)
+        if vehicleInfo == 'npolvic' then
+            SetVehicleCustomPrimaryColour(veh, 240, 240, 240)
+            SetVehicleCustomSecondaryColour(veh, 5, 5, 5)
+            SetVehicleLivery(veh, 1)
+        end
         exports['prp-fuel']:SetFuel(veh, 100.0)
         closeMenuFull()
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
@@ -453,71 +458,71 @@ CreateThread(function()
                 end
             end
 
-            for k, v in pairs(Config.Locations["evidence2"]) do
-                if #(pos - v) < 2 then
-                    sleep = 5
-                    if #(pos - v) < 1.0 then
-                        DrawText3D(v.x, v.y, v.z, "~g~E~w~ - evidence stash")
-                        if IsControlJustReleased(0, 38) then
-                            local drawer = exports['prp-input']:ShowInput({
-                                header = 'Evidence Stash',
-                                submitText = "open",
-                                inputs = {
-                                    {
-                                        type = 'number',
-                                        isRequired = true,
-                                        name = 'slot',
-                                        text = 'Slot no. (1,2,3)'
-                                    }
-                                }
-                            })
-                            if drawer then
-                                if not drawer.slot then return end
-                                TriggerServerEvent("inventory:server:OpenInventory", "stash", " 2 | Drawer "..drawer.slot, {
-                                    maxweight = 4000000,
-                                    slots = 500,
-                                })
-                                TriggerEvent("inventory:client:SetCurrentStash", " 2 | Drawer "..drawer.slot)
-                            end
-                        end
-                    elseif #(pos - v) < 1.5 then
-                        DrawText3D(v.x, v.y, v.z, "Stash 2")
-                    end
-                end
-            end
+            -- for k, v in pairs(Config.Locations["evidence2"]) do
+            --     if #(pos - v) < 2 then
+            --         sleep = 5
+            --         if #(pos - v) < 1.0 then
+            --             DrawText3D(v.x, v.y, v.z, "~g~E~w~ - evidence stash")
+            --             if IsControlJustReleased(0, 38) then
+            --                 local drawer = exports['prp-input']:ShowInput({
+            --                     header = 'Evidence Stash',
+            --                     submitText = "open",
+            --                     inputs = {
+            --                         {
+            --                             type = 'number',
+            --                             isRequired = true,
+            --                             name = 'slot',
+            --                             text = 'Slot no. (1,2,3)'
+            --                         }
+            --                     }
+            --                 })
+            --                 if drawer then
+            --                     if not drawer.slot then return end
+            --                     TriggerServerEvent("inventory:server:OpenInventory", "stash", " 2 | Drawer "..drawer.slot, {
+            --                         maxweight = 4000000,
+            --                         slots = 500,
+            --                     })
+            --                     TriggerEvent("inventory:client:SetCurrentStash", " 2 | Drawer "..drawer.slot)
+            --                 end
+            --             end
+            --         elseif #(pos - v) < 1.5 then
+            --             DrawText3D(v.x, v.y, v.z, "Stash 2")
+            --         end
+            --     end
+            -- end
 
-            for k, v in pairs(Config.Locations["evidence3"]) do
-                if #(pos - v) < 2 then
-                    sleep = 5
-                    if #(pos - v) < 1.0 then
-                        DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Evidence stash")
-                        if IsControlJustReleased(0, 38) then
-                            local drawer = exports['prp-input']:ShowInput({
-                                header = 'Evidence Stash',
-                                submitText = "open",
-                                inputs = {
-                                    {
-                                        type = 'number',
-                                        isRequired = true,
-                                        name = 'slot',
-                                        text = 'Slot no. (1,2,3)'
-                                    }
-                                }
-                            })
-                            if drawer then
-                                if not drawer.slot then return end
-                                TriggerServerEvent("inventory:server:OpenInventory", "stash", " 3 | Drawer "..drawer.slot, {
-                                    maxweight = 4000000,
-                                    slots = 500,
-                                })
-                                TriggerEvent("inventory:client:SetCurrentStash", " 3 | Drawer "..drawer.slot)
-                            end
-                        end
-                    elseif #(pos - v) < 1.5 then
-                        DrawText3D(v.x, v.y, v.z, "Stash 3")
-                    end
-                end
-            end
+            -- for k, v in pairs(Config.Locations["evidence3"]) do
+            --     if #(pos - v) < 2 then
+            --         sleep = 5
+            --         if #(pos - v) < 1.0 then
+            --             DrawText3D(v.x, v.y, v.z, "~g~E~w~ - Evidence stash")
+            --             if IsControlJustReleased(0, 38) then
+            --                 local drawer = exports['prp-input']:ShowInput({
+            --                     header = 'Evidence Stash',
+            --                     submitText = "open",
+            --                     inputs = {
+            --                         {
+            --                             type = 'number',
+            --                             isRequired = true,
+            --                             name = 'slot',
+            --                             text = 'Slot no. (1,2,3)'
+            --                         }
+            --                     }
+            --                 })
+            --                 if drawer then
+            --                     if not drawer.slot then return end
+            --                     TriggerServerEvent("inventory:server:OpenInventory", "stash", " 3 | Drawer "..drawer.slot, {
+            --                         maxweight = 4000000,
+            --                         slots = 500,
+            --                     })
+            --                     TriggerEvent("inventory:client:SetCurrentStash", " 3 | Drawer "..drawer.slot)
+            --                 end
+            --             end
+            --         elseif #(pos - v) < 1.5 then
+            --             DrawText3D(v.x, v.y, v.z, "Stash 3")
+            --         end
+            --     end
+            -- end
 
             for k, v in pairs(Config.Locations["trash"]) do
                 if #(pos - v) < 2 then

@@ -441,10 +441,10 @@ RegisterNetEvent('prp-bankrobbery:client:robberyCall', function(type, key, stree
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 431, 
-                    scale = 1.2, 
+                    sprite = 108,
+                    scale = 1.2,
                     colour = 3,
-                    flashes = false, 
+                    flashes = false,
                     text = '911 - Blain County Savings bank robbery attempt',
                     time = (5*60*1000),
                     sound = 1,
@@ -459,7 +459,7 @@ RegisterNetEvent('prp-bankrobbery:client:robberyCall', function(type, key, stree
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 431, 
+                    sprite = 108, 
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 
@@ -477,7 +477,7 @@ RegisterNetEvent('prp-bankrobbery:client:robberyCall', function(type, key, stree
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 431, 
+                    sprite = 108, 
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 

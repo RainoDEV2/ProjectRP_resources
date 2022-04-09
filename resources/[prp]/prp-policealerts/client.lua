@@ -55,7 +55,7 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 431, 
+                    sprite = 102, 
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 
@@ -80,7 +80,7 @@ AddEventHandler('prp-policealerts:client:AddPoliceAlert', function(data, forBoth
                 flash = 0,
                 unique_id = tostring(math.random(0000000,9999999)),
                 blip = {
-                    sprite = 431, 
+                    sprite = 102, 
                     scale = 1.2, 
                     colour = 3,
                     flashes = false, 

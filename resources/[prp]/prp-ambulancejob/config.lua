@@ -53,24 +53,23 @@ Config.Locations = {
 Config.AuthorizedVehicles = {
 	-- Grade 0
 	[0] = {
-		["ambulance"] = "Ambulance",
+		["speedoambo"] = "Ambulance",
 	},
 	-- Grade 1
 	[1] = {
-		["ambulance"] = "Ambulance",
-
+		["speedoambo"] = "Ambulance",
 	},
 	-- Grade 2
 	[2] = {
-		["ambulance"] = "Ambulance",
+		["speedoambo"] = "Ambulance",
 	},
 	-- Grade 3
 	[3] = {
-		["ambulance"] = "Ambulance",
+		["speedoambo"] = "Ambulance",
 	},
 	-- Grade 4
 	[4] = {
-		["ambulance"] = "Ambulance",
+		["speedoambo"] = "Ambulance",
 	}
 }
 
@@ -296,12 +295,18 @@ Config.CriticalAreas = {
 }
 
 Config.StaggerAreas = {
-    ['SPINE'] = { armored = true, major = 60, minor = 30 },
-    ['UPPER_BODY'] = { armored = false, major = 60, minor = 30 },
-    ['LLEG'] = { armored = true, major = 100, minor = 85 },
-    ['RLEG'] = { armored = true, major = 100, minor = 85 },
-    ['LFOOT'] = { armored = true, major = 100, minor = 100 },
-    ['RFOOT'] = { armored = true, major = 100, minor = 100 },
+    ['SPINE'] = { armored = true, major = 0, minor = 0 },
+    ['UPPER_BODY'] = { armored = false, major = 0, minor = 0 },
+    ['LLEG'] = { armored = true, major = 0, minor = 0 },
+    ['RLEG'] = { armored = true, major = 0, minor = 0 },
+    ['LFOOT'] = { armored = true, major = 0, minor = 0 },
+    ['RFOOT'] = { armored = true, major = 0, minor = 0 },
+    -- ['SPINE'] = { armored = true, major = 60, minor = 30 },
+    -- ['UPPER_BODY'] = { armored = false, major = 60, minor = 30 },
+    -- ['LLEG'] = { armored = true, major = 100, minor = 85 },
+    -- ['RLEG'] = { armored = true, major = 100, minor = 85 },
+    -- ['LFOOT'] = { armored = true, major = 100, minor = 100 },
+    -- ['RFOOT'] = { armored = true, major = 100, minor = 100 },
 }
 
 Config.WoundStates = {

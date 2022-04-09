@@ -11,7 +11,6 @@ Config.DoorList['critical care'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- lower front desk created by Milos
@@ -27,7 +26,6 @@ Config.DoorList['lower front desk'] = {
     fixText = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- morgue created by Milos
@@ -43,7 +41,6 @@ Config.DoorList['morgue'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- double door garage created by Milos
@@ -59,12 +56,11 @@ Config.DoorList['double door garage'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- garage door 1 created by Milos
 Config.DoorList['garage door 1'] = {
-    distance = 7,
+    distance = 10,
     doorRate = 1.0,
     doorType = 'garage',
     objCoords = vec3(339.239624, -564.924988, 30.101749),
@@ -75,12 +71,11 @@ Config.DoorList['garage door 1'] = {
     fixText = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- garage door 2 created by Milos
 Config.DoorList['garage door 2'] = {
-    distance = 7,
+    distance = 10,
     doorRate = 1.0,
     doorType = 'garage',
     objCoords = vec3(328.085785, -560.855469, 30.117950),
@@ -91,7 +86,6 @@ Config.DoorList['garage door 2'] = {
     fixText = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- morgue door2 created by Milos
@@ -107,7 +101,6 @@ Config.DoorList['morgue door2'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- main staircase created by Milos
@@ -123,7 +116,6 @@ Config.DoorList['main staircase'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- main locker room created by Milos
@@ -139,7 +131,6 @@ Config.DoorList['main locker room'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- main locker room2 created by Milos
@@ -155,7 +146,6 @@ Config.DoorList['main locker room2'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- surgery door 1 created by Milos
@@ -171,7 +161,6 @@ Config.DoorList['surgery door 1'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- surgery door 2 created by Milos
@@ -187,7 +176,6 @@ Config.DoorList['surgery door 2'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- ward door 1 created by Milos
@@ -203,7 +191,6 @@ Config.DoorList['ward door 1'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- ward door 2 created by Milos
@@ -219,7 +206,6 @@ Config.DoorList['ward door 2'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- security room door 1 created by Milos
@@ -235,7 +221,6 @@ Config.DoorList['security room door 1'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- wards door 3 created by Milos
@@ -251,7 +236,6 @@ Config.DoorList['wards door 3'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- lab and records created by Milos
@@ -267,7 +251,6 @@ Config.DoorList['lab and records'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- Offices door 1 created by Milos
@@ -283,7 +266,6 @@ Config.DoorList['Offices door 1'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- training class room created by Milos
@@ -299,5 +281,4 @@ Config.DoorList['training class room'] = {
     authorizedJobs = { ['ambulance'] = 0, ['police'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }

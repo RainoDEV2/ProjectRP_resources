@@ -1,11 +1,24 @@
 -- Variables
 local ProjectRP = exports['prp-core']:GetCoreObject()
 local PlayerData = ProjectRP.Functions.GetPlayerData() -- Just for resource restart (same as event handler)
-local inPDM = false
-local inLuxury = false
+local insideZones = {}
+
+for name, shop in pairs(Config.Shops) do -- foreach shop
+    insideZones[name] = false  -- default to not being in a shop
+end
+
 local testDriveVeh, inTestDrive = 0, false
-local ClosestVehicle, ClosestShop = 1, nil
+local ClosestVehicle = 1
 local zones = {}
+
+local function getShopInsideOf()
+    for name, shop in pairs(Config.Shops) do -- foreach shop
+        if insideZones[name] then
+            return name
+        end
+    end
+    return nil
+end
 
 -- Handlers
 
@@ -83,24 +96,24 @@ local function comma_value(amount)
 end
 
 local function getVehName()
-    return ProjectRP.Shared.Vehicles[Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["name"]
+    return ProjectRP.Shared.Vehicles[Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["name"]
 end
 
 local function getVehPrice()
-    return comma_value(ProjectRP.Shared.Vehicles[Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["price"])
+    return comma_value(ProjectRP.Shared.Vehicles[Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["price"])
 end
 
 local function getVehBrand()
-    return ProjectRP.Shared.Vehicles[Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["brand"]
+    return ProjectRP.Shared.Vehicles[Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle]["brand"]
 end
 
 local function setClosestShowroomVehicle()
     local pos = GetEntityCoords(PlayerPedId(), true)
     local current = nil
     local dist = nil
-
-    for id, veh in pairs(Config.Shops[ClosestShop]["ShowroomVehicles"]) do
-        local dist2 = #(pos - vector3(Config.Shops[ClosestShop]["ShowroomVehicles"][id].coords.x, Config.Shops[ClosestShop]["ShowroomVehicles"][id].coords.y, Config.Shops[ClosestShop]["ShowroomVehicles"][id].coords.z))
+    local closestShop = getShopInsideOf()
+    for id, veh in pairs(Config.Shops[closestShop]["ShowroomVehicles"]) do
+        local dist2 = #(pos - vector3(Config.Shops[closestShop]["ShowroomVehicles"][id].coords.x, Config.Shops[closestShop]["ShowroomVehicles"][id].coords.y, Config.Shops[closestShop]["ShowroomVehicles"][id].coords.z))
         if current ~= nil then
             if dist2 < dist then
                 current = id
@@ -118,7 +131,7 @@ end
 
 local function createTestDriveReturn()
     testDriveZone = BoxZone:Create(
-        Config.Shops[ClosestShop]["ReturnLocation"],
+        Config.Shops[getShopInsideOf()]["ReturnLocation"],
         3.0,
         5.0, {
         name="box_zone"
@@ -126,6 +139,7 @@ local function createTestDriveReturn()
 
     testDriveZone:onPlayerInOut(function(isPointInside)
         if isPointInside and IsPedInAnyVehicle(PlayerPedId()) then
+			SetVehicleForwardSpeed(GetVehiclePedIsIn(PlayerPedId(), false), 0)
             exports['prp-menu']:openMenu(returnTestDrive)
         else
             exports['prp-menu']:closeMenu()
@@ -146,13 +160,13 @@ local function startTestDriveTimer(testDriveTime)
     end)
 end
 
-local function createVehZones(ClosestShop) -- This will create an entity zone if config is true that you can use to target and open the vehicle menu
+local function createVehZones(shopName, entity)
     if not Config.UsingTarget then
-        for i = 1, #Config.Shops[ClosestShop]['ShowroomVehicles'] do
+        for i = 1, #Config.Shops[shopName]['ShowroomVehicles'] do
             zones[#zones+1] = BoxZone:Create(
-                vector3(Config.Shops[ClosestShop]['ShowroomVehicles'][i]['coords'].x,
-                Config.Shops[ClosestShop]['ShowroomVehicles'][i]['coords'].y,
-                Config.Shops[ClosestShop]['ShowroomVehicles'][i]['coords'].z),
+                vector3(Config.Shops[shopName]['ShowroomVehicles'][i]['coords'].x,
+                Config.Shops[shopName]['ShowroomVehicles'][i]['coords'].y,
+                Config.Shops[shopName]['ShowroomVehicles'][i]['coords'].z),
                 2.75,
                 2.75, {
                 name="box_zone",
@@ -161,8 +175,9 @@ local function createVehZones(ClosestShop) -- This will create an entity zone if
         end
         local combo = ComboZone:Create(zones, {name = "vehCombo", debugPoly = false})
         combo:onPlayerInOut(function(isPointInside)
+            local insideShop = getShopInsideOf()
             if isPointInside then
-                if PlayerData.job.name == Config.Shops[ClosestShop]['Job'] or Config.Shops[ClosestShop]['Job'] == 'none' then
+                if PlayerData.job.name == Config.Shops[insideShop]['Job'] or Config.Shops[insideShop]['Job'] == 'none' then
                     exports['prp-menu']:showHeader(vehHeaderMenu)
                 end
             else
@@ -170,7 +185,7 @@ local function createVehZones(ClosestShop) -- This will create an entity zone if
             end
         end)
     else
-        exports['prp-target']:AddGlobalVehicle({
+        exports['prp-target']:AddTargetEntity(entity, {
             options = {
                 {
                     type = "client",
@@ -178,7 +193,8 @@ local function createVehZones(ClosestShop) -- This will create an entity zone if
                     icon = "fas fa-car",
                     label = "Vehicle Interaction",
                     canInteract = function(entity)
-                        if (inPDM or inLuxury) and (Config.Shops[ClosestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[ClosestShop]['Job']) then
+                        local closestShop = getShopInsideOf()
+                        if (closestShop ~= nil) and (Config.Shops[closestShop]['Job'] == 'none' or PlayerData.job.name == Config.Shops[closestShop]['Job']) then
                             return true
                         end
                         return false
@@ -192,157 +208,162 @@ end
 
 -- Zones
 
-local pdm = PolyZone:Create({
-    vector2(-56.727394104004, -1086.2325439453),
-    vector2(-60.612808227539, -1096.7795410156),
-    vector2(-58.26834487915, -1100.572265625),
-    vector2(-35.927803039551, -1109.0034179688),
-    vector2(-34.427627563477, -1108.5111083984),
-    vector2(-32.02657699585, -1101.5877685547),
-    vector2(-33.342102050781, -1101.0377197266),
-    vector2(-31.292987823486, -1095.3717041016)
-}, {
-    name="pdm",
-    minZ = 25.0,
-    maxZ = 28.0
-})
+function createFreeUseShop(shopShape, name)
+    local zone = PolyZone:Create(shopShape, {  -- create the zone
+        name= name,
+        minZ = shopShape.minZ,
+        maxZ = shopShape.maxZ
+    })
 
-pdm:onPlayerInOut(function(isPointInside)
-    if isPointInside then
-        ClosestShop = 'pdm'
-        inPDM = true
-        CreateThread(function()
-            while inPDM do
-                setClosestShowroomVehicle()
-                vehicleMenu = {
-                    {
-                        isMenuHeader = true,
-                        header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
-                    },
-                    {
-                        header = 'Test Drive',
-                        txt = 'Test drive currently selected vehicle',
-                        params = {
-                            event = 'prp-vehicleshop:client:TestDrive',
-                        }
-                    },
-                    {
-                        header = "Buy Vehicle",
-                        txt = 'Purchase currently selected vehicle',
-                        params = {
-                            isServer = true,
-                            event = 'prp-vehicleshop:server:buyShowroomVehicle',
-                            args = {
-                                buyVehicle = Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
+    zone:onPlayerInOut(function(isPointInside)
+        if isPointInside then
+            insideZones[name] = true
+            CreateThread(function()
+                while insideZones[name] do
+                    setClosestShowroomVehicle()
+                    vehicleMenu = {
+                        {
+                            isMenuHeader = true,
+                            header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
+                        },
+                        {
+                            header = 'Test Drive',
+                            txt = 'Test drive currently selected vehicle',
+                            params = {
+                                event = 'prp-vehicleshop:client:TestDrive',
                             }
-                        }
-                    },
-                    {
-                        header = 'Finance Vehicle',
-                        txt = 'Finance currently selected vehicle',
-                        params = {
-                            event = 'prp-vehicleshop:client:openFinance',
-                            args = {
-                                price = getVehPrice(),
-                                buyVehicle = Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
+                        },
+                        {
+                            header = "Buy Vehicle",
+                            txt = 'Purchase currently selected vehicle',
+                            params = {
+                                isServer = true,
+                                event = 'prp-vehicleshop:server:buyShowroomVehicle',
+                                args = {
+                                    buyVehicle = Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
+                                }
                             }
-                        }
-                    },
-                    {
-                        header = 'Swap Vehicle',
-                        txt = 'Change currently selected vehicle',
-                        params = {
-                            event = 'prp-vehicleshop:client:vehCategories',
-                        }
-                    },
-                }
-                Wait(1000)
-            end
-        end)
-    else
-        inPDM = false
-        ClosestShop = nil
+                        },
+                        {
+                            header = 'Finance Vehicle',
+                            txt = 'Finance currently selected vehicle',
+                            params = {
+                                event = 'prp-vehicleshop:client:openFinance',
+                                args = {
+                                    price = getVehPrice(),
+                                    buyVehicle = Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
+                                }
+                            }
+                        },
+                        {
+                            header = 'Swap Vehicle',
+                            txt = 'Change currently selected vehicle',
+                            params = {
+                                event = 'prp-vehicleshop:client:vehCategories',
+                            }
+                        },
+                    }
+                    Wait(1000)
+                end
+            end)
+        else
+            insideZones[name] = false -- leave the shops zone
+            ClosestVehicle = 1
+        end
+    end)
+end
+
+function createManagedShop(shopShape, name, jobName)
+    local zone = PolyZone:Create(shopShape, {  -- create the zone
+        name= name,
+        minZ = shopShape.minZ,
+        maxZ = shopShape.maxZ
+    })
+
+    zone:onPlayerInOut(function(isPointInside)
+        if isPointInside then
+            insideZones[name] = true
+            CreateThread(function()
+                while insideZones[name] and PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[name]['Job'] do
+                    setClosestShowroomVehicle()
+                    local closestShop = getShopInsideOf()
+                    vehicleMenu = {
+                        {
+                            isMenuHeader = true,
+                            header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
+                        },
+                        {
+                            header = 'Test Drive',
+                            txt = 'Allow player for test drive',
+                            params = {
+                                event = 'prp-vehicleshop:client:openIdMenu',
+                                args = {
+                                    vehicle = Config.Shops[closestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle,
+                                    type = 'testDrive'
+                                }
+                            }
+                        },
+                        {
+                            header = "Sell Vehicle",
+                            txt = 'Sell vehicle to Player',
+                            params = {
+                                event = 'prp-vehicleshop:client:openIdMenu',
+                                args = {
+                                    vehicle = Config.Shops[closestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle,
+                                    type = 'sellVehicle'
+                                }
+                            }
+                        },
+                        {
+                            header = 'Finance Vehicle',
+                            txt = 'Finance vehicle to Player',
+                            params = {
+                                event = 'prp-vehicleshop:client:openCustomFinance',
+                                args = {
+                                    price = getVehPrice(),
+                                    vehicle = Config.Shops[closestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
+                                }
+                            }
+                        },
+                        {
+                            header = 'Swap Vehicle',
+                            txt = 'Change currently selected vehicle',
+                            params = {
+                                event = 'prp-vehicleshop:client:vehCategories',
+                            }
+                        },
+                    }
+                    Wait(1000)
+                end
+            end)
+        else
+            insideZones[name] = false -- leave the shops zone
+            ClosestVehicle = 1
+        end
+    end)
+end
+
+for name, shop in pairs(Config.Shops) do
+    if shop['Type'] == 'free-use' then
+        createFreeUseShop(shop['Zone']['Shape'], name)
+    elseif shop['Type'] == 'managed' then
+        createManagedShop(shop['Zone']['Shape'], name)
     end
-end)
-
-local luxury = PolyZone:Create({
-    vector2(-81.724754333496, 72.436462402344),
-    vector2(-60.159938812256, 60.576206207275),
-    vector2(-55.763122558594, 61.749210357666),
-    vector2(-52.965869903564, 69.869110107422),
-    vector2(-50.352680206299, 75.886123657227),
-    vector2(-61.261016845703, 81.564918518066),
-    vector2(-63.812171936035, 75.633102416992),
-    vector2(-76.546226501465, 81.189826965332)
-}, {
-    name="luxury",
-    minZ = 69.0,
-    maxZ = 76.0
-})
-
-luxury:onPlayerInOut(function(isPointInside)
-    if isPointInside then
-        ClosestShop = 'luxury'
-        inLuxury = true
-        CreateThread(function()
-            while inLuxury and PlayerData.job.name == Config.Shops['luxury']['Job'] do
-                setClosestShowroomVehicle()
-                vehicleMenu = {
-                    {
-                        isMenuHeader = true,
-                        header = getVehBrand():upper().. ' '..getVehName():upper().. ' - $' ..getVehPrice(),
-                    },
-                    {
-                        header = 'Test Drive',
-                        txt = 'Send the closest citizen for a test drive',
-                        params = {
-                            isServer = true,
-                            event = 'prp-vehicleshop:server:customTestDrive',
-                            args = {
-                                testVehicle = Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
-                            }
-                        }
-                    },
-                    {
-                        header = "Sell Vehicle",
-                        txt = 'Sell vehicle to closest citizen',
-                        params = {
-                            isServer = true,
-                            event = 'prp-vehicleshop:server:sellShowroomVehicle',
-                            args = {
-                                buyVehicle = Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
-                            }
-                        }
-                    },
-                    {
-                        header = 'Finance Vehicle',
-                        txt = 'Finance vehicle to closest citizen',
-                        params = {
-                            event = 'prp-vehicleshop:client:openCustomFinance',
-                            args = {
-                                price = getVehPrice(),
-                                buyVehicle = Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle
-                            }
-                        }
-                    },
-                    {
-                        header = 'Swap Vehicle',
-                        txt = 'Change currently selected vehicle',
-                        params = {
-                            event = 'prp-vehicleshop:client:vehCategories',
-                        }
-                    },
-                }
-                Wait(1000)
-            end
-        end)
-    else
-        inLuxury = false
-        ClosestShop = nil
-    end
-end)
+end
 
 -- Events
+
+RegisterNetEvent('prp-vehicleshop:client:transferVehicle', function(buyerId, amount)
+    local ped = PlayerPedId()
+    local vehicle = GetVehiclePedIsIn(ped, false)
+    local plate = ProjectRP.Functions.GetPlate(vehicle)
+    local tcoords = GetEntityCoords(GetPlayerPed(GetPlayerFromServerId(buyerId)))
+    if #(GetEntityCoords(ped)-tcoords) < 5.0 then
+        TriggerServerEvent('prp-vehicleshop:server:transferVehicle', plate, buyerId, amount)
+    else
+        ProjectRP.Functions.Notify('The person you are selling to is too far away.')
+    end
+end)
 
 RegisterNetEvent('prp-vehicleshop:client:homeMenu', function()
     exports['prp-menu']:openMenu(vehicleMenu)
@@ -356,17 +377,18 @@ RegisterNetEvent('prp-vehicleshop:client:TestDrive', function()
     if not inTestDrive and ClosestVehicle ~= 0 then
         inTestDrive = true
         local prevCoords = GetEntityCoords(PlayerPedId())
-        ProjectRP.Functions.SpawnVehicle(Config.Shops[ClosestShop]["ShowroomVehicles"][ClosestVehicle].chosenVehicle, function(veh)
+        ProjectRP.Functions.SpawnVehicle(Config.Shops[getShopInsideOf()]["ShowroomVehicles"][ClosestVehicle].chosenVehicle, function(veh)
+            local closestShop = getShopInsideOf()
             TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
             exports['prp-fuel']:SetFuel(veh, 100)
             SetVehicleNumberPlateText(veh, 'TESTDRIVE')
             SetEntityAsMissionEntity(veh, true, true)
-            SetEntityHeading(veh, Config.Shops[ClosestShop]["VehicleSpawn"].w)
+            SetEntityHeading(veh, Config.Shops[closestShop]["VehicleSpawn"].w)
             TriggerEvent('vehiclekeys:client:SetOwner', ProjectRP.Functions.GetPlate(veh))
             TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', ProjectRP.Functions.GetVehicleProperties(veh))
             testDriveVeh = veh
-            ProjectRP.Functions.Notify('You have '..Config.Shops[ClosestShop]["TestDriveTimeLimit"]..' minutes remaining')
-            SetTimeout(Config.Shops[ClosestShop]["TestDriveTimeLimit"] * 60000, function()
+            ProjectRP.Functions.Notify('You have '..Config.Shops[closestShop]["TestDriveTimeLimit"]..' minutes remaining')
+            SetTimeout(Config.Shops[closestShop]["TestDriveTimeLimit"] * 60000, function()
                 if testDriveVeh ~= 0 then
                     testDriveVeh = 0
                     inTestDrive = false
@@ -375,9 +397,9 @@ RegisterNetEvent('prp-vehicleshop:client:TestDrive', function()
                     ProjectRP.Functions.Notify('Vehicle test drive complete')
                 end
             end)
-        end, Config.Shops[ClosestShop]["VehicleSpawn"], false)
+        end, Config.Shops[getShopInsideOf()]["VehicleSpawn"], false)
         createTestDriveReturn()
-        startTestDriveTimer(Config.Shops[ClosestShop]["TestDriveTimeLimit"] * 60)
+        startTestDriveTimer(Config.Shops[getShopInsideOf()]["TestDriveTimeLimit"] * 60)
     else
         ProjectRP.Functions.Notify('Already in test drive', 'error')
     end
@@ -386,18 +408,20 @@ end)
 RegisterNetEvent('prp-vehicleshop:client:customTestDrive', function(data)
     if not inTestDrive then
         inTestDrive = true
-        local vehicle = data.testVehicle
+        shopInsideOf = getShopInsideOf()
+        local vehicle = data
         local prevCoords = GetEntityCoords(PlayerPedId())
         ProjectRP.Functions.SpawnVehicle(vehicle, function(veh)
+            local shopInsideOf = getShopInsideOf()
             exports['prp-fuel']:SetFuel(veh, 100)
             SetVehicleNumberPlateText(veh, 'TESTDRIVE')
             SetEntityAsMissionEntity(veh, true, true)
-            SetEntityHeading(veh, Config.Shops[ClosestShop]["VehicleSpawn"].w)
+            SetEntityHeading(veh, Config.Shops[shopInsideOf]["VehicleSpawn"].w)
             TriggerEvent('vehiclekeys:client:SetOwner', ProjectRP.Functions.GetPlate(veh))
             TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', ProjectRP.Functions.GetVehicleProperties(veh))
             testDriveVeh = veh
-            ProjectRP.Functions.Notify('You have '..Config.Shops[ClosestShop]["TestDriveTimeLimit"]..' minutes remaining')
-            SetTimeout(Config.Shops[ClosestShop]["TestDriveTimeLimit"] * 60000, function()
+            ProjectRP.Functions.Notify('You have '..Config.Shops[shopInsideOf]["TestDriveTimeLimit"]..' minutes remaining')
+            SetTimeout(Config.Shops[shopInsideOf]["TestDriveTimeLimit"] * 60000, function()
                 if testDriveVeh ~= 0 then
                     testDriveVeh = 0
                     inTestDrive = false
@@ -406,9 +430,9 @@ RegisterNetEvent('prp-vehicleshop:client:customTestDrive', function(data)
                     ProjectRP.Functions.Notify('Vehicle test drive complete')
                 end
             end)
-        end, Config.Shops[ClosestShop]["VehicleSpawn"], false)
+        end, Config.Shops[shopInsideOf]["VehicleSpawn"], false)
         createTestDriveReturn()
-        startTestDriveTimer(Config.Shops[ClosestShop]["TestDriveTimeLimit"] * 60)
+        startTestDriveTimer(Config.Shops[shopInsideOf]["TestDriveTimeLimit"] * 60)
     else
         ProjectRP.Functions.Notify('Already in test drive', 'error')
     end
@@ -437,7 +461,7 @@ RegisterNetEvent('prp-vehicleshop:client:vehCategories', function()
             }
         }
     }
-    for k,v in pairs(Config.Shops[ClosestShop]['Categories']) do
+    for k,v in pairs(Config.Shops[getShopInsideOf()]['Categories']) do
         categoryMenu[#categoryMenu + 1] = {
             header = v,
             params = {
@@ -461,7 +485,7 @@ RegisterNetEvent('prp-vehicleshop:client:openVehCats', function(data)
         }
     }
     for k,v in pairs(ProjectRP.Shared.Vehicles) do
-        if ProjectRP.Shared.Vehicles[k]["category"] == data.catName and ProjectRP.Shared.Vehicles[k]["shop"] == ClosestShop then
+        if ProjectRP.Shared.Vehicles[k]["category"] == data.catName and ProjectRP.Shared.Vehicles[k]["shop"] == getShopInsideOf() then
             vehicleMenu[#vehicleMenu + 1] = {
                 header = v.name,
                 txt = 'Price: $'..v.price,
@@ -471,7 +495,7 @@ RegisterNetEvent('prp-vehicleshop:client:openVehCats', function(data)
                     args = {
                         toVehicle = v.model,
                         ClosestVehicle = ClosestVehicle,
-                        ClosestShop = ClosestShop
+                        ClosestShop = getShopInsideOf()
                     }
                 }
             }
@@ -495,7 +519,7 @@ RegisterNetEvent('prp-vehicleshop:client:openFinance', function(data)
                 type = 'number',
                 isRequired = true,
                 name = 'paymentAmount',
-                text = 'Total Payments - Min '..Config.MaximumPayments
+                text = 'Total Payments - Max '..Config.MaximumPayments
             }
         }
     })
@@ -508,7 +532,7 @@ end)
 RegisterNetEvent('prp-vehicleshop:client:openCustomFinance', function(data)
     TriggerEvent('animations:client:EmoteCommandStart', {"tablet2"})
     local dialog = exports['prp-input']:ShowInput({
-        header = getVehBrand():upper().. ' ' ..data.buyVehicle:upper().. ' - $' ..data.price,
+        header = getVehBrand():upper().. ' ' ..data.vehicle:upper().. ' - $' ..data.price,
         submitText = "Submit",
         inputs = {
             {
@@ -522,19 +546,26 @@ RegisterNetEvent('prp-vehicleshop:client:openCustomFinance', function(data)
                 isRequired = true,
                 name = 'paymentAmount',
                 text = 'Total Payments - Max '..Config.MaximumPayments
+            },
+            {
+                text = "Server ID (#)",
+                name = "playerid",
+                type = "number",
+                isRequired = true
             }
         }
     })
     if dialog then
-        if not dialog.downPayment or not dialog.paymentAmount then return end
+        if not dialog.downPayment or not dialog.paymentAmount or not dialog.playerid then return end
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
-        TriggerServerEvent('prp-vehicleshop:server:sellfinanceVehicle', dialog.downPayment, dialog.paymentAmount, data.buyVehicle)
+        TriggerServerEvent('prp-vehicleshop:server:sellfinanceVehicle', dialog.downPayment, dialog.paymentAmount, data.vehicle, dialog.playerid)
     end
 end)
 
 RegisterNetEvent('prp-vehicleshop:client:swapVehicle', function(data)
-    if Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].chosenVehicle ~= data.toVehicle then
-        local closestVehicle, closestDistance = ProjectRP.Functions.GetClosestVehicle(vector3(Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.x, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.y, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.z))
+    local shopName = data.ClosestShop
+    if Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].chosenVehicle ~= data.toVehicle then
+        local closestVehicle, closestDistance = ProjectRP.Functions.GetClosestVehicle(vector3(Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.x, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.y, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.z))
         if closestVehicle == 0 then return end
         if closestDistance < 5 then ProjectRP.Functions.DeleteVehicle(closestVehicle) end
         Wait(250)
@@ -543,15 +574,16 @@ RegisterNetEvent('prp-vehicleshop:client:swapVehicle', function(data)
         while not HasModelLoaded(model) do
             Citizen.Wait(250)
         end
-        local veh = CreateVehicle(model, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.x, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.y, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.z, false, false)
+        local veh = CreateVehicle(model, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.x, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.y, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.z, false, false)
         SetModelAsNoLongerNeeded(model)
         SetVehicleOnGroundProperly(veh)
         SetEntityInvincible(veh,true)
-        SetEntityHeading(veh, Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].coords.w)
+        SetEntityHeading(veh, Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].coords.w)
         SetVehicleDoorsLocked(veh, 3)
         FreezeEntityPosition(veh, true)
         SetVehicleNumberPlateText(veh, 'BUY ME')
-        Config.Shops[data.ClosestShop]["ShowroomVehicles"][data.ClosestVehicle].chosenVehicle = data.toVehicle
+        Config.Shops[shopName]["ShowroomVehicles"][data.ClosestVehicle].chosenVehicle = data.toVehicle
+        if Config.UsingTarget then createVehZones(shopName, veh) end
     end
 end)
 
@@ -560,18 +592,18 @@ RegisterNetEvent('prp-vehicleshop:client:buyShowroomVehicle', function(vehicle, 
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
         exports['prp-fuel']:SetFuel(veh, 100)
         SetVehicleNumberPlateText(veh, plate)
-        SetEntityHeading(veh, Config.Shops[ClosestShop]["VehicleSpawn"].w)
+        SetEntityHeading(veh, Config.Shops[getShopInsideOf()]["VehicleSpawn"].w)
         SetEntityAsMissionEntity(veh, true, true)
         TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
         TriggerServerEvent("prp-vehicletuning:server:SaveVehicleProps", ProjectRP.Functions.GetVehicleProperties(veh))
-    end, Config.Shops[ClosestShop]["VehicleSpawn"], true)
+    end, Config.Shops[getShopInsideOf()]["VehicleSpawn"], true)
 end)
 
 RegisterNetEvent('prp-vehicleshop:client:getVehicles', function()
     ProjectRP.Functions.TriggerCallback('prp-vehicleshop:server:getVehicles', function(vehicles)
         local ownedVehicles = {}
         for k,v in pairs(vehicles) do
-            if v.balance then
+            if v.balance ~= 0 then
                 local name = ProjectRP.Shared.Vehicles[v.vehicle]["name"]
                 local plate = v.plate:upper()
                 ownedVehicles[#ownedVehicles + 1] = {
@@ -661,19 +693,44 @@ RegisterNetEvent('prp-vehicleshop:client:financePayment', function(data)
     end
 end)
 
+RegisterNetEvent('prp-vehicleshop:client:openIdMenu', function(data)
+    local dialog = exports['prp-input']:ShowInput({
+        header = ProjectRP.Shared.Vehicles[data.vehicle]["name"],
+        submitText = "Submit",
+        inputs = {
+            {
+                text = "Server ID (#)",
+                name = "playerid",
+                type = "number",
+                isRequired = true
+            }
+        }
+    })
+    if dialog then
+        if not dialog.playerid then return end
+        if data.type == 'testDrive' then
+            TriggerServerEvent('prp-vehicleshop:server:customTestDrive', data.vehicle, dialog.playerid)
+        elseif data.type == 'sellVehicle' then
+            TriggerServerEvent('prp-vehicleshop:server:sellShowroomVehicle', data.vehicle, dialog.playerid)
+        end
+    end
+end)
+
 -- Threads
 
 CreateThread(function()
     for k,v in pairs(Config.Shops) do
-        local Dealer = AddBlipForCoord(Config.Shops[k]["Location"])
-        SetBlipSprite (Dealer, 326)
-        SetBlipDisplay(Dealer, 4)
-        SetBlipScale  (Dealer, 0.75)
-        SetBlipAsShortRange(Dealer, true)
-        SetBlipColour(Dealer, 3)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentSubstringPlayerName(Config.Shops[k]["ShopLabel"])
-        EndTextCommandSetBlipName(Dealer)
+        if v.showBlip then
+            local Dealer = AddBlipForCoord(Config.Shops[k]["Location"])
+            SetBlipSprite (Dealer, Config.Shops[k]["blipSprite"])
+            SetBlipDisplay(Dealer, 4)
+            SetBlipScale  (Dealer, 0.70)
+            SetBlipAsShortRange(Dealer, true)
+            SetBlipColour(Dealer, Config.Shops[k]["blipColor"])
+            BeginTextCommandSetBlipName("STRING")
+            AddTextComponentSubstringPlayerName(Config.Shops[k]["ShopLabel"])
+            EndTextCommandSetBlipName(Dealer)
+        end
     end
 end)
 
@@ -712,7 +769,8 @@ CreateThread(function()
             SetEntityHeading(veh, Config.Shops[k]["ShowroomVehicles"][i].coords.w)
             FreezeEntityPosition(veh,true)
             SetVehicleNumberPlateText(veh, 'BUY ME')
-            createVehZones(k)
+            if Config.UsingTarget then createVehZones(k, veh) end
         end
+        if not Config.UsingTarget then createVehZones(k) end
     end
 end)

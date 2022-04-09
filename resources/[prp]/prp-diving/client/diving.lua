@@ -110,10 +110,10 @@ RegisterNetEvent('prp-diving:client:CallCops', function(coords)
         flash = 0,
         unique_id = tostring(math.random(0000000,9999999)),
         blip = {
-            sprite = 431, 
-            scale = 1.2, 
+            sprite = 102,
+            scale = 1.2,
             colour = 3,
-            flashes = false, 
+            flashes = false,
             text = '911 - Illegal diving',
             time = (5*60*1000),
             sound = 1,

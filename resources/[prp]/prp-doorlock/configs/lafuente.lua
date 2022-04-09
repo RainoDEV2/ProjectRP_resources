@@ -12,7 +12,6 @@ Config.DoorList['Front Door'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- frontdoor2 created by Parker
@@ -29,7 +28,6 @@ Config.DoorList['frontdoor2'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- sidedoor1 created by Parker
@@ -46,7 +44,6 @@ Config.DoorList['sidedoor1'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- basement created by Parker
@@ -63,7 +60,6 @@ Config.DoorList['basement'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- backdoor created by Parker
@@ -80,7 +76,6 @@ Config.DoorList['backdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- backdoor2 created by Parker
@@ -97,7 +92,6 @@ Config.DoorList['backdoor2'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- frontdoor3 created by Parker
@@ -114,7 +108,6 @@ Config.DoorList['frontdoor3'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- tableroom created by Parker
@@ -131,7 +124,6 @@ Config.DoorList['tableroom'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- office created by Parker
@@ -148,5 +140,4 @@ Config.DoorList['office'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }

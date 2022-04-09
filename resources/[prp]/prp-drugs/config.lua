@@ -108,7 +108,6 @@ Config.CornerSellingDrugsList = {
     "meth",
     "weed_bag",
     "xtcbaggy"
-    
 }
 
 Config.DrugsPrice = {

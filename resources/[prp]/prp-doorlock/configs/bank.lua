@@ -11,5 +11,4 @@ Config.DoorList['harmony vault'] = {
     distance = 1,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }

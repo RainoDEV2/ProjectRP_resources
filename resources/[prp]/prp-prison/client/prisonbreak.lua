@@ -82,7 +82,7 @@ RegisterNetEvent('prison:client:PrisonBreakAlert', function()
         flash = 0,
         unique_id = tostring(math.random(0000000,9999999)),
         blip = {
-            sprite = 431,
+            sprite = 59,
             scale = 1.2,
             colour = 3,
             flashes = false,

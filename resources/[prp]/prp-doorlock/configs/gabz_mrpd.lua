@@ -13,7 +13,6 @@ Config.DoorList['gabz mrpd entrancedoor'] = {
     distance = 3,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- mrpd lobby leftdoor created by Milos
@@ -31,7 +30,6 @@ Config.DoorList['mrpd lobby leftdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd lobby rightdoor created by Milos
@@ -49,7 +47,6 @@ Config.DoorList['gabz mrpd lobby rightdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- mrpd leftside created by Milos
@@ -67,7 +64,6 @@ Config.DoorList['mrpd leftside'] = {
     distance = 3,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd lobby rightdoor created by Milos
@@ -85,7 +81,6 @@ Config.DoorList['gabz mrpd lobby rightdoor'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd captain's office created by Milos
@@ -103,7 +98,6 @@ Config.DoorList['gabz mrpd captains office'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd mcd created by Milos
@@ -121,7 +115,6 @@ Config.DoorList['gabz mrpd mcd'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd briefing room created by Milos
@@ -139,7 +132,6 @@ Config.DoorList['gabz mrpd briefing room'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd forensic-lab created by Milos
@@ -157,7 +149,6 @@ Config.DoorList['gabz mrpd forensic-lab'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd briefing room backdoor created by Milos
@@ -175,7 +166,6 @@ Config.DoorList['gabz mrpd briefing room backdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd armory created by Milos
@@ -193,7 +183,6 @@ Config.DoorList['gabz mrpd armory'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd armory backdoor created by Milos
@@ -211,7 +200,6 @@ Config.DoorList['gabz mrpd armory backdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd shooting range created by Milos
@@ -229,7 +217,6 @@ Config.DoorList['gabz mrpd shooting range'] = {
     distance = 1,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd processing-backdoor created by Milos
@@ -247,7 +234,6 @@ Config.DoorList['gabz mrpd processing-backdoor'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd backdoor-processing created by Milos
@@ -265,7 +251,6 @@ Config.DoorList['gabz mrpd backdoor-processing'] = {
     distance = 2,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd processing-mugshot created by Milos
@@ -283,7 +268,6 @@ Config.DoorList['gabz mrpd processing-mugshot'] = {
     distance = 1,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd processing created by Milos
@@ -301,7 +285,6 @@ Config.DoorList['gabz mrpd processing'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd mugshot created by Milos
@@ -319,7 +302,6 @@ Config.DoorList['gabz mrpd mugshot'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell's created by Milos
@@ -337,7 +319,6 @@ Config.DoorList['gabz mrpd cells'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell's leftdoor created by Milos
@@ -355,7 +336,6 @@ Config.DoorList['gabz mrpd cells leftdoor'] = {
     locked = true,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 
@@ -374,7 +354,6 @@ Config.DoorList['gabz mrpd cell-1'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell-2 created by Milos
@@ -392,7 +371,6 @@ Config.DoorList['gabz mrpd cell-2'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell-3 created by Milos
@@ -410,7 +388,6 @@ Config.DoorList['gabz mrpd cell-3'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell-4 created by Milos
@@ -428,7 +405,6 @@ Config.DoorList['gabz mrpd cell-4'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd cell-5 created by Milos
@@ -446,7 +422,6 @@ Config.DoorList['gabz mrpd cell-5'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd lineup created by Milos
@@ -464,7 +439,6 @@ Config.DoorList['gabz mrpd lineup'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd lineup-cells created by Milos
@@ -482,7 +456,6 @@ Config.DoorList['gabz mrpd lineup-cells'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd interrogation created by Milos
@@ -500,7 +473,6 @@ Config.DoorList['gabz mrpd interrogation'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd observation-1 created by Milos
@@ -518,7 +490,6 @@ Config.DoorList['gabz mrpd observation-1'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd interrogation-1 created by Milos
@@ -536,7 +507,6 @@ Config.DoorList['gabz mrpd interrogation-1'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd observation-2 created by Milos
@@ -554,7 +524,6 @@ Config.DoorList['gabz mrpd observation-2'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd interrogation-2 created by Milos
@@ -572,7 +541,6 @@ Config.DoorList['gabz mrpd interrogation-2'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd evidence created by Milos
@@ -590,7 +558,6 @@ Config.DoorList['gabz mrpd evidence'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd identification created by Milos
@@ -608,7 +575,6 @@ Config.DoorList['gabz mrpd identification'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd main evidence created by Milos
@@ -626,7 +592,6 @@ Config.DoorList['gabz mrpd main evidence'] = {
     doorType = 'double',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd parking garage door-1 created by Milos
@@ -644,7 +609,6 @@ Config.DoorList['gabz mrpd parking garage door-1'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd parking garage door-2 created by Milos
@@ -662,7 +626,6 @@ Config.DoorList['gabz mrpd parking garage door-2'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd roofdoor created by Milos
@@ -680,7 +643,6 @@ Config.DoorList['gabz mrpd roofdoor'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd front gate created by Milos
@@ -698,7 +660,6 @@ Config.DoorList['gabz mrpd front gate'] = {
     doorType = 'doublesliding',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd garage entrance created by Milos
@@ -716,7 +677,6 @@ Config.DoorList['gabz mrpd garage entrance'] = {
     doorType = 'garage',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd parking garage exit created by Milos
@@ -734,7 +694,6 @@ Config.DoorList['gabz mrpd parking garage exit'] = {
     doorType = 'garage',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd left garage door  created by Milos
@@ -752,7 +711,6 @@ Config.DoorList['gabz mrpd left garage door '] = {
     doorType = 'garage',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd right garage door created by Milos
@@ -770,7 +728,6 @@ Config.DoorList['gabz mrpd right garage door'] = {
     doorType = 'garage',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd backgate created by Milos
@@ -788,7 +745,6 @@ Config.DoorList['gabz mrpd backgate'] = {
     doorType = 'sliding',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }
 
 -- gabz mrpd right lobby door created by Milos
@@ -806,5 +762,4 @@ Config.DoorList['gabz mrpd right lobby door'] = {
     doorType = 'door',
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    autoLock = 1000,
 }

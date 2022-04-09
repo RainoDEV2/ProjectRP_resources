@@ -111,7 +111,23 @@ local function callPolice(coords)
     local street2 = GetStreetNameFromHashKey(s2)
     local streetLabel = street1
     if street2 ~= nil then streetLabel = street1..' '..street2 end
-    TriggerServerEvent('police:server:PoliceAlertMessage', title, streetLabel, coords)
+    TriggerServerEvent('cd_dispatch:AddNotification', {
+        job_table = {'police'},
+        coords = coords,
+        title = '10-66 - Suspicious situation',
+        message = 'Possible drug dealing',
+        flash = 0,
+        unique_id = tostring(math.random(0000000,9999999)),
+        blip = {
+            sprite = 51,
+            scale = 1.2,
+            colour = 3,
+            flashes = false,
+            text = '911 - Vangelico Jewelry robbery attempt',
+            time = (5*60*1000),
+            sound = 1,
+        }
+    })
     hasTarget = false
     Wait(5000)
 end
@@ -127,7 +143,7 @@ local function SellToPed(ped)
 
     local succesChance = math.random(1, 20)
 
-    local scamChance = math.random(1, 5)
+    local scamChance = math.random(1, 10)
 
     local getRobbed = math.random(1, 20)
 
