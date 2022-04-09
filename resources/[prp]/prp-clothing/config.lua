@@ -561,6 +561,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [1] = { -- Job Rank/Grade
                 [2] = {
                     outfitLabel = "Officer",
                     outfitData = {
@@ -577,6 +579,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [2] = { -- Job Rank/Grade
                 [3] = {
                     outfitLabel = "Senior Officer",
                     outfitData = {
@@ -593,6 +597,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [3] = { -- Job Rank/Grade
                 [4] = {
                     outfitLabel = "Corporal",
                     outfitData = {
@@ -609,6 +615,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [4] = { -- Job Rank/Grade
                 [5] = {
                     outfitLabel = "Sergeant",
                     outfitData = {
@@ -625,6 +633,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [5] = { -- Job Rank/Grade
                 [6] = {
                     outfitLabel = "Lieutenant",
                     outfitData = {
@@ -641,6 +651,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [6] = { -- Job Rank/Grade
                 [7] = {
                     outfitLabel = "Captain",
                     outfitData = {
@@ -657,6 +669,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [7] = { -- Job Rank/Grade
                 [8] = {
                     outfitLabel = "Assistant Chief",
                     outfitData = {
@@ -673,6 +687,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [8] = { -- Job Rank/Grade
                 [9] = {
                     outfitLabel = "Chief",
                     outfitData = {
@@ -709,6 +725,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [1] = { -- Job Rank/Grade
                 [2] = {
                     outfitLabel = "Officer",
                     outfitData = {
@@ -725,6 +743,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [2] = { -- Job Rank/Grade
                 [3] = {
                     outfitLabel = "Senior Officer",
                     outfitData = {
@@ -741,6 +761,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [3] = { -- Job Rank/Grade
                 [4] = {
                     outfitLabel = "Corporal",
                     outfitData = {
@@ -757,6 +779,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [4] = { -- Job Rank/Grade
                 [5] = {
                     outfitLabel = "Sergeant",
                     outfitData = {
@@ -773,6 +797,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [5] = { -- Job Rank/Grade
                 [6] = {
                     outfitLabel = "Lieutenant",
                     outfitData = {
@@ -789,6 +815,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [6] = { -- Job Rank/Grade
                 [7] = {
                     outfitLabel = "Captain",
                     outfitData = {
@@ -805,6 +833,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [7] = { -- Job Rank/Grade
                 [8] = {
                     outfitLabel = "Assistant Chief",
                     outfitData = {
@@ -821,6 +851,8 @@ Config.Outfits = {
                         ["mask"]        = { item = 0, texture = 0},  -- Mask
                     },
                 },
+            },
+            [8] = { -- Job Rank/Grade
                 [9] = {
                     outfitLabel = "Chief ",
                     outfitData = {
