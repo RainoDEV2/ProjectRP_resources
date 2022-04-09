@@ -14,7 +14,7 @@ Citizen.CreateThread(function()
             if IsPedFatallyInjured(ped) and not isDead then
                 isDead = true
                 if not diedAt then
-                	diedAt = GetGameTimer()
+                    diedAt = GetGameTimer()
                 end
 
                 local killer, killerweapon = NetworkGetEntityKillerOfPlayer(player)

@@ -1,7 +1,7 @@
 Config = Config or {}
 
 Config.Timeout = 30 * (60 * 2000)
-Config.RequiredCops = 2
+Config.RequiredCops = 1
 Config.JewelleryLocation = {
     ["coords"] = vector3(-630.5, -237.13, 38.08),
 }
@@ -45,6 +45,60 @@ Config.WhitelistedWeapons = {
     },
     [`weapon_1911`] = {
         ["timeOut"] = 15000
+    },
+    [`weapon_heavypistol`] = {
+        ["timeOut"] = 15000
+    },
+    [`weapon_smg_mk2`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_assaultsmg`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_machinepistol`] = {
+        ["timeOut"] = 15000
+    },
+    [`weapon_appistol`] = {
+        ["timeOut"] = 15000
+    },
+    [`weapon_combatpdw`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_minismg`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_smg`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_pumpshotgun_mk2`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_assaultrifle2`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_specialcarbine`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_advancedrifle`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_bullpuprifle`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_militaryrifle`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_m4`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_glock`] = {
+        ["timeOut"] = 15000
+    },
+    [`weapon_assaultrifle_mk2`] = {
+        ["timeOut"] = 10000
+    },
+    [`weapon_specicalcarbine_mk2`] = {
+        ["timeOut"] = 10000
     },
 }
 
@@ -176,9 +230,57 @@ Config.Locations = {
 }
 
 Config.MaleNoHandshoes = {
-    [0] = true, [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true, [7] = true, [8] = true, [9] = true, [10] = true, [11] = true, [12] = true, [13] = true, [14] = true, [15] = true, [18] = true, [26] = true, [52] = true, [53] = true, [54] = true, [55] = true, [56] = true, [57] = true, [58] = true, [59] = true, [60] = true, [61] = true, [62] = true, [112] = true, [113] = true, [114] = true, [118] = true, [125] = true, [132] = true,
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [116] = true,
+    [117] = true,
+    [118] = true,
+    [188] = true,
+    [200] = true,
+    [201] = true,
 }
 
 Config.FemaleNoHandshoes = {
-    [0] = true, [1] = true, [2] = true, [3] = true, [4] = true, [5] = true, [6] = true, [7] = true, [8] = true, [9] = true, [10] = true, [11] = true, [12] = true, [13] = true, [14] = true, [15] = true, [19] = true, [59] = true, [60] = true, [61] = true, [62] = true, [63] = true, [64] = true, [65] = true, [66] = true, [67] = true, [68] = true, [69] = true, [70] = true, [71] = true, [129] = true, [130] = true, [131] = true, [135] = true, [142] = true, [149] = true, [153] = true, [157] = true, [161] = true, [165] = true,
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [20] = true,
+    [77] = true,
+    [133] = true,
+    [134] = true,
+    [135] = true,
+    [157] = true,
+    [165] = true,
+    [233] = true,
 }

@@ -47,43 +47,43 @@ end)
 -----------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
-    TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    TriggerEvent('chat:addSuggestion', '/emote', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
-    if Config.SqlKeybinding then
-      TriggerEvent('chat:addSuggestion', '/emotebind', 'Bind an emote', {{ name="key", help="num4, num5, num6, num7. num8, num9. Numpad 4-9!"}, { name="emotename", help="dance, camera, sit or any valid emote."}})
-      TriggerEvent('chat:addSuggestion', '/emotebinds', 'Check your currently bound emotes.')
-    end
-    TriggerEvent('chat:addSuggestion', '/emotemenu', 'Open dpemotes menu (F3) by default.')
-    TriggerEvent('chat:addSuggestion', '/emotes', 'List available emotes.')
-    TriggerEvent('chat:addSuggestion', '/walk', 'Set your walkingstyle.', {{ name="style", help="/walks for a list of valid styles"}})
-    TriggerEvent('chat:addSuggestion', '/walks', 'List available walking styles.')
+  TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
+  TriggerEvent('chat:addSuggestion', '/e', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
+  TriggerEvent('chat:addSuggestion', '/emote', 'Play an emote', {{ name="emotename", help="dance, camera, sit or any valid emote."}})
+  if Config.SqlKeybinding then
+    TriggerEvent('chat:addSuggestion', '/emotebind', 'Bind an emote', {{ name="key", help="num4, num5, num6, num7. num8, num9. Numpad 4-9!"}, { name="emotename", help="dance, camera, sit or any valid emote."}})
+    TriggerEvent('chat:addSuggestion', '/emotebinds', 'Check your currently bound emotes.')
+  end
+  TriggerEvent('chat:addSuggestion', '/emotemenu', 'Open dpemotes menu (F3) by default.')
+  TriggerEvent('chat:addSuggestion', '/emotes', 'List available emotes.')
+  TriggerEvent('chat:addSuggestion', '/walk', 'Set your walkingstyle.', {{ name="style", help="/walks for a list of valid styles"}})
+  TriggerEvent('chat:addSuggestion', '/walks', 'List available walking styles.')
 end)
 
 RegisterCommand('e', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
-    end
+  if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
+      EmoteCommandStart(source, args, raw)
+  end
 end)
 
 RegisterCommand('emote', function(source, args, raw)
-    if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-        EmoteCommandStart(source, args, raw)
-    end
+  if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
+      EmoteCommandStart(source, args, raw)
+  end
 end)
 
 if Config.SqlKeybinding then
-    RegisterCommand('emotebind', function(source, args, raw)
-        if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindStart(source, args, raw)
-        end
-    end)
+  RegisterCommand('emotebind', function(source, args, raw)
+      if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
+          EmoteBindStart(source, args, raw)
+      end
+  end)
 
-    RegisterCommand('emotebinds', function(source, args, raw)
-        if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
-            EmoteBindsStart(source, args, raw)
-        end
-    end)
+  RegisterCommand('emotebinds', function(source, args, raw)
+      if not PlayerData.metadata['inlaststand'] and not PlayerData.metadata['isdead'] then
+          EmoteBindsStart(source, args, raw)
+      end
+  end)
 end
 
 RegisterCommand('emotemenu', function(source, args, raw)

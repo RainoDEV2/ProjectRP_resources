@@ -503,7 +503,7 @@ end
 
 Citizen.CreateThread(function()
 	local blip = AddBlipForCoord(JobStart.Pos.x, JobStart.Pos.y, JobStart.Pos.z)
-	SetBlipSprite (blip, 456)
+	SetBlipSprite (blip, 86)
 	SetBlipDisplay(blip, 4)
 	SetBlipScale  (blip, 1.2)
 	SetBlipColour (blip, 5)

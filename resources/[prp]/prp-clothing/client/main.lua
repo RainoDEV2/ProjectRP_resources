@@ -288,7 +288,7 @@ local skinData = {
         defaultItem = 0,
         defaultTexture = 0,
     },
-    ["neck_thikness"] = {
+    ["neck_thickness"] = {
         item = 0,
         texture = 0,
         defaultItem = 0,
@@ -856,7 +856,7 @@ local clothingCategorys = {
     ["chimp_bone_lenght"]   = {type = "chin",  id = 2},
     ["chimp_bone_width"]   = {type = "cheek",  id = 3},
     ["chimp_hole"]   = {type = "cheek",  id = 4},
-    ["neck_thikness"]   = {type = "cheek",  id = 5},
+    ["neck_thickness"]   = {type = "cheek",  id = 5},
 }
 
 RegisterNetEvent('prp-clothing:client:openMenu')
@@ -907,7 +907,7 @@ function GetMaxValues()
         ["chimp_bone_lenght"]       = {type = "hair", item = 0, texture = 0},
         ["chimp_bone_width"]       = {type = "hair", item = 0, texture = 0},
         ["chimp_hole"]       = {type = "hair", item = 0, texture = 0},
-        ["neck_thikness"]       = {type = "hair", item = 0, texture = 0},
+        ["neck_thickness"]       = {type = "hair", item = 0, texture = 0},
         ["blush"]       = {type = "hair", item = 0, texture = 0},
         ["lipstick"]    = {type = "hair", item = 0, texture = 0},
         ["makeup"]      = {type = "hair", item = 0, texture = 0},
@@ -1223,7 +1223,7 @@ function resetClothing(data)
     SetPedFaceFeature(ped, 16, data['chimp_bone_lenght'].item)
     SetPedFaceFeature(ped, 17, data['chimp_bone_width'].item)
     SetPedFaceFeature(ped, 18, data['chimp_hole'].item)
-    SetPedFaceFeature(ped, 19, data['neck_thikness'].item)
+    SetPedFaceFeature(ped, 19, data['neck_thickness'].item)
 
     -- Hat
     if data["hat"].item ~= -1 and data["hat"].item ~= 0 then
@@ -1641,7 +1641,7 @@ function ChangeVariation(data)
             -- local curItem = GetPedDrawableVariation(ped, 1)
 
         end
-    elseif clothingCategory == "neck_thikness" then
+    elseif clothingCategory == "neck_thickness" then
         if type == "item" then
             -- SetPedEyeColor(ped, 12, item, 0, 2)
             -- skinData["arms"].item = item
@@ -2106,7 +2106,7 @@ AddEventHandler('prp-clothing:client:loadPlayerClothing', function(data, ped)
     SetPedFaceFeature(ped, 16, (data['chimp_bone_lenght'].item / 10))
     SetPedFaceFeature(ped, 17, (data['chimp_bone_width'].item / 10))
     SetPedFaceFeature(ped, 18, (data['chimp_hole'].item / 10))
-    SetPedFaceFeature(ped, 19, (data['neck_thikness'].item / 10))
+    SetPedFaceFeature(ped, 19, (data['neck_thickness'].item / 10))
     skinData = data
 end)
 

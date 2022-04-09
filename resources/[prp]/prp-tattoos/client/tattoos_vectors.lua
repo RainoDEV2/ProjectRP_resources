@@ -70,7 +70,7 @@ degrades = {
 }
 
 tattoosList = {
-	["mpbeach_overlays"] = {
+	["head"] = {
 		{nameHash = "MP_Bea_M_Head_000", dlc = 'mpbeach_overlays'},
         {nameHash = "MP_Bea_M_Head_001", dlc = 'mpbeach_overlays'},
         {nameHash = "MP_Bea_M_Head_002", dlc = 'mpbeach_overlays'},
@@ -171,7 +171,7 @@ tattoosList = {
 		{nameHash = "FM_Tat_Award_M_000", dlc = 'multiplayer_overlays'},
         {nameHash = "FM_Tat_Award_F_000", dlc = 'multiplayer_overlays'},
 	},
-	["mpbusiness_overlays"] = {
+	["torso"] = {
 		{nameHash = "MP_Christmas2017_Tattoo_000_M", dlc = 'mpchristmas2017_overlays'},
 		{nameHash = "MP_Christmas2017_Tattoo_000_F", dlc = 'mpchristmas2017_overlays'}, 
 		{nameHash = "MP_Christmas2017_Tattoo_002_M", dlc = 'mpchristmas2017_overlays'},
@@ -690,7 +690,7 @@ tattoosList = {
 		{nameHash = "FM_Tat_M_045", dlc = 'multiplayer_overlays'},
 		{nameHash = "FM_Tat_F_045", dlc = 'multiplayer_overlays'},
 	},
-	["mpairraces_overlays"] = {		
+	["arms"] = {		
 		{nameHash = "MP_Christmas2017_Tattoo_001_M", dlc = 'mpchristmas2017_overlays'}, 
 		{nameHash = "MP_Christmas2017_Tattoo_001_F", dlc = 'mpchristmas2017_overlays'}, 
 		{nameHash = "MP_Christmas2017_Tattoo_004_M", dlc = 'mpchristmas2017_overlays'}, 
@@ -1044,7 +1044,7 @@ tattoosList = {
 		{nameHash = "FM_Tat_M_041", dlc = 'multiplayer_overlays'},
 		{nameHash = "FM_Tat_F_041", dlc = 'multiplayer_overlays'},
 	},
-	["mpbiker_overlays"] = {		
+	["legs"] = {		
 		{nameHash = "MP_Bea_M_Lleg_000", dlc = 'mpbeach_overlays'},
 		{nameHash = "MP_Bea_F_RLeg_000", dlc = 'mpbeach_overlays'},
 		{nameHash = "MP_Heist4_Tat_010_M", dlc = 'mpheist4_overlays'},

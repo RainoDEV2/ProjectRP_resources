@@ -64,7 +64,7 @@ AddEventHandler('prp-drugs:server:succesDelivery', function(deliveryData, inTime
             SetTimeout(math.random(5000, 10000), function()
                 TriggerClientEvent('prp-drugs:client:sendDeliveryMail', src, 'perfect', deliveryData)
 
-                Player.Functions.SetMetaData('dealerrep', (curRep + 1))
+                Player.Functions.SetMetaData('dealerrep', (curRep + math.random(2,3)))
             end)
         else
             TriggerClientEvent('ProjectRP:Notify', src, 'This doesn\'t meet the order...', 'error')
@@ -80,8 +80,8 @@ AddEventHandler('prp-drugs:server:succesDelivery', function(deliveryData, inTime
             SetTimeout(math.random(5000, 10000), function()
                 TriggerClientEvent('prp-drugs:client:sendDeliveryMail', src, 'bad', deliveryData)
 
-                if curRep - 1 > 0 then
-                    Player.Functions.SetMetaData('dealerrep', (curRep - 1))
+                if curRep - 2 > 0 then
+                    Player.Functions.SetMetaData('dealerrep', (curRep - 2))
                 else
                     Player.Functions.SetMetaData('dealerrep', 0)
                 end
@@ -98,8 +98,8 @@ AddEventHandler('prp-drugs:server:succesDelivery', function(deliveryData, inTime
         SetTimeout(math.random(5000, 10000), function()
             TriggerClientEvent('prp-drugs:client:sendDeliveryMail', src, 'late', deliveryData)
 
-            if curRep - 1 > 0 then
-                Player.Functions.SetMetaData('dealerrep', (curRep - 1))
+            if curRep - 2 > 0 then
+                Player.Functions.SetMetaData('dealerrep', (curRep - 2))
             else
                 Player.Functions.SetMetaData('dealerrep', 0)
             end
