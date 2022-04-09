@@ -73,24 +73,24 @@ Config.SellItems = { -- Selling Prices
     ['uncut_diamond'] = 540,
     ['uncut_sapphire'] = 450,
 
-    ['emerald'] = 720,
-    ['ruby'] = 810,
-    ['diamond'] = 1090,
-    ['sapphire'] = 900,
+    ['emerald'] = 620,
+    ['ruby'] = 680,
+    ['diamond'] = 890,
+    ['sapphire'] = 700,
 
-    ['diamond_ring'] = 2160,
-    ['emerald_ring'] = 1890,
-    ['ruby_ring'] = 1980,
-    ['sapphire_ring'] = 2070,
+    ['diamond_ring'] = 1960,
+    ['emerald_ring'] = 1690,
+    ['ruby_ring'] = 1780,
+    ['sapphire_ring'] = 1870,
 
-    ['diamond_necklace'] = 2160,
-    ['emerald_necklace'] = 1890,
-    ['ruby_necklace'] = 1980,
-    ['sapphire_necklace'] = 2070,
+    ['diamond_necklace'] = 1960,
+    ['emerald_necklace'] = 1690,
+    ['ruby_necklace'] = 1780,
+    ['sapphire_necklace'] = 1870,
 
-    ['gold_ring'] = 900,
-    ['goldchain'] = 900,
-    ['10kgoldchain'] = 675,
+    ['gold_ring'] = 700,
+    ['goldchain'] = 700,
+    ['10kgoldchain'] = 475,
 
 }
 
