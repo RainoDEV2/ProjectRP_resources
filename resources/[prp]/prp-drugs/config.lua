@@ -106,7 +106,8 @@ Config.CornerSellingDrugsList = {
     "crack_baggy",
     "cokebaggy",
     "meth",
-    "weed_bag"
+    "weed_bag",
+    "xtcbaggy"
     
 }
 
@@ -114,6 +115,10 @@ Config.DrugsPrice = {
     ["weed_bag"] = {
         min = 15,
         max = 20,
+    },
+    ["xtcbaggy"] = {
+        min = 96,
+        max = 101,
     },
     ["weed_white-widow"] = {
         min = 50,
