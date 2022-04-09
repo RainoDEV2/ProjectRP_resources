@@ -490,7 +490,7 @@ RegisterNetEvent('prp-mining:JewelSell:Necklace', function()
 		{ header = "Jewellery Buyer", txt = "Sell your jewellery here", isMenuHeader = true }, 
 		{ header = "", txt = "⬅ Return", params = { event = "prp-mining:JewelSell", } },
 		{ header = "Gold Chains",	txt = "Sell ALL at $"..Config.SellItems['goldchain'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = 'goldchain' } },
-		{ header = "Gold Chains", txt = "Sell ALL at $"..Config.SellItems['10kgoldchain'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = '10kgoldchain' } },
+		{ header = "10K Gold Chains", txt = "Sell ALL at $"..Config.SellItems['10kgoldchain'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = '10kgoldchain' } },
 		{ header = "Diamond Necklace", txt = "Sell ALL at $"..Config.SellItems['diamond_necklace'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = 'diamond_necklace' } },
 		{ header = "Emerald Necklace", txt = "Sell ALL at $"..Config.SellItems['emerald_necklace'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = 'emerald_necklace' } },
 		{ header = "Ruby Necklace", txt = "Sell ALL at $"..Config.SellItems['ruby_necklace'].." each", params = { event = "prp-mining:SellAnim:Jewel", args = 'ruby_necklace' } },	
