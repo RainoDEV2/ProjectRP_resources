@@ -1444,8 +1444,8 @@
           <AmmoInfo ref="AMMO_PISTOL" />
           <AimingInfo ref="PISTOL_FLAREGUN_BASE_STRAFE" />
           <ClipSize value="17" />
-          <AccuracySpread value="2.500000" />
-          <AccurateModeAccuracyModifier value="0.850000" />
+          <AccuracySpread value="0.200000" />
+          <AccurateModeAccuracyModifier value="0.50000" />
           <RunAndGunAccuracyModifier value="2.000000" />
           <RunAndGunAccuracyMinOverride value="-1.000000" />
           <RecoilAccuracyMax value="1.000000" />
@@ -1459,7 +1459,7 @@
           <MinHeadShotDistancePlayer value="5.000000" />
           <MaxHeadShotDistancePlayer value="40.000000" />
           <HeadShotDamageModifierPlayer value="1.500000" />
-          <Damage value="32.000000" />
+          <Damage value="37.000000" />
           <DamageTime value="0.000000" />
           <DamageTimeInVehicle value="0.000000" />
           <DamageTimeInVehicleHeadShot value="0.000000" />
@@ -1468,7 +1468,7 @@
           <LightlyArmouredDamageModifier value="0.750000" />
           <VehicleDamageModifier value="1.000000" />
           <Force value="50.000000" />
-          <ForceHitPed value="125.000000" />
+          <ForceHitPed value="155.000000" />
           <ForceHitVehicle value="750.000000" />
           <ForceHitFlyingHeli value="750.000000" />
           <OverrideForces>
