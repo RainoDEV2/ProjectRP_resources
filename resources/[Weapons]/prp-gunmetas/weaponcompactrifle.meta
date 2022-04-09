@@ -39,7 +39,7 @@
       <Infos>
         <Item type="CWeaponInfo">
           <Name>WEAPON_COMPACTRIFLE</Name>
-          <Model>w_ar_draco</Model>
+          <Model>w_ar_assaultrifle_smg</Model>
           <Audio>AUDIO_ITEM_COMPACT_RIFLE</Audio>
           <Slot>SLOT_COMPACTRIFLE</Slot>
           <DamageType>BULLET</DamageType>
