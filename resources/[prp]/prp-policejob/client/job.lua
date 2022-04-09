@@ -163,11 +163,17 @@ function TakeOutVehicle(vehicleInfo)
         SetVehicleNumberPlateText(veh, "POLICE"..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
         SetVehicleDirtLevel(veh, 0.0)
-        print(vehicleInfo)
         if vehicleInfo == 'npolvic' then
             SetVehicleCustomPrimaryColour(veh, 240, 240, 240)
             SetVehicleCustomSecondaryColour(veh, 5, 5, 5)
-            SetVehicleLivery(veh, 1)
+            SetVehicleLivery(veh, 2)
+            SetVehicleMod(veh, 1, 3) -- Front bumper
+            SetVehicleMod(veh, 27, 1)
+            SetVehicleMod(veh, 28, 1)
+            SetVehicleMod(veh, 29, 1)
+            SetVehicleMod(veh, 30, 1)
+            SetVehicleMod(veh, 31, 1)
+            SetVehicleMod(veh, 32, 2) -- Back seats
         end
         exports['prp-fuel']:SetFuel(veh, 100.0)
         closeMenuFull()

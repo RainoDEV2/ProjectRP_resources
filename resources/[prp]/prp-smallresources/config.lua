@@ -10,10 +10,11 @@ Config.RemoveWeaponDropsTimer = 25
 Config.DefaultPrice = 20 -- carwash
 
 ConsumeablesEat = {
-    ["sandwich"] = math.random(35, 54),
-    ["toastie"] = math.random(40, 50),
-    ["twerks_candy"] = math.random(35, 54),
-    ["snikkel_candy"] = math.random(40, 50),
+    ["sandwich"] = math.random(25, 35),
+    ["hotdog"] = math.random(25, 35),
+    ["toastie"] = math.random(20, 30),
+    ["twerks_candy"] = math.random(10, 20),
+    ["snikkel_candy"] = math.random(10, 20),
     ["crisps"] = math.random(10, 20),
 }
 

@@ -357,7 +357,6 @@ Config.Products = {
             info = {},
             type = "item",
             slot = 3,
-            requiredJob = { "mechanic", "police" }
         },
         [4] = {
             name = "weapon_pistol",
@@ -423,6 +422,24 @@ Config.Products = {
             type = 'item',
             slot = 1,
         }
+    },
+    ["chemshop"] = {
+        [1] = {
+            name = "acetone",
+            price = 100,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 1,
+        },
+        [2] = {
+            name = "lithium",
+            price = 225,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 2,
+        },
     },
 }
 
@@ -793,5 +810,14 @@ Config.Locations = {
         },
         ["products"] = Config.Products["leisureshop"],
         ["showblip"] = true,
+    },
+    ["chemshop"] = {
+        ["label"] = "Chemical Shop",
+        ["type"] = "chemicals",
+        ["coords"] = {
+            [1] = vector3(vector3(3525.3, 3682.18, 20.99))
+        },
+        ["products"] = Config.Products["chemshop"],
+        ["showblip"] = false,
     },
 }

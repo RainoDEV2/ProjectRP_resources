@@ -30,7 +30,14 @@ Config.Locations = {
         [1] = vector4(335.91, -580.38, 74.07, 160.41),
     },
     ["main"] = {
+        [1] = vector3(331.25, -592.59, 43.28),
+    },
+    ["main2"] = {
         [1] = vector3(335.92, -580.28, 43.29),
+    },
+    ["bottomFloor"] = {
+        [1] = vector3(335.88, -580.31, 28.9),
+        [2] = vector3(331.12, -592.84, 28.9),
     },
     ["stash"] = {
         [1] = vector3(311.41, -603.87, 43.29),
@@ -70,19 +77,19 @@ Config.AuthorizedVehicles = {
 	-- Grade 4
 	[4] = {
 		["speedoambo"] = "Ambulance",
-	}
+	},
 	-- Grade 5
 	[5] = {
 		["speedoambo"] = "Ambulance",
-	}
+	},
 	-- Grade 6
 	[6] = {
 		["speedoambo"] = "Ambulance",
-	}
+	},
 	-- Grade 7
 	[7] = {
 		["speedoambo"] = "Ambulance",
-	}
+	},
 	-- Grade 8
 	[8] = {
 		["speedoambo"] = "Ambulance",
@@ -310,14 +317,14 @@ Config.CriticalAreas = {
     ['SPINE'] = { armored = true },
 }
 
--- Config.StaggerAreas = {
---     ['SPINE'] = { armored = true, major = 60, minor = 30 },
---     ['UPPER_BODY'] = { armored = false, major = 60, minor = 30 },
---     ['LLEG'] = { armored = true, major = 100, minor = 85 },
---     ['RLEG'] = { armored = true, major = 100, minor = 85 },
---     ['LFOOT'] = { armored = true, major = 100, minor = 100 },
---     ['RFOOT'] = { armored = true, major = 100, minor = 100 },
--- }
+Config.StaggerAreas = {
+    ['SPINE'] = { armored = true, major = 60, minor = 30 },
+    ['UPPER_BODY'] = { armored = false, major = 60, minor = 30 },
+    ['LLEG'] = { armored = true, major = 100, minor = 85 },
+    ['RLEG'] = { armored = true, major = 100, minor = 85 },
+    ['LFOOT'] = { armored = true, major = 100, minor = 100 },
+    ['RFOOT'] = { armored = true, major = 100, minor = 100 },
+}
 
 Config.WoundStates = {
     'irritated',

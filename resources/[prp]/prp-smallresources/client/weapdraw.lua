@@ -70,7 +70,7 @@ local weapons = {
 	'WEAPON_AUTOSHOTGUN',
 	'WEAPON_COMPACTLAUNCHER',
 	'WEAPON_PIPEBOMB',
-	'WEAPON_DOUBLEACTION',
+	'WEAPON_DOUBLEACTION'
 }
 
 -- Wheapons that require the Police holster animation
@@ -84,7 +84,7 @@ local holsterableWeapons = {
 	'WEAPON_REVOLVER',
 	'WEAPON_SNSPISTOL',
 	'WEAPON_HEAVYPISTOL',
-	'WEAPON_VINTAGEPISTOL'
+	'WEAPON_VINTAGEPISTOL',
 	'WEAPON_GLOCK'
 }
 

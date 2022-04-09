@@ -18,9 +18,21 @@ CreateThread(function()
                         if IsControlJustReleased(0, 51) then
                             if k == 1 then
                                 if v["AllowVehicle"] then
+                                    DoScreenFadeOut(500)
+                                    while not IsScreenFadedOut() do
+                                        Wait(10)
+                                    end
                                     SetPedCoordsKeepVehicle(ped, Config.Teleports[loc][2].coords.x, Config.Teleports[loc][2].coords.y, Config.Teleports[loc][2].coords.z)
+                                    Wait(100)
+                                    DoScreenFadeIn(1000)
                                 else
+                                    DoScreenFadeOut(500)
+                                    while not IsScreenFadedOut() do
+                                        Wait(10)
+                                    end
                                     SetEntityCoords(ped, Config.Teleports[loc][2].coords.x, Config.Teleports[loc][2].coords.y, Config.Teleports[loc][2].coords.z)
+                                    Wait(100)
+                                    DoScreenFadeIn(1000)
                                 end
 
                                 if type(Config.Teleports[loc][2].coords) == "vector4" then
@@ -28,9 +40,21 @@ CreateThread(function()
                                 end
                             elseif k == 2 then
                                 if v["AllowVehicle"] then
+                                    DoScreenFadeOut(500)
+                                    while not IsScreenFadedOut() do
+                                        Wait(10)
+                                    end
                                     SetPedCoordsKeepVehicle(ped, Config.Teleports[loc][1].coords.x, Config.Teleports[loc][1].coords.y, Config.Teleports[loc][1].coords.z)
+                                    Wait(100)
+                                    DoScreenFadeIn(1000)
                                 else
+                                    DoScreenFadeOut(500)
+                                    while not IsScreenFadedOut() do
+                                        Wait(10)
+                                    end
                                     SetEntityCoords(ped, Config.Teleports[loc][1].coords.x, Config.Teleports[loc][1].coords.y, Config.Teleports[loc][1].coords.z)
+                                    Wait(100)
+                                    DoScreenFadeIn(1000)
                                 end
 
                                 if type(Config.Teleports[loc][1].coords) == "vector4" then

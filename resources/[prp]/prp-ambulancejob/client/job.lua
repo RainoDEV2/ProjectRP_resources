@@ -9,6 +9,8 @@ local inVehicle = false
 local inHeli = false
 local onRoof = false
 local inMain = false
+local inMain2 = false
+local inBottomFloor = false
 
 
 -- Functions
@@ -292,6 +294,10 @@ local function EMSControls(variable)
                     TriggerEvent('prp-ambulancejob:elevator_main')
                 elseif variable == "main" then
                     TriggerEvent('prp-ambulancejob:elevator_roof')
+                elseif variable == "bottomFloor" then
+                    TriggerEvent('prp-ambulancejob:elevator_main2')
+                elseif variable == "main2" then
+                    TriggerEvent('prp-ambulancejob:elevator_bottomFloor')
                 end
             end
             Wait(1)
@@ -366,7 +372,7 @@ end
 
 RegisterNetEvent('prp-ambulancejob:elevator_roof', function()
     local ped = PlayerPedId()
-    for k, v in pairs(Config.Locations["roof"])do
+    for k, v in pairs(Config.Locations["roof"]) do
         DoScreenFadeOut(500)
         while not IsScreenFadedOut() do
             Wait(10)
@@ -386,7 +392,7 @@ end)
 
 RegisterNetEvent('prp-ambulancejob:elevator_main', function()
     local ped = PlayerPedId()
-    for k, v in pairs(Config.Locations["main"])do
+    for k, v in pairs(Config.Locations["main"]) do
         DoScreenFadeOut(500)
         while not IsScreenFadedOut() do
             Wait(10)
@@ -395,6 +401,46 @@ RegisterNetEvent('prp-ambulancejob:elevator_main', function()
         currentHospital = k
 
         local coords = Config.Locations["roof"][currentHospital]
+        SetEntityCoords(ped, coords.x, coords.y, coords.z, 0, 0, 0, false)
+        SetEntityHeading(ped, coords.w)
+
+        Wait(100)
+
+        DoScreenFadeIn(1000)
+    end
+end)
+
+RegisterNetEvent('prp-ambulancejob:elevator_bottomFloor', function()
+    local ped = PlayerPedId()
+    for k, v in pairs(Config.Locations["main2"]) do
+        DoScreenFadeOut(500)
+        while not IsScreenFadedOut() do
+            Wait(10)
+        end
+
+        currentHospital = k
+
+        local coords = Config.Locations["main2"][currentHospital]
+        SetEntityCoords(ped, coords.x, coords.y, coords.z, 0, 0, 0, false)
+        SetEntityHeading(ped, coords.w)
+
+        Wait(100)
+
+        DoScreenFadeIn(1000)
+    end
+end)
+
+RegisterNetEvent('prp-ambulancejob:elevator_main2', function()
+    local ped = PlayerPedId()
+    for k, v in pairs(Config.Locations["bottomFloor"]) do
+        DoScreenFadeOut(500)
+        while not IsScreenFadedOut() do
+            Wait(10)
+        end
+
+        currentHospital = k
+
+        local coords = Config.Locations["bottomFloor"][currentHospital]
         SetEntityCoords(ped, coords.x, coords.y, coords.z, 0, 0, 0, false)
         SetEntityHeading(ped, coords.w)
 
@@ -692,6 +738,64 @@ else
                 end
             else
                 inMain = false
+                check = false
+                exports['prp-core']:HideText()
+            end
+        end)
+
+        ---------------
+
+        local main2Poly = {}
+        for k, v in pairs(Config.Locations["main2"]) do
+            main2Poly[#main2Poly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 2, 2, {
+                name="main2"..k,
+                debugPoly = false,
+                heading = 70,
+                minZ = v.z - 2,
+                maxZ = v.z + 2,
+            })
+        end
+
+        local main2Combo = ComboZone:Create(main2Poly, {name = "main2Combo", debugPoly = false})
+        main2Combo:onPlayerInOut(function(isPointInside)
+            if isPointInside and PlayerJob.name =="ambulance" then
+                inMain2 = true
+                if onDuty then
+                    exports['prp-core']:DrawText('[E] - Take the elevator down','left')
+                    EMSControls("bottomFloor")
+                else
+                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
+                end
+            else
+                inMain2 = false
+                check = false
+                exports['prp-core']:HideText()
+            end
+        end)
+
+        local bottomFloorPoly = {}
+        for k, v in pairs(Config.Locations["bottomFloor"]) do
+            bottomFloorPoly[#bottomFloorPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1.5, 1.5, {
+                name="bottomFloor"..k,
+                debugPoly = false,
+                heading = 70,
+                minZ = v.z - 2,
+                maxZ = v.z + 2,
+            })
+        end
+
+        local bottomFloorCombo = ComboZone:Create(bottomFloorPoly, {name = "bottomFloorPoly", debugPoly = false})
+        bottomFloorCombo:onPlayerInOut(function(isPointInside)
+            if isPointInside and PlayerJob.name =="ambulance" then
+                inBottomFloor = true
+                if onDuty then
+                    exports['prp-core']:DrawText('[E] - Take the elevator to the main floor','left')
+                    EMSControls("main2")
+                else
+                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
+                end
+            else
+                inBottomFloor = false
                 check = false
                 exports['prp-core']:HideText()
             end
