@@ -568,21 +568,21 @@
     <Item type="CHandlingData">
       <handlingName>POL3</handlingName>
       <fMass value="2000.000000" />
-      <fInitialDragCoeff value="0.800000" />
+      <fInitialDragCoeff value="0.400000" />
       <fDownforceModifier value="0.900000" />
       <fPercentSubmerged value="80.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.200000" z="0.040000" />
       <vecInertiaMultiplier x="1.000000" y="1.070000" z="1.280000" />
       <fDriveBiasFront value="0.000000" />
       <nInitialDriveGears value="6" />
-      <fInitialDriveForce value="0.265000" />
+      <fInitialDriveForce value="0.225000" />
       <fDriveInertia value="0.750000" />
       <fClutchChangeRateScaleUpShift value="1.900000" />
       <fClutchChangeRateScaleDownShift value="1.900000" />
-      <fInitialDriveMaxFlatVel value="170.000000" />
-      <fBrakeForce value="2.280000" />
-      <fBrakeBiasFront value="0.125100" />
-      <fHandBrakeForce value="0.901000" />
+      <fInitialDriveMaxFlatVel value="160.000000" />
+      <fBrakeForce value="2.580000" />
+      <fBrakeBiasFront value="0.155100" />
+      <fHandBrakeForce value="0.951000" />
       <fSteeringLock value="40.000000" />
       <fTractionCurveMax value="2.300000" />
       <fTractionCurveMin value="1.820000" />
