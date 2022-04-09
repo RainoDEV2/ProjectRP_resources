@@ -65,7 +65,7 @@ RegisterNUICallback('UpdateTattoo', function(data, cb)
             if dlc == 'hair_degrade' then
                 Has = HasTattoo(degrades[dlc][hash].dlc, degrades[dlc][hash].nameHash)
             else
-                Has = HasTattoo(dlc, tattoosList[dlc][hash].nameHash)
+                Has = HasTattoo(tattoosList[dlc][hash].dlc, tattoosList[dlc][hash].nameHash)
             end
             
             ShowNotify(data, 0, false)
@@ -75,7 +75,7 @@ RegisterNUICallback('UpdateTattoo', function(data, cb)
                     if dlc == 'hair_degrade' then
                         ApplyPedOverlay(ped, GetHashKey(degrades[dlc][hash].dlc), GetHashKey(degrades[dlc][hash].nameHash))  
                     else
-                        ApplyPedOverlay(ped, GetHashKey(dlc), GetHashKey(tattoosList[dlc][hash].nameHash))  
+                        ApplyPedOverlay(ped, GetHashKey(tattoosList[dlc][hash].dlc), GetHashKey(tattoosList[dlc][hash].nameHash))  
                     end 
                 end  
             elseif key == "Enter" then
@@ -86,7 +86,7 @@ RegisterNUICallback('UpdateTattoo', function(data, cb)
                     if dlc == 'hair_degrade' then
                         AddRemoveTattoo(true, update_tattoos, degrades[dlc][hash].dlc, degrades[dlc][hash].nameHash)
                     else
-                        AddRemoveTattoo(true, update_tattoos, dlc, tattoosList[dlc][hash].nameHash)
+                        AddRemoveTattoo(true, update_tattoos, tattoosList[dlc][hash].dlc, tattoosList[dlc][hash].nameHash)
                     end
                 end
             elseif key == "Delete" then
@@ -96,7 +96,7 @@ RegisterNUICallback('UpdateTattoo', function(data, cb)
                 if dlc == 'hair_degrade' then
                     AddRemoveTattoo(false, update_tattoos, degrades[dlc][hash].dlc, degrades[dlc][hash].nameHash)
                 else
-                    AddRemoveTattoo(false, update_tattoos, dlc, tattoosList[dlc][hash].nameHash)
+                    AddRemoveTattoo(false, update_tattoos, tattoosList[dlc][hash].dlc, tattoosList[dlc][hash].nameHash)
                 end
             end
 

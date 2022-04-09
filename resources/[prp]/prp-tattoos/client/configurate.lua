@@ -19,10 +19,10 @@ tattoos_list = {
     {title = "Hair Degrade", dlc = "hair_degrade", price = 5, qty = 65, acquired = 0, has = false, current = 0}, 
     
     -- Normal
-    {title = "Head", dlc = "mpbeach_overlays", price = 100, qty = 99, acquired = 0, has = false, current = 0}, 
-    {title = "Torso", dlc = "mpbusiness_overlays", price = 100, qty = 516, acquired = 0, has = false, current = 0}, 
-    {title = "Arms", dlc = "mpairraces_overlays", price = 100, qty = 351, acquired = 0, has = false, current = 0}, 
-    {title = "Legs", dlc = "mpbiker_overlays", price = 100, qty = 160, acquired = 0, has = false, current = 0}, 
+    {title = "Head", dlc = "head", price = 100, qty = 99, acquired = 0, has = false, current = 0}, 
+    {title = "Torso", dlc = "torso", price = 100, qty = 516, acquired = 0, has = false, current = 0}, 
+    {title = "Arms", dlc = "arms", price = 100, qty = 351, acquired = 0, has = false, current = 0}, 
+    {title = "Legs", dlc = "legs", price = 100, qty = 160, acquired = 0, has = false, current = 0}, 
 }
 
 -- Extra settings
