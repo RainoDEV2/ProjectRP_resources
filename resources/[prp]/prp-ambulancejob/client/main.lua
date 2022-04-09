@@ -361,11 +361,11 @@ local function ApplyImmediateEffects(ped, bone, weapon, damageDone)
             end
         end
 
-        if Config.StaggerAreas[Config.Bones[bone]] and (Config.StaggerAreas[Config.Bones[bone]].armored or armor <= 0) then
-            if math.random(100) <= math.ceil(Config.StaggerAreas[Config.Bones[bone]].minor) then
-                SetPedToRagdoll(ped, 1500, 2000, 3, true, true, false)
-            end
-        end
+        -- if Config.StaggerAreas[Config.Bones[bone]] and (Config.StaggerAreas[Config.Bones[bone]].armored or armor <= 0) then
+        --     if math.random(100) <= math.ceil(Config.StaggerAreas[Config.Bones[bone]].minor) then
+        --         SetPedToRagdoll(ped, 1500, 2000, 3, true, true, false)
+        --     end
+        -- end
     elseif Config.MajorInjurWeapons[weapon] or (Config.MinorInjurWeapons[weapon] and damageDone >= Config.DamageMinorToMajor) then
         if Config.CriticalAreas[Config.Bones[bone]] then
             if armor > 0 and Config.CriticalAreas[Config.Bones[bone]].armored then
@@ -387,11 +387,11 @@ local function ApplyImmediateEffects(ped, bone, weapon, damageDone)
             end
         end
 
-        if Config.StaggerAreas[Config.Bones[bone]] and (Config.StaggerAreas[Config.Bones[bone]].armored or armor <= 0) then
-            if math.random(100) <= math.ceil(Config.StaggerAreas[Config.Bones[bone]].major) then
-                SetPedToRagdoll(ped, 1500, 2000, 3, true, true, false)
-            end
-        end
+        -- if Config.StaggerAreas[Config.Bones[bone]] and (Config.StaggerAreas[Config.Bones[bone]].armored or armor <= 0) then
+        --     if math.random(100) <= math.ceil(Config.StaggerAreas[Config.Bones[bone]].major) then
+        --         SetPedToRagdoll(ped, 1500, 2000, 3, true, true, false)
+        --     end
+        -- end
     end
 end
 

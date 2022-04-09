@@ -2,7 +2,7 @@ local animDict = "missminuteman_1ig_2"
 local anim = "handsup_base"
 local handsup = false
 
-RegisterKeyMapping('hu', 'Put your hands up', 'KEYBOARD', 'H')
+-- RegisterKeyMapping('hu', 'Put your hands up', 'KEYBOARD', 'X')
 
 RegisterCommand('hu', function()
     local ped = PlayerPedId()
