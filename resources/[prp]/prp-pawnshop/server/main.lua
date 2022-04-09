@@ -1,8 +1,8 @@
 local ItemList = {
-    ["goldchain"] = math.random(700, 1100),
-    ["diamond_ring"] = math.random(1900, 2600),
-    ["rolex"] = math.random(800, 1400),
-    ["10kgoldchain"] = math.random(500, 800),
+    ["goldchain"] = math.random(700, 1000),
+    ["diamond_ring"] = math.random(1900, 2300),
+    ["rolex"] = math.random(800, 1200),
+    ["10kgoldchain"] = math.random(500, 750),
 }
 
 local ItemListHardware = {
