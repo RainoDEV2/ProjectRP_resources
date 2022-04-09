@@ -568,9 +568,9 @@ RegisterNetEvent('hospital:client:Revive', function()
         canLeaveBed = true
     end
 
-    TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    SetEntityMaxHealth(player, 200)
-    SetEntityHealth(player, 200)
+    -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
+    SetEntityMaxHealth(player, 50)
+    SetEntityHealth(player, 50)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()

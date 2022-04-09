@@ -253,8 +253,24 @@ function PoliceCall()
             if ProjectRP.Functions.GetPlayerData().charinfo.gender == 1 then
                 gender = "Woman"
             end
-            local msg = "Attempted burglary into a house by one " .. gender .." at " .. streetLabel
-            TriggerServerEvent("police:server:HouseRobberyCall", pos, msg, gender, streetLabel)
+            local msg = "10-31 - Attempted burglary into a house by a " .. gender
+            TriggerServerEvent('cd_dispatch:AddNotification', {
+                job_table = {'police'}, 
+                coords = pos,
+                title = msg,
+                message = streetLabel,
+                flash = 0,
+                unique_id = tostring(math.random(0000000,9999999)),
+                blip = {
+                    sprite = 411,
+                    scale = 1.2,
+                    colour = 1,
+                    flashes = false,
+                    text = text,
+                    time = (5*60*1000),
+                    sound = 1,
+                }
+            })
         end
     end
 end

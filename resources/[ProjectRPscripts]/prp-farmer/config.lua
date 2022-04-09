@@ -11,9 +11,9 @@ Keys = {
 
 Config = {}
 
-Config.PayoutL = 400 --price for lettuce
+Config.PayoutL = 300 --price for lettuce
 Config.PayoutP = 400 --price for potatoes
-Config.PayoutC = 400 --price for cucumbers
+Config.PayoutC = 500 --price for cucumbers
 
 Config.Farmer = {
 	JobStart = {

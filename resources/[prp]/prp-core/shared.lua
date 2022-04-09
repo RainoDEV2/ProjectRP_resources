@@ -991,14 +991,14 @@ PRPShared.Jobs = {
 		label = "farmer",
 		defaultDuty = true,
 		grades = {
-				['0'] = {
-					name = "Employee",
-					payment = 0
-				},
+			['0'] = {
+				name = "Employee",
+				payment = 0
 			},
-			defaultDuty = true,
 		},
-		["courier"] = {
+		defaultDuty = true,
+	},
+	["courier"] = {
 		label = "courier",
 		defaultDuty = true,
 		grades = {
