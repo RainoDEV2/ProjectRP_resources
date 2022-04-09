@@ -254,6 +254,8 @@ Config.PoliceAlerts = {
             --[`ADD_MORE_HERE`] = true,
         },
         WeaponLabels = {
+            [`WEAPON_ASSAULTRIFLE_MK2`] = 'AK-47',
+            [`WEAPON_ASSAULTRIFLE2`] = 'AK-47',
             [`WEAPON_ASSAULTRIFLE`] = 'AK-47',
             [`WEAPON_BULLPUPRIFLE`] = 'Bullpup Rifle',
             [`WEAPON_COMBATPISTOL`] = 'Combat Pistol',

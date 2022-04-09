@@ -55,6 +55,7 @@ Config.DurabilityMultiplier = {
 	['weapon_navyrevolver'] 		 = 0.15,
 	['weapon_gadgetpistol'] 		 = 0.15,
     ['weapon_1911'] 		         = 0.15,
+    ['weapon_glock'] 		         = 0.15,
 
 	-- Submachine Guns
 	['weapon_microsmg'] 			 = 0.15,
@@ -81,6 +82,7 @@ Config.DurabilityMultiplier = {
 	-- Assault Rifles
 	['weapon_assaultrifle'] 		= 0.15,
 	['weapon_assaultrifle_mk2'] 	= 0.15,
+    ['weapon_assaultrifle2'] 	= 0.15,
 	['weapon_carbinerifle'] 		= 0.15,
 	['weapon_carbinerifle_mk2'] 	= 0.15,
 	['weapon_advancedrifle'] 		= 0.15,
