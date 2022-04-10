@@ -27,11 +27,11 @@ function StartLockPickCircle(circles, seconds, callback)
 end
 
 RegisterNUICallback('fail', function()
-        ClearPedTasks(PlayerPedId())
-        Result = false
-        Wait(100)
-        NUI_status = false
-        --print('fail')
+    ClearPedTasks(PlayerPedId())
+    Result = false
+    Wait(100)
+    NUI_status = false
+    --print('fail')
 end)
 
 RegisterNUICallback('success', function()
@@ -39,6 +39,6 @@ RegisterNUICallback('success', function()
 	Wait(100)
 	NUI_status = false
     SetNuiFocus(false, false)
-   --print(Result)
+    --print(Result)
     return Result
 end)
