@@ -23,7 +23,7 @@ RegisterServerEvent('oxydelivery:receiveoxy')
 AddEventHandler('oxydelivery:receiveoxy', function()
 	local player = ProjectRP.Functions.GetPlayer(source)
 
-	player.Functions.AddMoney('cash', math.random(Config.PaymentMin, Config.PaymentMax) / 3)
+	player.Functions.AddMoney('cash', math.random(Config.PaymentMin, Config.PaymentMax))
 	player.Functions.AddItem(Config.Item, math.random(Config.OxyAmountMin, Config.OxyAmountMax))
 	TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items[Config.Item], "add")
 end)
