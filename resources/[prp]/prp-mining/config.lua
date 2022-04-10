@@ -123,8 +123,8 @@ Config.Items = {
     items = {
 	[1] = { name = "water_bottle", price = 15, amount = 100, info = {}, type = "item", slot = 1, },
 	[2] = { name = "sandwich", price = 30, amount = 250, info = {}, type = "item", slot = 2, },
-	[3] = { name = "weapon_flashlight", price = 5000, amount = 100, info = {}, type = "item", slot = 3, }, 
-	[4] = { name = "drill",	price = 10000, amount = 10000, info = {}, type = "item", slot = 4, }, 
+	[3] = { name = "weapon_flashlight", price = 500, amount = 100, info = {}, type = "item", slot = 3, }, 
+	[4] = { name = "drill",	price = 5000, amount = 10000, info = {}, type = "item", slot = 4, }, 
 	[5] = { name = "handdrill",	price = 1000, amount = 1000, info = {}, type = "item",	slot = 5, },
 	[6] = { name = "drillbit", price = 500, amount = 500,	info = {}, type = "item", slot = 6, }, }		
 }
