@@ -5,11 +5,11 @@ Config.TakeoverPrice = 5000
 Config.TrapHouses = {
     [1] = {
         coords = {
-            ["enter"] = vector3(-1202.13, -1308.48, 4.91),
-            ["interaction"] = vector3(-1207.42, -1311.83, -32.66),
+            ["enter"] = vector3(143.3499, -1656.0769, 29.4807),
+            ["interaction"] = vector3(143.3499, -1656.0769, -32.66),
         },
         keyholders = {},
-        pincode = 1234,
+        pincode = 7453,
         inventory = {},
         opened = false,
         takingover = false,
