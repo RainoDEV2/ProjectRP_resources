@@ -35,6 +35,11 @@ local gangNpcMap = {
 		"g_m_y_strpunk_01",
 		"g_m_y_strpunk_02"
 	},
+    ["cartel"] = {
+        "csb_ramp_mex",
+        "g_f_importexport_01",
+        "csb_ortega"
+    },
 	["ballas"] = {
 		"g_m_y_ballaeast_01",
 		"g_m_y_ballaorig_01",
@@ -52,7 +57,8 @@ local gang2rel = {
 	["marabunta"] = "AMBIENT_GANG_SALVA",
 	["aztecas"] = "AMBIENT_GANG_SALVA",
 	["ballas"] = "AMBIENT_GANG_BALLAS",
-	["gsf"] = "AMBIENT_GANG_FAMILY"
+	["gsf"] = "AMBIENT_GANG_FAMILY",
+    ["cartel"] = "AMBIENT_GANG_FAMILY"
 }
 
 -- Code

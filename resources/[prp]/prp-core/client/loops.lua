@@ -31,3 +31,21 @@ CreateThread(function()
         end
     end
 end)
+
+
+
+
+Citizen.CreateThread(
+	function()
+		while true do
+			Citizen.Wait(4)
+			if IsPedArmed(PlayerPedId(), 6) then
+				DisableControlAction(1, 140, true)
+				DisableControlAction(1, 141, true)
+				DisableControlAction(1, 142, true)
+			else
+				Citizen.Wait(1500)
+			end
+		end
+	end
+)
