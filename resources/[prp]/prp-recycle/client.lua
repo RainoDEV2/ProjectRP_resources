@@ -645,7 +645,7 @@ function startSearching(time, dict, anim, cb)
     local playerPed = PlayerPedId()
 
 
-    canSearch = false
+    canSearch = true
 
     RequestAnimDict(animDict)
     while not HasAnimDictLoaded(animDict) do

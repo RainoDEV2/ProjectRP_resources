@@ -14,12 +14,12 @@ Config.Locations = {
 }
 
 Config.Items = {
-    "metalscrap",
+    "metalscrap", "metalscrap",
     "plastic",
     "copper",
     "iron",
     "aluminum",
-    "steel",
+    "steel", "steel",
     "glass",
 }
 
