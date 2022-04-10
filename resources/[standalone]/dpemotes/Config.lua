@@ -13,7 +13,7 @@ Config = {
     AllowedInCars = true,
 -- You can disable the (F3) menu here / change the keybind.
 	MenuKeybindEnabled = true,
-	MenuKeybind = 170, -- Get the button number here https://docs.fivem.net/game-references/controls/
+	MenuKeybind = 166, -- Get the button number here https://docs.fivem.net/game-references/controls/
 -- You can disable the Favorite emote keybinding here.
 	FavKeybindEnabled = false,
 	FavKeybind = 171, -- Get the button number here https://docs.fivem.net/game-references/controls/
@@ -25,7 +25,7 @@ Config = {
 -- You can change the menu position here
 	MenuPosition = "right", -- (left, right)
 -- You can disable the Ragdoll keybinding here.
-	RagdollEnabled = false,
+	RagdollEnabled = true,
 	RagdollKeybind = 303, -- Get the button number here https://docs.fivem.net/game-references/controls/
 -- You can disable the Facial Expressions menu here.
 	ExpressionsEnabled = true,
