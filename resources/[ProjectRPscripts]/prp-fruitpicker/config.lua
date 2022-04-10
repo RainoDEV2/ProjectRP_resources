@@ -61,17 +61,17 @@ Config.StrawberrySpots = {
 Config.Clothes = {
     male = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 5,   ['torso_2'] = 2,
-        ['arms'] = 5,
-        ['pants_1'] = 6,   ['pants_2'] = 1,
-        ['shoes_1'] = 16,   ['shoes_2'] = 7,
-        ['helmet_1'] = 44,  ['helmet_2'] = 7,
+        ['torso_1'] = 161,   ['torso_2'] = 0,
+        ['arms'] = 0,
+        ['pants_1'] = 124,   ['pants_2'] = 0,
+        ['shoes_1'] = 21,   ['shoes_2'] = 0,
+        ['helmet_1'] = 44,  ['helmet_2'] = 0,
     },
     female = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 4,   ['torso_2'] = 14,
+        ['torso_1'] = 28,   ['torso_2'] = 0,
         ['arms'] = 4,
-        ['pants_1'] = 25,   ['pants_2'] = 1,
-        ['shoes_1'] = 16,   ['shoes_2'] = 4,
+        ['pants_1'] = 141,   ['pants_2'] = 23,
+        ['shoes_1'] = 88,   ['shoes_2'] = 0,
     }
 }
