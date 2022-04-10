@@ -27,7 +27,11 @@ Config = {
         ["weapon_assaultrifle"] = { model = "w_ar_assaultrifle", hash = -1074790547},
         ["weapon_specialcarbine"] = { model = "w_ar_specialcarbine", hash = -1063057011},
         ["weapon_bullpuprifle"] = { model = "w_ar_bullpuprifle", hash = 2132975508},
-        ["weapon_advancedrifle"] = { model = "w_ar_advancedrifle", hash = -1357824103},
+        ["weapon_advancedrifle"] = { model = "w_ar_groza", hash = -1357824103},
+        
+        ["weapon_m4"] = { model = "w_ar_M4", hash = GetHashKey("weapon_m4")},
+        ["weapon_assaultrifle2"] = { model = "W_AR_ASSAULTRIFLE2", hash = GetHashKey("weapon_assaultrifle2")},
+        ["weapon_assaultrifle_mk2"] = { model = "W_AR_ASSAULTRIFLEMK2", hash = GetHashKey("weapon_assaultrifle_MK2")},
         -- sub machine guns:
         ["weapon_microsmg"] = { model = "w_sb_microsmg", hash = 324215364},
         ["weapon_assaultsmg"] = { model = "w_sb_assaultsmg", hash = -270015777},
