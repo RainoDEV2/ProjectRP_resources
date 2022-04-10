@@ -131,7 +131,7 @@ function smashVitrine(k)
 
     smashing = true
 
-    ProjectRP.Functions.Progressbar("smash_vitrine", "Stocking a display", Config.WhitelistedWeapons[pedWeapon]["timeOut"], false, true, {
+    ProjectRP.Functions.Progressbar("smash_vitrine", "Robbing a display", Config.WhitelistedWeapons[pedWeapon]["timeOut"], false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
