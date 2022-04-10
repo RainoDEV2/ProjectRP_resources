@@ -232,7 +232,7 @@ Config.PoliceAlerts = {
 
     --[[STOLEN CAR CONFIG]]--
     StolenCar = {
-        ENABLE = true, --Do you want stolen cars to alert police?
+        ENABLE = false, --Do you want stolen cars to alert police?
         cooldown = 25, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
     },
 

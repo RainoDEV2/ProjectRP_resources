@@ -9,12 +9,11 @@ Config.DoorList['front'] = {
     locked = true,
     doorType = 'door',
     objName = 23523831,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['ballas'] = 0 },
     objYaw = 20.870018005371,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- backdoor created by Parker
@@ -28,10 +27,9 @@ Config.DoorList['backdoor'] = {
         {objName = 989957872, objYaw = 200.80838012695, objCoords = vec3(117.099403, -1974.348022, 21.419256)}
     },
     authorizedGangs = { ['ballas'] = 0 },
-    audioRemote = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioRemote = true,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- backdoor2 created by Parker
@@ -43,12 +41,11 @@ Config.DoorList['backdoor2'] = {
     locked = true,
     doorType = 'door',
     objName = -1912632538,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['ballas'] = 0 },
     objYaw = 20.870018005371,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- druggarage created by Parker
@@ -62,10 +59,9 @@ Config.DoorList['druggarage'] = {
         {objName = 1805008497, objYaw = 313.61856079102, objCoords = vec3(93.162827, -1983.576172, 20.620440)}
     },
     authorizedGangs = { ['ballas'] = 0 },
-    audioRemote = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioRemote = true,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- druggarage2 created by Parker
@@ -79,10 +75,9 @@ Config.DoorList['druggarage2'] = {
         {objName = 1805008497, objYaw = 313.61856079102, objCoords = vec3(95.830788, -1986.404297, 20.620440)}
     },
     authorizedGangs = { ['ballas'] = 0 },
-    audioRemote = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioRemote = true,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- weaponroomdoor created by Parker
@@ -94,12 +89,11 @@ Config.DoorList['weaponroomdoor'] = {
     locked = true,
     doorType = 'door',
     objName = 1122314606,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['ballas'] = 0 },
     objYaw = 201.55291748047,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- weaponroomdoor2 created by Parker
@@ -113,10 +107,9 @@ Config.DoorList['weaponroomdoor2'] = {
         {objName = 1184805384, objYaw = 21.599960327148, objCoords = vec3(109.136192, -1975.460327, 21.167805)}
     },
     authorizedGangs = { ['ballas'] = 0 },
-    audioRemote = false,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioRemote = true,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- weaponroomdoor3 created by Parker
@@ -128,10 +121,9 @@ Config.DoorList['weaponroomdoor3'] = {
     locked = true,
     doorType = 'door',
     objName = -1730259609,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['ballas'] = 0 },
     objYaw = 291.87442016602,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }

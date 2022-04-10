@@ -9,12 +9,11 @@ Config.DoorList['door1'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 319.99993896484,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door2 created by Parker
@@ -26,12 +25,11 @@ Config.DoorList['door2'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 319.99993896484,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door3 created by Parker
@@ -43,12 +41,11 @@ Config.DoorList['door3'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 140.00015258789,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door4 created by Parker
@@ -60,12 +57,11 @@ Config.DoorList['door4'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 319.99993896484,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door5 created by Parker
@@ -77,12 +73,11 @@ Config.DoorList['door5'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 140.00015258789,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door6 created by Parker
@@ -94,12 +89,11 @@ Config.DoorList['door6'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 319.99993896484,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door7 created by Parker
@@ -111,12 +105,11 @@ Config.DoorList['door7'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 319.99993896484,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door8 created by Parker
@@ -128,12 +121,11 @@ Config.DoorList['door8'] = {
     locked = true,
     doorType = 'door',
     objName = 1626425496,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 6.7488307952881,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
 -- door9 created by Parker
@@ -145,10 +137,9 @@ Config.DoorList['door9'] = {
     locked = true,
     doorType = 'door',
     objName = 1349340477,
-    audioRemote = false,
+    audioRemote = true,
     authorizedGangs = { ['vagos'] = 0 },
     objYaw = 230.00003051758,
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
