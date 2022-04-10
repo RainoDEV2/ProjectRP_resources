@@ -2,7 +2,7 @@ Config = Config or {}
 
 Config.RobbedPlates = {}
 
-Config.PoliceNeeded = 1
+Config.PoliceNeeded = 0
 
 Config.MaleNoHandshoes = {
   [0] = true,
