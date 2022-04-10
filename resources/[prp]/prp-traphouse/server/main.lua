@@ -18,25 +18,33 @@ AddEventHandler('prp-traphouse:server:AddHouseKeyHolder', function(CitizenId, Tr
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
 
+	local gangss = Player.PlayerData.gang.name
+
     if Config.TrapHouses[TraphouseId] ~= nil then
         if IsOwner then
+            print("isdahdnbsajdsssssssssss")
             Config.TrapHouses[TraphouseId].keyholders = {}
             Config.TrapHouses[TraphouseId].pincode = math.random(1111, 4444)
+            Config.TrapHouses[TraphouseId].gang = gangss
         end
 
         if Config.TrapHouses[TraphouseId].keyholders == nil then
+            print("shbjadsbjbjsafsadddddddddddddddd")
             Config.TrapHouses[TraphouseId].keyholders[#Config.TrapHouses[TraphouseId].keyholders+1] = {
                 citizenid = CitizenId,
                 owner = IsOwner,
             }
+            print("syncdatasdadsad")
             TriggerClientEvent('prp-traphouse:client:SyncData', -1, TraphouseId, Config.TrapHouses[TraphouseId])
         else
             if #Config.TrapHouses[TraphouseId].keyholders + 1 <= 6 then
                 if not HasCitizenIdHasKey(CitizenId, TraphouseId) then
+                    print("sdsad")
                     Config.TrapHouses[TraphouseId].keyholders[#Config.TrapHouses[TraphouseId].keyholders+1] = {
                         citizenid = CitizenId,
                         owner = IsOwner,
                     }
+                    print("syndadsadsd")
                     TriggerClientEvent('prp-traphouse:client:SyncData', -1, TraphouseId, Config.TrapHouses[TraphouseId])
                 end
             else
@@ -252,28 +260,36 @@ function CanItemBeSaled(item)
     return retval
 end
 
-RegisterServerEvent('prp-traphouse:server:RobNpc')
-AddEventHandler('prp-traphouse:server:RobNpc', function(Traphouse)
+RegisterServerEvent('RobNpc')
+AddEventHandler('RobNpc', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     local Chance = math.random(1, 10)
     local odd = math.random(1, 10)
 
-    if Chance == odd then
-        local info = {
-            label = "Traphouse Pincode: "..Config.TrapHouses[Traphouse].pincode
-        }
-        Player.Functions.AddItem("stickynote", 1, false, info)
-        TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["stickynote"], "add")
+    -- if Chance == odd then
+    --     local info = {
+    --         label = "Traphouse Pincode: "..Config.TrapHouses[Traphouse].pincode
+    --     }
+    --     Player.Functions.AddItem("stickynote", 1, false, info)
+    --     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["stickynote"], "add")
 
-        TriggerEvent("prp-log:server:CreateLog", "traphouse", "Pin Recieved", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has Robbed an NPC and found the Traphouse Pincode: ``"..Config.TrapHouses[Traphouse].pincode.. "``| Entrance: ``"..Config.TrapHouses[Traphouse].coords["enter"].. "`` | Traphouse")
+    --     TriggerEvent("prp-log:server:CreateLog", "traphouse", "Pin Recieved", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has Robbed an NPC and found the Traphouse Pincode: ``"..Config.TrapHouses[Traphouse].pincode.. "``| Entrance: ``"..Config.TrapHouses[Traphouse].coords["enter"].. "`` | Traphouse")
     
-    else
+    -- else
         local amount = math.random(1, 80)
         Player.Functions.AddMoney('cash', amount)
-    end
+    -- end
 end)
 
 ProjectRP.Functions.CreateCallback('prp-traphouse:server:GetTraphousesData', function(source, cb)
     cb(Config.TrapHouses)
+end)
+
+
+RegisterServerEvent("traphouse:takeover:notify")
+AddEventHandler("traphouse:takeover:notify", function(trapid)
+
+
+    TriggerClientEvent("Axel:Is:sEXYa:ASADA",-1, Config.TrapHouses[trapid].gang)
 end)

@@ -11,6 +11,50 @@ local InTraphouseRange = false
 local CodeNPC = nil
 local IsRobbingNPC = false
 
+
+local gangNpcMap = {
+	["vagos"] = {
+		"g_m_y_mexgang_01",
+		"g_m_y_mexgoon_01",
+		"g_m_y_mexgoon_02",
+		"g_m_y_mexgoon_03",
+		"g_m_y_pologoon_01",
+		"g_m_y_pologoon_02"
+	},
+	["marabunta"] = {
+		"g_m_y_salvagoon_01",
+		"g_m_y_salvagoon_02",
+		"g_m_y_salvagoon_03",
+		"g_m_y_strpunk_01",
+		"g_m_y_strpunk_02"
+	},
+	["aztecas"] = {
+		"g_m_y_salvagoon_01",
+		"g_m_y_salvagoon_02",
+		"g_m_y_salvagoon_03",
+		"g_m_y_strpunk_01",
+		"g_m_y_strpunk_02"
+	},
+	["ballas"] = {
+		"g_m_y_ballaeast_01",
+		"g_m_y_ballaorig_01",
+		"g_m_y_ballasout_01"
+	},
+	["gsf"] = {
+		"g_m_y_famca_01",
+		"g_m_y_famdnf_01",
+		"g_m_y_famfor_01"
+	}
+}
+
+local gang2rel = {
+	["vagos"] = "AMBIENT_GANG_MEXICAN",
+	["marabunta"] = "AMBIENT_GANG_SALVA",
+	["aztecas"] = "AMBIENT_GANG_SALVA",
+	["ballas"] = "AMBIENT_GANG_BALLAS",
+	["gsf"] = "AMBIENT_GANG_FAMILY"
+}
+
 -- Code
 
 Citizen.CreateThread(function()
@@ -43,6 +87,8 @@ AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
         Config.TrapHouses = trappies
     end)
 end)
+
+
 
 function SetClosestTraphouse()
     local pos = GetEntityCoords(PlayerPedId(), true)
@@ -208,7 +254,8 @@ Citizen.CreateThread(function()
                                                 FreezeEntityPosition(targetPed, false)
                                                 ClearPedTasks(targetPed)
                                                 AddShockingEventAtPosition(99, GetEntityCoords(targetPed), 0.5)
-                                                TriggerServerEvent('prp-traphouse:server:RobNpc', ClosestTraphouse)
+                                                TriggerServerEvent('RobNpc')
+                                                TriggerEvent("Project-traphouse:luckRob", targetPed)
                                                 CanRob = false
                                             end
                                         end
@@ -259,8 +306,9 @@ Citizen.CreateThread(function()
                     inRange = true
                     if InteractDistance < 1 then
                         if not IsKeyHolder then
-                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~b~H~w~ - View Inventory')
+                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~g~H~s~ to Sell Items')
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z, '~b~E~w~ - Take Over (~g~$5000~w~)')
+                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~g~F~s~ to see reputation')
                             if IsControlJustPressed(0, 38) then
                                 TriggerServerEvent('prp-traphouse:server:TakeoverHouse', CurrentTraphouse)
                             end
@@ -272,15 +320,26 @@ Citizen.CreateThread(function()
                                 TriggerServerEvent("inventory:server:OpenInventory", "traphouse", CurrentTraphouse, TraphouseInventory)
                             end
                         else
-                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~b~H~w~ - View Inventory')
+                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~g~H~s~ to Sell Items')
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z, '~b~E~w~ - Take Cash (~g~$'..data.money..'~w~)')
+                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~g~F~s~ to see reputation')
                             if IsHouseOwner then
-                                DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~b~/multikeys~w~ [id] - To Give Keys')
-                                DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.4, '~b~G~w~ - See Pin Code')
+                                DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.4, '~b~/multikeys~w~ [id] - To Give Keys')
+                                
                                 if IsControlJustPressed(0, 47) then
                                     ProjectRP.Functions.Notify('Pincode: '..data.pincode)
                                 end
                             end
+                            
+                        if IsControlJustReleased(0, 23) then
+                            local _next = math.floor(data.reputation) + 1
+                            local progress = (data.reputation - math.floor(data.reputation)) * 100
+                            progress = string.format("%.2f %%", progress)
+                            if _next > 100 then progress = 'MAXED' end
+                            local bonus = math.min(100, (2 * math.floor(data.reputation)))
+                            ProjectRP.Functions.Notify('Reputation: '..data.pincode.. math.floor(data.reputation) .. " (" .. progress .. "). Current bonus: " .. bonus .. "%")
+                        end
+
                             if IsControlJustPressed(0, 74) then
                                 local TraphouseInventory = {}
                                 TraphouseInventory.label = "traphouse_"..CurrentTraphouse
@@ -349,12 +408,13 @@ RegisterNetEvent('prp-traphouse:client:TakeoverHouse')
 AddEventHandler('prp-traphouse:client:TakeoverHouse', function(TraphouseId)
     local ped = PlayerPedId()
 
-    ProjectRP.Functions.Progressbar("takeover_traphouse", "Taking Over", math.random(1000, 3000), false, true, {
+    ProjectRP.Functions.Progressbar("takeover_traphouse", "Taking Over", 1000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
         disableCombat = true,
     }, {}, {}, {}, function() -- Done
+        TriggerServerEvent("traphouse:takeover:notify",TraphouseId)
         TriggerServerEvent('prp-traphouse:server:AddHouseKeyHolder', PlayerData.citizenid, TraphouseId, true)
     end, function()
         ProjectRP.Functions.Notify("Acquisitions Canceled", "error")
@@ -400,6 +460,157 @@ end
 RegisterNetEvent('prp-traphouse:client:SyncData')
 AddEventHandler('prp-traphouse:client:SyncData', function(k, data)
     Config.TrapHouses[k] = data
+    -- print("sync data")
     IsKeyHolder = HasKey(PlayerData.citizenid)
     IsHouseOwner = IsOwner(PlayerData.citizenid)
+end)
+
+
+RegisterNetEvent("Axel:Is:sEXYa:ASADA")
+AddEventHandler("Axel:Is:sEXYa:ASADA", function(shit)
+
+    if shit == PlayerData.gang.name then
+        ProjectRP.Functions.Notify('Boss, Somebody is taking over our traphouse!')
+    end
+end)
+
+local cooldown = false
+
+
+
+AddEventHandler("Project-traphouse:luckRob", function(ped)
+    local pos = GetEntityCoords(PlayerPedId(), true)
+            local data = Config.TrapHouses[ClosestTraphouse]
+            local dist = #(pos - data.coords["enter"])
+
+            if dist < 50 then
+                local rand = math.random() + math.random(0, 100)
+                if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
+                    if rand > 0.25 then
+                        return
+                    end
+                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
+                    if rand > 0.5 then
+                        return
+                    end
+                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
+                    if rand > 0.75 then
+                        return
+                    end
+                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
+                    if rand > 1 then
+                        return
+                    end
+                end
+    
+                if cooldown then
+                    return
+                end
+
+                Citizen.CreateThread(function()
+                    cooldown = true
+                    if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
+                        Citizen.Wait(15000)
+                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
+                        Citizen.Wait(10000)
+                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
+                        Citizen.Wait(5000)
+                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
+                        Citizen.Wait(5000)
+                    end
+    
+                    cooldown = false
+                end)
+
+
+                -- print(GetHashKey(gang2rel[Config.TrapHouses[ClosestTraphouse].gang]).. " - " ..GetPedRelationshipGroupHash(ped))
+                -- local Chance = math.random(1, 10)
+                -- local odd = math.random(1, 10)
+            
+                -- if Chance == odd then
+                    if GetPedRelationshipGroupHash(ped) == GetHashKey(gang2rel[Config.TrapHouses[ClosestTraphouse].gang]) then
+                        print("get pin")
+                        ProjectRP.Functions.Notify('Alright, the pin is '..Config.TrapHouses[ClosestTraphouse].pincode)
+
+                        Citizen.Wait(500)
+                        AddShockingEventAtPosition(99, GetEntityCoords(ped), 0.5)
+                        Citizen.Wait(30000)
+                        if DoesEntityExist(ped) then
+                            DeleteEntity(ped)
+                        end
+                    -- end
+                end
+            end
+end)
+
+
+
+function isGangModel(gang, model)
+	for k, v in pairs(gangNpcMap[gang]) do
+		if model == GetHashKey(v) then
+			return true
+		end
+	end
+end
+
+function findNPC(x,y,z,gang)
+    local playerped = GetPlayerPed(-1)
+    local playerCoords = GetEntityCoords(playerped)
+    local handle, ped = FindFirstPed()
+    local success
+    local rped = nil
+    local distanceFrom
+    local pedfound = false
+    repeat
+        local pos = GetEntityCoords(ped)
+		local distance = #(pos - vector3(x,y,z))
+        if distance < 40.0 and (distanceFrom == nil or distance < distanceFrom) and isGangModel(gang, GetEntityModel(ped)) then
+            if IsEntityDead(ped) then
+                DeleteEntity(ped)
+            else
+                pedfound = true
+            end
+        end
+        success, ped = FindNextPed(handle)
+    until not success or pedfound
+    	EndFindPed(handle)
+    return pedfound
+end
+
+
+Citizen.CreateThread(function()
+	while true do
+
+		for k, v in pairs(Config.TrapHouses) do
+			local dist = #(GetEntityCoords(PlayerPedId()) - v.coords["enter"])
+			if dist < 30 then
+                x,y,z = table.unpack(v.coords["enter"])
+				local hasNpc = findNPC(x, y, z, v.gang)
+				if not hasNpc then
+
+					local model = gangNpcMap[v.gang][math.random(#gangNpcMap[v.gang])]
+					RequestModel(GetHashKey(model))
+					while not HasModelLoaded(GetHashKey(model)) do
+						Citizen.Wait(1)
+					end
+
+					local npc = CreatePed(4, GetHashKey(model), v.coords["enter"], 262.5998, true, true)
+					--SetBlockingOfNonTemporaryEvents(npc, true)
+					SetEntityHeading(npc, 262.5998)
+					-- SetEntityCoords(npc, GetEntityCoords(npc) + GetEntityForwardVector(npc) * math.random(-5, 5))
+					-- SetEntityHeading(npc, 10 + 180.0 + math.random(-40.0, 40.0))
+					-- SetEntityCoords(npc, GetEntityCoords(npc) + GetEntityForwardVector(npc) * math.random(0, 5))
+
+					SetPedRelationshipGroupDefaultHash(npc, GetHashKey(gang2rel[v.gang]))
+					SetPedRelationshipGroupHash(npc, GetHashKey(gang2rel[v.gang]))
+
+					local finalCoords = GetEntityCoords(npc)
+
+					TaskWanderInArea(npc, finalCoords.x, finalCoords.y, finalCoords.z, 30.0, 5.0, 4.0)
+				end
+			end
+		end
+
+		Citizen.Wait(60 * 15 * 1000)
+	end
 end)

@@ -2,16 +2,19 @@ Config = Config or {}
 
 Config.MinZOffset = 40
 Config.TakeoverPrice = 5000
+
 Config.TrapHouses = {
     [1] = {
         coords = {
             ["enter"] = vector3(143.3499, -1656.0769, 29.4807),
-            ["interaction"] = vector3(143.3499, -1656.0769, -32.66),
+            ["interaction"] = vector3(137.7848, -1657.5903, -8.0913),
         },
         keyholders = {},
         pincode = 7453,
+        gang = "vagos",
         inventory = {},
         opened = false,
+        reputation = 0,
         takingover = false,
         money = 0,
     }
