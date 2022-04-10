@@ -94,7 +94,7 @@ CreateThread(function()
                 SetRainLevel(0.0)
             end
         else
-            Wait(1000)
+            Wait(2500)
         end
     end
 end)

@@ -349,13 +349,13 @@ local carryPackage = nil
 
 local onDuty = false
 
+local recyclesleep = 3500
 Citizen.CreateThread(function ()
     while true do
-        Citizen.Wait(4)
         local pos = GetEntityCoords(GetPlayerPed(-1), true)
 
         if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].OutsideLocation.x, Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z, true) < 1.3 then
-
+			recyclesleep = 1
             if Config.EnableOpeningHours then
                 local ClockTime = GetClockHours()
                 if ClockTime >= Config.OpenHour and ClockTime <= Config.CloseHour - 1 then
@@ -379,7 +379,7 @@ Citizen.CreateThread(function ()
             end
     
             if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, true) < 15 and not IsPedInAnyVehicle(GetPlayerPed(-1), false) and not onDuty then
-
+				recyclesleep = 1
                 --DrawMarker(25, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5001, 98, 102, 185,100, 0, 0, 0,0)
             if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, true) < 1.3 then
                 DrawText3D(Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z + 1, "Exit The Recycle Center [~g~E~w~] ")
@@ -394,6 +394,7 @@ Citizen.CreateThread(function ()
                 end
             end
         end
+		Citizen.Wait(recyclesleep)
     end
 end)
 

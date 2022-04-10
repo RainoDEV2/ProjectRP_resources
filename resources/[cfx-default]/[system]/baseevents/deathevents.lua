@@ -4,7 +4,7 @@ Citizen.CreateThread(function()
 	local diedAt
 
     while true do
-        Wait(0)
+        Wait(500)
 
         local player = PlayerId()
 

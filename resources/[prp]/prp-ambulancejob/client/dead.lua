@@ -96,11 +96,12 @@ end
 
 -- Threads
 
+local ambulancelsleep = 3500
 CreateThread(function()
 	while true do
-		Wait(10)
 		local player = PlayerId()
 		if NetworkIsPlayerActive(player) then
+            ambulancelsleep = 10
             local playerPed = PlayerPedId()
             if IsEntityDead(playerPed) and not InLaststand then
                 SetLaststand(true)
@@ -132,6 +133,7 @@ CreateThread(function()
                 DeathTimer()
             end
 		end
+        Wait(ambulancelsleep)
 	end
 end)
 

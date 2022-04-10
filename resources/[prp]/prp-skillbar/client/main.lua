@@ -61,9 +61,11 @@ Skillbar.Repeat = function(data)
     end)
 end
 
+local skillsleep = 2500
 Citizen.CreateThread(function()
     while true do
         if Skillbar.Data.Active then
+            skillsleep = 1
             if IsControlJustPressed(0, 38) then
                 SendNUIMessage({
                     action = "check",
@@ -71,7 +73,7 @@ Citizen.CreateThread(function()
                 })
             end
         end
-        Citizen.Wait(1)
+        Citizen.Wait(skillsleep)
     end
 end)
 

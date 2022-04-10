@@ -189,10 +189,10 @@ RegisterNetEvent('prp-methcar:gasmask', function(data)
 	TriggerServerEvent('prp-methcar:make', pos.x,pos.y,pos.z)
 end)
 
+local METHSLEEP = 3500
 -------------------------------------------------------THREAD
 Citizen.CreateThread(function(data)
-	while true do
-		Citizen.Wait(3)		
+	while true do		
 		playerPed = (PlayerPedId())
 		local pos = GetEntityCoords((PlayerPedId()))
 		if IsPedInAnyVehicle(playerPed) then	
@@ -202,6 +202,7 @@ Citizen.CreateThread(function(data)
 			local model = GetEntityModel(CurrentVehicle)
 			local modelName = GetDisplayNameFromVehicleModel(model)			
 			if modelName == 'JOURNEY' and car then				
+				METHSLEEP = 1
 					if GetPedInVehicleSeat(car, -0) == playerPed then
 							DrawText3D(pos.x, pos.y, pos.z, '~g~E~w~ to (cook)')
 							if IsControlJustReleased(0, Keys['E']) then
@@ -224,7 +225,8 @@ Citizen.CreateThread(function(data)
 					FreezeEntityPosition(LastCar,false)
 				end
 		end		
-		if started == true then			
+		if started == true then	
+			METHSLEEP = 1
 			if progress < 96 then
 				Citizen.Wait(500)
 				-- TriggerServerEvent('prp-methcar:make', pos.x,pos.y,pos.z)
@@ -579,7 +581,8 @@ Citizen.CreateThread(function(data)
 				SetPedPropIndex(playerPed, 1, 0, 0, true)
 				FreezeEntityPosition(LastCar, false)
 			end				
-		end		
+		end
+		Citizen.Wait(METHSLEEP)		
 	end
 end)
 

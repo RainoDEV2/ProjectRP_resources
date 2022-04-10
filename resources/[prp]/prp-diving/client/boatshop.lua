@@ -87,6 +87,8 @@ CreateThread(function()
     end
 end)
 
+
+local boatshopsleep = 3500
 CreateThread(function()
     while true do
         local ped = PlayerPedId()
@@ -97,6 +99,7 @@ CreateThread(function()
         local distance = #(pos - vector3(PRPBoatshop.Locations["berths"][ClosestBerth]["coords"]["boat"]["x"], PRPBoatshop.Locations["berths"][ClosestBerth]["coords"]["boat"]["y"], PRPBoatshop.Locations["berths"][ClosestBerth]["coords"]["boat"]["z"]))
 
         if distance < 15 then
+            boatshopsleep = 1
             local BuyLocation = {
                 x = PRPBoatshop.Locations["berths"][ClosestBerth]["coords"]["buy"]["x"],
                 y = PRPBoatshop.Locations["berths"][ClosestBerth]["coords"]["buy"]["y"],
@@ -132,7 +135,7 @@ CreateThread(function()
             end
         end
 
-        Wait(3)
+        Wait(boatshopsleep)
     end
 end)
 
