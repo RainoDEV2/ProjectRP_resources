@@ -330,15 +330,15 @@ Citizen.CreateThread(function()
                                     ProjectRP.Functions.Notify('Pincode: '..data.pincode)
                                 end
                             end
-                            
-                        if IsControlJustReleased(0, 23) then
-                            local _next = math.floor(data.reputation) + 1
-                            local progress = (data.reputation - math.floor(data.reputation)) * 100
-                            progress = string.format("%.2f %%", progress)
-                            if _next > 100 then progress = 'MAXED' end
-                            local bonus = math.min(100, (2 * math.floor(data.reputation)))
-                            ProjectRP.Functions.Notify('Reputation: '..data.pincode.. math.floor(data.reputation) .. " (" .. progress .. "). Current bonus: " .. bonus .. "%")
-                        end
+                                
+                            if IsControlJustReleased(0, 23) then
+                                local _next = math.floor(data.reputation) + 1
+                                local progress = (data.reputation - math.floor(data.reputation)) * 100
+                                progress = string.format("%.2f %%", progress)
+                                if _next > 100 then progress = 'MAXED' end
+                                local bonus = math.min(100, (2 * math.floor(data.reputation)))
+                                ProjectRP.Functions.Notify('Reputation: '.. math.floor(data.reputation) .. " (" .. progress .. "). Current bonus: " .. bonus .. "%")
+                            end
 
                             if IsControlJustPressed(0, 74) then
                                 local TraphouseInventory = {}
