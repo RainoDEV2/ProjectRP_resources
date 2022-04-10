@@ -60,39 +60,39 @@ Config.Locations = {
 Config.AuthorizedVehicles = {
 	-- Grade 0
 	[0] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 1
 	[1] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 2
 	[2] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 3
 	[3] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 4
 	[4] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 5
 	[5] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 6
 	[6] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 7
 	[7] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	},
 	-- Grade 8
 	[8] = {
-		["speedoambo"] = "Ambulance",
+		["emsnspeedo"] = "Ambulance",
 	}
 }
 

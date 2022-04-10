@@ -802,7 +802,7 @@ AddEventHandler('prp-radialmenu:ResetClothing', ResetClothing)
 function ToggleClothing(whic, extra)
 	local which = whic
 	if type(whic) == "table" then
-    	which = tostring(whic.id)
+		which = tostring(whic.id)
 	else
 		which = whic
 	end
@@ -888,7 +888,7 @@ AddEventHandler('prp-radialmenu:ToggleClothing', ToggleClothing)
 function ToggleProps(whic)
 	local which = whic
 	if type(whic) == "table" then
-    	which = tostring(whic.id)
+		which = tostring(whic.id)
 	else
 		which = whic
 	end
