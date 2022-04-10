@@ -132,6 +132,7 @@ tattoosList = {
 		{nameHash = "MP_Buis_M_Neck_000", dlc = 'mpbusiness_overlays'},
 		{nameHash = "MP_Buis_M_Neck_001", dlc = 'mpbusiness_overlays'},
 		{nameHash = "MP_Buis_M_Neck_002", dlc = 'mpbusiness_overlays'},
+		{nameHash = "MP_Buis_M_Neck_003", dlc = 'mpbusiness_overlays'},
 		{nameHash = "MP_Buis_F_Neck_000", dlc = 'mpbusiness_overlays'},
 		{nameHash = "MP_Buis_F_Neck_001", dlc = 'mpbusiness_overlays'},
 		{nameHash = "MP_Gunrunning_Tattoo_003_M", dlc = 'mpgunrunning_overlays'},
