@@ -408,7 +408,7 @@ RegisterNetEvent('prp-traphouse:client:TakeoverHouse')
 AddEventHandler('prp-traphouse:client:TakeoverHouse', function(TraphouseId)
     local ped = PlayerPedId()
 
-    ProjectRP.Functions.Progressbar("takeover_traphouse", "Taking Over", 1000, false, true, {
+    ProjectRP.Functions.Progressbar("takeover_traphouse", "Taking Over", (60 * 2) * 1000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
