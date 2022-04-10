@@ -871,7 +871,7 @@ CreateThread(function() -- Speeding
                 local speed = GetEntitySpeed(GetVehiclePedIsIn(ped, false)) * speedMultiplier
                 local stressSpeed = seatbeltOn and config.MinimumSpeed or config.MinimumSpeedUnbuckled
                 if speed >= stressSpeed then
-                    TriggerServerEvent('hud:server:GainStress', math.random(1, 3))
+                    TriggerServerEvent('hud:server:GainStress', math.random(1, 2))
                 end
             end
         end
@@ -935,7 +935,7 @@ CreateThread(function()
         local effectInterval = GetEffectInterval(stress)
         if stress >= 100 then
             local BlurIntensity = GetBlurIntensity(stress)
-            local FallRepeat = math.random(2, 4)
+            local FallRepeat = math.random(1, 2)
             local RagdollTimeout = FallRepeat * 1750
             TriggerScreenblurFadeIn(1000.0)
             Wait(BlurIntensity)
