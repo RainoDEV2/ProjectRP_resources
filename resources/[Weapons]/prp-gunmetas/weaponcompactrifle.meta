@@ -295,7 +295,7 @@
               <AttachBone>WAPClip</AttachBone>
               <Components>
                 <Item>
-                  <Name>COMPONENT_DRACO_CLIP_01</Name>
+                  <Name>COMPONENT_COMPACTRIFLE_CLIP_01</Name>
                   <Default value="true" />
                 </Item>
                 <Item>
