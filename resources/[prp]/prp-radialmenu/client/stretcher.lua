@@ -5,7 +5,8 @@ local IsLayingOnBed = false
 -- Add your vehicles here that will allow Ambulance to get a stretcher out.
 local AllowedStretcherVehicles = {
     "ambulance",
-	}
+    "emsnspeedo",
+}
 
 function CheckForVehicles()
     local PlayerPed = PlayerPedId()

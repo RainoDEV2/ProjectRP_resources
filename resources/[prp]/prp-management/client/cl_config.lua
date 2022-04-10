@@ -83,13 +83,13 @@ Config.GangMenus = {
         vector3(110.33, -1967.71, 21.33),
     },
     ['vagos'] = {
-        vector3(0, 0, 0),
+        vector3(350.02, -2031.86, 22.39),
     },
     ['cartel'] = {
-        vector3(0, 0, 0),
+        vector3(1396.63, 1159.01, 114.33),
     },
     ['families'] = {
-        vector3(0, 0, 0),
+        vector3(-150.26, -1588.07, 35.03),
     },
     ['triads'] = {
         vector3(0, 0, 0),

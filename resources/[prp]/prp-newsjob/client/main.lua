@@ -85,52 +85,52 @@ Citizen.CreateThread(function()
     end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1)
-        local inRange = false
-        if LocalPlayer.state.isLoggedIn then
-            local pos = GetEntityCoords(PlayerPedId())
-            if #(pos - vector3(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z)) < 1.5 or #(pos - vector3(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z)) < 1.5 then
-                inRange = true
-                if #(pos - vector3(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z)) < 1.5 then
-                    DrawText3D(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z, "~g~E~w~ - Enter")
-                    if IsControlJustReleased(0, 38) then
-                        DoScreenFadeOut(500)
-                        while not IsScreenFadedOut() do
-                            Citizen.Wait(10)
-                        end
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(1)
+--         local inRange = false
+--         if LocalPlayer.state.isLoggedIn then
+--             local pos = GetEntityCoords(PlayerPedId())
+--             if #(pos - vector3(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z)) < 1.5 or #(pos - vector3(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z)) < 1.5 then
+--                 inRange = true
+--                 if #(pos - vector3(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z)) < 1.5 then
+--                     DrawText3D(Config.Locations["main"].coords.x, Config.Locations["main"].coords.y, Config.Locations["main"].coords.z, "~g~E~w~ - Enter")
+--                     if IsControlJustReleased(0, 38) then
+--                         DoScreenFadeOut(500)
+--                         while not IsScreenFadedOut() do
+--                             Citizen.Wait(10)
+--                         end
 
-                        SetEntityCoords(PlayerPedId(), Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z, 0, 0, 0, false)
-                        SetEntityHeading(PlayerPedId(), Config.Locations["inside"].coords.w)
+--                         SetEntityCoords(PlayerPedId(), Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z, 0, 0, 0, false)
+--                         SetEntityHeading(PlayerPedId(), Config.Locations["inside"].coords.w)
 
-                        Citizen.Wait(100)
+--                         Citizen.Wait(100)
 
-                        DoScreenFadeIn(1000)
-                    end
-                elseif #(pos - vector3(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z)) < 1.5 then
-                    DrawText3D(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z, "~g~E~w~ - Go outside")
-                    if IsControlJustReleased(0, 38) then
-                        DoScreenFadeOut(500)
-                        while not IsScreenFadedOut() do
-                            Citizen.Wait(10)
-                        end
+--                         DoScreenFadeIn(1000)
+--                     end
+--                 elseif #(pos - vector3(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z)) < 1.5 then
+--                     DrawText3D(Config.Locations["inside"].coords.x, Config.Locations["inside"].coords.y, Config.Locations["inside"].coords.z, "~g~E~w~ - Go outside")
+--                     if IsControlJustReleased(0, 38) then
+--                         DoScreenFadeOut(500)
+--                         while not IsScreenFadedOut() do
+--                             Citizen.Wait(10)
+--                         end
 
-                        SetEntityCoords(PlayerPedId(), Config.Locations["outside"].coords.x, Config.Locations["outside"].coords.y, Config.Locations["outside"].coords.z, 0, 0, 0, false)
-                        SetEntityHeading(PlayerPedId(), Config.Locations["outside"].coords.w)
+--                         SetEntityCoords(PlayerPedId(), Config.Locations["outside"].coords.x, Config.Locations["outside"].coords.y, Config.Locations["outside"].coords.z, 0, 0, 0, false)
+--                         SetEntityHeading(PlayerPedId(), Config.Locations["outside"].coords.w)
 
-                        Citizen.Wait(100)
+--                         Citizen.Wait(100)
 
-                        DoScreenFadeIn(1000)
-                    end
-                end
-            end
-        end
-        if not inRange then
-            Citizen.Wait(2500)
-        end
-    end
-end)
+--                         DoScreenFadeIn(1000)
+--                     end
+--                 end
+--             end
+--         end
+--         if not inRange then
+--             Citizen.Wait(2500)
+--         end
+--     end
+-- end)
 
 function MenuGarage()
     ped = PlayerPedId();
