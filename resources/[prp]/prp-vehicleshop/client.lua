@@ -177,6 +177,8 @@ local function createVehZones(shopName, entity)
         combo:onPlayerInOut(function(isPointInside)
             local insideShop = getShopInsideOf()
             if isPointInside then
+                -- print(json.encode(PlayerData.job))
+                -- print(insideShop)
                 if (PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[insideShop]['Job']) or Config.Shops[insideShop]['Job'] == 'none' then
                     exports['prp-menu']:showHeader(vehHeaderMenu)
                 end
@@ -283,6 +285,7 @@ function createManagedShop(shopShape, name, jobName)
     zone:onPlayerInOut(function(isPointInside)
         if isPointInside then
             insideZones[name] = true
+            -- print("inside")
             CreateThread(function()
                 while insideZones[name] and PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[name]['Job'] do
                     setClosestShowroomVehicle()
@@ -370,6 +373,7 @@ RegisterNetEvent('prp-vehicleshop:client:homeMenu', function()
 end)
 
 RegisterNetEvent('prp-vehicleshop:client:showVehOptions', function()
+    -- print("vehoptions")
     exports['prp-menu']:openMenu(vehicleMenu)
 end)
 
@@ -745,7 +749,7 @@ CreateThread(function()
     financeZone:onPlayerInOut(function(isPointInside)
         if isPointInside then
             exports['prp-menu']:showHeader(financeMenu)
-        else
+        else                                            
             exports['prp-menu']:closeMenu()
         end
     end)
