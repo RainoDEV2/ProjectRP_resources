@@ -100,35 +100,6 @@ Citizen.CreateThread(function()
                         hasRented = true
                     end, vector3(-673.1433, -1098.7621, 14.5602), true)
 
-					-- exports['GroveRP-veh']:SpawnVehicle("bmx", {
-
-					-- 	x = 321.64038085938, -- -1037.755, -2729.235, 20.019
-
-					-- 	y = -232.79974365234,
-
-					-- 	z = 54.006427764893 + 1
-
-					-- }, 156.427, function(veh)
-
-					-- 	SetVehicleNumberPlateText(veh, "Rented")
-
-					-- 	local carplate = GetVehicleNumberPlateText(veh)
-
-
-
-					-- 	local vehNet = NetworkGetNetworkIdFromEntity(veh)
-
-					-- 	TriggerEvent("keys:addNew",vehNet,carplate)
-
-
-
-					-- 	TaskWarpPedIntoVehicle(GetPlayerPed(-1), veh, -1)
-
-
-
-					-- 	hasRented = true
-
-					-- end)
 
 				end
 
