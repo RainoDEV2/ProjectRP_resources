@@ -117,9 +117,6 @@ RegisterNetEvent('hospital:client:UsePainkillers', function()
     end)
 end)
 
-RegisterNetEvent("hospital:client:Uselorazepam", function()
-    TriggerServerEvent('hud:server:RelieveStress', 100)
-end)
 
 RegisterNetEvent('hospital:client:Uselorazepam', function(given)
     local ped = PlayerPedId()
