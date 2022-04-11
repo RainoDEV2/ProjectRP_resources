@@ -35,34 +35,34 @@ if Config.PoliceAlerts.ENABLE then
     --╚══════╝   ╚═╝    ╚═════╝ ╚══════╝╚══════╝╚═╝  ╚═══╝     ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝
 
     
-    if Config.PoliceAlerts.StolenCar.ENABLE then
-        Citizen.CreateThread(function()
-            while not Authorised do Citizen.Wait(1000) end
-            while true do
-                wait = 50
-                if not ActiveAlert.Stolencar then
-                    local ped = PlayerPedId()
-                    if IsPedTryingToEnterALockedVehicle(ped) or IsPedJacking(ped) then
-                        local vehicle = GetClosestVehicle(5)
-                        if vehicle then
-                            ActiveAlert.Stolencar = true
-                            if not Callback(GetPlate(vehicle), 'check_vehicle_owner') then
-                                if CheckWhitelistedJob() then
-                                    Citizen.Wait(5000)
-                                    TriggerServerEvent('cd_dispatch:pdalerts:Stolencar', GetPlayerInfo())
-                                    Citizen.Wait(Config.PoliceAlerts.StolenCar.cooldown*1000)
-                                    ActiveAlert.Stolencar = false
-                                end
-                            end
-                        end
-                    end
-                else
-                    wait = 1000
-                end
-                Wait(wait)
-            end
-        end)
-    end
+    -- if Config.PoliceAlerts.StolenCar.ENABLE then
+    --     Citizen.CreateThread(function()
+    --         while not Authorised do Citizen.Wait(1000) end
+    --         while true do
+    --             wait = 50
+    --             if not ActiveAlert.Stolencar then
+    --                 local ped = PlayerPedId()
+    --                 if IsPedTryingToEnterALockedVehicle(ped) or IsPedJacking(ped) then
+    --                     local vehicle = GetClosestVehicle(5)
+    --                     if vehicle then
+    --                         ActiveAlert.Stolencar = true
+    --                         if not Callback(GetPlate(vehicle), 'check_vehicle_owner') then
+    --                             if CheckWhitelistedJob() then
+    --                                 Citizen.Wait(5000)
+    --                                 TriggerServerEvent('cd_dispatch:pdalerts:Stolencar', GetPlayerInfo())
+    --                                 Citizen.Wait(Config.PoliceAlerts.StolenCar.cooldown*1000)
+    --                                 ActiveAlert.Stolencar = false
+    --                             end
+    --                         end
+    --                     end
+    --                 end
+    --             else
+    --                 wait = 1000
+    --             end
+    --             Wait(wait)
+    --         end
+    --     end)
+    -- end
 
 
     -- ██████╗ ██╗   ██╗███╗   ██╗███████╗██╗  ██╗ ██████╗ ████████╗███████╗
