@@ -20,17 +20,17 @@ bennyGarages = {
 
 vehicleCustomisationPrices = {
     cosmetics = {price = 400},
-    respray = {price = 1000},
+    respray = {price = 500},
     performance = {prices = {0, 3250, 5500, 10450, 15250, 20500}},
     turbo = {price = 15000},
     wheels = {price = 400},
     customwheels = {price = 600},
     wheelsmoke = {price = 400},
-    windowtint = {price = 400},
+    windowtint = {price = 1000},
     neonside = {price = 100},
     neoncolours = {price = 500},
     headlights = {price = 100},
-    xenoncolours = {price = 500},
+    xenoncolours = {price = 2500},
     oldlivery = {price = 500},
     plateindex = {price = 1000}
 }

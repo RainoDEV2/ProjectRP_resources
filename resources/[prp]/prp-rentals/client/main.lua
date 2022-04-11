@@ -42,12 +42,12 @@ RegisterNetEvent('prp-rental:openMenu', function()
         {
             id = 4,
             header = "Sanchez",
-            txt = "$750.00",
+            txt = "$3000.00",
             params = {
                 event = "prp-rental:spawncar",
                 args = {
                     model = 'sanchez',
-                    money = 750,
+                    money = 3000,
                 }
             }
         },

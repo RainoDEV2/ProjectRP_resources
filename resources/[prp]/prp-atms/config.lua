@@ -1,6 +1,6 @@
 Config = {}
 
-Config.DailyLimit = 5000
+Config.DailyLimit = 10000
 
 Config.ATMModels = {
     "prop_atm_01",
