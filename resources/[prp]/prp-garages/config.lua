@@ -130,6 +130,13 @@ GangGarages = {
         putVehicle = vector3(1407.18, 1118.04, 114.84),
         job = "cartel"
     },
+    ["vagos"] = {
+        label = "Vagos",
+        takeVehicle = vector3(1407.18, 1118.04, 114.84),
+        spawnPoint = vector4(329.28, -2035.65, 20.96, 54.26),
+        putVehicle = vector3(1407.18, 1118.04, 114.84),
+        job = "vagos"
+    },
 }
 
 JobGarages = {
