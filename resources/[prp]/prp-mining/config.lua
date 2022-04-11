@@ -126,5 +126,5 @@ Config.Items = {
 	[3] = { name = "weapon_flashlight", price = 500, amount = 100, info = {}, type = "item", slot = 3, }, 
 	[4] = { name = "drill",	price = 5000, amount = 10000, info = {}, type = "item", slot = 4, }, 
 	[5] = { name = "handdrill",	price = 1000, amount = 1000, info = {}, type = "item",	slot = 5, },
-	[6] = { name = "drillbit", price = 500, amount = 500,	info = {}, type = "item", slot = 6, }, }		
+	[6] = { name = "drillbit", price = 100, amount = 500,	info = {}, type = "item", slot = 6, }, }		
 }

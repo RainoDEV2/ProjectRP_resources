@@ -9,10 +9,10 @@ Config.MaximumTime = 22
 
 Config.Rewards = {
     [1] = {
-        ["cabin"] = {"plastic", "diamond_ring", "goldchain", "weed_skunk", "cryptostick"},
+        ["cabin"] = {"plastic", "goldchain", "weed_skunk", "cryptostick"},
         ["kitchen"] = {"toastie", "sandwich", "goldchain"},
         ["chest"] = {"plastic", "rolex", "diamond_ring", "green-card", "goldchain", "weed_skunk", "cryptostick", "weapon_combatpistol"},
-        ["livingroom"] = {"plastic", "rolex", "diamond_ring", "cryptostick", "tablet", "pistol_ammo"}
+        ["livingroom"] = {"plastic", "rolex", "cryptostick", "tablet", "pistol_ammo"}
     }
 }
 

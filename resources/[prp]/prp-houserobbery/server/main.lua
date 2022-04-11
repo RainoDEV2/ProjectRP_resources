@@ -74,7 +74,7 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
                     if randomItem == "plastic" then
                         itemAmount = math.random(15, 30)
                     elseif randomItem == "goldchain" then
-                        itemAmount = math.random(1, 4)
+                        itemAmount = math.random(1, 2)
                     elseif randomItem == "pistol_ammo" then
                         itemAmount = math.random(1, 3)
                     elseif randomItem == "weed_skunk" then
