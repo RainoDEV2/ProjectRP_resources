@@ -5,6 +5,7 @@
 local Logan = nil
 local Peds = {}
 local Frank = nil
+local Phil = nil
 
 function CreateNPC(name, interaction, pedHash, vector, heading, animation, callback)
 
@@ -34,8 +35,6 @@ function CreateNPC(name, interaction, pedHash, vector, heading, animation, callb
 
 	   end
 
-
-
 	   local vehicleDealer = CreatePed(1, DealerPed, vector.x, vector.y, vector.z, heading, false, true)
 
 	   SetBlockingOfNonTemporaryEvents(vehicleDealer, true)
@@ -54,11 +53,7 @@ function CreateNPC(name, interaction, pedHash, vector, heading, animation, callb
 
 	   TheNPC = vehicleDealer
 
-
-
 	   table.insert(Peds, {Ped = vehicleDealer, Location = vector, Heading = heading, Name = name, Callback = callback, Interaction = interaction or "interact"})
-
-
 
 	   print("[NPC] Added NPC " .. name)
 
@@ -86,9 +81,6 @@ Citizen.CreateThread(function()
 			exports['prp-tasknotify']:AddDialog("Mario", "Hey, would you like to borrow my bicycle buddy?", function(val)
 
 				if val then
-
-					-- TriggerEvent("doChatBlue", "Your bicycle is here my friend")
-
 
                     ProjectRP.Functions.SpawnVehicle("bmx", function(veh)
                         SetVehicleNumberPlateText(veh, "Rented")
@@ -125,10 +117,6 @@ Citizen.CreateThread(function()
                 }, {}, {}, {}, function() -- Done
                     ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(hasItem)
                         if hasItem then
-                            -- TriggerServerEvent("ProjectRP:Server:RemoveItem", "aluminum", 2)
-                            -- TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["aluminum"], "remove")
-
-
 						    PlayAmbientSpeech1(Logan, "GENERIC_THANKS", "SPEECH_PARAMS_FORCE_SHOUTED")
                             TriggerServerEvent("__ProjectRP:Logan")
                         else
@@ -153,6 +141,20 @@ Citizen.CreateThread(function()
         TriggerEvent("prp-rental:openMenu")
 	end)
 
+    CreateNPC("Phil", "interact", GetHashKey('s_m_m_janitor'), vector3(1728.7174, 2501.0513, 44.8189), 244.1621, 'WORLD_HUMAN_JANITOR', function(NPC)
+		Phil = NPC
+        PlayAmbientSpeech1(Phil, "GENERIC_HOWS_IT_GOING", "SPEECH_PARAMS_FORCE_SHOUTED")
+        exports['prp-tasknotify']:AddDialog("Logan", "You interested in Cleaning some showers for Time Off?", function(val)
+			if val then
+                TriggerEvent("Clean:Showers")
+			else
+				PlayAmbientSpeech1(Phil, "GENERIC_CURSE_HIGH", "SPEECH_PARAMS_FORCE_SHOUTED")
+			end
+		end)
+
+		
+        
+	end)
 
 
 
@@ -245,6 +247,7 @@ AddEventHandler('onResourceStop', function(resource)
 
         DeleteEntity(Frank)
         DeleteEntity(Logan)
+        DeleteEntity(Phil)
         -- DeleteEntity(Table)
 
     end
