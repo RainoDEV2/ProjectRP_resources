@@ -112,22 +112,6 @@ Config.DoorList['door7'] = {
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
 
--- door8 created by Parker
-Config.DoorList['door8'] = {
-    objCoords = vec3(368.411835, -2038.015259, 21.413742),
-    doorRate = 1.0,
-    fixText = false,
-    distance = 2,
-    locked = true,
-    doorType = 'door',
-    objName = 1626425496,
-    audioRemote = true,
-    authorizedGangs = { ['vagos'] = 0 },
-    objYaw = 6.7488307952881,
-    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-}
-
 -- door9 created by Parker
 Config.DoorList['door9'] = {
     objCoords = vec3(371.442352, -2039.980713, 22.523308),
