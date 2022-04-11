@@ -776,6 +776,29 @@ PRPShared.Jobs = {
             },
         },
 	},
+	['fib'] = {
+		label = 'FIB',
+		defaultDuty = true,
+		grades = {
+			['0'] = {
+				name = 'Field Agent',
+				payment = 350
+			},
+			['1'] = {
+				name = 'Special Agent',
+				payment = 400
+			},
+			['2'] = {
+				name = 'Forensic Examiner',
+				payment = 450
+			},
+			['3'] = {
+				name = 'Director',
+				isboss = true,
+				payment = 500
+		    },
+		},
+	},
 	['ambulance'] = {
 		label = 'EMS',
 		defaultDuty = true,
