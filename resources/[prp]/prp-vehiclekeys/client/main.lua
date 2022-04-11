@@ -149,6 +149,7 @@ function Hotwire()
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
                 TriggerEvent('vehiclekeys:client:SetOwner', ProjectRP.Functions.GetPlate(vehicle))
                 ProjectRP.Functions.Notify("Hotwire succeeded!")
+                TriggerServerEvent('cd_dispatch:pdalerts:Stolencar', GetPlayerInfo())
             else
                 SetVehicleEngineOn(veh, false, false, true)
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
