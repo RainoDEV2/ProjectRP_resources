@@ -127,7 +127,7 @@ Config.Items = {
             slot = 3,
         },
         [4] = {
-            name = "firstaid",
+            name = "lorazepam",
             price = 0,
             amount = 50,
             info = {},
@@ -135,7 +135,7 @@ Config.Items = {
             slot = 4,
         },
         [5] = {
-            name = "weapon_flashlight",
+            name = "firstaid",
             price = 0,
             amount = 50,
             info = {},
@@ -143,12 +143,20 @@ Config.Items = {
             slot = 5,
         },
         [6] = {
-            name = "weapon_fireextinguisher",
+            name = "weapon_flashlight",
             price = 0,
             amount = 50,
             info = {},
             type = "item",
             slot = 6,
+        },
+        [7] = {
+            name = "weapon_fireextinguisher",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 7 ,
         },
     }
 }
