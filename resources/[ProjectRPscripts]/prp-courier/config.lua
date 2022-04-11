@@ -73,18 +73,18 @@ Config.Courier = {
 
 Config.Clothes = {
     male = {
-        ['tshirt_1'] = 42,  ['tshirt_2'] = 1,
-		['torso_1'] = 3,   ['torso_2'] = 4,
-		['arms'] = 1,
-		['pants_1'] = 9,   ['pants_2'] = 3,
-		['shoes_1'] = 1,   ['shoes_2'] = 1,
+        ['tshirt_1'] = 15,  ['tshirt_2'] = 1,
+		['torso_1'] = 150,   ['torso_2'] = 2,
+		['arms'] = 0,
+		['pants_1'] = 163,   ['pants_2'] = 3,
+		['shoes_1'] = 127,   ['shoes_2'] = 9,
     },
     female = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-		['torso_1'] = 4,   ['torso_2'] = 14,
-		['arms'] = 4,
-		['pants_1'] = 25,   ['pants_2'] = 1,
-		['shoes_1'] = 16,   ['shoes_2'] = 4,
+		['torso_1'] = 361,   ['torso_2'] = 1,
+		['arms'] = 0,
+		['pants_1'] = 184,   ['pants_2'] = 3,
+		['shoes_1'] = 95,   ['shoes_2'] = 4,
     }
 }
 
