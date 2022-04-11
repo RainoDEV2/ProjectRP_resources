@@ -132,7 +132,7 @@ function Hotwire()
         local hotwireTime = math.random(20000, 40000)
         SetVehicleAlarm(vehicle, true)
         SetVehicleAlarmTimeLeft(vehicle, hotwireTime)
-        PoliceCall()
+        TriggerServerEvent('cd_dispatch:pdalerts:Stolencar', GetPlayerInfo())
         ProjectRP.Functions.Progressbar("hotwire_vehicle", "Engaging the ignition switch", hotwireTime, false, true, {
             disableMovement = true,
             disableCarMovement = true,
@@ -149,7 +149,6 @@ function Hotwire()
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
                 TriggerEvent('vehiclekeys:client:SetOwner', ProjectRP.Functions.GetPlate(vehicle))
                 ProjectRP.Functions.Notify("Hotwire succeeded!")
-                TriggerServerEvent('cd_dispatch:pdalerts:Stolencar', GetPlayerInfo())
             else
                 SetVehicleEngineOn(veh, false, false, true)
                 TriggerServerEvent('hud:server:GainStress', math.random(1, 4))
