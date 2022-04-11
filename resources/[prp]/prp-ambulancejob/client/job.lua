@@ -354,12 +354,16 @@ RegisterNetEvent('prp-ambulancejob:stash', function()
     if onDuty then
         TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
         TriggerEvent("inventory:client:SetCurrentStash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
+    else
+        ProjectRP.Functions.Notify('You gotta be on duty.', 'error')
     end
 end)
 
 RegisterNetEvent('prp-ambulancejob:armory', function()
     if onDuty then
         TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items)
+    else
+        ProjectRP.Functions.Notify('You gotta be on duty.', 'error')
     end
 end)
 
@@ -568,46 +572,46 @@ if Config.UseTarget == 'true' then
                 distance = 1.5
             })
         end
-        for k, v in pairs(Config.Locations["stash"]) do
-            exports['prp-target']:AddBoxZone("stash"..k, vector3(v.x, v.y, v.z), 1, 1, {
-                name = "stash"..k,
-                debugPoly = false,
-                heading = -20,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        event = "prp-ambulancejob:stash",
-                        icon = "fa fa-hand",
-                        label = "Open Stash",
-                        job = "ambulance"
-                    }
-                },
-                distance = 1.5
-            })
-        end
-        for k, v in pairs(Config.Locations["armory"]) do
-            exports['prp-target']:AddBoxZone("armory"..k, vector3(v.x, v.y, v.z), 1, 1, {
-                name = "armory"..k,
-                debugPoly = false,
-                heading = -20,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        event = "prp-ambulancejob:armory",
-                        icon = "fa fa-hand",
-                        label = "Open Armory",
-                        job = "ambulance"
-                    }
-                },
-                distance = 1.5
-            })
-        end
+        -- for k, v in pairs(Config.Locations["stash"]) do
+        --     exports['prp-target']:AddBoxZone("stash"..k, vector3(v.x, v.y, v.z), 1, 1, {
+        --         name = "stash"..k,
+        --         debugPoly = false,
+        --         heading = -20,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     }, {
+        --         options = {
+        --             {
+        --                 type = "client",
+        --                 event = "prp-ambulancejob:stash",
+        --                 icon = "fa fa-hand",
+        --                 label = "Open Stash",
+        --                 job = "ambulance"
+        --             }
+        --         },
+        --         distance = 1.5
+        --     })
+        -- end
+        -- for k, v in pairs(Config.Locations["armory"]) do
+        --     exports['prp-target']:AddBoxZone("armory"..k, vector3(v.x, v.y, v.z), 1, 1, {
+        --         name = "armory"..k,
+        --         debugPoly = false,
+        --         heading = -20,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     }, {
+        --         options = {
+        --             {
+        --                 type = "client",
+        --                 event = "prp-ambulancejob:armory",
+        --                 icon = "fa fa-hand",
+        --                 label = "Open Armory",
+        --                 job = "ambulance"
+        --             }
+        --         },
+        --         distance = 1.5
+        --     })
+        -- end
         for k, v in pairs(Config.Locations["roof"]) do
             exports['prp-target']:AddBoxZone("roof"..k, vector3(v.x, v.y, v.z), 2, 2, {
                 name = "roof"..k,
@@ -680,57 +684,57 @@ else
             end
         end)
 
-        local stashPoly = {}
-        for k, v in pairs(Config.Locations["stash"]) do
-            stashPoly[#stashPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1, 1, {
-                name="stash"..k,
-                debugPoly = false,
-                heading = -20,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            })
-        end
+        -- local stashPoly = {}
+        -- for k, v in pairs(Config.Locations["stash"]) do
+        --     stashPoly[#stashPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1, 1, {
+        --         name="stash"..k,
+        --         debugPoly = false,
+        --         heading = -20,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     })
+        -- end
 
-        local stashCombo = ComboZone:Create(stashPoly, {name = "stashCombo", debugPoly = false})
-        stashCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
-                inStash = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Personal stash','left')
-                    EMSControls("stash")
-                end
-            else
-                inStash = false
-                check = false
-                exports['prp-core']:HideText()
-            end
-        end)
+        -- local stashCombo = ComboZone:Create(stashPoly, {name = "stashCombo", debugPoly = false})
+        -- stashCombo:onPlayerInOut(function(isPointInside)
+        --     if isPointInside and PlayerJob.name =="ambulance" then
+        --         inStash = true
+        --         if onDuty then
+        --             exports['prp-core']:DrawText('[E] - Personal stash','left')
+        --             EMSControls("stash")
+        --         end
+        --     else
+        --         inStash = false
+        --         check = false
+        --         exports['prp-core']:HideText()
+        --     end
+        -- end)
 
-        local armoryPoly = {}
-        for k, v in pairs(Config.Locations["armory"]) do
-            armoryPoly[#armoryPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1, 1, {
-                name="armory"..k,
-                debugPoly = false,
-                heading = 70,
-                minZ = v.z - 2,
-                maxZ = v.z + 2,
-            })
-        end
+        -- local armoryPoly = {}
+        -- for k, v in pairs(Config.Locations["armory"]) do
+        --     armoryPoly[#armoryPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1, 1, {
+        --         name="armory"..k,
+        --         debugPoly = false,
+        --         heading = 70,
+        --         minZ = v.z - 2,
+        --         maxZ = v.z + 2,
+        --     })
+        -- end
 
-        local armoryCombo = ComboZone:Create(armoryPoly, {name = "armoryCombo", debugPoly = false})
-        armoryCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
-                inArmory = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Armory','left')
-                    EMSControls("armory")
-                end
-            else
-                inArmory = false
-                check = false
-                exports['prp-core']:HideText()
-            end
-        end)
+        -- local armoryCombo = ComboZone:Create(armoryPoly, {name = "armoryCombo", debugPoly = false})
+        -- armoryCombo:onPlayerInOut(function(isPointInside)
+        --     if isPointInside and PlayerJob.name =="ambulance" then
+        --         inArmory = true
+        --         if onDuty then
+        --             exports['prp-core']:DrawText('[E] - Armory','left')
+        --             EMSControls("armory")
+        --         end
+        --     else
+        --         inArmory = false
+        --         check = false
+        --         exports['prp-core']:HideText()
+        --     end
+        -- end)
 
         local roofPoly = {}
         for k, v in pairs(Config.Locations["roof"]) do
@@ -847,3 +851,7 @@ else
         end)
     end)
 end
+
+
+
+
