@@ -261,6 +261,16 @@ function CanItemBeSaled(item)
 end
 
 
+
+
+RegisterServerEvent("Traphouse:Give")
+AddEventHandler("Traphouse:Give", function(data)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+
+    TriggerEvent("prp-log:server:CreateLog", "traphouse", "Player Entered", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has entered the Traphouse with Pin: ``"..data.pincode.."``| Traphouse")
+end)
+
 RegisterServerEvent("Axel:Is:Cute")
 AddEventHandler("Axel:Is:Cute", function(Traphouse)
     local src = source
