@@ -317,6 +317,7 @@ Citizen.CreateThread(function()
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~g~F~s~ to see reputation')
                             if IsControlJustPressed(0, 38) then
                                 TriggerServerEvent('prp-traphouse:server:TakeoverHouse', CurrentTraphouse)
+                                SpawnBACKUP(PlayerPedId())
                             end
                             if IsControlJustPressed(0, 74) then
                                 local TraphouseInventory = {}
@@ -621,3 +622,439 @@ Citizen.CreateThread(function()
 		Citizen.Wait(60 * 15 * 1000)
 	end
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function SpawnBACKUP(ped)
+    local coords = GetOffsetFromEntityInWorldCoords(ped, math.random(60, 95) + 0.0, math.random(60, 95) + 0.0, 0.0)
+    local found, outCoords, outHeading = GetClosestVehicleNodeWithHeading(coords.x, coords.y, coords.z, 1, 3.0, 0)
+    print("spawnsecurity")
+	local guard = GetHashKey("csb_ramp_gang")
+
+	RequestModel(guard)
+
+
+
+    while not HasModelLoaded(guard) do
+
+        Citizen.Wait(0)
+
+	end
+
+
+
+	local guardstrong = GetHashKey("csb_ramp_gang")
+
+	RequestModel(guardstrong)
+
+
+
+    while not HasModelLoaded(guardstrong) do
+
+        Citizen.Wait(0)
+
+	end
+
+
+
+	local car = GetHashKey("rumpo3")
+
+	RequestModel(car)
+
+
+
+	while not HasModelLoaded(car) do
+
+		Citizen.Wait(0)
+
+	end
+
+
+
+	local cart = GetHashKey("primo")
+
+	RequestModel(cart)
+
+
+
+	while not HasModelLoaded(cart) do
+
+		Citizen.Wait(0)
+
+	end
+
+
+
+	local GuardVehOne = CreateVehicle(car, outCoords, 268.880, true, false)
+    SetVehicleCustomPrimaryColour(GuardVehOne, 249, 212, 35)
+	SetEntityInvincible(GuardVehOne, true)
+
+	SetVehicleOnGroundProperly(GuardVehOne)
+
+	SetVehicleModKit(GuardVehOne, 0)
+
+	SetVehicleHasBeenOwnedByPlayer(GuardVehOne,true)
+
+	local id = NetworkGetNetworkIdFromEntity(GuardVehOne)
+
+	SetNetworkIdCanMigrate(id, true)
+
+
+
+	local GuardVehTwo = CreateVehicle(car, outCoords, 268.880, true, false)
+    SetVehicleCustomPrimaryColour(GuardVehTwo, 249, 212, 35)
+
+	SetEntityInvincible(GuardVehTwo, true)
+
+	SetVehicleOnGroundProperly(GuardVehTwo)
+
+	SetVehicleModKit(GuardVehTwo, 0)
+
+	SetVehicleHasBeenOwnedByPlayer(GuardVehTwo,true)
+
+	local id = NetworkGetNetworkIdFromEntity(GuardVehTwo)
+
+	SetNetworkIdCanMigrate(id, true)
+
+
+
+	local GuardVehThree = CreateVehicle(car, outCoords, 348.637, true, false)
+    SetVehicleCustomPrimaryColour(GuardVehThree, 249, 212, 35)
+	SetEntityInvincible(GuardVehThree, true)
+
+	SetVehicleOnGroundProperly(GuardVehThree)
+
+	SetVehicleModKit(GuardVehThree, 0)
+
+	SetVehicleHasBeenOwnedByPlayer(GuardVehThree,true)
+
+	local id = NetworkGetNetworkIdFromEntity(GuardVehThree)
+
+	SetNetworkIdCanMigrate(id, true)
+
+
+
+	local GuardVehFour = CreateVehicle(cart, outCoords, 307.970, true, false)
+    SetVehicleCustomPrimaryColour(GuardVehFour, 249, 212, 35)
+	SetEntityInvincible(GuardVehFour, true)
+
+	SetVehicleOnGroundProperly(GuardVehFour)
+
+	SetVehicleModKit(GuardVehFour, 0)
+
+	SetVehicleHasBeenOwnedByPlayer(GuardVehFour,true)
+
+	local id = NetworkGetNetworkIdFromEntity(GuardVehFour)
+
+	SetNetworkIdCanMigrate(id, true)
+
+
+
+	local GuardVehFive = CreateVehicle(cart, outCoords, 313.440, true, false)
+    SetVehicleCustomPrimaryColour(GuardVehFive, 249, 212, 35)
+	SetEntityInvincible(GuardVehFive, true)
+
+	SetVehicleOnGroundProperly(GuardVehFive)
+
+	SetVehicleModKit(GuardVehFive, 0)
+
+	SetVehicleHasBeenOwnedByPlayer(GuardVehFive,true)
+
+	local id = NetworkGetNetworkIdFromEntity(GuardVehFive)
+
+	SetNetworkIdCanMigrate(id, true)
+
+
+
+	Citizen.Wait(500)
+
+
+
+	local GuardOne = CreatePedInsideVehicle(GuardVehOne, 6, guard, -1, 1, 0.0)
+
+	SetEntityInvincible(GuardOne, false)
+    SetPedAccuracy(GuardOne,100)
+	SetEntityAsMissionEntity(GuardOne)
+
+	SetPedDropsWeaponsWhenDead(GuardOne,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardOne,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardOne,GetHashKey('COP'))
+
+	SetPedAsCop(GuardOne,true)
+
+	SetCanAttackFriendly(GuardOne,false,true)
+
+	GiveWeaponToPed(GuardOne, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardOne, ped, 0, 16)
+
+	TaskVehicleChase(GuardOne, ped)
+
+
+
+	local GuardTwo = CreatePedInsideVehicle(GuardVehTwo, 6, guard, -1, 1, 0.0)
+	SetPedAccuracy(GuardTwo,100)
+	SetEntityInvincible(GuardTwo, false)
+
+	SetEntityAsMissionEntity(GuardTwo)
+
+	SetPedDropsWeaponsWhenDead(GuardTwo,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardTwo,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardTwo,GetHashKey('COP'))
+
+	SetPedAsCop(GuardTwo,true)
+
+	SetCanAttackFriendly(GuardTwo,false,true)
+
+	GiveWeaponToPed(GuardTwo, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardTwo, ped, 0, 16)
+
+	TaskVehicleChase(GuardTwo, ped)
+
+
+
+	local GuardThree = CreatePedInsideVehicle(GuardVehThree, 6, guard, -1, 1, 0.0)
+	SetPedAccuracy(GuardThree,100)
+	SetEntityInvincible(GuardThree, false)
+
+	SetEntityAsMissionEntity(GuardThree)
+
+	SetPedDropsWeaponsWhenDead(GuardThree,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardThree,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardThree,GetHashKey('COP'))
+
+	SetPedAsCop(GuardThree,true)
+
+	SetCanAttackFriendly(GuardThree,false,true)
+
+	GiveWeaponToPed(GuardThree, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardThree, ped, 0, 16)
+
+	TaskVehicleChase(GuardThree, ped)
+
+
+
+	local GuardFour = CreatePedInsideVehicle(GuardVehFour, 6, guardstrong, -1, 1, 0.0)
+	SetPedAccuracy(GuardFour,100)
+	SetEntityInvincible(GuardFour, false)
+
+	SetEntityAsMissionEntity(GuardFour)
+
+	SetPedDropsWeaponsWhenDead(GuardFour,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardFour,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardFour,GetHashKey('COP'))
+
+	SetPedAsCop(GuardFour,true)
+
+	SetCanAttackFriendly(GuardFour,false,true)
+
+	GiveWeaponToPed(GuardFour, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardFour, ped, 0, 16)
+
+	TaskVehicleChase(GuardFour, ped)
+
+
+
+	local GuardFive = CreatePedInsideVehicle(GuardVehFive, 6, guardstrong, -1, 1, 0.0)
+	SetPedAccuracy(GuardFive,100)
+	SetEntityInvincible(GuardFive, false)
+
+	SetEntityAsMissionEntity(GuardFive)
+
+	SetPedDropsWeaponsWhenDead(GuardFive,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardFive,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardFive,GetHashKey('COP'))
+
+	SetPedAsCop(GuardFive,true)
+
+	SetCanAttackFriendly(GuardFive,false,true)
+
+	GiveWeaponToPed(GuardFive, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardFive, ped, 0, 16)
+
+	TaskVehicleChase(GuardFive, ped)
+
+
+
+	local GuardSix = CreatePedInsideVehicle(GuardVehFour, 6, guardstrong, 0, 1, 0.0)
+	SetPedAccuracy(GuardSix,100)
+	SetEntityInvincible(GuardSix, false)
+
+	SetEntityAsMissionEntity(GuardSix)
+
+	SetPedDropsWeaponsWhenDead(GuardSix,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardSix,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardSix,GetHashKey('COP'))
+
+	SetPedAsCop(GuardSix,true)
+
+	SetCanAttackFriendly(GuardSix,false,true)
+
+	GiveWeaponToPed(GuardSix, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardSix, ped, 0, 16)
+
+	TaskVehicleChase(GuardSix, ped)
+
+
+
+	local GuardSeven = CreatePedInsideVehicle(GuardVehFive, 6, guardstrong, 0, 1, 0.0)
+	SetPedAccuracy(GuardSeven,100)
+	SetEntityInvincible(GuardSeven, false)
+
+	SetEntityAsMissionEntity(GuardSeven)
+
+	SetPedDropsWeaponsWhenDead(GuardSeven,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardSeven,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardSeven,GetHashKey('COP'))
+
+	SetPedAsCop(GuardSeven,true)
+
+	SetCanAttackFriendly(GuardSeven,false,true)
+
+	GiveWeaponToPed(GuardSeven, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardSeven, ped, 0, 16)
+
+	TaskVehicleChase(GuardSeven, ped)
+
+
+
+	local GuardEight = CreatePedInsideVehicle(GuardVehOne, 6, guard, 0, 1, 0.0)
+	SetPedAccuracy(GuardEight,100)
+	SetEntityInvincible(GuardEight, false)
+
+	SetEntityAsMissionEntity(GuardEight)
+
+	SetPedDropsWeaponsWhenDead(GuardEight,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardEight,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardEight,GetHashKey('COP'))
+
+	SetPedAsCop(GuardEight,true)
+
+	SetCanAttackFriendly(GuardEight,false,true)
+
+	GiveWeaponToPed(GuardEight, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardEight, ped, 0, 16)
+
+	TaskVehicleChase(GuardEight, ped)
+
+
+
+	local GuardNine = CreatePedInsideVehicle(GuardVehTwo, 6, guard, 0, 1, 0.0)
+	SetPedAccuracy(GuardNine,100)
+	SetEntityInvincible(GuardNine, false)
+
+	SetEntityAsMissionEntity(GuardNine)
+
+	SetPedDropsWeaponsWhenDead(GuardNine,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardNine,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardNine,GetHashKey('COP'))
+
+	SetPedAsCop(GuardNine,true)
+
+	SetCanAttackFriendly(GuardNine,false,true)
+
+	GiveWeaponToPed(GuardNine, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardNine, ped, 0, 16)
+
+	TaskVehicleChase(GuardNine, ped)
+
+
+
+	local GuardTen = CreatePedInsideVehicle(GuardVehThree, 6, guard, 0, 1, 0.0)
+	SetPedAccuracy(GuardTen,100)
+	SetEntityInvincible(GuardTen, false)
+
+	SetEntityAsMissionEntity(GuardTen)
+
+	SetPedDropsWeaponsWhenDead(GuardTen,false)
+
+	SetPedRelationshipGroupDefaultHash(GuardTen,GetHashKey('COP'))
+
+	SetPedRelationshipGroupHash(GuardTen,GetHashKey('COP'))
+
+	SetPedAsCop(GuardTen,true)
+
+	SetCanAttackFriendly(GuardTen,false,true)
+
+	GiveWeaponToPed(GuardTen, GetHashKey("WEAPON_MICROSMG"), 1000, false, true)
+
+	TaskCombatPed(GuardTen, ped, 0, 16)
+
+	TaskVehicleChase(GuardTen, ped)
+
+
+
+	SetModelAsNoLongerNeeded(guard)
+
+	SetModelAsNoLongerNeeded(guardstrong)
+
+	SetModelAsNoLongerNeeded(car)
+
+	SetModelAsNoLongerNeeded(cart)
+
+end
