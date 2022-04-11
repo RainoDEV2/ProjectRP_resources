@@ -192,7 +192,7 @@ RegisterNUICallback('EnterPincode', function(d)
     local data = Config.TrapHouses[ClosestTraphouse]
     if tonumber(d.pin) == data.pincode then
         EnterTraphouse(data)
-        TriggerServerEvent("Traphouse:Give",data)
+        TriggerServerEvent("Traphouse:Give",data,ClosestTraphouse)
     else
         ProjectRP.Functions.Notify('This Code Is Incorrect', 'error')
     end

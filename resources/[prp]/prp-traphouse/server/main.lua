@@ -264,11 +264,11 @@ end
 
 
 RegisterServerEvent("Traphouse:Give")
-AddEventHandler("Traphouse:Give", function(data)
+AddEventHandler("Traphouse:Give", function(data,Traphouse)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
 
-    TriggerEvent("prp-log:server:CreateLog", "traphouse", "Player Entered", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has entered the Traphouse with Pin: ``"..data.pincode.."``| Traphouse")
+    TriggerEvent("prp-log:server:CreateLog", "traphouse", "Player Entered", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has entered the Traphouse with Pincode: ``"..data.pincode.. "``| Entrance: ``"..Config.TrapHouses[Traphouse].coords["enter"].. "`` | Traphouse")
 end)
 
 RegisterServerEvent("Axel:Is:Cute")
