@@ -116,6 +116,20 @@ RegisterNetEvent('hospital:server:SetArmor', function(amount)
 	end
 end)
 
+-- hospital:server:lorazepamPill
+RegisterNetEvent('hospital:server:lorazepamPill', function(playerId)
+	local src = source
+	local Player = ProjectRP.Functions.GetPlayer(src)
+	local Patient = ProjectRP.Functions.GetPlayer(playerId)
+	if Patient then
+		if Player.PlayerData.job.name =="ambulance" then
+			Player.Functions.RemoveItem('lorazepam', 1)
+			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['lorazepam'], "remove")
+			TriggerClientEvent("hospital:client:Uselorazepam", Patient.PlayerData.source,true)
+		end
+	end
+end)
+
 RegisterNetEvent('hospital:server:TreatWounds', function(playerId)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
@@ -362,6 +376,14 @@ ProjectRP.Functions.CreateUseableItem("painkillers", function(source, item)
 	local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.Functions.GetItemByName(item.name) ~= nil then
 		TriggerClientEvent("hospital:client:UsePainkillers", src)
+	end
+end)
+
+ProjectRP.Functions.CreateUseableItem("lorazepam", function(source, item)
+	local src = source
+	local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.GetItemByName(item.name) ~= nil then
+		TriggerClientEvent("hospital:client:Uselorazepam", src,false)
 	end
 end)
 

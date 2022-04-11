@@ -156,6 +156,14 @@ function Status()
             }
         end
         statusMenu[#statusMenu+1] = {
+            header = 'Give lorazepam Pill',
+            txt = "",
+            params = {
+                event = "hospital:client:lorazepam"
+            }
+        }
+
+        statusMenu[#statusMenu+1] = {
             header = '⬅ Close Menu',
             txt = "",
             params = {
@@ -272,6 +280,43 @@ RegisterNetEvent('hospital:client:TreatWounds', function()
         end
     end, 'bandage')
 end)
+-- hospital:client:lorazepam
+RegisterNetEvent('hospital:client:lorazepam', function()
+    ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(hasItem)
+        if hasItem then
+            local player, distance = GetClosestPlayer()
+            if player ~= -1 and distance < 5.0 then
+                local playerId = GetPlayerServerId(player)
+                isHealingPerson = true
+                ProjectRP.Functions.Progressbar("hospital_healwounds", 'Giving lorazepam Pill...', 1000, false, true, {
+                    disableMovement = false,
+                    disableCarMovement = false,
+                    disableMouse = false,
+                    disableCombat = true,
+                }, {
+                    animDict = healAnimDict,
+                    anim = healAnim,
+                    flags = 16,
+                }, {}, {}, function() -- Done
+                    isHealingPerson = false
+                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    ProjectRP.Functions.Notify('You gave the person a lorazepam Pill', 'success')
+                    TriggerServerEvent("hospital:server:lorazepamPill", playerId)
+                end, function() -- Cancel
+                    isHealingPerson = false
+                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    ProjectRP.Functions.Notify('Canceled', "error")
+                end)
+            else
+                ProjectRP.Functions.Notify('No Player Nearby', "error")
+            end
+        else
+            ProjectRP.Functions.Notify('You need a lorazepam', "error")
+        end
+    end, 'lorazepam')
+end)
+
+
 
 local check = false
 local function EMSControls(variable)

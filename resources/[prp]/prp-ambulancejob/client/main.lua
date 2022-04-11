@@ -609,6 +609,7 @@ RegisterNetEvent('hospital:client:SetPain', function()
     })
 end)
 
+
 RegisterNetEvent('hospital:client:KillPlayer', function()
     SetEntityHealth(PlayerPedId(), 0)
 end)

@@ -117,6 +117,35 @@ RegisterNetEvent('hospital:client:UsePainkillers', function()
     end)
 end)
 
+RegisterNetEvent("hospital:client:Uselorazepam", function()
+    TriggerServerEvent('hud:server:RelieveStress', 100)
+end)
+
+RegisterNetEvent('hospital:client:Uselorazepam', function(given)
+    local ped = PlayerPedId()
+    ProjectRP.Functions.Progressbar("use_bandage", 'Taking Lorazepam Pill...', 3000, false, true, {
+        disableMovement = false,
+        disableCarMovement = false,
+		disableMouse = false,
+		disableCombat = true,
+    }, {
+		animDict = "mp_suicide",
+		anim = "pill",
+		flags = 49,
+    }, {}, {}, function() -- Done
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        TriggerServerEvent('hud:server:RelieveStress', 100)
+        if not given then
+            TriggerServerEvent("ProjectRP:Server:RemoveItem", "lorazepam", 1)
+            TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["lorazepam"], "remove")
+        end
+    end, function() -- Cancel
+        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        ProjectRP.Functions.Notify('Canceled', "error")
+    end)
+end)
+
+
 -- Threads
 
 CreateThread(function()
