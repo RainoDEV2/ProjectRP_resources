@@ -50,15 +50,15 @@ Config.Weapons = {
 
 Config.illegaltransportation = {
 	['BossSpawn'] = { 
-		Pos = {x = 1522.57, y = 6329.12, z = 24.63, h = 329.61}, 
-		Type  = 'a_m_m_og_boss_01', 
+		Pos = {x = 2483.91, y = 3445.73, z = 51.07, h = 318.11}, 
+		Type  = 'a_m_y_acult_01', 
 	},
     ['VehicleSpawn'] = { 
-		Pos = {x = 1541.15, y = 6335.57, z = 23.66, h = 61.24}, 
+		Pos = {x = 2461.91, y = 3446.11, z = 49.95, h = 182.7}, 
 		Type  = 'rebel',
 	},
     ['VehicleDepot'] = { 
-		Pos = {x = 1529.62, y = 6329.75, z = 23.85, h = 241.28}, 
+		Pos = {x = 2492.61, y = 3433.83, z = 50.16, h = 321.81}, 
 	},
 }
 
