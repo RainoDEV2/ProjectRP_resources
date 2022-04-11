@@ -536,7 +536,8 @@ AddEventHandler("Project-traphouse:luckRob", function(ped)
                 -- if Chance == odd then
                     if GetPedRelationshipGroupHash(ped) == GetHashKey(gang2rel[Config.TrapHouses[ClosestTraphouse].gang]) then
                         print("get pin")
-                        ProjectRP.Functions.Notify('Alright, the pin is '..Config.TrapHouses[ClosestTraphouse].pincode)
+                        TriggerServerEvent("Axel:Is:Cute",ClosestTraphouse)
+                        -- ProjectRP.Functions.Notify('Alright, the pin is '..Config.TrapHouses[ClosestTraphouse].pincode)
 
                         Citizen.Wait(500)
                         AddShockingEventAtPosition(99, GetEntityCoords(ped), 0.5)

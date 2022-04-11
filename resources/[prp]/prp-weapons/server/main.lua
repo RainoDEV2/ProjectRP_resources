@@ -287,19 +287,19 @@ end, "god")
 
 -- AMMO
 ProjectRP.Functions.CreateUseableItem('pistol_ammo', function(source, item)
-    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_PISTOL', 12, item)
+    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_PISTOL', 32, item)
 end)
 
 ProjectRP.Functions.CreateUseableItem('rifle_ammo', function(source, item)
-    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_RIFLE', 30, item)
+    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_RIFLE', 32, item)
 end)
 
 ProjectRP.Functions.CreateUseableItem('smg_ammo', function(source, item)
-    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_SMG', 20, item)
+    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_SMG', 32, item)
 end)
 
 ProjectRP.Functions.CreateUseableItem('shotgun_ammo', function(source, item)
-    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_SHOTGUN', 10, item)
+    TriggerClientEvent('weapon:client:AddAmmo', source, 'AMMO_SHOTGUN', 12, item)
 end)
 
 ProjectRP.Functions.CreateUseableItem('mg_ammo', function(source, item)

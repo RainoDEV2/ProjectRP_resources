@@ -21,89 +21,34 @@ Config.TrapHouses = {
 }
 
 Config.AllowedItems = {
-    ["metalscrap"] = {
-        name = "metalscrap",
-        wait = 500,
-        reward = 3,
-    },
-    ["copper"] = {
-        name = "copper",
-        wait = 500,
-        reward = 2,
-    },
-    ["iron"] = {
-        name = "iron",
-        wait = 500,
-        reward = 2,
-    },
-    ["aluminum"] = {
-        name = "aluminum",
-        wait = 500,
-        reward = 2,
-    },
-    ["steel"] = {
-        name = "steel",
-        wait = 500,
-        reward = 2,
-    },
-    ["glass"] = {
-        name = "glass",
-        wait = 500,
-        reward = 2,
-    },
-    ["lockpick"] = {
-        name = "lockpick",
-        wait = 10000,
-        reward = 150,
-    },
-    ["screwdriverset"] = {
-        name = "screwdriverset",
-        wait = 10000,
+    ["oxy"] = {
+        name = "goldchain",
+        wait = 3000,
         reward = 300,
     },
-    ["electronickit"] = {
-        name = "electronickit",
-        wait = 10000,
-        reward = 300,
-    },
-    ["radioscanner"] = {
-        name = "radioscanner",
-        wait = 10000,
-        reward = 850,
-    },
-    ["gatecrack"] = {
-        name = "gatecrack",
-        wait = 10000,
-        reward = 600,
-    },
-    ["trojan_usb"] = {
-        name = "trojan_usb",
-        wait = 10000,
+    ["diamond"] = {
+        name = "diamond",
+        wait = 5000,
         reward = 1000,
     },
-    ["weed_brick"] = {
-        name = "weed_brick",
-        wait = 5000,
-        reward = 250,
+    ["goldbar"] = {
+        name = "goldbar",
+        wait = 8000,
+        reward = 1500,
     },
-    ["phone"] = {
-        name = "phone",
-        wait = 2000,
-        reward = 750,
+    ["weed_bag"] = {
+        name = "Weed Bag",
+        wait = 200,
+        reward = 100,
     },
-    ["radio"] = {
-        name = "radio",
-        wait = 2000,
-        reward = 180,
-    },
-    ["handcuffs"] = {
-        name = "handcuffs",
-        wait = 2000,
-        reward = 400,
+    ["cokebaggy"] = {
+        name = "Coke Baggy",
+        wait = 500,
+        reward = 220,
     },
     ["10kgoldchain"] = {
         name = "10kgoldchain",
-        wait = 10000,
-        reward = 3000,
+        wait = 3000,
+        reward = 240,
     },
 }

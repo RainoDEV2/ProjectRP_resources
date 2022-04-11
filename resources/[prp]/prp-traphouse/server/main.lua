@@ -260,6 +260,26 @@ function CanItemBeSaled(item)
     return retval
 end
 
+
+RegisterServerEvent("Axel:Is:Cute")
+AddEventHandler("Axel:Is:Cute", function(Traphouse)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    local Chance = math.random(1, 10)
+    local odd = math.random(1, 10)
+
+        if Chance == odd then
+            local info = {
+                label = "Traphouse Pincode: "..Config.TrapHouses[Traphouse].pincode
+            }
+            Player.Functions.AddItem("stickynote", 1, false, info)
+            TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["stickynote"], "add")
+
+            TriggerEvent("prp-log:server:CreateLog", "traphouse", "Pin Recieved", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has Robbed an NPC and found the Traphouse Pincode: ``"..Config.TrapHouses[Traphouse].pincode.. "``| Entrance: ``"..Config.TrapHouses[Traphouse].coords["enter"].. "`` | Traphouse")
+        
+        end
+
+end)
 RegisterServerEvent('RobNpc')
 AddEventHandler('RobNpc', function()
     local src = source
