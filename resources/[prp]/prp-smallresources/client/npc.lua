@@ -293,10 +293,10 @@ SpawnNPCBike = function()
 end
 
 CreateNPCBike = function()
-    created_ped = CreatePed(5, GetHashKey('a_m_y_gay_02') , -671.3581, -1099.6770, 13.6753, 64.6626, false, true)
-    FreezeEntityPosition(created_ped, true)
-    SetEntityInvincible(created_ped, true)
-    SetBlockingOfNonTemporaryEvents(created_ped, true)
+    created_peds = CreatePed(5, GetHashKey('a_m_y_gay_02') , -671.3581, -1099.6770, 13.6753, 64.6626, false, true)
+    FreezeEntityPosition(created_peds, true)
+    SetEntityInvincible(created_peds, true)
+    SetBlockingOfNonTemporaryEvents(created_peds, true)
 end
 
 
@@ -314,15 +314,16 @@ SpawnNPC = function()
         while not HasModelLoaded(GetHashKey('a_m_y_business_03')) do
             Wait(1)
         end
-        CreateNPC()   
+        CreateNPCss()   
     end)
 end
 
-CreateNPC = function()
+CreateNPCss = function()
     created_ped = CreatePed(5, GetHashKey('a_m_y_business_03') , 109.9739, -1088.61, 28.302, 345.64, false, true)
     FreezeEntityPosition(created_ped, true)
     SetEntityInvincible(created_ped, true)
     SetBlockingOfNonTemporaryEvents(created_ped, true)
+    print("shit")
     TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
 end
 
