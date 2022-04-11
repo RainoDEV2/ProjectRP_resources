@@ -450,6 +450,24 @@ Config.Products = {
             slot = 2,
         },
     },
+    ["pillboxshop"] = {
+        [1] = {
+            name = "phone",
+            price = 500,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 1,
+        },
+        [2] = {
+            name = "bandage",
+            price = 100,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 2,
+        },
+    },
 }
 
 Config.Locations = {
@@ -827,6 +845,15 @@ Config.Locations = {
             [1] = vector3(vector3(3525.3, 3682.18, 20.99))
         },
         ["products"] = Config.Products["chemshop"],
+        ["showblip"] = false,
+    },
+    ["ShopPillbox"] = {
+        ["label"] = "Pillbox Shop",
+        ["type"] = "pillbox",
+        ["coords"] = {
+            [1] = vector3(vector3(315.9563, -588.5955, 43.2928))
+        },
+        ["products"] = Config.Products["pillboxshop"],
         ["showblip"] = false,
     },
 }

@@ -278,7 +278,7 @@ AddEventHandler("Axel:Is:Cute", function(Traphouse)
     local Chance = math.random(1, 10)
     local odd = math.random(1, 10)
 
-        if Chance == odd then
+        -- if Chance == odd then
             local info = {
                 label = "Traphouse Pincode: "..Config.TrapHouses[Traphouse].pincode
             }
@@ -287,7 +287,7 @@ AddEventHandler("Axel:Is:Cute", function(Traphouse)
 
             TriggerEvent("prp-log:server:CreateLog", "traphouse", "Pin Recieved", "green", "**Steam Name** \n".. GetPlayerName(src) .. "\n **ID:**\n" ..src.. "\n (citizenid: *"..Player.PlayerData.citizenid.."* \nPlayer has Robbed an NPC and found the Traphouse Pincode: ``"..Config.TrapHouses[Traphouse].pincode.. "``| Entrance: ``"..Config.TrapHouses[Traphouse].coords["enter"].. "`` | Traphouse")
         
-        end
+        -- end
 
 end)
 RegisterServerEvent('RobNpc')
