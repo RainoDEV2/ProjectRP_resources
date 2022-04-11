@@ -737,7 +737,7 @@ RegisterNetEvent('police:server:PutPlayerInVehicle', function(playerId)
         if EscortPlayer.PlayerData.metadata["ishandcuffed"] or EscortPlayer.PlayerData.metadata["isdead"] then
             TriggerClientEvent("police:client:PutInVehicle", EscortPlayer.PlayerData.source)
         else
-           TriggerClientEvent('ProjectRP:Notify', src, "Civilian isn't cuffed or dead", 'error')
+            TriggerClientEvent('ProjectRP:Notify', src, "Civilian isn't cuffed or dead", 'error')
         end
     end
 end)

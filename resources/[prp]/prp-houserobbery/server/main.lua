@@ -70,7 +70,7 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
                     TriggerClientEvent('inventory:client:ItemBox', src, itemInfo, "add")
             else
                 if not itemInfo["unqiue"] then
-                    local itemAmount = math.random(1, 3)
+                    local itemAmount = 1
                     if randomItem == "plastic" then
                         itemAmount = math.random(15, 30)
                     elseif randomItem == "goldchain" then

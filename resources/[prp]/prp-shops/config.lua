@@ -394,6 +394,15 @@ Config.Products = {
             slot = 7,
             requiresLicense = false
         },
+        [8] = {
+            name = "armor",
+            price = 750,
+            amount = 25,
+            info = {},
+            type = "item",
+            slot = 8,
+            requiresLicense = false
+        },
     },
     ["coffeeplace"] = {
         [1] = {
