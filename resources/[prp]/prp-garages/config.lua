@@ -97,6 +97,13 @@ Garages = {
         putVehicle = vector3(218.0894, -781.370, 30.389),
         showBlip = true
     },
+    ["southrockforddrive"] = {
+        label = "South Rockford Drive Parking",
+        takeVehicle = vector3(-701.85, -1109.15, 14.53),
+        spawnPoint = vector4(-701.85, -1109.15, 14.53, 213.75),
+        putVehicle = vector3(-701.85, -1109.15, 14.53),
+        showBlip = true
+    },
 }
 
 HouseGarages = {}
