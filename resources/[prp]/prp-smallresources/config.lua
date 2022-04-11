@@ -32,7 +32,7 @@ ConsumeablesAlcohol = {
     ["stronzo-beer"] = math.random(5, 15),
     ["am-beer"] = math.random(5, 15),
     ["logger-beer"] = math.random(5, 15),
-    ["sunny-cocktail"] = math.random(5, 15),
+    ["rum"] = math.random(20, 30),
 }
 
 

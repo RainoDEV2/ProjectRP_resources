@@ -210,6 +210,9 @@ Citizen.CreateThread(function()
                                             TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(vehicle))	
                                             TaskWarpPedIntoVehicle(ped, vehicle, -1)
                                             SetVehicleEngineOn(vehicle, true, true)
+
+                                            exports['prp-fuel']:SetFuel(vehicle, 100)
+                                            
                                             exports.pNotify:SendNotification({text = '<b>Fruit Picker</b></br>You paid ' ..Config.DepositPrice.. '$ to take out the vehicle', timeout = 1500})
                                             Plate = GetVehicleNumberPlateText(vehicle)
                                             hasCar = true

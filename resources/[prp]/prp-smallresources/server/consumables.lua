@@ -20,6 +20,12 @@ ProjectRP.Functions.CreateUseableItem("mojito", function(source, item)
     end
 end)
 
+ProjectRP.Functions.CreateUseableItem("rum", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    TriggerClientEvent("consumables:client:DrinkAlcohol", src, item.name)
+end)
+
 ProjectRP.Functions.CreateUseableItem("ecola", function(source, item)
 	local Player = ProjectRP.Functions.GetPlayer(source)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then

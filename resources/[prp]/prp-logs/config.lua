@@ -42,6 +42,7 @@ Config.Webhooks = {
     ['palert'] = '',
     ['taxes'] = 'https://discord.com/api/webhooks/938953344322506762/YyiGqa165w6_oHrdBbCeOy2k0iNXFZMEx5L4HBLQQlw4AKWmdR-Ff1bQn3ZnNWMCQKh9',
     ['house'] = 'https://discord.com/api/webhooks/938953793004011550/UxZJ0HM6S1VTBDtDEd7KS_Ty1S_LtOeigfhh080YrO0fREg4WPQUXGSTxtwvWAVbNa8A',
+    ['bugreport'] = 'https://discord.com/api/webhooks/960323026971422722/6YhrO5zWUer7d5U-x61odcEcd-Rx-7-dxL2L0zUKCf_7TMjtj5op7P3j8tKb708iv8gy',
 }
 
 Config.Colors = { -- https://www.spycolor.com/

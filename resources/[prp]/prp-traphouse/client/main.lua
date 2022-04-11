@@ -572,7 +572,7 @@ function findNPC(x,y,z,gang)
     repeat
         local pos = GetEntityCoords(ped)
 		local distance = #(pos - vector3(x,y,z))
-        if distance < 40.0 and (distanceFrom == nil or distance < distanceFrom) and isGangModel(gang, GetEntityModel(ped)) then
+        if distance < 20.0 and (distanceFrom == nil or distance < distanceFrom) and isGangModel(gang, GetEntityModel(ped)) then
             if IsEntityDead(ped) then
                 DeleteEntity(ped)
             else
@@ -619,7 +619,7 @@ Citizen.CreateThread(function()
 			end
 		end
 
-		Citizen.Wait(60 * 15 * 1000)
+		Citizen.Wait(60 * 5 * 1000)
 	end
 end)
 

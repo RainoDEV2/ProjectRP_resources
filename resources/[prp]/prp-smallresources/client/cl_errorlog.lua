@@ -9,6 +9,7 @@ function error(...)
     -- print...)
     -- print"------------------ END OF ERROR")
     TriggerServerEvent("error", resource, args)
+    TriggerServerEvent("prp:SendErrorToScreen",resource,args)
 end
 
 function Citizen.Trace(...)
