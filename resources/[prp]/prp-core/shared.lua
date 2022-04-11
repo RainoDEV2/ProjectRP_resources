@@ -895,24 +895,24 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Recruit',
-                payment = 0
+                payment = 50
             },
 			['1'] = {
                 name = 'Showroom Sales',
-                payment = 0
+                payment = 100
             },
 			['2'] = {
                 name = 'Business Sales',
-                payment = 0
+                payment = 150
             },
 			['3'] = {
                 name = 'Finance',
-                payment = 0
+                payment = 200
             },
 			['4'] = {
                 name = 'Manager',
 				isboss = true,
-                payment = 0
+                payment = 250
             },
         },
 	},
@@ -983,7 +983,7 @@ PRPShared.Jobs = {
             },
 			['1'] = {
                 name = 'Experienced',
-                payment = 0
+                payment = 50
             },
         },
 	},
@@ -1004,7 +1004,7 @@ PRPShared.Jobs = {
 		grades = {
 			['0'] = {
 				name = "Employee",
-				payment = 0
+				payment = 50
 			},
 		},
 		defaultDuty = true,
@@ -1082,7 +1082,7 @@ PRPShared.Jobs = {
 		grades = {
 			['0'] = {
 				name = "Employee",
-				payment = 0
+				payment = 50
 			},
 		},
 		defaultDuty = true,
@@ -1093,7 +1093,7 @@ PRPShared.Jobs = {
 		grades = {
 			['0'] = {
 				name = "Employee",
-				payment = 0
+				payment = 50
 			},
 		},
 		defaultDuty = true,
@@ -1115,7 +1115,11 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'Journalist',
-                payment = 50
+                payment = 250
+            },
+            ['1'] = {
+                name = 'Manager',
+                payment = 450
             },
         },
 	},
