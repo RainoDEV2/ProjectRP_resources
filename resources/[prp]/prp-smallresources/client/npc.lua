@@ -72,35 +72,35 @@ Citizen.CreateThread(function()
     Citizen.Wait(3000)
 
 
-    local hasRented = false
+    -- local hasRented = false
 
-	CreateNPC("Mario", "rent a bike", x, vector3(-671.3581, -1099.6770, 13.6753), 64.6626, nil, function(NPC)
+	-- CreateNPC("Mario", "rent a bike", x, vector3(-671.3581, -1099.6770, 13.6753), 64.6626, nil, function(NPC)
 
-		if not hasRented then
+	-- 	if not hasRented then
 
-			exports['prp-tasknotify']:AddDialog("Mario", "Hey, would you like to borrow my bicycle buddy?", function(val)
+	-- 		exports['prp-tasknotify']:AddDialog("Mario", "Hey, would you like to borrow my bicycle buddy?", function(val)
 
-				if val then
+	-- 			if val then
 
-                    ProjectRP.Functions.SpawnVehicle("bmx", function(veh)
-                        SetVehicleNumberPlateText(veh, "Rented")
-                        SetEntityHeading(veh, 334.1462)
-                        exports['prp-fuel']:SetFuel(veh, 100.0)
-                        TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                        SetEntityAsMissionEntity(veh, true, true)
-                        TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                        SetVehicleEngineOn(veh, true, true)
-                        hasRented = true
-                    end, vector3(-673.1433, -1098.7621, 14.5602), true)
+    --                 ProjectRP.Functions.SpawnVehicle("bmx", function(veh)
+    --                     SetVehicleNumberPlateText(veh, "Rented")
+    --                     SetEntityHeading(veh, 334.1462)
+    --                     exports['prp-fuel']:SetFuel(veh, 100.0)
+    --                     TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+    --                     SetEntityAsMissionEntity(veh, true, true)
+    --                     TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
+    --                     SetVehicleEngineOn(veh, true, true)
+    --                     hasRented = true
+    --                 end, vector3(-673.1433, -1098.7621, 14.5602), true)
 
 
-				end
+	-- 			end
 
-			end)
+	-- 		end)
 
-		end
+	-- 	end
 
-	end)
+	-- end)
 
     CreateNPC("Logan", "trade", GetHashKey("g_m_y_ballaeast_01"), vector3(83.2422, -1858.6323, 23.2198), 290.0297, "amb@world_human_leaning@female@wall@back@hand_up@idle_a", function(NPC)
 		Logan = NPC
@@ -134,27 +134,27 @@ Citizen.CreateThread(function()
 		end)
 	end)
 
-    CreateNPC("Frank", "Rent a Car", GetHashKey('a_m_y_business_03'), vector3(109.9739, -1088.61, 28.302), 345.64, 'WORLD_HUMAN_CLIPBOARD', function(NPC)
-		Frank = NPC
+    -- CreateNPC("Frank", "Rent a Car", GetHashKey('a_m_y_business_03'), vector3(109.9739, -1088.61, 28.302), 345.64, 'WORLD_HUMAN_CLIPBOARD', function(NPC)
+	-- 	Frank = NPC
 
-		PlayAmbientSpeech1(Frank, "GENERIC_HOWS_IT_GOING", "SPEECH_PARAMS_FORCE_SHOUTED")
-        TriggerEvent("prp-rental:openMenu")
-	end)
+	-- 	PlayAmbientSpeech1(Frank, "GENERIC_HOWS_IT_GOING", "SPEECH_PARAMS_FORCE_SHOUTED")
+    --     TriggerEvent("prp-rental:openMenu")
+	-- end)
 
-    CreateNPC("Phil", "interact", GetHashKey('s_m_m_janitor'), vector3(1728.7174, 2501.0513, 44.8189), 244.1621, 'WORLD_HUMAN_JANITOR', function(NPC)
-		Phil = NPC
-        PlayAmbientSpeech1(Phil, "GENERIC_HOWS_IT_GOING", "SPEECH_PARAMS_FORCE_SHOUTED")
-        exports['prp-tasknotify']:AddDialog("Logan", "You interested in Cleaning some showers for Time Off?", function(val)
-			if val then
-                TriggerEvent("Clean:Showers")
-			else
-				PlayAmbientSpeech1(Phil, "GENERIC_CURSE_HIGH", "SPEECH_PARAMS_FORCE_SHOUTED")
-			end
-		end)
+    -- CreateNPC("Phil", "interact", GetHashKey('s_m_m_janitor'), vector3(1728.7174, 2501.0513, 44.8189), 244.1621, 'WORLD_HUMAN_JANITOR', function(NPC)
+	-- 	Phil = NPC
+    --     PlayAmbientSpeech1(Phil, "GENERIC_HOWS_IT_GOING", "SPEECH_PARAMS_FORCE_SHOUTED")
+    --     exports['prp-tasknotify']:AddDialog("Logan", "You interested in Cleaning some showers for Time Off?", function(val)
+	-- 		if val then
+    --             TriggerEvent("Clean:Showers")
+	-- 		else
+	-- 			PlayAmbientSpeech1(Phil, "GENERIC_CURSE_HIGH", "SPEECH_PARAMS_FORCE_SHOUTED")
+	-- 		end
+	-- 	end)
 
 		
         
-	end)
+	-- end)
 
 
 
@@ -259,15 +259,73 @@ end)
 
 
 
+-- ==========================
+-- ==== B I K E R E N T A L =========
+-- ==========================
+-- CreateNPC("Mario", "rent a bike", x, vector3(-671.3581, -1099.6770, 13.6753), 64.6626, nil, function(NPC)
 
+CreateThread(function()
+    SpawnNPCBike()
+end)
+RegisterNetEvent('Bike:Rental')
+AddEventHandler('Bike:Rental', function(data)
 
+        ProjectRP.Functions.SpawnVehicle("bmx", function(veh)
+            SetVehicleNumberPlateText(veh, "Rented")
+            SetEntityHeading(veh, 334.1462)
+            exports['prp-fuel']:SetFuel(veh, 100.0)
+            TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+            SetEntityAsMissionEntity(veh, true, true)
+            TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
+            SetVehicleEngineOn(veh, true, true)
+            hasRented = true
+        end, vector3(-673.1433, -1098.7621, 14.5602), true)
+end)
 
+SpawnNPCBike = function()
+    CreateThread(function()
+        RequestModel(GetHashKey('a_m_y_gay_02'))
+        while not HasModelLoaded(GetHashKey('a_m_y_gay_02')) do
+            Wait(1)
+        end
+        CreateNPCBike()   
+    end)
+end
 
+CreateNPCBike = function()
+    created_ped = CreatePed(5, GetHashKey('a_m_y_gay_02') , -671.3581, -1099.6770, 13.6753, 64.6626, false, true)
+    FreezeEntityPosition(created_ped, true)
+    SetEntityInvincible(created_ped, true)
+    SetBlockingOfNonTemporaryEvents(created_ped, true)
+end
 
 
 -- ==========================
 -- ==== R E N T A L =========
 -- ==========================
+
+CreateThread(function()
+    SpawnNPC()
+end)
+
+SpawnNPC = function()
+    CreateThread(function()
+        RequestModel(GetHashKey('a_m_y_business_03'))
+        while not HasModelLoaded(GetHashKey('a_m_y_business_03')) do
+            Wait(1)
+        end
+        CreateNPC()   
+    end)
+end
+
+CreateNPC = function()
+    created_ped = CreatePed(5, GetHashKey('a_m_y_business_03') , 109.9739, -1088.61, 28.302, 345.64, false, true)
+    FreezeEntityPosition(created_ped, true)
+    SetEntityInvincible(created_ped, true)
+    SetBlockingOfNonTemporaryEvents(created_ped, true)
+    TaskStartScenarioInPlace(created_ped, 'WORLD_HUMAN_CLIPBOARD', 0, true)
+end
+
 
 RegisterNetEvent('prp-rental:spawncar')
 AddEventHandler('prp-rental:spawncar', function(data)

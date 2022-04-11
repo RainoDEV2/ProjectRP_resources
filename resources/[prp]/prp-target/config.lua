@@ -511,18 +511,30 @@ Config.TargetModels = {
     },
     distance = 1.0
   },
-  -- ["VehicleRental"] = {
-  --   models = {`a_m_y_business_03`},
-  --   options = {
-  --     {
-  --       type = "client",
-  --       event = "prp-rental:openMenu",
-  --       icon = "fas fa-car",
-  --       label = "Rent Vehicle",
-  --     },
-  --   },
-  --   distance = 4.0
-  -- },
+  ["VehicleRental"] = {
+    models = {`a_m_y_business_03`},
+    options = {
+      {
+        type = "client",
+        event = "prp-rental:openMenu",
+        icon = "fas fa-car",
+        label = "Rent Vehicle",
+      },
+    },
+    distance = 4.0
+  },
+  ["BMXRental"] = {
+    models = {`a_m_y_gay_02`},
+    options = {
+      {
+        type = "client",
+        event = "Bike:Rental",
+        icon = "fas fa-car",
+        label = "Rent BMX",
+      },
+    },
+    distance = 4.0
+  },
 }
 
 Config.GlobalPedOptions = {
