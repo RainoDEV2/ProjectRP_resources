@@ -1,0 +1,129 @@
+
+
+
+
+<head>
+
+	<meta charset="utf-8">
+
+    <!-- Compiled and minified CSS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+	<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+
+    <!-- Compiled and minified JavaScript -->
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+	<script src="https://kit.fontawesome.com/67f8f2b923.js" crossorigin="anonymous"></script>
+
+	<link rel='stylesheet' href='css/style.css'>
+
+</head>
+
+
+
+<body>
+
+	<div id="UseBar"> </div>
+
+
+
+	<div class="bagOverlay"></div>
+
+
+
+	<div class="confirm">
+
+		<h1 id="modalTitle"></h1>
+
+		<p id="modalText"></p>
+
+		<button id="cancelModal">Cancel</button>
+
+		<button id="confirmModal" autofocus>Confirm</button>
+
+	</div>
+
+
+
+	<div class="helpnotify">
+
+		<div id="notifytext"></div>
+
+	</div>
+
+	<div class="helpState">
+
+		<div id="Statetext"></div>
+
+	</div>
+
+	<div class="divwrap">
+
+		<div class="notify-wrap">
+
+		</div>
+
+	</div>
+
+
+
+	<div class="jobInformation">
+
+		<h4 id="jobTitle"></h4>
+
+		<hr />
+
+		<h5 id="jobDescription"></h5>
+
+		<button id="confirmButton" autofocus>OK</button>
+
+	</div>
+
+
+
+	<div class="bugReport">
+		<div class="bugReportHeader">
+		  <h4 class="bugReportHeaderText">Error / Bug Report</h4>
+		</div>
+	  	<div class="bugReportContent">
+			<p id="longText"><b>Oh no, an error has occurred!</b> This indicates that something isn't working properly or as intended. We kindly ask you to help us solve this issue by providing some additional details as to what you were doing when this error occurred. </p>
+			<br />
+
+			<br />
+
+	  		<p>Script Error: <span id="bugReportResource"></span></p>
+
+			<div class="bugErrorBox">
+
+				Script error: line 621
+
+			</div>
+
+			<br />
+
+			<br />
+
+	  		<p>Additional Information</p>
+
+			<small>Please let us know what you were doing when this error happened</small>
+
+			<textarea id="additionalBug" name="additionalBug" rows="10"></textarea>
+
+	  	</div>
+
+	  
+
+		<button id="sendReport">Send Report</button>
+
+		<button id="abortReport">Abort Report</button>
+
+	</div>
+
+
+
+	<script src="scripts.js" type="text/javascript"></script>
+
+</body>
