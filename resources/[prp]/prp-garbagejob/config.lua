@@ -4,10 +4,10 @@ Config = {}
 Config.TruckPrice = 250
 
 -- Want to give out a cryptostick per stop?
-Config.GiveCryptoStick = true
+Config.GiveCryptoStick = false
 
 -- Has to roll this number or higher to receive a cryptostick
-Config.CryptoStickChance = 75
+Config.CryptoStickChance = 80
 
 -- How many stops minimum should the job roll?
 Config.MinStops = 5
