@@ -19,6 +19,6 @@ client_scripts {
 }
 
 dependencies { 
-  'PolyZone', 
-  'prp-target' 
+	'PolyZone', 
+	'prp-target' 
 }

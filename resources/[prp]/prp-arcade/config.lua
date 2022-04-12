@@ -20,7 +20,7 @@ Config.Arcade = {
             blipId = 521,
             scale = 1.0,
             color = 0,
-            name = "Arcade house",
+            name = "Arcade House",
             shortRange = true,
             enable = true,
         },

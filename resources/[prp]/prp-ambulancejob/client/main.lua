@@ -882,20 +882,12 @@ Citizen.CreateThread(function()
 		local Grandmashittimer = 1500
         local hspDist = GetDistanceBetweenCoords(310.0739, -595.4513, 43.2928,GetEntityCoords(GetPlayerPed(-1)),true)
 
-
-        
-
 		if hspDist < 3.0 then
             Grandmashittimer = 0
             if IsControlJustReleased(0,38) and hspDist < 3.0 and not checking then
-
-
                 checking = true
-
 				loadAnimDict('anim@narcotics@trash')
-
-   				TaskPlayAnim(GetPlayerPed(-1),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
-
+                TaskPlayAnim(GetPlayerPed(-1),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
                 TriggerEvent('prp-ambulancejob:checkin')
 			end
 
@@ -918,16 +910,14 @@ Citizen.CreateThread(function()
                 end
             end
         end
-        
+
         for k, v in pairs(Config.Locations["stash"]) do
             LockerDist = GetDistanceBetweenCoords(vector3(v.x, v.y, v.z),GetEntityCoords(GetPlayerPed(-1)),true)
-        
             if LockerDist < 3.0 then
                 -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then
                     Grandmashittimer = 0
                     DrawText3D(vector3(v.x, v.y, v.z), "Press ~g~E~w~ to open ~b~ Personal Stash")
-
                     if IsControlJustReleased(0,38) then
                         TriggerEvent('prp-ambulancejob:stash')
                     end
@@ -964,6 +954,7 @@ RegisterNetEvent('prp-ambulancejob:checkin', function()
         end)
     end
 end)
+
 
 RegisterNetEvent('prp-ambulancejob:beds', function()
     if GetAvailableBed(closestBed) then
