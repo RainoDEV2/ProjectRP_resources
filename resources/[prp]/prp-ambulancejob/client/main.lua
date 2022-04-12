@@ -996,25 +996,25 @@ if Config.UseTarget == 'true' then
         --     })
         -- end
 
-        for k, v in pairs(Config.Locations["beds"]) do
-            exports['prp-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
-                name = "beds"..k,
-                heading = -20,
-                debugPoly = false,
-                minZ = v.coords.z - 1,
-                maxZ = v.coords.z + 1,
-            }, {
-                options = {
-                    {
-                        type = "client",
-                        event = "prp-ambulancejob:beds",
-                        icon = "fas fa-bed",
-                        label = "Layin Bed",
-                    }
-                },
-                distance = 1.5
-            })
-        end
+        -- for k, v in pairs(Config.Locations["beds"]) do
+        --     exports['prp-target']:AddBoxZone("beds"..k,  v.coords, 2.5, 2.3, {
+        --         name = "beds"..k,
+        --         heading = -20,
+        --         debugPoly = false,
+        --         minZ = v.coords.z - 1,
+        --         maxZ = v.coords.z + 1,
+        --     }, {
+        --         options = {
+        --             {
+        --                 type = "client",
+        --                 event = "prp-ambulancejob:beds",
+        --                 icon = "fas fa-bed",
+        --                 label = "Layin Bed",
+        --             }
+        --         },
+        --         distance = 1.5
+        --     })
+        -- end
     end)
 else
     CreateThread(function()
@@ -1045,27 +1045,27 @@ else
         --         end
         --     end)
         -- end
-        local bedPoly = {}
-        for k, v in pairs(Config.Locations["beds"]) do
-            bedPoly[#bedPoly+1] = BoxZone:Create(v.coords, 2.5, 2.3, {
-                name="beds"..k,
-                heading = -20,
-                debugPoly = false,
-                minZ = v.coords.z - 1,
-                maxZ = v.coords.z + 1,
-            })
-            local bedCombo = ComboZone:Create(bedPoly, {name = "bedCombo", debugPoly = false})
-            bedCombo:onPlayerInOut(function(isPointInside)
-                if isPointInside then
-                    inBed = true
-                    exports['prp-core']:DrawText('[E] - To lie in bed', 'left')
-                    CheckInControls("beds")
-                else
-                    inBed = false
-                    listen = false
-                    exports['prp-core']:HideText()
-                end
-            end)
-        end
+        -- local bedPoly = {}
+        -- for k, v in pairs(Config.Locations["beds"]) do
+        --     bedPoly[#bedPoly+1] = BoxZone:Create(v.coords, 2.5, 2.3, {
+        --         name="beds"..k,
+        --         heading = -20,
+        --         debugPoly = false,
+        --         minZ = v.coords.z - 1,
+        --         maxZ = v.coords.z + 1,
+        --     })
+        --     local bedCombo = ComboZone:Create(bedPoly, {name = "bedCombo", debugPoly = false})
+        --     bedCombo:onPlayerInOut(function(isPointInside)
+        --         if isPointInside then
+        --             inBed = true
+        --             exports['prp-core']:DrawText('[E] - To lie in bed', 'left')
+        --             CheckInControls("beds")
+        --         else
+        --             inBed = false
+        --             listen = false
+        --             exports['prp-core']:HideText()
+        --         end
+        --     end)
+        -- end
     end)
 end

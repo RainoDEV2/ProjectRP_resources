@@ -156,14 +156,6 @@ function Status()
             }
         end
         statusMenu[#statusMenu+1] = {
-            header = 'Give lorazepam Pill',
-            txt = "",
-            params = {
-                event = "hospital:client:lorazepam"
-            }
-        }
-
-        statusMenu[#statusMenu+1] = {
             header = '⬅ Close Menu',
             txt = "",
             params = {
