@@ -139,9 +139,9 @@ GangGarages = {
     },
     ["vagos"] = {
         label = "Vagos",
-        takeVehicle = vector3(1407.18, 1118.04, 114.84),
-        spawnPoint = vector4(329.28, -2035.65, 20.96, 54.26),
-        putVehicle = vector3(1407.18, 1118.04, 114.84),
+        takeVehicle = vector3(332.71, -2031.08, 21.23),
+        spawnPoint = vector4(323.51, -2030.8, 20.83, 46.07),
+        putVehicle = vector3(337.25, -2035.93, 21.34),
         job = "vagos"
     },
 }
