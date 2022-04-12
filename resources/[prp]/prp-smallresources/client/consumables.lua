@@ -114,7 +114,7 @@ RegisterNetEvent('consumables:client:UseArmor', function()
         TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["armor"], "remove")
         TriggerServerEvent('hospital:server:SetArmor', 100)
         TriggerServerEvent("ProjectRP:Server:RemoveItem", "armor", 1)
-        SetPedArmour(PlayerPedId(), 75)
+        SetPedArmour(PlayerPedId(), 100)
     end)
 end)
 

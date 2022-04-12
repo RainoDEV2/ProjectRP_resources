@@ -492,43 +492,43 @@ AddEventHandler("Project-traphouse:luckRob", function(ped)
             local dist = #(pos - data.coords["enter"])
 
             if dist < 50 then
-                local rand = math.random() + math.random(0, 100)
-                if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
-                    if rand > 0.25 then
-                        return
-                    end
-                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
-                    if rand > 0.5 then
-                        return
-                    end
-                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
-                    if rand > 0.75 then
-                        return
-                    end
-                elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
-                    if rand > 1 then
-                        return
-                    end
-                end
+                -- local rand = math.random() + math.random(0, 100)
+                -- if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
+                --     if rand > 0.25 then
+                --         return
+                --     end
+                -- elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
+                --     if rand > 0.5 then
+                --         return
+                --     end
+                -- elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
+                --     if rand > 0.75 then
+                --         return
+                --     end
+                -- elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
+                --     if rand > 1 then
+                --         return
+                --     end
+                -- end
     
-                if cooldown then
-                    return
-                end
+                -- if cooldown then
+                --     return
+                -- end
 
-                Citizen.CreateThread(function()
-                    cooldown = true
-                    if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
-                        Citizen.Wait(15000)
-                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
-                        Citizen.Wait(10000)
-                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
-                        Citizen.Wait(5000)
-                    elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
-                        Citizen.Wait(5000)
-                    end
+                -- Citizen.CreateThread(function()
+                --     cooldown = true
+                --     if Config.TrapHouses[ClosestTraphouse].reputation <= 25 then
+                --         Citizen.Wait(15000)
+                --     elseif Config.TrapHouses[ClosestTraphouse].reputation <= 50 then
+                --         Citizen.Wait(10000)
+                --     elseif Config.TrapHouses[ClosestTraphouse].reputation <= 75 then
+                --         Citizen.Wait(5000)
+                --     elseif Config.TrapHouses[ClosestTraphouse].reputation <= 100 then
+                --         Citizen.Wait(5000)
+                --     end
     
-                    cooldown = false
-                end)
+                --     cooldown = false
+                -- end)
 
 
                 -- print(GetHashKey(gang2rel[Config.TrapHouses[ClosestTraphouse].gang]).. " - " ..GetPedRelationshipGroupHash(ped))
