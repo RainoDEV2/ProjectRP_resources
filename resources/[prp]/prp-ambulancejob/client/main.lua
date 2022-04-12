@@ -884,14 +884,14 @@ Citizen.CreateThread(function()
 
 		if hspDist < 3.0 then
             Grandmashittimer = 0
-            if IsControlJustReleased(0,38) and hspDist < 3.0 and not checking then
+            if IsControlJustReleased(0,47) and hspDist < 3.0 and not checking then
                 checking = true
 				loadAnimDict('anim@narcotics@trash')
                 TaskPlayAnim(GetPlayerPed(-1),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
                 TriggerEvent('prp-ambulancejob:checkin')
 			end
 
-            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
+            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~G~w~] to Check In")
 		end
 
 
