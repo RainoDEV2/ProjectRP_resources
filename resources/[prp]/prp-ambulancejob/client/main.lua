@@ -598,8 +598,8 @@ RegisterNetEvent('hospital:client:Revive', function()
     end
 
     -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    SetEntityMaxHealth(player, 150)
-    SetEntityHealth(player, 150)
+    SetEntityMaxHealth(player, 200)
+    SetEntityHealth(player, 200)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()
