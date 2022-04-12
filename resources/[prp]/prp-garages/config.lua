@@ -111,9 +111,9 @@ HouseGarages = {}
 GangGarages = {
     ["ballas"] = {
         label = "Ballas",
-        takeVehicle = vector3(98.50, -1954.49, 20.84),
-        spawnPoint = vector4(98.50, -1954.49, 20.75, 335.73),
-        putVehicle = vector3(94.75, -1959.93, 20.84),
+        takeVehicle = vector3(102.59, -1964.56, 20.84),
+        spawnPoint = vector4(102.3, -1964.37, 20.84, 354.59),
+        putVehicle = vector3(102.59, -1964.56, 20.84),
         job = "ballas"
     },
     ["families"] = {
