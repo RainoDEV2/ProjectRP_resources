@@ -17,7 +17,7 @@ ProjectRP = exports["prp-core"]:GetCoreObject()
 RegisterNetEvent("ProjectRP:Client:OnPlayerLoaded")
 AddEventHandler("ProjectRP:Client:OnPlayerLoaded", function()
     Citizen.SetTimeout(1000, function()
-       -- TriggerEvent("ProjectRP:GetObject", function(obj) ProjectRP = obj end)    
+		-- TriggerEvent("ProjectRP:GetObject", function(obj) ProjectRP = obj end)    
         Citizen.Wait(250)
         LoggedIn = true
     end)
@@ -52,9 +52,9 @@ if Config.Debug then
 				local text = ('ID: %s~n~Hash: %s~n~Model: %s'):format(id, hash, model)
 
 				ProjectRP.Functions.DrawText3D(
-					 coords.x,
-					 coords.y,
-					 coords.z + 2.0
+					coords.x,
+					coords.y,
+					coords.z + 2.0
 				, text, 0.5)
 			end
 
@@ -105,7 +105,6 @@ end)
 
 RegisterNetEvent("Boost-Sit:Sit")
 AddEventHandler("Boost-Sit:Sit", function()
-	print("Nu suveikiau")
 	local playerPed = PlayerPedId()
 
 	if sitting and not IsPedUsingScenario(playerPed, currentScenario) then
