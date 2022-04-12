@@ -8,7 +8,7 @@ RegisterNetEvent('prp-log:server:CreateLog', function(name, title, color, messag
             ['title'] = title,
             ['color'] = Config.Colors[color] or Config.Colors['default'],
             ['footer'] = {
-                ['text'] = '©️ All rights reserved by Project RP' ..os.date("%d/%m/%Y %X"),
+                ['text'] = '©️ All rights reserved by Project RP ' ..os.date("%d/%m/%Y %X"),
             },
             ['description'] = message,
             ['author'] = {

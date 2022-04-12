@@ -907,7 +907,7 @@ Config.JobInteractions = {
         }, {
             id = 'heallorazepam',
             title = 'Give lorazepam Pill',
-            icon = 'band-aid',
+            icon = 'fa-tablets',
             type = 'client',
             event = 'hospital:client:lorazepam',
             shouldClose = true
