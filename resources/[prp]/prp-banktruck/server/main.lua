@@ -49,16 +49,16 @@ AddEventHandler('prp-kanker:jemoederbakker', function()
     local Player = ProjectRP.Functions.GetPlayer(src)
     local RandomWaarde = math.random(1,100)
     if RandomWaarde >= 1 and RandomWaarde <= 30 then
-    local info = {worth = math.random(1500, 2550)}
+    local info = {worth = math.random(1000, 1500)}
     Player.Functions.AddItem('markedbills', 1, false, info)
     TriggerClientEvent('prp-inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
     TriggerEvent("prp-log:server:CreateLog", "banktruck", "Banktruck Rewards", "green", "**Player:** "..GetPlayerName(src).." (citizenid: *"..Player.PlayerData.citizenid.."*)\n**Got: **Marked Bills\n**Where the: **"..info.worth)
     elseif RandomWaarde >= 31 and RandomWaarde <= 50 then
-        local AmountGoldStuff = math.random(6,8)
+        local AmountGoldStuff = math.random(2,4)
         Player.Functions.AddItem('rolex', AmountGoldStuff)
         TriggerClientEvent('prp-inventory:client:ItemBox', src, ProjectRP.Shared.Items['rolex'], "add")
     elseif RandomWaarde >= 51 and RandomWaarde <= 80 then 
-        local AmountGoldStuff = math.random(6,8)
+        local AmountGoldStuff = math.random(2,4)
         Player.Functions.AddItem('diamond_ring', AmountGoldStuff)
         TriggerClientEvent('prp-inventory:client:ItemBox', src, ProjectRP.Shared.Items['diamond_ring'], "add")
         TriggerEvent("prp-log:server:CreateLog", "banktruck", "Banktruck Rewards", "green", "**Player:** "..GetPlayerName(src).." (citizenid: *"..Player.PlayerData.citizenid.."*)\n**Got: **Golden Chain\n**Number: **"..AmountGoldStuff)
