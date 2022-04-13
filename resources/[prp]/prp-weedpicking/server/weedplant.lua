@@ -45,7 +45,7 @@ AddEventHandler('prp-weedpicking:selld', function()
    
 	if Item ~= nil and Item.amount >= 1 then
 		local chance2 = math.random(1, 12)
-		if chance2 == 1 or chance2 == 2 or chance2 == 9 or chance2 == 4 or chance2 == 10 or chance2 == 6 or chance2 == 7 or chance2 == 8 then
+		if chance2 == 1 or chance2 == 2 or chance2 == 3 or chance2 == 5 or chance2 == 9 or chance2 == 4 or chance2 == 10 or chance2 == 6 or chance2 == 7 or chance2 == 8 or chance2 == 11 or chance2 == 12 then
 			Player.Functions.RemoveItem('weed_bag', 1)----change this
 			TriggerClientEvent("inventory:client:ItemBox", source, ProjectRP.Shared.Items['weed_bag'], "remove")
 			Player.Functions.AddMoney("cash", Config.Pricesell, "sold-pawn-items")
@@ -53,7 +53,7 @@ AddEventHandler('prp-weedpicking:selld', function()
 		else
 			Player.Functions.RemoveItem('weed_bag', 1)----change this
 			TriggerClientEvent("inventory:client:ItemBox", source, ProjectRP.Shared.Items['weed_bag'], "remove")
-			Player.Functions.AddMoney("cash", Config.Pricesell-100, "sold-pawn-items")
+			Player.Functions.AddMoney("cash", Config.Pricesell-70, "sold-pawn-items")
 			TriggerClientEvent('ProjectRP:Notify', src, 'you sold to the pusher', "success")
 		end
 else
