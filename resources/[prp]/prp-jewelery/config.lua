@@ -29,25 +29,25 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_pistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_pistol_mk2`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_combatpistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_pistol50`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_1911`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_heavypistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_smg_mk2`] = {
         ["timeOut"] = 10000
@@ -56,10 +56,10 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_machinepistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_combatpdw`] = {
         ["timeOut"] = 10000
@@ -92,7 +92,7 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_glock`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_assaultrifle_mk2`] = {
         ["timeOut"] = 10000
