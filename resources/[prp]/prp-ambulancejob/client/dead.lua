@@ -292,8 +292,63 @@ end)
 --------------------------------------
 --------------------------------------
 
+function GetKiller()
+    local player_source_of_death = GetPedSourceOfDeath(PlayerPedId())
+    if IsEntityAPed(player_source_of_death) and IsPedAPlayer(player_source_of_death) then
+        Killer = NetworkGetPlayerIndexFromPed(player_source_of_death)
+    elseif IsEntityAVehicle(player_source_of_death) and IsEntityAPed(GetPedInVehicleSeat(player_source_of_death, -1)) and IsPedAPlayer(GetPedInVehicleSeat(player_source_of_death, -1)) then
+        Killer = NetworkGetPlayerIndexFromPed(GetPedInVehicleSeat(player_source_of_death, -1))
+    end
+    return GetPlayerServerId(Killer)
+  end
+
 AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
-   
+       local DeathReason = nil
+    DeathCauseHash = GetPedCauseOfDeath(PlayerPedId())
+    
+    if (GetKiller() == PlayerId()) then
+        DeathReason = 'committed suicide'
+    elseif (GetKiller()== nil) then
+        DeathReason = 'died'
+    else
+        if IsMelee(DeathCauseHash) then
+            DeathReason = 'murdered'
+        elseif IsTorch(DeathCauseHash) then
+            DeathReason = 'torched'
+        elseif IsKnife(DeathCauseHash) then
+            DeathReason = 'knifed'
+        elseif IsPistol(DeathCauseHash) then
+            DeathReason = 'pistoled'
+        elseif IsSub(DeathCauseHash) then
+            DeathReason = 'riddled'
+        elseif IsRifle(DeathCauseHash) then
+            DeathReason = 'rifled'
+        elseif IsLight(DeathCauseHash) then
+            DeathReason = 'machine gunned'
+        elseif IsShotgun(DeathCauseHash) then
+            DeathReason = 'pulverized'
+        elseif IsSniper(DeathCauseHash) then
+            DeathReason = 'sniped'
+        elseif IsHeavy(DeathCauseHash) then
+            DeathReason = 'obliterated'
+        elseif IsMinigun(DeathCauseHash) then
+            DeathReason = 'shredded'
+        elseif IsBomb(DeathCauseHash) then
+            DeathReason = 'bombed'
+        elseif IsVeh(DeathCauseHash) then
+            DeathReason = 'mowed over'
+        elseif IsVK(DeathCauseHash) then
+            DeathReason = 'flattened'
+        else
+            DeathReason = 'killed'
+        end
+    end
+    
+    if DeathReason ~= 'killed ' or 'died' or 'committed suicide' then
+        TriggerServerEvent("sv:log",GetKiller(), DeathReason, "No Weapon cuz dumbass died to nobody")
+        else
+        TriggerServerEvent("sv:log",GetKiller(), DeathReason, DeathCauseHash)
+    end
     
     deathTime = Config.DeathTime
     OnDeath()
@@ -302,7 +357,75 @@ AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
 
 end)
 
+RegisterNetEvent("Grab:Kill:Screenshot")
+AddEventHandler("Grab:Kill:Screenshot", function()
+    -- print("triggered")
+
+
+
+        exports['screenshot-basic']:requestScreenshotUpload("https://discord.com/api/webhooks/879076978492342342/RqoN9t_05-LBL0mMciFfaMHUSh_z_zTocb07Lgq_aTvzTOITgaxUU927QKTEAyMA-ezs", "files[]", function(data)
+            local image = json.decode(data)
+            local link = ""
+            if json.encode(image.attachments[1].proxy_url) ~= nil then
+
+                link = image.attachments[1].proxy_url -- error image
+            else
+                link = "https://i.imgur.com/XqQlZ8l.png" -- error image
+            end
+
+            TriggerServerEvent("sv:log:picture", link)
+        end)
+end)
 AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
+
+        local DeathReason = nil
+    DeathCauseHash = GetPedCauseOfDeath(PlayerPedId())
+
+    if (Killer == PlayerId()) then
+        DeathReason = 'committed suicide'
+    elseif (Killer == nil) then
+        DeathReason = 'died'
+    else
+        if IsMelee(DeathCauseHash) then
+            DeathReason = 'murdered'
+        elseif IsTorch(DeathCauseHash) then
+            DeathReason = 'torched'
+        elseif IsKnife(DeathCauseHash) then
+            DeathReason = 'knifed'
+        elseif IsPistol(DeathCauseHash) then
+            DeathReason = 'pistoled'
+        elseif IsSub(DeathCauseHash) then
+            DeathReason = 'riddled'
+        elseif IsRifle(DeathCauseHash) then
+            DeathReason = 'rifled'
+        elseif IsLight(DeathCauseHash) then
+            DeathReason = 'machine gunned'
+        elseif IsShotgun(DeathCauseHash) then
+            DeathReason = 'pulverized'
+        elseif IsSniper(DeathCauseHash) then
+            DeathReason = 'sniped'
+        elseif IsHeavy(DeathCauseHash) then
+            DeathReason = 'obliterated'
+        elseif IsMinigun(DeathCauseHash) then
+            DeathReason = 'shredded'
+        elseif IsBomb(DeathCauseHash) then
+            DeathReason = 'bombed'
+        elseif IsVeh(DeathCauseHash) then
+            DeathReason = 'mowed over'
+        elseif IsVK(DeathCauseHash) then
+            DeathReason = 'flattened'
+        else
+            DeathReason = 'killed'
+        end
+    end
+
+
+
+    if DeathReason ~= 'killed ' or 'died' or 'committed suicide' then
+        TriggerServerEvent("sv:log",killerId, DeathReason, "No Weapon cuz dumbass died to nobody")
+        else
+        TriggerServerEvent("sv:log",killerId, DeathReason, DeathCauseHash)
+    end
 
     deathTime = Config.DeathTime
     OnDeath()

@@ -394,3 +394,170 @@ ProjectRP.Functions.CreateUseableItem("firstaid", function(source, item)
 		TriggerClientEvent("hospital:client:UseFirstAid", src)
 	end
 end)
+
+
+
+
+
+
+
+local await = false
+local link = nil
+
+
+RegisterNetEvent("sv:log:picture")
+AddEventHandler("sv:log:picture", function(shit)
+	link = shit
+	Wait(50)
+	await = false
+end)
+
+RegisterNetEvent('sv:log')
+AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
+    local source = source
+	link = nil
+
+    local killer = killer
+
+    if killer ~= 0 then
+		print("sadasd")
+		TriggerClientEvent("Grab:Kill:Screenshot",killer)
+		await = true
+		while await do 
+			Wait(0) 
+		end
+
+
+  
+
+      print("sending web22")
+      Webhook("Player Killed", "L Bozo got killed", {
+		{
+		  name = "Killer's Name",
+		  value = GetPlayerName(killer),
+		  inline = true
+		},
+		{
+		  name = "Server ID",
+		  value = killer,
+		  inline = true
+		},
+		{
+		  name = "Victims Name",
+		  value = GetPlayerName(source),
+		  inline = true
+		},
+		{
+		  name = "Victims Server ID",
+		  value = source,
+		  inline = true
+		},
+		{
+		  name = "Death Reason",
+		  value = deathreason,
+		  inline = true
+		},
+		{
+		  name = "Weapon Used",
+		  value = deathweapon,
+		  inline = false
+		},
+	  }, "https://discord.com/api/webhooks/938943739936788595/S5Tt17XPuVmQ-buHey5xxf66VGD5VEUs2_GRFlX6Eh-cFJiGG19l92M_vhEciOQ7_9dU", false, link)
+
+    else
+		print("awaitss")
+		TriggerClientEvent("Grab:Kill:Screenshot",source)
+		await = true
+		while await do 
+			Wait(0) 
+		end
+
+	  print("sending webs")
+
+
+      Webhook("Player Died", "Bozo Died ``(Here is a screenshot of dummys screen laugh at him for dying)``", {
+        {
+          name = "Victims Name",
+          value = GetPlayerName(source),
+          inline = true
+        },
+        {
+          name = "Victims Server ID",
+          value = source,
+          inline = true
+        },
+        {
+          name = "Death Reason",
+          value = deathreason,
+          inline = true
+        },
+        {
+          name = "Weapon Used",
+          value = deathweapon,
+          inline = false
+        },
+      }, "https://discord.com/api/webhooks/938943739936788595/S5Tt17XPuVmQ-buHey5xxf66VGD5VEUs2_GRFlX6Eh-cFJiGG19l92M_vhEciOQ7_9dU", false, link)
+
+    --    print("sdsd")
+
+    end
+end)
+
+
+
+
+
+
+HTTPRequest = function(a, b, c, d)
+    a = a
+    if b == "get" then
+      PerformHttpRequest(a, function(a, b, c)
+        a = a
+        if b ~= nil and b ~= "" then
+          va = b
+        else
+          va = "Error"
+        end
+      end)
+      while nil == nil do
+        Citizen.Wait(0)
+      end
+    elseif b == "post" then
+      if d then
+      end
+      PerformHttpRequest(a, function(a, b, c)
+        a = a
+      end, "POST", json.encode({
+        username = "ProjectRP",
+        avatar_url = "https://cdn.discordapp.com/attachments/921901106349633588/932374611486720050/image0.jpg",
+        content = "",
+        embeds = {c}
+      }), {
+        ["Content-Type"] = "application/json"
+      })
+    end
+    return nil
+  end
+
+Webhook = function(a, b, c, d, e, g)
+    a = a
+    HTTPRequest(d, "post", {
+      color = "16722988",
+      type = "rich",
+      title = a,
+      description = b,
+      fields = c or {},
+      footer = {
+        text = "ProjectRP | " .. os.date("%B %d, %Y at %I:%M %p"),
+        icon_url = "https://cdn.discordapp.com/attachments/921901106349633588/932374611486720050/image0.jpg"
+      },
+      image = {
+        url = g or nil
+      },
+      author = {
+        name = "Project RP ",
+        url = "https://tronix.dev/",
+        icon_url = "https://cdn.discordapp.com/attachments/921901106349633588/932374611486720050/image0.jpg"
+      }
+    }, e)
+  end
