@@ -420,7 +420,7 @@ AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
     local killer = killer
 
     if killer ~= 0 then
-		print("sadasd")
+
 		TriggerClientEvent("Grab:Kill:Screenshot",killer)
 		await = true
 		while await do 
@@ -428,9 +428,6 @@ AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
 		end
 
 
-  
-
-      print("sending web22")
       Webhook("Player Killed", "L Bozo got killed", {
 		{
 		  name = "Killer's Name",
@@ -465,14 +462,12 @@ AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
 	  }, "https://discord.com/api/webhooks/938943739936788595/S5Tt17XPuVmQ-buHey5xxf66VGD5VEUs2_GRFlX6Eh-cFJiGG19l92M_vhEciOQ7_9dU", false, link)
 
     else
-		print("awaitss")
 		TriggerClientEvent("Grab:Kill:Screenshot",source)
 		await = true
 		while await do 
 			Wait(0) 
 		end
 
-	  print("sending webs")
 
 
       Webhook("Player Died", "Bozo Died ``(Here is a screenshot of dummys screen laugh at him for dying)``", {
@@ -498,8 +493,7 @@ AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
         },
       }, "https://discord.com/api/webhooks/938943739936788595/S5Tt17XPuVmQ-buHey5xxf66VGD5VEUs2_GRFlX6Eh-cFJiGG19l92M_vhEciOQ7_9dU", false, link)
 
-    --    print("sdsd")
-
+    --    print("sdsd"
     end
 end)
 

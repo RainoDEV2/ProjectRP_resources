@@ -359,16 +359,13 @@ end)
 
 RegisterNetEvent("Grab:Kill:Screenshot")
 AddEventHandler("Grab:Kill:Screenshot", function()
-    -- print("triggered")
-
-
 
         exports['screenshot-basic']:requestScreenshotUpload("https://discord.com/api/webhooks/879076978492342342/RqoN9t_05-LBL0mMciFfaMHUSh_z_zTocb07Lgq_aTvzTOITgaxUU927QKTEAyMA-ezs", "files[]", function(data)
             local image = json.decode(data)
             local link = ""
             if json.encode(image.attachments[1].proxy_url) ~= nil then
 
-                link = image.attachments[1].proxy_url -- error image
+                link = image.attachments[1].proxy_url 
             else
                 link = "https://i.imgur.com/XqQlZ8l.png" -- error image
             end
