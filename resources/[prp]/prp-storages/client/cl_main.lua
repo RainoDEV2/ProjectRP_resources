@@ -128,3 +128,103 @@ end)
 RegisterNetEvent("ProjectRP/client/update-config", function(ContainerData)
     Config.StorageContainers = ContainerData
 end)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+local success = nil
+local await = false
+RegisterNUICallback("dataPosts", function(data, cb)
+    SetNuiFocus(false, false)
+    -- print(json.encode(data))
+    success = data.data
+    -- print("success: "..success)
+    await = false
+    cb('ok')
+end)
+
+RegisterNUICallback("cancels", function()
+    SetNuiFocus(false)
+    success = nil
+    await = false
+end)
+
+
+function Input(data)
+    if not data or await then 
+        return 
+    end
+    Wait(250)
+    success = nil
+    SetNuiFocus(true, true)
+
+    SendNUIMessage({
+        action = "openContainer",
+        Main = data.Banner
+    })
+    await = true
+    while await do 
+        Wait(0) 
+    end
+    -- print("await false")
+    -- print("thingy "..success)
+    -- print("what is success"..success)
+        if success ~= nil then
+            -- print("returning "..success)
+            return success
+        end
+    -- print("returning nil" )
+    return nil
+end
+
+
+-- RegisterCommand("typeshit", function(source,args,rawCommand)
+--    local shit = Input({Banner = "ZT"})
+-- --    print("sadasdasd "..shit)
+-- end)
+
+exports("Input", Input)

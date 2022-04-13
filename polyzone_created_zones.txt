@@ -1,0 +1,7 @@
+--Name: police | 2022-04-13T00:54:58Z
+BoxZone:Create(vector3(485.49, -989.26, 30.69), 1, 1, {
+  name="police",
+  heading=0,
+  --debugPoly=true
+})
+

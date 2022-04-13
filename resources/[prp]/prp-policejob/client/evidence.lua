@@ -153,7 +153,7 @@ end)
 RegisterNetEvent('evidence:client:AddCasing', function(casingId, weapon, coords, serie)
     Casings[casingId] = {
         type = weapon,
-        serie = serie and serie or 'Serial number not visible..',
+        serie = serie and serie or 'SCRAPED',
         coords = {
             x = coords.x,
             y = coords.y,

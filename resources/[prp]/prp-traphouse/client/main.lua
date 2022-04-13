@@ -537,7 +537,7 @@ AddEventHandler("Project-traphouse:luckRob", function(ped)
             
                 -- if Chance == odd then
                     if GetPedRelationshipGroupHash(ped) == GetHashKey(gang2rel[Config.TrapHouses[ClosestTraphouse].gang]) then
-                        print("get pin")
+                        -- print("get pin")
                         TriggerServerEvent("Axel:Is:Cute",ClosestTraphouse)
                         -- ProjectRP.Functions.Notify('Alright, the pin is '..Config.TrapHouses[ClosestTraphouse].pincode)
 

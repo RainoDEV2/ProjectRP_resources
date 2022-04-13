@@ -14,7 +14,7 @@ AddEventHandler('prp-drugs:AddWeapons', function()
         price = 5000,
         amount = 1,
         info = {
-            serie = '-----'
+            serie = 'SCRAPED'
         },
         type = "item",
         slot = 5,
@@ -25,7 +25,7 @@ AddEventHandler('prp-drugs:AddWeapons', function()
         price = 5000,
         amount = 1,
         info = {
-            serie = '-----'
+            serie = 'SCRAPED'
         },
         type = "item",
         slot = 5,

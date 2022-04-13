@@ -331,7 +331,8 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
         local slot = tonumber(slot) or ProjectRP.Player.GetFirstSlotByItem(self.PlayerData.items, item)
         if itemInfo['type'] == 'weapon' and info == nil then
             info = {
-                serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4)),
+                serie = tostring("SCRAPED")
+                -- serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4)),
             }
         end
         if (totalWeight + (itemInfo['weight'] * amount)) <= ProjectRP.Config.Player.MaxWeight then
