@@ -201,22 +201,22 @@
 		<lodDist value="50"/>
 	</Item>
 	
-	<!-- gepard -->
+	<!-- COMPACTRIFLE -->
 	
 	<Item>
-		<modelName>w_ar_gepard</modelName>
-		<txdName>w_ar_gepard</txdName>
+		<modelName>w_ar_COMPACTRIFLE</modelName>
+		<txdName>w_ar_COMPACTRIFLE</txdName>
 		<ptfxAssetName>null</ptfxAssetName>
 		<lodDist value="50"/>
 	</Item>
 	<Item>
-		<modelName>w_ar_gepard_mag1</modelName>
-		<txdName>w_ar_gepard</txdName>
+		<modelName>w_ar_COMPACTRIFLE_mag1</modelName>
+		<txdName>w_ar_COMPACTRIFLE</txdName>
 		<ptfxAssetName>null</ptfxAssetName>
 		<lodDist value="50"/>
 	</Item>
 	<Item>
-		<modelName>w_at_ar_gepard</modelName>
+		<modelName>w_at_ar_COMPACTRIFLE</modelName>
 		<txdName>w_at_ar_supp_02</txdName>
 		<ptfxAssetName>null</ptfxAssetName>
 		<lodDist value="50"/>

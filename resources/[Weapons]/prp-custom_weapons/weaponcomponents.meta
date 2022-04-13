@@ -282,8 +282,8 @@
       <ReloadData ref="RELOAD_DEFAULT" />
     </Item>
 	<Item type="CWeaponComponentClipInfo">
-      <Name>COMPONENT_GEPARD_CLIP_01</Name>
-      <Model>w_ar_gepard_mag1</Model>
+      <Name>COMPONENT_COMPACTRIFLE_CLIP_01</Name>
+      <Model>w_ar_COMPACTRIFLE_mag1</Model>
       <LocName>WCT_CLIP1</LocName>
       <LocDesc>WCD_CMPR_CLIP1</LocDesc>
       <AttachBone>AAPClip</AttachBone>
@@ -300,7 +300,7 @@
       <ReloadData ref="RELOAD_DEFAULT" />
     </Item>
 	<Item type="CWeaponComponentScopeInfo">
-      <Name>COMPONENT_AT_SCOPE_GEPARD</Name>
+      <Name>COMPONENT_AT_SCOPE_COMPACTRIFLE</Name>
       <Model />
       <LocName>WCT_SCOPE_MAC</LocName>
       <LocDesc>WCD_SCOPE_MAC</LocDesc>
@@ -321,8 +321,8 @@
       <ReticuleHash />
     </Item>
 	<Item type="CWeaponComponentSuppressorInfo">
-      <Name>COMPONENT_AT_AR_GEPARD</Name>
-      <Model>w_at_ar_gepard</Model>
+      <Name>COMPONENT_AT_AR_COMPACTRIFLE</Name>
+      <Model>w_at_ar_COMPACTRIFLE</Model>
       <LocName>WCT_SUPP</LocName>
       <LocDesc>WCD_AR_SUPP2</LocDesc>
       <AttachBone>AAPSupp</AttachBone>
@@ -340,8 +340,8 @@
 	  <ShouldSilence value="false" />
     </Item>
 	<Item type="CWeaponComponentVariantModelInfo">
-      <Name>COMPONENT_GEPARD</Name>
-      <Model>w_ar_gepard</Model>
+      <Name>COMPONENT_COMPACTRIFLE</Name>
+      <Model>w_ar_COMPACTRIFLE</Model>
       <LocName>WCT_INVALID</LocName>
       <LocDesc>WCD_INVALID</LocDesc>
       <AttachBone />
