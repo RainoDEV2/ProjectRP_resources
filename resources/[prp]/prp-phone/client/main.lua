@@ -658,6 +658,7 @@ RegisterNUICallback('PayInvoice', function(data, cb)
         cb(CanPay)
     end, society, amount, invoiceId, senderCitizenId)
     TriggerServerEvent('prp-phone:server:BillingEmail', data, true)
+    -- TriggerServerEvent('prp-payments:Tickets:Give', data)
 end)
 
 RegisterNUICallback('DeclineInvoice', function(data, cb)

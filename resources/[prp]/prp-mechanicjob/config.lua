@@ -71,10 +71,10 @@ Config.Businesses = {
 }
 
 Config.Plates = {
-    [1] = {
-        coords = vector4(-340.95, -128.24, 39, 160.46),
-        AttachedVehicle = nil,
-    },
+    -- [1] = {
+    --     coords = vector4(-340.95, -128.24, 39, 160.46),
+    --     AttachedVehicle = nil,
+    -- },
 }
 
 Config.Locations = {

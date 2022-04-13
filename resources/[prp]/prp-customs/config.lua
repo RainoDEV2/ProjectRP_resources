@@ -1,4 +1,4 @@
-maxVehiclePerformanceUpgrades = 0 -- Set to 0 to have all the upgrades
+maxVehiclePerformanceUpgrades = 1 -- Set to 0 to have all the upgrades
 vehicleBaseRepairCost = 600
 vehicleRepairCostMultiplier = 1
 moneyType = 'bank'
@@ -8,8 +8,8 @@ moneyType = 'bank'
 -- Add jobs specific to the garage.
 bennyGarages = {
     [1] = {coords = vector4(-211.55, -1324.55, 30.90, 319.73135375977), useJob = false, job = {"mechanic", "police"}},
-    [2] = {coords = vector4(109.89, 6627.07, 31.78, 221.7938), useJob = true, job = {"mechanic"}},
-    [3] = {coords = vector4(450.6061, -975.8832, 25.6998, 179.4734), useJob = true, job = {"police"}},
+    -- [2] = {coords = vector4(109.89, 6627.07, 31.78, 221.7938), useJob = true, job = {"mechanic"}},
+    -- [3] = {coords = vector4(450.6061, -975.8832, 25.6998, 179.4734), useJob = true, job = {"police"}},
 }
 
 --[[ bennyLocations = {
