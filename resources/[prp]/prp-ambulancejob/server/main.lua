@@ -63,7 +63,7 @@ RegisterNetEvent('hospital:server:ambulanceAlert', function(text)
     local players = ProjectRP.Functions.GetPlayers()
     for k,v in pairs(players) do
         local Player = ProjectRP.Functions.GetPlayer(v)
-        if Player.PlayerData.job.name == 'ambulance' and Player.PlayerData.job.onduty then
+        if Player.PlayerData.job.name == 'ambulance' or 'police' and Player.PlayerData.job.onduty then
             TriggerClientEvent('hospital:client:ambulanceAlert', Player.PlayerData.source, coords, text)
         end
     end

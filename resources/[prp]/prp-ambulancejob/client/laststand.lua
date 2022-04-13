@@ -80,7 +80,7 @@ function SetLaststand(bool, spawn)
 
         InLaststand = true
 
-        TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Down')
+        -- TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Down')
 
         CreateThread(function()
             while InLaststand do

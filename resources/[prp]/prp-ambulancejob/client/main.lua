@@ -598,8 +598,8 @@ RegisterNetEvent('hospital:client:Revive', function()
     end
 
     -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    SetEntityMaxHealth(player, 100)
-    SetEntityHealth(player, 100)
+    SetEntityMaxHealth(player, 150)
+    SetEntityHealth(player, 150)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()
@@ -943,6 +943,7 @@ RegisterNetEvent('prp-ambulancejob:checkin', function()
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
+            LocalPlayer.state:set("inv_busy", false, true)
             TriggerEvent('animations:client:EmoteCommandStart', {"c"})
             local bedId = GetAvailableBed()
             if bedId then
