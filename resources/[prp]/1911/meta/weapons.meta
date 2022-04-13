@@ -16,7 +16,7 @@
 			<Infos>
 				<Item type="CWeaponInfo">
 					<Name>WEAPON_1911</Name>
-					<Model>w_pi_heavypistol</Model>
+					<Model>w_pi_1911</Model>
 					<Audio>AUDIO_ITEM_PISTOL</Audio>
 					<Slot>SLOT_WEAPON_1911</Slot>
 					<DamageType>BULLET</DamageType>
