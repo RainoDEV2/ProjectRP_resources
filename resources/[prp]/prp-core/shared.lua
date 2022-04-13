@@ -1062,17 +1062,25 @@ PRPShared.Jobs = {
 		defaultDuty = true,
 		grades = {
 			['0'] = {
-				name = 'Trainee',
-				payment = 50
+				name = 'Bartender',
+				payment = 100
 			},
 			['1'] = {
-				name = 'Employee',
-				payment = 75
+				name = 'DJ',
+				payment = 120
 			},
 			['2'] = {
+				name = 'Bouncer',
+				payment = 140
+			},
+			['3'] = {
+				name = 'Dancer',
+				payment = 150
+			},
+			['4'] = {
 				name = 'Management',
 				isboss = true,
-				payment = 100
+				payment = 200
 			},
 		},
 	},
