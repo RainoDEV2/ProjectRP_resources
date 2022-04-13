@@ -29,20 +29,21 @@ PRP.Storages.Close = function() {
 }
 
 PRP.Storages.Submit = function() {
+    $(".keypad-container").fadeOut(250);
     $.post(`https://${GetParentResourceName()}/CheckPincode`, JSON.stringify({
         pincode: $('#pass').val(),
     }));
 }
 
 
-document.onkeyup = function (data) {
-    if (data.code == 'Enter' ) {
-        PRP.Storages.Submit();
-        PRP.Storages.Close();
-    } else if (data.code == 'Escape' ) {
-        PRP.Storages.Close();
-    }
-}
+// document.onkeyup = function (data) {
+//     if (data.code == 'Enter' ) {
+//         PRP.Storages.Submit();
+//         PRP.Storages.Close();
+//     } else if (data.code == 'Escape' ) {
+//         PRP.Storages.Close();
+//     }
+// }
 
 
 
@@ -70,14 +71,14 @@ PRP.Container.Open = function() {
 }
 
 
-document.onkeyup = function (data) {
-    if (data.code == 'Enter' ) {
-        PRP.Container.Submit();
-        PRP.Container.Close();
-    } else if (data.code == 'Escape' ) {
-        PRP.Container.Close();
-    }
-}
+// document.onkeyup = function (data) {
+//     if (data.code == 'Enter' ) {
+//         PRP.Container.Submit();
+//         PRP.Container.Close();
+//     } else if (data.code == 'Escape' ) {
+//         PRP.Container.Close();
+//     }
+// }
 
 
 
