@@ -73,7 +73,7 @@ Config.Courier = {
 
 Config.Clothes = {
     male = {
-        ['tshirt_1'] = 15,  ['tshirt_2'] = 1,
+        ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
 		['torso_1'] = 150,   ['torso_2'] = 2,
 		['arms'] = 0,
 		['pants_1'] = 163,   ['pants_2'] = 3,
