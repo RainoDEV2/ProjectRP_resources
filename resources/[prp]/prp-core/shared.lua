@@ -443,7 +443,7 @@ PRPShared.Items = {
 
 
 	-- ==== A M B U L A N C E ====
-	['ifak'] 			 		     = {['name'] = 'ifak', 						['label'] = 'Bandage', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'ifak.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Heals you over time and clots wounds.'},
+	['ifaks'] 			 		     = {['name'] = 'ifaks', 						['label'] = 'Ifaks', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'ifak.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Heals you over time and clots wounds.'},
 	['bandage'] 			 		 = {['name'] = 'bandage', 						['label'] = 'Bandage', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'bandage.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'A bandage works every time'},
 	['painkillers'] 			 	 = {['name'] = 'painkillers', 					['label'] = 'Painkillers', 				['weight'] = 0, 		['type'] = 'item', 		['image'] = 'painkillers.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'For pain you can\'t stand anymore, take this pill that\'d make you feel great again'},
 	['lorazepam'] 			 	     = {['name'] = 'lorazepam', 					['label'] = 'Lorazepam', 				['weight'] = 0, 		['type'] = 'item', 		['image'] = 'painkillers.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,    ['combinable'] = nil,   ['description'] = 'Great for Stress.... Do not overdose'},
