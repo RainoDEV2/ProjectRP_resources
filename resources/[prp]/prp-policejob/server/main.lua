@@ -1097,23 +1097,24 @@ AddEventHandler("Axel:Get:Weapon", function(query)
 	local usource = source
 	local matches = {}
     str = query:sub(5)
-    -- print(str)
+
     exports.oxmysql:query("SELECT * FROM `players` WHERE `citizenid` = ?", {str}, function(result)
-	-- exports.oxmysql:query("SELECT * FROM `players` WHERE `metadata` LIKE ?", {string.lower('%'..query..'%')}, function(result) -- % wildcard, needed to search for all alike results
 
-		for index, data in ipairs(result) do
-			if data.charinfo then
-				local player = json.decode(data.charinfo)
-				local metadata = json.decode(data.metadata)
+        if result[1] ~= nil then
 
-                -- if metadata.fingerprint == query then
+            for index, data in ipairs(result) do
+
+                if data.charinfo then
+                    local player = json.decode(data.charinfo)
+                    local metadata = json.decode(data.metadata)
                     TriggerClientEvent('ProjectRP:Notify', usource, "The Weapon Serial comes back to "..player.firstname.." "..player.lastname, "success", 5000)
-                -- else
-                --     TriggerClientEvent('ProjectRP:Notify', usource, "Cant find this Fingerprint in the system.", "error", 5000)
-                -- end
-
-			end
-		end
+                else
+                    TriggerClientEvent('ProjectRP:Notify', usource, "Weapon Serial comes back to nobody...", "error", 5000)
+                end
+            end
+        else
+            TriggerClientEvent('ProjectRP:Notify', usource, "Weapon Serial comes back to nobody...", "error", 5000)
+        end
 	end)
 end)
 
