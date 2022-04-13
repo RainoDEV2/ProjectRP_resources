@@ -1,8 +1,8 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
-local cashA = 320				--<<how much minimum you can get from a robbery
-local cashB = 650				--<< how much maximum you can get from a robbery
-local ScashA = 1200 			--<<how much minimum you can get from a robbery
-local ScashB = 1850				--<< how much maximum you can get from a robbery
+local cashA = 300				--<<how much minimum you can get from a robbery
+local cashB = 600				--<< how much maximum you can get from a robbery
+local ScashA = 1000			--<<how much minimum you can get from a robbery
+local ScashB = 1400				--<< how much maximum you can get from a robbery
 
 RegisterNetEvent('prp-storerobbery:server:takeMoney', function(register, isDone)
     local src = source
