@@ -72,13 +72,13 @@ Config.PotatoesPositions = {
 Config.Clothes = {
     male = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 43,   ['torso_2'] = 0,
+        ['torso_1'] = 0,   ['torso_2'] = 0,
         ['decals_1'] = 0,   ['decals_2'] = 0,
         ['arms'] = 37,
         ['pants_1'] = 8,   ['pants_2'] = 0,
-        ['shoes_1'] = 3,   ['shoes_2'] = 0,
+        ['shoes_1'] = 12,   ['shoes_2'] = 0,
         ['chain_1'] = 0,    ['chain_2'] = 0,
-        ['helmet_1'] = -1,  ['helmet_2'] = 0,
+        ['helmet_1'] = 45,  ['helmet_2'] = 0,
         ['ears_1'] = -1,     ['ears_2'] = 0,
         ['bproof_1'] = 0,  ['bproof_2'] = 0
     },
@@ -87,7 +87,7 @@ Config.Clothes = {
         ['torso_1'] = 27,   ['torso_2'] = 0,
         ['decals_1'] = 0,   ['decals_2'] = 0,
         ['arms'] = 46,
-        ['pants_1'] = 4,   ['pants_2'] = 0,
+        ['pants_1'] = 124,   ['pants_2'] = 0,
         ['shoes_1'] = 72,   ['shoes_2'] = 0,
         ['chain_1'] = -1,    ['chain_2'] = 0,
         ['helmet_1'] = -1,  ['helmet_2'] = 0,

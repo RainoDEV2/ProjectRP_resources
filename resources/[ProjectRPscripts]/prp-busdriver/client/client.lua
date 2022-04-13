@@ -122,14 +122,14 @@ Citizen.CreateThread(function()
 							Citizen.Wait(2500)
 							local PlayerData = ProjectRP.Functions.GetPlayerData()
 							if PlayerData.charinfo.gender == 0 then 
-								SetPedComponentVariation(ped, 3, Config.Clothes.male['arms'], 0, 0) --arms
-								SetPedComponentVariation(ped, 8, Config.Clothes.male['tshirt_1'], Config.Clothes.male['tshirt_2'], 0) --t-shirt
-								SetPedComponentVariation(ped, 11, Config.Clothes.male['torso_1'], Config.Clothes.male['torso_2'], 0) --torso2
-								SetPedComponentVariation(ped, 9, Config.Clothes.male['bproof_1'], Config.Clothes.male['bproof_2'], 0) --vest
-								SetPedComponentVariation(ped, 10, Config.Clothes.male['decals_1'], Config.Clothes.male['decals_2'], 0) --decals
-								SetPedComponentVariation(ped, 7, Config.Clothes.male['chain_1'], Config.Clothes.male['chain_2'], 0) --accessory
-								SetPedComponentVariation(ped, 4, Config.Clothes.male['pants_1'], Config.Clothes.male['pants_2'], 0) -- pants
-								SetPedComponentVariation(ped, 6, Config.Clothes.male['shoes_1'], Config.Clothes.male['shoes_2'], 0) --shoes
+								SetPedComponentVariation(ped, 3, Config.Clothes.male['arms'], 11, 0) --arms
+								SetPedComponentVariation(ped, 8, Config.Clothes.male['tshirt_1'], 15, Config.Clothes.male['tshirt_2'], 0) --t-shirt
+								SetPedComponentVariation(ped, 11, Config.Clothes.male['torso_1'], 424, Config.Clothes.male['torso_2'], 3) --torso2
+								SetPedComponentVariation(ped, 9, Config.Clothes.male['bproof_1'], 0, Config.Clothes.male['bproof_2'], 0) --vest
+								SetPedComponentVariation(ped, 10, Config.Clothes.male['decals_1'], 0, Config.Clothes.male['decals_2'], 0) --decals
+								SetPedComponentVariation(ped, 7, Config.Clothes.male['chain_1'], 0, Config.Clothes.male['chain_2'], 0) --accessory
+								SetPedComponentVariation(ped, 4, Config.Clothes.male['pants_1'], 69, Config.Clothes.male['pants_2'], 0) -- pants
+								SetPedComponentVariation(ped, 6, Config.Clothes.male['shoes_1'], 37, Config.Clothes.male['shoes_2'], 0) --shoes
 								SetPedPropIndex(ped, 0, Config.Clothes.male['helmet_1'], Config.Clothes.male['helmet_2'], true) --hat
 								SetPedPropIndex(ped, 2, Config.Clothes.male['ears_1'], Config.Clothes.male['ears_2'], true) --ear
 							else
