@@ -192,12 +192,16 @@ CreateThread(function()
                 end
 
                 if IsPedInAnyVehicle(ped, false) then
-                    local pos = GetEntityCoords(PlayerPedId())
-                    NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
-                --     loadAnimDict("veh@low@front_ps@idle_duck")
-                --     if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
-                --         TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
-                --     end
+                    local vehicle = GetVehiclePedIsIn(ped,false)
+
+                    if GetEntitySpeed(vehicle) < 0.5 then
+                        local pos = GetEntityCoords(PlayerPedId())
+                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                    --     loadAnimDict("veh@low@front_ps@idle_duck")
+                    --     if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
+                    --         TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+                    --     end
+                    end
                 else
                     if isInHospitalBed then
                         if not IsEntityPlayingAnim(ped, inBedDict, inBedAnim, 3) then
