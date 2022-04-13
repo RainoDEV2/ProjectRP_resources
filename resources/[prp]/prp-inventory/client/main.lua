@@ -868,7 +868,7 @@ CreateThread(function()
             for k, v in pairs(DropsNear) do
                 if DropsNear[k] then
                     sleep = 0
-                    DrawMarker(2, v.coords.x, v.coords.y, v.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.15, 120, 10, 20, 155, false, false, false, 1, false, false, false)
+                    DrawMarker(1, v.coords.x, v.coords.y, v.coords.z-0.6, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.15, 93,	38,	193, 155, false, false, false, 1, false, false, false)
                 end
             end
         end
