@@ -598,13 +598,13 @@ RegisterNetEvent('hospital:client:Revive', function()
     end
 
     -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
-    SetEntityMaxHealth(player, 200)
-    SetEntityHealth(player, 200)
+    SetEntityMaxHealth(player, 150)
+    SetEntityHealth(player, 150)
     ClearPedBloodDamage(player)
     SetPlayerSprint(PlayerId(), true)
     ResetAll()
     ResetPedMovementClipset(player, 0.0)
-    TriggerServerEvent('hud:server:RelieveStress', 100)
+    -- TriggerServerEvent('hud:server:RelieveStress', 100)
     TriggerServerEvent("hospital:server:SetDeathStatus", false)
     TriggerServerEvent("hospital:server:SetLaststandStatus", false)
     emsNotified = false
@@ -884,14 +884,16 @@ Citizen.CreateThread(function()
 
 		if hspDist < 3.0 then
             Grandmashittimer = 0
-            if IsControlJustReleased(0,38) and hspDist < 3.0 and not checking then
+            if IsControlJustReleased(0,47) and hspDist < 3.0 and not checking then
+                print("pressed check in ")
                 checking = true
 				loadAnimDict('anim@narcotics@trash')
                 TaskPlayAnim(GetPlayerPed(-1),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
                 TriggerEvent('prp-ambulancejob:checkin')
+                checking = false
 			end
 
-            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
+            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~G~w~] to Check In")
 		end
 
 
@@ -941,6 +943,7 @@ RegisterNetEvent('prp-ambulancejob:checkin', function()
             disableMouse = false,
             disableCombat = true,
         }, {}, {}, {}, function() -- Done
+            LocalPlayer.state:set("inv_busy", false, true)
             TriggerEvent('animations:client:EmoteCommandStart', {"c"})
             local bedId = GetAvailableBed()
             if bedId then

@@ -539,7 +539,7 @@ CREATE TABLE IF NOT EXISTS `player_contacts` (
 -- Dumping data for table ProjectRP.player_contacts: ~2 rows (approximately)
 /*!40000 ALTER TABLE `player_contacts` DISABLE KEYS */;
 INSERT INTO `player_contacts` (`id`, `citizenid`, `name`, `number`, `iban`) VALUES
-	(1, 'SZC76946', 'Diaye Thelegend', '1211665849', 'US03QBCore9710835995');
+	(1, 'SZC76946', 'Diaye Thelegend', '1211665849', 'US03ProjectRP9710835995');
 /*!40000 ALTER TABLE `player_contacts` ENABLE KEYS */;
 
 -- Dumping structure for table ProjectRP.player_houses
@@ -768,3 +768,8 @@ CREATE TABLE IF NOT EXISTS `cd_dispatch` (
 COLLATE='utf8mb4_general_ci'
 ENGINE=InnoDB
 ;
+
+ALTER TABLE `player_vehicles`
+ADD COLUMN `traveldistance` INT(50) NULL DEFAULT 0 AFTER `financetime`,
+ADD COLUMN `noslevel` INT(10) NULL DEFAULT 0 AFTER `traveldistance`,
+ADD COLUMN `hasnitro` TINYINT(0) NULL DEFAULT 0 AFTER `noslevel`;

@@ -161,14 +161,8 @@ function TakeOutVehicle(vehicleInfo)
         SetVehicleNumberPlateText(veh, "POLICE"..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
         SetVehicleDirtLevel(veh, 0.0)
-        if vehicleInfo == 'npolvic' then
-            SetVehicleCustomPrimaryColour(veh, 240, 240, 240)
-            SetVehicleCustomSecondaryColour(veh, 5, 5, 5)
-            SetVehicleLivery(veh, 2)
-        else
-            SetVehicleLivery(veh, 2)
-            SetVehicleMod(veh, 0, 48)
-        end
+        SetVehicleLivery(veh, 2)
+        SetVehicleMod(veh, 0, 48)
         exports['prp-fuel']:SetFuel(veh, 100.0)
         closeMenuFull()
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
@@ -193,10 +187,15 @@ local function IsArmoryWhitelist() -- being removed
     return retval
 end
 
+
+-- RegisterCommand("shittest", function()
+
+-- end)
+
 local function SetWeaponSeries()
     for k, v in pairs(Config.Items.items) do
         if k < 6 then
-            Config.Items.items[k].info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+            Config.Items.items[k].info.serie = tostring(ProjectRP.Shared.RandomInt(3).."-"..ProjectRP.Shared.RandomInt(5).."-POL-"..string.upper(ProjectRP.Functions.GetPlayerData().charinfo.lastname))
         end
     end
 end
@@ -732,4 +731,27 @@ end)
 RegisterNetEvent('police:client:SyncSpikes')
 AddEventHandler('police:client:SyncSpikes', function(table)
     SpawnedSpikes = table
+end)
+
+
+RegisterNetEvent("Axel:Get:Fingerprint:Dialog")
+AddEventHandler("Axel:Get:Fingerprint:Dialog", function()
+
+    local shit = exports["prp-storages"]:Input({Banner = "Search Fingerprint"})
+
+    if shit ~= nil then
+        -- print(shit)
+        TriggerServerEvent("Axel:Get:Fingerprint",shit)
+    end
+end)
+
+RegisterNetEvent("Axel:Get:weapon:Dialog")
+AddEventHandler("Axel:Get:weapon:Dialog", function()
+
+    local shit = exports["prp-storages"]:Input({Banner = "Search Weapon Serial"})
+
+    if shit ~= nil then
+        -- print(shit)
+        TriggerServerEvent("Axel:Get:Weapon",shit)
+    end
 end)

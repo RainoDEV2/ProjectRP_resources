@@ -166,6 +166,8 @@ function Status()
     end
 end
 
+
+
 RegisterNetEvent('hospital:client:CheckStatus', function()
     local player, distance = GetClosestPlayer()
     if player ~= -1 and distance < 5.0 then
@@ -308,7 +310,7 @@ RegisterNetEvent('hospital:client:lorazepam', function()
     end, 'lorazepam')
 end)
 
-
+    
 
 local check = false
 local function EMSControls(variable)

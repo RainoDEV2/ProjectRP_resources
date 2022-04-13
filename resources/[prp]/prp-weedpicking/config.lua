@@ -6,7 +6,7 @@ Config.Delays = {
 	WeedProcessing = 1000 * 2
 }
 
-Config.Pricesell = 100
+Config.Pricesell = 70
 
 Config.MinPiecesWed = 1
 

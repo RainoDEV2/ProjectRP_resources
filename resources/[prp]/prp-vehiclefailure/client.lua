@@ -671,7 +671,8 @@ function DamageRandomComponent()
 	local dmgFctr = math.random() + math.random(0, 2)
 	local randomComponent = DamageComponents[math.random(1, #DamageComponents)]
 	local randomDamage = (math.random() + math.random(0, 1)) * dmgFctr
-	--exports['prp-vehicletuning']:SetVehicleStatus(ProjectRP.Functions.GetPlate(vehicle), randomComponent, exports['prp-vehicletuning']:GetVehicleStatus(ProjectRP.Functions.GetPlate(vehicle), randomComponent) - randomDamage)
+	-- Stop damage vehicles from getting more damaged just by driving around
+	--exports['prp-mechanicjob']:SetVehicleStatus(ProjectRP.Functions.GetPlate(vehicle), randomComponent, exports['prp-mechanicjob']:GetVehicleStatus(ProjectRP.Functions.GetPlate(vehicle), randomComponent) - randomDamage)
 end
 
 function procent(time)

@@ -460,6 +460,33 @@ Config.BoxZones = {
     },
     distance = 2.0
   },
+  ["policeforensic"] = {
+    name = "policeforensic",
+    coords = vector3(485.49, -989.26, 30.69),
+    length = 1,
+    width = 1,
+    heading = 0,
+    debugPoly = false,
+    -- minZ=14.33,
+    -- maxZ=18.33,
+    options = {
+      {
+        type = "client",
+        event = "Axel:Get:weapon:Dialog",
+        icon = "fas fa-comments",
+        label = "Search Weapon Serial",
+        job = "police",
+      },
+      {
+        type = "client",
+        event = "Axel:Get:Fingerprint:Dialog",
+        icon = "fas fa-comments",
+        label = "Search Fingerprint",
+        job = "police",
+      }, 
+    },
+    distance = 2.0
+  },
 }
 
 Config.PolyZones = {

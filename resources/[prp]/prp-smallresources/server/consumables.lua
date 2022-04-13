@@ -107,6 +107,13 @@ ProjectRP.Functions.CreateUseableItem("pizza", function(source, item)
     end
 end)
 
+ProjectRP.Functions.CreateUseableItem("hotdog", function(source, item)
+	local Player = ProjectRP.Functions.GetPlayer(source)
+	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
+        TriggerClientEvent('prp-items:client:eat', source, 'hotdog', 'footlong')
+    end
+end)
+
 
 ----------- / Eat
 

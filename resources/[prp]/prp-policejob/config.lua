@@ -95,46 +95,51 @@ Config.SecurityCameras = {
 Config.AuthorizedVehicles = {
 	-- Grade 0
 	[0] = {
-		["npolvic"] = "Crown Vic",
+		["pdcvpi"] = "Crown Vic",
 	},
 	-- Grade 1
 	[1] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
 	},
 	-- Grade 2
 	[2] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
 	},
 	-- Grade 3
 	[3] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol8"] = "Police Bike",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		-- ["pol8"] = "Police Bike",
 	},
 	-- Grade 4
 	[4] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol8"] = "Police Bike",
-		["pol5"] = "Police SUV",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		-- ["pol8"] = "Police Bike",
+		["pdfpiu"] = "Police SUV",
 	},
 	-- Grade 5
 	[5] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol5"] = "Police SUV",
-		["pol8"] = "Police Bike",
-		["pol9"] = "Police Raptor",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		["pdfpiu"] = "Police SUV",
+		-- ["pol8"] = "Police Bike",
+		["pdtruck"] = "Police Truck",
 	},
 	-- Grade 6
 	[6] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol5"] = "Police SUV",
-		["pol8"] = "Police Bike",
-		["pol9"] = "Police Raptor",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		["pdfpiu"] = "Police SUV",
+		-- ["pol8"] = "Police Bike",
+		["pdtruck"] = "Police Truck",
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
@@ -142,11 +147,12 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 7
 	[7] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol5"] = "Police SUV",
-		["pol8"] = "Police Bike",
-		["pol9"] = "Police Raptor",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		["pdfpiu"] = "Police SUV",
+		-- ["pol8"] = "Police Bike",
+		["pdtruck"] = "Police Truck",
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
@@ -154,11 +160,12 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 8
 	[8] = {
-		["npolvic"] = "Crown Vic",
-		["pol3"] = "Taurus",
-		["pol5"] = "Police SUV",
-		["pol8"] = "Police Bike",
-		["pol9"] = "Police Raptor",
+		["pdcvpi"] = "Crown Vic",
+		["pdtaurus"] = "Taurus",
+		["pdimpala"] = "Impala",
+		["pdfpiu"] = "Police SUV",
+		-- ["pol8"] = "Police Bike",
+		["pdtruck"] = "Police Truck",
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
@@ -433,6 +440,15 @@ Config.Items = {
         },
         [17] = {
             name = "radio",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 17,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
+        },
+        [18] = {
+            name = "ifak",
             price = 0,
             amount = 50,
             info = {},

@@ -427,6 +427,7 @@ ProjectRP.Commands.Add('givecash', 'Give cash to player.', {{name = 'id', help =
 						if xReciv.Functions.AddMoney('cash', amount) then
 							TriggerClientEvent('ProjectRP:Notify', src, "Success fully gave to ID " .. tostring(id) .. ' ' .. tostring(amount) .. '$.', "success")
 							TriggerClientEvent('ProjectRP:Notify', id, "Success recived gave " .. tostring(amount) .. '$ from ID ' .. tostring(src), "success")
+                            TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Give Cash', 'green', '**Person who gave cash (Details)**\n```Steam Name: '..GetPlayerName(xPlayer.PlayerData.source) ..' (citizenid: '..xPlayer.PlayerData.citizenid..' | id: '..xPlayer.PlayerData.source..' | Character Name: '..xPlayer.PlayerData.charinfo.firstname .. ' ' .. xPlayer.PlayerData.charinfo.lastname..') ```\n**Person Who Recieved Cash (Details)**\n```Steam Name: '..GetPlayerName(xReciv.PlayerData.source) ..' (citizenid: '..xReciv.PlayerData.citizenid..' | id: '..xReciv.PlayerData.source..' | Character Name: '..xReciv.PlayerData.charinfo.firstname .. ' ' .. xReciv.PlayerData.charinfo.lastname..') ``` **Amount Given**\n```'..amount..'```')
 							TriggerClientEvent("payanimation", src)
 						else
 							TriggerClientEvent('ProjectRP:Notify', src, "Could not give item to the given id.", "error")

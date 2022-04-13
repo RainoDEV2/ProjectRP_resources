@@ -64,6 +64,9 @@ $('document').ready(function() {
             $.post('https://prp-houses/toggleCursor');
         }
 
+        if (data.which == 27 ) {
+            Decorations.Close()
+        }
         if (data.which == 13 ) {
             if (selectedObjectData != null && $(".decorate-confirm").css('display') != 'block') {
                 $.post('https://prp-houses/editOwnedObject', JSON.stringify({

@@ -1273,10 +1273,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 		local price = tonumber((itemData.price*fromAmount))
 
 		if ProjectRP.Shared.SplitStr(shopType, "_")[1] == "Dealer" then
+			
 			if ProjectRP.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
 				price = tonumber(itemData.price)
 				if Player.Functions.RemoveMoney("cash", price, "dealer-item-bought") then
-					itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+					itemData.info.serie = tostring("SCRAPED")
+					-- itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
 					Player.Functions.AddItem(itemData.name, 1, toSlot, itemData.info)
 					TriggerClientEvent('prp-drugs:client:updateDealerItems', src, itemData, 1)
 					TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
@@ -1295,9 +1297,13 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				end
 			end
 		elseif ProjectRP.Shared.SplitStr(shopType, "_")[1] == "Itemshop" then
+
+
 			if Player.Functions.RemoveMoney("cash", price, "itemshop-bought-item") then
                 if ProjectRP.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
-                    itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+					-- print("gunstore")
+					itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(3).."-"..Player.PlayerData.citizenid)
+                    -- itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
                 end
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('prp-shops:client:UpdateShop', src, ProjectRP.Shared.SplitStr(shopType, "_")[2], itemData, fromAmount)
@@ -1306,7 +1312,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			elseif bankBalance >= price then
 				Player.Functions.RemoveMoney("bank", price, "itemshop-bought-item")
                 if ProjectRP.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
-                    itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+					itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(3).."-"..Player.PlayerData.citizenid)
+                    -- itemData.info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
                 end
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('prp-shops:client:UpdateShop', src, ProjectRP.Shared.SplitStr(shopType, "_")[2], itemData, fromAmount)
@@ -1315,6 +1322,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			else
 				TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough cash..", "error")
 			end
+
+
 		else
 			if Player.Functions.RemoveMoney("cash", price, "unkown-itemshop-bought-item") then
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
@@ -1510,7 +1519,8 @@ ProjectRP.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", hel
 					info.type = "Class C Driver License"
 				elseif itemData["type"] == "weapon" then
 					amount = 1
-					info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
+					info.serie = tostring("SCRAPED")
+					-- info.serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4))
 				elseif itemData["name"] == "harness" then
 					info.uses = 20
 				elseif itemData["name"] == "markedbills" then

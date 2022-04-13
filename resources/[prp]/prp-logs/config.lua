@@ -48,6 +48,7 @@ Config.Webhooks = {
 Config.Colors = { -- https://www.spycolor.com/
     ['default'] = 14423100,
     ['blue'] = 255,
+    ['lightgreen'] = 65311,
     ['red'] = 16711680,
     ['green'] = 65280,
     ['white'] = 16777215,

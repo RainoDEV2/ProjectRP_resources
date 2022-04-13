@@ -1,7 +1,7 @@
 Config = Config or {}
 
 Config.Timeout = 30 * (60 * 2000)
-Config.RequiredCops = 1
+Config.RequiredCops = 2
 Config.JewelleryLocation = {
     ["coords"] = vector3(-630.5, -237.13, 38.08),
 }
@@ -29,25 +29,25 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_pistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_pistol_mk2`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_combatpistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_pistol50`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_1911`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_heavypistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_smg_mk2`] = {
         ["timeOut"] = 10000
@@ -56,10 +56,10 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_machinepistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_combatpdw`] = {
         ["timeOut"] = 10000
@@ -92,7 +92,7 @@ Config.WhitelistedWeapons = {
         ["timeOut"] = 10000
     },
     [`weapon_glock`] = {
-        ["timeOut"] = 15000
+        ["timeOut"] = 25000
     },
     [`weapon_assaultrifle_mk2`] = {
         ["timeOut"] = 10000
@@ -106,22 +106,22 @@ Config.VitrineRewards = {
     [1] = {
         ["item"] = "rolex",
         ["amount"] = {
-            ["min"] = 3,
-            ["max"] = 6
+            ["min"] = 2,
+            ["max"] = 4
         },
     },
     [2] = {
         ["item"] = "diamond_ring",
         ["amount"] = {
             ["min"] = 1,
-            ["max"] = 4
+            ["max"] = 2
         },
     },
     [3] = {
         ["item"] = "goldchain",
         ["amount"] = {
-            ["min"] = 3,
-            ["max"] = 6
+            ["min"] = 2,
+            ["max"] = 4
         },
     },
 }

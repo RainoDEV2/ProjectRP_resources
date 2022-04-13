@@ -13,9 +13,9 @@ local Keys = {
 	["NENTER"] = 201, ["N4"] = 108, ["N5"] = 60, ["N6"] = 107, ["N+"] = 96, ["N-"] = 97, ["N7"] = 117, ["N8"] = 61, ["N9"] = 118
 }
 
-RegisterCommand('deb', function()
+ProjectRP.Commands.Add('deb', 'Debug mode (Admin Only)', {}, false, function(source, args)
 	dickheaddebug = not dickheaddebug
-end)
+end, 'admin')
 
 local inFreeze = false
 local lowGrav = false

@@ -1090,3 +1090,52 @@ Citizen.CreateThread(function()
         UpdateBlips()
     end
 end)
+
+
+RegisterServerEvent("Axel:Get:Weapon")
+AddEventHandler("Axel:Get:Weapon", function(query)
+	local usource = source
+	local matches = {}
+    str = query:sub(5)
+
+    exports.oxmysql:query("SELECT * FROM `players` WHERE `citizenid` = ?", {str}, function(result)
+
+        if result[1] ~= nil then
+
+            for index, data in ipairs(result) do
+
+                if data.charinfo then
+                    local player = json.decode(data.charinfo)
+                    local metadata = json.decode(data.metadata)
+                    TriggerClientEvent('ProjectRP:Notify', usource, "The Weapon Serial comes back to "..player.firstname.." "..player.lastname, "success", 5000)
+                else
+                    TriggerClientEvent('ProjectRP:Notify', usource, "Weapon Serial comes back to nobody...", "error", 5000)
+                end
+            end
+        else
+            TriggerClientEvent('ProjectRP:Notify', usource, "Weapon Serial comes back to nobody...", "error", 5000)
+        end
+	end)
+end)
+
+RegisterServerEvent("Axel:Get:Fingerprint")
+AddEventHandler("Axel:Get:Fingerprint", function(query)
+	local usource = source
+	local matches = {}
+
+	exports.oxmysql:query("SELECT * FROM `players` WHERE `metadata` LIKE ?", {string.lower('%'..query..'%')}, function(result) -- % wildcard, needed to search for all alike results
+
+		for index, data in ipairs(result) do
+			if data.charinfo then
+				local player = json.decode(data.charinfo)
+				local metadata = json.decode(data.metadata)
+
+                if metadata.fingerprint == query then
+                    TriggerClientEvent('ProjectRP:Notify', usource, "The Fingerprint comes back to "..player.firstname.." "..player.lastname, "success", 5000)
+                else
+                    TriggerClientEvent('ProjectRP:Notify', usource, "Cant find this Fingerprint in the system.", "error", 5000)
+                end
+			end
+		end
+	end)
+end)

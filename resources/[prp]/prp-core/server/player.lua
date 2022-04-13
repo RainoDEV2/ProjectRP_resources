@@ -246,12 +246,15 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
             return
         end
         if self.PlayerData.money[moneytype] then
+            old = self.PlayerData.money[moneytype]
             self.PlayerData.money[moneytype] = self.PlayerData.money[moneytype] + amount
             self.Functions.UpdatePlayerData()
             if amount > 100000 then
-                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'AddMoney', 'lightgreen', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') added, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype], true)
+                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Added ('..moneytype..')', 'lightgreen', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```'..moneytype..' Balance Before: '..old..' | New Balance: '..self.PlayerData.money[moneytype]..' | Amount Added: '..amount..'```**Reason:**\n```'..reason..'```', true)
+                -- TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'AddMoney', 'lightgreen', '**Name**\n```' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')```\n $' .. amount .. ' (' .. moneytype .. ') added, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype], true)
             else
-                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'AddMoney', 'lightgreen', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') added, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype])
+                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Added ('..moneytype..')', 'lightgreen', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```'..moneytype..' Balance Before: '..old..' | New Balance: '..self.PlayerData.money[moneytype]..' | Amount Added: '..amount..'```**Reason:**\n```'..reason..'```')
+                -- TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'AddMoney', 'lightgreen', '**Name**\n```' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')```\n $' .. amount .. ' (' .. moneytype .. ') added, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype])
             end
             TriggerClientEvent('hud:client:OnMoneyChange', self.PlayerData.source, moneytype, amount, false)
             return true
@@ -274,12 +277,13 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
                     end
                 end
             end
+            old = self.PlayerData.money[moneytype]
             self.PlayerData.money[moneytype] = self.PlayerData.money[moneytype] - amount
             self.Functions.UpdatePlayerData()
             if amount > 100000 then
-                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'RemoveMoney', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') removed, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype], true)
+                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Removed ('..moneytype..')', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```'..moneytype..' Balance Before: $'..old..' | New Balance: $'..self.PlayerData.money[moneytype]..' | Amount Added: $'..amount..'```**Reason:**\n```'..reason..'```', true)
             else
-                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'RemoveMoney', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') removed, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype])
+                TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Removed ('..moneytype..')', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```'..moneytype..' Balance Before: $'..old..' | New Balance: $'..self.PlayerData.money[moneytype]..' | Amount Added: $'..amount..'```**Reason:**\n```'..reason..'```')
             end
             TriggerClientEvent('hud:client:OnMoneyChange', self.PlayerData.source, moneytype, amount, true)
             if moneytype == 'bank' then
@@ -298,9 +302,11 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
             return
         end
         if self.PlayerData.money[moneytype] then
+            old = self.PlayerData.money[moneytype]
             self.PlayerData.money[moneytype] = amount
             self.Functions.UpdatePlayerData()
-            TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'SetMoney', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') set, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype])
+            TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Set', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```'..moneytype..' Old Balance: $'..old..' | New Balance: $'..self.PlayerData.money[moneytype]..'```**Reason:**\n```'..reason..'```')
+            -- TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Money Set', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** $' .. amount .. ' (' .. moneytype .. ') set, new ' .. moneytype .. ' balance: ' .. self.PlayerData.money[moneytype])
             return true
         end
         return false
@@ -325,7 +331,8 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
         local slot = tonumber(slot) or ProjectRP.Player.GetFirstSlotByItem(self.PlayerData.items, item)
         if itemInfo['type'] == 'weapon' and info == nil then
             info = {
-                serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4)),
+                serie = tostring("SCRAPED")
+                -- serie = tostring(ProjectRP.Shared.RandomInt(2) .. ProjectRP.Shared.RandomStr(3) .. ProjectRP.Shared.RandomInt(1) .. ProjectRP.Shared.RandomStr(2) .. ProjectRP.Shared.RandomInt(3) .. ProjectRP.Shared.RandomStr(4)),
             }
         end
         if (totalWeight + (itemInfo['weight'] * amount)) <= ProjectRP.Config.Player.MaxWeight then
