@@ -33,6 +33,7 @@ Citizen.CreateThread(function()
                 local Distance = #(GetEntityCoords(PlayerPedId()) - vector3(v['Coords']['X'], v['Coords']['Y'], v['Coords']['Z']))
 
                 if Distance <= 3.5 and IsAuthorized(v['Owner'], v['KeyHolders']) then
+                    storageshitsleep = 1
                     DrawMarker(2, v['Coords']['X'], v['Coords']['Y'], v['Coords']['Z'], 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.1, 0.1, 0.05, 242, 148, 41, 255, false, false, false, 1, false, false, false)
                     DrawText3D(v['Coords']['X'], v['Coords']['Y'], v['Coords']['Z'] + 0.15, '~g~E~s~ - Storage ('..v['SName']..')')
                     if IsControlJustReleased(0, 38) then

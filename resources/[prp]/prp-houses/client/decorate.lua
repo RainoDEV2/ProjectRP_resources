@@ -591,3 +591,10 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
+
+
+function IsInDecoMode()
+   return DecoMode
+end
+
+exports("IsInDecoMode", IsInDecoMode)

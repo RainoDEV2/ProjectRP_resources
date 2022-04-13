@@ -293,7 +293,11 @@ function AddInfoMenu(menu)
 end
 
 function OpenEmoteMenu()
+
+  if not exports["prp-houses"]:IsInDecoMode() then
     mainMenu:Visible(not mainMenu:Visible())
+  else
+  end
 end
 
 function firstToUpper(str)
