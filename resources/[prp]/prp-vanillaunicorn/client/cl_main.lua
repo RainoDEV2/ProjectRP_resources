@@ -172,3 +172,20 @@ end)
 RegisterNetEvent('prp-vanillaunicorn:Client:employeeManagement', function() -- Open boss menu
     exports["prp-menu"]:openMenu(bossMenu)
 end)
+
+
+
+
+Citizen.CreateThread(function()
+
+    local vuBlip = AddBlipForCoord(134.1635, -1302.5160, 29.2144)
+    SetBlipAsFriendly(vuBlip, true)
+    SetBlipSprite(vuBlip, 121)
+    SetBlipColour(vuBlip, 8)
+    SetBlipScale(vuBlip, 0.8)
+    SetBlipAsShortRange(vuBlip,true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(tostring("Vanilla Unicorn"))
+    EndTextCommandSetBlipName(vuBlip)
+end)
+
