@@ -13,7 +13,7 @@ Config.PaymentMax = 580 -- Max money you get paid when RNG doesnt give you oxy, 
 Config.Item = "oxy" -- The item you receive from the oxy run. Should be oxy right??
 Config.OxyChance = 600 -- Percentage chance of getting oxy on the run. Multiplied by 100. 10% = 100, 20% = 200, 50% = 500, etc. Default 55%.
 Config.OxyAmountMin = 1 -- Min oxy you get when RN Jesus gives you oxy. Default: 1.
-Config.OxyAmountMax = 1 -- Max oxy you get when RN Jesus gives you oxy. Default: 1.
+Config.OxyAmountMax = 2 -- Max oxy you get when RN Jesus gives you oxy. Default: 1.
 
 Config.BigRewarditemChance = 200 -- Percentage of getting rare item on oxy run. Multiplied by 100. 0.1% = 1, 1% = 10, 20% = 200, 50% = 500, etc.
 Config.BigRewarditem = "trojan_usb" -- Rare item.

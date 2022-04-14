@@ -5,3 +5,10 @@ BoxZone:Create(vector3(485.49, -989.26, 30.69), 1, 1, {
   --debugPoly=true
 })
 
+--Name: impound | 2022-04-14T04:57:29Z
+BoxZone:Create(vector3(-192.6, -1162.23, 23.67), 2, 1, {
+  name="impound",
+  heading=0,
+  --debugPoly=true
+})
+

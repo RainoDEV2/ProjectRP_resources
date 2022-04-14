@@ -23,17 +23,17 @@ RegisterNetEvent('prp-drugs:client:cornerselling', function(data)
                 availableDrugs = result
                 if not cornerselling then
                     cornerselling = true
-                    LocalPlayer.state:set("inv_busy", true, true)
+                    -- LocalPlayer.state:set("inv_busy", true, true)
                     ProjectRP.Functions.Notify('You started selling drugs')
                     startLocation = GetEntityCoords(PlayerPedId())
                 else
                     cornerselling = false
-                    LocalPlayer.state:set("inv_busy", false, true)
+                    -- LocalPlayer.state:set("inv_busy", false, true)
                     ProjectRP.Functions.Notify('You stopped selling drugs')
                 end
             else
                 ProjectRP.Functions.Notify('You aren\'t carrying any drugs with you..', 'error')
-                LocalPlayer.state:set("inv_busy", false, true)
+                -- LocalPlayer.state:set("inv_busy", false, true)
             end
         else
             ProjectRP.Functions.Notify("There Are Not Enough Police On Duty (".. Config.MinimumDrugSalePolice .." Required)", "error")
@@ -231,7 +231,8 @@ local function SellToPed(ped)
                 break
             else
                 if pedDist < 1.5 and cornerselling then
-                    DrawText3D(pedCoords.x, pedCoords.y, pedCoords.z, '~g~E~w~ '..bagAmount..'x '..currentOfferDrug.label..' for $'..randomPrice..'? / ~g~G~w~ Decline offer')
+                    DrawText3DTest(pedCoords.x, pedCoords.y, pedCoords.z, "[E] to sell "..bagAmount.."x "..currentOfferDrug.label.." for $"..randomPrice.." [G] tell person to leave")
+                    -- DrawText3D(pedCoords.x, pedCoords.y, pedCoords.z, '~g~E~w~ '..bagAmount..'x '..currentOfferDrug.label..' for $'..randomPrice..'? / ~g~G~w~ Decline offer')
                     if IsControlJustPressed(0, 38) then
                         TriggerServerEvent('prp-drugs:server:sellCornerDrugs', availableDrugs[drugType].item, bagAmount, randomPrice)
                         hasTarget = false
@@ -334,3 +335,22 @@ CreateThread(function()
         Wait(sleep)
     end
 end)
+
+
+function DrawText3DTest(x,y,z, text)
+
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    SetTextScale(0.35, 0.35)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(1)
+    AddTextComponentString(text)
+    DrawText(_x,_y)
+    local factor = (string.len(text)) / 370
+    DrawRect(_x,_y+0.0125, 0.015+ factor, 0.03, 41, 11, 41, 68)
+
+end

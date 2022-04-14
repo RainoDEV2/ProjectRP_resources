@@ -153,7 +153,20 @@ RegisterNetEvent('police:client:RobPlayer', function()
 end)
 
 RegisterNetEvent('police:client:JailCommand', function(playerId, time)
-    TriggerServerEvent("police:server:JailPlayer", playerId, tonumber(time))
+    exports['prp-tasknotify']:AddDialog("Police", "Are you sure you want to send this person to jail for <b>" .. tonumber(time) .. "</b> months?", function(val)
+        if val then
+            ProjectRP.Functions.Progressbar("sending_Boilingbroke", 'Sending to Boilingbroke', 2000, false, true, {
+                disableMovement = true,
+                disableCarMovement = true,
+                disableMouse = false,
+                disableCombat = true,
+            }, {}, {}, {}, function() -- Done
+                TriggerServerEvent("police:server:JailPlayer", playerId, tonumber(time))
+            end, function() -- Cancel
+
+            end)
+        end
+    end)
 end)
 
 RegisterNetEvent('police:client:BillCommand', function(playerId, price)

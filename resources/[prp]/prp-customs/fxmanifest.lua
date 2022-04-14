@@ -6,6 +6,7 @@ ui_page 'html/index.html'
 files {
     'html/index.html',
     'html/css/menu.css',
+    'html/imgs/*.png',
     'html/js/ui.js',
     'html/sounds/wrench.ogg',
     'html/sounds/respray.ogg'

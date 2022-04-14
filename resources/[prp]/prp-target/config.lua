@@ -487,6 +487,25 @@ Config.BoxZones = {
     },
     distance = 2.0
   },
+  ["impound"] = {
+    name = "impound",
+    coords = vector3(-192.6, -1162.23, 23.67),
+    length = 2,
+    width = 1,
+    heading = 0,
+    debugPoly = false,
+    -- minZ=14.33,
+    -- maxZ=18.33,
+    options = {
+      {
+        type = "client",
+        event = "Axel:Impound",
+        icon = "fas fa-comments",
+        label = "Check impound for your Car.",
+      },
+    },
+    distance = 2.0
+  },
 }
 
 Config.PolyZones = {

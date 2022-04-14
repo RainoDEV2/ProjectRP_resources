@@ -370,8 +370,14 @@ RegisterNetEvent('police:client:ImpoundVehicle', function(fullImpound, price)
         local vehpos = GetEntityCoords(vehicle)
         if #(pos - vehpos) < 5.0 and not IsPedInAnyVehicle(ped) then
             local plate = ProjectRP.Functions.GetPlate(vehicle)
-            TriggerServerEvent("police:server:Impound", plate, fullImpound, price, bodyDamage, engineDamage, totalFuel)
-            ProjectRP.Functions.DeleteVehicle(vehicle)
+            exports['prp-tasknotify']:AddDialog("Police", "Are you sure you want to impound this vehicle with a <b>$" .. tonumber(price) .. "</b> fine?", function(val)
+
+                if val then
+
+                TriggerServerEvent("police:server:Impound", plate, fullImpound, price, bodyDamage, engineDamage, totalFuel)
+                ProjectRP.Functions.DeleteVehicle(vehicle)
+                end
+            end)
         end
     end
 end)
@@ -732,6 +738,7 @@ RegisterNetEvent('police:client:SyncSpikes')
 AddEventHandler('police:client:SyncSpikes', function(table)
     SpawnedSpikes = table
 end)
+
 
 
 RegisterNetEvent("Axel:Get:Fingerprint:Dialog")

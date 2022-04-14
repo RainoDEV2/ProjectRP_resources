@@ -175,6 +175,17 @@ Config.PhoneApplications = {
         slot = 15,
         Alerts = 0,
     },
+    -- ["decrypter"] = {
+    --     app = "decrypt",
+    --     color = "#1c04f6",
+    --     icon = "fas fa-unlock-alt",
+    --     tooltipText = "Decrypt",
+    --     tooltipPos = "bottom",
+    --     job = false,
+    --     blockedjobs = {},
+    --     slot = 16,
+    --     Alerts = 0,
+    -- },
 }
 Config.MaxSlots = 20
 

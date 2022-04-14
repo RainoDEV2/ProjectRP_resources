@@ -347,25 +347,29 @@ ProjectRP.Commands.Add("plateinfo", "Run A Plate (Police Only)", {{name = "plate
     end
 end)
 
-ProjectRP.Commands.Add("depot", "Impound With Price (Police Only)", {{name = "price", help = "Price for how much the person has to pay (may be empty)"}}, false, function(source, args)
+ProjectRP.Commands.Add("impound", "Impound With Price (Police Only)", {{name = "price", help = "Price for how much the person has to pay (may be empty)"}}, false, function(source, args)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:ImpoundVehicle", src, false, tonumber(args[1]))
+        if args[1] ~= nil then
+            TriggerClientEvent("police:client:ImpoundVehicle", src, false, tonumber(args[1]))
+        else
+            TriggerClientEvent('ProjectRP:Notify', src, 'Please use the correct format - /impound (price)', 'error')
+        end 
     else
         TriggerClientEvent('ProjectRP:Notify', src, 'For on-duty police only', 'error')
     end
 end)
 
-ProjectRP.Commands.Add("impound", "Impound A Vehicle (Police Only)", {}, false, function(source)
-    local src = source
-    local Player = ProjectRP.Functions.GetPlayer(src)
-    if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
-        TriggerClientEvent("police:client:ImpoundVehicle", src, true)
-    else
-        TriggerClientEvent('ProjectRP:Notify', src, 'For on-duty police only', 'error')
-    end
-end)
+-- ProjectRP.Commands.Add("vehicleseize", "Seizes A Vehicle (Police Only)", {}, false, function(source)
+--     local src = source
+--     local Player = ProjectRP.Functions.GetPlayer(src)
+--     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
+--         TriggerClientEvent("police:client:ImpoundVehicle", src, true)
+--     else
+--         TriggerClientEvent('ProjectRP:Notify', src, 'For on-duty police only', 'error')
+--     end
+-- end)
 
 ProjectRP.Commands.Add("paytow", "Pay Tow Driver (Police Only)", {{name = "id",help = "ID of the player"}}, true, function(source, args)
     local src = source
