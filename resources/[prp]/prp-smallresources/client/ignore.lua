@@ -60,7 +60,7 @@ CreateThread(function()
                 DeleteEntity(v)
             end
         end
-        Wait(250)
+        Wait(1500)
     end
 end)
 
