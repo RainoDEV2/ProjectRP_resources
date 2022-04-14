@@ -258,7 +258,7 @@
     <Item>
       <modelName>pdcvpi</modelName>
       <txdName>pdcvpi</txdName>
-      <handlingId>FBI</handlingId>
+      <handlingId>pdcvpi</handlingId>
       <gameName>pdcvpi</gameName>
       <vehicleMakeName />
       <expressionDictName>null</expressionDictName>
