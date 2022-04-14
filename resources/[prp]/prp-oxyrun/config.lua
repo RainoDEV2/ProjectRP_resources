@@ -2,7 +2,7 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 Config = {}
 
 -- Oxy runs.
-Config.StartOxyPayment = 500 -- How much you pay at the start to start the run
+Config.StartOxyPayment = 700 -- How much you pay at the start to start the run
 
 Config.RunAmountMin = 8 -- Min drop offs the player does before it automatixally stops.
 Config.RunAmountMax = 12 -- Max drop offs the player does before it automatixally stops.
