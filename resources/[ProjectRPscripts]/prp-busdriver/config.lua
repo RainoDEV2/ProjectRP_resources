@@ -199,11 +199,11 @@ Config.Clothes = {
     },
     female = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 27,   ['torso_2'] = 0,
+        ['torso_1'] = 37,   ['torso_2'] = 0,
         ['decals_1'] = 0,   ['decals_2'] = 0,
         ['arms'] = 46,
-        ['pants_1'] = 4,   ['pants_2'] = 0,
-        ['shoes_1'] = 72,   ['shoes_2'] = 0,
+        ['pants_1'] = 3,   ['pants_2'] = 0,
+        ['shoes_1'] = 61,   ['shoes_2'] = 0,
         ['chain_1'] = -1,    ['chain_2'] = 0,
         ['helmet_1'] = -1,  ['helmet_2'] = 0,
         ['bproof_1'] = 0,  ['bproof_2'] = 0
