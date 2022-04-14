@@ -361,7 +361,7 @@ ProjectRP.Commands.Add("impound", "Impound With Price (Police Only)", {{name = "
     end
 end)
 
--- ProjectRP.Commands.Add("impound", "Impound A Vehicle (Police Only)", {}, false, function(source)
+-- ProjectRP.Commands.Add("vehicleseize", "Seizes A Vehicle (Police Only)", {}, false, function(source)
 --     local src = source
 --     local Player = ProjectRP.Functions.GetPlayer(src)
 --     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
