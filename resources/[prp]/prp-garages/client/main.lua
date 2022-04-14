@@ -249,37 +249,67 @@ end
 -- Events
 
 RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
-    if OutsideVehicles and next(OutsideVehicles) then
-        if OutsideVehicles[vehicle.plate] then
-            local Engine = GetVehicleEngineHealth(OutsideVehicles[vehicle.plate])
-            ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-                ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                    ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                    enginePercent = round(vehicle.engine / 10, 0)
-                    bodyPercent = round(vehicle.body / 10, 0)
-                    currentFuel = vehicle.fuel
 
-                    if vehicle.plate then
-                        DeleteVehicle(OutsideVehicles[vehicle.plate])
-                        OutsideVehicles[vehicle.plate] = veh
-                        TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                    end
+        if OutsideVehicles and next(OutsideVehicles) then
+            if OutsideVehicles[vehicle.plate] then
+                local Engine = GetVehicleEngineHealth(OutsideVehicles[vehicle.plate])
+                ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
+                    ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
+                        ProjectRP.Functions.SetVehicleProperties(veh, properties)
+                        enginePercent = round(vehicle.engine / 10, 0)
+                        bodyPercent = round(vehicle.body / 10, 0)
+                        currentFuel = vehicle.fuel
 
-                    SetVehicleNumberPlateText(veh, vehicle.plate)
-                    SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
-                    exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                    SetEntityAsMissionEntity(veh, true, true)
-                    doCarDamage(veh, vehicle)
-                    TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                    closeMenuFull()
-                    SetVehicleEngineOn(veh, true, true)
-                end, vehicle.plate)
-                TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-            end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
-            SetTimeout(250, function()
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
-            end)
+                        if vehicle.plate then
+                            DeleteVehicle(OutsideVehicles[vehicle.plate])
+                            OutsideVehicles[vehicle.plate] = veh
+                            TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
+                        end
+
+                        SetVehicleNumberPlateText(veh, vehicle.plate)
+                        SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
+                        exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
+                        SetEntityAsMissionEntity(veh, true, true)
+                        doCarDamage(veh, vehicle)
+                        TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
+                        TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
+                        closeMenuFull()
+                        SetVehicleEngineOn(veh, true, true)
+                    end, vehicle.plate)
+                    TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
+                end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
+                SetTimeout(250, function()
+                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
+                end)
+            else
+                ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
+                    ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
+                        ProjectRP.Functions.SetVehicleProperties(veh, properties)
+                        enginePercent = round(vehicle.engine / 10, 0)
+                        bodyPercent = round(vehicle.body / 10, 0)
+                        currentFuel = vehicle.fuel
+
+                        if vehicle.plate then
+                            OutsideVehicles[vehicle.plate] = veh
+                            TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
+                        end
+
+                        SetVehicleNumberPlateText(veh, vehicle.plate)
+                        SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
+                        exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
+                        SetEntityAsMissionEntity(veh, true, true)
+                        doCarDamage(veh, vehicle)
+                        TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
+                        TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
+                        closeMenuFull()
+                        SetVehicleEngineOn(veh, true, true)
+                    end, vehicle.plate)
+                    TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
+                end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
+                SetTimeout(250, function()
+                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
+                end)
+            end
         else
             ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
                 ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
@@ -294,7 +324,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     end
 
                     SetVehicleNumberPlateText(veh, vehicle.plate)
-                    SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
+                    SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
                     exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
                     SetEntityAsMissionEntity(veh, true, true)
                     doCarDamage(veh, vehicle)
@@ -304,40 +334,11 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     SetVehicleEngineOn(veh, true, true)
                 end, vehicle.plate)
                 TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-            end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
+            end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
             SetTimeout(250, function()
                 TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
             end)
         end
-    else
-        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                enginePercent = round(vehicle.engine / 10, 0)
-                bodyPercent = round(vehicle.body / 10, 0)
-                currentFuel = vehicle.fuel
-
-                if vehicle.plate then
-                    OutsideVehicles[vehicle.plate] = veh
-                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                end
-
-                SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
-                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                SetEntityAsMissionEntity(veh, true, true)
-                doCarDamage(veh, vehicle)
-                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                closeMenuFull()
-                SetVehicleEngineOn(veh, true, true)
-            end, vehicle.plate)
-            TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-        end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
-        SetTimeout(250, function()
-            TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
-        end)
-    end
 end)
 
 RegisterNetEvent("prp-garages:client:HouseGarage", function(house)
@@ -396,7 +397,7 @@ RegisterNetEvent("prp-garages:client:DepotList", function()
         else
             local MenuDepotOptions = {
                 {
-                    header = "Depot: "..Depots["hayesdepot"].label,
+                    header = "Depot: "..Depots["lsimpound"].label,
                     isMenuHeader = true
                 },
             }
@@ -679,8 +680,12 @@ end)
 
 RegisterNetEvent('prp-garages:client:TakeOutDepotVehicle', function(vehicle)
     if vehicle.state == "Impound" then
-        TriggerServerEvent("prp-garage:server:PayDepotPrice", vehicle)
-        Wait(1000)
+        if ProjectRP.Functions.IsSpawnPointClear(vector3(-205.3176, -1165.6792, 22.4647),5.0) then
+            TriggerServerEvent("prp-garage:server:PayDepotPrice", vehicle)
+            Wait(1000)
+        else
+            ProjectRP.Functions.Notify("There is a car blocking the Lot!", "error", 3000)
+        end
     end
 end)
 
@@ -1038,7 +1043,7 @@ Citizen.CreateThread(function()
     SetBlipScale(towtruckBlip, 0.8)
     SetBlipAsShortRange(towtruckBlip,true)
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(tostring("Tow Truck HQ"))
+    AddTextComponentString(tostring("LS Impound"))
     EndTextCommandSetBlipName(towtruckBlip)
 
 end)
@@ -1072,3 +1077,84 @@ CreateThread(function()
     --     end
     -- end
 end)
+
+
+
+
+local entityEnumerator = {
+    __gc = function(enum)
+        if enum.destructor and enum.handle then
+        enum.destructor(enum.handle)
+        end
+        enum.destructor = nil
+        enum.handle = nil
+    end
+    }
+
+    local function EnumerateEntities(initFunc, moveFunc, disposeFunc)
+        return coroutine.wrap(function()
+            local iter, id = initFunc()
+            if not id or id == 0 then
+            disposeFunc(iter)
+            return
+            end
+
+            local enum = {handle = iter, destructor = disposeFunc}
+            setmetatable(enum, entityEnumerator)
+
+            local next = true
+            repeat
+            coroutine.yield(id)
+            next, id = moveFunc(iter)
+            until not next
+
+            enum.destructor, enum.handle = nil, nil
+            disposeFunc(iter)
+        end)
+    end
+
+    local function EnumerateObjects()
+        return EnumerateEntities(FindFirstObject, FindNextObject, EndFindObject)
+    end
+
+    local function EnumeratePeds()
+        return EnumerateEntities(FindFirstPed, FindNextPed, EndFindPed)
+    end
+
+    local function EnumerateVehicles()
+        return EnumerateEntities(FindFirstVehicle, FindNextVehicle, EndFindVehicle)
+    end
+
+
+ProjectRP.Functions.GetVehicles = function()
+	local vehicles = {}
+
+	for vehicle in EnumerateVehicles() do
+		table.insert(vehicles, vehicle)
+	end
+
+	return vehicles
+end
+
+
+ProjectRP.Functions.GetVehiclesInArea = function(coords, area)
+	local vehicles       = ProjectRP.Functions.GetVehicles()
+	local vehiclesInArea = {}
+
+	for i=1, #vehicles, 1 do
+		local vehicleCoords = GetEntityCoords(vehicles[i])
+		local distance      = GetDistanceBetweenCoords(vehicleCoords, coords.x, coords.y, coords.z, true)
+
+		if distance <= area then
+			table.insert(vehiclesInArea, vehicles[i])
+		end
+	end
+
+	return vehiclesInArea
+end
+
+ProjectRP.Functions.IsSpawnPointClear = function(coords, radius)
+	local vehicles = ProjectRP.Functions.GetVehiclesInArea(coords, radius)
+
+	return #vehicles == 0
+end

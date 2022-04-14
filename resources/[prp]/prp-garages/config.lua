@@ -157,9 +157,9 @@ JobGarages = {
 }
 
 Depots = {
-    ["hayesdepot"] = {
-        label = "Hayes Depot",
-        takeVehicle = vector4(-131.7727, -1182.2717, 23.1892, 268.9681),
+    ["lsimpound"] = {
+        label = "LS Impound",
+        takeVehicle = vector4(-205.3176, -1165.6792, 22.4647, 178.4752),
         showBlip = false
     }
 }
