@@ -319,7 +319,7 @@ end)
 
 RegisterServerEvent("traphouse:takeover:notify")
 AddEventHandler("traphouse:takeover:notify", function(trapid)
-
-
+    local src = source
+    TriggerClientEvent('ProjectRP:Notify', src, 'New pincode is '..Config.TrapHouses[trapid].pincode..'', 'success')
     TriggerClientEvent("Axel:Is:sEXYa:ASADA",-1, Config.TrapHouses[trapid].gang)
 end)
