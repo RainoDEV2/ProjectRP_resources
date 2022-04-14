@@ -150,11 +150,14 @@ CreateThread(function()
     end
 end)
 
+
+local sleepweapon = 1500
 CreateThread(function()
     while true do
         if LocalPlayer.state['isLoggedIn'] then
             local ped = PlayerPedId()
             if CurrentWeaponData and next(CurrentWeaponData) then
+                sleepweapon = 3
                 if IsPedShooting(ped) or IsControlJustPressed(0, 24) then
                     if CanShoot then
                         local weapon = GetSelectedPedWeapon(ped)
@@ -185,7 +188,7 @@ CreateThread(function()
                 end
             end
         end
-        Wait(1)
+        Wait(sleepweapon)
     end
 end)
 
