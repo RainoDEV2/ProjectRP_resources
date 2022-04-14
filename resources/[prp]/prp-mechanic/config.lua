@@ -21,7 +21,7 @@ Config.LocationBlips = true -- Enable to grab the blip locations from locations.
 
 Config.LocationRequired = true -- Are the mecahnics locked to specific locations? -- IF FALSE, DISABLES JobRequiredForLocation --
 
-Config.JobRequiredForLocation = true -- Enable this if the job locations require a SPECIFIED ROLE (specified in locations.lua)
+Config.JobRequiredForLocation = false -- Enable this if the job locations require a SPECIFIED ROLE (specified in locations.lua)
 
 Config.CosmeticsJob = false -- Do vehicle cosmetics require a mechanic job role?
 

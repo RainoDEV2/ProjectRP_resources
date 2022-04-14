@@ -153,7 +153,7 @@ end
 function playAnim(animDict, animName, duration, flag)
     RequestAnimDict(animDict)
     while not HasAnimDictLoaded(animDict) do 
-      Wait(50) 
+		Wait(50) 
     end
     TaskPlayAnim(PlayerPedId(), animDict, animName, 1.0, -1.0, duration, flag, 1, false, false, false)
     RemoveAnimDict(animDict)

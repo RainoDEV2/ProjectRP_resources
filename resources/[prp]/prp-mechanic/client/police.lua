@@ -10,15 +10,16 @@ Config.PoliceLocations = {
     --Add your poly zone box locations and job name for each store and it will add it to the prp-target loop above
     { coords = vector3(451.05, -973.19, 25.7), heading = 0, }, -- MRPD UNDERGROUND PARKING
     -- { coords = vector3(-45.27, -1048.43, 28.4), heading = 70.0, }, -- BENNYS NEXT TO PDM
-    { coords = vector3(342.51, -570.98, 28.8), heading = 250.0, }, -- PILL BOX GARAGE
+    { coords = vector3(331.90, -565.72, 28.78), heading = 250.0, }, -- PILL BOX GARAGE
+    { coords = vector3(332.70, -566.00, 28.78), heading = 70.0, }, -- PILL BOX GARAGE
 }
 
 local bench = {}
 CreateThread(function()
 	for k, v in pairs(Config.PoliceLocations) do
-		RequestModel(GetHashKey("gr_prop_gr_bench_03a"))
-		while not HasModelLoaded(GetHashKey("gr_prop_gr_bench_03a")) do Citizen.Wait(2) end
-		bench[#bench+1] = CreateObject(GetHashKey("gr_prop_gr_bench_03a"),v.coords.x, v.coords.y, v.coords.z-2.4,false,false,false)
+		RequestModel(GetHashKey("imp_prop_impexp_mechbench"))
+		while not HasModelLoaded(GetHashKey("imp_prop_impexp_mechbench")) do Citizen.Wait(2) end
+		bench[#bench+1] = CreateObject(GetHashKey("imp_prop_impexp_mechbench"),v.coords.x, v.coords.y, v.coords.z-1,false,false,false)
 		SetEntityHeading(bench[#bench], v.heading)
 		FreezeEntityPosition(bench[#bench], true)
 		exports['prp-target']:AddBoxZone("bench"..k, v.coords, 1.2, 4.2, { name="bench"..k, heading = v.heading, debugPoly=Config.Debug, minZ = v.coords.z-1, maxZ = v.coords.z+1.4, }, 
