@@ -4,7 +4,7 @@
     <Item type="CHandlingData">
       <handlingName>pdtaurus</handlingName>
       <fMass value="1800.000000" />
-      <fInitialDragCoeff value="8.500000" />
+      <fInitialDragCoeff value="7.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="-0.050000" />
       <vecInertiaMultiplier x="1.000000" y="1.000000" z="1.000000" />
