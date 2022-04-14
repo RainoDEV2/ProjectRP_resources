@@ -32,5 +32,5 @@ RegisterServerEvent('oxydelivery:receivemoneyyy')
 AddEventHandler('oxydelivery:receivemoneyyy', function()
 	local player = ProjectRP.Functions.GetPlayer(source)
 
-	player.Functions.AddMoney('cash', Config.Payment)
+	player.Functions.AddMoney('cash', math.random(Config.PaymentMin, Config.PaymentMax))
 end)
