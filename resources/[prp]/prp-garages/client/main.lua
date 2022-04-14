@@ -266,7 +266,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     end
 
                     SetVehicleNumberPlateText(veh, vehicle.plate)
-                    SetEntityHeading(veh, Depots[currentGarage].takeVehicle.w)
+                    SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
                     TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
                     exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
                     SetEntityAsMissionEntity(veh, true, true)
@@ -277,7 +277,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     SetVehicleEngineOn(veh, true, true)
                 end, vehicle.plate)
                 TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-            end, Depots[currentGarage].spawnPoint, true)
+            end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
             SetTimeout(250, function()
                 TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
             end)
@@ -295,7 +295,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     end
 
                     SetVehicleNumberPlateText(veh, vehicle.plate)
-                    SetEntityHeading(veh, Depots[currentGarage].takeVehicle.w)
+                    SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
                     TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
                     exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
                     SetEntityAsMissionEntity(veh, true, true)
@@ -306,7 +306,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                     SetVehicleEngineOn(veh, true, true)
                 end, vehicle.plate)
                 TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-            end, Depots[currentGarage].spawnPoint, true)
+            end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
             SetTimeout(250, function()
                 TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
             end)
@@ -325,7 +325,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                 end
 
                 SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, Depots[currentGarage].takeVehicle.w)
+                SetEntityHeading(veh, Depots["hayesdepot"].takeVehicle.w)
                 TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
                 exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
                 SetEntityAsMissionEntity(veh, true, true)
@@ -336,7 +336,7 @@ RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
                 SetVehicleEngineOn(veh, true, true)
             end, vehicle.plate)
             TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-        end, Depots[currentGarage].spawnPoint, true)
+        end, vector4(-131.7727, -1182.2717, 23.1892, 268.9681), true)
         SetTimeout(250, function()
             TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
         end)
@@ -399,7 +399,7 @@ RegisterNetEvent("prp-garages:client:DepotList", function()
         else
             local MenuDepotOptions = {
                 {
-                    header = "Depot: "..Depots[currentGarage].label,
+                    header = "Depot: "..Depots["hayesdepot"].label,
                     isMenuHeader = true
                 },
             }
@@ -994,36 +994,56 @@ CreateThread(function()
     end
 end)
 
-CreateThread(function()
-    Wait(1000)
-    while true do
-        Wait(5)
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local inGarageRange = false
-        for k, v in pairs(Depots) do
-            local depottakeDist = #(pos - vector3(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z))
-            if depottakeDist <= 15 then
-                inGarageRange = true
-                DrawMarker(2, Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                if depottakeDist <= 1.5 then
-                    if not IsPedInAnyVehicle(ped) then
-                        DrawText3Ds(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
-                        if IsControlJustPressed(0, 38) then
-                            MenuDepot()
-                            currentGarage = k
-                        end
-                    end
-                end
-                if depottakeDist >= 4 then
-                    closeMenuFull()
-                end
-            end
-        end
-        if not inGarageRange then
-            Wait(5000)
-        end
-    end
+
+RegisterNetEvent("Axel:Impound")
+AddEventHandler("Axel:Impound", function()
+    MenuDepot()
+end)
+-- CreateThread(function()
+--     Wait(1000)
+--     while true do
+--         Wait(5)
+--         local ped = PlayerPedId()
+--         local pos = GetEntityCoords(ped)
+--         local inGarageRange = false
+--         for k, v in pairs(Depots) do
+--             local depottakeDist = #(pos - vector3(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z))
+--             if depottakeDist <= 15 then
+--                 inGarageRange = true
+--                 DrawMarker(2, Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
+--                 if depottakeDist <= 1.5 then
+--                     if not IsPedInAnyVehicle(ped) then
+--                         DrawText3Ds(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
+--                         if IsControlJustPressed(0, 38) then
+--                             MenuDepot()
+--                             currentGarage = k
+--                         end
+--                     end
+--                 end
+--                 if depottakeDist >= 4 then
+--                     closeMenuFull()
+--                 end
+--             end
+--         end
+--         if not inGarageRange then
+--             Wait(5000)
+--         end
+--     end
+-- end)
+
+
+Citizen.CreateThread(function()
+
+    towtruckBlip = AddBlipForCoord(-189.4412, -1170.3667, 23.1638)
+    SetBlipAsFriendly(towtruckBlip, true)
+    SetBlipSprite(towtruckBlip, 498)
+    SetBlipColour(towtruckBlip, 30)
+    SetBlipScale(towtruckBlip, 0.8)
+    SetBlipAsShortRange(towtruckBlip,true)
+    BeginTextCommandSetBlipName("STRING")
+    AddTextComponentString(tostring("Tow Truck HQ"))
+    EndTextCommandSetBlipName(towtruckBlip)
+
 end)
 
 CreateThread(function()
@@ -1041,17 +1061,17 @@ CreateThread(function()
         end
     end
 
-    for k, v in pairs(Depots) do
-        if v.showBlip then
-            local Depot = AddBlipForCoord(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z)
-            SetBlipSprite (Depot, 68)
-            SetBlipDisplay(Depot, 4)
-            SetBlipScale  (Depot, 0.7)
-            SetBlipAsShortRange(Depot, true)
-            SetBlipColour(Depot, 5)
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentSubstringPlayerName(Depots[k].label)
-            EndTextCommandSetBlipName(Depot)
-        end
-    end
+    -- for k, v in pairs(Depots) do
+    --     if v.showBlip then
+    --         local Depot = AddBlipForCoord(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z)
+    --         SetBlipSprite (Depot, 68)
+    --         SetBlipDisplay(Depot, 4)
+    --         SetBlipScale  (Depot, 0.7)
+    --         SetBlipAsShortRange(Depot, true)
+    --         SetBlipColour(Depot, 5)
+    --         BeginTextCommandSetBlipName("STRING")
+    --         AddTextComponentSubstringPlayerName(Depots[k].label)
+    --         EndTextCommandSetBlipName(Depot)
+    --     end
+    -- end
 end)
