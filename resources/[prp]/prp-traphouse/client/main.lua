@@ -313,20 +313,20 @@ Citizen.CreateThread(function()
                     inRange = true
                     if InteractDistance < 1 then
                         if not IsKeyHolder then
-                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~g~H~s~ to Sell Items')
+                            -- DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~g~H~s~ to Sell Items')
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z, '~b~E~w~ - Take Over (~g~$5000~w~)')
-                            DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~g~F~s~ to see reputation')
+                            -- DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z - 0.2, '~g~F~s~ to see reputation')
                             if IsControlJustPressed(0, 38) then
                                 TriggerServerEvent('prp-traphouse:server:TakeoverHouse', CurrentTraphouse)
                                 SpawnBACKUP(PlayerPedId())
                             end
-                            if IsControlJustPressed(0, 74) then
-                                local TraphouseInventory = {}
-                                TraphouseInventory.label = "traphouse_"..CurrentTraphouse
-                                TraphouseInventory.items = data.inventory
-                                TraphouseInventory.slots = 2
-                                TriggerServerEvent("inventory:server:OpenInventory", "traphouse", CurrentTraphouse, TraphouseInventory)
-                            end
+                            -- if IsControlJustPressed(0, 74) then
+                            --     local TraphouseInventory = {}
+                            --     TraphouseInventory.label = "traphouse_"..CurrentTraphouse
+                            --     TraphouseInventory.items = data.inventory
+                            --     TraphouseInventory.slots = 2
+                            --     TriggerServerEvent("inventory:server:OpenInventory", "traphouse", CurrentTraphouse, TraphouseInventory)
+                            -- end
                         else
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z + 0.2, '~g~H~s~ to Sell Items')
                             DrawText3Ds(data.coords["interaction"].x, data.coords["interaction"].y, data.coords["interaction"].z, '~b~E~w~ - Take Cash (~g~$'..data.money..'~w~)')
