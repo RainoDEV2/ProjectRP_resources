@@ -683,6 +683,7 @@ RegisterNetEvent('prp-garages:client:TakeOutDepotVehicle', function(vehicle)
         if ProjectRP.Functions.IsSpawnPointClear(vector3(-205.3176, -1165.6792, 22.4647),5.0) then
             TriggerServerEvent("prp-garage:server:PayDepotPrice", vehicle)
             Wait(1000)
+            ProjectRP.Functions.Notify("Your Vehicle is waiting Outside.", "success", "3000")
         else
             ProjectRP.Functions.Notify("There is a car blocking the Lot!", "error", 3000)
         end
