@@ -1,9 +1,27 @@
 
 
+-- lockpick1 created by Parker
+Config.DoorList['lockpick1'] = {
+    objYaw = 0.0,
+    distance = 2,
+    locked = true,
+    audioRemote = false,
+    authorizedJobs = { ['police'] = 0 },
+    fixText = false,
+    objName = -1033001619,
+    doorRate = 1.0,
+    doorType = 'door',
+    objCoords = vec3(1827.299561, 2592.863037, 46.160942),
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
+
 -- lockpick2 created by Parker
 Config.DoorList['lockpick2'] = {
     objYaw = 269.95559692383,
     distance = 2,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -20,6 +38,7 @@ Config.DoorList['lockpick2'] = {
 Config.DoorList['gate1'] = {
     objYaw = 89.999977111816,
     distance = 2,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -36,6 +55,7 @@ Config.DoorList['gate1'] = {
 Config.DoorList['exit'] = {
     objYaw = 180.00001525879,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -52,6 +72,7 @@ Config.DoorList['exit'] = {
 Config.DoorList['office'] = {
     objYaw = 0.0,
     distance = 2,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -68,6 +89,7 @@ Config.DoorList['office'] = {
 Config.DoorList['cells1'] = {
     objYaw = 29.93483543396,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -84,6 +106,7 @@ Config.DoorList['cells1'] = {
 Config.DoorList['cells2'] = {
     objYaw = 209.93482971191,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -100,6 +123,7 @@ Config.DoorList['cells2'] = {
 Config.DoorList['uppercells'] = {
     objYaw = 299.93487548828,
     distance = 2,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -123,6 +147,7 @@ Config.DoorList['uppercells2'] = {
     audioRemote = false,
     doorType = 'double',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -131,7 +156,8 @@ Config.DoorList['uppercells2'] = {
 -- 332 created by Parker
 Config.DoorList['332'] = {
     objYaw = 119.93480682373,
-    distance = 2,
+    distance = 2,#
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -148,6 +174,7 @@ Config.DoorList['332'] = {
 Config.DoorList['3321'] = {
     objYaw = 29.93483543396,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -164,6 +191,7 @@ Config.DoorList['3321'] = {
 Config.DoorList['armoury'] = {
     objYaw = 29.93483543396,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -180,6 +208,7 @@ Config.DoorList['armoury'] = {
 Config.DoorList['medical'] = {
     objYaw = 29.93483543396,
     distance = 1,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -203,6 +232,7 @@ Config.DoorList['gate1'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -219,6 +249,7 @@ Config.DoorList['gate2'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -235,6 +266,7 @@ Config.DoorList['gate3'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -251,6 +283,7 @@ Config.DoorList['gate4'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -267,6 +300,7 @@ Config.DoorList['gate5'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -283,6 +317,7 @@ Config.DoorList['gate6'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -299,6 +334,7 @@ Config.DoorList['gate7'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -315,6 +351,7 @@ Config.DoorList['gate8'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
@@ -331,6 +368,7 @@ Config.DoorList['gate9'] = {
     audioRemote = false,
     doorType = 'doublesliding',
     distance = 2,
+    locked = true,
     --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
     --autoLock = 1000,
