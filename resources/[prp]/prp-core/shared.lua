@@ -863,7 +863,7 @@ PRPShared.Jobs = {
 				name = 'Director',
 				isboss = true,
 				payment = 500
-		    },
+			},
 		},
 	},
 	['ambulance'] = {
