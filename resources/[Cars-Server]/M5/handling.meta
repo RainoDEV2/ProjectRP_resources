@@ -4,11 +4,11 @@
     <Item type="CHandlingData">
       <handlingName>M5RB_VV</handlingName>
       <fMass value="1800.000000" />
-      <fInitialDragCoeff value="7.2500000" />
+      <fInitialDragCoeff value="5.5000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.150000" z="0.000000" />
       <vecInertiaMultiplier x="1.200000" y="1.300000" z="1.800000" />
-      <fDriveBiasFront value="0.000000" />
+      <fDriveBiasFront value="0.400000" />
       <nInitialDriveGears value="6" />
       <fInitialDriveForce value="0.370000" />
       <fDriveInertia value="1.250000" />
@@ -42,7 +42,7 @@
       <fWeaponDamageMult value="1.000000" />
       <fDeformationDamageMult value="0.700000" />
       <fEngineDamageMult value="1.500000" />
-      <fPetrolTankVolume value="65.000000" />
+      <fPetrolTankVolume value="80.000000" />
       <fOilVolume value="5.000000" />
       <fSeatOffsetDistX value="0.000000" />
       <fSeatOffsetDistY value="-0.200000" />
