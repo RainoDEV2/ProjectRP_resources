@@ -581,6 +581,18 @@ Config.TargetModels = {
     },
     distance = 4.0
   },
+  ["SelfRepair"] = {
+    models = {`s_m_m_lathandy_01`},
+    options = {
+      {
+        type = "client",
+        event = "prp-mechanic:quickrepair",
+        icon = "fas fa-tools",
+        label = "Repair Vehicle",
+      },
+    },
+    distance = 4.0
+  },
 }
 
 Config.GlobalPedOptions = {

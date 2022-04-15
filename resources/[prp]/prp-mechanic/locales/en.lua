@@ -437,7 +437,7 @@ Loc["en"] = {
 		nocar = "There is no vehicle nearby",
 	},
 	
-	["police"] = {
+	["selfRepair"] = {
 		userepair = "Use Repair Station",
 		repair = "Repair",
 		extras = "Extras",

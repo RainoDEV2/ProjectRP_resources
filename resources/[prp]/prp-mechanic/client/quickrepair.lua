@@ -46,5 +46,5 @@ RegisterNetEvent('prp-mechanic:quickrepair', function()
 				emptyHands(playerPed)
 			end)
 		else TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["repair"].ductfull, "error") end
-	else TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["repair"].nocar "error") end
+	else TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["repair"].nocar, "error") end
 end)

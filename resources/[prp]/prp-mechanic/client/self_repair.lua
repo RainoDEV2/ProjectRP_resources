@@ -1,33 +1,64 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
 
---Set which jobs can use this
-Config.QuickJobs = {
-	["police"] = 0,
-	["ambulance"] = 0,
-}
-
-Config.PoliceLocations = {
+Config.SelfRepairLocations = {
     --Add your poly zone box locations and job name for each store and it will add it to the prp-target loop above
-    { coords = vector3(451.05, -973.19, 25.7), heading = 0, }, -- MRPD UNDERGROUND PARKING
-    -- { coords = vector3(-45.27, -1048.43, 28.4), heading = 70.0, }, -- BENNYS NEXT TO PDM
-    { coords = vector3(331.90, -565.72, 28.78), heading = 250.0, }, -- PILL BOX GARAGE
-    { coords = vector3(332.70, -566.00, 28.78), heading = 70.0, }, -- PILL BOX GARAGE
+    { coords = vector3(451.05, -973.19, 25.7), heading = 0, job = { ["police"] = 0, ["ambulance"] = 0 } }, -- MRPD UNDERGROUND PARKING
+    -- { coords = vector3(-45.27, -1048.43, 28.4), heading = 70.0, job = {} }, -- BENNYS NEXT TO PDM
+    { coords = vector3(331.90, -565.72, 28.78), heading = 250.0, job = { ["police"] = 0, ["ambulance"] = 0 } }, -- PILL BOX GARAGE
+    { coords = vector3(332.70, -566.00, 28.78), heading = 70.0, job = { ["police"] = 0, ["ambulance"] = 0 } }, -- PILL BOX GARAGE
+    { coords = vector3(-322.20, -140.70, 39.01), heading = 250.0, job = nil }, -- LS CUSTOMS
 }
 
 local bench = {}
 CreateThread(function()
-	for k, v in pairs(Config.PoliceLocations) do
+	for k, v in pairs(Config.SelfRepairLocations) do
 		RequestModel(GetHashKey("imp_prop_impexp_mechbench"))
 		while not HasModelLoaded(GetHashKey("imp_prop_impexp_mechbench")) do Citizen.Wait(2) end
 		bench[#bench+1] = CreateObject(GetHashKey("imp_prop_impexp_mechbench"),v.coords.x, v.coords.y, v.coords.z-1,false,false,false)
 		SetEntityHeading(bench[#bench], v.heading)
 		FreezeEntityPosition(bench[#bench], true)
-		exports['prp-target']:AddBoxZone("bench"..k, v.coords, 1.2, 4.2, { name="bench"..k, heading = v.heading, debugPoly=Config.Debug, minZ = v.coords.z-1, maxZ = v.coords.z+1.4, }, 
-			{ options = { { event = "prp-mechanic:client:Police:Menu", icon = "fas fa-cogs", label = "Use Repair Station" , job = Config.QuickJobs, }, }, distance = 5.0 })
+		if v.job ~= nil then
+			exports['prp-target']:AddBoxZone("bench"..k, v.coords, 1.2, 4.2, {
+				name="bench"..k,
+				heading = v.heading,
+				debugPoly=Config.Debug,
+				minZ = v.coords.z-1,
+				maxZ = v.coords.z+1.4,
+			}, 
+			{
+				options = {
+					{
+						event = "prp-mechanic:client:SelfRepair:AdvancedMenu",
+						icon = "fas fa-cogs",
+						label = "Use Repair Station" ,
+						job = v.job,
+					},
+				},
+				distance = 5.0
+			})
+		else
+			exports['prp-target']:AddBoxZone("bench"..k, v.coords, 1.2, 4.2, {
+				name="bench"..k,
+				heading = v.heading,
+				debugPoly=Config.Debug,
+				minZ = v.coords.z-1,
+				maxZ = v.coords.z+1.4,
+			}, 
+			{
+				options = {
+					{
+						event = "prp-mechanic:client:SelfRepair:Menu",
+						icon = "fas fa-cogs",
+						label = "Use Repair Station" ,
+					},
+				},
+				distance = 5.0
+			})
+		end
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Menu', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:AdvancedMenu', function()
 	local playerPed = PlayerPedId()
 	local validMods = {}
 	local vehicle = nil
@@ -36,40 +67,57 @@ RegisterNetEvent('prp-mechanic:client:Police:Menu', function()
 	local driver = GetPedInVehicleSeat(vehicle, -1)
 	if driver ~= playerPed then return end
 	if IsPedInAnyVehicle(playerPed, false) then
-		local PoliceMenu = {}
-			PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["common"].close, params = { event = "prp-mechanic:client:Menu:Close" } }
-			PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["police"].repair, txt = "", params = { event = "prp-mechanic:client:Police:Repair" }, }
-			PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["police"].extras, txt = "", params = { event = "prp-mechanic:client:Police:Extra" }, }
-			PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["police"].plates, txt = "", params = { event = "prp-mechanic:client:Police:Plates" }, }
+		local SelfRepairMenu = {}
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["common"].close, params = { event = "prp-mechanic:client:Menu:Close" } }
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].repair, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Repair" }, }
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].extras, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Extra" }, }
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].plates, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Plates" }, }
 			if GetNumVehicleMods(vehicle, 48) > 0 or GetVehicleLiveryCount(vehicle) > -1 then
-				PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["police"].livery, txt = "", params = { event = "prp-mechanic:client:Police:Livery" }, } end
+				SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].livery, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Livery" }, }
+			end
 			if GetNumVehicleMods(vehicle, 0) ~= 0 then 
-				PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["police"].spoiler, txt = "", params = { event = "prp-mechanic:client:Police:Spoiler" }, } end
-			PoliceMenu[#PoliceMenu+1] = { header = Loc[Config.Lan]["paint"].menuheader, txt = "", params = { event = "prp-mechanic:client:Police:Paint" }, }
-			--PoliceMenu[#PoliceMenu+1] = { header = "Test", txt = "Vehicle Death Simulator", params = { event = "prp-mechanic:client:Police:test" }, }
-		exports['prp-menu']:openMenu(PoliceMenu)
+				SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].spoiler, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Spoiler" }, }
+			end
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["paint"].menuheader, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Paint" }, }
+		exports['prp-menu']:openMenu(SelfRepairMenu)
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Extra', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Menu', function()
+	local playerPed = PlayerPedId()
+	local validMods = {}
+	local vehicle = nil
+	if not outCar() then return end
+	vehicle = GetVehiclePedIsIn(playerPed, false)
+	local driver = GetPedInVehicleSeat(vehicle, -1)
+	if driver ~= playerPed then return end
+	if IsPedInAnyVehicle(playerPed, false) then
+		local SelfRepairMenu = {}
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["common"].close, params = { event = "prp-mechanic:client:Menu:Close" } }
+			SelfRepairMenu[#SelfRepairMenu+1] = { header = Loc[Config.Lan]["selfRepair"].repair, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Repair" }, }
+		exports['prp-menu']:openMenu(SelfRepairMenu)
+	end
+end)
+
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Extra', function()
 	local playerPed = PlayerPedId()
 	local validMods = {}
 	local vehicle = nil
 	local hasMod = false
-	if not IsPedInAnyVehicle(playerPed, false) then TriggerEvent('prp-mechanic:client:Police:Menu') return end
+	if not IsPedInAnyVehicle(playerPed, false) then TriggerEvent('prp-mechanic:client:SelfRepair:Menu') return end
 	vehicle = GetVehiclePedIsIn(playerPed, false)
 	local ExtraMenu = {}
-	ExtraMenu[#ExtraMenu+1] = { isMenuHeader = true, header = Loc[Config.Lan]["police"].extras, txt = "Toggle Vehicle Extras" }
-	ExtraMenu[#ExtraMenu+1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu" }, }
+	ExtraMenu[#ExtraMenu+1] = { isMenuHeader = true, header = Loc[Config.Lan]["selfRepair"].extras, txt = "Toggle Vehicle Extras" }
+	ExtraMenu[#ExtraMenu+1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu" }, }
 	for i = 0, 20 do
 		if DoesExtraExist(vehicle, i) then hadMod = true
 		if IsVehicleExtraTurnedOn(vehicle, i) then setheader = "✅ Extra "..i else setheader = "❌ Extra "..i end
-		ExtraMenu[#ExtraMenu+1] = { header = setheader, txt = "", params = { event = "prp-mechanic:client:Police:Extra:Apply", args = { id = i }, }, } end
+		ExtraMenu[#ExtraMenu+1] = { header = setheader, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Extra:Apply", args = { id = i }, }, } end
 	end
-	if hadMod then exports['prp-menu']:openMenu(ExtraMenu) elseif not hadMod then TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["common"].noOptions, "error") TriggerEvent('prp-mechanic:client:Police:Menu') return end
+	if hadMod then exports['prp-menu']:openMenu(ExtraMenu) elseif not hadMod then TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["common"].noOptions, "error") TriggerEvent('prp-mechanic:client:SelfRepair:Menu') return end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Extra:Apply', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Extra:Apply', function(data)
 	local playerPed = PlayerPedId()
 	vehicle = GetVehiclePedIsIn(playerPed, false)
 	local veh = {}
@@ -81,10 +129,10 @@ RegisterNetEvent('prp-mechanic:client:Police:Extra:Apply', function(data)
 	Wait(500)
 	SetVehicleEngineHealth(vehicle, veh.engine)
 	SetVehicleBodyHealth(vehicle, veh.body)
-	TriggerEvent('prp-mechanic:client:Police:Extra')
+	TriggerEvent('prp-mechanic:client:SelfRepair:Extra')
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Repair', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Repair', function()
 	local playerPed = PlayerPedId()
 	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle)
 	FreezeEntityPosition(vehicle, true)
@@ -111,10 +159,10 @@ RegisterNetEvent('prp-mechanic:client:Police:Repair', function()
 	end
 	TriggerEvent("ProjectRP:Notify", "Repair Complete", "success")
 	FreezeEntityPosition(vehicle, false)
-	TriggerEvent('prp-mechanic:client:Police:Menu')
+	-- TriggerEvent('prp-mechanic:client:SelfRepair:Menu')
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Livery', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Livery', function()
 	local playerPed = PlayerPedId()
 	local validMods = {}
 	local vehicle = nil
@@ -124,7 +172,7 @@ RegisterNetEvent('prp-mechanic:client:Police:Livery', function()
 			for i = 0, GetVehicleLiveryCount(vehicle)-1 do
 				if GetVehicleLivery(vehicle) == (i) then txt = Loc[Config.Lan]["common"].current
 				elseif GetVehicleLivery(vehicle) ~= (i) then txt = "" end
-				if i ~= 0 then validMods[i] = { id = i, name = Loc[Config.Lan]["police"].livery.." "..i, install = txt } end
+				if i ~= 0 then validMods[i] = { id = i, name = Loc[Config.Lan]["selfRepair"].livery.." "..i, install = txt } end
 			end
 		else
 			oldlivery = false
@@ -141,25 +189,25 @@ RegisterNetEvent('prp-mechanic:client:Police:Livery', function()
 		if oldlivery == true then
 				if GetVehicleLivery(vehicle) == 0 then stockinstall = Loc[Config.Lan]["common"].current else stockinstall = "" end
 				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = Loc[Config.Lan]["livery"].menuheader, txt = 'Amount of Options: '..GetVehicleLiveryCount(vehicle) }
-				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu" }, }
-				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:Police:Apply", args = { id = tostring(0), old = true } } }
+				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu" }, }
+				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:SelfRepair:Apply", args = { id = tostring(0), old = true } } }
 			for k,v in pairs(validMods) do
-				LiveryMenu[#LiveryMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:Police:Apply', args = { id = tostring(v.id), old = true } } }
+				LiveryMenu[#LiveryMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:SelfRepair:Apply', args = { id = tostring(v.id), old = true } } }
 			end
 		elseif oldlivery ~= true then
 				if GetVehicleMod(vehicle, 48) == -1 then stockinstall = Loc[Config.Lan]["common"].current else stockinstall = "" end
 				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = Loc[Config.Lan]["livery"].menuheader, txt = 'Amount of Options: '..GetNumVehicleMods(vehicle, 48)+1 }
-				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu" }, }
-				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:Police:Apply", args = { id = tostring(-1) } } }
+				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu" }, }
+				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:SelfRepair:Apply", args = { id = tostring(-1) } } }
 			for k,v in pairs(validMods) do
-				LiveryMenu[#LiveryMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:Police:Apply', args = { id = tostring(v.id) } } }
+				LiveryMenu[#LiveryMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:SelfRepair:Apply', args = { id = tostring(v.id) } } }
 			end
 		end
 		exports['prp-menu']:openMenu(LiveryMenu)
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Apply', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Apply', function(data)
 	local playerPed	= PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
 	local label = GetModTextLabel(vehicle, 48, tonumber(data.id))
@@ -168,14 +216,14 @@ RegisterNetEvent('prp-mechanic:client:Police:Apply', function(data)
 		if modName == "NULL" then modName = Loc[Config.Lan]["livery"].oldMod end
 		if GetVehicleLivery(vehicle) == tonumber(data.id) then
 			TriggerEvent('ProjectRP:Notify', data.id..Loc[Config.Lan]["common"].already, "error")
-			TriggerEvent('prp-mechanic:client:Police:Livery')
+			TriggerEvent('prp-mechanic:client:SelfRepair:Livery')
 			return
 		end
 	else
 		if modName == "NULL" then modName = Loc[Config.Lan]["common"].stock end
 		if GetVehicleMod(vehicle, 48) == tonumber(data.id) then
 			TriggerEvent('ProjectRP:Notify', modName..Loc[Config.Lan]["common"].already, "error")
-			TriggerEvent('prp-mechanic:client:Police:Livery')
+			TriggerEvent('prp-mechanic:client:SelfRepair:Livery')
 			return
 		end
 	end
@@ -197,39 +245,39 @@ RegisterNetEvent('prp-mechanic:client:Police:Apply', function(data)
 		end
 	end
 	updateCar(vehicle)
-	TriggerEvent('prp-mechanic:client:Police:Livery')
+	TriggerEvent('prp-mechanic:client:SelfRepair:Livery')
 	oldlivery = nil
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Plates', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Plates', function()
 	local playerPed	= PlayerPedId()
 	local vehicle = nil
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) 
 		if DoesEntityExist(vehicle) then
 			local PlateMenu = {	
 			{ header = searchCar(vehicle)..Loc[Config.Lan]["plates"].menuheader2, isMenuHeader = true },
-			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu" } } }
+			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu" } } }
 			for k, v in pairs(Loc[Config.Lan].vehiclePlateOptions) do
 				if GetVehicleNumberPlateTextIndex(vehicle) == v.id then installed = Loc[Config.Lan]["common"].current else installed = "" end
-				PlateMenu[#PlateMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:Police:Plates:Apply', args = v.id  } }
+				PlateMenu[#PlateMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:SelfRepair:Plates:Apply', args = v.id  } }
 			end
 			exports['prp-menu']:openMenu(PlateMenu)
 		end
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Plates:Apply', function(index)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Plates:Apply', function(index)
 	local playerPed	= PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
-	if GetVehicleNumberPlateTextIndex(vehicle) == tonumber(index) then TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["plates"].already, "error") TriggerEvent('prp-mechanic:client:Police:Plates') 
+	if GetVehicleNumberPlateTextIndex(vehicle) == tonumber(index) then TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["plates"].already, "error") TriggerEvent('prp-mechanic:client:SelfRepair:Plates') 
 	elseif GetVehicleNumberPlateTextIndex(vehicle) ~= tonumber(index) then
 		SetVehicleNumberPlateTextIndex(vehicle, index)
 		emptyHands(playerPed)
-		TriggerEvent('prp-mechanic:client:Police:Plates')
+		TriggerEvent('prp-mechanic:client:SelfRepair:Plates')
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Spoiler', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Spoiler', function()
 	local playerPed	= PlayerPedId()
     local coords = GetEntityCoords(playerPed)
 	local validMods = {}
@@ -245,16 +293,16 @@ RegisterNetEvent('prp-mechanic:client:Police:Spoiler', function()
 		if GetVehicleMod(vehicle, 0) == -1 then	stockinstall = Loc[Config.Lan]["common"].current else stockinstall = ""	end
 		local spoilerMenu = {
 				{ isMenuHeader = true, header = Loc[Config.Lan]["spoilers"].menuheader, txt = Loc[Config.Lan]["common"].amountoption..#validMods+1,	},
-				{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu" } },
-				{ header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall,	params = { event = "prp-mechanic:client:Police:Spoilers:Apply", args = -1 } } }
+				{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu" } },
+				{ header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall,	params = { event = "prp-mechanic:client:SelfRepair:Spoilers:Apply", args = -1 } } }
 			for k,v in pairs(validMods) do
-				spoilerMenu[#spoilerMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:Police:Spoilers:Apply', args = tostring(v.id) } }
+				spoilerMenu[#spoilerMenu + 1] = { header = k..". "..v.name, txt = v.install, params = { event = 'prp-mechanic:client:SelfRepair:Spoilers:Apply', args = tostring(v.id) } }
 			end
 		exports['prp-menu']:openMenu(spoilerMenu)
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Spoilers:Apply', function(mod)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Spoilers:Apply', function(mod)
 	local playerPed	= PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
@@ -262,17 +310,17 @@ RegisterNetEvent('prp-mechanic:client:Police:Spoilers:Apply', function(mod)
 	if modName == "NULL" then modName = Loc[Config.Lan]["common"].stock end
 	if GetVehicleMod(vehicle, 0) == tonumber(mod) then
 		TriggerEvent('ProjectRP:Notify', modName..Loc[Config.Lan]["common"].already, "error")
-		TriggerEvent('prp-mechanic:client:Police:Spoiler')
+		TriggerEvent('prp-mechanic:client:SelfRepair:Spoiler')
 	elseif GetVehicleMod(vehicle, 0) ~= tonumber(mod) then
 		SetVehicleMod(vehicle, 0, tonumber(mod))
 		emptyHands(playerPed)
 		updateCar(vehicle)
-		TriggerEvent('prp-mechanic:client:Police:Spoiler')
+		TriggerEvent('prp-mechanic:client:SelfRepair:Spoiler')
 		TriggerEvent("ProjectRP:Notify", Loc[Config.Lan]["spoilers"].installed, "success")
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Paint', function()
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Paint', function()
 	local playerPed	= PlayerPedId()
 	local validMods = {}
 	local vehicle = nil
@@ -300,29 +348,29 @@ RegisterNetEvent('prp-mechanic:client:Police:Paint', function()
 	if type(vehPearlescentColour) == "number" then vehPearlescentColour = Loc[Config.Lan]["common"].stock end
 	local PaintMenu = {	
 			{ header = Loc[Config.Lan]["paint"].menuheader, txt = "", isMenuHeader = true },
-			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Menu", } } }
-		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].primary, txt = Loc[Config.Lan]["common"].current..": "..vehPrimaryColour, params = { event = "prp-mechanic:client:Police:Paints:Choose", args = Loc[Config.Lan]["paint"].primary } }
-		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].secondary, txt = Loc[Config.Lan]["common"].current..": "..vehSecondaryColour, params = { event = "prp-mechanic:client:Police:Paints:Choose", args = Loc[Config.Lan]["paint"].secondary } }
-		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].pearl, txt = Loc[Config.Lan]["common"].current..": "..vehPearlescentColour, params = { event = "prp-mechanic:client:Police:Paints:Choose", args = Loc[Config.Lan]["paint"].pearl } }
+			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Menu", } } }
+		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].primary, txt = Loc[Config.Lan]["common"].current..": "..vehPrimaryColour, params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose", args = Loc[Config.Lan]["paint"].primary } }
+		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].secondary, txt = Loc[Config.Lan]["common"].current..": "..vehSecondaryColour, params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose", args = Loc[Config.Lan]["paint"].secondary } }
+		PaintMenu[#PaintMenu + 1] = { header = Loc[Config.Lan]["paint"].pearl, txt = Loc[Config.Lan]["common"].current..": "..vehPearlescentColour, params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose", args = Loc[Config.Lan]["paint"].pearl } }
 	exports['prp-menu']:openMenu(PaintMenu)
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Paints:Choose', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Paints:Choose', function(data)
 	local playerPed	= PlayerPedId()
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
 	if DoesEntityExist(vehicle) then
 		exports['prp-menu']:openMenu({
 			{ header = data..Loc[Config.Lan]["paint"].menuheader, txt = "", isMenuHeader = true },
-			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Paint" } },
-			{ header = Loc[Config.Lan]["paint"].classic, txt = "", params = { event = "prp-mechanic:client:Police:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].classic } } },
-			{ header = Loc[Config.Lan]["paint"].metallic, txt = "", params = { event = "prp-mechanic:client:Police:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].metallic } } },
-			{ header = Loc[Config.Lan]["paint"].matte, txt = "", params = { event = "prp-mechanic:client:Police:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].matte } } },
-			{ header = Loc[Config.Lan]["paint"].metals, txt = "", params = { event = "prp-mechanic:client:Police:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].metals } } },
+			{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Paint" } },
+			{ header = Loc[Config.Lan]["paint"].classic, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].classic } } },
+			{ header = Loc[Config.Lan]["paint"].metallic, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].metallic } } },
+			{ header = Loc[Config.Lan]["paint"].matte, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].matte } } },
+			{ header = Loc[Config.Lan]["paint"].metals, txt = "", params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose:Colour", args = { paint = data, finish = Loc[Config.Lan]["paint"].metals } } },
 		})
 	end
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Paints:Choose:Colour', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Paints:Choose:Colour', function(data)
 	local playerPed	= PlayerPedId()
 	local vehicle = nil
 	if IsPedInAnyVehicle(playerPed, false) then	vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
@@ -333,32 +381,32 @@ RegisterNetEvent('prp-mechanic:client:Police:Paints:Choose:Colour', function(dat
 	if data.paint == Loc[Config.Lan]["paint"].pearl then colourCheck = vehPearlescentColour end
 	local PaintMenu = {	
 		{ isMenuHeader = true, header = data.finish.." "..data.paint, txt = "" },
-		{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Police:Paints:Choose", args = data.paint } } }
+		{ header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:SelfRepair:Paints:Choose", args = data.paint } } }
 	local installed = nil
 	if data.finish == Loc[Config.Lan]["paint"].classic then
 		for k, v in pairs(Loc[Config.Lan].vehicleResprayOptionsClassic) do
 			if colourCheck == v.id then installed = Loc[Config.Lan]["common"].current else installed = "" end
-			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:Police:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
+			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:SelfRepair:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
 			
 	elseif data.finish == Loc[Config.Lan]["paint"].metallic then
 		for k, v in pairs(Loc[Config.Lan].vehicleResprayOptionsClassic) do
 			if colourCheck == v.id then installed = Loc[Config.Lan]["common"].current else installed = "" end
-			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:Police:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
+			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:SelfRepair:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
 			
 	elseif data.finish == Loc[Config.Lan]["paint"].matte then
 		for k, v in pairs(Loc[Config.Lan].vehicleResprayOptionsMatte) do
 			if colourCheck == v.id then installed = Loc[Config.Lan]["common"].current else installed = "" end
-			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:Police:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
+			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:SelfRepair:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
 			
 	elseif data.finish == Loc[Config.Lan]["paint"].metals then
 		for k, v in pairs(Loc[Config.Lan].vehicleResprayOptionsMetals) do	
 			if colourCheck == v.id then installed = Loc[Config.Lan]["common"].current else installed = "" end
-			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:Police:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
+			PaintMenu[#PaintMenu + 1] = { header = k..". "..v.name, txt = installed, params = { event = 'prp-mechanic:client:SelfRepair:Paints:Apply', args = { paint = data.paint, id = v.id, name = v.name, finish = data.finish } } } end
 	end
 	exports['prp-menu']:openMenu(PaintMenu)
 end)
 
-RegisterNetEvent('prp-mechanic:client:Police:Paints:Apply', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:Paints:Apply', function(data)
 	local playerPed	= PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	if IsPedInAnyVehicle(playerPed, false) then vehicle = GetVehiclePedIsIn(playerPed, false) pushVehicle(vehicle) end
@@ -368,11 +416,11 @@ RegisterNetEvent('prp-mechanic:client:Police:Paints:Apply', function(data)
 	elseif data.paint == Loc[Config.Lan]["paint"].secondary then SetVehicleColours(vehicle, vehPrimaryColour, data.id)
 	elseif data.paint == Loc[Config.Lan]["paint"].pearl then SetVehicleExtraColours(vehicle, data.id, vehWheelColour) end
 	updateCar(vehicle)
-	TriggerEvent('prp-mechanic:client:Police:Paints:Choose:Colour', data)
+	TriggerEvent('prp-mechanic:client:SelfRepair:Paints:Choose:Colour', data)
 end)
 
 
-RegisterNetEvent('prp-mechanic:client:Police:test', function(data)
+RegisterNetEvent('prp-mechanic:client:SelfRepair:test', function(data)
 	local playerPed = PlayerPedId()
 	local coords = GetEntityCoords(playerPed)
 	vehicle = GetVehiclePedIsIn(playerPed, false)
@@ -383,7 +431,7 @@ RegisterNetEvent('prp-mechanic:client:Police:test', function(data)
 	veh.body = GetVehicleBodyHealth(vehicle)
 	doCarDamage(vehicle, veh)
 	SetVehicleDirtLevel(vehicle, 14.5)
-	TriggerEvent('prp-mechanic:client:Police:Menu')
+	TriggerEvent('prp-mechanic:client:SelfRepair:Menu')
 end)
 
 AddEventHandler('onResourceStop', function(r) 

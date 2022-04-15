@@ -84,15 +84,15 @@ Citizen.CreateThread(function()
     local c = Config.Locations["exit"]
     local Blip = AddBlipForCoord(c.x, c.y, c.z)
 
-    SetBlipSprite (Blip, 446)
+    SetBlipSprite (Blip, 643)
     SetBlipDisplay(Blip, 4)
     SetBlipScale  (Blip, 0.7)
     SetBlipAsShortRange(Blip, true)
-    SetBlipColour(Blip, 0)
+    SetBlipColour(Blip, 7)
     SetBlipAlpha(Blip, 0.7)
 
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("Autocare Mechanic")
+    AddTextComponentSubstringPlayerName("LS Customs")
     EndTextCommandSetBlipName(Blip)
 end)
 
@@ -107,23 +107,23 @@ Citizen.CreateThread(function()
                 local OnDutyDistance = #(pos - Config.Locations["duty"])
                 local VehicleDistance = #(pos - vector3(Config.Locations["vehicle"].x, Config.Locations["vehicle"].y, Config.Locations["vehicle"].z))
 
-                if onDuty then
-                    if StashDistance < 20 then
-                        inRange = true
-                        DrawMarker(2, Config.Locations["stash"].x, Config.Locations["stash"].y, Config.Locations["stash"].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.2, 210, 50, 9, 255, false, false, false, true, false, false, false)
+                -- if onDuty then
+                --     if StashDistance < 20 then
+                --         inRange = true
+                --         DrawMarker(2, Config.Locations["stash"].x, Config.Locations["stash"].y, Config.Locations["stash"].z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.2, 210, 50, 9, 255, false, false, false, true, false, false, false)
 
-                        if StashDistance < 1 then
-                            DrawText3Ds(Config.Locations["stash"].x, Config.Locations["stash"].y, Config.Locations["stash"].z, "[E] Open Stash")
-                            if IsControlJustReleased(0, 38) then
-                                TriggerEvent("inventory:client:SetCurrentStash", "mechanicstash")
-                                TriggerServerEvent("inventory:server:OpenInventory", "stash", "mechanicstash", {
-                                    maxweight = 4000000,
-                                    slots = 500,
-                                })
-                            end
-                        end
-                    end
-                end
+                --         if StashDistance < 1 then
+                --             DrawText3Ds(Config.Locations["stash"].x, Config.Locations["stash"].y, Config.Locations["stash"].z, "[E] Open Stash")
+                --             if IsControlJustReleased(0, 38) then
+                --                 TriggerEvent("inventory:client:SetCurrentStash", "mechanicstash")
+                --                 TriggerServerEvent("inventory:server:OpenInventory", "stash", "mechanicstash", {
+                --                     maxweight = 4000000,
+                --                     slots = 500,
+                --                 })
+                --             end
+                --         end
+                --     end
+                -- end
 
                 if onDuty then
                     if VehicleDistance < 20 then
@@ -167,49 +167,49 @@ Citizen.CreateThread(function()
                     end
                 end
 
-                if onDuty then
-                    for k, v in pairs(Config.Plates) do
-                        if v.AttachedVehicle == nil then
-                            local PlateDistance = #(pos - vector3(v.coords.x, v.coords.y, v.coords.z))
-                            if PlateDistance < 20 then
-                                inRange = true
-                                DrawMarker(2, v.coords.x, v.coords.y, v.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.2, 255, 255, 255, 255, 0, 0, 0, 1, 0, 0, 0)
-                                if PlateDistance < 2 then
-                                    local veh = GetVehiclePedIsIn(PlayerPedId())
-                                    if IsPedInAnyVehicle(PlayerPedId()) then
-                                        if not IsThisModelABicycle(GetEntityModel(veh)) then
-                                            DrawText3Ds(v.coords.x, v.coords.y, v.coords.z + 0.3, "[E] Place The Vehicle On The Platform")
-                                            if IsControlJustPressed(0, 38) then
-                                                DoScreenFadeOut(150)
-                                                Wait(150)
-                                                Config.Plates[ClosestPlate].AttachedVehicle = veh
-                                                SetEntityCoords(veh, v.coords)
-                                                SetEntityHeading(veh, v.coords.w)
-                                                FreezeEntityPosition(veh, true)
-                                                Wait(500)
-                                                DoScreenFadeIn(250)
-                                                TriggerServerEvent('prp-vehicletuning:server:SetAttachedVehicle', veh, k)
-                                            end
-                                        else
-                                            ProjectRP.Functions.Notify("You Cannot Put Bicycles On The Platform!", "error")
-                                        end
-                                    end
-                                end
-                            end
-                        else
-                            local PlateDistance = #(pos - vector3(v.coords.x, v.coords.y, v.coords.z))
-                            if PlateDistance < 3 then
-                                inRange = true
-                                DrawText3Ds(v.coords.x, v.coords.y, v.coords.z, "[E] Open Menu")
-                                if IsControlJustPressed(0, 38) then
-                                    OpenMenu()
-                                    Menu.hidden = not Menu.hidden
-                                end
-                                Menu.renderGUI()
-                            end
-                        end
-                    end
-                end
+                -- if onDuty then
+                --     for k, v in pairs(Config.Plates) do
+                --         if v.AttachedVehicle == nil then
+                --             local PlateDistance = #(pos - vector3(v.coords.x, v.coords.y, v.coords.z))
+                --             if PlateDistance < 20 then
+                --                 inRange = true
+                --                 DrawMarker(2, v.coords.x, v.coords.y, v.coords.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.3, 0.2, 255, 255, 255, 255, 0, 0, 0, 1, 0, 0, 0)
+                --                 if PlateDistance < 2 then
+                --                     local veh = GetVehiclePedIsIn(PlayerPedId())
+                --                     if IsPedInAnyVehicle(PlayerPedId()) then
+                --                         if not IsThisModelABicycle(GetEntityModel(veh)) then
+                --                             DrawText3Ds(v.coords.x, v.coords.y, v.coords.z + 0.3, "[E] Place The Vehicle On The Platform")
+                --                             if IsControlJustPressed(0, 38) then
+                --                                 DoScreenFadeOut(150)
+                --                                 Wait(150)
+                --                                 Config.Plates[ClosestPlate].AttachedVehicle = veh
+                --                                 SetEntityCoords(veh, v.coords)
+                --                                 SetEntityHeading(veh, v.coords.w)
+                --                                 FreezeEntityPosition(veh, true)
+                --                                 Wait(500)
+                --                                 DoScreenFadeIn(250)
+                --                                 TriggerServerEvent('prp-vehicletuning:server:SetAttachedVehicle', veh, k)
+                --                             end
+                --                         else
+                --                             ProjectRP.Functions.Notify("You Cannot Put Bicycles On The Platform!", "error")
+                --                         end
+                --                     end
+                --                 end
+                --             end
+                --         else
+                --             local PlateDistance = #(pos - vector3(v.coords.x, v.coords.y, v.coords.z))
+                --             if PlateDistance < 3 then
+                --                 inRange = true
+                --                 DrawText3Ds(v.coords.x, v.coords.y, v.coords.z, "[E] Open Menu")
+                --                 if IsControlJustPressed(0, 38) then
+                --                     OpenMenu()
+                --                     Menu.hidden = not Menu.hidden
+                --                 end
+                --                 Menu.renderGUI()
+                --             end
+                --         end
+                --     end
+                -- end
 
                 if not inRange then
                     Citizen.Wait(1500)

@@ -105,8 +105,8 @@ RegisterNetEvent('prp-mechanic:client:Menu:List', function()
 	
 	if external ~= nil then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = Loc[Config.Lan]["check"].label13, } end
 	
-	if GetNumVehicleMods(vehicle, 48) ~= 0 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["police"].livery.." - [ "..GetNumVehicleMods(vehicle, 48)..Loc[Config.Lan]["check"].label12, } end
-	if GetVehicleLiveryCount(vehicle) ~= -1 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["police"].livery.." - [ "..GetVehicleLiveryCount(vehicle)..Loc[Config.Lan]["check"].label12, } end
+	if GetNumVehicleMods(vehicle, 48) ~= 0 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["selfRepair"].livery.." - [ "..GetNumVehicleMods(vehicle, 48)..Loc[Config.Lan]["check"].label12, } end
+	if GetVehicleLiveryCount(vehicle) ~= -1 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["selfRepair"].livery.." - [ "..GetVehicleLiveryCount(vehicle)..Loc[Config.Lan]["check"].label12, } end
 	
 	if GetNumVehicleMods(vehicle, 0) ~= 0 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["check"].label15..GetNumVehicleMods(vehicle, 0)..Loc[Config.Lan]["check"].label12, } end
 	if GetNumVehicleMods(vehicle, 1) ~= 0 then CheckMenu[#CheckMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["check"].label16..GetNumVehicleMods(vehicle, 1)..Loc[Config.Lan]["check"].label12, } end
