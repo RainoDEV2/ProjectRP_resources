@@ -1020,25 +1020,25 @@ PRPShared.Jobs = {
 		defaultDuty = true,
 		grades = {
             ['0'] = {
-                name = 'Recruit',
-                payment = 220
+                name = 'Salvager',
+                payment = 120
             },
 			['1'] = {
-                name = 'Novice',
-                payment = 237
+                name = 'Basic',
+                payment = 137
             },
 			['2'] = {
                 name = 'Experienced',
-                payment = 250
+                payment = 150
             },
 			['3'] = {
                 name = 'Advanced',
-                payment = 275
+                payment = 175
             },
 			['4'] = {
                 name = 'Manager',
 				isboss = true,
-                payment = 300
+                payment = 200
             },
         },
 	},
