@@ -333,6 +333,10 @@ PRPShared.Items = {
 	['pixellaptop'] = {['name'] = 'pixellaptop', ['label'] = 'pixellaptop', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'tunerchip.png', ['unique'] = true, ['useable'] = true,  ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Boosting Laptop'}, 
 	['disabler'] = {['name'] = 'disabler', ['label'] = 'disabler', ['weight'] = 500, ['type'] = 'item', ['image'] = 'tablet.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'for the boosting contracts'},
 	
+	-- Storages -- soonTM
+	['bigcontainer'] = {['name'] = 'bigcontainer', ['label'] = 'Big Mobile Container', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'container_l.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A container duh'},
+	['mediumcontainer'] = {['name'] = 'mediumcontainer', ['label'] = 'Medium Mobile Container', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'container_m.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A container duh'},
+	['smallcontainer'] = {['name'] = 'smallcontainer', ['label'] = 'Small Mobile Container', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'container_s.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A container duh'},
 	-- ITEMS
 	['shovel'] 					     = {['name'] = 'shovel', 			 	  	  	['label'] = 'Shovel', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'shovel.png', 				['unique'] = true, 		['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = "Looks like a great tool for gardening."},
 	['id_card'] 					 = {['name'] = 'id_card', 			 	  	  	['label'] = 'ID Card', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'id_card.png', 				['unique'] = true, 		['useable'] = true, 	['shouldClose'] = false,   ['combinable'] = nil,   ['description'] = 'A card containing all your information to identify yourself'},
@@ -2826,23 +2830,14 @@ PRPShared.Vehicles = {
 		['hash'] = `brawler`,
 		['shop'] = 'pdm',
 	},
-	['caracara'] = {
-		['name'] = 'Caracara',
+	['caracara2'] = {
+		['name'] = 'Caracara 4x4',
 		['brand'] = 'Vapid',
 		['model'] = 'caracara',
-		['price'] = 60000,
+		['price'] = 80000,
 		['category'] = 'offroad',
 		['hash'] = `caracara`,
 		['shop'] = 'pdm',
-	},
-	['caracara2'] = {							--DLC
-		['name'] = 'Caracara 4x4',
-		['brand'] = 'Vapid',
-		['model'] = 'caracara2',
-		['price'] = 80000,
-		['category'] = 'offroad',
-		['hash'] = `caracara2`,
-		['shop'] = 'none',
 	},
 	['dubsta3'] = {
 		['name'] = 'Dubsta 6x6',
