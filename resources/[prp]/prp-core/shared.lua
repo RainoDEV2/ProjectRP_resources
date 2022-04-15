@@ -41,11 +41,66 @@ PRPShared.Round = function(value, numDecimalPlaces)
     return math.floor((value * power) + 0.5) / (power)
 end
 
-
 PRPShared.StarterItems = {
     ['phone'] = { amount = 1, item = 'phone' },
     ['id_card'] = { amount = 1, item = 'id_card' },
     ['driver_license'] = { amount = 1, item = 'driver_license' },
+}
+
+PRPShared.MaleNoGloves = {
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [116] = true,
+    [117] = true,
+    [118] = true,
+    [188] = true,
+    [200] = true,
+    [201] = true,
+}
+
+PRPShared.FemaleNoGloves = {
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [20] = true,
+    [77] = true,
+    [133] = true,
+    [134] = true,
+    [135] = true,
+    [157] = true,
+    [165] = true,
+    [233] = true,
 }
 
 PRPShared.Items = {

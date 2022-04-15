@@ -190,6 +190,22 @@ function ProjectRP.Functions.GetClosestPed(coords, ignoreList)
     return closestPed, closestDistance
 end
 
+function ProjectRP.Functions.IsWearingGloves()
+    local ped = PlayerPedId()
+    local armIndex = GetPedDrawableVariation(ped, 3)
+    local model = GetEntityModel(ped)
+    if model == `mp_m_freemode_01` then
+        if ProjectRP.Shared.MaleNoGloves[armIndex] then
+            return false
+        end
+    else
+        if ProjectRP.Shared.FemaleNoGloves[armIndex] then
+            return false
+        end
+    end
+    return true
+end
+
 function ProjectRP.Functions.GetClosestPlayer(coords)
     local ped = PlayerPedId()
     if coords then

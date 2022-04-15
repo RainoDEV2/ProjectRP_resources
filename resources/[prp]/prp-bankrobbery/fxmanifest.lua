@@ -1,17 +1,16 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'prp-BankRobbery'
-version '1.0.0'
+description 'Bankrobbery for PRP-Core'
+version '1.1.0'
 
 ui_page 'html/index.html'
 
-shared_scripts { 
-	'@prp-core/import.lua',
-	'config.lua'
-}
+shared_script 'config.lua'
 
 client_scripts {
+    '@PolyZone/client.lua',
+    '@PolyZone/BoxZone.lua',
     'client/fleeca.lua',
     'client/pacific.lua',
     'client/powerstation.lua',
@@ -24,3 +23,7 @@ server_script 'server/main.lua'
 files {
     'html/*',
 }
+
+dependency 'PolyZone'
+
+lua54 'yes'

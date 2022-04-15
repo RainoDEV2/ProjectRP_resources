@@ -1,19 +1,24 @@
 Config = Config or {}
 
+Config.UseTarget = true -- Use prp-target interactions (don't change this, go to your server.cfg and add `setr UseTarget true` to use this and just that from true to false or the other way around)
+
 Config.ItemTiers = 1
 
 Config.MinimumPaletoPolice = 2
 Config.MinimumPacificPolice = 3
 Config.MinimumFleecaPolice = 1
 Config.MinimumThermitePolice = 1
+Config.DispatchCooldown = 5 -- The amount of minutes it takes for the cops to be able to be called again after they were called
+
+Config.HitsNeeded = 7 -- The amount of powerstation needed to be hit to cause a blackout
+Config.BlackoutTimer = 8 -- The amount of minutes a blackout will take until all power comes back
 
 Config.RewardTypes = {
     [1] = {
         type = "item"
     },
     [2] = {
-        type = "money",
-        maxAmount = 500
+        type = "money"
     }
 }
 
@@ -25,11 +30,23 @@ Config.LockerRewards = {
         [1] = {item = "rolex", minAmount = 5, maxAmount = 15},
     },
     ["tier3"] = {
-        [1] = {item = "goldbar", minAmount = 1, maxAmount = 3},
+        [1] = {item = "goldbar", minAmount = 1, maxAmount = 2},
     },
 }
 
 Config.LockerRewardsPaleto = {
+    ["tier1"] = {
+        [1] = {item = "goldchain", minAmount = 5, maxAmount = 15},
+    },
+    ["tier2"] = {
+        [1] = {item = "rolex", minAmount = 5, maxAmount = 15},
+    },
+    ["tier3"] = {
+        [1] = {item = "goldbar", minAmount = 1, maxAmount = 3},
+    },
+}
+
+Config.LockerRewardsPacific = {
     ["tier1"] = {
         [1] = {item = "goldchain", minAmount = 14, maxAmount = 24},
     },
@@ -37,19 +54,7 @@ Config.LockerRewardsPaleto = {
         [1] = {item = "rolex", minAmount = 14, maxAmount = 24},
     },
     ["tier3"] = {
-        [1] = {item = "goldbar", minAmount = 3, maxAmount = 8},
-    },
-}
-
-Config.LockerRewardsPacific = {
-    ["tier1"] = {
-        [1] = {item = "goldbar", minAmount = 5, maxAmount = 15},
-    },
-    ["tier2"] = {
-        [1] = {item = "goldbar", minAmount = 5, maxAmount = 15},
-    },
-    ["tier3"] = {
-        [1] = {item = "goldbar", minAmount = 5, maxAmount = 15},
+        [1] = {item = "goldbar", minAmount = 4, maxAmount = 8},
     },
 }
 
@@ -386,7 +391,7 @@ Config.SmallBanks = {
         ["object"] = `v_ilev_gb_vauldr`,
         ["heading"] = {
             closed = -270.542,
-            open = -170.542
+            open = -370.542
         },
         ["camId"] = 25,
         ["isOpened"] = false,
@@ -432,7 +437,7 @@ Config.SmallBanks = {
                 ["isOpened"] = false
             }
         }
-    }	
+    }
 }
 
 Config.BigBanks = {
@@ -576,60 +581,4 @@ Config.BigBanks = {
             }
         }
     }
-}
-
-Config.MaleNoHandshoes = {
-    [0] = true,
-    [1] = true,
-    [2] = true,
-    [3] = true,
-    [4] = true,
-    [5] = true,
-    [6] = true,
-    [7] = true,
-    [8] = true,
-    [9] = true,
-    [10] = true,
-    [11] = true,
-    [12] = true,
-    [13] = true,
-    [14] = true,
-    [15] = true,
-    [18] = true,
-    [19] = true,
-    [116] = true,
-    [117] = true,
-    [118] = true,
-    [188] = true,
-    [200] = true,
-    [201] = true,
-}
-
-Config.FemaleNoHandshoes = {
-    [0] = true,
-    [1] = true,
-    [2] = true,
-    [3] = true,
-    [4] = true,
-    [5] = true,
-    [6] = true,
-    [7] = true,
-    [8] = true,
-    [9] = true,
-    [10] = true,
-    [11] = true,
-    [12] = true,
-    [13] = true,
-    [14] = true,
-    [15] = true,
-    [18] = true,
-    [19] = true,
-    [20] = true,
-    [77] = true,
-    [133] = true,
-    [134] = true,
-    [135] = true,
-    [157] = true,
-    [165] = true,
-    [233] = true,
 }
