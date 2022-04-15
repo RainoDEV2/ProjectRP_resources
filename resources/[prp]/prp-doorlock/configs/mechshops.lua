@@ -3,7 +3,8 @@
 -- bennyspdm created by Parker
 Config.DoorList['bennyspdm'] = {
     objYaw = 69.999923706055,
-    distance = 3,
+    distance = 4,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['realestate'] = 0 },
     fixText = false,
@@ -20,6 +21,7 @@ Config.DoorList['bennyspdm'] = {
 Config.DoorList['bennyssouth'] = {
     objYaw = 0.0,
     distance = 4,
+    locked = true,
     audioRemote = false,
     authorizedJobs = { ['realestate'] = 0 },
     fixText = false,
