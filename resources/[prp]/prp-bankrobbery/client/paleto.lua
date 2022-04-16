@@ -25,10 +25,6 @@ RegisterNetEvent('prp-bankrobbery:UseBankcardA', function()
                         anim = "hotwire",
                         flags = 16,
                     }, {}, {}, function() -- Done
-                        StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
-                        TriggerServerEvent('prp-bankrobbery:server:setBankState', "paleto", true)
-                        TriggerServerEvent('prp-bankrobbery:server:removeBankCard', '01')
-                        TriggerServerEvent('prp-doorlock:server:updateState', 4, false, false, false, true, false, false)
                         if copsCalled or not Config.BigBanks["paleto"]["alarm"] then return end
                         local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
                         local street1 = GetStreetNameFromHashKey(s1)
@@ -37,6 +33,16 @@ RegisterNetEvent('prp-bankrobbery:UseBankcardA', function()
                         if street2 then streetLabel = streetLabel .. " " .. street2 end
                         TriggerServerEvent("prp-bankrobbery:server:callCops", "paleto", 0, streetLabel, pos)
                         copsCalled = true
+                        TriggerEvent("prp:numbers:start", 45, function(output)
+                            if output == true then
+                                StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                                TriggerServerEvent('prp-bankrobbery:server:setBankState', "paleto", true)
+                                TriggerServerEvent('prp-bankrobbery:server:removeBankCard', '01')
+                                TriggerServerEvent('prp-doorlock:server:updateState', 4, false, false, false, true, false, false)
+                            else
+                                StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
+                            end
+                        end)
                     end, function() -- Cancel
                         StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                         ProjectRP.Functions.Notify("Canceled..", "error")
