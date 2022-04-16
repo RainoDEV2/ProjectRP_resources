@@ -89,7 +89,7 @@ Config.DoorList['office'] = {
 Config.DoorList['cells1'] = {
     objYaw = 29.93483543396,
     distance = 1,
-    locked = true,
+    locked = false,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,
@@ -106,7 +106,7 @@ Config.DoorList['cells1'] = {
 Config.DoorList['cells2'] = {
     objYaw = 209.93482971191,
     distance = 1,
-    locked = true,
+    locked = false,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },
     fixText = false,

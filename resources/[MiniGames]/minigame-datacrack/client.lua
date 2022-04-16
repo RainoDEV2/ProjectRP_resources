@@ -143,7 +143,6 @@ function F_02668(arg1)
                 PlaySoundFrontend(-1, "HACKING_SUCCESS", "", true)
                 Citizen.Wait(2500)
                 stophack = true
-                datacrackCallback(true)
                 TriggerEvent("datacrack", true)
                 return
             end
@@ -154,13 +153,11 @@ end
 
 function Abort()
     stophack = true
-    datacrackCallback(false)
     TriggerEvent("datacrack", false)
 end
 
-function Start(arg1, arg2)
+function Start(arg1)
     local loc1
-    datacrackCallback = arg2
     if arg1 == nil then
         loc1 = 25
     elseif arg1 < 2 then
@@ -175,3 +172,15 @@ function Start(arg1, arg2)
     stophack = false
     F_02668(loc1)
 end
+
+AddEventHandler('datacrack:start', function(arg1, cb)
+    Start(arg1)
+    while stophack == false do 
+        Citizen.Wait(100)
+    end
+    if Dat_2[1].val4 == false and Dat_2[2].val4 == false and Dat_2[3].val4 == false and Dat_2[4].val4 == false and Dat_2[5].val4 == false and Dat_2[6].val4 == false and Dat_2[7].val4 == false then
+        cb(true)
+    else
+        cb(false)
+    end
+end)

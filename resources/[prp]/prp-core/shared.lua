@@ -1095,6 +1095,11 @@ PRPShared.Jobs = {
 				isboss = true,
                 payment = 200
             },
+			['5'] = {
+                name = 'Owner',
+				isboss = true,
+                payment = 200
+            },
         },
 	},
 	["pizza"] = {

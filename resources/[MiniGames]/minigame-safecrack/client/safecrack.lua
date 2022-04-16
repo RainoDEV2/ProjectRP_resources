@@ -79,7 +79,7 @@ AddEventHandler("safecracking:loop", function(difficulty, functionName)
 		if IsControlJustPressed(0, 322) then
 			Cracking = false
 			SafeCrackCallback('Escaped')
-		  end
+		end
 		if IsDisabledControlPressed(1, 74) and safelock ~= desirednum then
 			Citizen.Wait(1000)
 		end
