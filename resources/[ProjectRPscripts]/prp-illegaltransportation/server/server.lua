@@ -12,7 +12,7 @@ end)
 ProjectRP.Functions.CreateCallback('prp-illegaltransportation:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.Payout
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Transport Payout")
     cb(money)
 end)
 

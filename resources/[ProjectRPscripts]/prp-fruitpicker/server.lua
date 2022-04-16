@@ -21,7 +21,7 @@ AddEventHandler('prp-fruitpicker:depositBack', function()
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
 	local Payout = Config.DepositPrice
 	
-	xPlayer.Functions.AddMoney("bank", Config.DepositPrice)
+	xPlayer.Functions.AddMoney("bank", Config.DepositPrice,"Fruit Picker Deposit Back")
 end)
 
 RegisterServerEvent('prp-fruitpicker:Payout')
@@ -29,5 +29,5 @@ AddEventHandler('prp-fruitpicker:Payout', function(arg)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
 	local Payout = Config.Payout * arg
 	
-	xPlayer.Functions.AddMoney("cash", Payout)
+	xPlayer.Functions.AddMoney("cash", Payout,"Fruit Picker Payout")
 end)

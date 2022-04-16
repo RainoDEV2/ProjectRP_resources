@@ -3,49 +3,49 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 ProjectRP.Functions.CreateCallback('prp-illegalordersType1:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForFirstOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType2:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForSecondOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType3:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForThirdOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType4:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForFourthOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType5:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForFifthOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType6:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForSixthOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 
 ProjectRP.Functions.CreateCallback('prp-illegalordersType7:payout', function(source, cb)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
     local money = Config.PayoutForSeventhOrder
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Illegal Orders Payout")
     cb(money)
 end)
 

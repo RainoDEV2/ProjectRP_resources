@@ -34,7 +34,7 @@ AddEventHandler("prp-mining:Selling", function(data)
         local amount = Player.Functions.GetItemByName(data).amount
         local pay = (amount * Config.SellItems[data])
         Player.Functions.RemoveItem(data, amount)
-        Player.Functions.AddMoney('cash', pay)
+        Player.Functions.AddMoney('cash', pay, "Mining Job")
         TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[data], 'remove', amount)
     else
         TriggerClientEvent("ProjectRP:Notify", src, "You don't have any "..ProjectRP.Shared.Items[data].label, "error")
@@ -51,7 +51,7 @@ AddEventHandler("prp-mining:SellJewel", function(data)
         local amount = Player.Functions.GetItemByName(data).amount
         local pay = (amount * Config.SellItems[data])
         Player.Functions.RemoveItem(data, amount)
-        Player.Functions.AddMoney('cash', pay)
+        Player.Functions.AddMoney('cash', pay, "Jewel Sell")
         TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[data], 'remove', amount)
     else
         TriggerClientEvent("ProjectRP:Notify", src, "You don't have any "..ProjectRP.Shared.Items[data].label, "error")

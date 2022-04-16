@@ -21,7 +21,7 @@ AddEventHandler('prp-warehouse:returnVehicle', function()
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
 	local Payout = Config.DepositPrice
 	
-	xPlayer.Functions.AddMoney("bank", Config.DepositPrice)
+	xPlayer.Functions.AddMoney("bank", Config.DepositPrice,"Warehouse Vehicle Deposit Back")
 end)
 
 RegisterServerEvent('prp-warehouse:Payout')
@@ -29,5 +29,5 @@ AddEventHandler('prp-warehouse:Payout', function(arg)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
 	local Payout = Config.Payout * arg
 	
-	xPlayer.Functions.AddMoney("cash", Payout)
+	xPlayer.Functions.AddMoney("cash", Payout,"Warehouse Payout")
 end)
