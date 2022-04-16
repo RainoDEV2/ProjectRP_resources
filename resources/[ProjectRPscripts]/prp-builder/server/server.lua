@@ -36,6 +36,6 @@ ProjectRP.Functions.CreateCallback('prp-builder:payout', function(source, cb, xP
             ['@job'] = 'builder'
         })
     end
-	xPlayer.Functions.AddMoney("cash", money)
+	xPlayer.Functions.AddMoney("cash", money,"Builder Payout")
     cb(money, exp)  
 end)

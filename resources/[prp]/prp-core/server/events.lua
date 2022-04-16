@@ -144,7 +144,7 @@ RegisterNetEvent('ProjectRP:UpdatePlayerSalary', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Player then
-        Player.Functions.AddMoney("bank", Player.PlayerData.job.payment)
+        Player.Functions.AddMoney("bank", Player.PlayerData.job.payment,"Salary Recieved")
         TriggerClientEvent('ProjectRP:Notify', src, 'You have received your salary!')
         Player.Functions.Save()
     end

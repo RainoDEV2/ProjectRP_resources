@@ -138,7 +138,7 @@ AddEventHandler('prp-atms:server:doAccountWithdraw', function(data)
                 local bankCount = xCH.Functions.GetMoney('bank') - tonumber(data.amount)
                 if bankCount > 0 then
                     xCH.Functions.RemoveMoney('bank', tonumber(data.amount))
-                    xPlayer.Functions.AddMoney('cash', tonumber(data.amount))
+                    xPlayer.Functions.AddMoney('cash', tonumber(data.amount),"ATM Withdraw")
                     dailyWithdraws[cardHolder] = dailyWithdraws[cardHolder] + tonumber(data.amount)
                     TriggerClientEvent('ProjectRP:Notify', src, "Withdraw $" .. data.amount .. ' from credit card. Daily Withdraws: ' .. dailyWithdraws[cardHolder], "success")
                 else
@@ -155,7 +155,7 @@ AddEventHandler('prp-atms:server:doAccountWithdraw', function(data)
                 local xCH = json.decode(player[1])
                 local bankCount = tonumber(xCH.money.bank) - tonumber(data.amount)
                 if bankCount > 0  then
-                    xPlayer.Functions.AddMoney('cash', tonumber(data.amount))
+                    xPlayer.Functions.AddMoney('cash', tonumber(data.amount),"ATM Withdraw")
                     xCH.money.bank = bankCount
                     exports.oxmysql:execute('UPDATE players SET money = ? WHERE citizenid = ?', { xCH.money, cardHolder })
                     dailyWithdraws[cardHolder] = dailyWithdraws[cardHolder] + tonumber(data.amount)
