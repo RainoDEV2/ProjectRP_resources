@@ -104,7 +104,32 @@ end)
 --     end
 -- end)
 
+RegisterNetEvent('animation:armor')
+AddEventHandler('animation:armor', function()
+		inanimation = true
+		local lPed = GetPlayerPed(-1)
+		RequestAnimDict("clothingshirt")
+		while not HasAnimDictLoaded("clothingshirt") do
+			Citizen.Wait(0)
+		end
+
+		if IsEntityPlayingAnim(lPed, "clothingshirt", "try_shirt_positive_d", 3) then
+			ClearPedSecondaryTask(lPed)
+		else
+			TaskPlayAnim(lPed, "clothingshirt", "try_shirt_positive_d", 8.0, -8, -1, 49, 0, 0, 0, 0)
+			seccount = 4
+			while seccount > 0 do
+				Citizen.Wait(7500)
+				seccount = seccount - 1
+			end
+			ClearPedSecondaryTask(lPed)
+		end		
+		inanimation = false
+
+end)
+
 RegisterNetEvent('consumables:client:UseArmor', function()
+    TriggerEvent("animation:armor")
     ProjectRP.Functions.Progressbar("use_armor", "Putting on the body armour..", 5000, false, true, {
         disableMovement = false,
         disableCarMovement = false,
