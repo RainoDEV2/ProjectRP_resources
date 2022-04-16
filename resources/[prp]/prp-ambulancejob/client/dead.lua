@@ -28,14 +28,14 @@ function OnDeath()
 
             local ped = PlayerPedId()
             if IsPedInAnyVehicle(ped) then
-                NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
                 local veh = GetVehiclePedIsIn(ped)
                 local vehseats = GetVehicleModelNumberOfSeats(GetHashKey(GetEntityModel(veh)))
                 for i = -1, vehseats do
                     local occupant = GetPedInVehicleSeat(veh, i)
                     if occupant == ped then
                         NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
-                        -- SetPedIntoVehicle(ped, veh, i)
+                        SetPedIntoVehicle(ped, veh, i)
                     end
                 end
             else
@@ -45,7 +45,7 @@ function OnDeath()
             SetEntityInvincible(player, true)
             SetEntityHealth(player, GetEntityMaxHealth(player))
             if IsPedInAnyVehicle(player, false) then
-                NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
                 loadAnimDict("veh@low@front_ps@idle_duck")
                 TaskPlayAnim(player, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
             else
@@ -194,14 +194,14 @@ CreateThread(function()
                 if IsPedInAnyVehicle(ped, false) then
                     local vehicle = GetVehiclePedIsIn(ped,false)
 
-                    if GetEntitySpeed(vehicle) < 0.5 then
+                    -- if GetEntitySpeed(vehicle) < 0.5 then
                         local pos = GetEntityCoords(PlayerPedId())
-                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                        -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
                         loadAnimDict("veh@low@front_ps@idle_duck")
                         if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
                             TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
                         end
-                    end
+                    -- end
                 else
                     if isInHospitalBed then
                         if not IsEntityPlayingAnim(ped, inBedDict, inBedAnim, 3) then
@@ -241,11 +241,11 @@ CreateThread(function()
                 if not isEscorted then
                     if IsPedInAnyVehicle(ped, false) then
                         local pos = GetEntityCoords(PlayerPedId())
-                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
-                        -- loadAnimDict("veh@low@front_ps@idle_duck")
-                        -- if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
-                        --     TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
-                        -- end
+                        -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                        loadAnimDict("veh@low@front_ps@idle_duck")
+                        if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
+                            TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+                        end
                     else
                         loadAnimDict(lastStandDict)
                         if not IsEntityPlayingAnim(ped, lastStandDict, lastStandAnim, 3) then
@@ -255,11 +255,11 @@ CreateThread(function()
                 else
                     if IsPedInAnyVehicle(ped, false) then
                         local pos = GetEntityCoords(PlayerPedId())
-                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
-                        -- loadAnimDict("veh@low@front_ps@idle_duck")
-                        -- if IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
-                        --     StopAnimTask(ped, "veh@low@front_ps@idle_duck", "sit", 3)
-                        -- end
+                        -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                        loadAnimDict("veh@low@front_ps@idle_duck")
+                        if IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
+                            StopAnimTask(ped, "veh@low@front_ps@idle_duck", "sit", 3)
+                        end
                     else
                         loadAnimDict(lastStandDict)
                         if IsEntityPlayingAnim(ped, lastStandDict, lastStandAnim, 3) then
