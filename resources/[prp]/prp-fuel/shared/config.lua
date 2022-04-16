@@ -7,7 +7,7 @@ Config.BlowUpChance = 5 -- percentage for chance of engine explosion
 Config.RefillCost = 50 -- default price
 Config.CostMultiplier = 3.0 -- tax basically
 Config.canCost = 400 -- buy jerry can price
-Config.refuelCost = 600 -- refueling jerry can price
+Config.refuelCost = 300 -- refueling jerry can price
 Config.GlobalTax = 15.0
 
 Config.FuelDecor = "_FUEL_LEVEL" -- don't touch
@@ -20,28 +20,28 @@ Config.Blacklist = {
 
 -- Class multipliers. If you want SUVs to use less fuel, you can change it to anything under 1.0, and vise versa.
 Config.Classes = {
-	[0] = 0.8, -- Compacts
-	[1] = 0.8, -- Sedans
-	[2] = 0.8, -- SUVs
-	[3] = 0.8, -- Coupes
-	[4] = 0.8, -- Muscle
-	[5] = 0.8, -- Sports Classics
-	[6] = 0.8, -- Sports
-	[7] = 0.8, -- Super
-	[8] = 0.8, -- Motorcycles
-	[9] = 0.8, -- Off-road
-	[10] = 0.8, -- Industrial
-	[11] = 0.8, -- Utility
-	[12] = 0.8, -- Vans
+	[0] = 0.6, -- Compacts
+	[1] = 0.6, -- Sedans
+	[2] = 0.6, -- SUVs
+	[3] = 0.6, -- Coupes
+	[4] = 0.6, -- Muscle
+	[5] = 0.6, -- Sports Classics
+	[6] = 0.6, -- Sports
+	[7] = 0.6, -- Super
+	[8] = 0.6, -- Motorcycles
+	[9] = 0.6, -- Off-road
+	[10] = 0.6, -- Industrial
+	[11] = 0.6, -- Utility
+	[12] = 0.6, -- Vans
 	[13] = 0.0, -- Cycles
-	[14] = 0.6, -- Boats
+	[14] = 0.4, -- Boats
 	[15] = 1.0, -- Helicopters
 	[16] = 1.0, -- Planes
 	[17] = 1.0, -- Service
 	[18] = 1.0, -- Emergency
 	[19] = 1.0, -- Military
-	[20] = 0.8, -- Commercial
-	[21] = 0.8, -- Trains
+	[20] = 0.6, -- Commercial
+	[21] = 1.0, -- Trains
 }
 
 -- The left part is at percentage RPM, and the right is how much fuel (divided by 10) you want to remove from the tank every second

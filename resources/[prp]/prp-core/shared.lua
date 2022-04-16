@@ -41,11 +41,66 @@ PRPShared.Round = function(value, numDecimalPlaces)
     return math.floor((value * power) + 0.5) / (power)
 end
 
-
 PRPShared.StarterItems = {
     ['phone'] = { amount = 1, item = 'phone' },
     ['id_card'] = { amount = 1, item = 'id_card' },
     ['driver_license'] = { amount = 1, item = 'driver_license' },
+}
+
+PRPShared.MaleNoGloves = {
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [116] = true,
+    [117] = true,
+    [118] = true,
+    [188] = true,
+    [200] = true,
+    [201] = true,
+}
+
+PRPShared.FemaleNoGloves = {
+    [0] = true,
+    [1] = true,
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = true,
+    [7] = true,
+    [8] = true,
+    [9] = true,
+    [10] = true,
+    [11] = true,
+    [12] = true,
+    [13] = true,
+    [14] = true,
+    [15] = true,
+    [18] = true,
+    [19] = true,
+    [20] = true,
+    [77] = true,
+    [133] = true,
+    [134] = true,
+    [135] = true,
+    [157] = true,
+    [165] = true,
+    [233] = true,
 }
 
 PRPShared.Items = {
@@ -863,7 +918,7 @@ PRPShared.Jobs = {
 				name = 'Director',
 				isboss = true,
 				payment = 500
-		    },
+			},
 		},
 	},
 	['ambulance'] = {
@@ -1020,25 +1075,25 @@ PRPShared.Jobs = {
 		defaultDuty = true,
 		grades = {
             ['0'] = {
-                name = 'Recruit',
-                payment = 220
+                name = 'Salvager',
+                payment = 120
             },
 			['1'] = {
-                name = 'Novice',
-                payment = 237
+                name = 'Basic',
+                payment = 137
             },
 			['2'] = {
                 name = 'Experienced',
-                payment = 250
+                payment = 150
             },
 			['3'] = {
                 name = 'Advanced',
-                payment = 275
+                payment = 175
             },
 			['4'] = {
                 name = 'Manager',
 				isboss = true,
-                payment = 300
+                payment = 200
             },
         },
 	},

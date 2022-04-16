@@ -1,11 +1,7 @@
+local ProjectRP = exports['prp-core']:GetCoreObject()
 local robberyBusy = false
 local timeOut = false
 local blackoutActive = false
-
-local ItemList = {
-    ["electronickit"] = "electronickit",
-    ["trojan_usb"] = "trojan_usb"
-}
 
 -- Functions
 
@@ -68,13 +64,22 @@ local function CheckStationHits()
 end
 
 local function AllStationsHit()
-    local retval = true
-    for k, v in pairs(Config.PowerStations) do
-        if not Config.PowerStations[k].hit then
-            retval = false
+    local hit = 0
+    for k in pairs(Config.PowerStations) do
+        if Config.PowerStations[k].hit then
+            hit += 1
         end
     end
-    return retval
+    return hit >= Config.HitsNeeded
+end
+
+local function IsNearPowerStation(coords, dist)
+    for _, v in pairs(Config.PowerStations) do
+        if #(coords - v.coords) < dist then
+            return true
+        end
+    end
+    return false
 end
 
 -- Events
@@ -114,30 +119,28 @@ RegisterNetEvent('prp-bankrobbery:server:setLockerState', function(bankId, locke
     else
         Config.SmallBanks[bankId]["lockers"][lockerId][state] = bool
     end
-
     TriggerClientEvent('prp-bankrobbery:client:setLockerState', -1, bankId, lockerId, state, bool)
 end)
 
 RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
     local src = source
     local ply = ProjectRP.Functions.GetPlayer(src)
-
+    if not ply then return end
     if type == "small" then
         local itemType = math.random(#Config.RewardTypes)
         local WeaponChance = math.random(1, 50)
         local odd1 = math.random(1, 50)
         local tierChance = math.random(1, 100)
         local tier = 1
-
         if tierChance < 50 then tier = 1 elseif tierChance >= 50 and tierChance < 80 then tier = 2 elseif tierChance >= 80 and tierChance < 95 then tier = 3 else tier = 4 end
         if WeaponChance ~= odd1 then
             if tier ~= 4 then
-                if Config.RewardTypes[itemType].type == "item" then
+                 if Config.RewardTypes[itemType].type == "item" then
                     local item = Config.LockerRewards["tier"..tier][math.random(#Config.LockerRewards["tier"..tier])]
                     local itemAmount = math.random(item.minAmount, item.maxAmount)
                     ply.Functions.AddItem(item.item, itemAmount)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
-                elseif Config.RewardTypes[itemType].type == "money" then
+                 elseif Config.RewardTypes[itemType].type == "money" then
                     local info = {
                         worth = math.random(2300, 3200)
                     }
@@ -161,19 +164,18 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
         if tierChance < 25 then tier = 1 elseif tierChance >= 25 and tierChance < 70 then tier = 2 elseif tierChance >= 70 and tierChance < 95 then tier = 3 else tier = 4 end
         if WeaponChance ~= odd1 then
             if tier ~= 4 then
-                if Config.RewardTypes[itemType].type == "item" then
+                 if Config.RewardTypes[itemType].type == "item" then
                     local item = Config.LockerRewardsPaleto["tier"..tier][math.random(#Config.LockerRewardsPaleto["tier"..tier])]
                     local itemAmount = math.random(item.minAmount, item.maxAmount)
-
                     ply.Functions.AddItem(item.item, itemAmount)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
-                elseif Config.RewardTypes[itemType].type == "money" then
+                 elseif Config.RewardTypes[itemType].type == "money" then
                     local info = {
                         worth = math.random(4000, 6000)
                     }
                     ply.Functions.AddItem('markedbills', math.random(1,4), false, info)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
-                end
+                 end
             else
                 ply.Functions.AddItem('security_card_02', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['security_card_02'], "add")
@@ -194,14 +196,11 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
             if tier ~= 4 then
                 if Config.RewardTypes[itemType].type == "item" then
                     local item = Config.LockerRewardsPacific["tier"..tier][math.random(#Config.LockerRewardsPacific["tier"..tier])]
-                    local itemAmount = math.random(item.minAmount, item.maxAmount)
                     if tier == 3 then maxAmount = 7 elseif tier == 2 then maxAmount = 18 else maxAmount = 25 end
                     local itemAmount = math.random(maxAmount)
-
                     ply.Functions.AddItem(item.item, itemAmount)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
                 elseif Config.RewardTypes[itemType].type == "money" then
-                    local moneyAmount = math.random(1200, 7000)
                     local info = {
                         worth = math.random(19000, 21000)
                     }
@@ -214,7 +213,7 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
                 }
                 ply.Functions.AddItem('markedbills', math.random(1,4), false, info)
                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
-                local info = {
+                info = {
                     crypto = math.random(1, 3)
                 }
                 ply.Functions.AddItem("cryptostick", 1, false, info)
@@ -230,7 +229,6 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
                 ply.Functions.AddItem('weapon_minismg', 1)
                 TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['weapon_minismg'], "add")
             end
-
         end
     end
 end)
@@ -240,25 +238,23 @@ RegisterNetEvent('prp-bankrobbery:server:setTimeout', function()
         if not timeOut then
             timeOut = true
             CreateThread(function()
-                Wait(90 * (60 * 1000))
-                timeOut = false
-                robberyBusy = false
-                TriggerEvent('prp-scoreboard:server:SetActivityBusy', "bankrobbery", false)
-                TriggerEvent('prp-scoreboard:server:SetActivityBusy', "pacific", false)
-
-                for k, v in pairs(Config.BigBanks["pacific"]["lockers"]) do
-                    Config.BigBanks["pacific"]["lockers"][k]["isBusy"] = false
-                    Config.BigBanks["pacific"]["lockers"][k]["isOpened"] = false
-                end
-
-                for k, v in pairs(Config.BigBanks["paleto"]["lockers"]) do
-                    Config.BigBanks["paleto"]["lockers"][k]["isBusy"] = false
-                    Config.BigBanks["paleto"]["lockers"][k]["isOpened"] = false
-                end
-
-                TriggerClientEvent('prp-bankrobbery:client:ClearTimeoutDoors', -1)
-                Config.BigBanks["paleto"]["isOpened"] = false
-                Config.BigBanks["pacific"]["isOpened"] = false
+                SetTimeout(60000 * 90, function()
+                    timeOut = false
+                    robberyBusy = false
+                    TriggerEvent('prp-scoreboard:server:SetActivityBusy', "bankrobbery", false)
+                    TriggerEvent('prp-scoreboard:server:SetActivityBusy', "pacific", false)
+                    for k in pairs(Config.BigBanks["pacific"]["lockers"]) do
+                        Config.BigBanks["pacific"]["lockers"][k]["isBusy"] = false
+                        Config.BigBanks["pacific"]["lockers"][k]["isOpened"] = false
+                    end
+                    for k in pairs(Config.BigBanks["paleto"]["lockers"]) do
+                        Config.BigBanks["paleto"]["lockers"][k]["isBusy"] = false
+                        Config.BigBanks["paleto"]["lockers"][k]["isOpened"] = false
+                    end
+                    TriggerClientEvent('prp-bankrobbery:client:ClearTimeoutDoors', -1)
+                    Config.BigBanks["paleto"]["isOpened"] = false
+                    Config.BigBanks["pacific"]["isOpened"] = false
+                end)
             end)
         end
     end
@@ -269,19 +265,18 @@ RegisterNetEvent('prp-bankrobbery:server:SetSmallbankTimeout', function(BankId)
         if not timeOut then
             timeOut = true
             CreateThread(function()
-                Wait(30 * (60 * 1000))
-                timeOut = false
-                robberyBusy = false
-
-                for k, v in pairs(Config.SmallBanks[BankId]["lockers"]) do
-                    Config.SmallBanks[BankId]["lockers"][k]["isOpened"] = false
-                    Config.SmallBanks[BankId]["lockers"][k]["isBusy"] = false
-                end
-
-                timeOut = false
-                robberyBusy = false
-                TriggerClientEvent('prp-bankrobbery:client:ResetFleecaLockers', -1, BankId)
-                TriggerEvent('prp-banking:server:SetBankClosed', BankId, false)
+                SetTimeout(60000 * 30, function()
+                    timeOut = false
+                    robberyBusy = false
+                    for k in pairs(Config.SmallBanks[BankId]["lockers"]) do
+                        Config.SmallBanks[BankId]["lockers"][k]["isOpened"] = false
+                        Config.SmallBanks[BankId]["lockers"][k]["isBusy"] = false
+                    end
+                    timeOut = false
+                    robberyBusy = false
+                    TriggerClientEvent('prp-bankrobbery:client:ResetFleecaLockers', -1, BankId)
+                    TriggerEvent('prp-banking:server:SetBankClosed', BankId, false)
+                end)
             end)
 		end
     end
@@ -310,13 +305,39 @@ RegisterNetEvent('prp-bankrobbery:server:SetStationStatus', function(key, isHit)
     Config.PowerStations[key].hit = isHit
     TriggerClientEvent("prp-bankrobbery:client:SetStationStatus", -1, key, isHit)
     if AllStationsHit() then
-        TriggerEvent("prp-weathersync:server:toggleBlackout")
+        exports["prp-weathersync"]:setBlackout(true)
         TriggerClientEvent("police:client:DisableAllCameras", -1)
         TriggerClientEvent("prp-bankrobbery:client:disableAllBankSecurity", -1)
         blackoutActive = true
+        CreateThread(function()
+            SetTimeout(60000 * Config.BlackoutTimer, function()
+                exports["prp-weathersync"]:setBlackout(false)
+                TriggerClientEvent("police:client:EnableAllCameras", -1)
+                TriggerClientEvent("prp-bankrobbery:client:enableAllBankSecurity", -1)
+                blackoutActive = false
+            end)
+        end)
     else
         CheckStationHits()
     end
+end)
+
+RegisterNetEvent('prp-bankrobbery:server:removeElectronicKit', function()
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    if not Player then return end
+    Player.Functions.RemoveItem('electronickit', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["electronickit"], "remove")
+    Player.Functions.RemoveItem('trojan_usb', 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["trojan_usb"], "remove")
+end)
+
+RegisterNetEvent('prp-bankrobbery:server:removeBankCard', function(number)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    if not Player then return end
+    Player.Functions.RemoveItem('security_card_'..number, 1)
+    TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['security_card_'..number], "remove")
 end)
 
 RegisterNetEvent('thermite:StartServerFire', function(coords, maxChildren, isGasFire)
@@ -324,9 +345,9 @@ RegisterNetEvent('thermite:StartServerFire', function(coords, maxChildren, isGas
     local ped = GetPlayerPed(src)
     local coords2 = GetEntityCoords(ped)
     local thermiteCoords = Config.BigBanks['pacific'].thermite[1].coords
-    local thermite2Coords = Config.BigBanks['paleto'].thermite[1].coords
-    local thermite3Coords = Config.BigBanks['paleto'].thermite[2].coords
-    if #(coords2 - thermiteCoords) < 10 or #(coords2 - thermite2Coords) < 10 or #(coords2 - thermite3Coords) < 10 then
+    local thermite2Coords = Config.BigBanks['pacific'].thermite[2].coords
+    local thermite3Coords = Config.BigBanks['paleto'].thermite[1].coords
+    if #(coords2 - thermiteCoords) < 10 or #(coords2 - thermite2Coords) < 10 or #(coords2 - thermite3Coords) < 10 or IsNearPowerStation(coords2, 10) then
         TriggerClientEvent("thermite:StartFire", -1, coords, maxChildren, isGasFire)
     end
 end)
@@ -337,16 +358,17 @@ end)
 
 -- Callbacks
 
-ProjectRP.Functions.CreateCallback('prp-bankrobbery:server:isRobberyActive', function(source, cb)
+ProjectRP.Functions.CreateCallback('prp-bankrobbery:server:isRobberyActive', function(_, cb)
     cb(robberyBusy)
 end)
 
-ProjectRP.Functions.CreateCallback('prp-bankrobbery:server:GetConfig', function(source, cb)
+ProjectRP.Functions.CreateCallback('prp-bankrobbery:server:GetConfig', function(_, cb)
     cb(Config)
 end)
 
 ProjectRP.Functions.CreateCallback("thermite:server:check", function(source, cb)
     local Player = ProjectRP.Functions.GetPlayer(source)
+    if not Player then return cb(false) end
     if Player.Functions.RemoveItem("thermite", 1) then
         TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items["thermite"], "remove")
         cb(true)
@@ -357,54 +379,42 @@ end)
 
 -- Items
 
-ProjectRP.Functions.CreateUseableItem("thermite", function(source, item)
+ProjectRP.Functions.CreateUseableItem("thermite", function(source)
     local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('lighter') ~= nil then
+    if not Player or not Player.Functions.GetItemByName('thermite') then return end
+	if Player.Functions.GetItemByName('lighter') then
         TriggerClientEvent("thermite:UseThermite", source)
     else
-        TriggerClientEvent('ProjectRP:Notify', source, "You're missing ignition source ", "error")
+        TriggerClientEvent('ProjectRP:Notify', source, "You're missing ignition source", "error")
     end
 end)
 
-ProjectRP.Functions.CreateUseableItem("security_card_01", function(source, item)
+ProjectRP.Functions.CreateUseableItem("security_card_01", function(source)
     local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('security_card_01') ~= nil then
-        TriggerClientEvent("prp-bankrobbery:UseBankcardA", source)
-    end
+	if not Player or not Player.Functions.GetItemByName('security_card_01') then return end
+    TriggerClientEvent("prp-bankrobbery:UseBankcardA", source)
 end)
 
-ProjectRP.Functions.CreateUseableItem("security_card_02", function(source, item)
+ProjectRP.Functions.CreateUseableItem("security_card_02", function(source)
     local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('security_card_02') ~= nil then
-        TriggerClientEvent("prp-bankrobbery:UseBankcardB", source)
-    end
+	if not Player or not Player.Functions.GetItemByName('security_card_02') then return end
+    TriggerClientEvent("prp-bankrobbery:UseBankcardB", source)
 end)
 
-ProjectRP.Functions.CreateUseableItem("electronickit", function(source, item)
+ProjectRP.Functions.CreateUseableItem("electronickit", function(source)
     local Player = ProjectRP.Functions.GetPlayer(source)
-    if Player.Functions.GetItemByName('electronickit') ~= nil then
-        TriggerClientEvent("electronickit:UseElectronickit", source)
-    end
+    if not Player or not Player.Functions.GetItemByName('electronickit') then return end
+    TriggerClientEvent("electronickit:UseElectronickit", source)
 end)
 
 -- Threads
 
 CreateThread(function()
     while true do
-        Wait(1000 * 60 * 10)
-        if blackoutActive then
-            TriggerEvent("prp-weathersync:server:toggleBlackout")
-            TriggerClientEvent("police:client:EnableAllCameras", -1)
+        if not blackoutActive then
             TriggerClientEvent("prp-bankrobbery:client:enableAllBankSecurity", -1)
-            blackoutActive = false
+            TriggerClientEvent("police:client:EnableAllCameras", -1)
         end
-    end
-end)
-
-CreateThread(function()
-    while true do
-        Wait(1000 * 60 * 30)
-        TriggerClientEvent("prp-bankrobbery:client:enableAllBankSecurity", -1)
-        TriggerClientEvent("police:client:EnableAllCameras", -1)
+        Wait(60000 * 30)
     end
 end)

@@ -74,7 +74,7 @@ local function printDifferences(vehicle, properties, newproperties)
 		SetVehicleWheelType(vehicle, originalWheel)
 	end
 	if properties["plateIndex"] ~= newproperties["plateIndex"] then
-		for k, v in pairs(Loc[Config.Lan].vehiclePlateOptions) do if newproperties["plateIndex"] == v.id then vehlist[#vehlist+1] = Loc[Config.Lan]["police"].plates.." - [ "..v.name.." ]" end end
+		for k, v in pairs(Loc[Config.Lan].vehiclePlateOptions) do if newproperties["plateIndex"] == v.id then vehlist[#vehlist+1] = Loc[Config.Lan]["selfRepair"].plates.." - [ "..v.name.." ]" end end
 	end
 	if properties["windowTint"] ~= newproperties["windowTint"] then
 		local name = ""
@@ -184,9 +184,9 @@ local function printDifferences(vehicle, properties, newproperties)
 		vehlist[#vehlist+1] = Loc[Config.Lan]["check"].label46..tostring(newproperties["modTank"]+1)..". "..GetLabelText(GetModTextLabel(vehicle, 45, (newproperties["modTank"]))).." ]"
 	end
 	if properties["modLivery"] ~= newproperties["modLivery"] then
-		vehlist[#vehlist+1] = Loc[Config.Lan]["police"].livery.." - [ "..tostring(newproperties["modLivery"]+1)..". "..GetLabelText(GetModTextLabel(vehicle, 48, (newproperties["modLivery"]))).." ]"
+		vehlist[#vehlist+1] = Loc[Config.Lan]["selfRepair"].livery.." - [ "..tostring(newproperties["modLivery"]+1)..". "..GetLabelText(GetModTextLabel(vehicle, 48, (newproperties["modLivery"]))).." ]"
 	end	
-	if not Config.PreviewPhone then
+	if Config.PreviewPhone then
 		if vehlist[1] ~= nil then 
 			local newlist = ""
 			for i = 1, #vehlist do
@@ -195,7 +195,7 @@ local function printDifferences(vehicle, properties, newproperties)
 			TriggerServerEvent('prp-phone:server:sendNewMail', {
 				sender = vehplate,
 				subject = veh,
-				message = veh..Loc[Config.Lan]["police"].plates..": "..vehplate.."<br><br>"..Loc[Config.Lan]["previews"].changes..#vehlist.."<br> ------------------------------ <br>"..newlist,
+				message = veh..Loc[Config.Lan]["selfRepair"].plates..": "..vehplate.."<br><br>"..Loc[Config.Lan]["previews"].changes..#vehlist.."<br> ------------------------------ <br>"..newlist,
 				button = {}
 			})
 		end
@@ -211,7 +211,7 @@ RegisterNetEvent("prp-mechanic:client:giveList", function(item)
 	local list = {}
 	local newlist = ""
 	for i = 1, #item.info["vehlist"] do newlist = newlist..item.info["vehlist"][i].."<br>" end
-	list[#list+1] = { isMenuHeader = true, header = item.info["veh"], txt = Loc[Config.Lan]["police"].plates..": "..item.info["vehplate"].."<br>"..Loc[Config.Lan]["previews"].changes..(#item.info["vehlist"]) }
+	list[#list+1] = { isMenuHeader = true, header = item.info["veh"], txt = Loc[Config.Lan]["selfRepair"].plates..": "..item.info["vehplate"].."<br>"..Loc[Config.Lan]["previews"].changes..(#item.info["vehlist"]) }
 	list[#list+1] = { header = "", txt = Loc[Config.Lan]["common"].close, params = { event = "prp-mechanic:client:Menu:Close" }, }
 	list[#list+1] = { isMenuHeader = true, header = "", txt = newlist }
 	exports['prp-menu']:openMenu(list)
@@ -258,10 +258,10 @@ RegisterNetEvent('prp-mechanic:client:Preview:Menu', function()
 			
 			PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["common"].close, params = { event = "prp-mechanic:client:Menu:Close" }, }
 			PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["paint"].menuheader, params = { event = "prp-mechanic:client:Preview:Paint" }, }
-			PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["police"].plates, params = { event = "prp-mechanic:client:Preview:Plates" }, }
+			PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["selfRepair"].plates, params = { event = "prp-mechanic:client:Preview:Plates" }, }
 			
 			if GetNumVehicleMods(vehicle, 48) > 0 or GetVehicleLiveryCount(vehicle) > -1 then
-				PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["police"].livery, params = { event = "prp-mechanic:client:Preview:Livery" }, }
+				PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["selfRepair"].livery, params = { event = "prp-mechanic:client:Preview:Livery" }, }
 			end
 				
 			PreviewMenu[#PreviewMenu+1] = { header = "", txt = Loc[Config.Lan]["rims"].menuheader, params = { event = "prp-mechanic:client:Preview:Rims:Check" }, }
@@ -365,7 +365,7 @@ RegisterNetEvent('prp-mechanic:client:Preview:Livery', function()
 			for i = 0, GetVehicleLiveryCount(vehicle)-1 do
 				if GetVehicleLivery(vehicle) == (i) then txt = Loc[Config.Lan]["common"].current
 				elseif GetVehicleLivery(vehicle) ~= (i) then txt = "" end
-				if i ~= 0 then validMods[i] = { id = i, name = Loc[Config.Lan]["police"].livery.." "..i, install = txt } end
+				if i ~= 0 then validMods[i] = { id = i, name = Loc[Config.Lan]["selfRepair"].livery.." "..i, install = txt } end
 			end
 		else
 			oldlivery = false
@@ -382,7 +382,7 @@ RegisterNetEvent('prp-mechanic:client:Preview:Livery', function()
 		if oldlivery == true then
 				if GetVehicleLivery(vehicle) == 0 then stockinstall = Loc[Config.Lan]["common"].current else stockinstall = "" end
 				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = searchCar(vehicle), txt = "Class: "..getClass(vehicle).."<br>"..Loc[Config.Lan]["check"].plate..trim(GetVehicleNumberPlateText(vehicle))..Loc[Config.Lan]["check"].value..searchPrice(vehicle).."<br>"..searchDist(vehicle) }
-				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["police"].livery.." - [ "..Loc[Config.Lan]["common"].amountoption..GetVehicleLiveryCount(vehicle).." ]" }
+				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["selfRepair"].livery.." - [ "..Loc[Config.Lan]["common"].amountoption..GetVehicleLiveryCount(vehicle).." ]" }
 				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Preview:Menu" }, }
 				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:Preview:Apply", args = { id = tostring(0), old = true } } }
 			for k,v in pairs(validMods) do
@@ -391,7 +391,7 @@ RegisterNetEvent('prp-mechanic:client:Preview:Livery', function()
 		elseif oldlivery ~= true then
 				if GetVehicleMod(vehicle, 48) == -1 then stockinstall = Loc[Config.Lan]["common"].current else stockinstall = "" end
 				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = searchCar(vehicle), txt = "Class: "..getClass(vehicle).."<br>"..Loc[Config.Lan]["check"].plate..trim(GetVehicleNumberPlateText(vehicle))..Loc[Config.Lan]["check"].value..searchPrice(vehicle).."<br>"..searchDist(vehicle) }
-				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["police"].livery.." - [ "..Loc[Config.Lan]["common"].amountoption..(GetNumVehicleMods(vehicle, 48)+1).." ]" }
+				LiveryMenu[#LiveryMenu + 1] = { isMenuHeader = true, header = "", txt = Loc[Config.Lan]["selfRepair"].livery.." - [ "..Loc[Config.Lan]["common"].amountoption..(GetNumVehicleMods(vehicle, 48)+1).." ]" }
 				LiveryMenu[#LiveryMenu + 1] = { header = "", txt = Loc[Config.Lan]["common"].ret, params = { event = "prp-mechanic:client:Preview:Menu" }, }
 				LiveryMenu[#LiveryMenu + 1] = {  header = "0. "..Loc[Config.Lan]["common"].stock, txt = stockinstall, params = { event = "prp-mechanic:client:Preview:Apply", args = { id = tostring(-1) } } }
 			for k,v in pairs(validMods) do

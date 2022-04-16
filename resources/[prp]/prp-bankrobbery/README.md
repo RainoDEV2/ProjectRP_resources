@@ -1,5 +1,5 @@
 # prp-bankrobbery
-Bank Robbery For prp-Core
+Bank Robbery For PRP-Core
 
 # License
 

@@ -110,10 +110,10 @@ Crafting.Perform = {
 	[14] = { ['suspension2'] = { ['steel'] = 1, } },
 	[15] = { ['suspension3'] = { ['steel'] = 1, } },
 	[16] = { ['suspension4'] = { ['steel'] = 1, } },
-	-- [17] = { ['bprooftires'] = { ['rubber'] = 1, } },
-	[18] = { ['drifttires'] = { ['rubber'] = 1, } },
-	[19] = { ['nos'] = { ['noscan'] = 1, } },
-	[20] = { ['noscan'] = { ['steel'] = 1, } },
+	[17] = { ['drifttires'] = { ['rubber'] = 1, } },
+	[18] = { ['nos'] = { ['noscan'] = 1, } },
+	[19] = { ['noscan'] = { ['steel'] = 1, } },
+	-- [20] = { ['bprooftires'] = { ['rubber'] = 1, } },
 }
 Crafting.Cosmetic = {
 	[1] = { ['hood'] = { ['plastic'] = 1, } },
