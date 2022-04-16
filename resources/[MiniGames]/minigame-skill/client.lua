@@ -25,12 +25,11 @@ function closeNormalGui()
     guiEnabled = false
     SetNuiFocus(guiEnabled,false)
 end
-  
 
 RegisterNUICallback('taskCancel', function(data, cb)
-  closeGui()
-  activeTasks = 2
-  FactorFunction(false)
+    closeGui()
+    activeTasks = 2
+    FactorFunction(false)
 end)
 
 RegisterNUICallback('taskEnd', function(data, cb)
@@ -133,6 +132,5 @@ function taskBar(difficulty,skillGapSent)
         closeGui()
         taskInProcess = false
         return 100
-    end 
-   
+    end
 end
