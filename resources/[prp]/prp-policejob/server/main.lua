@@ -241,6 +241,37 @@ ProjectRP.Commands.Add("jail", "Jail Player (Police Only)", {{name = "id", help 
     end
 end)
 
+
+
+RegisterServerEvent("axel:bill:player")
+AddEventHandler("axel:bill:player",function(playerID,price)
+    local biller = ProjectRP.Functions.GetPlayer(source)
+    local billed = ProjectRP.Functions.GetPlayer(tonumber(playerID))
+
+    billed.Functions.RemoveMoney("bank", price, "Paid PD Fine")
+    TriggerEvent('prp-bossmenu:server:addAccountMoney', "police", price)
+end)
+
+ProjectRP.Commands.Add("fine", "Fine Player (Police Only)", {{name = "id", help = "Player ID"}, {name = "Fine", help = "Fine they are gonna recieve"}}, true, function(source, args)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
+        local playerId = tonumber(args[1])
+        local time = tonumber(args[2])
+
+        if time > 0 then
+            TriggerClientEvent("police:client:FineCommand", src, playerId, time)
+        else
+            TriggerClientEvent('ProjectRP:Notify', src, 'Cannot fine for 0', 'error')
+        end
+    else
+        TriggerClientEvent('ProjectRP:Notify', src, 'For on-duty police only', 'error')
+    end
+end)
+
+
+
+
 ProjectRP.Commands.Add("unjail", "Unjail Player (Police Only)", {{name = "id", help = "Player ID"}}, true, function(source, args)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)

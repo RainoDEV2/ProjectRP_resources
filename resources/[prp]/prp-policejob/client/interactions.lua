@@ -152,6 +152,7 @@ RegisterNetEvent('police:client:RobPlayer', function()
     end
 end)
 
+
 RegisterNetEvent('police:client:JailCommand', function(playerId, time)
     exports['prp-tasknotify']:AddDialog("Police", "Are you sure you want to send this person to jail for <b>" .. tonumber(time) .. "</b> months?", function(val)
         if val then
@@ -165,6 +166,14 @@ RegisterNetEvent('police:client:JailCommand', function(playerId, time)
             end, function() -- Cancel
 
             end)
+        end
+    end)
+end)
+
+RegisterNetEvent('police:client:FineCommand', function(playerId, fine)
+    exports['prp-tasknotify']:AddDialog("Police", "Are you sure you want to fine this person for <b>$" .. tonumber(fine) .. "</b>?", function(val)
+        if val then
+            TriggerServerEvent("axel:bill:player", playerId, fine)
         end
     end)
 end)
