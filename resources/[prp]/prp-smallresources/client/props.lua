@@ -36,10 +36,6 @@ function RequestModelHash(Model)
     end
 end
 
-RegisterCommand('detachprops', function(source, args)
-	RemoveProp()
-end)
-
 AddEventHandler('onResourceStop', function(resource)
 	RemoveProp()
 end)
