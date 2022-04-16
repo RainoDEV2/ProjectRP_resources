@@ -3,12 +3,10 @@ local MinigameFinished = false
 local MinigameFailed = false
 local MinigameCB = {}
 
--- TriggerEvent('ORP:LoadCore', function(obj) ORP = obj end)
-
 -- RegisterCommand('minigame', function(source, args)
 --     local time = tonumber(args[1])
 
---     TriggerEvent('onyx_numbers:start', time, function(result)
+--     TriggerEvent('prp:numbers:start', time, function(result)
 --         print('starting minigame')
 --         if result then
 --             print('success')
@@ -18,8 +16,8 @@ local MinigameCB = {}
 --     end)
 -- end)
 
-RegisterNetEvent('qb:numbers:start')
-AddEventHandler('qb:numbers:start', function(time, cb)
+RegisterNetEvent('prp:numbers:start')
+AddEventHandler('prp:numbers:start', function(time, cb)
     if not MinigameStarted then
         MinigameCB = cb
         MinigameStarted = true

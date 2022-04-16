@@ -116,6 +116,40 @@ RegisterCommand('walks', function(source, args, raw)
     end
 end)
 
+-- Extra Dances
+
+function LoadAnimationDic(dict)
+    if not HasAnimDictLoaded(dict) then
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do
+            Citizen.Wait(0)
+        end
+    end
+end
+
+RegisterCommand('dance', function(source, args)
+    local dance = tonumber(args[1])
+
+    if dance == nil or dance <= 0 then
+        dance = math.random(1, #DanceList)
+    end
+
+    LoadAnim(DP.ExtraDances[dance].dict)
+    IsInAnimation = true
+    TaskPlayAnim(PlayerPedId(), DP.ExtraDances[dance].dict, DP.ExtraDances[dance].anim, 3.0, 3.0, -1, 1, 0, 0, 0, 0)
+end)
+
+function LoadAnim(dict)
+    while not HasAnimDictLoaded(dict) do
+        RequestAnimDict(dict)
+        Wait(10)
+    end
+end
+
+RegisterCommand('detachprops', function(source, args)
+  DestroyAllProps()
+end)
+
 -- Added 
 
 CanDoEmote = true

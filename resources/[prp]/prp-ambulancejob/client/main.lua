@@ -937,7 +937,7 @@ RegisterNetEvent('prp-ambulancejob:checkin', function()
         TriggerServerEvent("hospital:server:SendDoctorAlert")
     else
         TriggerEvent('animations:client:EmoteCommandStart', {"notepad"})
-        ProjectRP.Functions.Progressbar("hospital_checkin", 'Checking in...', 2000, false, true, {
+        ProjectRP.Functions.Progressbar("hospital_checkin", 'Checking in...', 2000, true, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,

@@ -122,30 +122,34 @@ RegisterNetEvent('police:client:RobPlayer', function()
     if player ~= -1 and distance < 2.5 then
         local playerPed = GetPlayerPed(player)
         local playerId = GetPlayerServerId(player)
-        if IsEntityPlayingAnim(playerPed, "missminuteman_1ig_2", "handsup_base", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsTargetDead(playerId) then
-            ProjectRP.Functions.Progressbar("robbing_player", "Robbing person..", math.random(5000, 7000), false, true, {
-                disableMovement = true,
-                disableCarMovement = true,
-                disableMouse = false,
-                disableCombat = true,
-            }, {
-                animDict = "random@shop_robbery",
-                anim = "robbery_action_b",
-                flags = 16,
-            }, {}, {}, function() -- Done
-                local plyCoords = GetEntityCoords(playerPed)
-                local pos = GetEntityCoords(ped)
-                if #(pos - plyCoords) < 2.5 then
+        if ( IsEntityPlayingAnim(GetPlayerPed(t), "dead", "dead_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "amb@code_human_cower@male@base", "base", 3) or  IsEntityPlayingAnim(GetPlayerPed(t), "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "mp_arresting", "idle", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(GetPlayerPed(t), "missfbi5ig_22", "hands_up_loop_scientist", 3) ) or IsTargetDead(playerId) then
+            if IsPedArmed(PlayerPedId(), 7) then
+                ProjectRP.Functions.Progressbar("robbing_player", "Robbing person..", math.random(5000, 7000), false, true, {
+                    disableMovement = true,
+                    disableCarMovement = true,
+                    disableMouse = false,
+                    disableCombat = true,
+                }, {
+                    animDict = "random@shop_robbery",
+                    anim = "robbery_action_b",
+                    flags = 16,
+                }, {}, {}, function() -- Done
+                    local plyCoords = GetEntityCoords(playerPed)
+                    local pos = GetEntityCoords(ped)
+                    if #(pos - plyCoords) < 2.5 then
+                        StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
+                        TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", playerId)
+                        TriggerEvent("inventory:server:RobPlayer", playerId)
+                    else
+                        ProjectRP.Functions.Notify("No one nearby!", "error")
+                    end
+                end, function() -- Cancel
                     StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
-                    TriggerServerEvent("inventory:server:OpenInventory", "otherplayer", playerId)
-                    TriggerEvent("inventory:server:RobPlayer", playerId)
-                else
-                    ProjectRP.Functions.Notify("No one nearby!", "error")
-                end
-            end, function() -- Cancel
-                StopAnimTask(ped, "random@shop_robbery", "robbery_action_b", 1.0)
-                ProjectRP.Functions.Notify("Canceled..", "error")
-            end)
+                    ProjectRP.Functions.Notify("Canceled..", "error")
+                end)
+            else
+                ProjectRP.Functions.Notify("You need a weapon!", "error")
+            end
         end
     else
         ProjectRP.Functions.Notify("No one nearby!", "error")

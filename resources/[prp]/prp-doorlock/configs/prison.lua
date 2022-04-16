@@ -156,7 +156,7 @@ Config.DoorList['uppercells2'] = {
 -- 332 created by Parker
 Config.DoorList['332'] = {
     objYaw = 119.93480682373,
-    distance = 2,#
+    distance = 2,
     locked = true,
     audioRemote = false,
     authorizedJobs = { ['police'] = 0 },

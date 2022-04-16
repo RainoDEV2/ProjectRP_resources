@@ -24,7 +24,7 @@ if Config.SharedEmotesEnabled then
                 SimpleNotify(Config.Languages[lang]['nobodyclose'])
             end
         else
-          MearbysOnCommand()
+            MearbysOnCommand()
         end
     end, false)
 end
@@ -35,9 +35,9 @@ AddEventHandler("SyncPlayEmote", function(emote, player)
     Wait(300)
     -- wait a little to make sure animation shows up right on both clients after canceling any previous emote
     if DP.Shared[emote] ~= nil then
-      if OnEmotePlay(DP.Shared[emote]) then end return
+        if OnEmotePlay(DP.Shared[emote]) then end return
     elseif DP.Dances[emote] ~= nil then
-      if OnEmotePlay(DP.Dances[emote]) then end return
+        if OnEmotePlay(DP.Dances[emote]) then end return
     end
 end)
 
@@ -48,19 +48,19 @@ AddEventHandler("SyncPlayEmoteSource", function(emote, player)
     local heading = GetEntityHeading(pedInFront)
     local coords = GetOffsetFromEntityInWorldCoords(pedInFront, 0.0, 1.0, 0.0)
     if (DP.Shared[emote]) and (DP.Shared[emote].AnimationOptions) then
-      local SyncOffsetFront = DP.Shared[emote].AnimationOptions.SyncOffsetFront
-      if SyncOffsetFront then
-          coords = GetOffsetFromEntityInWorldCoords(pedInFront, 0.0, SyncOffsetFront, 0.0)
-      end
+        local SyncOffsetFront = DP.Shared[emote].AnimationOptions.SyncOffsetFront
+        if SyncOffsetFront then
+            coords = GetOffsetFromEntityInWorldCoords(pedInFront, 0.0, SyncOffsetFront, 0.0)
+        end
     end
     SetEntityHeading(PlayerPedId(), heading - 180.1)
     SetEntityCoordsNoOffset(PlayerPedId(), coords.x, coords.y, coords.z, 0)
     EmoteCancel()
     Wait(300)
     if DP.Shared[emote] ~= nil then
-      if OnEmotePlay(DP.Shared[emote]) then end return
+        if OnEmotePlay(DP.Shared[emote]) then end return
     elseif DP.Dances[emote] ~= nil then
-      if OnEmotePlay(DP.Dances[emote]) then end return
+        if OnEmotePlay(DP.Dances[emote]) then end return
     end
 end)
 
@@ -127,12 +127,12 @@ function GetPedInFront()
 end
 
 function MearbysOnCommand(source, args, raw)
-  local NearbysCommand = ""
-  for a in pairsByKeys(DP.Shared) do
-    NearbysCommand = NearbysCommand .. ""..a..", "
-  end
-  EmoteChatMessage(NearbysCommand)
-  EmoteChatMessage(Config.Languages[lang]['emotemenucmd'])
+    local NearbysCommand = ""
+    for a in pairsByKeys(DP.Shared) do
+        NearbysCommand = NearbysCommand .. ""..a..", "
+    end
+    EmoteChatMessage(NearbysCommand)
+    EmoteChatMessage(Config.Languages[lang]['emotemenucmd'])
 end
 
 function SimpleNotify(message)
