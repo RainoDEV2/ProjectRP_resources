@@ -95,6 +95,9 @@ AddEventHandler('chat:addTemplate', function(id, html)
   })
 end)
 
+RegisterCommand('clearchat', function()
+  TriggerEvent('chat:clear')
+end)
 AddEventHandler('chat:clear', function(name)
   SendNUIMessage({
     type = 'ON_CLEAR'

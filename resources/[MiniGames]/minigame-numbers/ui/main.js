@@ -1,4 +1,4 @@
-Onyx = {};
+ProjectRP = {};
 
 let CurrentNumberData = [];
 let MinigameActive = false;
@@ -16,15 +16,15 @@ window.addEventListener('message', (event) => {
     switch (e.action) {
         case 'show':
             timer = e.time;
-            Onyx.StartMinigame();
+            ProjectRP.StartMinigame();
         break;
         case 'reset':
-            Onyx.ResetMinigame();
+            ProjectRP.ResetMinigame();
         break;
     }
 });
 
-Onyx.ResetMinigame = function() {
+ProjectRP.ResetMinigame = function() {
     CurrentNumberData = [];
     CurrentNumber = 1;
     MinigameActive = false;
@@ -32,7 +32,7 @@ Onyx.ResetMinigame = function() {
     $('.inner-bar').css('width', '100%');
 }
 
-Onyx.StartMinigame = function() {
+ProjectRP.StartMinigame = function() {
     CurrentNumberData = [];
     CurrentNumber = 1;
 
@@ -44,15 +44,15 @@ Onyx.StartMinigame = function() {
     
         MinigameActive = true;
     
-        Onyx.ShuffleNumbers(CurrentNumberData);
+        ProjectRP.ShuffleNumbers(CurrentNumberData);
     
         setTimeout(() => {
-            Onyx.ProgressBar(timer, timer, $('.progress-bar'));
+            ProjectRP.ProgressBar(timer, timer, $('.progress-bar'));
         }, 500);
     });
 }
 
-Onyx.DisplayNumbers = function() {
+ProjectRP.DisplayNumbers = function() {
     let sound = new Audio('sounds/change.ogg');
     sound.volume = 0.6;
     sound.play();
@@ -69,10 +69,10 @@ Onyx.DisplayNumbers = function() {
         $('#'+(i+1)).data('Number', num);
     });
 
-    Onyx.BeginShuffleTimer();
+    ProjectRP.BeginShuffleTimer();
 }
 
-Onyx.ShuffleNumbers = function(arr) {
+ProjectRP.ShuffleNumbers = function(arr) {
 
     for (let i = 0; i < 20; i++) {
         let r = Math.ceil(Math.random() * i);
@@ -81,10 +81,10 @@ Onyx.ShuffleNumbers = function(arr) {
         arr[r] = temp;
     }
 
-    Onyx.DisplayNumbers();
+    ProjectRP.DisplayNumbers();
 }
 
-Onyx.BeginShuffleTimer = function() {
+ProjectRP.BeginShuffleTimer = function() {
     let time = 1800;
     let random = Math.floor(Math.random() * 100)
 
@@ -98,12 +98,12 @@ Onyx.BeginShuffleTimer = function() {
 
     setTimeout(() => {
         if (MinigameActive) {
-            Onyx.ShuffleNumbers(CurrentNumberData);
+            ProjectRP.ShuffleNumbers(CurrentNumberData);
         }        
     }, time);
 }
 
-Onyx.FinishGame = function(status) {
+ProjectRP.FinishGame = function(status) {
     setTimeout(() => {
         $('.ui-container').fadeOut(750, () => {
             $.post('http://minigame-numbers/GameFinished', JSON.stringify({
@@ -113,7 +113,7 @@ Onyx.FinishGame = function(status) {
     }, 1000);
 }
 
-Onyx.ProgressBar = function(remaining, total, $element) {
+ProjectRP.ProgressBar = function(remaining, total, $element) {
     let progressWidth = remaining * $element.width() / total;
     timeLeft = remaining
     let decrease = 0.050;
@@ -124,8 +124,8 @@ Onyx.ProgressBar = function(remaining, total, $element) {
         if (!MinigameActive) return;
         setTimeout(() => {
             if (error) decrease = decrease * 12;
-            let percent = Onyx.Percent((timeLeft - decrease), total)
-            Onyx.ProgressBar(timeLeft - decrease, total, $element);
+            let percent = ProjectRP.Percent((timeLeft - decrease), total)
+            ProjectRP.ProgressBar(timeLeft - decrease, total, $element);
             if (percent <= 35) {
                 $('.inner-bar').css('background-color', '#c90202d2');
             } else if (percent <= 70) {
@@ -134,12 +134,12 @@ Onyx.ProgressBar = function(remaining, total, $element) {
             error = false
         }, 50);
     } else {
-        Onyx.FinishGame(false);
+        ProjectRP.FinishGame(false);
         MinigameActive = false;
     }
 }
 
-Onyx.Percent = function(num, amount) {
+ProjectRP.Percent = function(num, amount) {
     return (num / amount) * 100;
 }
 
@@ -155,7 +155,7 @@ $('.col').on('click', function(e) {
             let id = $('#'+$(this).attr('id'));
             id.css('opacity', '0.2');
             if (CurrentNumber == 20) {
-                Onyx.FinishGame(true);
+                ProjectRP.FinishGame(true);
                 MinigameActive = false;
             } else {
                 CurrentNumber++;

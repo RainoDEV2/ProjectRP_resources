@@ -187,11 +187,6 @@ local function IsArmoryWhitelist() -- being removed
     return retval
 end
 
-
--- RegisterCommand("shittest", function()
-
--- end)
-
 local function SetWeaponSeries()
     for k, v in pairs(Config.Items.items) do
         if k < 6 then

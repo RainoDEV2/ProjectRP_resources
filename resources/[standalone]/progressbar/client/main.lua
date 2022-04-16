@@ -104,7 +104,7 @@ function Process(action, start, tick, finish)
             TriggerEvent("ProjectRP:Notify", "You are already doing something!", "error")
         end
     else
-        TriggerEvent("ProjectRP:Notify", "Cant do that action!", "error")
+        TriggerEvent("ProjectRP:Notify", "Can't do that action!", "error")
     end
 end
 
