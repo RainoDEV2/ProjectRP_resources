@@ -42,15 +42,15 @@ RegisterNetEvent('hospital:client:UseIfaks', function()
 		disableMouse = false,
 		disableCombat = true,
     }, {
-		animDict = "mp_suicide",
-		anim = "pill",
+		animDict = "amb@world_human_clipboard@male@idle_a",
+		anim = "idle_c",
 		flags = 49,
     }, {}, {}, function() -- Done
-        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        StopAnimTask(ped, "amb@world_human_clipboard@male@idle_a", "idle_c", 1.0)
         TriggerServerEvent("ProjectRP:Server:RemoveItem", "ifaks", 1)
         TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["ifaks"], "remove")
         TriggerServerEvent('hud:server:RelieveStress', math.random(12, 24))
-        SetEntityHealth(ped, GetEntityHealth(ped) + 10)
+        SetEntityHealth(ped, GetEntityHealth(ped) + 40)
         onPainKillers = true
         if painkillerAmount < 3 then
             painkillerAmount = painkillerAmount + 1
@@ -59,7 +59,7 @@ RegisterNetEvent('hospital:client:UseIfaks', function()
             RemoveBleed(1)
         end
     end, function() -- Cancel
-        StopAnimTask(ped, "mp_suicide", "pill", 1.0)
+        StopAnimTask(ped, "amb@world_human_clipboard@male@idle_a", "idle_c", 1.0)
         ProjectRP.Functions.Notify('Canceled', "error")
     end)
 end)

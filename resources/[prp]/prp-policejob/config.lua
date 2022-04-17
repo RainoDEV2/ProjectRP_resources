@@ -204,68 +204,75 @@ Config.Radars = {
 
 Config.CarItems = {
     [1] = {
-        name = "heavyarmor",
+        name = "diving_gear",
         amount = 1,
         info = {},
         type = "item",
         slot = 1,
     },
     [2] = {
-        name = "empty_evidence_bag",
-        amount = 10,
-        info = {},
-        type = "item",
-        slot = 2,
-    },
-    [3] = {
-        name = "police_stormram",
-        amount = 1,
-        info = {},
-        type = "item",
-        slot = 3,
-    },
-    [4] = {
-        name = "spikestrip",
-        amount = 3,
-        info = {},
-        type = "item",
-        slot = 4,
-    },
-    [5] = {
-        name = "bandage",
-        amount = 10,
-        info = {},
-        type = "item",
-        slot = 5,
-    },
-    [6] = {
-        name = "painkillers",
-        amount = 5,
-        info = {},
-        type = "item",
-        slot = 6,
-    },
-    [7] = {
         name = "advancedrepairkit",
         amount = 2,
         info = {},
         type = "item",
-        slot = 7,
+        slot = 2,
     },
-    [8] = {
-        name = "parachute",
-        amount = 1,
-        info = {},
-        type = "item",
-        slot = 8,
-    },
-    [9] = {
-        name = "diving_gear",
-        amount = 1,
-        info = {},
-        type = "item",
-        slot = 9,
-    },
+        -- [1] = {
+    --     name = "heavyarmor",
+    --     amount = 1,
+    --     info = {},
+    --     type = "item",
+    --     slot = 1,
+    -- },
+    -- [2] = {
+    --     name = "empty_evidence_bag",
+    --     amount = 10,
+    --     info = {},
+    --     type = "item",
+    --     slot = 2,
+    -- },
+    -- [3] = {
+    --     name = "police_stormram",
+    --     amount = 1,
+    --     info = {},
+    --     type = "item",
+    --     slot = 3,
+    -- },
+    -- [4] = {
+    --     name = "spikestrip",
+    --     amount = 3,
+    --     info = {},
+    --     type = "item",
+    --     slot = 4,
+    -- },
+    -- [5] = {
+    --     name = "bandage",
+    --     amount = 10,
+    --     info = {},
+    --     type = "item",
+    --     slot = 5,
+    -- },
+    -- [6] = {
+    --     name = "painkillers",
+    --     amount = 5,
+    --     info = {},
+    --     type = "item",
+    --     slot = 6,
+    -- },
+    -- [7] = {
+    --     name = "advancedrepairkit",
+    --     amount = 2,
+    --     info = {},
+    --     type = "item",
+    --     slot = 7,
+    -- },
+    -- [8] = {
+    --     name = "parachute",
+    --     amount = 1,
+    --     info = {},
+    --     type = "item",
+    --     slot = 8,
+    -- },
 }
 
 Config.Items = {
@@ -457,8 +464,38 @@ Config.Items = {
             amount = 50,
             info = {},
             type = "item",
-            slot = 17,
+            slot = 18,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
+        },
+        [19] = {
+            name = "bandage",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 19,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
+        },
+        [20] = {
+            name = "painkillers",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 20,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
+        },
+        [21] = {
+            name = "spikestrip",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 21,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
         },
     }
 }
+
+
+-- spikestrip
