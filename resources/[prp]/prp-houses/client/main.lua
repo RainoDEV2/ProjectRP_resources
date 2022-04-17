@@ -393,6 +393,26 @@ local function getDataForHouseTier(house, coords)
         return exports['prp-interior']:CreateLesterShell(coords)
     elseif Config.Houses[house].tier == 6 then
         return exports['prp-interior']:CreateRanchShell(coords)
+    elseif Config.Houses[house].tier == 7 then
+        return exports['prp-interior']:CreateContainer(coords)
+    elseif Config.Houses[house].tier == 8 then
+        return exports['prp-interior']:CreateFurniMid(coords)
+    elseif Config.Houses[house].tier == 9 then
+        return exports['prp-interior']:CreateFurniMotelModern(coords)
+    elseif Config.Houses[house].tier == 10 then
+        return exports['prp-interior']:CreateFranklinAunt(coords)
+    elseif Config.Houses[house].tier == 11 then
+        return exports['prp-interior']:CreateGarageMed(coords)
+    elseif Config.Houses[house].tier == 12 then
+        return exports['prp-interior']:CreateMichael(coords)
+    elseif Config.Houses[house].tier == 13 then
+        return exports['prp-interior']:CreateOffice1(coords)
+    elseif Config.Houses[house].tier == 14 then
+        return exports['prp-interior']:CreateStore1(coords)
+    elseif Config.Houses[house].tier == 15 then
+        return exports['prp-interior']:CreateWarehouse1(coords)
+    elseif Config.Houses[house].tier == 16 then
+        return exports['prp-interior']:CreateFurniMotelStandard(coords)
     else
         ProjectRP.Functions.Notify('Invalid House Tier', 'error')
     end
