@@ -6,7 +6,7 @@ local spikemodel = `P_ld_stinger_s`
 local ClosestSpike = nil
 
 local SpikeConfig = {
-    MaxSpikes = 5
+    MaxSpikes = 10
 }
 
 -- Functions

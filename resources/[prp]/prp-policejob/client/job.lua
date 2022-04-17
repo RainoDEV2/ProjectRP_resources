@@ -4,7 +4,7 @@ local inFingerprint = false
 local FingerPrintSessionId = nil
 
 local SpikeConfig = {
-    MaxSpikes = 5
+    MaxSpikes = 10
 }
 local SpawnedSpikes = {}
 local spikemodel = "P_ld_stinger_s"
