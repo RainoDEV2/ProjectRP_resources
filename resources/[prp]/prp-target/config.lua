@@ -289,6 +289,26 @@ Config.BoxZones = {
     distance = 1.0
   },
   -- Pizzeria
+  ["pizza_storage"] = {
+    name = "pizza_storage",
+    coords = vector3(291.32, -984.75, 29.43),
+    length = 2,
+    width = 2,
+    heading = 0,
+    debugPoly = false,
+    -- minZ=10.78,
+    -- maxZ=14.78,
+    options = {
+      {
+        type = "client",
+        event = "prp-pizzeria:client:open:hot:storage",
+        icon = "fas fa-comments",
+        label = "Pizzeria Storage",
+        job = "pizza",
+      },
+    },
+    distance = 1.0
+  },
   ["pregister"] = {
     name = "pregister",
     coords = vector3(290.69, -976.84, 29.43),

@@ -149,7 +149,7 @@ AddEventHandler('prp-burgershot:client:open:hot:storage', function()
     maxweight = 4000000,
     slots = 500,
 })
-TriggerEvent("inventory:client:SetCurrentStash", "Storage")
+    TriggerEvent("inventory:client:SetCurrentStash", "Storage")
 end)
 
 RegisterNetEvent('prp-burgershot:client:open:tray')

@@ -108,6 +108,14 @@ AddEventHandler('prp-pizza:start:black:job', function()
 	end
 end)
 
+RegisterNetEvent('prp-pizzeria:client:open:hot:storage')
+AddEventHandler('prp-pizzeria:client:open:hot:storage', function()
+  TriggerServerEvent("inventory:server:OpenInventory", "stash", "Pizzeria", {
+    maxweight = 4000000,
+    slots = 500,
+})
+    TriggerEvent("inventory:client:SetCurrentStash", "Pizzeria")
+end)
 
 function Animation()
 	loadAnimDict("mp_safehouselost@")
