@@ -25,15 +25,17 @@ RegisterNetEvent('prp-bankrobbery:UseBankcardA', function()
                         anim = "hotwire",
                         flags = 16,
                     }, {}, {}, function() -- Done
-                        if copsCalled or not Config.BigBanks["paleto"]["alarm"] then return end
-                        local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
-                        local street1 = GetStreetNameFromHashKey(s1)
-                        local street2 = GetStreetNameFromHashKey(s2)
-                        local streetLabel = street1
-                        if street2 then streetLabel = streetLabel .. " " .. street2 end
-                        TriggerServerEvent("prp-bankrobbery:server:callCops", "paleto", 0, streetLabel, pos)
-                        copsCalled = true
-                        TriggerEvent("prp:numbers:start", 45, function(output)
+                        if not Config.BigBanks["paleto"]["alarm"] then return end
+                        if not copsCalled then
+                            local s1, s2 = GetStreetNameAtCoord(pos.x, pos.y, pos.z)
+                            local street1 = GetStreetNameFromHashKey(s1)
+                            local street2 = GetStreetNameFromHashKey(s2)
+                            local streetLabel = street1
+                            if street2 then streetLabel = streetLabel .. " " .. street2 end
+                            TriggerServerEvent("prp-bankrobbery:server:callCops", "paleto", 0, streetLabel, pos)
+                            copsCalled = true
+                        end
+                        TriggerEvent("prp:numbers:start", 55, function(output)
                             if output == true then
                                 StopAnimTask(ped, "anim@gangops@facility@servers@", "hotwire", 1.0)
                                 TriggerServerEvent('prp-bankrobbery:server:setBankState', "paleto", true)
