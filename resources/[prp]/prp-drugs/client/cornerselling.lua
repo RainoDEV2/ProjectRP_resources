@@ -123,7 +123,7 @@ local function callPolice(coords)
             scale = 1.2,
             colour = 3,
             flashes = false,
-            text = '911 - Vangelico Jewelry robbery attempt',
+            text = 'Possible drug dealing',
             time = (5*60*1000),
             sound = 1,
         }
