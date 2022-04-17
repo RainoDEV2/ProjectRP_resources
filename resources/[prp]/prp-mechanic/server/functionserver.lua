@@ -85,7 +85,7 @@ RegisterNetEvent("prp-mechanic:server:DupeWarn", function(item)
 	local src = source
 	local P = ProjectRP.Functions.GetPlayer(src)
 	print("Player: "..P.PlayerData.charinfo.firstname.." "..P.PlayerData.charinfo.lastname.."["..tostring(src).."] - Tried to remove ('"..item.."') but it wasn't there")
-	DropPlayer(src, "Attempting to duplicate items") 
+	-- DropPlayer(src, "Attempting to duplicate items")
 	print("Player: "..P.PlayerData.charinfo.firstname.." "..P.PlayerData.charinfo.lastname.."["..tostring(src).."] - Dropped from server for item duplicating")
 end)
 
