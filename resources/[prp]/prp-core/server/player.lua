@@ -339,20 +339,22 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
             if (slot and self.PlayerData.items[slot]) and (self.PlayerData.items[slot].name:lower() == item:lower()) and (itemInfo['type'] == 'item' and not itemInfo['unique']) then
                 self.PlayerData.items[slot].amount = self.PlayerData.items[slot].amount + amount
                 self.Functions.UpdatePlayerData()
-                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Added', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved  Item: [Name:'..self.PlayerData.items[slot].name..'] [slot:' .. slot .. '] [Amount: '..amount..'] [New Amount: '..self.PlayerData.items[slot].amount..']```')
                 return true
             elseif (not itemInfo['unique'] and slot or slot and self.PlayerData.items[slot] == nil) then
                 self.PlayerData.items[slot] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = slot, combinable = itemInfo['combinable'] }
                 self.Functions.UpdatePlayerData()
-                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Added', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved  Item: [Name:'..self.PlayerData.items[slot].name..'] [slot:' .. slot .. '] [Amount: '..amount..'] [New Amount: '..self.PlayerData.items[slot].amount..']```')
+            
                 return true
             elseif (itemInfo['unique']) or (not slot or slot == nil) or (itemInfo['type'] == 'weapon') then
                 for i = 1, PRPConfig.Player.MaxInvSlots, 1 do
                     if self.PlayerData.items[i] == nil then
                         self.PlayerData.items[i] = { name = itemInfo['name'], amount = amount, info = info or '', label = itemInfo['label'], description = itemInfo['description'] or '', weight = itemInfo['weight'], type = itemInfo['type'], unique = itemInfo['unique'], useable = itemInfo['useable'], image = itemInfo['image'], shouldClose = itemInfo['shouldClose'], slot = i, combinable = itemInfo['combinable'] }
                         self.Functions.UpdatePlayerData()
-                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'AddItem', 'green', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** got item: [slot:' .. i .. '], itemname: ' .. self.PlayerData.items[i].name .. ', added amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[i].amount)
-                        --TriggerClientEvent('ProjectRP:Notify', self.PlayerData.source, itemInfo['label'].. ' toegevoegd!', 'success')
+                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Added', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved  Item: [Name:'..self.PlayerData.items[slot].name..'] [slot:' .. slot .. '] [Amount: '..amount..'] [New Amount: '..self.PlayerData.items[slot].amount..']```')
+                
+
                         return true
                     end
                 end
@@ -370,12 +372,13 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
             if self.PlayerData.items[slot].amount > amount then
                 self.PlayerData.items[slot].amount = self.PlayerData.items[slot].amount - amount
                 self.Functions.UpdatePlayerData()
-                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'RemoveItem', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** lost item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', removed amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Removed', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Removed  Item: [Name:'..item..'] [slot:' .. slot .. '] [Amount: '..amount..'] [New Amount: '..self.PlayerData.items[slot].amount..']```')
                 return true
             else
                 self.PlayerData.items[slot] = nil
                 self.Functions.UpdatePlayerData()
-                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'RemoveItem', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** lost item: [slot:' .. slot .. '], itemname: ' .. item .. ', removed amount: ' .. amount .. ', item removed')
+                TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Removed', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Removed  Item: [Name:'..item..'] [slot:' .. slot .. '] [Amount: '..amount..']```')
+            
                 return true
             end
         else
@@ -386,12 +389,13 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
                     if self.PlayerData.items[slot].amount > amountToRemove then
                         self.PlayerData.items[slot].amount = self.PlayerData.items[slot].amount - amountToRemove
                         self.Functions.UpdatePlayerData()
-                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'RemoveItem', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** lost item: [slot:' .. slot .. '], itemname: ' .. self.PlayerData.items[slot].name .. ', removed amount: ' .. amount .. ', new total amount: ' .. self.PlayerData.items[slot].amount)
+                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Removed', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Removed  Item: [Name:'..item..'] [slot:' .. slot .. '] [Amount: '..amount..'] [New Amount: '..self.PlayerData.items[slot].amount..']```')
                         return true
                     elseif self.PlayerData.items[slot].amount == amountToRemove then
                         self.PlayerData.items[slot] = nil
                         self.Functions.UpdatePlayerData()
-                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'RemoveItem', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** lost item: [slot:' .. slot .. '], itemname: ' .. item .. ', removed amount: ' .. amount .. ', item removed')
+                        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Item Removed', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Removed  Item: [Name:'..item..'] [slot:' .. slot .. '] [Amount: '..amount..']```')
+                       
                         return true
                     end
                 end
@@ -403,13 +407,13 @@ function ProjectRP.Player.CreatePlayer(PlayerData)
     self.Functions.SetInventory = function(items, dontUpdateChat)
         self.PlayerData.items = items
         self.Functions.UpdatePlayerData(dontUpdateChat)
-        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'SetInventory', 'blue', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** items set: ' .. json.encode(items))
+        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Inventory Set', 'blue', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Items Set: '..json.encode(items)..'```')
     end
 
     self.Functions.ClearInventory = function()
         self.PlayerData.items = {}
         self.Functions.UpdatePlayerData()
-        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'ClearInventory', 'red', '**' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ')** inventory cleared')
+        TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Inventory Cleared', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(self.PlayerData.source) .. ' (citizenid: ' .. self.PlayerData.citizenid .. ' | id: ' .. self.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(self.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Inventory Cleared```')
     end
 
     self.Functions.GetItemByName = function(item)

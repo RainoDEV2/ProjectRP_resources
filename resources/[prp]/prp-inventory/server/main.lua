@@ -487,6 +487,7 @@ local function CreateDropId()
 end
 
 local function CreateNewDrop(source, fromSlot, toSlot, itemAmount)
+	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(source)
 	local itemData = Player.Functions.GetItemBySlot(fromSlot)
 	local coords = GetEntityCoords(GetPlayerPed(source))
@@ -511,7 +512,7 @@ local function CreateNewDrop(source, fromSlot, toSlot, itemAmount)
 			slot = toSlot,
 			id = dropId,
 		}
-		TriggerEvent("prp-log:server:CreateLog", "drop", "New Item Drop", "red", "**".. GetPlayerName(source) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..source.."*) dropped new item; name: **"..itemData.name.."**, amount: **" .. itemAmount .. "**")
+		TriggerEvent('prp-log:server:CreateLog', 'drop', 'New Item Drop', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemData.name..'] [Amount: '..itemAmount..']```')
 		TriggerClientEvent("inventory:client:DropItemAnim", source)
 		TriggerClientEvent("inventory:client:AddDropItem", -1, dropId, source, coords)
 		if itemData.name:lower() == "radio" then
@@ -915,11 +916,14 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						OtherPlayer.Functions.RemoveItem(itemInfo["name"], toAmount, fromSlot)
 						Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "robbing", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount.. "** with player: **".. GetPlayerName(OtherPlayer.PlayerData.source) .. "** (citizenid: *"..OtherPlayer.PlayerData.citizenid.."* | id: *"..OtherPlayer.PlayerData.source.."*)")
+
+						TriggerEvent('prp-log:server:CreateLog', 'robbing', 'Swapped Item [Robbing]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] from player: Steam Name: ' .. OtherPlayer.PlayerData.source .. ' (citizenid: ' .. OtherPlayer.PlayerData.citizenid .. ' | id: ' .. OtherPlayer.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.lastname .. ')```')
+				
 					end
 				else
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-					TriggerEvent("prp-log:server:CreateLog", "robbing", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** to player: **".. GetPlayerName(OtherPlayer.PlayerData.source) .. "** (citizenid: *"..OtherPlayer.PlayerData.citizenid.."* | id: *"..OtherPlayer.PlayerData.source.."*)")
+					TriggerEvent('prp-log:server:CreateLog', 'robbing', 'Dropped Item [Robbing]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] to player: Steam Name: ' .. OtherPlayer.PlayerData.source .. ' (citizenid: ' .. OtherPlayer.PlayerData.citizenid .. ' | id: ' .. OtherPlayer.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.lastname .. ')```')
+			
 				end
 				local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 				OtherPlayer.Functions.AddItem(itemInfo["name"], fromAmount, toSlot, fromItemData.info)
@@ -936,11 +940,11 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						RemoveFromTrunk(plate, fromSlot, itemInfo["name"], toAmount)
 						Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "trunk", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount .. "** - plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'trunk', 'Swapped Item [trunk]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] with [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] [Plate: '..plate..']```')
 					end
 				else
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-					TriggerEvent("prp-log:server:CreateLog", "trunk", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** - plate: *" .. plate .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'trunk', 'Dropped Item [trunk]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemInfo["name"]..'] [Amount: '..fromAmount..'] [Plate: '..plate..']```')
 				end
 				local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 				AddToTrunk(plate, toSlot, fromSlot, itemInfo["name"], fromAmount, fromItemData.info)
@@ -957,11 +961,11 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						RemoveFromGlovebox(plate, fromSlot, itemInfo["name"], toAmount)
 						Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "glovebox", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount .. "** - plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'glovebox', 'Swapped Item [glovebox]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] with [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] [Plate: '..plate..']```')
 					end
 				else
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-					TriggerEvent("prp-log:server:CreateLog", "glovebox", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** - plate: *" .. plate .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'glovebox', 'Dropped Item [glovebox]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemInfo["name"]..'] [Amount: '..fromAmount..'] [Plate: '..plate..']```')
 				end
 				local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 				AddToGlovebox(plate, toSlot, fromSlot, itemInfo["name"], fromAmount, fromItemData.info)
@@ -979,11 +983,11 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						--RemoveFromStash(stashId, fromSlot, itemInfo["name"], toAmount)
 						RemoveFromStash(stashId, toSlot, itemInfo["name"], toAmount)
 						Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "stash", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount .. "** - stash: *" .. stashId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'stash', 'Swapped Item [stash]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] with [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] [Stash: '..stashId..']```')
 					end
 				else
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-					TriggerEvent("prp-log:server:CreateLog", "stash", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** - stash: *" .. stashId .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'stash', 'Dropped Item [stash]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemInfo["name"]..'] [Amount: '..fromAmount..'] [Stash: '..stashId..']```')
 				end
 				local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 				AddToStash(stashId, toSlot, fromSlot, itemInfo["name"], fromAmount, fromItemData.info)
@@ -1001,11 +1005,11 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						if toItemData.name ~= fromItemData.name then
 							exports['prp-traphouse']:RemoveHouseItem(traphouseId, fromSlot, itemInfo["name"], toAmount)
 							Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
-							TriggerEvent("prp-log:server:CreateLog", "traphouse", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount .. "** - traphouse: *" .. traphouseId .. "*")
+							TriggerEvent('prp-log:server:CreateLog', 'traphouse', 'Swapped Item [traphouse]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] with [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] [Traphouse: '..traphouseId..']```')
 						end
 					else
 						local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-						TriggerEvent("prp-log:server:CreateLog", "traphouse", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** - traphouse: *" .. traphouseId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'traphouse', 'Dropped Item [traphouse]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemInfo["name"]..'] [Amount: '..fromAmount..'] [Traphouse: '..traphouseId..']```')
 					end
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 					exports['prp-traphouse']:AddHouseItem(traphouseId, toSlot, itemInfo["name"], fromAmount, fromItemData.info, src)
@@ -1027,11 +1031,11 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						if toItemData.name ~= fromItemData.name then
 							Player.Functions.AddItem(toItemData.name, toAmount, fromSlot, toItemData.info)
 							RemoveFromDrop(toInventory, fromSlot, itemInfo["name"], toAmount)
-							TriggerEvent("prp-log:server:CreateLog", "drop", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** with name: **" .. fromItemData.name .. "**, amount: **" .. fromAmount .. "** - dropid: *" .. toInventory .. "*")
+							TriggerEvent('prp-log:server:CreateLog', 'drop', 'Swapped Item [Drop]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] with [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] [DropId: '..toInventory..']```')
 						end
 					else
 						local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
-						TriggerEvent("prp-log:server:CreateLog", "drop", "Dropped Item", "red", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) dropped new item; name: **"..itemInfo["name"].."**, amount: **" .. fromAmount .. "** - dropid: *" .. toInventory .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'drop', 'Dropped Item [Drop]', 'red', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Dropped Item: [Name: '..itemInfo["name"]..'] [Amount: '..fromAmount..'] [DropId: '..toInventory..']```')
 					end
 					local itemInfo = ProjectRP.Shared.Items[fromItemData.name:lower()]
 					AddToDrop(toInventory, toSlot, itemInfo["name"], fromAmount, fromItemData.info)
@@ -1060,10 +1064,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						Player.Functions.RemoveItem(toItemData.name, toAmount, toSlot)
 						OtherPlayer.Functions.AddItem(itemInfo["name"], toAmount, fromSlot, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "robbing", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** from player: **".. GetPlayerName(OtherPlayer.PlayerData.source) .. "** (citizenid: *"..OtherPlayer.PlayerData.citizenid.."* | *"..OtherPlayer.PlayerData.source.."*)")
+						TriggerEvent('prp-log:server:CreateLog', 'robbing', 'Swapped Item [Robbing]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..'] from player: Steam Name: ' .. OtherPlayer.PlayerData.source .. ' (citizenid: ' .. OtherPlayer.PlayerData.citizenid .. ' | id: ' .. OtherPlayer.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.lastname .. ')```')
+
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "robbing", "Retrieved Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) took item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** from player: **".. GetPlayerName(OtherPlayer.PlayerData.source) .. "** (citizenid: *"..OtherPlayer.PlayerData.citizenid.."* | *"..OtherPlayer.PlayerData.source.."*)")
+					TriggerEvent('prp-log:server:CreateLog', 'robbing', 'Took Item [Robbing]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Took Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] from player: Steam Name: ' .. OtherPlayer.PlayerData.source .. ' (citizenid: ' .. OtherPlayer.PlayerData.citizenid .. ' | id: ' .. OtherPlayer.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(OtherPlayer.PlayerData.source).PlayerData.charinfo.lastname .. ')```')
+					-- TriggerEvent("prp-log:server:CreateLog", "robbing", "Retrieved Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) took item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** from player: **".. GetPlayerName(OtherPlayer.PlayerData.source) .. "** (citizenid: *"..OtherPlayer.PlayerData.citizenid.."* | *"..OtherPlayer.PlayerData.source.."*)")
 				end
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
 			else
@@ -1103,12 +1109,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						Player.Functions.RemoveItem(toItemData.name, toAmount, toSlot)
 						AddToTrunk(plate, fromSlot, toSlot, itemInfo["name"], toAmount, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "trunk", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'trunk', 'Swapped Item[Trunk]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..']```\n**Plate**```'..plate..'```')
 					else
-						TriggerEvent("prp-log:server:CreateLog", "trunk", "Stacked Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) stacked item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** from plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'trunk', 'Stacked Item [Trunk]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Stacked Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] ```\n**Plate**```'..plate..'```')
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "trunk", "Received Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) received item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount.. "** plate: *" .. plate .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'trunk', 'Recieved Item [Trunk]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] ```\n**Plate**```'..plate..'```')
 				end
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
 			else
@@ -1148,12 +1154,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						Player.Functions.RemoveItem(toItemData.name, toAmount, toSlot)
 						AddToGlovebox(plate, fromSlot, toSlot, itemInfo["name"], toAmount, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "glovebox", "Swapped", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src..")* swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..itemInfo["name"].."**, amount: **" .. toAmount .. "** plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'glovebox', 'Swapped Item [Glovebox]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..']```\n**Plate**```'..plate..'```')
 					else
-						TriggerEvent("prp-log:server:CreateLog", "glovebox", "Stacked Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) stacked item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** from plate: *" .. plate .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'glovebox', 'Stacked Item [Glovebox]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Stacked Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] ```\n**Plate**```'..plate..'```')
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "glovebox", "Received Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) received item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount.. "** plate: *" .. plate .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'glovebox', 'Recieved Item [Glovebox]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] ```\n**Plate**```'..plate..'```')
 				end
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
 			else
@@ -1193,12 +1199,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						Player.Functions.RemoveItem(toItemData.name, toAmount, toSlot)
 						AddToStash(stashId, fromSlot, toSlot, itemInfo["name"], toAmount, toItemData.info)
-						TriggerEvent("prp-log:server:CreateLog", "stash", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** stash: *" .. stashId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'stash', 'Swapped Item [Stash]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..']```\n**Stash**```'..stashId..'```')
 					else
-						TriggerEvent("prp-log:server:CreateLog", "stash", "Stacked Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) stacked item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** from stash: *" .. stashId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'stash', 'Stacked Item [Stash]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Stacked Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] ```\n**Stash**```'..stashId..'```')
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "stash", "Received Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) received item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount.. "** stash: *" .. stashId .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'stash', 'Recieved Item [Stash]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] ```\n**Stash**```'..stashId..'```')
 				end
 				SaveStashItems(stashId, Stashes[stashId].items)
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
@@ -1239,12 +1245,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					if toItemData.name ~= fromItemData.name then
 						Player.Functions.RemoveItem(toItemData.name, toAmount, toSlot)
 						exports['prp-traphouse']:AddHouseItem(traphouseId, fromSlot, itemInfo["name"], toAmount, toItemData.info, src)
-						TriggerEvent("prp-log:server:CreateLog", "stash", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** stash: *" .. traphouseId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'stash', 'Swapped Item [Stash]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..']```\n**Stash**```'..traphouseId..'```')
 					else
-						TriggerEvent("prp-log:server:CreateLog", "stash", "Stacked Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) stacked item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** from stash: *" .. traphouseId .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'stash', 'Stacked Item [Stash]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Stacked Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] ```\n**Stash**```'..traphouseId..'```')
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "stash", "Received Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) received item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount.. "** stash: *" .. traphouseId .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'stash', 'Recieved Item [Stash]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] ```\n**Stash**```'..traphouseId..'```')
 				end
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
 			else
@@ -1282,7 +1288,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					Player.Functions.AddItem(itemData.name, 1, toSlot, itemData.info)
 					TriggerClientEvent('prp-drugs:client:updateDealerItems', src, itemData, 1)
 					TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-					TriggerEvent("prp-log:server:CreateLog", "dealers", "Dealer item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+					TriggerEvent('prp-log:server:CreateLog', 'dealers', 'Dealer item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
 				else
 					TriggerClientEvent('ProjectRP:Notify', src, "You don\'t have enough cash..", "error")
 				end
@@ -1291,7 +1297,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 					Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 					TriggerClientEvent('prp-drugs:client:updateDealerItems', src, itemData, fromAmount)
 					TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-					TriggerEvent("prp-log:server:CreateLog", "dealers", "Dealer item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. "  for $"..price)
+					TriggerEvent('prp-log:server:CreateLog', 'dealers', 'Dealer item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
 				else
 					TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough cash..", "error")
 				end
@@ -1308,7 +1314,8 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('prp-shops:client:UpdateShop', src, ProjectRP.Shared.SplitStr(shopType, "_")[2], itemData, fromAmount)
 				TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("prp-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				TriggerEvent('prp-log:server:CreateLog', 'shops', 'Shop item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
+		
 			elseif bankBalance >= price then
 				Player.Functions.RemoveMoney("bank", price, "itemshop-bought-item")
                 if ProjectRP.Shared.SplitStr(itemData.name, "_")[1] == "weapon" then
@@ -1318,7 +1325,7 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('prp-shops:client:UpdateShop', src, ProjectRP.Shared.SplitStr(shopType, "_")[2], itemData, fromAmount)
 				TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("prp-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				TriggerEvent('prp-log:server:CreateLog', 'shops', 'Shop item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
 			else
 				TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough cash..", "error")
 			end
@@ -1328,12 +1335,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 			if Player.Functions.RemoveMoney("cash", price, "unkown-itemshop-bought-item") then
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("prp-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				TriggerEvent('prp-log:server:CreateLog', 'shops', 'Shop item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
 			elseif bankBalance >= price then
 				Player.Functions.RemoveMoney("bank", price, "unkown-itemshop-bought-item")
 				Player.Functions.AddItem(itemData.name, fromAmount, toSlot, itemData.info)
 				TriggerClientEvent('ProjectRP:Notify', src, itemInfo["label"] .. " bought!", "success")
-				TriggerEvent("prp-log:server:CreateLog", "shops", "Shop item bought", "green", "**"..GetPlayerName(src) .. "** bought a " .. itemInfo["label"] .. " for $"..price)
+				TriggerEvent('prp-log:server:CreateLog', 'shops', 'Shop item bought', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Player bought a ' .. itemInfo["label"] .. ' for $'..price..'```')
 			else
 				TriggerClientEvent('ProjectRP:Notify', src, "You don\'t have enough cash..", "error")
 			end
@@ -1372,12 +1379,12 @@ RegisterNetEvent('inventory:server:SetInventoryData', function(fromInventory, to
 						if itemInfo["name"] == "radio" then
 							TriggerClientEvent('Radio.Set', src, false)
 						end
-						TriggerEvent("prp-log:server:CreateLog", "drop", "Swapped Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) swapped item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** with item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount .. "** - dropid: *" .. fromInventory .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'drop', 'Swapped Item [drop]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Swapped Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] with [Name: '..itemInfo["name"]..'] [Amount: '..toAmount..']```\n**Drop ID**```'..fromInventory..'```')
 					else
-						TriggerEvent("prp-log:server:CreateLog", "drop", "Stacked Item", "orange", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) stacked item; name: **"..toItemData.name.."**, amount: **" .. toAmount .. "** - from dropid: *" .. fromInventory .. "*")
+						TriggerEvent('prp-log:server:CreateLog', 'drop', 'Stacked Item [drop]', 'orange', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Stacked Item: [Name: '..toItemData.name..'] [Amount: '..toAmount..'] ```\n**Drop ID**```'..fromInventory..'```')
 					end
 				else
-					TriggerEvent("prp-log:server:CreateLog", "drop", "Received Item", "green", "**".. GetPlayerName(src) .. "** (citizenid: *"..Player.PlayerData.citizenid.."* | id: *"..src.."*) received item; name: **"..fromItemData.name.."**, amount: **" .. fromAmount.. "** -  dropid: *" .. fromInventory .. "*")
+					TriggerEvent('prp-log:server:CreateLog', 'drop', 'Recieved Item [drop]', 'green', '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Recieved Item: [Name: '..fromItemData.name..'] [Amount: '..fromAmount..'] ```\n**Drop ID**```'..fromInventory..'```')
 				end
 				Player.Functions.AddItem(fromItemData.name, fromAmount, toSlot, fromItemData.info)
 			else
