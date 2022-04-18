@@ -187,23 +187,23 @@ Config.Second = {
 Config.Clothes = {
     male = {
         ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 43,   ['torso_2'] = 0,
+        ['torso_1'] = 424,   ['torso_2'] = 4,
         ['decals_1'] = 0,   ['decals_2'] = 0,
-        ['arms'] = 37,
-        ['pants_1'] = 8,   ['pants_2'] = 0,
-        ['shoes_1'] = 3,   ['shoes_2'] = 0,
+        ['arms'] = 11,
+        ['pants_1'] = 69,   ['pants_2'] = 0,
+        ['shoes_1'] = 64,   ['shoes_2'] = 0,
         ['chain_1'] = 0,    ['chain_2'] = 0,
         ['helmet_1'] = -1,  ['helmet_2'] = 0,
         ['ears_1'] = -1,     ['ears_2'] = 0,
         ['bproof_1'] = 0,  ['bproof_2'] = 0
     },
     female = {
-        ['tshirt_1'] = 15,  ['tshirt_2'] = 0,
-        ['torso_1'] = 37,   ['torso_2'] = 0,
+        ['tshirt_1'] = 14,  ['tshirt_2'] = 0,
+        ['torso_1'] = 441,   ['torso_2'] = 0,
         ['decals_1'] = 0,   ['decals_2'] = 0,
-        ['arms'] = 46,
-        ['pants_1'] = 3,   ['pants_2'] = 0,
-        ['shoes_1'] = 61,   ['shoes_2'] = 0,
+        ['arms'] = 4,
+        ['pants_1'] = 83,   ['pants_2'] = 0,
+        ['shoes_1'] = 54,   ['shoes_2'] = 0,
         ['chain_1'] = -1,    ['chain_2'] = 0,
         ['helmet_1'] = -1,  ['helmet_2'] = 0,
         ['bproof_1'] = 0,  ['bproof_2'] = 0

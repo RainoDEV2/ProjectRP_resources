@@ -705,7 +705,7 @@ RegisterNetEvent('prp-mechanic:client:Preview:Rims:SubMenu', function(data)
 	end
 	exports['prp-menu']:openMenu(RimsMenu)
 end)
- 
+
 --Windows
 RegisterNetEvent('prp-mechanic:client:Preview:Windows:Apply', function(data)
 	local playerPed = PlayerPedId()
