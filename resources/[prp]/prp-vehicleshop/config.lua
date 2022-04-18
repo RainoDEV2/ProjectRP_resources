@@ -93,7 +93,9 @@ Config.Shops = {
         ['blipColor'] = 3,  -- Blip color
         ['Categories'] = {
             ['super'] = 'Super',
-            ['sports'] = 'Sports'
+            ['sports'] = 'Sports',
+            ['suvs'] = 'SUVs',
+            ['muscle'] = 'Muscle',
         },
         ['TestDriveTimeLimit'] = 2,
         ['Location'] = vector3(-63.59, 68.25, 73.06),
