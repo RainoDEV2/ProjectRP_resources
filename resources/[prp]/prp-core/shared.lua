@@ -4387,15 +4387,6 @@ PRPShared.Vehicles = {
 		['hash'] = `rt3000`,
 		['shop'] = 'luxury',
 	},
-	['um18charger'] = {
-		['name'] = 'Dodge Charger',					
-		['brand'] = 'Dodge',
-		['model'] = 'um18charger',
-		['price'] = 100000,
-		['category'] = 'sports',
-		['hash'] = `um18charger`,
-		['shop'] = 'luxury',
-	},
 	--- Sports Classic
 	['ardent'] = {
 		['name'] = 'Ardent',
