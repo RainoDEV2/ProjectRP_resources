@@ -20,7 +20,7 @@ Config.DoorList['mechanic'] = {
     distance = 5,
     locked = true,
     audioRemote = false,
-    authorizedJobs = { ['mechanic'] = 0 },
+    authorizedJobs = { ['mechanic'] = 4 },
     fixText = false,
     objName = -427498890,
     doorRate = 1.0,
@@ -42,7 +42,6 @@ Config.DoorList['lscustoms1'] = {
     objName = -550347177,
     doorType = 'garage',
     authorizedJobs = { ['realestate'] = 0 },
-    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
-    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
-    --autoLock = 1000,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
