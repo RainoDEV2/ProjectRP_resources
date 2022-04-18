@@ -97,7 +97,7 @@ icfg.CarsToSteal = {
     LeftSidex = -1.8, LeftSidey = -0.15, LeftSidez = 0.0,
     RightSidex = 1.8, RightSidey = -0.15, RightSidez = 0.0,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = 0.0},
-]
+}
 
 icfg.ParkingSpace = {
     {x = 899.66, y = 3653.13, z = 32.15, h = 90.58, blip, hasParked},
