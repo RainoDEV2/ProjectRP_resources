@@ -241,7 +241,7 @@ PRPShared.Items = {
 	 -- // Pizzaria \\ --
 	["pizza"] 		 			 	 = {["name"] = "pizza",       		    ["label"] = "Delicious Pizza",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizza.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Yummyyy!!!"},
 	["pizzameat"] 		 			 	 = {["name"] = "pizzameat",       		    ["label"] = "Pizza Meat",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizzameat.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Pizza meat"},
-	["groenten"] 						 = {["name"] = "groenten", 			  	  	["label"] = "Pizza Vegetables", 				["weight"] = 100, 		["type"] = "item", 		["image"] = "groenten.png", 	    	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Fresh vegetables"},
+	["vegetables"] 						 = {["name"] = "vegetables", 			  	  	["label"] = "Pizza Vegetables", 				["weight"] = 100, 		["type"] = "item", 		["image"] = "vegetables.png", 	    	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,	   ["combinable"] = nil,   ["description"] = "Fresh vegetables"},
 	["pizza-vooraad"] 	 			 	 = {["name"] = "pizza-vooraad",       		["label"] = "Pizza box",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizavooraad.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,   ["combinable"] = nil,    ["expire"] = 5,	  ["description"] = "Stock box for the pizza shop"},
 	["pizza-box"] 	 			 	 	 = {["name"] = "pizza-box",       			["label"] = "Box of Pizza",	 				["weight"] = 100, 		["type"] = "item", 		["image"] = "pizzadoos.png", 			["unique"] = false, 	["useable"] = true, 	["shouldClose"] = false,   ["combinable"] = nil,	  ["description"] = "Deliver this delicious pizza"},
 	["pizza-box"] 					 = {["name"] = "pizza-box", 			 	  	["label"] = "Pizza box", 			    ["weight"] = 7500, 	["type"] = "item", 		["image"] = "pizza-box.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Sow this one is heavy."},
@@ -657,10 +657,10 @@ PRPShared.Items = {
 	["nos"] 					    = {["name"] = "nos", 			 	  	  	["label"] = "NOS Bottle", 		        ["weight"] = 0, 		["type"] = "item", 		["image"] = "nos.png", 				    ["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = "A full bottle of NOS"},
 	["noscan"] 					    = {["name"] = "noscan", 			 	  	["label"] = "Empty NOS Bottle", 		["weight"] = 0, 		["type"] = "item", 		["image"] = "noscan.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false,  ["combinable"] = nil,   ["description"] = "An Empty bottle of NOS"},
 
-	["engine1"] 				    = {["name"] = "engine1", 			 	  	["label"] = "Shonen Engine",            ["weight"] = 0, 		["type"] = "item", 		["image"] = "shonen.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
-	["engine2"] 				    = {["name"] = "engine2", 			 	  	["label"] = "V8 Engine",        	    ["weight"] = 0, 		["type"] = "item", 		["image"] = "v8engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
-	["engine3"] 				    = {["name"] = "engine3", 			 	  	["label"] = "V10 Engine",          		["weight"] = 0, 		["type"] = "item", 		["image"] = "v10engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
-	["engine4"] 				    = {["name"] = "engine4", 			 	  	["label"] = "V12 Engine",               ["weight"] = 0, 		["type"] = "item", 		["image"] = "v12engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
+	["engine1"] 				    = {["name"] = "engine1", 			 	  	["label"] = "Stage 1 Engine",           ["weight"] = 0, 		["type"] = "item", 		["image"] = "shonen.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
+	["engine2"] 				    = {["name"] = "engine2", 			 	  	["label"] = "Stage 2 Engine",        	["weight"] = 0, 		["type"] = "item", 		["image"] = "v8engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
+	["engine3"] 				    = {["name"] = "engine3", 			 	  	["label"] = "Stage 3 Engine",          	["weight"] = 0, 		["type"] = "item", 		["image"] = "v10engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
+	["engine4"] 				    = {["name"] = "engine4", 			 	  	["label"] = "Stage 4 Engine",           ["weight"] = 0, 		["type"] = "item", 		["image"] = "v12engine.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
 
 	["transmission1"] 				= {["name"] = "transmission1", 				["label"] = "Transmission Lvl 1",       ["weight"] = 0, 		["type"] = "item", 		["image"] = "transmission1.png",  		["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
 	["transmission2"] 				= {["name"] = "transmission2", 				["label"] = "Transmission Lvl 2",       ["weight"] = 0, 		["type"] = "item", 		["image"] = "transmission2.png",  		["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
@@ -2893,10 +2893,10 @@ PRPShared.Vehicles = {
 	['caracara2'] = {
 		['name'] = 'Caracara 4x4',
 		['brand'] = 'Vapid',
-		['model'] = 'caracara',
+		['model'] = 'caracara2',
 		['price'] = 80000,
 		['category'] = 'offroad',
-		['hash'] = `caracara`,
+		['hash'] = `caracara2`,
 		['shop'] = 'pdm',
 	},
 	['dubsta3'] = {

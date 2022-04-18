@@ -2,8 +2,8 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 
 Config.CraftingLocations = {
 	--Add your poly zone box locations and job name for each store and it will add it to the prp-target loop
-	-- { coords = vector3(-38.25, -1038.99, 28.6), w = 4.0, d = 0.6, heading = 340.0, job = "mechanic" }, -- Bennys Workshop next to PDM
-	-- { coords = vector3(-198.74, -1314.46, 31.09), w = 2.8, d = 1.0, heading = 270.0, job = "mechanic" }, -- Alta Street Bennys Workshop
+	{ coords = vector3(-34.18, -1036.6, 28.72), w = 4.0, d = 0.6, heading = 340.0, job = "mechanic" }, -- Bennys Workshop next to PDM
+	{ coords = vector3(-195.55, -1317.53, 31.46), w = 2.8, d = 1.0, heading = 270.0, job = "mechanic" }, -- Alta Street Bennys Workshop
 	{ coords = vector3(-340.44, -141.9, 39.01), w = 3.2, d = 1.0, heading = 255.0, job = "mechanic" }, -- LS Customs in city
 	-- { coords = vector3(472.54, -1313.22, 29.21), w = 3.2, d = 1.0, heading = 30.0, job = "mechanic" }, -- Hayes Autos
 	{ coords = vector3(1176.69, 2635.44, 37.75), w = 3.2, d = 1.0, heading = 270.0, job = "mechanic" }, -- LS Customs route 68

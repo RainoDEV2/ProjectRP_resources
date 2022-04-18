@@ -5,6 +5,7 @@ Config.ActivePayments = {}
 Config.Locations = {
 	
 }
+
 Config.EntitysSpawned = false
 
 Config.BurgerItems = {

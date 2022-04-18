@@ -93,7 +93,7 @@ ProjectRP.Functions.CreateCallback('prp-mining:Smelting:Check:4', function(sourc
 	local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
 	if Player.Functions.GetItemByName('ironore') ~= nil and Player.Functions.GetItemByName('carbon') ~= nil then cb(true)
-	else  cb(false)
+	else cb(false)
 	end
 end)
 
