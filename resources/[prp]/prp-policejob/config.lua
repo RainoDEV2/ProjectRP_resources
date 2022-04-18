@@ -145,7 +145,6 @@ Config.AuthorizedVehicles = {
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
-		-- ["police4"] = "Police HC Patrol", 
 	},
 	-- Grade 7
 	[7] = {
@@ -159,7 +158,6 @@ Config.AuthorizedVehicles = {
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
-		-- ["police4"] = "Police HC Patrol",
 	},
 	-- Grade 8
 	[8] = {
@@ -173,7 +171,6 @@ Config.AuthorizedVehicles = {
 		-- ["npolvette"] = "HSIU Corvette",
 		-- ["npolstang"] = "HSIU Mustang",
         -- ["npolchal"] = "HSIU Challenger",
-		-- ["police4"] = "Police HC Patrol",
 	}
 }
 
