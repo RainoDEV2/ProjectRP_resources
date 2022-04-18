@@ -72,10 +72,10 @@ RegisterServerEvent('prp-payments:Tickets:Sell', function()
 	end
 end)
 
-ProjectRP.Functions.CreateCallback('prp-payments:Ticket:Count', function(source, cb) 
+ProjectRP.Functions.CreateCallback('prp-payments:Ticket:Count', function(source, cb)
 	if ProjectRP.Functions.GetPlayer(source).Functions.GetItemByName('payticket') == nil then amount = 0
-	else amount = ProjectRP.Functions.GetPlayer(source).Functions.GetItemByName('payticket').amount end 
-	cb(amount) 
+	else amount = ProjectRP.Functions.GetPlayer(source).Functions.GetItemByName('payticket').amount end
+	cb(amount)
 end)
 
 RegisterServerEvent("prp-payments:server:Charge", function(citizen, price, billtype, img)
@@ -113,9 +113,12 @@ RegisterServerEvent("prp-payments:server:PayPopup", function(data)
     local biller = ProjectRP.Functions.GetPlayer(tonumber(data.biller))
 	local newdata = { senderCitizenId = biller.PlayerData.citizenid, society = biller.PlayerData.job.name, amount = data.amount }
 	if data.accept == true then
-		billed.Functions.RemoveMoney(tostring(data.billtype), data.amount) 
-		exports["prp-management"]:AddMoney(tostring(biller.PlayerData.job.name), data.amount)
-		--TriggerEvent("prp-bossmenu:server:addAccountMoney", tostring(biller.PlayerData.job.name), data.amount)
+		billed.Functions.RemoveMoney(tostring(data.billtype), data.amount)
+		local comm = tonumber(Config.Jobs[newdata.society].Commission)
+		if Config.Commission and comm ~= 0 then
+			local businessAmount = data.amount - math.floor(tonumber(data.amount) * comm)
+			exports["prp-management"]:AddMoney(tostring(biller.PlayerData.job.name), businessAmount)
+		end
 		TriggerEvent('prp-payments:Tickets:Give', newdata, biller)
 		TriggerClientEvent("ProjectRP:Notify", data.biller, billed.PlayerData.charinfo.firstname.." accepted the payment", "success")
 	elseif data.accept == false then

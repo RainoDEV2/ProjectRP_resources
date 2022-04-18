@@ -410,46 +410,46 @@ AddEventHandler('prp-banking:createSavingsAccount', function()
 end)
 
 
-ProjectRP.Commands.Add('givecash', 'Give cash to player.', {{name = 'id', help = 'Player ID'}, {name = 'amount', help = 'Amount'}}, true, function(source, args)
-    local src = source
-	local id = tonumber(args[1])
-	local amount = math.ceil(tonumber(args[2]))
+-- ProjectRP.Commands.Add('cashgive', 'Give cash to player.', {{name = 'id', help = 'Player ID'}, {name = 'amount', help = 'Amount'}}, true, function(source, args)
+--     local src = source
+-- 	local id = tonumber(args[1])
+-- 	local amount = math.ceil(tonumber(args[2]))
     
-	if id and amount then
-		local xPlayer = ProjectRP.Functions.GetPlayer(src)
-		local xReciv = ProjectRP.Functions.GetPlayer(id)
+-- 	if id and amount then
+-- 		local xPlayer = ProjectRP.Functions.GetPlayer(src)
+-- 		local xReciv = ProjectRP.Functions.GetPlayer(id)
 		
-		if xReciv and xPlayer then
-			if not xPlayer.PlayerData.metadata["isdead"] then
-				local distance = xPlayer.PlayerData.metadata["inlaststand"] and 3.0 or 10.0
-				if #(GetEntityCoords(GetPlayerPed(src)) - GetEntityCoords(GetPlayerPed(id))) < distance then
-					if xPlayer.Functions.RemoveMoney('cash', amount) then
-						if xReciv.Functions.AddMoney('cash', amount) then
-							TriggerClientEvent('ProjectRP:Notify', src, "Success fully gave to ID " .. tostring(id) .. ' ' .. tostring(amount) .. '$.', "success")
-							TriggerClientEvent('ProjectRP:Notify', id, "Success recived gave " .. tostring(amount) .. '$ from ID ' .. tostring(src), "success")
-                            TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Give Cash', 'green', '**Person who gave cash (Details)**\n```Steam Name: '..GetPlayerName(xPlayer.PlayerData.source) ..' (citizenid: '..xPlayer.PlayerData.citizenid..' | id: '..xPlayer.PlayerData.source..' | Character Name: '..xPlayer.PlayerData.charinfo.firstname .. ' ' .. xPlayer.PlayerData.charinfo.lastname..') ```\n**Person Who Recieved Cash (Details)**\n```Steam Name: '..GetPlayerName(xReciv.PlayerData.source) ..' (citizenid: '..xReciv.PlayerData.citizenid..' | id: '..xReciv.PlayerData.source..' | Character Name: '..xReciv.PlayerData.charinfo.firstname .. ' ' .. xReciv.PlayerData.charinfo.lastname..') ``` **Amount Given**\n```'..amount..'```')
-							TriggerClientEvent("payanimation", src)
-						else
-							TriggerClientEvent('ProjectRP:Notify', src, "Could not give item to the given id.", "error")
-						end
-					else
-						TriggerClientEvent('ProjectRP:Notify', src, "You don\'t have this amount.", "error")
-					end
-				else
-					TriggerClientEvent('ProjectRP:Notify', src, "You are too far away lmfao.", "error")
-				end
-			else
-				TriggerClientEvent('ProjectRP:Notify', src, "You are dead LOL.", "error")
-			end
-		else
-			TriggerClientEvent('ProjectRP:Notify', src, "Wrong ID.", "error")
-		end
-	else
-		TriggerClientEvent('ProjectRP:Notify', src, "Usage /givecash [ID] [AMOUNT]", "error")
-	end
-end)
+-- 		if xReciv and xPlayer then
+-- 			if not xPlayer.PlayerData.metadata["isdead"] then
+-- 				local distance = xPlayer.PlayerData.metadata["inlaststand"] and 3.0 or 10.0
+-- 				if #(GetEntityCoords(GetPlayerPed(src)) - GetEntityCoords(GetPlayerPed(id))) < distance then
+-- 					if xPlayer.Functions.RemoveMoney('cash', amount) then
+-- 						if xReciv.Functions.AddMoney('cash', amount) then
+-- 							TriggerClientEvent('ProjectRP:Notify', src, "Success fully gave to ID " .. tostring(id) .. ' ' .. tostring(amount) .. '$.', "success")
+-- 							TriggerClientEvent('ProjectRP:Notify', id, "Success recived gave " .. tostring(amount) .. '$ from ID ' .. tostring(src), "success")
+--                             TriggerEvent('prp-log:server:CreateLog', 'playermoney', 'Give Cash', 'green', '**Person who gave cash (Details)**\n```Steam Name: '..GetPlayerName(xPlayer.PlayerData.source) ..' (citizenid: '..xPlayer.PlayerData.citizenid..' | id: '..xPlayer.PlayerData.source..' | Character Name: '..xPlayer.PlayerData.charinfo.firstname .. ' ' .. xPlayer.PlayerData.charinfo.lastname..') ```\n**Person Who Recieved Cash (Details)**\n```Steam Name: '..GetPlayerName(xReciv.PlayerData.source) ..' (citizenid: '..xReciv.PlayerData.citizenid..' | id: '..xReciv.PlayerData.source..' | Character Name: '..xReciv.PlayerData.charinfo.firstname .. ' ' .. xReciv.PlayerData.charinfo.lastname..') ``` **Amount Given**\n```'..amount..'```')
+-- 							TriggerClientEvent("payanimation", src)
+-- 						else
+-- 							TriggerClientEvent('ProjectRP:Notify', src, "Could not give item to the given id.", "error")
+-- 						end
+-- 					else
+-- 						TriggerClientEvent('ProjectRP:Notify', src, "You don\'t have this amount.", "error")
+-- 					end
+-- 				else
+-- 					TriggerClientEvent('ProjectRP:Notify', src, "You are too far away lmfao.", "error")
+-- 				end
+-- 			else
+-- 				TriggerClientEvent('ProjectRP:Notify', src, "You are dead LOL.", "error")
+-- 			end
+-- 		else
+-- 			TriggerClientEvent('ProjectRP:Notify', src, "Wrong ID.", "error")
+-- 		end
+-- 	else
+-- 		TriggerClientEvent('ProjectRP:Notify', src, "Usage /cashgive [ID] [AMOUNT]", "error")
+-- 	end
+-- end)
 
 RegisterNetEvent("payanimation")
 AddEventHandler("payanimation", function()
-TriggerEvent('animations:client:EmoteCommandStart', {"id"})
+    TriggerEvent('animations:client:EmoteCommandStart', {"id"})
 end)
