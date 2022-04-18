@@ -1,4 +1,4 @@
-local ProjectRP = exports["prp-core"]:GetCoreObject()
+local ProjectRP = exports['prp-core']:GetCoreObject()
 
 -- Code
 
@@ -14,12 +14,12 @@ ProjectRP.Functions.CreateCallback('prp-burgershot:server:hasBurgerItems', funct
         local BurgerData = Player.Functions.GetItemByName(v)
         if BurgerData ~= nil then
             count = count + 1
-            if count == 3 then
-                cb(true)
-            else
-                cb(false)
-            end
         end
+    end
+    if count == 3 then
+        cb(true)
+    else
+        cb(false)
     end
 end)
 

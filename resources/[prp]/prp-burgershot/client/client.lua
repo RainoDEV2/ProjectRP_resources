@@ -162,7 +162,7 @@ AddEventHandler('prp-burgershot:client:open:tray', function(Numbers)
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burgerbleeder')
-AddEventHandler('prp-burgershot:client:create:burgerbleeder', function(BurgerType)
+AddEventHandler('prp-burgershot:client:create:burgerbleeder', function()
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerBleeder()
@@ -173,7 +173,7 @@ AddEventHandler('prp-burgershot:client:create:burgerbleeder', function(BurgerTyp
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-heartstopper')
-AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function(BurgerType)
+AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function()
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerHeart()
@@ -184,7 +184,7 @@ AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function(Bur
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-moneyshot')
-AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function(BurgerType)
+AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function()
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerMoneyshot()
@@ -195,7 +195,7 @@ AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function(Burger
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-torpedo')
-AddEventHandler('prp-burgershot:client:create:burger-torpedo', function(BurgerType)
+AddEventHandler('prp-burgershot:client:create:burger-torpedo', function()
   ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerTorpedo()
@@ -292,7 +292,7 @@ function SpawnWorkObjects()
 end
 
 function MakeBurgerBleeder()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -314,7 +314,7 @@ function MakeBurgerBleeder()
 end
 
 function MakeBurgerHeart()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -336,7 +336,7 @@ function MakeBurgerHeart()
 end
 
 function MakeBurgerMoneyshot()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -358,7 +358,7 @@ function MakeBurgerMoneyshot()
 end
 
 function MakeBurgerTorpedo()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
