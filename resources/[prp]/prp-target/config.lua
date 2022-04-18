@@ -164,28 +164,23 @@ Config.BoxZones = {
     },
     distance = 1.0
   },
-  ["register"] = {
-    name = "register",
-    coords = vector3(-1196.34, -890.9, 13.98),
-    length = 0.5,
-    width = 1,
-    heading = 35,
+  ["burger-register"] = {
+    name = "burger-register",
+    coords = vector3(-1195.43, -892.38, 14.07),
+    length = 1,
+    width = 0.5,
+    heading = 300,
     debugPoly = false,
     minZ=10.58,
     maxZ=14.58,
     options = {
       {
         type = "client",
-        event = "prp-burgershot:client:open:register",
+        event = "prp-payments:client:Charge",
         icon = "fas fa-coins",
         label = "Register",
         job = "burger",
-      },
-      {
-        type = "client",
-        event = "prp-burgershot:client:open:payment",
-        icon = "fas fa-coins",
-        label = "Payment",
+        img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/bf/BurgerShot-HDLogo.svg width=150px></p>"
       },
     },
     distance = 1.5
@@ -321,16 +316,11 @@ Config.BoxZones = {
     options = {
       {
         type = "client",
-        event = "prp-pizzeria:client:open:register",
+        event = "prp-payments:client:Charge",
         icon = "fas fa-coins",
         label = "Register",
         job = "pizza",
-      },
-      {
-        type = "client",
-        event = "prp-pizzeria:client:open:payment",
-        icon = "fas fa-coins",
-        label = "Payment",
+        img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/5/59/PizzaThis.png width=150px></p>"
       },
     },
     distance = 1.5

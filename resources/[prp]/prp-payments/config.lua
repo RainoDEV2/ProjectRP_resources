@@ -17,7 +17,7 @@ Config.PhoneBank = false -- Set this to false to use the popup payment system FO
 						-- This doesn't affect Cash payments as they by default use confirmation now
 						-- This is helpful for phones that don't support invoices well
 
-Config.Commission = false -- Set this to true to enable Commissions and give the person charging a percentage of the total
+Config.Commission = true -- Set this to true to enable Commissions and give the person charging a percentage of the total
 Config.CommissionAll = false -- Set this to true to give commission to workers clocked in
 Config.CommissionDouble = false -- Set this to true if you want the person charging to get double Commission
 Config.CommissionLimit = false -- If true, this limits the Commission to only be given if over the "MinAmountForTicket". If false, Commission will be given for any amount
@@ -27,10 +27,10 @@ Config.CommissionLimit = false -- If true, this limits the Commission to only be
 -- Commission is a percentage eg "0.10" becomes 10%
 
 Config.Jobs = {
-	['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.50,},
-	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.50, },
-	['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.50, },
-	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.50, },
-	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.50, },
+	['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.60,},
+	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
+	['pizza'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
+	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
+	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
 	['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.60, },
 }
