@@ -116,4 +116,40 @@ PRPShared.Gangs = {
             },
         },
 	}
+    ['celestial'] = {
+		label = 'CELESTIAL',
+		grades = {
+            ['0'] = {
+                name = 'IN-ORBIT'
+            },
+			['1'] = {
+                name = 'SOL'
+            },
+			['2'] = {
+                name = 'COSMOS'
+            },
+			['3'] = {
+                name = 'UNIVERSE',
+				isboss = true
+            },
+        },
+	}
+    ['flowersociety'] = {
+		label = 'Flower Society',
+		grades = {
+            ['0'] = {
+                name = 'Recruit'
+            },
+			['1'] = {
+                name = 'Enforcer'
+            },
+			['2'] = {
+                name = 'Vice President'
+            },
+			['3'] = {
+                name = 'President',
+				isboss = true
+            },
+        },
+	}
 }

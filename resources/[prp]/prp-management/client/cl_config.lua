@@ -94,6 +94,12 @@ Config.GangMenus = {
     ['triads'] = {
         vector3(0, 0, 0),
     },
+    ['celestial'] = {
+        vector3(0, 0, 0),
+    },
+    ['flowersociety'] = {
+        vector3(0, 0, 0),
+    },
 }
 
 Config.GangMenuZones = {

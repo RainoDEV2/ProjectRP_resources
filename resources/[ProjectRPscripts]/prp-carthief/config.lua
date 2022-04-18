@@ -30,24 +30,7 @@ icfg.CarsToSteal = {
     RightSidex = 1.8, RightSidey = 0.0, RightSidez = 0.0,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = 0.0},
 
-    [2] = {CarLabel = "Second Model Windsor", CarModel = "windsor2", Payout = 2500,
-    FrontLeftWheelx = -0.95, FrontLeftWheely = 1.6, FrontLeftWheelz = 0.0,
-    FrontRightWheelx = 0.95, FrontRightWheely = 1.6, FrontRightWheelz = 0.0,
-    RearLeftWheelx = -0.95, RearLeftWheely = -1.9, RearLeftWheelz = 0.0,
-    RearRightWheelx = 0.95, RearRightWheely = -1.9, RearRightWheelz = 0.0,
-
-    FrontLeftDoorx = -0.95, FrontLeftDoory = -0.2, FrontLeftDoorz = 0.0,
-    FrontRightDoorx = 0.95, FrontRightDoory = -0.2, FrontRightDoorz = 0.0,
-    RearLeftDoorx = -0.95, RearLeftDoory = -1.1, RearLeftDoorz = 0.0,
-    RearRightDoorx = 0.95, RearRightDoory = -1.1, RearRightDoorz = 0.0,
-    FrontDoorx = 0.0, FrontDoory = 2.5, FrontDoorz = 0.0,
-    RearDoorx = 0.0, RearDoory = -3.0, RearDoorz = 0.0,
-
-    LeftSidex = -1.8, LeftSidey = -0.3, LeftSidez = 0.0,
-    RightSidex = 1.8, RightSidey = -0.3, RightSidez = 0.0,
-    FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = 0.0},
-
-    [3] = {CarLabel = "Dubsta", CarModel = "dubsta", Payout = 2800,
+    [2] = {CarLabel = "Dubsta", CarModel = "dubsta", Payout = 2800,
     FrontLeftWheelx = -0.90, FrontLeftWheely = 1.45, FrontLeftWheelz = 0.0,
     FrontRightWheelx = 0.90, FrontRightWheely = 1.45, FrontRightWheelz = 0.0,
     RearLeftWheelx = -0.90, RearLeftWheely = -1.45, RearLeftWheelz = 0.0,
@@ -64,7 +47,7 @@ icfg.CarsToSteal = {
     RightSidex = 1.8, RightSidey = -0.15, RightSidez = -0.15,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = -0.15},
 
-    [4] = {CarLabel = "Ingot", CarModel = "ingot", Payout = 3000,
+    [3] = {CarLabel = "Ingot", CarModel = "ingot", Payout = 3000,
     FrontLeftWheelx = -0.80, FrontLeftWheely = 1.35, FrontLeftWheelz = -0.2,
     FrontRightWheelx = 0.80, FrontRightWheely = 1.35, FrontRightWheelz = -0.2,
     RearLeftWheelx = -0.80, RearLeftWheely = -1.35, RearLeftWheelz = -0.2,
@@ -81,7 +64,7 @@ icfg.CarsToSteal = {
     RightSidex = 1.8, RightSidey = -0.15, RightSidez = -0.2,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = -0.2},
 
-    [5] = {CarLabel = "Glendale", CarModel = "glendale", Payout = 3200,
+    [4] = {CarLabel = "Glendale", CarModel = "glendale", Payout = 3200,
     FrontLeftWheelx = -0.85, FrontLeftWheely = 1.55, FrontLeftWheelz = -0.2,
     FrontRightWheelx = 0.85, FrontRightWheely = 1.55, FrontRightWheelz = -0.2,
     RearLeftWheelx = -0.85, RearLeftWheely = -1.25, RearLeftWheelz = -0.2,
@@ -98,7 +81,7 @@ icfg.CarsToSteal = {
     RightSidex = 1.8, RightSidey = -0.15, RightSidez = -0.3,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = -0.3},
 
-    [6] = {CarLabel = "Huntley", CarModel = "huntley", Payout = 3500,
+    [5] = {CarLabel = "Huntley", CarModel = "huntley", Payout = 3500,
     FrontLeftWheelx = -0.90, FrontLeftWheely = 1.45, FrontLeftWheelz = 0.1,
     FrontRightWheelx = 0.90, FrontRightWheely = 1.45, FrontRightWheelz = 0.1,
     RearLeftWheelx = -0.90, RearLeftWheely = -1.45, RearLeftWheelz = 0.1,
@@ -114,24 +97,7 @@ icfg.CarsToSteal = {
     LeftSidex = -1.8, LeftSidey = -0.15, LeftSidez = 0.0,
     RightSidex = 1.8, RightSidey = -0.15, RightSidez = 0.0,
     FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = 0.0},
-
-    [7] = {CarLabel = "Second Model Primo", CarModel = "primo2", Payout = 3700,
-    FrontLeftWheelx = -0.85, FrontLeftWheely = 1.45, FrontLeftWheelz = 0.0,
-    FrontRightWheelx = 0.85, FrontRightWheely = 1.45, FrontRightWheelz = 0.0,
-    RearLeftWheelx = -0.85, RearLeftWheely = -1.45, RearLeftWheelz = 0.0,
-    RearRightWheelx = 0.85, RearRightWheely = -1.45, RearRightWheelz = 0.0,
-
-    FrontLeftDoorx = -0.85, FrontLeftDoory = 0.2, FrontLeftDoorz = 0.0,
-    FrontRightDoorx = 0.85, FrontRightDoory = 0.2, FrontRightDoorz = 0.0,
-    RearLeftDoorx = -0.85, RearLeftDoory = -0.7, RearLeftDoorz = 0.0,
-    RearRightDoorx = 0.85, RearRightDoory = -0.7, RearRightDoorz = 0.0,
-    FrontDoorx = 0.0, FrontDoory = 2.4, FrontDoorz = 0.0,
-    RearDoorx = 0.0, RearDoory = -2.55, RearDoorz = 0.0,
-
-    LeftSidex = -1.8, LeftSidey = 0.0, LeftSidez = -0.1,
-    RightSidex = 1.8, RightSidey = 0.0, RightSidez = -0.1,
-    FrontSidex = 0.0, FrontSidey = 3.5, FrontSidez = -0.1},
-}
+]
 
 icfg.ParkingSpace = {
     {x = 899.66, y = 3653.13, z = 32.15, h = 90.58, blip, hasParked},

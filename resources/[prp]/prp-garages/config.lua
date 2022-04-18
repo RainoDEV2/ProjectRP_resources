@@ -144,6 +144,20 @@ GangGarages = {
         putVehicle = vector3(337.25, -2035.93, 21.34),
         job = "vagos"
     },
+    ["celestial"] = {
+        label = "CELESTIAL",
+        takeVehicle = vector3(0, 0, 0),
+        spawnPoint = vector4(0, 0, 0, 0),
+        putVehicle = vector3(0, 0, 0),
+        job = "celestial"
+    },
+    ["flowersociety"] = {
+        label = "Flower Society",
+        takeVehicle = vector3(0, 0, 0),
+        spawnPoint = vector4(0, 0, 0, 0),
+        putVehicle = vector3(0, 0, 0),
+        job = "flowersociety"
+    },
 }
 
 JobGarages = {
