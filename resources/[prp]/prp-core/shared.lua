@@ -701,7 +701,12 @@ PRPShared.Items = {
 
 	["payticket"] 					 = {["name"] = "payticket", 				["label"] = "Receipt", 	     			["weight"] = 150, 		["type"] = "item", 		["image"] = "ticket.png", 				["unique"] = false,   	["useable"] = false,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "Cash these in at the bank!"},
 
-	['weapon_shoe'] 		     = {['name'] = 'weapon_shoe', 		 	  	['label'] = 'Shoe', 				['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_shoe.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A shoe'},
+	['weapon_shoe'] 		        = {['name'] = 'weapon_shoe', 		 	  	['label'] = 'Shoe', 				    ['weight'] = 100, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_shoe.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A shoe'},
+
+	-- Chairs
+	["chair1"] 					= {["name"] = "chair1",  	    			["label"] = "Green Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair1.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
+	["chair2"] 					= {["name"] = "chair2",  	    			["label"] = "Blue Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair2.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
+	["chair3"] 					= {["name"] = "chair3",  	    			["label"] = "Striped Camping Chair",	["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair3.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT
