@@ -30,24 +30,25 @@ end
 
 RegisterNetEvent("prp-chairs:Use")
 AddEventHandler("prp-chairs:Use", function(item)
-	if not haschairalready then
-		haschairalready = true
+    local ped = PlayerPedId()
+    if IsPedInAnyVehicle(ped) then return end
+	if not haschairalready then haschairalready = true
 	local coords = GetEntityCoords(GetPlayerPed(-1))
 	local animDict = "timetable@ron@ig_3_couch"
 	local animation = "base"
-	FreezeEntityPosition(PlayerPedId(),true)
+	FreezeEntityPosition(ped, true)
 
-	if item == "chair62" then attachAChair("prop_skid_chair_01", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0)
-	elseif item == "chair63" then attachAChair("prop_skid_chair_02", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0)
-	elseif item == "chair64" then attachAChair("prop_skid_chair_03", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0) end
+	if item == "chair1" then attachAChair("prop_skid_chair_01", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0)
+	elseif item == "chair2" then attachAChair("prop_skid_chair_02", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0)
+	elseif item == "chair3" then attachAChair("prop_skid_chair_03", 0, 0, -0.05, -0.18, 8.4, 0.4, 185.0) end
 	loadAnimDict(animDict)
 	local animLength = GetAnimDuration(animDict, animation)
-	TaskPlayAnim(PlayerPedId(), animDict, animation, 1.0, 4.0, animLength, 1, 0, 0, 0, 0)
+	TaskPlayAnim(ped, animDict, animation, 1.5, 2.0, animLength, 1, 0, 0, 0, 0)
 	else
 		haschairalready = false
-		FreezeEntityPosition(PlayerPedId(),false)
+		FreezeEntityPosition(ped,false)
 		removeattachedChair()
-		StopEntityAnim(PlayerPedId(), "base", "timetable@ron@ig_3_couch", 3)
+		StopEntityAnim(ped, "base", "timetable@ron@ig_3_couch", 3)
 	end
 end)
 
