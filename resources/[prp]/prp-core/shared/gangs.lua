@@ -115,7 +115,7 @@ PRPShared.Gangs = {
 				isboss = true
             },
         },
-	}
+	},
     ['celestial'] = {
 		label = 'CELESTIAL',
 		grades = {
@@ -133,7 +133,7 @@ PRPShared.Gangs = {
 				isboss = true
             },
         },
-	}
+	},
     ['flowersociety'] = {
 		label = 'Flower Society',
 		grades = {
