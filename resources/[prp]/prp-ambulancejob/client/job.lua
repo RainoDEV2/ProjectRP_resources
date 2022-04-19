@@ -743,14 +743,10 @@ else
 
         local roofCombo = ComboZone:Create(roofPoly, {name = "roofCombo", debugPoly = false})
         roofCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 onRoof = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator down','left')
-                    EMSControls("main")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator down','left')
+                EMSControls("main")
             else
                 onRoof = false
                 check = false
@@ -786,8 +782,6 @@ else
             end
         end)
 
-        ---------------
-
         local main2Poly = {}
         for k, v in pairs(Config.Locations["main2"]) do
             main2Poly[#main2Poly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 2, 2, {
@@ -801,14 +795,10 @@ else
 
         local main2Combo = ComboZone:Create(main2Poly, {name = "main2Combo", debugPoly = false})
         main2Combo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 inMain2 = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator down','left')
-                    EMSControls("bottomFloor")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator down','left')
+                EMSControls("bottomFloor")
             else
                 inMain2 = false
                 check = false
@@ -829,14 +819,10 @@ else
 
         local bottomFloorCombo = ComboZone:Create(bottomFloorPoly, {name = "bottomFloorPoly", debugPoly = false})
         bottomFloorCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 inBottomFloor = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator to the main floor','left')
-                    EMSControls("main2")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator to the main floor','left')
+                EMSControls("main2")
             else
                 inBottomFloor = false
                 check = false

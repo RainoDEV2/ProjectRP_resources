@@ -879,13 +879,12 @@ end
 local checking = false
 Citizen.CreateThread(function()
 	while true do
-		local Grandmashittimer = 1500
+		local waitTimer = 1500
         local hspDist = GetDistanceBetweenCoords(310.0739, -595.4513, 43.2928,GetEntityCoords(GetPlayerPed(-1)),true)
 
 		if hspDist < 3.0 then
-            Grandmashittimer = 0
-            if IsControlJustReleased(0,47) and hspDist < 3.0 and not checking then
-                print("pressed check in ")
+            waitTimer = 0
+            if IsControlJustReleased(0,38) and hspDist < 3.0 and not checking then
                 checking = true
 				loadAnimDict('anim@narcotics@trash')
                 TaskPlayAnim(GetPlayerPed(-1),'anim@narcotics@trash', 'drop_front',1.0, 1.0, -1, 1, 0, 0, 0, 0)
@@ -893,7 +892,7 @@ Citizen.CreateThread(function()
                 checking = false
 			end
 
-            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~G~w~] to Check In")
+            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
 		end
 
 
@@ -903,7 +902,7 @@ Citizen.CreateThread(function()
             if LockerDist < 3.0 then
                 -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then
-                    Grandmashittimer = 0
+                    waitTimer = 0
                     DrawText3D(vector3(v.x, v.y, v.z), "Press ~g~E~w~ to open ~b~ Armory")
 
                     if IsControlJustReleased(0,38) then
@@ -918,7 +917,7 @@ Citizen.CreateThread(function()
             if LockerDist < 3.0 then
                 -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then
-                    Grandmashittimer = 0
+                    waitTimer = 0
                     DrawText3D(vector3(v.x, v.y, v.z), "Press ~g~E~w~ to open ~b~ Personal Stash")
                     if IsControlJustReleased(0,38) then
                         TriggerEvent('prp-ambulancejob:stash')
@@ -927,7 +926,7 @@ Citizen.CreateThread(function()
             end
         end
 
-        Citizen.Wait(Grandmashittimer)
+        Citizen.Wait(waitTimer)
 	end
 end)
 
