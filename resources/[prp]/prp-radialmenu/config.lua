@@ -88,6 +88,13 @@ Config.MenuItems = {
                         type = 'client',
                         event = 'A5:Client:TakeHostage',
                         shouldClose = true
+                    }, {
+                        id = 'stealshoe',
+                        title = 'Steal Shoes',
+                        icon = 'shoe-prints',
+                        type = 'client',
+                        event = 'prp-stealshoes:client:TheftShoe',
+                        shouldClose = true
                     }
                 }
             }
