@@ -116,7 +116,6 @@ RegisterNetEvent('hospital:server:SetArmor', function(amount)
 	end
 end)
 
--- hospital:server:lorazepamPill
 RegisterNetEvent('hospital:server:lorazepamPill', function(playerId)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
@@ -125,7 +124,20 @@ RegisterNetEvent('hospital:server:lorazepamPill', function(playerId)
 		if Player.PlayerData.job.name =="ambulance" then
 			Player.Functions.RemoveItem('lorazepam', 1)
 			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['lorazepam'], "remove")
-			TriggerClientEvent("hospital:client:Uselorazepam", Patient.PlayerData.source,true)
+			TriggerClientEvent("hospital:client:UseLorazepam", Patient.PlayerData.source, true)
+		end
+	end
+end)
+
+RegisterNetEvent('hospital:server:givePainkillers', function(playerId)
+	local src = source
+	local Player = ProjectRP.Functions.GetPlayer(src)
+	local Patient = ProjectRP.Functions.GetPlayer(playerId)
+	if Patient then
+		if Player.PlayerData.job.name =="ambulance" then
+			Player.Functions.RemoveItem('painkillers', 1)
+			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['painkillers'], "remove")
+			TriggerClientEvent("hospital:client:UsePainkillers", Patient.PlayerData.source, true)
 		end
 	end
 end)
@@ -139,6 +151,7 @@ RegisterNetEvent('hospital:server:TreatWounds', function(playerId)
 			Player.Functions.RemoveItem('bandage', 1)
 			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['bandage'], "remove")
 			TriggerClientEvent("hospital:client:HealInjuries", Patient.PlayerData.source, "full")
+			TriggerClientEvent("hospital:client:UseBandage", Patient.PlayerData.source, true)
 		end
 	end
 end)
@@ -383,7 +396,7 @@ ProjectRP.Functions.CreateUseableItem("lorazepam", function(source, item)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.Functions.GetItemByName(item.name) ~= nil then
-		TriggerClientEvent("hospital:client:Uselorazepam", src,false)
+		TriggerClientEvent("hospital:client:UseLorazepam", src,false)
 	end
 end)
 

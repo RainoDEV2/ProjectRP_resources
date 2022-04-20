@@ -879,15 +879,6 @@ Config.MenuItems = {
     }
 }
 
-
--- statusMenu[#statusMenu+1] = {
---     header = 'Give lorazepam Pill',
---     txt = "",
---     params = {
---         event = "hospital:client:lorazepam"
---     }
--- }
-
 Config.JobInteractions = {
     ["ambulance"] = {
         {
@@ -913,10 +904,17 @@ Config.JobInteractions = {
             shouldClose = true
         }, {
             id = 'heallorazepam',
-            title = 'Give lorazepam Pill',
-            icon = 'fa-tablets',
+            title = 'Give Lorazepam',
+            icon = 'pills',
             type = 'client',
             event = 'hospital:client:lorazepam',
+            shouldClose = true
+        }, {
+            id = 'givepainkillers',
+            title = 'Give Painkillers',
+            icon = 'prescription-bottle-alt',
+            type = 'client',
+            event = 'hospital:client:givePainkillers',
             shouldClose = true
         },{
             id = 'emergencybutton2',

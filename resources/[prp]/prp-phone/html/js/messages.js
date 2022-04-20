@@ -168,8 +168,8 @@ FormatChatDate = function(date) {
 
 FormatMessageTime = function() {
     var NewDate = new Date();
-    var NewHour = NewDate.getHours();
-    var NewMinute = NewDate.getMinutes();
+    var NewHour = NewDate.getUTCHours();
+    var NewMinute = NewDate.getUTCMinutes();
     var Minutessss = NewMinute;
     var Hourssssss = NewHour;
     if (NewMinute < 10) {
@@ -346,7 +346,7 @@ $(document).on('click', '.messages-shared-location', function(e){
 $(document).on('click', '.wppimage', function(e){
     e.preventDefault();
     let source = $(this).attr('src')
-   PRP.Screen.popUp(source)
+    PRP.Screen.popUp(source)
 });
 
 $(document).on('click', '#messages-openedchat-message-extras', function(e){
