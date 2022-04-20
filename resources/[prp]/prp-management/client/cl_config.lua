@@ -95,7 +95,7 @@ Config.GangMenus = {
         vector3(0, 0, 0),
     },
     ['celestial'] = {
-        vector3(335.97, -212.55, 27.26),
+        vector3(408.65, 244.41, 92.05),
     },
     ['flowersociety'] = {
         vector3(0, 0, 0),

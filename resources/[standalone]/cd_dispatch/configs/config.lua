@@ -251,6 +251,7 @@ Config.PoliceAlerts = {
             [`WEAPON_FIREEXTINGUISHER`] = true,
             [`WEAPON_PETROLCAN`] = true,
             [`WEAPON_STUNGUN`] = true,
+            [`WEAPON_SHOE`] = true,
             --[`ADD_MORE_HERE`] = true,
         },
         WeaponLabels = {
