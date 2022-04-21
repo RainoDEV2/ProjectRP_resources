@@ -237,6 +237,18 @@ Garages = {
         vehicle = 'car',              --car, air, sea
         job = "police"
     },
+    ["mechanic"] = {
+        label = "Mechanic",
+        takeVehicle = vector3(-20.68, -1028.51, 28.93),
+        spawnPoint = vector4(-20.62, -1028.35, 28.93, 340.9),
+        putVehicle = vector3(-29.37, -1025.14, 28.86),
+        showBlip = false,
+        blipName = "Mechanic Garage",
+        blipNumber = 357,
+        type = 'job',                --public, job, gang, depot
+        vehicle = 'car',              --car, air, sea
+        job = "mechanic"
+    },
     ["intairport"] = {
         label = "Airport Hangar", 
         takeVehicle = vector3(-1025.92, -3017.86, 13.95),

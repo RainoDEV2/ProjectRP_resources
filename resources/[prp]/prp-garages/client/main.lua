@@ -382,7 +382,7 @@ RegisterNetEvent('prp-garages:client:takeOutGarage', function(data)
                 SetEntityAsMissionEntity(veh, true, true)
                 TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
                 closeMenuFull()
-                if garage.vehicle == "car" then
+                if type == "depot" and garage.vehicle == "car" then
                     ProjectRP.Functions.Notify("Your Vehicle is waiting Outside.", "success", "3000")
                 else
                     TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)

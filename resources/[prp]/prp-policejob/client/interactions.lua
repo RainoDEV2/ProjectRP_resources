@@ -122,7 +122,7 @@ RegisterNetEvent('police:client:RobPlayer', function()
     if player ~= -1 and distance < 2.5 then
         local playerPed = GetPlayerPed(player)
         local playerId = GetPlayerServerId(player)
-        if ( IsEntityPlayingAnim(playerPed, "dead", "dead_a", 3) or IsEntityPlayingAnim(playerPed, "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(playerPed, "amb@code_human_cower@male@base", "base", 3) or  IsEntityPlayingAnim(playerPed, "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsEntityPlayingAnim(playerPed, "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(playerPed, "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(playerPed, "missfbi5ig_22", "hands_up_loop_scientist", 3) ) or IsTargetDead(playerId) then
+        if (IsEntityPlayingAnim(playerPed, "dead", "dead_a", 3) or IsEntityPlayingAnim(playerPed, "amb@code_human_cower_stand@male@base", "base", 3) or IsEntityPlayingAnim(playerPed, "amb@code_human_cower@male@base", "base", 3) or  IsEntityPlayingAnim(playerPed, "random@arrests@busted", "idle_a", 3) or IsEntityPlayingAnim(playerPed, "mp_arresting", "idle", 3) or IsEntityPlayingAnim(playerPed, "random@mugging3", "handsup_standing_base", 3) or IsEntityPlayingAnim(playerPed, "missfbi5ig_22", "hands_up_anxious_scientist", 3) or IsEntityPlayingAnim(playerPed, "missfbi5ig_22", "hands_up_loop_scientist", 3) ) or IsTargetDead(playerId) then
             if IsPedArmed(PlayerPedId(), 7) then
                 ProjectRP.Functions.Progressbar("robbing_player", "Robbing person..", math.random(5000, 7000), false, true, {
                     disableMovement = true,
