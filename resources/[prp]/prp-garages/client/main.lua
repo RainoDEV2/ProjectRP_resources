@@ -1,11 +1,455 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
-local currentHouseGarage = nil
-local hasGarageKey = nil
-local currentGarage = nil
-local OutsideVehicles = {}
 local PlayerData = {}
 local PlayerGang = {}
 local PlayerJob = {}
+local currentHouseGarage = nil
+local OutsideVehicles = {}
+
+local Markers = false
+local HouseMarkers = false
+local InputIn = false
+local InputOut = false
+local currentGarage = nil
+local currentGarageIndex = nil
+local garageZones = {}
+local lasthouse = nil
+
+
+--Menus
+local function MenuGarage(type, garage, indexgarage)
+    local header
+    local leave
+    if type == "house" then
+        header = Lang:t("menu.header."..type.."_car", {value = garage.label})
+        leave = Lang:t("menu.leave.car")
+    else 
+        header = Lang:t("menu.header."..type.."_"..garage.vehicle, {value = garage.label})
+        leave = Lang:t("menu.leave."..garage.vehicle)
+    end
+
+    exports['prp-menu']:openMenu({
+        {
+            header = header,
+            isMenuHeader = true
+        },
+        {
+            header = Lang:t("menu.header.vehicles"),
+            txt = Lang:t("menu.text.vehicles"),
+            params = {
+                event = "prp-garages:client:VehicleList",
+                args = {
+                    type = type,
+                    garage = garage,
+                    index = indexgarage,
+                }
+            }
+        },
+        {
+            header = leave,
+            txt = "",
+            params = {
+                event = "prp-menu:closeMenu"
+            }
+        },
+    })
+end
+
+local function ClearMenu()
+	TriggerEvent("prp-menu:closeMenu")
+end
+
+local function closeMenuFull()
+    ClearMenu()
+end
+
+local function DestroyZone(type, index)
+    if garageZones[type.."_"..index] then
+        garageZones[type.."_"..index].zonecombo:destroy()
+        garageZones[type.."_"..index].zone:destroy()            
+    end
+end
+
+local function CreateZone(type, garage, index)
+    local size
+    local coords
+    local heading
+    local minz
+    local maxz
+
+    if type == 'in' then
+        size = 4
+        coords = vector3(garage.putVehicle.x, garage.putVehicle.y, garage.putVehicle.z) 
+        heading = garage.spawnPoint.w
+        minz = coords.z - 1.0
+        maxz = coords.z + 2.0
+    elseif type == 'out' then
+        size = 2
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        heading = garage.spawnPoint.w
+        minz = coords.z - 1.0
+        maxz = coords.z + 2.0
+    elseif type == 'marker' then
+        size = 60
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        heading = garage.spawnPoint.w
+        minz = coords.z - 7.5
+        maxz = coords.z + 7.0
+    elseif type == 'hmarker' then
+        size = 20
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        heading = 0
+        minz = coords.z - 4.0
+        maxz = coords.z + 2.0
+    elseif type == 'house' then
+        size = 2
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        heading = 0
+        minz = coords.z - 1.0
+        maxz = coords.z + 2.0
+    end
+    garageZones[type.."_"..index] = {}
+    garageZones[type.."_"..index].zone = BoxZone:Create(
+        coords, size, size, {
+            minZ = minz,
+            maxZ = maxz,
+            name = type,
+            debugPoly = false,
+            heading = heading
+        })
+
+    garageZones[type.."_"..index].zonecombo = ComboZone:Create({garageZones[type.."_"..index].zone}, {name = "box"..type, debugPoly = false})
+    garageZones[type.."_"..index].zonecombo:onPlayerInOut(function(isPointInside)
+        if isPointInside then
+            if type == "in" then
+                local text
+                if garage.type == "house" then
+                    text = "E - Store Vehicle"
+                else
+                    text = "E - Store Vehicle<br>"..garage.label
+                end
+                exports['prp-core']:DrawText(text, 'left')
+                InputIn = true
+            elseif type == "out" then
+                if garage.type == "house" then
+                    text = "E - Garage"
+                else
+                    text = Lang:t("info."..garage.vehicle.."_e").."<br>"..garage.label
+                end
+
+                exports['prp-core']:DrawText(text, 'left')
+                InputOut = true
+            elseif type == "marker" then
+                currentGarage = garage
+                currentGarageIndex = index
+                CreateZone("out", garage, index)
+                if garage.type ~= "depot" then
+                    CreateZone("in", garage, index)
+                    Markers = true
+                else
+                    HouseMarkers = true
+                end
+            elseif type == "hmarker" then
+                currentGarage = garage
+                currentGarage.type = "house"
+                currentGarageIndex = index
+                CreateZone("house", garage, index)
+                HouseMarkers = true
+            elseif type == "house" then
+                if IsPedInAnyVehicle(PlayerPedId(), false) then
+                    exports['prp-core']:DrawText("E - Store Vehicle", 'left')
+                    InputIn = true
+                else
+                    exports['prp-core']:DrawText("E - Garage", 'left')
+                    InputOut = true
+                end
+            end
+        else
+            if type == "marker" then
+                if garage.type ~= "depot" then
+                    Markers = false
+                else
+                    HouseMarkers = false
+                end
+                currentGarage = nil
+                DestroyZone("in", index)
+                DestroyZone("out", index)
+            elseif type == "hmarker" then
+                HouseMarkers = false
+                currentHouseGarage = nil
+                DestroyZone("house", index)
+            elseif type == "house" then
+                exports['prp-core']:HideText()
+                InputIn = false
+                InputOut = false
+            elseif type == "in" then
+                exports['prp-core']:HideText()
+                InputIn = false
+            elseif type == "out" then
+                closeMenuFull()
+                exports['prp-core']:HideText()
+                InputOut = false
+            end
+        end
+    end)
+end
+
+local function doCarDamage(currentVehicle, veh)
+	local engine = veh.engine + 0.0
+	local body = veh.body + 0.0
+
+    Wait(100)
+    if body < 900.0 then
+		SmashVehicleWindow(currentVehicle, 0)
+		SmashVehicleWindow(currentVehicle, 1)
+		SmashVehicleWindow(currentVehicle, 2)
+		SmashVehicleWindow(currentVehicle, 3)
+		SmashVehicleWindow(currentVehicle, 4)
+		SmashVehicleWindow(currentVehicle, 5)
+		SmashVehicleWindow(currentVehicle, 6)
+		SmashVehicleWindow(currentVehicle, 7)
+	end
+	if body < 800.0 then
+		SetVehicleDoorBroken(currentVehicle, 0, true)
+		SetVehicleDoorBroken(currentVehicle, 1, true)
+		SetVehicleDoorBroken(currentVehicle, 2, true)
+		SetVehicleDoorBroken(currentVehicle, 3, true)
+		SetVehicleDoorBroken(currentVehicle, 4, true)
+		SetVehicleDoorBroken(currentVehicle, 5, true)
+		SetVehicleDoorBroken(currentVehicle, 6, true)
+	end
+	if engine < 700.0 then
+		SetVehicleTyreBurst(currentVehicle, 1, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 2, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 3, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 4, false, 990.0)
+	end
+	if engine < 500.0 then
+		SetVehicleTyreBurst(currentVehicle, 0, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 5, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 6, false, 990.0)
+		SetVehicleTyreBurst(currentVehicle, 7, false, 990.0)
+	end
+    SetVehicleEngineHealth(currentVehicle, engine)
+    SetVehicleBodyHealth(currentVehicle, body)
+
+end
+
+local function CheckPlayers(vehicle, garage)
+    for i = -1, 5, 1 do
+        local seat = GetPedInVehicleSeat(vehicle, i)
+        if seat then
+            TaskLeaveVehicle(seat, vehicle, 0)
+            if garage then
+                SetEntityCoords(seat, garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
+            end
+        end
+    end
+    SetVehicleDoorsLocked(vehicle)
+    Wait(1500)
+    ProjectRP.Functions.DeleteVehicle(vehicle)
+end
+
+-- Functions
+local function round(num, numDecimalPlaces)
+    return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+end
+
+RegisterNetEvent("prp-garages:client:VehicleList", function(data)
+    local type = data.type
+    local garage = data.garage
+    local indexgarage = data.index
+    local header
+    local leave
+    if type == "house" then
+        header = Lang:t("menu.header."..type.."_car", {value = garage.label})
+        leave = Lang:t("menu.leave.car")
+    else 
+        header = Lang:t("menu.header."..type.."_"..garage.vehicle, {value = garage.label})
+        leave = Lang:t("menu.leave."..garage.vehicle)
+    end
+
+    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetGarageVehicles", function(result)
+        if result == nil then
+            ProjectRP.Functions.Notify("There is no vehicles in this location!", "error", 5000)
+        else
+            local MenuGarageOptions = {
+                {
+                    header = header,
+                    isMenuHeader = true
+                },
+            }
+            for k, v in pairs(result) do
+                local enginePercent = round(v.engine / 10, 0)
+                local bodyPercent = round(v.body / 10, 0)
+                local currentFuel = v.fuel
+                local vname = ProjectRP.Shared.Vehicles[v.vehicle].name
+
+                if v.state == 0 then
+                    v.state = Lang:t("status.out")
+                elseif v.state == 1 then
+                    v.state = Lang:t("status.garaged")
+                elseif v.state == 2 then
+                    v.state = Lang:t("status.impound")
+                end
+                if type == "depot" then
+                    MenuGarageOptions[#MenuGarageOptions+1] = {
+                        header = Lang:t('menu.header.depot', {value = vname, value2 = v.depotprice}),
+                        txt = Lang:t('menu.text.depot', {value = v.plate, value2 = currentFuel, value3 = enginePercent, value4 = bodyPercent}),
+                        params = {
+                            event = "prp-garages:client:TakeOutDepot",
+                            args = {
+                                vehicle = v,
+                                type = type,
+                                garage = garage,
+                                index = indexgarage,
+                            }
+                        }
+                    }
+                else
+                    MenuGarageOptions[#MenuGarageOptions+1] = {
+                        header = Lang:t('menu.header.garage', {value = vname, value2 = v.plate}),
+                        txt = Lang:t('menu.text.garage', {value = v.state, value2 = currentFuel, value3 = enginePercent, value4 = bodyPercent}),
+                        params = {
+                            event = "prp-garages:client:takeOutGarage",
+                            args = {
+                                vehicle = v,
+                                type = type,
+                                garage = garage,
+                                index = indexgarage,
+                            }
+                        }
+                    }
+                end
+            end
+
+            MenuGarageOptions[#MenuGarageOptions+1] = {
+                header = leave,
+                txt = "",
+                params = {
+                    event = "prp-menu:closeMenu",
+                }
+            }
+            exports['prp-menu']:openMenu(MenuGarageOptions)
+        end
+    end, indexgarage, type, garage.vehicle)
+end)
+
+RegisterNetEvent('prp-garages:client:takeOutGarage', function(data)
+    local type = data.type
+    local vehicle = data.vehicle
+    local garage = data.garage
+    local indexgarage = data.index
+    local spawn = false
+
+    if type == "depot" then         --If depot, check if vehicle is not already spawned on the map
+        local VehExists = DoesEntityExist(OutsideVehicles[vehicle.plate])        
+        if not VehExists then
+            spawn = true
+        else
+            ProjectRP.Functions.Notify("Your vehicle is not in impound", "error", 5000)
+            spawn = false
+        end
+    else
+        spawn = true
+    end
+    if spawn then
+        local enginePercent = round(vehicle.engine / 10, 1)
+        local bodyPercent = round(vehicle.body / 10, 1)
+        local currentFuel = vehicle.fuel
+        local location
+        local heading
+        if type == "house" then
+            location = garage.takeVehicle
+            heading = garage.takeVehicle.h
+        else
+            location = garage.spawnPoint
+            heading = garage.spawnPoint.w
+        end
+
+        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
+            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
+
+                if vehicle.plate then
+                    OutsideVehicles[vehicle.plate] = veh
+                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
+                end
+
+                ProjectRP.Functions.SetVehicleProperties(veh, properties)
+                SetVehicleNumberPlateText(veh, vehicle.plate)
+                SetEntityHeading(veh, heading)
+                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
+                doCarDamage(veh, vehicle)
+                SetEntityAsMissionEntity(veh, true, true)
+                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
+                closeMenuFull()
+                if garage.vehicle == "car" then
+                    ProjectRP.Functions.Notify("Your Vehicle is waiting Outside.", "success", "3000")
+                else
+                    TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
+                end
+                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
+                SetVehicleEngineOn(veh, true, true)
+                if type == "house" then
+                    exports['prp-core']:DrawText("E - Store Vehicle", 'left')
+                    InputOut = false
+                    InputIn = true
+                end
+            end, vehicle.plate)
+
+        end, location, true)
+    end
+end)
+
+local function enterVehicle(veh, indexgarage, type, garage)
+    local plate = ProjectRP.Functions.GetPlate(veh)
+    ProjectRP.Functions.TriggerCallback('prp-garage:server:checkOwnership', function(owned)
+        if owned then
+            local bodyDamage = math.ceil(GetVehicleBodyHealth(veh))
+            local engineDamage = math.ceil(GetVehicleEngineHealth(veh))
+            local totalFuel = exports['prp-fuel']:GetFuel(veh)
+            local vehProperties = ProjectRP.Functions.GetVehicleProperties(veh)
+            TriggerServerEvent('prp-garage:server:updateVehicle', 1, totalFuel, engineDamage, bodyDamage, plate, indexgarage)
+            CheckPlayers(veh, garage)
+            if type == "house" then
+                exports['prp-core']:DrawText("E - Garage", 'left')
+                InputOut = true
+                InputIn = false
+            end
+
+            if plate then
+                OutsideVehicles[plate] = nil
+                TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
+            end
+            ProjectRP.Functions.Notify("Vehicle Stored", "primary", 4500)
+        else
+            ProjectRP.Functions.Notify("This vehicle can't be stored", "error", 3500)
+        end
+    end, plate, type, indexgarage, PlayerGang.name)
+end
+
+RegisterNetEvent('prp-garages:client:setHouseGarage', function(house, hasKey)
+    currentHouseGarage = house
+    hasGarageKey = hasKey
+    if HouseGarages[house] then
+        if lasthouse ~= house then
+            if lasthouse then
+                DestroyZone("hmarker", lasthouse)
+            end
+            if hasKey then
+                CreateZone("hmarker", HouseGarages[house], house)
+                lasthouse = house
+            end
+        end
+    end
+end)
+
+RegisterNetEvent('prp-garages:client:houseGarageConfig', function(garageConfig)
+    HouseGarages = garageConfig
+end)
+
+RegisterNetEvent('prp-garages:client:addHouseGarage', function(house, garageInfo)
+    HouseGarages[house] = garageInfo
+end)
 
 AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
     PlayerData = ProjectRP.Functions.GetPlayerData()
@@ -21,1066 +465,85 @@ RegisterNetEvent('ProjectRP:Client:OnJobUpdate', function(job)
     PlayerJob = job
 end)
 
-RegisterNetEvent('prp-garages:client:setHouseGarage', function(house, hasKey)
-    currentHouseGarage = house
-    hasGarageKey = hasKey
-end)
-
-RegisterNetEvent('prp-garages:client:houseGarageConfig', function(garageConfig)
-    HouseGarages = garageConfig
-end)
-
-RegisterNetEvent('prp-garages:client:addHouseGarage', function(house, garageInfo)
-    HouseGarages[house] = garageInfo
-end)
-
--- Functions
-
-local DrawText3Ds = function(x, y, z, text)
-	SetTextScale(0.35, 0.35)
-    SetTextFont(4)
-    SetTextProportional(1)
-    SetTextColour(255, 255, 255, 215)
-    SetTextEntry("STRING")
-    SetTextCentre(true)
-    AddTextComponentString(text)
-    SetDrawOrigin(x,y,z, 0)
-    DrawText(0.0, 0.0)
-    local factor = (string.len(text)) / 370
-    DrawRect(0.0, 0.0+0.0125, 0.017+ factor, 0.03, 0, 0, 0, 75)
-    ClearDrawOrigin()
-end
-
-local function round(num, numDecimalPlaces)
-    return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
-end
-
-local function MenuGarage()
-    exports['prp-menu']:openMenu({
-        {
-            header = "Public Garage",
-            isMenuHeader = true
-        },
-        {
-            header = "My Vehicles",
-            txt = "View your stored vehicles!",
-            params = {
-                event = "prp-garages:client:VehicleList"
-            }
-        },
-        {
-            header = "⬅ Leave Garage",
-            txt = "",
-            params = {
-                event = "prp-menu:closeMenu"
-            }
-        },
-    })
-end
-
-local function GangMenuGarage()
-    exports['prp-menu']:openMenu({
-        {
-            header = "Gang Garage",
-            isMenuHeader = true
-        },
-        {
-            header = "My Vehicles",
-            txt = "View your stored vehicles!",
-            params = {
-                event = "prp-garages:client:GangVehicleList"
-            }
-        },
-        {
-            header = "⬅ Leave Garage",
-            txt = "",
-            params = {
-                event = "prp-menu:closeMenu"
-            }
-        },
-    })
-end
-
-local function JobMenuGarage()
-    exports['prp-menu']:openMenu({
-        {
-            header = "Job Garage",
-            isMenuHeader = true
-        },
-        {
-            header = "My Vehicles",
-            txt = "View your stored vehicles!",
-            params = {
-                event = "prp-garages:client:JobVehicleList"
-            }
-        },
-        {
-            header = "⬅ Leave Garage",
-            txt = "",
-            params = {
-                event = "prp-menu:closeMenu"
-            }
-        },
-    })
-end
-
-local function MenuDepot()
-    exports['prp-menu']:openMenu({
-        {
-            header = "Impound",
-            isMenuHeader = true
-        },
-        {
-            header = "My Vehicles",
-            txt = "View your impounded vehicles!",
-            params = {
-                event = "prp-garages:client:DepotList"
-            }
-        },
-        {
-            header = "⬅ Leave Depot",
-            txt = "",
-            params = {
-                event = "prp-menu:closeMenu"
-            }
-        },
-    })
-end
-
-local function MenuHouseGarage(house)
-    exports['prp-menu']:openMenu({
-        {
-            header = "House Garage",
-            isMenuHeader = true
-        },
-        {
-            header = "My Vehicles",
-            txt = "View your stored vehicles!",
-            params = {
-                event = "prp-garages:client:HouseGarage",
-                args = house
-            }
-        },
-        {
-            header = "⬅ Leave Garage",
-            txt = "",
-            params = {
-                event = "prp-menu:closeMenu"
-            }
-        },
-    })
-end
-
-local function ClearMenu()
-	TriggerEvent("prp-menu:closeMenu")
-end
-
-local function closeMenuFull()
-    currentGarage = nil
-    ClearMenu()
-end
-
-local function doCarDamage(currentVehicle, veh)
-	smash = false
-	damageOutside = false
-	damageOutside2 = false
-	local engine = veh.engine + 0.0
-	local body = veh.body + 0.0
-	if engine < 200.0 then
-		engine = 200.0
-    end
-
-    if engine > 1000.0 then
-        engine = 1000.0
-    end
-
-	if body < 150.0 then
-		body = 150.0
-	end
-	if body < 900.0 then
-		smash = true
-	end
-
-	if body < 800.0 then
-		damageOutside = true
-	end
-
-	if body < 500.0 then
-		damageOutside2 = true
-	end
-
-    Wait(100)
-    SetVehicleEngineHealth(currentVehicle, engine)
-	if smash then
-		SmashVehicleWindow(currentVehicle, 0)
-		SmashVehicleWindow(currentVehicle, 1)
-		SmashVehicleWindow(currentVehicle, 2)
-		SmashVehicleWindow(currentVehicle, 3)
-		SmashVehicleWindow(currentVehicle, 4)
-	end
-	if damageOutside then
-		SetVehicleDoorBroken(currentVehicle, 1, true)
-		SetVehicleDoorBroken(currentVehicle, 6, true)
-		SetVehicleDoorBroken(currentVehicle, 4, true)
-	end
-	if damageOutside2 then
-		SetVehicleTyreBurst(currentVehicle, 1, false, 990.0)
-		SetVehicleTyreBurst(currentVehicle, 2, false, 990.0)
-		SetVehicleTyreBurst(currentVehicle, 3, false, 990.0)
-		SetVehicleTyreBurst(currentVehicle, 4, false, 990.0)
-	end
-	if body < 1000 then
-		SetVehicleBodyHealth(currentVehicle, 985.1)
-	end
-end
-
-local function CheckPlayers(vehicle)
-    for i = -1, 5,1 do
-        seat = GetPedInVehicleSeat(vehicle,i)
-        if seat ~= 0 then
-            TaskLeaveVehicle(seat,vehicle,0)
-            SetVehicleDoorsLocked(vehicle)
-            Wait(1500)
-            ProjectRP.Functions.DeleteVehicle(vehicle)
+CreateThread(function()
+    for index, garage in pairs(Garages) do
+        if garage.showBlip then
+            local Garage = AddBlipForCoord(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
+            SetBlipSprite (Garage, garage.blipNumber)
+            SetBlipDisplay(Garage, 4)
+            SetBlipScale  (Garage, 0.60)
+            SetBlipAsShortRange(Garage, true)
+            SetBlipColour(Garage, 3)
+            BeginTextCommandSetBlipName("STRING")
+            AddTextComponentSubstringPlayerName(garage.blipName)
+            EndTextCommandSetBlipName(Garage)
         end
-   end
-end
-
--- Events
-
-RegisterNetEvent('prp-garages:client:takeOutDepot', function(vehicle)
-
-        if OutsideVehicles and next(OutsideVehicles) then
-            if OutsideVehicles[vehicle.plate] then
-                local Engine = GetVehicleEngineHealth(OutsideVehicles[vehicle.plate])
-                ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-                    ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                        ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                        enginePercent = round(vehicle.engine / 10, 0)
-                        bodyPercent = round(vehicle.body / 10, 0)
-                        currentFuel = vehicle.fuel
-
-                        if vehicle.plate then
-                            DeleteVehicle(OutsideVehicles[vehicle.plate])
-                            OutsideVehicles[vehicle.plate] = veh
-                            TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                        end
-
-                        SetVehicleNumberPlateText(veh, vehicle.plate)
-                        SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
-                        exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                        SetEntityAsMissionEntity(veh, true, true)
-                        doCarDamage(veh, vehicle)
-                        TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                        TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                        closeMenuFull()
-                        SetVehicleEngineOn(veh, true, true)
-                    end, vehicle.plate)
-                    TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-                end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
-                SetTimeout(250, function()
-                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
-                end)
-            else
-                ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-                    ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                        ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                        enginePercent = round(vehicle.engine / 10, 0)
-                        bodyPercent = round(vehicle.body / 10, 0)
-                        currentFuel = vehicle.fuel
-
-                        if vehicle.plate then
-                            OutsideVehicles[vehicle.plate] = veh
-                            TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                        end
-
-                        SetVehicleNumberPlateText(veh, vehicle.plate)
-                        SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
-                        exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                        SetEntityAsMissionEntity(veh, true, true)
-                        doCarDamage(veh, vehicle)
-                        TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                        TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                        closeMenuFull()
-                        SetVehicleEngineOn(veh, true, true)
-                    end, vehicle.plate)
-                    TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-                end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
-                SetTimeout(250, function()
-                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
-                end)
-            end
-        else
-            ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-                ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                    ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                    enginePercent = round(vehicle.engine / 10, 0)
-                    bodyPercent = round(vehicle.body / 10, 0)
-                    currentFuel = vehicle.fuel
-
-                    if vehicle.plate then
-                        OutsideVehicles[vehicle.plate] = veh
-                        TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                    end
-
-                    SetVehicleNumberPlateText(veh, vehicle.plate)
-                    SetEntityHeading(veh, Depots["lsimpound"].takeVehicle.w)
-                    exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                    SetEntityAsMissionEntity(veh, true, true)
-                    doCarDamage(veh, vehicle)
-                    TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                    TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                    closeMenuFull()
-                    SetVehicleEngineOn(veh, true, true)
-                end, vehicle.plate)
-                TriggerEvent("vehiclekeys:client:SetOwner", vehicle.plate)
-            end, vector4(-205.3176, -1165.6792, 22.4647, 178.4752), true)
-            SetTimeout(250, function()
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(GetVehiclePedIsIn(PlayerPedId(), false)))
-            end)
-        end
-end)
-
-RegisterNetEvent("prp-garages:client:HouseGarage", function(house)
-    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetHouseVehicles", function(result)
-        if result == nil then
-            ProjectRP.Functions.Notify("You don't have any vehicles in your garage!", "error", 5000)
-        else
-            local MenuHouseGarageOptions = {
-                {
-                    header = "Garage: "..HouseGarages[house].label,
-                    isMenuHeader = true
-                },
-            }
-
-            for k, v in pairs(result) do
-                enginePercent = round(v.engine / 10, 0)
-                bodyPercent = round(v.body / 10, 0)
-                currentFuel = v.fuel
-                curGarage = HouseGarages[house].label
-                vname = ProjectRP.Shared.Vehicles[v.vehicle].name
-
-                if v.state == 0 then
-                    v.state = "Out"
-                elseif v.state == 1 then
-                    v.state = "Garaged"
-                elseif v.state == 2 then
-                    v.state = "Impounded By Police"
-                end
-
-                MenuHouseGarageOptions[#MenuHouseGarageOptions+1] = {
-                    header = vname.." ["..v.plate.."]",
-                    txt = "State: "..v.state.. "<br>Fuel: "..currentFuel.." | Engine: "..enginePercent.." | Body: "..bodyPercent,
-                    params = {
-                        event = "prp-garages:client:TakeOutHouseGarage",
-                        args = v
-                    }
-                }
-            end
-
-            MenuHouseGarageOptions[#MenuHouseGarageOptions+1] = {
-                header = "⬅ Leave Garage",
-                txt = "",
-                params = {
-                    event = "prp-menu:closeMenu",
-                }
-            }
-            exports['prp-menu']:openMenu(MenuHouseGarageOptions)
-        end
-    end, house)
-end)
-
-RegisterNetEvent("prp-garages:client:DepotList", function()
-    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetDepotVehicles", function(result)
-        if result == nil then
-            ProjectRP.Functions.Notify("You don't have any impounded vehicles!", "error", 5000)
-        else
-            local MenuDepotOptions = {
-                {
-                    header = "Depot: "..Depots["lsimpound"].label,
-                    isMenuHeader = true
-                },
-            }
-            for k, v in pairs(result) do
-                enginePercent = round(v.engine / 10, 0)
-                bodyPercent = round(v.body / 10, 0)
-                currentFuel = v.fuel
-                vname = ProjectRP.Shared.Vehicles[v.vehicle].name
-
-                if v.state == 0 then
-                    v.state = "Impound"
-                end
-
-                MenuDepotOptions[#MenuDepotOptions+1] = {
-                    header = vname.." ["..v.depotprice.."]",
-                    txt = "Plate: "..v.plate.."<br>Fuel: "..currentFuel.." | Engine: "..enginePercent.." | Body: "..bodyPercent,
-                    params = {
-                        event = "prp-garages:client:TakeOutDepotVehicle",
-                        args = v
-                    }
-                }
-            end
-
-            MenuDepotOptions[#MenuDepotOptions+1] = {
-                header = "⬅ Leave Depot",
-                txt = "",
-                params = {
-                    event = "prp-menu:closeMenu",
-                }
-            }
-            exports['prp-menu']:openMenu(MenuDepotOptions)
-        end
-    end)
-end)
-
-RegisterNetEvent("prp-garages:client:VehicleList", function()
-    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetUserVehicles", function(result)
-        if result == nil then
-            ProjectRP.Functions.Notify("You don't have any vehicles in this garage!", "error", 5000)
-        else
-            local MenuPublicGarageOptions = {
-                {
-                    header = "Garage: "..Garages[currentGarage].label,
-                    isMenuHeader = true
-                },
-            }
-            for k, v in pairs(result) do
-                enginePercent = round(v.engine / 10, 0)
-                bodyPercent = round(v.body / 10, 0)
-                currentFuel = v.fuel
-                curGarage = Garages[v.garage].label
-                vname = ProjectRP.Shared.Vehicles[v.vehicle].name
-
-                if v.state == 0 then
-                    v.state = "Out"
-                elseif v.state == 1 then
-                    v.state = "Garaged"
-                elseif v.state == 2 then
-                    v.state = "Impounded By Police"
-                end
-
-                MenuPublicGarageOptions[#MenuPublicGarageOptions+1] = {
-                    header = vname.." ["..v.plate.."]",
-                    txt = "State: "..v.state.." <br>Fuel: "..currentFuel.." | Engine: "..enginePercent.." | Body: "..bodyPercent,
-                    params = {
-                        event = "prp-garages:client:takeOutPublicGarage",
-                        args = v,
-                    }
-                }
-            end
-
-            MenuPublicGarageOptions[#MenuPublicGarageOptions+1] = {
-                header = "⬅ Leave Garage",
-                txt = "",
-                params = {
-                    event = "prp-menu:closeMenu",
-                }
-            }
-            exports['prp-menu']:openMenu(MenuPublicGarageOptions)
-        end
-    end, currentGarage)
-end)
-
-RegisterNetEvent("prp-garages:client:GangVehicleList", function()
-    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetUserVehicles", function(result)
-        if result == nil then
-            ProjectRP.Functions.Notify("You don't have any vehicles in this garage!", "error", 5000)
-        else
-            local MenuGangGarageOptions = {
-                {
-                    header = "Garage: "..GangGarages[currentGarage].label,
-                    isMenuHeader = true
-                },
-            }
-            for k, v in pairs(result) do
-                enginePercent = round(v.engine / 10, 0)
-                bodyPercent = round(v.body / 10, 0)
-                currentFuel = v.fuel
-                curGarage = GangGarages[v.garage].label
-                vname = ProjectRP.Shared.Vehicles[v.vehicle].name
-
-                if v.state == 0 then
-                    v.state = "Out"
-                elseif v.state == 1 then
-                    v.state = "Garaged"
-                elseif v.state == 2 then
-                    v.state = "Impounded By Police"
-                end
-
-                MenuGangGarageOptions[#MenuGangGarageOptions+1] = {
-                    header = vname.." ["..v.plate.."]",
-                    txt = "State: "..v.state.."<br>Fuel: "..currentFuel.." | Engine: "..enginePercent.." | Body: "..bodyPercent,
-                    params = {
-                        event = "prp-garages:client:takeOutGangGarage",
-                        args = v
-                    }
-                }
-            end
-
-            MenuGangGarageOptions[#MenuGangGarageOptions+1] = {
-                header = "⬅ Leave Garage",
-                txt = "",
-                params = {
-                    event = "prp-menu:closeMenu",
-                }
-            }
-            exports['prp-menu']:openMenu(MenuGangGarageOptions)
-        end
-    end, currentGarage)
-end)
-
-RegisterNetEvent("prp-garages:client:JobVehicleList", function()
-    ProjectRP.Functions.TriggerCallback("prp-garage:server:GetUserVehicles", function(result)
-        if result == nil then
-            ProjectRP.Functions.Notify("You don't have any vehicles in this garage!", "error", 5000)
-        else
-            local MenuJobGarageOptions = {
-                {
-                    header = "Garage: "..JobGarages[currentGarage].label,
-                    isMenuHeader = true
-                },
-            }
-            for k, v in pairs(result) do
-                enginePercent = round(v.engine / 10, 0)
-                bodyPercent = round(v.body / 10, 0)
-                currentFuel = v.fuel
-                curGarage = JobGarages[v.garage].label
-                vname = ProjectRP.Shared.Vehicles[v.vehicle].name
-
-                if v.state == 0 then
-                    v.state = "Out"
-                elseif v.state == 1 then
-                    v.state = "Garaged"
-                elseif v.state == 2 then
-                    v.state = "Impounded By Police"
-                end
-
-                MenuJobGarageOptions[#MenuJobGarageOptions+1] = {
-                    header = vname.." ["..v.plate.."]",
-                    txt = "State: "..v.state.."<br>Fuel: "..currentFuel.." | Engine: "..enginePercent.." | Body: "..bodyPercent,
-                    params = {
-                        event = "prp-garages:client:takeOutJobGarage",
-                        args = v
-                    }
-                }
-            end
-
-            MenuJobGarageOptions[#MenuJobGarageOptions+1] = {
-                header = "⬅ Leave Garage",
-                txt = "",
-                params = {
-                    event = "prp-menu:closeMenu",
-                }
-            }
-            exports['prp-menu']:openMenu(MenuJobGarageOptions)
-        end
-    end, currentGarage)
-end)
-
-RegisterNetEvent('prp-garages:client:takeOutPublicGarage', function(vehicle)
-    if vehicle.state == "Garaged" then
-        enginePercent = round(vehicle.engine / 10, 1)
-        bodyPercent = round(vehicle.body / 10, 1)
-        currentFuel = vehicle.fuel
-
-        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-
-                if vehicle.plate then
-                    OutsideVehicles[vehicle.plate] = veh
-                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                end
-
-                ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, Garages[currentGarage].spawnPoint.w)
-                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                doCarDamage(veh, vehicle)
-                SetEntityAsMissionEntity(veh, true, true)
-                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                closeMenuFull()
-                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                SetVehicleEngineOn(veh, true, true)
-            end, vehicle.plate)
-
-        end, Garages[currentGarage].spawnPoint, true)
-    elseif vehicle.state == "Out" then
-        ProjectRP.Functions.Notify("Your vehicle may be at the depot!", "error", 2500)
-    elseif vehicle.state == "Impound" then
-        ProjectRP.Functions.Notify("This vehicle was impounded by the police!", "error", 4000)
+        CreateZone("marker", garage, index)
     end
 end)
 
-RegisterNetEvent('prp-garages:client:takeOutGangGarage', function(vehicle)
-    if vehicle.state == "Garaged" then
-        enginePercent = round(vehicle.engine / 10, 1)
-        bodyPercent = round(vehicle.body / 10, 1)
-        currentFuel = vehicle.fuel
+RegisterNetEvent('prp-garages:client:TakeOutDepot', function(data)
+    local vehicle = data.vehicle
 
-        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-
-                if vehicle.plate then
-                    OutsideVehicles[vehicle.plate] = veh
-                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                end
-
-                ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, GangGarages[currentGarage].spawnPoint.w)
-                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                doCarDamage(veh, vehicle)
-                SetEntityAsMissionEntity(veh, true, true)
-                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                closeMenuFull()
-                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                SetVehicleEngineOn(veh, true, true)
-            end, vehicle.plate)
-
-        end, GangGarages[currentGarage].spawnPoint, true)
-    elseif vehicle.state == "Out" then
-        ProjectRP.Functions.Notify("Your vehicle may be in the depot!", "error", 2500)
-    elseif vehicle.state == "Impound" then
-        ProjectRP.Functions.Notify("This vehicle was impounded by the police!", "error", 4000)
-    end
-end)
-
-RegisterNetEvent('prp-garages:client:takeOutJobGarage', function(vehicle)
-    if vehicle.state == "Garaged" then
-        enginePercent = round(vehicle.engine / 10, 1)
-        bodyPercent = round(vehicle.body / 10, 1)
-        currentFuel = vehicle.fuel
-        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                if vehicle.plate then
-                    OutsideVehicles[vehicle.plate] = veh
-                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                end
-                ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, JobGarages[currentGarage].spawnPoint.w)
-                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                doCarDamage(veh, vehicle)
-                SetEntityAsMissionEntity(veh, true, true)
-                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                closeMenuFull()
-                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                SetVehicleEngineOn(veh, true, true)
-            end, vehicle.plate)
-        end, JobGarages[currentGarage].spawnPoint, true)
-    elseif vehicle.state == "Out" then
-        ProjectRP.Functions.Notify("Your vehicle may be in the depot!", "error", 2500)
-    elseif vehicle.state == "Impound" then
-        ProjectRP.Functions.Notify("This vehicle was impounded by the police!", "error", 4000)
-    end
-end)
-
-RegisterNetEvent('prp-garages:client:TakeOutDepotVehicle', function(vehicle)
-    if vehicle.state == "Impound" then
-        if ProjectRP.Functions.IsSpawnPointClear(vector3(-205.3176, -1165.6792, 22.4647),5.0) then
-            TriggerServerEvent("prp-garage:server:PayDepotPrice", vehicle)
-            Wait(1000)
-            ProjectRP.Functions.Notify("Your Vehicle is waiting Outside.", "success", "3000")
+    if ProjectRP.Functions.IsSpawnPointClear(vector3(-205.3176, -1165.6792, 22.4647),5.0) then
+        if vehicle.depotprice ~= 0 then
+            TriggerServerEvent("prp-garage:server:PayDepotPrice", data)
         else
-            ProjectRP.Functions.Notify("There is a car blocking the Lot!", "error", 3000)
+            TriggerEvent("prp-garages:client:takeOutGarage", data)
         end
-    end
-end)
-
-RegisterNetEvent('prp-garages:client:TakeOutHouseGarage', function(vehicle)
-    if vehicle.state == "Garaged" then
-        ProjectRP.Functions.SpawnVehicle(vehicle.vehicle, function(veh)
-            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetVehicleProperties', function(properties)
-                ProjectRP.Functions.SetVehicleProperties(veh, properties)
-                enginePercent = round(vehicle.engine / 10, 1)
-                bodyPercent = round(vehicle.body / 10, 1)
-                currentFuel = vehicle.fuel
-
-                if vehicle.plate then
-                    OutsideVehicles[vehicle.plate] = veh
-                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                end
-
-                SetVehicleNumberPlateText(veh, vehicle.plate)
-                SetEntityHeading(veh, HouseGarages[currentHouseGarage].takeVehicle.h)
-                TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
-                exports['prp-fuel']:SetFuel(veh, vehicle.fuel)
-                SetEntityAsMissionEntity(veh, true, true)
-                doCarDamage(veh, vehicle)
-                TriggerServerEvent('prp-garage:server:updateVehicleState', 0, vehicle.plate, vehicle.garage)
-                closeMenuFull()
-                TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
-                SetVehicleEngineOn(veh, true, true)
-            end, vehicle.plate)
-        end, HouseGarages[currentHouseGarage].takeVehicle, true)
+    else
+        ProjectRP.Functions.Notify("There is a car blocking the Lot!", "error", 3000)
     end
 end)
 
 -- Threads
-
 CreateThread(function()
-    Wait(1000)
+    local sleep
     while true do
-        Wait(5)
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local inGarageRange = false
-        for k, v in pairs(Garages) do
-            local takeDist = #(pos - vector3(Garages[k].takeVehicle.x, Garages[k].takeVehicle.y, Garages[k].takeVehicle.z))
-            if takeDist <= 15 then
-                inGarageRange = true
-                DrawMarker(2, Garages[k].takeVehicle.x, Garages[k].takeVehicle.y, Garages[k].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                if takeDist <= 1.5 then
-                    if not IsPedInAnyVehicle(ped) then
-                        DrawText3Ds(Garages[k].takeVehicle.x, Garages[k].takeVehicle.y, Garages[k].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
-                        if IsControlJustPressed(0, 38) then
-                            MenuGarage()
-                            currentGarage = k
-                        end
-                    else
-                        DrawText3Ds(Garages[k].takeVehicle.x, Garages[k].takeVehicle.y, Garages[k].takeVehicle.z, Garages[k].label)
-                    end
-                end
-                if takeDist >= 4 then
-                    closeMenuFull()
-                end
-            end
-            local putDist = #(pos - vector3(Garages[k].putVehicle.x, Garages[k].putVehicle.y, Garages[k].putVehicle.z))
-            if putDist <= 25 and IsPedInAnyVehicle(ped) then
-                inGarageRange = true
-                DrawMarker(2, Garages[k].putVehicle.x, Garages[k].putVehicle.y, Garages[k].putVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 255, 255, 255, 255, false, false, false, true, false, false, false)
-                if putDist <= 1.5 then
-                    DrawText3Ds(Garages[k].putVehicle.x, Garages[k].putVehicle.y, Garages[k].putVehicle.z + 0.5, '~g~E~w~ - Park Vehicle')
-                    if IsControlJustPressed(0, 38) then
-                        local curVeh = GetVehiclePedIsIn(ped)
-                        local plate = ProjectRP.Functions.GetPlate(curVeh)
-                        ProjectRP.Functions.TriggerCallback('prp-garage:server:checkVehicleOwner', function(owned)
-                            if owned then
-                                local bodyDamage = math.ceil(GetVehicleBodyHealth(curVeh))
-                                local engineDamage = math.ceil(GetVehicleEngineHealth(curVeh))
-                                local totalFuel = exports['prp-fuel']:GetFuel(curVeh)
-                                local vehProperties = ProjectRP.Functions.GetVehicleProperties(curVeh)
-                                CheckPlayers(curVeh)
-                                TriggerServerEvent('prp-garage:server:updateVehicleStatus', totalFuel, engineDamage, bodyDamage, plate, k)
-                                TriggerServerEvent('prp-garage:server:updateVehicleState', 1, plate, k)
-                                TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', vehProperties)
-                                if plate then
-                                    OutsideVehicles[plate] = veh
-                                    TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                                end
-                                ProjectRP.Functions.Notify("Vehicle Parked", "primary", 4500)
-                            else
-                                ProjectRP.Functions.Notify("Vehicle not owned", "error", 3500)
-                            end
-                        end, plate)
-                    end
-                end
-            end
+        sleep = 2000
+        if Markers then
+            DrawMarker(2, currentGarage.putVehicle.x, currentGarage.putVehicle.y, currentGarage.putVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 255, 255, 255, 255, false, false, false, true, false, false, false)
+            DrawMarker(2, currentGarage.takeVehicle.x, currentGarage.takeVehicle.y, currentGarage.takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
+            sleep = 0
+        elseif HouseMarkers then
+            DrawMarker(2, currentGarage.takeVehicle.x, currentGarage.takeVehicle.y, currentGarage.takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
+            sleep = 0
         end
-        if not inGarageRange then
-            Wait(1000)
-        end
-    end
-end)
-
-CreateThread(function()
-    Wait(1000)
-    while true do
-        Wait(5)
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local inGarageRange = false
-        if PlayerGang.name then Name = PlayerGang.name end
-         for k, v in pairs(GangGarages) do
-            if PlayerGang.name == GangGarages[k].job then
-                local takeDist = #(pos - vector3(GangGarages[Name].takeVehicle.x, GangGarages[Name].takeVehicle.y, GangGarages[Name].takeVehicle.z))
-                if takeDist <= 15 then
-                    inGarageRange = true
-                    DrawMarker(2, GangGarages[Name].takeVehicle.x, GangGarages[Name].takeVehicle.y, GangGarages[Name].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                    if takeDist <= 1.5 then
-                        if not IsPedInAnyVehicle(ped) then
-                            DrawText3Ds(GangGarages[Name].takeVehicle.x, GangGarages[Name].takeVehicle.y, GangGarages[Name].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
-                            if IsControlJustPressed(0, 38) then
-                                GangMenuGarage()
-                                currentGarage = Name
-                            end
+        if InputIn or InputOut then
+            if IsControlJustReleased(0, 38) then
+                if InputIn then
+                    local ped = PlayerPedId()
+                    local curVeh = GetVehiclePedIsIn(ped)
+                    local vehClass = GetVehicleClass(curVeh)
+                    --Check vehicle type for garage
+                    if currentGarage.vehicle == "car" or not currentGarage.vehicle then
+                        if vehClass ~= 14 and vehClass ~= 15 and vehClass ~= 16 then
+                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
                         else
-                            DrawText3Ds(GangGarages[Name].takeVehicle.x, GangGarages[Name].takeVehicle.y, GangGarages[Name].takeVehicle.z, GangGarages[Name].label)
+                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
                         end
-                    end
-                    if takeDist >= 4 then
-                        closeMenuFull()
-                    end
-                end
-                local putDist = #(pos - vector3(GangGarages[Name].putVehicle.x, GangGarages[Name].putVehicle.y, GangGarages[Name].putVehicle.z))
-                if putDist <= 25 and IsPedInAnyVehicle(ped) then
-                    inGarageRange = true
-                    DrawMarker(2, GangGarages[Name].putVehicle.x, GangGarages[Name].putVehicle.y, GangGarages[Name].putVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 255, 255, 255, 255, false, false, false, true, false, false, false)
-                    if putDist <= 1.5 then
-                        DrawText3Ds(GangGarages[Name].putVehicle.x, GangGarages[Name].putVehicle.y, GangGarages[Name].putVehicle.z + 0.5, '~g~E~w~ - Park Vehicle')
-                        if IsControlJustPressed(0, 38) then
-                            local curVeh = GetVehiclePedIsIn(ped)
-                            local plate = ProjectRP.Functions.GetPlate(curVeh)
-                            ProjectRP.Functions.TriggerCallback('prp-garage:server:checkVehicleOwner', function(owned)
-                                if owned then
-                                    local bodyDamage = math.ceil(GetVehicleBodyHealth(curVeh))
-                                    local engineDamage = math.ceil(GetVehicleEngineHealth(curVeh))
-                                    local totalFuel = exports['prp-fuel']:GetFuel(curVeh)
-                                    local vehProperties = ProjectRP.Functions.GetVehicleProperties(curVeh)
-                                    CheckPlayers(curVeh)
-                                    Wait(500)
-                                    if DoesEntityExist(curVeh) then
-                                        ProjectRP.Functions.Notify("Vehicle not stored, please check if is someone inside the car.", "error", 4500)
-                                    else
-                                    TriggerServerEvent('prp-garage:server:updateVehicleStatus', totalFuel, engineDamage, bodyDamage, plate, Name)
-                                    TriggerServerEvent('prp-garage:server:updateVehicleState', 1, plate, Name)
-                                    TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', vehProperties)
-                                    if plate then
-                                        OutsideVehicles[plate] = veh
-                                        TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                                    end
-                                    ProjectRP.Functions.Notify("Vehicle Parked", "primary", 4500)
-                                end
-                                else
-                                    ProjectRP.Functions.Notify("Vehicle not owned", "error", 3500)
-                                end
-                            end, plate)
-                        end
-                    end
-                end
-            end
-        end
-        if not inGarageRange then
-            Wait(1000)
-        end
-    end
-end)
-
-CreateThread(function()
-    Wait(1000)
-    while true do
-        Wait(5)
-        local ped = PlayerPedId()
-        local pos = GetEntityCoords(ped)
-        local inGarageRange = false
-        if PlayerJob.name then Name = PlayerJob.name end
-         for k, v in pairs(JobGarages) do
-            if PlayerJob.name == JobGarages[k].job then
-                local takeDist = #(pos - vector3(JobGarages[Name].takeVehicle.x, JobGarages[Name].takeVehicle.y, JobGarages[Name].takeVehicle.z))
-                if takeDist <= 15 then
-                    inGarageRange = true
-                    DrawMarker(2, JobGarages[Name].takeVehicle.x, JobGarages[Name].takeVehicle.y, JobGarages[Name].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                    if takeDist <= 1.5 then
-                        if not IsPedInAnyVehicle(ped) then
-                            DrawText3Ds(JobGarages[Name].takeVehicle.x, JobGarages[Name].takeVehicle.y, JobGarages[Name].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
-                            if IsControlJustPressed(0, 38) then
-                                JobMenuGarage()
-                                currentGarage = Name
-                            end
+                    elseif currentGarage.vehicle == "air" then
+                        if vehClass == 15 or vehClass == 16 then
+                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
                         else
-                            DrawText3Ds(JobGarages[Name].takeVehicle.x, JobGarages[Name].takeVehicle.y, JobGarages[Name].takeVehicle.z, JobGarages[Name].label)
+                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
+                        end
+                    elseif currentGarage.vehicle == "sea" then
+                        if vehClass == 14 then
+                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type, currentGarage)
+                        else
+                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
                         end
                     end
-                    if takeDist >= 4 then
-                        closeMenuFull()
-                    end
-                end
-                local putDist = #(pos - vector3(JobGarages[Name].putVehicle.x, JobGarages[Name].putVehicle.y, JobGarages[Name].putVehicle.z))
-                if putDist <= 25 and IsPedInAnyVehicle(ped) then
-                    inGarageRange = true
-                    DrawMarker(2, JobGarages[Name].putVehicle.x, JobGarages[Name].putVehicle.y, JobGarages[Name].putVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 255, 255, 255, 255, false, false, false, true, false, false, false)
-                    if putDist <= 1.5 then
-                        DrawText3Ds(JobGarages[Name].putVehicle.x, JobGarages[Name].putVehicle.y, JobGarages[Name].putVehicle.z + 0.5, '~g~E~w~ - Park Vehicle')
-                        if IsControlJustPressed(0, 38) then
-                            local curVeh = GetVehiclePedIsIn(ped)
-                            local plate = ProjectRP.Functions.GetPlate(curVeh)
-                            ProjectRP.Functions.TriggerCallback('prp-garage:server:checkVehicleOwner', function(owned)
-                                if owned then
-                                    local bodyDamage = math.ceil(GetVehicleBodyHealth(curVeh))
-                                    local engineDamage = math.ceil(GetVehicleEngineHealth(curVeh))
-                                    local totalFuel = exports['prp-fuel']:GetFuel(curVeh)
-                                    local vehProperties = ProjectRP.Functions.GetVehicleProperties(curVeh)
-                                    CheckPlayers(curVeh)
-                                    Wait(500)
-                                    if DoesEntityExist(curVeh) then
-                                        ProjectRP.Functions.Notify("Vehicle not stored, please check if is someone inside the car.", "error", 4500)
-                                    else
-                                    TriggerServerEvent('prp-garage:server:updateVehicleStatus', totalFuel, engineDamage, bodyDamage, plate, Name)
-                                    TriggerServerEvent('prp-garage:server:updateVehicleState', 1, plate, Name)
-                                    TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', vehProperties)
-                                    if plate then
-                                        OutsideVehicles[plate] = veh
-                                        TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                                    end
-                                    ProjectRP.Functions.Notify("Vehicle Parked", "primary", 4500)
-                                end
-                                else
-                                    ProjectRP.Functions.Notify("Vehicle not owned", "error", 3500)
-                                end
-                            end, plate)
-                        end
-                    end
+                elseif InputOut and currentGarage then
+                    MenuGarage(currentGarage.type, currentGarage, currentGarageIndex)
                 end
             end
-        end
-        if not inGarageRange then
-            Wait(1000)
-        end
-    end
-end)
-
-CreateThread(function()
-    while true do
-        sleep = 1000
-        if LocalPlayer.state['isLoggedIn'] then
-            local ped = PlayerPedId()
-            local pos = GetEntityCoords(ped)
-            inGarageRange = false
-            if HouseGarages and currentHouseGarage then
-                if hasGarageKey and HouseGarages[currentHouseGarage] and HouseGarages[currentHouseGarage].takeVehicle and HouseGarages[currentHouseGarage].takeVehicle.x then
-                    local takehouseDist = #(pos - vector3(HouseGarages[currentHouseGarage].takeVehicle.x, HouseGarages[currentHouseGarage].takeVehicle.y, HouseGarages[currentHouseGarage].takeVehicle.z))
-                    if takehouseDist <= 15 then
-                        sleep = 5
-                        inGarageRange = true
-                        DrawMarker(2, HouseGarages[currentHouseGarage].takeVehicle.x, HouseGarages[currentHouseGarage].takeVehicle.y, HouseGarages[currentHouseGarage].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-                        if takehouseDist < 2.0 then
-                            if not IsPedInAnyVehicle(ped) then
-                                DrawText3Ds(HouseGarages[currentHouseGarage].takeVehicle.x, HouseGarages[currentHouseGarage].takeVehicle.y, HouseGarages[currentHouseGarage].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
-                                if IsControlJustPressed(0, 38) then
-                                    MenuHouseGarage(currentHouseGarage)
-
-                                end
-                            elseif IsPedInAnyVehicle(ped) then
-                                DrawText3Ds(HouseGarages[currentHouseGarage].takeVehicle.x, HouseGarages[currentHouseGarage].takeVehicle.y, HouseGarages[currentHouseGarage].takeVehicle.z + 0.5, '~g~E~w~ - To Park')
-                                if IsControlJustPressed(0, 38) then
-                                    local curVeh = GetVehiclePedIsIn(ped)
-                                    local plate = ProjectRP.Functions.GetPlate(curVeh)
-                                    ProjectRP.Functions.TriggerCallback('prp-garage:server:checkVehicleHouseOwner', function(owned)
-                                        if owned then
-                                            local bodyDamage = round(GetVehicleBodyHealth(curVeh), 1)
-                                            local engineDamage = round(GetVehicleEngineHealth(curVeh), 1)
-                                            local totalFuel = exports['prp-fuel']:GetFuel(curVeh)
-                                            local vehProperties = ProjectRP.Functions.GetVehicleProperties(curVeh)
-                                                CheckPlayers(curVeh)
-                                            if DoesEntityExist(curVeh) then
-                                                    ProjectRP.Functions.Notify("The Vehicle wasn't deleted, please check if is someone inside the car.", "error", 4500)
-                                            else
-                                            TriggerServerEvent('prp-garage:server:updateVehicleStatus', totalFuel, engineDamage, bodyDamage, plate, currentHouseGarage)
-                                            TriggerServerEvent('prp-garage:server:updateVehicleState', 1, plate, currentHouseGarage)
-                                            TriggerServerEvent('prp-vehicletuning:server:SaveVehicleProps', vehProperties)
-                                            ProjectRP.Functions.DeleteVehicle(curVeh)
-                                            if plate then
-                                                OutsideVehicles[plate] = veh
-                                                TriggerServerEvent('prp-garages:server:UpdateOutsideVehicles', OutsideVehicles)
-                                            end
-                                            ProjectRP.Functions.Notify("Vehicle Parked", "primary", 4500)
-                                        end
-                                        else
-                                            ProjectRP.Functions.Notify("Vehicle not owned", "error", 3500)
-                                        end
-
-                                    end, plate, currentHouseGarage)
-                                end
-                            end
-                        end
-                        if takehouseDist > 1.99 then
-                            closeMenuFull()
-                        end
-                    end
-                end
-            end
+            sleep = 0
         end
         Wait(sleep)
     end
 end)
-
-
-RegisterNetEvent("Axel:Impound")
-AddEventHandler("Axel:Impound", function()
-    MenuDepot()
-end)
--- CreateThread(function()
---     Wait(1000)
---     while true do
---         Wait(5)
---         local ped = PlayerPedId()
---         local pos = GetEntityCoords(ped)
---         local inGarageRange = false
---         for k, v in pairs(Depots) do
---             local depottakeDist = #(pos - vector3(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z))
---             if depottakeDist <= 15 then
---                 inGarageRange = true
---                 DrawMarker(2, Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
---                 if depottakeDist <= 1.5 then
---                     if not IsPedInAnyVehicle(ped) then
---                         DrawText3Ds(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z + 0.5, '~g~E~w~ - Garage')
---                         if IsControlJustPressed(0, 38) then
---                             MenuDepot()
---                             currentGarage = k
---                         end
---                     end
---                 end
---                 if depottakeDist >= 4 then
---                     closeMenuFull()
---                 end
---             end
---         end
---         if not inGarageRange then
---             Wait(5000)
---         end
---     end
--- end)
-
-
-Citizen.CreateThread(function()
-
-    towtruckBlip = AddBlipForCoord(-189.4412, -1170.3667, 23.1638)
-    SetBlipAsFriendly(towtruckBlip, true)
-    SetBlipSprite(towtruckBlip, 498)
-    SetBlipColour(towtruckBlip, 30)
-    SetBlipScale(towtruckBlip, 0.8)
-    SetBlipAsShortRange(towtruckBlip,true)
-    BeginTextCommandSetBlipName("STRING")
-    AddTextComponentString(tostring("LS Impound"))
-    EndTextCommandSetBlipName(towtruckBlip)
-
-end)
-
-CreateThread(function()
-    for k, v in pairs(Garages) do
-        if v.showBlip then
-            local Garage = AddBlipForCoord(Garages[k].takeVehicle.x, Garages[k].takeVehicle.y, Garages[k].takeVehicle.z)
-            SetBlipSprite (Garage, 357)
-            SetBlipDisplay(Garage, 4)
-            SetBlipScale  (Garage, 0.65)
-            SetBlipAsShortRange(Garage, true)
-            SetBlipColour(Garage, 3)
-            BeginTextCommandSetBlipName("STRING")
-            AddTextComponentSubstringPlayerName(Garages[k].label)
-            EndTextCommandSetBlipName(Garage)
-        end
-    end
-
-    -- for k, v in pairs(Depots) do
-    --     if v.showBlip then
-    --         local Depot = AddBlipForCoord(Depots[k].takeVehicle.x, Depots[k].takeVehicle.y, Depots[k].takeVehicle.z)
-    --         SetBlipSprite (Depot, 68)
-    --         SetBlipDisplay(Depot, 4)
-    --         SetBlipScale  (Depot, 0.7)
-    --         SetBlipAsShortRange(Depot, true)
-    --         SetBlipColour(Depot, 5)
-    --         BeginTextCommandSetBlipName("STRING")
-    --         AddTextComponentSubstringPlayerName(Depots[k].label)
-    --         EndTextCommandSetBlipName(Depot)
-    --     end
-    -- end
-end)
-
-
-
 
 local entityEnumerator = {
     __gc = function(enum)
@@ -1090,72 +553,61 @@ local entityEnumerator = {
         enum.destructor = nil
         enum.handle = nil
     end
-    }
+}
 
-    local function EnumerateEntities(initFunc, moveFunc, disposeFunc)
-        return coroutine.wrap(function()
-            local iter, id = initFunc()
-            if not id or id == 0 then
+local function EnumerateEntities(initFunc, moveFunc, disposeFunc)
+    return coroutine.wrap(function()
+        local iter, id = initFunc()
+        if not id or id == 0 then
             disposeFunc(iter)
             return
-            end
+        end
+        local enum = {handle = iter, destructor = disposeFunc}
+        setmetatable(enum, entityEnumerator)
+        local next = true
+        repeat
+        coroutine.yield(id)
+        next, id = moveFunc(iter)
+        until not next
+        enum.destructor, enum.handle = nil, nil
+        disposeFunc(iter)
+    end)
+end
 
-            local enum = {handle = iter, destructor = disposeFunc}
-            setmetatable(enum, entityEnumerator)
+local function EnumerateObjects()
+    return EnumerateEntities(FindFirstObject, FindNextObject, EndFindObject)
+end
 
-            local next = true
-            repeat
-            coroutine.yield(id)
-            next, id = moveFunc(iter)
-            until not next
+local function EnumeratePeds()
+    return EnumerateEntities(FindFirstPed, FindNextPed, EndFindPed)
+end
 
-            enum.destructor, enum.handle = nil, nil
-            disposeFunc(iter)
-        end)
-    end
-
-    local function EnumerateObjects()
-        return EnumerateEntities(FindFirstObject, FindNextObject, EndFindObject)
-    end
-
-    local function EnumeratePeds()
-        return EnumerateEntities(FindFirstPed, FindNextPed, EndFindPed)
-    end
-
-    local function EnumerateVehicles()
-        return EnumerateEntities(FindFirstVehicle, FindNextVehicle, EndFindVehicle)
-    end
-
+local function EnumerateVehicles()
+    return EnumerateEntities(FindFirstVehicle, FindNextVehicle, EndFindVehicle)
+end
 
 ProjectRP.Functions.GetVehicles = function()
 	local vehicles = {}
-
 	for vehicle in EnumerateVehicles() do
 		table.insert(vehicles, vehicle)
 	end
-
 	return vehicles
 end
-
 
 ProjectRP.Functions.GetVehiclesInArea = function(coords, area)
 	local vehicles       = ProjectRP.Functions.GetVehicles()
 	local vehiclesInArea = {}
-
 	for i=1, #vehicles, 1 do
 		local vehicleCoords = GetEntityCoords(vehicles[i])
 		local distance      = GetDistanceBetweenCoords(vehicleCoords, coords.x, coords.y, coords.z, true)
-
 		if distance <= area then
 			table.insert(vehiclesInArea, vehicles[i])
 		end
 	end
-
 	return vehiclesInArea
 end
 
 ProjectRP.Functions.IsSpawnPointClear = function(coords, radius)
 	local vehicles = ProjectRP.Functions.GetVehiclesInArea(coords, radius)
-
 	return #vehicles == 0
 end
