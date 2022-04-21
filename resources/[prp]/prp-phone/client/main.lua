@@ -606,7 +606,7 @@ RegisterNUICallback('SharedLocation', function(data)
         PhoneNotify = {
             title = "Messages",
             text = "Location has been set!",
-            icon = "fab fa-comment",
+            icon = "fab fa-whatsapp",
             color = "#25D366",
             timeout = 1500,
         },
@@ -1778,7 +1778,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-comment",
+                        icon = "fab fa-whatsapp",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1789,7 +1789,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-comment",
+                        icon = "fab fa-whatsapp",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1814,7 +1814,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
 	        PhoneNotify = {
 		    title = "Messages",
 		    text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-		    icon = "fab fa-comment",
+		    icon = "fab fa-whatsapp",
 		    color = "#25D366",
 		    timeout = 3500,
 	        },
@@ -1838,7 +1838,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-comment",
+                        icon = "fab fa-whatsapp",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1849,7 +1849,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-comment",
+                        icon = "fab fa-whatsapp",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1874,7 +1874,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 PhoneNotify = {
                     title = "Messages",
                     text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                    icon = "fab fa-comment",
+                    icon = "fab fa-whatsapp",
                     color = "#25D366",
                     timeout = 3500,
                 },
