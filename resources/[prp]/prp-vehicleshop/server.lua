@@ -206,6 +206,10 @@ RegisterNetEvent('prp-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('ProjectRP:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('prp-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
+
+        TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (pdm)]", "blue",
+        '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. cid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player bought a vehicle```\n **Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
+        )
     elseif bank > vehiclePrice then
         MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (?, ?, ?, ?, ?, ?, ?)', {
             pData.PlayerData.license,
@@ -219,6 +223,9 @@ RegisterNetEvent('prp-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('ProjectRP:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('prp-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
+            TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (pdm)]", "blue",
+            '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. cid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player bought a vehicle```\n **Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
+            )
     else
         TriggerClientEvent('ProjectRP:Notify', src, 'Not enough money', 'error')
     end
@@ -293,6 +300,7 @@ RegisterNetEvent('prp-vehicleshop:server:sellShowroomVehicle', function(data, pl
 
     if #(GetEntityCoords(GetPlayerPed(src))-GetEntityCoords(GetPlayerPed(target.PlayerData.source)))<3 then
         local cid = target.PlayerData.citizenid
+        local srcid = player.PlayerData.citizenid
         local cash = target.PlayerData.money['cash']
         local bank = target.PlayerData.money['bank']
         local vehicle = data
@@ -315,6 +323,10 @@ RegisterNetEvent('prp-vehicleshop:server:sellShowroomVehicle', function(data, pl
             TriggerClientEvent('ProjectRP:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
             exports['prp-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('ProjectRP:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
+            TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (Luxury PDM)]", "blue",
+            '**Seller Details**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. srcid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player sold a vehicle to```\n **Buyer Details:**```Steam Name: ' .. GetPlayerName(target.PlayerData.source) .. ' (citizenid: ' .. cid .. ' | id: ' .. target.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(target.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(target.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n**Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
+            )
+
         elseif bank >= vehiclePrice then
             MySQL.Async.insert('INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state) VALUES (?, ?, ?, ?, ?, ?, ?)', {
                 target.PlayerData.license,
@@ -331,6 +343,10 @@ RegisterNetEvent('prp-vehicleshop:server:sellShowroomVehicle', function(data, pl
             exports['prp-management']:AddMoney(player.PlayerData.job.name, vehiclePrice)
             TriggerClientEvent('ProjectRP:Notify', src, 'You earned $'..comma_value(commission)..' in commission', 'success')
             TriggerClientEvent('ProjectRP:Notify', target.PlayerData.source, 'Congratulations on your purchase!', 'success')
+
+            TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (Luxury PDM)]", "blue",
+            '**Seller Details**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. srcid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player sold a vehicle to```\n **Buyer Details:**```Steam Name: ' .. GetPlayerName(target.PlayerData.source) .. ' (citizenid: ' .. cid .. ' | id: ' .. target.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(target.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(target.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n**Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
+            )
         else
             TriggerClientEvent('ProjectRP:Notify', src, 'Not enough money', 'error')
         end
