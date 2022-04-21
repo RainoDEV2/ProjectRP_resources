@@ -195,7 +195,7 @@ $(document).on('click', '#messages-openedchat-send', function(e){
             ChatTime: FormatMessageTime(),
             ChatType: "message",
         }));
-        $("#messages-openedchat-message").val("");
+        $("#messages-openedchat-message").val("").trigger('change');
     } else {
         PRP.Phone.Notifications.Add("fab fa-comment", "Messages", "You can't send a empty message!", "#25D366", 1750);
     }
