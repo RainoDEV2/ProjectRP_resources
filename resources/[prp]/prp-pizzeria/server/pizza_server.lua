@@ -159,7 +159,7 @@ AddEventHandler('prp-pizzeria:server:rem:stuff', function(what)
     local Player = ProjectRP.Functions.GetPlayer(source)
     
     -- if Player ~= nil then
-    if Player ~= nil and what == "pizzameat" or what == "groenten" or what == "pizza-vooraad" or what == "pizza" then
+    if Player ~= nil and what == "pizzameat" or what == "vegetables" or what == "pizza-vooraad" or what == "pizza" then
         Player.Functions.RemoveItem(what, 1)
         TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['what'], 'add')
     end
@@ -169,7 +169,7 @@ RegisterServerEvent('prp-pizzeria:server:add:stuff')
 AddEventHandler('prp-pizzeria:server:add:stuff', function(what)
     local Player = ProjectRP.Functions.GetPlayer(source)
     
-    if Player ~= nil and what == "pizzameat" or what == "groenten" or what == "pizza-vooraad" or what == "pizza" then
+    if Player ~= nil and what == "pizzameat" or what == "vegetables" or what == "pizza-vooraad" or what == "pizza" then
         Player.Functions.AddItem(what, 1)
         TriggerClientEvent('prp-prp-inventory:client:ItemBox', Player.PlayerData.source, ProjectRP.Shared.Items['what'], 'add')
     end
@@ -178,7 +178,7 @@ end)
 ProjectRP.Functions.CreateCallback('prp-pizza:server:get:ingredient', function(source, cb)
     local src = source
     local Ply = ProjectRP.Functions.GetPlayer(src)
-    local lettuce = Ply.Functions.GetItemByName("groenten")
+    local lettuce = Ply.Functions.GetItemByName("vegetables")
     local meat = Ply.Functions.GetItemByName("pizzameat")
     if lettuce ~= nil and meat ~= nil then
         cb(true)

@@ -67,34 +67,34 @@ Citizen.CreateThread(function()
 end)
 
 
-CreateThread(function()
-  while true do
-    Citizen.Wait(4)
-      local plyPed = PlayerPedId()
-      local plyCoords = GetEntityCoords(plyPed)
-      local letSleep = true
+-- CreateThread(function()
+--   while true do
+--     Citizen.Wait(4)
+--       local plyPed = PlayerPedId()
+--       local plyCoords = GetEntityCoords(plyPed)
+--       local letSleep = true
 
-      if LoggedIn then
+--       if LoggedIn then
 
-      if PlayerData.job.name == 'burger' then
-      local boss = Config.Locations['boss']
-        if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 10) and PlayerData.job.isboss then
-          letSleep = false
-          DrawMarker(2, boss.x, boss.y, boss.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
-          if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 1.5) then
-            ProjectRP.Functions.DrawText3D(boss.x, boss.y, boss.z, "~p~E~w~ - Boss menu")
-            if IsControlJustReleased(0, 38) then
-              TriggerServerEvent("prp-bossmenu:server:openMenu")
-            end
-          end  
-        end
-      end
-      if letSleep then
-        Wait(3000)
-      end
-    end
-  end
-end)
+--       if PlayerData.job.name == 'burger' then
+--       local boss = Config.Locations['boss']
+--         if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 10) and PlayerData.job.isboss then
+--           letSleep = false
+--           DrawMarker(2, boss.x, boss.y, boss.z, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.3, 0.2, 0.15, 200, 0, 0, 222, false, false, false, true, false, false, false)
+--           if (GetDistanceBetweenCoords(plyCoords.x, plyCoords.y, plyCoords.z, boss.x, boss.y, boss.z, true) < 1.5) then
+--             ProjectRP.Functions.DrawText3D(boss.x, boss.y, boss.z, "~p~E~w~ - Boss menu")
+--             if IsControlJustReleased(0, 38) then
+--               TriggerServerEvent("prp-bossmenu:server:openMenu")
+--             end
+--           end  
+--         end
+--       end
+--       if letSleep then
+--         Wait(3000)
+--       end
+--     end
+--   end
+-- end)
 
 -- // Events \\ --
 
@@ -162,19 +162,19 @@ AddEventHandler('prp-burgershot:client:open:tray', function(Numbers)
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burgerbleeder')
-AddEventHandler('prp-burgershot:client:create:burgerbleeder', function(BurgerType)
-  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
+AddEventHandler('prp-burgershot:client:create:burgerbleeder', function()
+  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerBleeder()
     else
-      ProjectRP.Functions.Notify("You're missing ingredients to make this burger..", "error")
+      ProjectRP.Functions.Notify("You're missing ingredients needed to make this burger..", "error")
     end
   end)
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-heartstopper')
-AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function(BurgerType)
-  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
+AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function()
+  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerHeart()
     else
@@ -184,8 +184,8 @@ AddEventHandler('prp-burgershot:client:create:burger-heartstopper', function(Bur
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-moneyshot')
-AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function(BurgerType)
-  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
+AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function()
+  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerMoneyshot()
     else
@@ -195,8 +195,8 @@ AddEventHandler('prp-burgershot:client:create:burger-moneyshot', function(Burger
 end)
 
 RegisterNetEvent('prp-burgershot:client:create:burger-torpedo')
-AddEventHandler('prp-burgershot:client:create:burger-torpedo', function(BurgerType)
-  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:has:burger:items', function(HasBurgerItems)
+AddEventHandler('prp-burgershot:client:create:burger-torpedo', function()
+  ProjectRP.Functions.TriggerCallback('prp-burgershot:server:hasBurgerItems', function(HasBurgerItems)
     if HasBurgerItems then
       MakeBurgerTorpedo()
     else
@@ -292,7 +292,7 @@ function SpawnWorkObjects()
 end
 
 function MakeBurgerBleeder()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -314,7 +314,7 @@ function MakeBurgerBleeder()
 end
 
 function MakeBurgerHeart()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -336,7 +336,7 @@ function MakeBurgerHeart()
 end
 
 function MakeBurgerMoneyshot()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)
@@ -358,7 +358,7 @@ function MakeBurgerMoneyshot()
 end
 
 function MakeBurgerTorpedo()
-  Citizen.SetTimeout(750, function()
+  Citizen.SetTimeout(100, function()
     TriggerEvent('prp-inventory:client:set:busy', true)
     exports['prp-smallresources']:RequestAnimationDict("mini@repair")
     TaskPlayAnim(PlayerPedId(), "mini@repair", "fixing_a_ped" ,3.0, 3.0, -1, 8, 0, false, false, false)

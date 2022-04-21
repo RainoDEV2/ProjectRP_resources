@@ -233,7 +233,7 @@ ProjectRP.Functions.CreateCallback('prp-payments:ATM:Find', function(source, cb)
 	cb(name, cash, bank, account, cid, savbal, aid) 
 end)
 
-ProjectRP.Commands.Add("cashgive", "Pay a user nearby", {}, false, function(source) TriggerClientEvent("prp-payments:client:ATM:give", source) end)
+ProjectRP.Commands.Add("givecash", "Pay a user nearby", {}, false, function(source) TriggerClientEvent("prp-payments:client:ATM:give", source) end)
 
 RegisterServerEvent("prp-payments:server:ATM:give", function(citizen, price)
     local Player = ProjectRP.Functions.GetPlayer(source)

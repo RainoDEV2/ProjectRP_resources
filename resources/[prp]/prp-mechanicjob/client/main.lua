@@ -92,7 +92,7 @@ Citizen.CreateThread(function()
     SetBlipAlpha(Blip, 0.7)
 
     BeginTextCommandSetBlipName("STRING")
-    AddTextComponentSubstringPlayerName("LS Customs")
+    AddTextComponentSubstringPlayerName("Benny's Motorworks")
     EndTextCommandSetBlipName(Blip)
 end)
 
@@ -133,7 +133,7 @@ Citizen.CreateThread(function()
                             local InVehicle = IsPedInAnyVehicle(PlayerPedId())
 
                             if InVehicle then
-                                DrawText3Ds(Config.Locations["vehicle"].x, Config.Locations["vehicle"].y, Config.Locations["vehicle"].z, '[E] Hide Vehicle')
+                                DrawText3Ds(Config.Locations["vehicle"].x, Config.Locations["vehicle"].y, Config.Locations["vehicle"].z, '[E] Return Vehicle')
                                 if IsControlJustPressed(0, 38) then
                                     DeleteVehicle(GetVehiclePedIsIn(PlayerPedId()))
                                 end

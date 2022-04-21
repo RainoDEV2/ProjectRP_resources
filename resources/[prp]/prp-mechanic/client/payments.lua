@@ -2,8 +2,8 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 
 Config.RegisterLocations = {
 	--Add your box locations and job name for each payment register and it will add it to the prp-target loop above
-	-- { coords = vector3(-35.91, -1040.47, 28.6), w = 0.4, d = 0.4, heading = 340.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" }, -- Bennys Workshop next to PDM
-	-- { coords = vector3(-200.68, -1314.53, 31.08), w = 0.4, d = 0.4, heading = 0.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" }, -- Alta Street Bennys Workshop
+	{ coords = vector3(-35.91, -1040.47, 28.6), w = 0.4, d = 0.4, heading = 340.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" }, -- Bennys Workshop next to PDM
+	{ coords = vector3(-200.05, -1317.40, 31.07), w = 0.4, d = 0.4, heading = 270.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/b/be/BennysOriginalMotorWorks-GTAO-Logo.png width=150px></p>" }, -- Alta Street Bennys Workshop
 	{ coords = vector3(-343.75, -140.86, 39.02), w = 0.4, d = 0.4, heading = 180.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png width=150px></p>" }, -- LS Customs in city
 	-- { coords = vector3(471.76, -1311.61, 29.20), w = 0.4, d = 0.4, heading = 120.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/0/0c/HayesAutoBodyShop-GTAV-Logo.png width=150px></p>" }, -- Hayes Autos
 	{ coords = vector3(1189.38, 2639.29, 38.44), w = 0.4, d = 0.4, heading = 270.0, job = "mechanic", img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/f/f2/GTAV-LSCustoms-Logo.png width=150px></p>" }, -- LS Customs route 68

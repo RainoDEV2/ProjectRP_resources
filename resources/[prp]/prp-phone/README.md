@@ -1,5 +1,5 @@
 # prp-phone
-Advanced Phone for prp-Core Framework :iphone:
+Advanced Phone for PRP-Core Framework :iphone:
 
 # License
 
@@ -20,32 +20,34 @@ Advanced Phone for prp-Core Framework :iphone:
     along with this program.  If not, see <https://www.gnu.org/licenses/>
 
 ## Dependencies
-- [prp-core](https://github.com/ProjectRP-framework/prp-core)
-- [prp-policejob](https://github.com/ProjectRP-framework/prp-policejob) - MEOS, handcuff check etc. 
-- [prp-crypto](https://github.com/ProjectRP-framework/prp-crypto) - Crypto currency trading 
-- [prp-lapraces](https://github.com/ProjectRP-framework/prp-lapraces) - Creating routes and racing 
-- [prp-houses](https://github.com/ProjectRP-framework/prp-houses) - House and Key Management App
-- [prp-garages](https://github.com/ProjectRP-framework/prp-garages) - For Garage App
-- [prp-banking](https://github.com/ProjectRP-framework/prp-banking) - For Banking App
+- [prp-core](https://github.com/qbcore-framework/prp-core)
+- [prp-policejob](https://github.com/qbcore-framework/prp-policejob) - MEOS, handcuff check etc. 
+- [prp-crypto](https://github.com/qbcore-framework/prp-crypto) - Crypto currency trading 
+- [prp-lapraces](https://github.com/qbcore-framework/prp-lapraces) - Creating routes and racing 
+- [prp-houses](https://github.com/qbcore-framework/prp-houses) - House and Key Management App
+- [prp-garages](https://github.com/qbcore-framework/prp-garages) - For Garage App
+- [prp-banking](https://github.com/qbcore-framework/prp-banking) - For Banking App
 - [screenshot-basic](https://github.com/citizenfx/screenshot-basic) - For Taking Photos
 - A Webhook for hosting photos (Discord or Imgur can provide this)
 
 
 ## Screenshots
-![Home](https://imgur.com/ceEIvEk.png)
-![Bank](https://imgur.com/tArcik2.png)
-![Messages](https://imgur.com/C9aIinK.png)
-![Phone](https://imgur.com/ic2zySK.png)
-![Settings](https://imgur.com/jqC5Y8C.png)
-![MEOS](https://imgur.com/VP7gPRPf.png)
-![Vehicles](https://imgur.com/NUTcfwr.png)
-![Email](https://imgur.com/zTD33N1.png)
-![Advertisements](https://imgur.com/QtQxJLz.png)
-![Houses](https://imgur.com/n6ocF7b.png)
-![App Store](https://imgur.com/mpBOgfN.png)
-![Lawyers](https://imgur.com/SzIRpsI.png)
-![Racing](https://imgur.com/cqj1JBP.png)
-![Crypto](https://imgur.com/Mvv6IZ4.png)
+![Home](https://cdn.discordapp.com/attachments/921675245360922625/921675439783673897/home.jpg)
+![Bank](https://cdn.discordapp.com/attachments/921675245360922625/921675441142644756/bank.jpg)
+![Advert](https://cdn.discordapp.com/attachments/921675245360922625/921675440878415872/advert.jpg)
+![Mail](https://cdn.discordapp.com/attachments/921675245360922625/921675440278614068/mail.jpg)
+![Garage](https://cdn.discordapp.com/attachments/921675245360922625/921675439590760528/garage.jpg)
+![Garage Detail](https://cdn.discordapp.com/attachments/921675245360922625/921675441591422986/garage_in.jpg)
+![services](https://cdn.discordapp.com/attachments/921675245360922625/921675458670641152/services.jpg)
+![Houses](https://cdn.discordapp.com/attachments/921675245360922625/921675440005988362/house.jpg)
+![Racing](https://cdn.discordapp.com/attachments/921675245360922625/921675458423173140/race.jpg)
+![Crypto](https://cdn.discordapp.com/attachments/921675245360922625/921675457718517820/qbit.jpg)
+![Gallery](https://cdn.discordapp.com/attachments/921675245360922625/921675441381736448/gallery.jpg)
+![MEOS](https://cdn.discordapp.com/attachments/921675245360922625/921675440488341534/meos.jpg)
+![Twitter](https://cdn.discordapp.com/attachments/921675245360922625/921675459270438922/twitter.jpg)
+![Settings](https://cdn.discordapp.com/attachments/921675245360922625/921675458905513984/setting.jpg)
+![Messages](https://cdn.discordapp.com/attachments/921675245360922625/921675459517906944/whatsapp.jpg)
+![Phone](https://cdn.discordapp.com/attachments/921675245360922625/921675440677064745/phone.jpg)
 
 ## Features
 - Garages app to see your vehicle details
@@ -58,7 +60,7 @@ Advanced Phone for prp-Core Framework :iphone:
 
 ## Installation
 ### Manual
-- Download the script and put it in the `[qb]` directory.
+- Download the script and put it in the `[prp]` directory.
 - Import `prp-phone.sql` in your database
 - Add the following code to your server.cfg/resouces.cfg
 ```

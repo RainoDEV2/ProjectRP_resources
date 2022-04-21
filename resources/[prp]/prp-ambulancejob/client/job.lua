@@ -274,7 +274,7 @@ RegisterNetEvent('hospital:client:TreatWounds', function()
         end
     end, 'bandage')
 end)
--- hospital:client:lorazepam
+
 RegisterNetEvent('hospital:client:lorazepam', function()
     ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(hasItem)
         if hasItem then
@@ -310,7 +310,41 @@ RegisterNetEvent('hospital:client:lorazepam', function()
     end, 'lorazepam')
 end)
 
-    
+RegisterNetEvent('hospital:client:givePainkillers', function()
+    ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(hasItem)
+        if hasItem then
+            local player, distance = GetClosestPlayer()
+            if player ~= -1 and distance < 5.0 then
+                local playerId = GetPlayerServerId(player)
+                isHealingPerson = true
+                ProjectRP.Functions.Progressbar("hospital_healwounds", 'Giving painkillers...', 1000, false, true, {
+                    disableMovement = false,
+                    disableCarMovement = false,
+                    disableMouse = false,
+                    disableCombat = true,
+                }, {
+                    animDict = healAnimDict,
+                    anim = healAnim,
+                    flags = 16,
+                }, {}, {}, function() -- Done
+                    isHealingPerson = false
+                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    ProjectRP.Functions.Notify('You gave the person painkillers', 'success')
+                    TriggerServerEvent("hospital:server:givePainkillers", playerId)
+                end, function() -- Cancel
+                    isHealingPerson = false
+                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    ProjectRP.Functions.Notify('Canceled', "error")
+                end)
+            else
+                ProjectRP.Functions.Notify('No Player Nearby', "error")
+            end
+        else
+            ProjectRP.Functions.Notify('You need painkillers', "error")
+        end
+    end, 'painkillers')
+end)
+
 
 local check = false
 local function EMSControls(variable)
@@ -743,14 +777,10 @@ else
 
         local roofCombo = ComboZone:Create(roofPoly, {name = "roofCombo", debugPoly = false})
         roofCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 onRoof = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator down','left')
-                    EMSControls("main")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator down','left')
+                EMSControls("main")
             else
                 onRoof = false
                 check = false
@@ -786,8 +816,6 @@ else
             end
         end)
 
-        ---------------
-
         local main2Poly = {}
         for k, v in pairs(Config.Locations["main2"]) do
             main2Poly[#main2Poly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 2, 2, {
@@ -801,14 +829,10 @@ else
 
         local main2Combo = ComboZone:Create(main2Poly, {name = "main2Combo", debugPoly = false})
         main2Combo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 inMain2 = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator down','left')
-                    EMSControls("bottomFloor")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator down','left')
+                EMSControls("bottomFloor")
             else
                 inMain2 = false
                 check = false
@@ -829,14 +853,10 @@ else
 
         local bottomFloorCombo = ComboZone:Create(bottomFloorPoly, {name = "bottomFloorPoly", debugPoly = false})
         bottomFloorCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside then
                 inBottomFloor = true
-                if onDuty then
-                    exports['prp-core']:DrawText('[E] - Take the elevator to the main floor','left')
-                    EMSControls("main2")
-                else
-                    exports['prp-core']:DrawText('You are not EMS or not signed in','left')
-                end
+                exports['prp-core']:DrawText('[E] - Take the elevator to the main floor','left')
+                EMSControls("main2")
             else
                 inBottomFloor = false
                 check = false

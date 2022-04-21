@@ -11,6 +11,6 @@ Citizen.CreateThread(function()
 	AddTextEntry('m3e36', 'BMW M3 E36')
 
 	--First Pack (4 Doors)
-	
+	AddTextEntry('G632019', '2019 Mercedes G63')
 	
 end)

@@ -35,7 +35,7 @@ Config.BossMenus = {
         vector3(993.67, -3102.85, -39.0),
     },
     ['mechanic'] = {
-        vector3(-347.41, -133.48, 39.01),
+        vector3(-24.25, -1059.98, 32.4),
     },
 }
 
@@ -71,7 +71,7 @@ Config.BossMenuZones = {
         { coords = vector3(993.67, -3102.85, -39.0), length = 2.4, width = 1.05, heading = 340.0, minZ = 27.07, maxZ = 27.67 },
     },
     ['mechanic'] = {
-        { coords = vector3(-347.41, -133.48, 39.01), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
+        { coords = vector3(-24.25, -1059.98, 32.4), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
     },
 }
 
@@ -92,6 +92,12 @@ Config.GangMenus = {
         vector3(-150.26, -1588.07, 35.03),
     },
     ['triads'] = {
+        vector3(0, 0, 0),
+    },
+    ['celestial'] = {
+        vector3(408.65, 244.41, 92.05),
+    },
+    ['flowersociety'] = {
         vector3(0, 0, 0),
     },
 }

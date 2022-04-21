@@ -7,7 +7,7 @@ local Hashtags = {}
 local Calls = {}
 local Adverts = {}
 local GeneratedPlates = {}
-local WebHook = "https://discordapp.com/api/webhooks/915463825116000277/2rOnRxn--uZcwyDuiEtAXjgoduB9qcftMdlvKiflN4O3SjKvynEh0WaysNCSX5L9csBp"
+local WebHook = "https://discord.com/api/webhooks/966336911356608522/zUAySrYmNrRi98OMlbPx4uMmqwoL_iT_bbgiL66LyNd8mTPrL6tShRdH-Al7ypWpkG6N"
 local bannedCharacters = {'%','$',';'}
 
 -- Functions
@@ -87,126 +87,39 @@ end
 
 local function GenerateOwnerName()
     local names = {
-        [1] = {
-            name = "Jan Bloksteen",
-            citizenid = "DSH091G93"
-        },
-        [2] = {
-            name = "Jay Dendam",
-            citizenid = "AVH09M193"
-        },
-        [3] = {
-            name = "Ben Klaariskees",
-            citizenid = "DVH091T93"
-        },
-        [4] = {
-            name = "Karel Bakker",
-            citizenid = "GZP091G93"
-        },
-        [5] = {
-            name = "Klaas Adriaan",
-            citizenid = "DRH09Z193"
-        },
-        [6] = {
-            name = "Nico Wolters",
-            citizenid = "KGV091J93"
-        },
-        [7] = {
-            name = "Mark Hendrickx",
-            citizenid = "ODF09S193"
-        },
-        [8] = {
-            name = "Bert Johannes",
-            citizenid = "KSD0919H3"
-        },
-        [9] = {
-            name = "Karel de Grote",
-            citizenid = "NDX091D93"
-        },
-        [10] = {
-            name = "Jan Pieter",
-            citizenid = "ZAL0919X3"
-        },
-        [11] = {
-            name = "Huig Roelink",
-            citizenid = "ZAK09D193"
-        },
-        [12] = {
-            name = "Corneel Boerselman",
-            citizenid = "POL09F193"
-        },
-        [13] = {
-            name = "Hermen Klein Overmeen",
-            citizenid = "TEW0J9193"
-        },
-        [14] = {
-            name = "Bart Rielink",
-            citizenid = "YOO09H193"
-        },
-        [15] = {
-            name = "Antoon Henselijn",
-            citizenid = "PRPC091H93"
-        },
-        [16] = {
-            name = "Aad Keizer",
-            citizenid = "YDN091H93"
-        },
-        [17] = {
-            name = "Thijn Kiel",
-            citizenid = "PJD09D193"
-        },
-        [18] = {
-            name = "Henkie Krikhaar",
-            citizenid = "RND091D93"
-        },
-        [19] = {
-            name = "Teun Blaauwkamp",
-            citizenid = "QWE091A93"
-        },
-        [20] = {
-            name = "Dries Stielstra",
-            citizenid = "KJH0919M3"
-        },
-        [21] = {
-            name = "Karlijn Hensbergen",
-            citizenid = "ZXC09D193"
-        },
-        [22] = {
-            name = "Aafke van Daalen",
-            citizenid = "XYZ0919C3"
-        },
-        [23] = {
-            name = "Door Leeferds",
-            citizenid = "ZYX0919F3"
-        },
-        [24] = {
-            name = "Nelleke Broedersen",
-            citizenid = "IOP091O93"
-        },
-        [25] = {
-            name = "Renske de Raaf",
-            citizenid = "PIO091R93"
-        },
-        [26] = {
-            name = "Krisje Moltman",
-            citizenid = "LEK091X93"
-        },
-        [27] = {
-            name = "Mirre Steevens",
-            citizenid = "ALG091Y93"
-        },
-        [28] = {
-            name = "Joosje Kalvenhaar",
-            citizenid = "YUR09E193"
-        },
-        [29] = {
-            name = "Mirte Ellenbroek",
-            citizenid = "SOM091W93"
-        },
-        [30] = {
-            name = "Marlieke Meilink",
-            citizenid = "KAS09193"
-        }
+        [1] = { name = "Bailey Sykes",          citizenid = "DSH091G93" },
+        [2] = { name = "Aroush Goodwin",        citizenid = "AVH09M193" },
+        [3] = { name = "Tom Warren",            citizenid = "DVH091T93" },
+        [4] = { name = "Abdallah Friedman",     citizenid = "GZP091G93" },
+        [5] = { name = "Lavinia Powell",        citizenid = "DRH09Z193" },
+        [6] = { name = "Andrew Delarosa",       citizenid = "KGV091J93" },
+        [7] = { name = "Skye Cardenas",         citizenid = "ODF09S193" },
+        [8] = { name = "Amelia-Mae Walter",     citizenid = "KSD0919H3" },
+        [9] = { name = "Elisha Cote",           citizenid = "NDX091D93" },
+        [10] = { name = "Janice Rhodes",        citizenid = "ZAL0919X3" },
+        [11] = { name = "Justin Harris",        citizenid = "ZAK09D193" },
+        [12] = { name = "Montel Graves",        citizenid = "POL09F193" },
+        [13] = { name = "Benjamin Zavala",      citizenid = "TEW0J9193" },
+        [14] = { name = "Mia Willis",           citizenid = "YOO09H193" },
+        [15] = { name = "Jacques Schmitt",      citizenid = "QBC091H93" },
+        [16] = { name = "Mert Simmonds",        citizenid = "YDN091H93" },
+        [17] = { name = "Rickie Browne",        citizenid = "PJD09D193" },
+        [18] = { name = "Deacon Stanley",       citizenid = "RND091D93" },
+        [19] = { name = "Daisy Fraser",         citizenid = "QWE091A93" },
+        [20] = { name = "Kitty Walters",        citizenid = "KJH0919M3" },
+        [21] = { name = "Jareth Fernandez",     citizenid = "ZXC09D193" },
+        [22] = { name = "Meredith Calhoun",     citizenid = "XYZ0919C3" },
+        [23] = { name = "Teagan Mckay",         citizenid = "ZYX0919F3" },
+        [24] = { name = "Kurt Bain",            citizenid = "IOP091O93" },
+        [25] = { name = "Burt Kain",            citizenid = "PIO091R93" },
+        [26] = { name = "Joanna Huff",          citizenid = "LEK091X93" },
+        [27] = { name = "Carrie-Ann Pineda",    citizenid = "ALG091Y93" },
+        [28] = { name = "Gracie-Mai Mcghee",    citizenid = "YUR09E193" },
+        [29] = { name = "Robyn Boone",          citizenid = "SOM091W93" },
+        [30] = { name = "Aliya William",        citizenid = "KAS009193" },
+        [31] = { name = "Rohit West",           citizenid = "SOK091093" },
+        [32] = { name = "Skylar Archer",        citizenid = "LOK091093" },
+        [33] = { name = "Jake Kumar",           citizenid = "AKA420609" },
     }
     return names[math.random(1, #names)]
 end
@@ -251,7 +164,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
         }
         PhoneData.Adverts = Adverts
 
-        local result = exports.oxmysql:executeSync('SELECT * FROM player_contacts WHERE citizenid = ? ORDER BY name ASC', {Player.PlayerData.citizenid})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM player_contacts WHERE citizenid = ? ORDER BY name ASC', {Player.PlayerData.citizenid})
         local Contacts = {}
         if result[1] ~= nil then
             for k, v in pairs(result) do
@@ -261,14 +174,14 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
             PhoneData.PlayerContacts = result
         end
 
-        local invoices = exports.oxmysql:executeSync('SELECT * FROM phone_invoices WHERE citizenid = ?', {Player.PlayerData.citizenid})
+        local invoices = MySQL.Sync.fetchAll('SELECT * FROM phone_invoices WHERE citizenid = ?', {Player.PlayerData.citizenid})
         if invoices[1] ~= nil then
             for k, v in pairs(invoices) do
                 local Ply = ProjectRP.Functions.GetPlayerByCitizenId(v.sender)
                 if Ply ~= nil then
                     v.number = Ply.PlayerData.charinfo.phone
                 else
-                    local res = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {v.sender})
+                    local res = MySQL.Sync.fetchAll('SELECT * FROM players WHERE citizenid = ?', {v.sender})
                     if res[1] ~= nil then
                         res[1].charinfo = json.decode(res[1].charinfo)
                         v.number = res[1].charinfo.phone
@@ -280,7 +193,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
             PhoneData.Invoices = invoices
         end
 
-        local garageresult = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE citizenid = ?', {Player.PlayerData.citizenid})
+        local garageresult = MySQL.Sync.fetchAll('SELECT * FROM player_vehicles WHERE citizenid = ?', {Player.PlayerData.citizenid})
         if garageresult[1] ~= nil then
             for k, v in pairs(garageresult) do
                 local vehicleModel = v.vehicle
@@ -294,7 +207,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
             PhoneData.Garage = garageresult
         end
 
-        local messages = exports.oxmysql:executeSync('SELECT * FROM phone_messages WHERE citizenid = ?', {Player.PlayerData.citizenid})
+        local messages = MySQL.Sync.fetchAll('SELECT * FROM phone_messages WHERE citizenid = ?', {Player.PlayerData.citizenid})
         if messages ~= nil and next(messages) ~= nil then
             PhoneData.Chats = messages
         end
@@ -311,11 +224,14 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
             PhoneData.Hashtags = Hashtags
         end
 
+        local Tweets = MySQL.Sync.fetchAll('SELECT * FROM phone_tweets WHERE `date` > NOW() - INTERVAL ? hour', {Config.TweetDuration})
+
         if Tweets ~= nil and next(Tweets) ~= nil then
             PhoneData.Tweets = Tweets
+            TWData = Tweets
         end
 
-        local mails = exports.oxmysql:executeSync('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
+        local mails = MySQL.Sync.fetchAll('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
         if mails[1] ~= nil then
             for k, v in pairs(mails) do
                 if mails[k].button ~= nil then
@@ -325,7 +241,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
             PhoneData.Mails = mails
         end
 
-        local transactions = exports.oxmysql:executeSync('SELECT * FROM crypto_transactions WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
+        local transactions = MySQL.Sync.fetchAll('SELECT * FROM crypto_transactions WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
         if transactions[1] ~= nil then
             for _, v in pairs(transactions) do
                 PhoneData.CryptoTransactions[#PhoneData.CryptoTransactions+1] = {
@@ -334,7 +250,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetPhoneData', function(sou
                 }
             end
         end
-        local images = exports.oxmysql:executeSync('SELECT * FROM phone_gallery WHERE citizenid = ? ORDER BY `date` DESC',{Player.PlayerData.citizenid})
+        local images = MySQL.Sync.fetchAll('SELECT * FROM phone_gallery WHERE citizenid = ? ORDER BY `date` DESC',{Player.PlayerData.citizenid})
         if images ~= nil and next(images) ~= nil then
             PhoneData.Images = images
         end
@@ -364,9 +280,9 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:PayInvoice', function(sourc
     end
     Ply.Functions.RemoveMoney('bank', amount, "paid-invoice")
     TriggerEvent('prp-phone:server:sendNewMailToOffline', sendercitizenid, invoiceMailData)
-    TriggerEvent("prp-bossmenu:server:addAccountMoney", society, amount)
-    exports.oxmysql:execute('DELETE FROM phone_invoices WHERE id = ?', {invoiceId})
-    local invoices = exports.oxmysql:executeSync('SELECT * FROM phone_invoices WHERE citizenid = ?', {Ply.PlayerData.citizenid})
+	exports['prp-management']:AddMoney(society, amount)
+    MySQL.Async.execute('DELETE FROM phone_invoices WHERE id = ?', {invoiceId})
+    local invoices = MySQL.Sync.fetchAll('SELECT * FROM phone_invoices WHERE citizenid = ?', {Ply.PlayerData.citizenid})
     if invoices[1] ~= nil then
         Invoices = invoices
     end
@@ -376,8 +292,8 @@ end)
 ProjectRP.Functions.CreateCallback('prp-phone:server:DeclineInvoice', function(source, cb, sender, amount, invoiceId)
     local Invoices = {}
     local Ply = ProjectRP.Functions.GetPlayer(source)
-    exports.oxmysql:execute('DELETE FROM phone_invoices WHERE id = ?', {invoiceId})
-    local invoices = exports.oxmysql:executeSync('SELECT * FROM phone_invoices WHERE citizenid = ?', {Ply.PlayerData.citizenid})
+    MySQL.Async.execute('DELETE FROM phone_invoices WHERE id = ?', {invoiceId})
+    local invoices = MySQL.Sync.fetchAll('SELECT * FROM phone_invoices WHERE citizenid = ?', {Ply.PlayerData.citizenid})
     if invoices[1] ~= nil then
         Invoices = invoices
     end
@@ -389,7 +305,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetContactPictures', functi
         local Player = ProjectRP.Functions.GetPlayerByPhone(v.number)
 
         local query = '%' .. v.number .. '%'
-        local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
         if result[1] ~= nil then
             local MetaData = json.decode(result[1].metadata)
 
@@ -407,7 +323,7 @@ end)
 
 ProjectRP.Functions.CreateCallback('prp-phone:server:GetContactPicture', function(source, cb, Chat)
     local query = '%' .. Chat.number .. '%'
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
     local MetaData = json.decode(result[1].metadata)
     if MetaData.phone.profilepicture ~= nil then
         Chat.picture = MetaData.phone.profilepicture
@@ -422,7 +338,7 @@ end)
 ProjectRP.Functions.CreateCallback('prp-phone:server:GetPicture', function(source, cb, number)
     local Picture = nil
     local query = '%' .. number .. '%'
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
     if result[1] ~= nil then
         local MetaData = json.decode(result[1].metadata)
         if MetaData.phone.profilepicture ~= nil then
@@ -452,11 +368,11 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:FetchResult', function(sour
     else
         query = query .. ' OR `charinfo` LIKE "%' .. search .. '%"'
     end
-    local ApartmentData = exports.oxmysql:executeSync('SELECT * FROM apartments', {})
+    local ApartmentData = MySQL.Sync.fetchAll('SELECT * FROM apartments', {})
     for k, v in pairs(ApartmentData) do
         ApaData[v.citizenid] = ApartmentData[k]
     end
-    local result = exports.oxmysql:executeSync(query)
+    local result = MySQL.Sync.fetchAll(query)
     if result[1] ~= nil then
         for k, v in pairs(result) do
             local charinfo = json.decode(v.charinfo)
@@ -488,11 +404,11 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:GetVehicleSearchResults', f
     local search = escape_sqli(search)
     local searchData = {}
     local query = '%' .. search .. '%'
-    local result = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE plate LIKE ? OR citizenid = ?',
+    local result = MySQL.Sync.fetchAll('SELECT * FROM player_vehicles WHERE plate LIKE ? OR citizenid = ?',
         {query, search})
     if result[1] ~= nil then
         for k, v in pairs(result) do
-            local player = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {result[k].citizenid})
+            local player = MySQL.Sync.fetchAll('SELECT * FROM players WHERE citizenid = ?', {result[k].citizenid})
             if player[1] ~= nil then
                 local charinfo = json.decode(player[1].charinfo)
                 local vehicleInfo = ProjectRP.Shared.Vehicles[result[k].vehicle]
@@ -548,9 +464,9 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:ScanPlate', function(source
     local src = source
     local vehicleData = {}
     if plate ~= nil then
-        local result = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE plate = ?', {plate})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM player_vehicles WHERE plate = ?', {plate})
         if result[1] ~= nil then
-            local player = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {result[1].citizenid})
+            local player = MySQL.Sync.fetchAll('SELECT * FROM players WHERE citizenid = ?', {result[1].citizenid})
             local charinfo = json.decode(player[1].charinfo)
             vehicleData = {
                 plate = plate,
@@ -582,69 +498,6 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:ScanPlate', function(source
     end
 end)
 
-ProjectRP.Functions.CreateCallback('prp-phone:server:GetGarageVehicles', function(source, cb)
-    local Player = ProjectRP.Functions.GetPlayer(source)
-    local Vehicles = {}
-
-    local result = exports.oxmysql:executeSync('SELECT * FROM player_vehicles WHERE citizenid = ?',
-        {Player.PlayerData.citizenid})
-    if result[1] ~= nil then
-        for k, v in pairs(result) do
-            local VehicleData = ProjectRP.Shared.Vehicles[v.vehicle]
-
-            local VehicleGarage = "None"
-            if v.garage ~= nil then
-                if Garages[v.garage] ~= nil then
-                    VehicleGarage = Garages[v.garage]["label"]
-                elseif GangGarages[v.garage] ~= nil then
-                    VehicleGarage = GangGarages[v.garage]["label"]
-                elseif JobGarages[v.garage] ~= nil then
-                    VehicleGarage = JobGarages[v.garage]["label"]
-                end
-            end
-
-            local VehicleState = "In"
-            if v.state == 0 then
-                VehicleState = "Out"
-            elseif v.state == 2 then
-                VehicleState = "Impounded"
-            end
-
-            local vehdata = {}
-
-            if VehicleData["brand"] ~= nil then
-                vehdata = {
-                    fullname = VehicleData["brand"] .. " " .. VehicleData["name"],
-                    brand = VehicleData["brand"],
-                    model = VehicleData["name"],
-                    plate = v.plate,
-                    garage = VehicleGarage,
-                    state = VehicleState,
-                    fuel = v.fuel,
-                    engine = v.engine,
-                    body = v.body
-                }
-            else
-                vehdata = {
-                    fullname = VehicleData["name"],
-                    brand = VehicleData["name"],
-                    model = VehicleData["name"],
-                    plate = v.plate,
-                    garage = VehicleGarage,
-                    state = VehicleState,
-                    fuel = v.fuel,
-                    engine = v.engine,
-                    body = v.body
-                }
-            end
-            Vehicles[#Vehicles+1] = vehdata
-        end
-        cb(Vehicles)
-    else
-        cb(nil)
-    end
-end)
-
 ProjectRP.Functions.CreateCallback('prp-phone:server:HasPhone', function(source, cb)
     local Player = ProjectRP.Functions.GetPlayer(source)
     if Player ~= nil then
@@ -667,11 +520,11 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:CanTransferMoney', function
     end
     iban = newiban
     amount = tonumber(newAmount)
-    
+
     local Player = ProjectRP.Functions.GetPlayer(source)
     if (Player.PlayerData.money.bank - amount) >= 0 then
         local query = '%"account":"' .. iban .. '"%'
-        local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+        local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
         if result[1] ~= nil then
             local Reciever = ProjectRP.Functions.GetPlayerByCitizenId(result[1].citizenid)
             Player.Functions.RemoveMoney('bank', amount)
@@ -680,7 +533,7 @@ ProjectRP.Functions.CreateCallback('prp-phone:server:CanTransferMoney', function
             else
                 local RecieverMoney = json.decode(result[1].money)
                 RecieverMoney.bank = (RecieverMoney.bank + amount)
-                exports.oxmysql:execute('UPDATE players SET money = ? WHERE citizenid = ?', {json.encode(RecieverMoney), result[1].citizenid})
+                MySQL.Async.execute('UPDATE players SET money = ? WHERE citizenid = ?', {json.encode(RecieverMoney), result[1].citizenid})
             end
             cb(true)
         else
@@ -715,7 +568,6 @@ ProjectRP.Functions.CreateCallback("prp-phone:server:GetWebhook",function(source
 	else
 		cb(nil)
 	end
-
 end)
 
 -- Events
@@ -761,9 +613,9 @@ end)
 RegisterNetEvent('prp-phone:server:RemoveMail', function(MailId)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:execute('DELETE FROM player_mails WHERE mailid = ? AND citizenid = ?', {MailId, Player.PlayerData.citizenid})
+    MySQL.Async.execute('DELETE FROM player_mails WHERE mailid = ? AND citizenid = ?', {MailId, Player.PlayerData.citizenid})
     SetTimeout(100, function()
-        local mails = exports.oxmysql:executeSync('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
+        local mails = MySQL.Sync.fetchAll('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
         if mails[1] ~= nil then
             for k, v in pairs(mails) do
                 if mails[k].button ~= nil then
@@ -779,13 +631,13 @@ RegisterNetEvent('prp-phone:server:sendNewMail', function(mailData)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if mailData.button == nil then
-        exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
+        MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
     else
-        exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
+        MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
     end
     TriggerClientEvent('prp-phone:client:NewMailNotify', src, mailData)
     SetTimeout(200, function()
-        local mails = exports.oxmysql:executeSync('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` DESC',
+        local mails = MySQL.Sync.fetchAll('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` DESC',
             {Player.PlayerData.citizenid})
         if mails[1] ~= nil then
             for k, v in pairs(mails) do
@@ -804,14 +656,14 @@ RegisterNetEvent('prp-phone:server:sendNewMailToOffline', function(citizenid, ma
     if Player then
         local src = Player.PlayerData.source
         if mailData.button == nil then
-            exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
+            MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
             TriggerClientEvent('prp-phone:client:NewMailNotify', src, mailData)
         else
-            exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
+            MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {Player.PlayerData.citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
             TriggerClientEvent('prp-phone:client:NewMailNotify', src, mailData)
         end
         SetTimeout(200, function()
-            local mails = exports.oxmysql:executeSync(
+            local mails = MySQL.Sync.fetchAll(
                 'SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
             if mails[1] ~= nil then
                 for k, v in pairs(mails) do
@@ -825,9 +677,9 @@ RegisterNetEvent('prp-phone:server:sendNewMailToOffline', function(citizenid, ma
         end)
     else
         if mailData.button == nil then
-            exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
+            MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
         else
-            exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
+            MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
         end
     end
 end)
@@ -835,12 +687,12 @@ end)
 RegisterNetEvent('prp-phone:server:sendNewEventMail', function(citizenid, mailData)
     local Player = ProjectRP.Functions.GetPlayerByCitizenId(citizenid)
     if mailData.button == nil then
-        exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
+        MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`) VALUES (?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0})
     else
-        exports.oxmysql:insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
+        MySQL.Async.insert('INSERT INTO player_mails (`citizenid`, `sender`, `subject`, `message`, `mailid`, `read`, `button`) VALUES (?, ?, ?, ?, ?, ?, ?)', {citizenid, mailData.sender, mailData.subject, mailData.message, GenerateMailId(), 0, json.encode(mailData.button)})
     end
     SetTimeout(200, function()
-        local mails = exports.oxmysql:executeSync('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {citizenid})
+        local mails = MySQL.Sync.fetchAll('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {citizenid})
         if mails[1] ~= nil then
             for k, v in pairs(mails) do
                 if mails[k].button ~= nil then
@@ -855,9 +707,9 @@ end)
 RegisterNetEvent('prp-phone:server:ClearButtonData', function(mailId)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:execute('UPDATE player_mails SET button = ? WHERE mailid = ? AND citizenid = ?', {'', mailId, Player.PlayerData.citizenid})
+    MySQL.Async.execute('UPDATE player_mails SET button = ? WHERE mailid = ? AND citizenid = ?', {'', mailId, Player.PlayerData.citizenid})
     SetTimeout(200, function()
-        local mails = exports.oxmysql:executeSync('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
+        local mails = MySQL.Sync.fetchAll('SELECT * FROM player_mails WHERE citizenid = ? ORDER BY `date` ASC', {Player.PlayerData.citizenid})
         if mails[1] ~= nil then
             for k, v in pairs(mails) do
                 if mails[k].button ~= nil then
@@ -880,7 +732,7 @@ RegisterNetEvent('prp-phone:server:MentionedPlayer', function(firstName, lastNam
             else
                 local query1 = '%' .. firstName .. '%'
                 local query2 = '%' .. lastName .. '%'
-                local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ? AND charinfo LIKE ?', {query1, query2})
+                local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ? AND charinfo LIKE ?', {query1, query2})
                 if result[1] ~= nil then
                     local MentionedTarget = result[1].citizenid
                     PRPPhone.SetPhoneAlerts(MentionedTarget, "twitter")
@@ -935,20 +787,53 @@ RegisterNetEvent('prp-phone:server:SetPhoneAlerts', function(app, alerts)
 end)
 
 RegisterNetEvent('prp-phone:server:DeleteTweet', function(tweetId)
-    local src = source
-    for i = 1, #Tweets do
-        if Tweets[i].tweetId == tweetId then
-            Tweets[i] = nil
-        end
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    local delete = false
+    local TID = tweetId
+    local Data = MySQL.Sync.fetchScalar('SELECT citizenid FROM phone_tweets WHERE tweetId = ?', {id})
+    if Data == Player.PlayerData.citizenid then
+        local Data2 = MySQL.Sync.fetchAll('DELETE FROM phone_tweets WHERE tweetId = ?', {TID})
+        delete = true
     end
-    TriggerClientEvent('prp-phone:client:UpdateTweets', -1, src, Tweets, {}, true)
+
+    if delete then
+        delete = not delete
+        for k, v in pairs(TWData) do
+            if TWData[k].tweetId == TID then
+                TWData = nil
+            end
+        end
+        TriggerClientEvent('prp-phone:client:UpdateTweets', -1, TWData)
+    end
 end)
 
 RegisterNetEvent('prp-phone:server:UpdateTweets', function(NewTweets, TweetData)
     local src = source
-    Tweets = NewTweets
-    local TwtData = TweetData
-    TriggerClientEvent('prp-phone:client:UpdateTweets', -1, src, NewTweets, TwtData, false)
+    if Config.Linux then
+        local InsertTweet = MySQL.Async.insert('INSERT INTO phone_tweets (citizenid, firstName, lastName, message, date, url, picture, tweetid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', {
+            TweetData.citizenid,
+            TweetData.firstName,
+            TweetData.lastName,
+            TweetData.message,
+            TweetData.date,
+            TweetData.url:gsub("[%<>\"()\' $]",""),
+            TweetData.picture,
+            TweetData.tweetId
+        })
+        TriggerClientEvent('prp-phone:client:UpdateTweets', -1, src, NewTweets, TweetData, false)
+    else
+        local InsertTweet = MySQL.Async.insert('INSERT INTO phone_tweets (citizenid, firstName, lastName, message, date, url, picture, tweetid) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', {
+            TweetData.citizenid,
+            TweetData.firstName,
+            TweetData.lastName,
+            TweetData.message,
+            TweetData.time,
+            TweetData.url:gsub("[%<>\"()\' $]",""),
+            TweetData.picture,
+            TweetData.tweetId
+        })
+        TriggerClientEvent('prp-phone:client:UpdateTweets', -1, src, NewTweets, TweetData, false)
+    end
 end)
 
 RegisterNetEvent('prp-phone:server:TransferMoney', function(iban, amount)
@@ -956,7 +841,7 @@ RegisterNetEvent('prp-phone:server:TransferMoney', function(iban, amount)
     local sender = ProjectRP.Functions.GetPlayer(src)
 
     local query = '%' .. iban .. '%'
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
     if result[1] ~= nil then
         local reciever = ProjectRP.Functions.GetPlayerByCitizenId(result[1].citizenid)
 
@@ -972,7 +857,7 @@ RegisterNetEvent('prp-phone:server:TransferMoney', function(iban, amount)
         else
             local moneyInfo = json.decode(result[1].money)
             moneyInfo.bank = round((moneyInfo.bank + amount))
-            exports.oxmysql:execute('UPDATE players SET money = ? WHERE citizenid = ?',
+            MySQL.Async.execute('UPDATE players SET money = ? WHERE citizenid = ?',
                 {json.encode(moneyInfo), result[1].citizenid})
             sender.Functions.RemoveMoney('bank', amount, "phone-transfered")
         end
@@ -984,7 +869,7 @@ end)
 RegisterNetEvent('prp-phone:server:EditContact', function(newName, newNumber, newIban, oldName, oldNumber, oldIban)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:execute(
+    MySQL.Async.execute(
         'UPDATE player_contacts SET name = ?, number = ?, iban = ? WHERE citizenid = ? AND name = ? AND number = ?',
         {newName, newNumber, newIban, Player.PlayerData.citizenid, oldName, oldNumber})
 end)
@@ -992,54 +877,54 @@ end)
 RegisterNetEvent('prp-phone:server:RemoveContact', function(Name, Number)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:execute('DELETE FROM player_contacts WHERE name = ? AND number = ? AND citizenid = ?',
+    MySQL.Async.execute('DELETE FROM player_contacts WHERE name = ? AND number = ? AND citizenid = ?',
         {Name, Number, Player.PlayerData.citizenid})
 end)
 
 RegisterNetEvent('prp-phone:server:AddNewContact', function(name, number, iban)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:insert('INSERT INTO player_contacts (citizenid, name, number, iban) VALUES (?, ?, ?, ?)', {Player.PlayerData.citizenid, tostring(name), tostring(number), tostring(iban)})
+    MySQL.Async.insert('INSERT INTO player_contacts (citizenid, name, number, iban) VALUES (?, ?, ?, ?)', {Player.PlayerData.citizenid, tostring(name), tostring(number), tostring(iban)})
 end)
 
 RegisterNetEvent('prp-phone:server:UpdateMessages', function(ChatMessages, ChatNumber, New)
     local src = source
     local SenderData = ProjectRP.Functions.GetPlayer(src)
     local query = '%' .. ChatNumber .. '%'
-    local Player = exports.oxmysql:executeSync('SELECT * FROM players WHERE charinfo LIKE ?', {query})
+    local Player = MySQL.Sync.fetchAll('SELECT * FROM players WHERE charinfo LIKE ?', {query})
     if Player[1] ~= nil then
         local TargetData = ProjectRP.Functions.GetPlayerByCitizenId(Player[1].citizenid)
         if TargetData ~= nil then
-            local Chat = exports.oxmysql:executeSync('SELECT * FROM phone_messages WHERE citizenid = ? AND number = ?', {SenderData.PlayerData.citizenid, ChatNumber})
+            local Chat = MySQL.Sync.fetchAll('SELECT * FROM phone_messages WHERE citizenid = ? AND number = ?', {SenderData.PlayerData.citizenid, ChatNumber})
             if Chat[1] ~= nil then
                 -- Update for target
-                exports.oxmysql:execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), TargetData.PlayerData.citizenid, SenderData.PlayerData.charinfo.phone})
+                MySQL.Async.execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), TargetData.PlayerData.citizenid, SenderData.PlayerData.charinfo.phone})
                 -- Update for sender
-                exports.oxmysql:execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), SenderData.PlayerData.citizenid, TargetData.PlayerData.charinfo.phone})
+                MySQL.Async.execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), SenderData.PlayerData.citizenid, TargetData.PlayerData.charinfo.phone})
                 -- Send notification & Update messages for target
                 TriggerClientEvent('prp-phone:client:UpdateMessages', TargetData.PlayerData.source, ChatMessages, SenderData.PlayerData.charinfo.phone, false)
             else
                 -- Insert for target
-                exports.oxmysql:insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {TargetData.PlayerData.citizenid, SenderData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
+                MySQL.Async.insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {TargetData.PlayerData.citizenid, SenderData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
                 -- Insert for sender
-                exports.oxmysql:insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {SenderData.PlayerData.citizenid, TargetData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
+                MySQL.Async.insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {SenderData.PlayerData.citizenid, TargetData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
                 -- Send notification & Update messages for target
                 TriggerClientEvent('prp-phone:client:UpdateMessages', TargetData.PlayerData.source, ChatMessages, SenderData.PlayerData.charinfo.phone, true)
             end
         else
-            local Chat = exports.oxmysql:executeSync('SELECT * FROM phone_messages WHERE citizenid = ? AND number = ?', {SenderData.PlayerData.citizenid, ChatNumber})
+            local Chat = MySQL.Sync.fetchAll('SELECT * FROM phone_messages WHERE citizenid = ? AND number = ?', {SenderData.PlayerData.citizenid, ChatNumber})
             if Chat[1] ~= nil then
                 -- Update for target
-                exports.oxmysql:execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), Player[1].citizenid, SenderData.PlayerData.charinfo.phone})
+                MySQL.Async.execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), Player[1].citizenid, SenderData.PlayerData.charinfo.phone})
                 -- Update for sender
                 Player[1].charinfo = json.decode(Player[1].charinfo)
-                exports.oxmysql:execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), SenderData.PlayerData.citizenid, Player[1].charinfo.phone})
+                MySQL.Async.execute('UPDATE phone_messages SET messages = ? WHERE citizenid = ? AND number = ?', {json.encode(ChatMessages), SenderData.PlayerData.citizenid, Player[1].charinfo.phone})
             else
                 -- Insert for target
-                exports.oxmysql:insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {Player[1].citizenid, SenderData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
+                MySQL.Async.insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {Player[1].citizenid, SenderData.PlayerData.charinfo.phone, json.encode(ChatMessages)})
                 -- Insert for sender
                 Player[1].charinfo = json.decode(Player[1].charinfo)
-                exports.oxmysql:insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {SenderData.PlayerData.citizenid, Player[1].charinfo.phone, json.encode(ChatMessages)})
+                MySQL.Async.insert('INSERT INTO phone_messages (citizenid, number, messages) VALUES (?, ?, ?)', {SenderData.PlayerData.citizenid, Player[1].charinfo.phone, json.encode(ChatMessages)})
             end
         end
     end
@@ -1079,10 +964,10 @@ end)
 RegisterNetEvent('prp-phone:server:SaveMetaData', function(MData)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    local result = exports.oxmysql:executeSync('SELECT * FROM players WHERE citizenid = ?', {Player.PlayerData.citizenid})
+    local result = MySQL.Sync.fetchAll('SELECT * FROM players WHERE citizenid = ?', {Player.PlayerData.citizenid})
     local MetaData = json.decode(result[1].metadata)
     MetaData.phone = MData
-    exports.oxmysql:execute('UPDATE players SET metadata = ? WHERE citizenid = ?',
+    MySQL.Async.execute('UPDATE players SET metadata = ? WHERE citizenid = ?',
         {json.encode(MetaData), Player.PlayerData.citizenid})
     Player.Functions.SetMetaData("phone", MData)
 end)
@@ -1105,7 +990,7 @@ end)
 RegisterNetEvent('prp-phone:server:AddTransaction', function(data)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:insert('INSERT INTO crypto_transactions (citizenid, title, message) VALUES (?, ?, ?)', {
+    MySQL.Async.insert('INSERT INTO crypto_transactions (citizenid, title, message) VALUES (?, ?, ?)', {
         Player.PlayerData.citizenid,
         data.TransactionTitle,
         data.TransactionMessage
@@ -1133,12 +1018,13 @@ end)
 RegisterNetEvent('prp-phone:server:addImageToGallery', function(image)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    exports.oxmysql:insert('INSERT INTO phone_gallery (`citizenid`, `image`) VALUES (?, ?)',{Player.PlayerData.citizenid,image})
+    MySQL.Async.insert('INSERT INTO phone_gallery (`citizenid`, `image`) VALUES (?, ?)',{Player.PlayerData.citizenid,image})
 end)
+
 RegisterNetEvent('prp-phone:server:getImageFromGallery', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    local images = exports.oxmysql:fetchSync('SELECT * FROM phone_gallery WHERE citizenid = ? ORDER BY `date` DESC',{Player.PlayerData.citizenid})
+    local images = MySQL.Sync.fetchAll('SELECT * FROM phone_gallery WHERE citizenid = ? ORDER BY `date` DESC',{Player.PlayerData.citizenid})
     TriggerClientEvent('prp-phone:refreshImages', src, images)
 end)
 
@@ -1146,8 +1032,19 @@ RegisterNetEvent('prp-phone:server:RemoveImageFromGallery', function(data)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     local image = data.image
-    exports.oxmysql:execute('DELETE FROM phone_gallery WHERE citizenid = ? AND image = ?',{Player.PlayerData.citizenid,image})
+    MySQL.Async.execute('DELETE FROM phone_gallery WHERE citizenid = ? AND image = ?',{Player.PlayerData.citizenid,image})
 end)
+
+-- RegisterNetEvent('prp-phone:server:sendPing', function(data)
+--     local src = source
+--     local Player = ProjectRP.Functions.GetPlayer(src)
+--     print(src, data)
+--     if src ~= data then
+
+--     else
+--         TriggerClientEvent("ProjectRP:Notify", src, "You cannot ping yourself", "error")
+--     end
+-- end)
 
 -- Command
 
@@ -1172,7 +1069,7 @@ ProjectRP.Commands.Add('bill', 'Bill A Player', {{name = 'id', help = 'Player ID
         if billed ~= nil then
             if biller.PlayerData.citizenid ~= billed.PlayerData.citizenid then
                 if amount and amount > 0 then
-                    exports.oxmysql:insert(
+                    MySQL.Async.insert(
                         'INSERT INTO phone_invoices (citizenid, amount, society, sender, sendercitizenid) VALUES (?, ?, ?, ?, ?)',
                         {billed.PlayerData.citizenid, amount, biller.PlayerData.job.name,
                          biller.PlayerData.charinfo.firstname, biller.PlayerData.citizenid})

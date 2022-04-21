@@ -38,4 +38,5 @@ Config.NoRobWeapons = {
     "WEAPON_Ball",
     "WEAPON_Snowball",
     "WEAPON_SmokeGrenade",
+    "WEAPON_Shoe",
 }

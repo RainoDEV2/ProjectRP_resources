@@ -5,6 +5,7 @@ Config.ActivePayments = {}
 Config.Locations = {
 	
 }
+
 Config.EntitysSpawned = false
 
 Config.BurgerItems = {
@@ -18,31 +19,31 @@ Config.bgshotitems = {
   [1] = {
     name = "burger-bun",
     price = 5,
-    amount = 50000,
+    amount = 5000,
     info = {},
     type = "item",
     slot = 1,
   },
   [2] = {
     name = "burger-tomato",
-    price = 2,
-    amount = 50000,
+    price = 5,
+    amount = 5000,
     info = {},
     type = "item",
     slot = 2,
   },
   [3] = {
     name = "burger-lettuce",
-    price = 2,
-    amount = 50000,
+    price = 5,
+    amount = 5000,
     info = {},
     type = "item",
     slot = 3,
   },
   [4] = {
     name = "burger-potato",
-    price = 2,
-    amount = 50000,
+    price = 5,
+    amount = 5000,
     info = {},
     type = "item",
     slot = 4,

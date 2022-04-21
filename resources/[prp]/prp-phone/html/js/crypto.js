@@ -161,7 +161,7 @@ $(document).on('click', '#buy-crypto', function(e){
                     UpdateCryptoData(CryptoData)
                     CloseCryptoPage()
                     PRP.Phone.Data.PlayerData.money.bank = parseInt(PRP.Phone.Data.PlayerData.money.bank) - parseInt(Price);
-                    PRP.Phone.Notifications.Add("fas fa-university", "PRPank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
+                    PRP.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been withdrawn from your balance!", "#badc58", 2500);
                 } else {
                     PRP.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough money..", "#badc58", 1500);
                 }
@@ -192,7 +192,7 @@ $(document).on('click', '#sell-crypto', function(e){
                     UpdateCryptoData(CryptoData)
                     CloseCryptoPage()
                     PRP.Phone.Data.PlayerData.money.bank = parseInt(PRP.Phone.Data.PlayerData.money.bank) + parseInt(Price);
-                    PRP.Phone.Notifications.Add("fas fa-university", "PRPank", "&#36; "+Price+",- has been added to your balance!", "#badc58", 2500);
+                    PRP.Phone.Notifications.Add("fas fa-university", "Bank", "&#36; "+Price+",- has been added to your balance!", "#badc58", 2500);
                 } else {
                     PRP.Phone.Notifications.Add("fas fa-chart-pie", "Crypto", "You don't have enough Qbits..", "#badc58", 1500);
                 }

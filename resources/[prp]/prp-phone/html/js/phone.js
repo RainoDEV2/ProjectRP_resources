@@ -197,7 +197,7 @@ PRP.Phone.Functions.LoadContacts = function(myContacts) {
     $("#contact-search").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $(".phone-contact-list .phone-contact").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
     });
 

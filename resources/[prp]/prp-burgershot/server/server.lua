@@ -1,8 +1,4 @@
--- ProjectRP = nil
-
--- TriggerEvent('ProjectRP:GetObject', function(obj) ProjectRP = obj end)
-
-local ProjectRP = exports["prp-core"]:GetCoreObject()
+local ProjectRP = exports['prp-core']:GetCoreObject()
 
 -- Code
 
@@ -10,7 +6,7 @@ ProjectRP.Commands.Add("refreshburgerprops", "Reset burgershot props", {}, false
     TriggerClientEvent('prp-burgershot:client:refresh:props', -1)
 end, "admin")
 
-ProjectRP.Functions.CreateCallback('prp-burgershot:server:has:burger:items', function(source, cb)
+ProjectRP.Functions.CreateCallback('prp-burgershot:server:hasBurgerItems', function(source, cb)
     local src = source
     local count = 0
     local Player = ProjectRP.Functions.GetPlayer(src)
@@ -18,12 +14,12 @@ ProjectRP.Functions.CreateCallback('prp-burgershot:server:has:burger:items', fun
         local BurgerData = Player.Functions.GetItemByName(v)
         if BurgerData ~= nil then
             count = count + 1
-            if count == 3 then
-                cb(true)
-            else
-                cb(false)
-            end
         end
+    end
+    if count == 3 then
+        cb(true)
+    else
+        cb(false)
     end
 end)
 

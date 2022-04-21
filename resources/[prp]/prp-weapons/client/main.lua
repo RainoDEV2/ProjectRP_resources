@@ -172,6 +172,8 @@ CreateThread(function()
                             TriggerServerEvent('ProjectRP:Server:RemoveItem', "weapon_stickybomb", 1)
                         elseif ProjectRP.Shared.Weapons[weapon]["name"] == "weapon_grenade" then
                             TriggerServerEvent('ProjectRP:Server:RemoveItem', "weapon_grenade", 1)
+                        elseif ProjectRP.Shared.Weapons[weapon]["name"] == "weapon_shoe" then
+                            TriggerServerEvent('ProjectRP:Server:RemoveItem', "weapon_shoe", 1)
                         else
                             if ammo > 0 then
                                 MultiplierAmount = MultiplierAmount + 1

@@ -111,9 +111,9 @@ HouseGarages = {}
 GangGarages = {
     ["ballas"] = {
         label = "Ballas",
-        takeVehicle = vector3(102.59, -1964.56, 20.84),
-        spawnPoint = vector4(102.3, -1964.37, 20.84, 354.59),
-        putVehicle = vector3(102.59, -1964.56, 20.84),
+        takeVehicle = vector3(102.41, -1963.89, 20.84),
+        spawnPoint = vector4(103.09, -1955.82, 20.75, 354.54),
+        putVehicle = vector3(102.41, -1963.89, 20.84),
         job = "ballas"
     },
     ["families"] = {
@@ -143,6 +143,20 @@ GangGarages = {
         spawnPoint = vector4(323.51, -2030.8, 20.83, 46.07),
         putVehicle = vector3(337.25, -2035.93, 21.34),
         job = "vagos"
+    },
+    ["celestial"] = {
+        label = "CELESTIAL",
+        takeVehicle = vector3(0, 0, 0),
+        spawnPoint = vector4(0, 0, 0, 0),
+        putVehicle = vector3(0, 0, 0),
+        job = "celestial"
+    },
+    ["flowersociety"] = {
+        label = "Flower Society",
+        takeVehicle = vector3(0, 0, 0),
+        spawnPoint = vector4(0, 0, 0, 0),
+        putVehicle = vector3(0, 0, 0),
+        job = "flowersociety"
     },
 }
 

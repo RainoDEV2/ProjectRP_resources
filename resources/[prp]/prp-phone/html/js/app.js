@@ -125,7 +125,7 @@ $(document).on('click', '.phone-application', function(e){
 
                 if (PressedApplication == "settings") {
                     $("#myPhoneNumber").text(PRP.Phone.Data.PlayerData.charinfo.phone);
-                    $("#mySerialNumber").text("prp-" + PRP.Phone.Data.PlayerData.metadata["phonedata"].SerialNumber);
+                    $("#mySerialNumber").text("PRP-" + PRP.Phone.Data.PlayerData.metadata["phonedata"].SerialNumber);
                 } else if (PressedApplication == "twitter") {
                     $.post('https://prp-phone/GetMentionedTweets', JSON.stringify({}), function(MentionedTweets){
                         PRP.Phone.Notifications.LoadMentionedTweets(MentionedTweets)
@@ -460,6 +460,8 @@ PRP.Phone.Functions.LoadPhoneData = function(data) {
     PRP.Phone.Functions.LoadMetaData(data.PhoneData.MetaData);
     PRP.Phone.Functions.LoadContacts(data.PhoneData.Contacts);
     PRP.Phone.Functions.SetupApplications(data);
+
+    $("#player-id").html("<span>" + "ID: " + data.PlayerId + "</span>")
 }
 
 PRP.Phone.Functions.UpdateTime = function(data) {

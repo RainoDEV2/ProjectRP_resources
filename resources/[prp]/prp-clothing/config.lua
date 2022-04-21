@@ -563,10 +563,10 @@ Config.Outfits = {
                 },
             },
             [1] = { -- Job Rank/Grade
-                [2] = {
+                [1] = {
                     outfitLabel = "Officer",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -581,10 +581,10 @@ Config.Outfits = {
                 },
             },
             [2] = { -- Job Rank/Grade
-                [3] = {
+                [1] = {
                     outfitLabel = "Senior Officer",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -599,10 +599,10 @@ Config.Outfits = {
                 },
             },
             [3] = { -- Job Rank/Grade
-                [4] = {
+                [1] = {
                     outfitLabel = "Corporal",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -617,10 +617,10 @@ Config.Outfits = {
                 },
             },
             [4] = { -- Job Rank/Grade
-                [5] = {
+                [1] = {
                     outfitLabel = "Sergeant",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -635,10 +635,10 @@ Config.Outfits = {
                 },
             },
             [5] = { -- Job Rank/Grade
-                [6] = {
+                [1] = {
                     outfitLabel = "Lieutenant",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -653,10 +653,10 @@ Config.Outfits = {
                 },
             },
             [6] = { -- Job Rank/Grade
-                [7] = {
+                [1] = {
                     outfitLabel = "Captain",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -671,10 +671,10 @@ Config.Outfits = {
                 },
             },
             [7] = { -- Job Rank/Grade
-                [8] = {
+                [1] = {
                     outfitLabel = "Assistant Chief",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -689,10 +689,10 @@ Config.Outfits = {
                 },
             },
             [8] = { -- Job Rank/Grade
-                [9] = {
+                [1] = {
                     outfitLabel = "Chief",
                     outfitData = {
-                        ["pants"]       = { item = 93, texture = 1},  -- Pants
+                        ["pants"]       = { item = 93, texture = 0},  -- Pants
                         ["arms"]        = { item = 4, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 138, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 12, texture = 0},  -- Body Vest
@@ -712,7 +712,7 @@ Config.Outfits = {
                 [1] = {
                     outfitLabel = "Cadet",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -727,10 +727,10 @@ Config.Outfits = {
                 },
             },
             [1] = { -- Job Rank/Grade
-                [2] = {
+                [1] = {
                     outfitLabel = "Officer",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -745,10 +745,10 @@ Config.Outfits = {
                 },
             },
             [2] = { -- Job Rank/Grade
-                [3] = {
+                [1] = {
                     outfitLabel = "Senior Officer",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -763,10 +763,10 @@ Config.Outfits = {
                 },
             },
             [3] = { -- Job Rank/Grade
-                [4] = {
+                [1] = {
                     outfitLabel = "Corporal",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -781,10 +781,10 @@ Config.Outfits = {
                 },
             },
             [4] = { -- Job Rank/Grade
-                [5] = {
+                [1] = {
                     outfitLabel = "Sergeant",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -799,10 +799,10 @@ Config.Outfits = {
                 },
             },
             [5] = { -- Job Rank/Grade
-                [6] = {
+                [1] = {
                     outfitLabel = "Lieutenant",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -817,10 +817,10 @@ Config.Outfits = {
                 },
             },
             [6] = { -- Job Rank/Grade
-                [7] = {
+                [1] = {
                     outfitLabel = "Captain",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -835,10 +835,10 @@ Config.Outfits = {
                 },
             },
             [7] = { -- Job Rank/Grade
-                [8] = {
+                [1] = {
                     outfitLabel = "Assistant Chief",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest
@@ -853,10 +853,10 @@ Config.Outfits = {
                 },
             },
             [8] = { -- Job Rank/Grade
-                [9] = {
+                [1] = {
                     outfitLabel = "Chief ",
                     outfitData = {
-                        ["pants"]       = { item = 185, texture = 1},  -- Pants
+                        ["pants"]       = { item = 185, texture = 0},  -- Pants
                         ["arms"]        = { item = 0, texture = 0},  -- Arms
                         ["t-shirt"]     = { item = 35, texture = 0},  -- T Shirt
                         ["vest"]        = { item = 31, texture = 0},  -- Body Vest

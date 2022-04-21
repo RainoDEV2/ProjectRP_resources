@@ -214,14 +214,38 @@ Config.Products = {
             slot = 14,
         },
         [15] = {
+            name = "chair1",
+            price = 150,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 15,
+        },
+        [16] = {
+            name = "chair2",
+            price = 150,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 16,
+        },
+        [17] = {
+            name = "chair3",
+            price = 150,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 17,
+        },
+        [18] = {
             name = "advancedrepairkit",
             price = 500,
             amount = 50,
             info = {},
             type = "item",
-            slot = 15,
+            slot = 18,
             requiredJob = { "mechanic" }
-        },        
+        },
     },
     ["coffeeshop"] = {
         [1] = {

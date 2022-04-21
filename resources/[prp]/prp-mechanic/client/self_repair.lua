@@ -6,7 +6,8 @@ Config.SelfRepairLocations = {
     -- { coords = vector3(-45.27, -1048.43, 28.4), heading = 70.0, job = {} }, -- BENNYS NEXT TO PDM
     { coords = vector3(331.90, -565.72, 28.78), heading = 250.0, job = { ["police"] = 0, ["ambulance"] = 0 } }, -- PILL BOX GARAGE
     { coords = vector3(332.70, -566.00, 28.78), heading = 70.0, job = { ["police"] = 0, ["ambulance"] = 0 } }, -- PILL BOX GARAGE
-    { coords = vector3(-322.20, -140.70, 39.01), heading = 250.0, job = nil }, -- LS CUSTOMS
+    { coords = vector3(-213.67, -1334.0, 30.89), heading = 180.0, job = nil }, -- LS CUSTOMS
+    { coords = vector3(-25.0, -1059.35, 28.4), heading = 250.0, job = nil }, -- LS CUSTOMS
 }
 
 local bench = {}

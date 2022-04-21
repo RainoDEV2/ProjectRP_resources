@@ -4,10 +4,10 @@ local stashName = ""
 
 Config.SafeLocations = {
     --Add your poly zone box locations and job name for each safe and it will add it to the prp-target loop above
-    -- { coords = vector3(144.38, -3051.3, 7.04), w = 0.6, d = 3.6, heading = 0, job = "mechanic" },
-    -- { coords = vector3(-216.86, -1318.25, 30.89), w = 3.6, d = 0.6, heading = 0, job = "mechanic" },
+    { coords = vector3(-37.78, -1036.21, 28.84), w = 3.6, d = 0.6, heading = 70.0, job = "mechanic" },
+    { coords = vector3(-196.48, -1314.28, 31.22), w = 3.6, d = 0.6, heading = 0, job = "mechanic" },
     { coords = vector3(-1141.11, -2004.79, 13.18), w = 1.6, d = 0.6, heading = 45.0, job = "mechanic" },
-    -- { coords = vector3(-40.9, -1056.62, 28.4), w = 3.6, d = 0.6, heading = 70.0, job = "mechanic" },
+    -- { coords = vector3(144.38, -3051.3, 7.04), w = 0.6, d = 3.6, heading = 0, job = "mechanic" },
     { coords = vector3(-345.77, -124.7, 39.01), w = 1.8, d = 0.6, heading = 340.0, job = "mechanic" },
     -- { coords = vector3(478.84, -1326.94, 29.21), w = 1.6, d = 0.6, heading = 27.0, job = "mechanic" },
     { coords = vector3(1180.85, 2635.0, 37.75), w = 1.6, d = 0.6, heading = 90.0, job = "mechanic" },

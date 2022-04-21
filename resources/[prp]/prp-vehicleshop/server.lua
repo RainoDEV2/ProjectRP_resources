@@ -511,10 +511,10 @@ RegisterNetEvent('prp-vehicleshop:server:transferVehicle', function(plate, buyer
 end)
 
 -- Transfer vehicle to player in passenger seat
-ProjectRP.Commands.Add('transferVehicle', 'Gift or sell your vehicle', {{name = 'ID', help = 'ID of buyer'}, {name = 'amount', help = 'Sell amount'}}, false, function(source, args)
-    if args[1] ~= nil and args[2] ~= nil then
-        TriggerClientEvent('prp-vehicleshop:client:transferVehicle', source, args[1], args[2])
-    else
-        TriggerClientEvent('ProjectRP:Notify', source, 'Check who you\'re selling to or the amount to sell for.', 'error')
-    end
-end)
+-- ProjectRP.Commands.Add('transferVehicle', 'Gift or sell your vehicle', {{name = 'ID', help = 'ID of buyer'}, {name = 'amount', help = 'Sell amount'}}, false, function(source, args)
+--     if args[1] ~= nil and args[2] ~= nil then
+--         TriggerClientEvent('prp-vehicleshop:client:transferVehicle', source, args[1], args[2])
+--     else
+--         TriggerClientEvent('ProjectRP:Notify', source, 'Check who you\'re selling to or the amount to sell for.', 'error')
+--     end
+-- end)

@@ -72,14 +72,14 @@ PRP.Phone.Functions.SetupMails = function(Mails) {
     }
     var MessageTime = Hourssssss + ":" + Minutessss;
 
-    $("#mail-header-mail").html(PRP.Phone.Data.PlayerData.charinfo.firstname+"."+PRP.Phone.Data.PlayerData.charinfo.lastname+"@ProjectRP.com");
+    $("#mail-header-mail").html(PRP.Phone.Data.PlayerData.charinfo.firstname+"."+PRP.Phone.Data.PlayerData.charinfo.lastname+"@projectrp.com");
     $("#mail-header-lastsync").html("Last synchronized "+MessageTime);
     if (Mails !== null && Mails !== undefined) {
         if (Mails.length > 0) {
             $(".mail-list").html("");
             $.each(Mails, function(i, mail){
                 var date = new Date(mail.date);
-                var DateString = date.getDay()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
+                var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
                 var element = '<div class="mail" id="mail-'+mail.mailid+'"><span class="mail-sender" style="font-weight: bold;">'+mail.sender+'</span> <div class="mail-text"><p>'+mail.message+'</p></div> <div class="mail-time">'+DateString+'</div></div>';
 
                 $(".mail-list").append(element);
@@ -96,7 +96,7 @@ var MonthFormatting = ["January", "February", "March", "April", "May", "June", "
 
 PRP.Phone.Functions.SetupMail = function(MailData) {
     var date = new Date(MailData.date);
-    var DateString = date.getDay()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
+    var DateString = date.getDate()+" "+MonthFormatting[date.getMonth()]+" "+date.getFullYear()+" "+date.getHours()+":"+date.getMinutes();
     $(".mail-subject").html("<p><span style='font-weight: bold;'>"+MailData.sender+"</span><br>"+MailData.subject+"</p>");
     $(".mail-date").html("<p>"+DateString+"</p>");
     $(".mail-content").html("<p>"+MailData.message+"</p>");

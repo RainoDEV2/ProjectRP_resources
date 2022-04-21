@@ -543,7 +543,7 @@ RegisterNetEvent('prp-vehicleshop:client:openCustomFinance', function(data)
                 type = 'number',
                 isRequired = true,
                 name = 'downPayment',
-                text = 'Down Payment Amount - Min 10%'
+                text = 'Down Payment Amount - Min '..Config.MinimumDown..'%'
             },
             {
                 type = 'number',

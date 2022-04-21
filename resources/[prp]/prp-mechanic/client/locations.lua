@@ -25,30 +25,30 @@ AddEventHandler('onResourceStart', function(resource)
 end)
 
 Config.Locations = {
-	-- {	label = "mechanic", -- Set this to the required job
-	-- 	zones = {
-	-- 		vector2(-39.657638549805, -1026.12890625),
-	-- 		vector2(-54.971218109131, -1066.3665771484),
-	-- 		vector2(-20.210899353027, -1079.1593017578),
-	-- 		vector2(-6.8900542259216, -1038.0417480469),
-	-- 	},
-	-- 	blip = vector3(-43.05, -1043.99, 28.76),
-	-- 	bliplabel = "Bennys Workshop",    -- Bennys Workshop next to PDM
-	-- 	blipcolor = 55,
-	-- },
-	-- {	label = "mechanic", -- Set this to the required job
-	-- 	zones = {
-	-- 		vector2(-189.07, -1311.31),
-	-- 		vector2(-188.36, -1343.46),
-	-- 		vector2(-217.37, -1343.54),
-	-- 		vector2(-217.99, -1340.32),
-	-- 		vector2(-244.44, -1342.33),
-	-- 		vector2(-244.07, -1312.06)
-	-- 	},
-	-- 	blip = vector3(-211.55, -1324.55, 30.9),
-	-- 	bliplabel = "Bennys Workshop",    -- Alta Street Bennys Workshop
-	-- 	blipcolor = 55,
-	-- },
+	{	label = "mechanic", -- Set this to the required job
+		zones = {
+			vector2(-39.657638549805, -1026.12890625),
+			vector2(-54.971218109131, -1066.3665771484),
+			vector2(-20.210899353027, -1079.1593017578),
+			vector2(-6.8900542259216, -1038.0417480469),
+		},
+		blip = vector3(-43.05, -1043.99, 28.76),
+		bliplabel = "Bennys Workshop",    -- Bennys Workshop next to PDM
+		blipcolor = 55,
+	},
+	{	label = "mechanic", -- Set this to the required job
+		zones = {
+			vector2(-189.07, -1311.31),
+			vector2(-188.36, -1343.46),
+			vector2(-217.37, -1343.54),
+			vector2(-217.99, -1340.32),
+			vector2(-244.44, -1342.33),
+			vector2(-244.07, -1312.06)
+		},
+		blip = vector3(-211.55, -1324.55, 30.9),
+		bliplabel = "Bennys Workshop",    -- Alta Street Bennys Workshop
+		blipcolor = 55,
+	},
 	{	label = "mechanic", -- Set this to the required job
 		zones = {
 			vector2(-356.63, -137.9),

@@ -13,11 +13,11 @@ Config.useBanks = false -- Enable this to use my banking stuff
 Config.BankBlips = false -- Enable this if you disabled prp-banking and need bank locations
 Config.ATMBlips = false -- Enable this if you are a pyscho and need every ATM to be on the map too
 
-Config.PhoneBank = true -- Set this to false to use the popup payment system FOR CARD/BANK PAYMENTS instead of using phone invoices
+Config.PhoneBank = false -- Set this to false to use the popup payment system FOR CARD/BANK PAYMENTS instead of using phone invoices
 						-- This doesn't affect Cash payments as they by default use confirmation now
 						-- This is helpful for phones that don't support invoices well
 
-Config.Commission = false -- Set this to true to enable Commissions and give the person charging a percentage of the total
+Config.Commission = true -- Set this to true to enable Commissions and give the person charging a percentage of the total
 Config.CommissionAll = false -- Set this to true to give commission to workers clocked in
 Config.CommissionDouble = false -- Set this to true if you want the person charging to get double Commission
 Config.CommissionLimit = false -- If true, this limits the Commission to only be given if over the "MinAmountForTicket". If false, Commission will be given for any amount
@@ -27,13 +27,10 @@ Config.CommissionLimit = false -- If true, this limits the Commission to only be
 -- Commission is a percentage eg "0.10" becomes 10%
 
 Config.Jobs = {
-	['beanmachine'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.10,},
-	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['henhouse'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['pizzathis'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['popsdiner'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.10, },
-	['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.10, },
+	['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.70,},
+	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['pizza'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.70, },
 }
