@@ -14,7 +14,7 @@ RegisterNetEvent("prp-stealshoes:server:Complete", function(playerId)
     local Player = ProjectRP.Functions.GetPlayer(source)
     local Receiver = ProjectRP.Functions.GetPlayer(playerId)
     if Receiver then
-        Receiver.Functions.AddItem("weapon_shoe", 1)
+        Receiver.Functions.AddItem("weapon_shoe", 2)
         TriggerClientEvent('inventory:client:ItemBox', Receiver.PlayerData.source, ProjectRP.Shared.Items["weapon_shoe"], 'add')
     end
 end)

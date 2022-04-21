@@ -6,7 +6,7 @@ $(document).ready(function(){
     $("#messages-search-input").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $(".messages-chats .messages-chat").filter(function() {
-          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
         });
     });
 });
@@ -168,8 +168,8 @@ FormatChatDate = function(date) {
 
 FormatMessageTime = function() {
     var NewDate = new Date();
-    var NewHour = NewDate.getUTCHours();
-    var NewMinute = NewDate.getUTCMinutes();
+    var NewHour = NewDate.getHours();
+    var NewMinute = NewDate.getMinutes();
     var Minutessss = NewMinute;
     var Hourssssss = NewHour;
     if (NewMinute < 10) {
@@ -197,7 +197,7 @@ $(document).on('click', '#messages-openedchat-send', function(e){
         }));
         $("#messages-openedchat-message").val("");
     } else {
-        PRP.Phone.Notifications.Add("fab fa-whatsapp", "Messages", "You can't send a empty message!", "#25D366", 1750);
+        PRP.Phone.Notifications.Add("fab fa-comment", "Messages", "You can't send a empty message!", "#25D366", 1750);
     }
 });
 
@@ -221,13 +221,13 @@ $(document).on('keypress', function (e) {
                 }));
                 $("#messages-openedchat-message").val("");
             } else {
-                PRP.Phone.Notifications.Add("fab fa-whatsapp", "Messages", "You can't send a empty message!", "#25D366", 1750);
+                PRP.Phone.Notifications.Add("fab fa-comment", "Messages", "You can't send a empty message!", "#25D366", 1750);
             }
         }
     }
 });
 
-$(document).on('click', '#send-location', function(e) {
+$(document).on('click', '#send-location', function(e){
     e.preventDefault();
 
     $.post('https://prp-phone/SendMessage', JSON.stringify({
@@ -239,7 +239,7 @@ $(document).on('click', '#send-location', function(e) {
     }));
 });
 
-$(document).on('click', '#send-image', function(e) {
+$(document).on('click', '#send-image', function(e){
     e.preventDefault();
     let ChatNumber2 = OpenedChatData.number;
     $.post('https://prp-phone/TakePhoto', JSON.stringify({}),function(url){
@@ -346,7 +346,7 @@ $(document).on('click', '.messages-shared-location', function(e){
 $(document).on('click', '.wppimage', function(e){
     e.preventDefault();
     let source = $(this).attr('src')
-    PRP.Screen.popUp(source)
+   PRP.Screen.popUp(source)
 });
 
 $(document).on('click', '#messages-openedchat-message-extras', function(e){

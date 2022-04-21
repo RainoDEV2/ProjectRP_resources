@@ -1,8 +1,8 @@
 PRP.Phone.Settings = {};
-PRP.Phone.Settings.Background = "default-ProjectRP";
+PRP.Phone.Settings.Background = "default-projectrp";
 PRP.Phone.Settings.OpenedTab = null;
 PRP.Phone.Settings.Backgrounds = {
-    'default-ProjectRP': {
+    'default-projectrp': {
         label: "Standard ProjectRP"
     }
 };
@@ -58,7 +58,7 @@ PRP.Phone.Functions.LoadMetaData = function(MetaData) {
     if (MetaData.background !== null && MetaData.background !== undefined) {
         PRP.Phone.Settings.Background = MetaData.background;
     } else {
-        PRP.Phone.Settings.Background = "default-ProjectRP";
+        PRP.Phone.Settings.Background = "default-projectrp";
     }
 
     var hasCustomBackground = PRP.Phone.Functions.IsBackgroundCustom();

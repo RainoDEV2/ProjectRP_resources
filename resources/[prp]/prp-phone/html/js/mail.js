@@ -72,7 +72,7 @@ PRP.Phone.Functions.SetupMails = function(Mails) {
     }
     var MessageTime = Hourssssss + ":" + Minutessss;
 
-    $("#mail-header-mail").html(PRP.Phone.Data.PlayerData.charinfo.firstname+"."+PRP.Phone.Data.PlayerData.charinfo.lastname+"@ProjectRP.com");
+    $("#mail-header-mail").html(PRP.Phone.Data.PlayerData.charinfo.firstname+"."+PRP.Phone.Data.PlayerData.charinfo.lastname+"@projectrp.com");
     $("#mail-header-lastsync").html("Last synchronized "+MessageTime);
     if (Mails !== null && Mails !== undefined) {
         if (Mails.length > 0) {

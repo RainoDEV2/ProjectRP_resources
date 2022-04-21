@@ -252,6 +252,7 @@ Config.PoliceAlerts = {
             [`WEAPON_PETROLCAN`] = true,
             [`WEAPON_STUNGUN`] = true,
             [`WEAPON_SHOE`] = true,
+            [`WEAPON_BALL`] = true,
             --[`ADD_MORE_HERE`] = true,
         },
         WeaponLabels = {

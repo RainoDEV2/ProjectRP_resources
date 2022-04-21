@@ -261,7 +261,8 @@ local function LoadPhone()
             PhoneData = PhoneData,
             PlayerData = PhoneData.PlayerData,
             PlayerJob = PhoneData.PlayerData.job,
-            applications = Config.PhoneApplications
+            applications = Config.PhoneApplications,
+            PlayerId = GetPlayerServerId(PlayerId())
         })
     end)
 end
@@ -297,7 +298,7 @@ local function OpenPhone()
                 newPhoneProp()
             end)
 
-            ProjectRP.Functions.TriggerCallback('prp-phone:server:GetGarageVehicles', function(vehicles)
+            ProjectRP.Functions.TriggerCallback('prp-garage:server:GetPlayerVehicles', function(vehicles)
                 PhoneData.GarageVehicles = vehicles
             end)
         else
@@ -605,7 +606,7 @@ RegisterNUICallback('SharedLocation', function(data)
         PhoneNotify = {
             title = "Messages",
             text = "Location has been set!",
-            icon = "fab fa-whatsapp",
+            icon = "fab fa-comment",
             color = "#25D366",
             timeout = 1500,
         },
@@ -658,7 +659,6 @@ RegisterNUICallback('PayInvoice', function(data, cb)
         cb(CanPay)
     end, society, amount, invoiceId, senderCitizenId)
     TriggerServerEvent('prp-phone:server:BillingEmail', data, true)
-    -- TriggerServerEvent('prp-payments:Tickets:Give', data)
 end)
 
 RegisterNUICallback('DeclineInvoice', function(data, cb)
@@ -1348,45 +1348,54 @@ RegisterNUICallback("TakePhoto", function(data,cb)
     CellCamActivate(true, true)
     takePhoto = true
     while takePhoto do
-      if IsControlJustPressed(1, 27) then -- Toogle Mode
-        frontCam = not frontCam
-        CellFrontCamActivate(frontCam)
-      elseif IsControlJustPressed(1, 177) then -- CANCEL
-        DestroyMobilePhone()
-        CellCamActivate(false, false)
-        cb(json.encode({ url = nil }))
-        takePhoto = false
-        break
-      elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
-         ProjectRP.Functions.TriggerCallback("prp-phone:server:GetWebhook",function(hook)
-            if hook then
-                exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(data)
-                    local image = json.decode(data)
-                    DestroyMobilePhone()
-                    CellCamActivate(false, false)
-                    TriggerServerEvent('prp-phone:server:addImageToGallery', image.attachments[1].proxy_url)
-                    Wait(400)
-                    TriggerServerEvent('prp-phone:server:getImageFromGallery')
-                    cb(json.encode(image.attachments[1].proxy_url))
-                  end)
-            else
-		       return
-            end
-        end)
-        takePhoto = false
-          end
-          HideHudComponentThisFrame(7)
-          HideHudComponentThisFrame(8)
-          HideHudComponentThisFrame(9)
-          HideHudComponentThisFrame(6)
-          HideHudComponentThisFrame(19)
-          HideHudAndRadarThisFrame()
-          EnableAllControlActions(0)
-          Wait(0)
+        if IsControlJustPressed(1, 27) then -- Toogle Mode
+            frontCam = not frontCam
+            CellFrontCamActivate(frontCam)
+        elseif IsControlJustPressed(1, 177) then -- CANCEL
+            DestroyMobilePhone()
+            CellCamActivate(false, false)
+            cb(json.encode({ url = nil }))
+            takePhoto = false
+            break
+        elseif IsControlJustPressed(1, 176) then -- TAKE.. PIC
+            ProjectRP.Functions.TriggerCallback("prp-phone:server:GetWebhook",function(hook)
+                if hook then
+                    exports['screenshot-basic']:requestScreenshotUpload(tostring(hook), "files[]", function(data)
+                        local image = json.decode(data)
+                        DestroyMobilePhone()
+                        CellCamActivate(false, false)
+                        TriggerServerEvent('prp-phone:server:addImageToGallery', image.attachments[1].proxy_url)
+                        Wait(400)
+                        TriggerServerEvent('prp-phone:server:getImageFromGallery')
+                        cb(json.encode(image.attachments[1].proxy_url))
+                    end)
+                else
+                    return
+                end
+            end)
+            takePhoto = false
+        end
+        HideHudComponentThisFrame(7)
+        HideHudComponentThisFrame(8)
+        HideHudComponentThisFrame(9)
+        HideHudComponentThisFrame(6)
+        HideHudComponentThisFrame(19)
+        HideHudAndRadarThisFrame()
+        EnableAllControlActions(0)
+        Wait(0)
     end
     Wait(1000)
     OpenPhone()
 end)
+
+-- RegisterCommand('ping', function(source, args)
+--     local PlayerData = ProjectRP.Functions.GetPlayerData()
+--     if not args[1] then
+--         ProjectRP.Functions.Notify("You need to input a Player ID", "error")
+--     else
+--         TriggerServerEvent('prp-phone:server:sendPing', args[1])
+--     end
+-- end)
 
 -- Handler Events
 
@@ -1434,7 +1443,7 @@ end)
 
 RegisterNetEvent('prp-phone:client:TransferMoney', function(amount, newmoney)
     PhoneData.PlayerData.money.bank = newmoney
-    SendNUIMessage({ action = "PhoneNotification", PhoneNotify = { title = "PRPank", text = "&#36;"..amount.." has been added to your account!", icon = "fas fa-university", color = "#8c7ae6", }, })
+    SendNUIMessage({ action = "PhoneNotification", PhoneNotify = { title = "Bank", text = "&#36;"..amount.." has been added to your account!", icon = "fas fa-university", color = "#8c7ae6", }, })
     SendNUIMessage({ action = "UpdateBank", NewBalance = PhoneData.PlayerData.money.bank })
 end)
 
@@ -1461,7 +1470,7 @@ RegisterNetEvent('prp-phone:client:UpdateTweets', function(src, Tweets, NewTweet
                 action = "PhoneNotification",
                 PhoneNotify = {
                     title = "New Tweet (@"..NewTweetData.firstName.." "..NewTweetData.lastName..")",
-                    text = NewTweetData.message,
+                    text = "A new tweet as been posted.",
                     icon = "fab fa-twitter",
                     color = "#1DA1F2",
                 },
@@ -1742,7 +1751,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
     local NumberKey = GetKeyByNumber(SenderNumber)
 
     if New then
-	    PhoneData.Chats[#PhoneData.Chats+1] = {
+        PhoneData.Chats[#PhoneData.Chats+1] = {
             name = IsNumberInContacts(SenderNumber),
             number = SenderNumber,
             messages = {},
@@ -1769,7 +1778,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-comment",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1780,7 +1789,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-comment",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1805,7 +1814,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
 	        PhoneNotify = {
 		    title = "Messages",
 		    text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-		    icon = "fab fa-whatsapp",
+		    icon = "fab fa-comment",
 		    color = "#25D366",
 		    timeout = 3500,
 	        },
@@ -1829,7 +1838,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-comment",
                         color = "#25D366",
                         timeout = 1500,
                     },
@@ -1840,7 +1849,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                     PhoneNotify = {
                         title = "Messages",
                         text = "Messaged yourself",
-                        icon = "fab fa-whatsapp",
+                        icon = "fab fa-comment",
                         color = "#25D366",
                         timeout = 4000,
                     },
@@ -1865,7 +1874,7 @@ RegisterNetEvent('prp-phone:client:UpdateMessages', function(ChatMessages, Sende
                 PhoneNotify = {
                     title = "Messages",
                     text = "New message from "..IsNumberInContacts(SenderNumber).."!",
-                    icon = "fab fa-whatsapp",
+                    icon = "fab fa-comment",
                     color = "#25D366",
                     timeout = 3500,
                 },
@@ -2052,6 +2061,18 @@ RegisterNetEvent('prp-phone:refreshImages', function(images)
     PhoneData.Images = images
 end)
 
+RegisterNetEvent("prp-phone:client:CustomNotification", function(title, text, icon, color, timeout) -- Send a PhoneNotification to the phone from anywhere
+    SendNUIMessage({
+        action = "PhoneNotification",
+        PhoneNotify = {
+            title = title,
+            text = text,
+            icon = icon,
+            color = color,
+            timeout = timeout,
+        },
+    })
+end)
 
 -- Threads
 

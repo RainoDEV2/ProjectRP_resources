@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.2.9/purify.min.js" integrity="sha512-VOTFfd4vxPpuE98m9UQTN7j2N2/Blw44lZMhRTnZQqA2gOHq7Yvn5bdIDjjAZuFqqkDtppcjMW+dN3GYbhM94g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.1/moment.min.js"></script>
     <title>ProjectRP Phone</title>
 
     <!-- CSS File's -->
@@ -50,6 +51,7 @@
                 <!-- Phone Header -->
                 <div class="phone-header">
                     <div id="phone-server">ProjectRP</div>
+                    <div id="player-id">1</div>
                     <div id="phone-time">08:05</div>
                     <div id="phone-icons">
                         <i class="fas fa-signal" id="phone-signal" data-toggle="tooltip" data-placement="left" title="ProjectRP 5G"></i>
@@ -149,7 +151,7 @@
                             <div class="settings-app-header"><p>Background</p></div>
 
                             <div class="background-options">
-                                <div class="background-option" data-background="default-ProjectRP">
+                                <div class="background-option" data-background="default-projectrp">
                                     <div class="background-option-icon"> <i class="fas fa-paint-brush"></i> </div>
                                     <div class="background-option-title"> Default </div>
                                     <div class="background-option-description">Default background</div>
@@ -417,7 +419,7 @@
                             </div>
                         </div>
 
-                        <div class="garage-detailscreen">
+                         <div class="garage-detailscreen">
                             <div class="garage-cardetails">
                                 <div class="vehicle-brand"><span class="vehicle-detail">Brand</span><span class="vehicle-answer">BMW M5</span></div>
                                 <div class="vehicle-model"><span class="vehicle-detail">Model</span><span class="vehicle-answer">BMW M5</span></div>
@@ -614,7 +616,7 @@
                                 <input type="number" oninput="this.value = Math.abs(this.value)" class="crypto-action-page-transfer-crypto-input-coins" required spellcheck="false" placeholder="1.000000" step="0.000001" min="0">
 
                                 <i class="crypto-action-page-transfer-crypto-input-money-icon fas fa-address-book"></i>
-                                <input type="texts" class="crypto-action-page-transfer-crypto-input-walletid" required spellcheck="false" placeholder="prp-12345678">
+                                <input type="texts" class="crypto-action-page-transfer-crypto-input-walletid" required spellcheck="false" placeholder="PRP-12345678">
 
                                 <div class="crypto-action-page-buy-crypto-footer">
                                     <div class="crypto-action-page-buy-crypto-footer-button" id="transfer-crypto">
@@ -646,7 +648,7 @@
                                         <span class="cryptotab-general-action-description">You can transfer crypto here.</span>
                                     </div>
                                 </div>
-                                <span class="crypto-walletid">Wallet ID: prp-12345678</span>
+                                <span class="crypto-walletid">Wallet ID: PRP-12345678</span>
                             </div>
 
                             <div class="cryptotab-transactions">
@@ -782,7 +784,7 @@
                         <div class="mail-home">
                             <div class="mail-header">
                                 <span id="mail-header-text">Inbox</span>
-                                <span id="mail-header-mail">jay.nandes@ProjectRP.com</span>
+                                <span id="mail-header-mail">jay.nandes@projectrp.com</span>
                                 <span id="mail-header-lastsync">Last synchronization 18:31</span>
                             </div>
 
@@ -824,7 +826,7 @@
                                     Territory
                                 </div>
                                 <div class="storeapp-creator">
-                                    Qbus
+                                    ProjectRP
                                 </div>
                                 <div class="storeapp-download">
                                     <i class="fas fa-download"></i>
@@ -1000,8 +1002,8 @@
 
                     <div class="bank-app">
                         <div class="bank-app-loading">
-                            <img src="../html/img/apps/bank-logo.png" class="qbank-logo">
-                            <span id="qbank-text">Bank</span>
+                            <img src="../html/img/apps/bank-logo.png" class="bank-logo">
+                            <span id="bank-text">Bank</span>
                         </div>
                         <div class="bank-app-loaded">
                             <div class="bank-app-header">

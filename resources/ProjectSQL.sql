@@ -414,16 +414,25 @@ CREATE TABLE IF NOT EXISTS `permissions` (
 
 -- Dumping data for table ProjectRP.permissions: ~16 rows (approximately)
 
-
--- Dumping structure for table ProjectRP.phone_gallery
 CREATE TABLE IF NOT EXISTS `phone_gallery` (
-  `citizenid` varchar(255) NOT NULL,
-  `image` varchar(255) NOT NULL,
+  `citizenid` VARCHAR(255) NOT NULL , 
+  `image` VARCHAR(255) NOT NULL ,
   `date` timestamp NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
--- Dumping data for table ProjectRP.phone_gallery: ~22 rows (approximately)
-
+CREATE TABLE IF NOT EXISTS `phone_tweets` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `citizenid` varchar(50) DEFAULT NULL,
+  `firstName` varchar(25) DEFAULT NULL,
+  `lastName` varchar(25) DEFAULT NULL,
+  `message` text DEFAULT NULL,
+  `date` datetime DEFAULT current_timestamp(),
+  `url` text DEFAULT NULL,
+  `picture` text DEFAULT './img/default.png',
+  `tweetId` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `citizenid` (`citizenid`)
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 -- Dumping structure for table ProjectRP.phone_invoices
 CREATE TABLE IF NOT EXISTS `phone_invoices` (
@@ -435,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `phone_invoices` (
   `sendercitizenid` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table ProjectRP.phone_invoices: ~0 rows (approximately)
 /*!40000 ALTER TABLE `phone_invoices` DISABLE KEYS */;
@@ -450,26 +459,11 @@ CREATE TABLE IF NOT EXISTS `phone_messages` (
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`),
   KEY `number` (`number`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table ProjectRP.phone_messages: ~0 rows (approximately)
 /*!40000 ALTER TABLE `phone_messages` DISABLE KEYS */;
 /*!40000 ALTER TABLE `phone_messages` ENABLE KEYS */;
-
--- Dumping structure for table ProjectRP.phone_tweets
-CREATE TABLE IF NOT EXISTS `phone_tweets` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `citizenid` varchar(50) DEFAULT NULL,
-  `sender` varchar(50) DEFAULT NULL,
-  `message` text DEFAULT NULL,
-  `date` datetime DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`),
-  KEY `citizenid` (`citizenid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- Dumping data for table ProjectRP.phone_tweets: ~0 rows (approximately)
-/*!40000 ALTER TABLE `phone_tweets` DISABLE KEYS */;
-/*!40000 ALTER TABLE `phone_tweets` ENABLE KEYS */;
 
 -- Dumping structure for table ProjectRP.players
 CREATE TABLE IF NOT EXISTS `players` (
@@ -534,7 +528,7 @@ CREATE TABLE IF NOT EXISTS `player_contacts` (
   `iban` varchar(50) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 -- Dumping data for table ProjectRP.player_contacts: ~2 rows (approximately)
 /*!40000 ALTER TABLE `player_contacts` DISABLE KEYS */;
@@ -571,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `player_mails` (
   `button` text DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `citizenid` (`citizenid`)
-) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 
 -- Dumping structure for table ProjectRP.player_outfits
@@ -615,7 +609,7 @@ CREATE TABLE IF NOT EXISTS `player_vehicles` (
   KEY `plate` (`plate`),
   KEY `citizenid` (`citizenid`),
   KEY `license` (`license`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1;
 
 -- Dumping data for table ProjectRP.player_vehicles: ~3 rows (approximately)
 

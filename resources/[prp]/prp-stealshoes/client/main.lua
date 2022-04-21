@@ -4,6 +4,10 @@ RegisterCommand("stealshoes", function()
     TriggerEvent('prp-stealshoes:client:TheftShoe')
 end)
 
+RegisterCommand("shoestest", function()
+    SetPedComponentVariation(oped, 6, 73, 0, 2)
+end)
+
 RegisterNetEvent('prp-stealshoes:client:TheftShoe', function() -- This could be used in the radialmenu ;)
     local ped = PlayerPedId()
     if not IsPedRagdoll(ped) then
