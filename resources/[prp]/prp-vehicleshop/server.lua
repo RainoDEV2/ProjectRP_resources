@@ -458,6 +458,10 @@ RegisterNetEvent('prp-vehicleshop:server:transferVehicle', function(plate, buyer
                 target.Functions.RemoveMoney('cash', sellAmount)
                 TriggerClientEvent('vehiclekeys:client:SetOwner', target.PlayerData.source, plate)
                 TriggerClientEvent('ProjectRP:Notify', target.PlayerData.source, 'You bought a vehicle for $'..comma_value(sellAmount), 'success')
+
+                TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "/Transfervehicle", "blue",
+                '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` transfered his vehicle to ' .. GetPlayerName(buyerId) .. ' (citizenid: ' .. target.PlayerData.citizenid .. ' | id: ' .. buyerId.. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.lastname .. ') for $'..amount..'``` **Vehicle Details:** ```Plate: '..plate..'``` '
+                )
             elseif target.Functions.GetMoney('bank') > sellAmount then
                 local targetcid = target.PlayerData.citizenid
                 MySQL.Async.execute('UPDATE player_vehicles SET citizenid = ? WHERE plate = ?', {targetcid, plate})
@@ -466,6 +470,10 @@ RegisterNetEvent('prp-vehicleshop:server:transferVehicle', function(plate, buyer
                 target.Functions.RemoveMoney('bank', sellAmount)
                 TriggerClientEvent('vehiclekeys:client:SetOwner', target.PlayerData.source, plate)
                 TriggerClientEvent('ProjectRP:Notify', target.PlayerData.source, 'You bought a vehicle for $'..comma_value(sellAmount), 'success')
+
+                TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "/Transfervehicle", "blue",
+                '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` transfered his vehicle to ' .. GetPlayerName(buyerId) .. ' (citizenid: ' .. target.PlayerData.citizenid .. ' | id: ' .. buyerId.. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.lastname .. ') for $'..amount..'``` **Vehicle Details:** ```Plate: '..plate..'``` '
+                )
             else
                 TriggerClientEvent('ProjectRP:Notify', src, 'Not enough money', 'error')
             end
@@ -475,6 +483,11 @@ RegisterNetEvent('prp-vehicleshop:server:transferVehicle', function(plate, buyer
             TriggerClientEvent('ProjectRP:Notify', src, 'You gifted your vehicle', 'success')
             TriggerClientEvent('vehiclekeys:client:SetOwner', target.PlayerData.source, plate)
             TriggerClientEvent('ProjectRP:Notify', target.PlayerData.source, 'You were gifted a vehicle', 'success')
+            
+            TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "/Transfervehicle", "blue",
+            '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. player.PlayerData.citizenid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Gifted his vehicle to ' .. GetPlayerName(buyerId) .. ' (citizenid: ' .. target.PlayerData.citizenid .. ' | id: ' .. buyerId.. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(buyerId).PlayerData.charinfo.lastname .. ') ``` **Vehicle Details:** ```Plate: '..plate..'``` '
+            )
+
         end
     else
         TriggerClientEvent('ProjectRP:Notify', src, 'Couldn\'t get purchaser info.', 'error')
