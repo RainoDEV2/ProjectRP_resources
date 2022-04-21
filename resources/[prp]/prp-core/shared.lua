@@ -3360,10 +3360,10 @@ PRPShared.Vehicles = {
 		['shop'] = 'luxury',
 	},
 	['G632019'] = {
-		['name'] = 'Mercedes-Benz G63',
+		['name'] = 'G63',
 		['brand'] = 'Mercedes-Benz',
 		['model'] = 'G632019',
-		['price'] = 350000,
+		['price'] = 410000,
 		['category'] = 'suvs',
 		['hash'] = `G632019`,
 		['shop'] = 'luxury',
