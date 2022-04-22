@@ -123,10 +123,12 @@ PRPShared.Gangs = {
                 name = 'IN-ORBIT'
             },
 			['1'] = {
-                name = 'SOL'
+                name = 'SOL',
+                isboss = true
             },
 			['2'] = {
-                name = 'COSMOS'
+                name = 'COSMOS',
+                isboss = true
             },
 			['3'] = {
                 name = 'UNIVERSE',
