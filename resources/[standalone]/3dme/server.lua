@@ -9,6 +9,7 @@ local lang = Languages[Config.language]
 local function onMeCommand(source, args)
     local text = "" .. lang.prefix .. table.concat(args, " ") .. ""
     TriggerClientEvent('3dme:shareDisplay', -1, text, source)
+    TriggerEvent('prp-log:server:CreateLog', 'me', '/me', 'lightgreen', "**Steam Name**: "..GetPlayerName(source).." - **ID**: "..source.." \n **Message**:\n ```"..text.."```")
 end
 
 -- Register the command
