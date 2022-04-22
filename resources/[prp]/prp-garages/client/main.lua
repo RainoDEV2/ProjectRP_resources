@@ -451,6 +451,15 @@ RegisterNetEvent('prp-garages:client:addHouseGarage', function(house, garageInfo
     HouseGarages[house] = garageInfo
 end)
 
+AddEventHandler('onResourceStart', function(resource)--if you restart the resource
+    if resource == GetCurrentResourceName() then
+        Wait(200)
+        PlayerData = ProjectRP.Functions.GetPlayerData()
+        PlayerGang = PlayerData.gang
+        PlayerJob = PlayerData.job
+    end
+end)
+
 AddEventHandler('ProjectRP:Client:OnPlayerLoaded', function()
     PlayerData = ProjectRP.Functions.GetPlayerData()
     PlayerGang = PlayerData.gang
@@ -516,24 +525,28 @@ CreateThread(function()
                     local curVeh = GetVehiclePedIsIn(ped)
                     local vehClass = GetVehicleClass(curVeh)
                     --Check vehicle type for garage
-                    if currentGarage.vehicle == "car" or not currentGarage.vehicle then
-                        if vehClass ~= 14 and vehClass ~= 15 and vehClass ~= 16 then
-                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
-                        else
-                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
+                    if currentGarage ~= nil then
+                        if currentGarage.vehicle == "car" or not currentGarage.vehicle then
+                            if vehClass ~= 14 and vehClass ~= 15 and vehClass ~= 16 then
+                                enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
+                            else
+                                ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
+                            end
+                        elseif currentGarage.vehicle == "air" then
+                            if vehClass == 15 or vehClass == 16 then
+                                enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
+                            else
+                                ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
+                            end
+                        elseif currentGarage.vehicle == "sea" then
+                            if vehClass == 14 then
+                                enterVehicle(curVeh, currentGarageIndex, currentGarage.type, currentGarage)
+                            else
+                                ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
+                            end
                         end
-                    elseif currentGarage.vehicle == "air" then
-                        if vehClass == 15 or vehClass == 16 then
-                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type)
-                        else
-                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
-                        end
-                    elseif currentGarage.vehicle == "sea" then
-                        if vehClass == 14 then
-                            enterVehicle(curVeh, currentGarageIndex, currentGarage.type, currentGarage)
-                        else
-                            ProjectRP.Functions.Notify("You can't store this type of vehicle here", "error", 3500)
-                        end
+                    else
+                        ProjectRP.Functions.Notify("Garage not found", "error", 3500)
                     end
                 elseif InputOut and currentGarage then
                     MenuGarage(currentGarage.type, currentGarage, currentGarageIndex)
