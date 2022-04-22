@@ -1,11 +1,25 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'prp-Garages'
+description 'PRP-Garages'
 version '1.0.0'
 
-shared_script 'config.lua'
-client_script 'client/main.lua'
-server_script 'server/main.lua'
+shared_scripts {
+    'config.lua',
+    '@prp-core/shared/locale.lua',
+    'locales/en.lua',
+}
+
+client_scripts {
+	'@PolyZone/client.lua',
+    '@PolyZone/BoxZone.lua',
+	'@PolyZone/ComboZone.lua',
+    'client/main.lua',
+}
+
+server_scripts {	
+    '@oxmysql/lib/MySQL.lua',
+    'server/main.lua'
+}
 
 lua54 'yes'

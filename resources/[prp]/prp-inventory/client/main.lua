@@ -586,7 +586,7 @@ RegisterCommand('inventory', function()
                     maxweight = 50000
                     slots = 40
                 elseif vehicleClass == 2 then
-                    maxweight = 75000
+                    maxweight = 250000
                     slots = 50
                 elseif vehicleClass == 3 then
                     maxweight = 42000
@@ -610,7 +610,7 @@ RegisterCommand('inventory', function()
                     maxweight = 60000
                     slots = 35
                 elseif vehicleClass == 12 then
-                    maxweight = 120000
+                    maxweight = 300000
                     slots = 35
                 elseif vehicleClass == 13 then
                     maxweight = 0
@@ -622,10 +622,10 @@ RegisterCommand('inventory', function()
                     maxweight = 120000
                     slots = 50
                 elseif vehicleClass == 16 then
-                    maxweight = 120000
+                    maxweight = 500000
                     slots = 50
                 else
-                    maxweight = 60000
+                    maxweight = 100000
                     slots = 35
                 end
                 local other = {

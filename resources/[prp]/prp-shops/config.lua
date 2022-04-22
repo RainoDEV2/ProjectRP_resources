@@ -238,12 +238,20 @@ Config.Products = {
             slot = 17,
         },
         [18] = {
+            name = "outfitbag",
+            price = 275,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 18,
+        },
+        [19] = {
             name = "advancedrepairkit",
             price = 500,
             amount = 50,
             info = {},
             type = "item",
-            slot = 18,
+            slot = 19,
             requiredJob = { "mechanic" }
         },
     },

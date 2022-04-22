@@ -707,6 +707,8 @@ PRPShared.Items = {
 	["chair1"] 					= {["name"] = "chair1",  	    			["label"] = "Green Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair1.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
 	["chair2"] 					= {["name"] = "chair2",  	    			["label"] = "Blue Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair2.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
 	["chair3"] 					= {["name"] = "chair3",  	    			["label"] = "Striped Camping Chair",	["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair3.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
+
+	["outfitbag"] 			    = {["name"] = "outfitbag", 				    ["label"] = "Outfit bag",	 		    ["weight"] = 4000, 		["type"] = "item", 		["image"] = "outfitbag.png",    ["unique"] = true, 	["useable"] = true, 	["shouldClose"] = true,     ["combinable"] = nil,   ["description"] = "Holds different outfits"},
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT

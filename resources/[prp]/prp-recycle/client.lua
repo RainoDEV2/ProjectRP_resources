@@ -728,23 +728,27 @@ AddEventHandler('prp-recycle:Dumpsters:Search', function()
     end
 end)
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        if IsControlPressed(2, 22) and HandIn then
-            ragdoll = 1 end
-            if ragdoll == 1 then
-        SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
-        end
-    end
-end)
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(0)
-        if IsControlPressed(2, 73) then
-            ragdoll = 0 end
-            if ragdoll == 1 then
-        SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
-        end
-    end
-end)
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(0)
+--         if IsControlPressed(2, 22) and HandIn then
+--             ragdoll = 1
+-- 		end
+
+-- 		if ragdoll == 1 then
+-- 			SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
+--         end
+--     end
+-- end)
+-- Citizen.CreateThread(function()
+--     while true do
+--         Citizen.Wait(0)
+--         if IsControlPressed(2, 73) then
+--             ragdoll = 0
+-- 		end
+
+-- 		if ragdoll == 1 then
+-- 			SetPedToRagdoll(GetPlayerPed(-1), 1000, 1000, 0, 0, 0, 0)
+--         end
+--     end
+-- end)
