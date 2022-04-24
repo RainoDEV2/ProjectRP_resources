@@ -15,7 +15,7 @@ function setupSubItems()
     ProjectRP.Functions.GetPlayerData(function(PlayerData)
         if PlayerData.metadata["isdead"] then
             if PlayerData.job.name == "police" or PlayerData.job.name == "ambulance" then
-                Config.MenuItems[4].items = {
+                Config.MenuItems[5].items = {
                     [1] = {
                         id = 'emergencybutton2',
                         title = 'Emergencybutton',
@@ -28,9 +28,9 @@ function setupSubItems()
             end
         else
             if Config.JobInteractions[PlayerData.job.name] ~= nil and next(Config.JobInteractions[PlayerData.job.name]) ~= nil then
-                Config.MenuItems[4].items = Config.JobInteractions[PlayerData.job.name]
+                Config.MenuItems[5].items = Config.JobInteractions[PlayerData.job.name]
             else
-                Config.MenuItems[4].items = {}
+                Config.MenuItems[5].items = {}
             end
         end
     end)
@@ -41,7 +41,7 @@ function setupSubItems()
         local AmountOfSeats = GetVehicleModelNumberOfSeats(GetEntityModel(Vehicle))
 
         if AmountOfSeats == 2 then
-            Config.MenuItems[3].items[3].items = {
+            Config.MenuItems[4].items[3].items = {
                 [1] = {
                     id    = -1,
                     title = 'Driver',
@@ -60,7 +60,7 @@ function setupSubItems()
                 },
             }
         elseif AmountOfSeats == 3 then
-            Config.MenuItems[3].items[3].items = {
+            Config.MenuItems[4].items[3].items = {
                 [4] = {
                     id    = -1,
                     title = 'Driver',
@@ -87,7 +87,7 @@ function setupSubItems()
                 },
             }
         elseif AmountOfSeats == 4 then
-            Config.MenuItems[3].items[3].items = {
+            Config.MenuItems[4].items[3].items = {
                 [4] = {
                     id    = -1,
                     title = 'Driver',

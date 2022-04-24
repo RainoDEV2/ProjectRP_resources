@@ -212,23 +212,23 @@ RegisterNetEvent('hospital:client:RevivePlayer', function()
             if player ~= -1 and distance < 5.0 then
                 local playerId = GetPlayerServerId(player)
                 isHealingPerson = true
-                ProjectRP.Functions.Progressbar("hospital_revive", 'Reviving Person...', 5000, false, true, {
+                ProjectRP.Functions.Progressbar("hospital_revive", 'Reviving Person...', 10000, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,
                     disableMouse = false,
                     disableCombat = true,
                 }, {
-                    animDict = healAnimDict,
-                    anim = healAnim,
-                    flags = 16,
+                    animDict = reviveAnimDict,
+                    anim = reviveAnim,
+                    flags = 1,
                 }, {}, {}, function() -- Done
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), reviveAnimDict, reviveAnim, 1.0)
                     ProjectRP.Functions.Notify('You revived a person', 'success')
                     TriggerServerEvent("hospital:server:RevivePlayer", playerId)
                 end, function() -- Cancel
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), reviveAnimDict, reviveAnim, 1.0)
                     ProjectRP.Functions.Notify('Canceled', "error")
                 end)
             else
@@ -258,12 +258,12 @@ RegisterNetEvent('hospital:client:TreatWounds', function()
                     flags = 16,
                 }, {}, {}, function() -- Done
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('You helped the person', 'success')
                     TriggerServerEvent("hospital:server:TreatWounds", playerId)
                 end, function() -- Cancel
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('Canceled', "error")
                 end)
             else
@@ -293,12 +293,12 @@ RegisterNetEvent('hospital:client:lorazepam', function()
                     flags = 16,
                 }, {}, {}, function() -- Done
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('You gave the person a lorazepam Pill', 'success')
                     TriggerServerEvent("hospital:server:lorazepamPill", playerId)
                 end, function() -- Cancel
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('Canceled', "error")
                 end)
             else
@@ -328,12 +328,12 @@ RegisterNetEvent('hospital:client:givePainkillers', function()
                     flags = 16,
                 }, {}, {}, function() -- Done
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('You gave the person painkillers', 'success')
                     TriggerServerEvent("hospital:server:givePainkillers", playerId)
                 end, function() -- Cancel
                     isHealingPerson = false
-                    StopAnimTask(PlayerPedId(), healAnimDict, "exit", 1.0)
+                    StopAnimTask(PlayerPedId(), healAnimDict, healAnim, 1.0)
                     ProjectRP.Functions.Notify('Canceled', "error")
                 end)
             else

@@ -1,4 +1,4 @@
-
+ProjectRP = exports['prp-core']:GetCoreObject()
 local dickheaddebug = false
 
 local Keys = {

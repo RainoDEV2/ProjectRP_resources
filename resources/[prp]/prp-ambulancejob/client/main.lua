@@ -11,8 +11,14 @@ local doctorCount = 0
 local CurrentDamageList = {}
 local inCheckin = false
 local inBed = false
-inBedDict = "anim@gangops@morgue@table@"
-inBedAnim = "body_search"
+bedNames = { 'v_med_bed1', 'v_med_bed2', 'v_med_emptybed', 'hirurg_bath' } -- Add more model strings here if you'd like
+bedHashes = {}
+onBedAnimDict = 'anim@gangops@morgue@table@'
+onBedAnimName = 'body_search'
+putOnBed = false
+
+inBedDict = "dead"
+inBedAnim = "dead_a"
 isInHospitalBed = false
 isBleeding = 0
 bleedTickTimer, advanceBleedTimer = 0, 0
@@ -26,8 +32,10 @@ isStatusChecking = false
 statusChecks = {}
 statusCheckTime = 0
 isHealingPerson = false
-healAnimDict = "mini@cpr@char_a@cpr_str"
-healAnim = "cpr_pumpchest"
+healAnimDict = "amb@medic@standing@tendtodead@idle_a"
+healAnim = "idle_a"
+reviveAnimDict = "mini@cpr@char_a@cpr_str"
+reviveAnim = "cpr_pumpchest"
 injured = {}
 
 BodyParts = {
@@ -197,6 +205,26 @@ local function ProcessRunStuff(ped)
     end
 end
 
+local function GetClosestPlayer()
+    local closestPlayers = ProjectRP.Functions.GetPlayersFromCoords()
+    local closestDistance = -1
+    local closestPlayer = -1
+    local coords = GetEntityCoords(PlayerPedId())
+
+    for i=1, #closestPlayers, 1 do
+        if closestPlayers[i] ~= PlayerId() then
+            local pos = GetEntityCoords(GetPlayerPed(closestPlayers[i]))
+            local distance = #(pos - coords)
+
+            if closestDistance == -1 or closestDistance > distance then
+                closestPlayer = closestPlayers[i]
+                closestDistance = distance
+            end
+        end
+	end
+	return closestPlayer, closestDistance
+end
+
 function ResetPartial()
     for k, v in pairs(BodyParts) do
         if v.isDamaged and v.severity <= 2 then
@@ -305,7 +333,7 @@ local function SetBedCam()
 
     loadAnimDict(inBedDict)
 
-    TaskPlayAnim(player, inBedDict , inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
+    TaskPlayAnim(player, inBedDict, inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0)
     SetEntityHeading(player, bedOccupyingData.coords.w)
 
     cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
@@ -592,7 +620,7 @@ RegisterNetEvent('hospital:client:Revive', function()
 
     if isInHospitalBed then
         loadAnimDict(inBedDict)
-        TaskPlayAnim(player, inBedDict , inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
+        TaskPlayAnim(player, inBedDict, inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
         SetEntityInvincible(player, true)
         canLeaveBed = true
     end
@@ -638,7 +666,6 @@ RegisterNetEvent('hospital:client:SetPain', function()
     })
 end)
 
-
 RegisterNetEvent('hospital:client:KillPlayer', function()
     SetEntityHealth(PlayerPedId(), 0)
 end)
@@ -660,7 +687,7 @@ RegisterNetEvent('hospital:client:SendToBed', function(id, data, isRevive)
     CreateThread(function ()
         Wait(5)
         if isRevive then
-            ProjectRP.Functions.Notify('You are being helped...', 'success')
+            ProjectRP.Functions.Notify('You are being helped...', 'success', Config.AIHealTimer * 1000)
             Wait(Config.AIHealTimer * 1000)
             TriggerEvent("hospital:client:Revive")
         else
@@ -963,6 +990,105 @@ RegisterNetEvent('prp-ambulancejob:beds', function()
         TriggerServerEvent("hospital:server:SendToBed", closestBed, false)
     else
         ProjectRP.Functions.Notify('Beds are occupied...', "error")
+    end
+end)
+
+
+-- Put player in bed
+CreateThread(function()
+    for k,v in ipairs(bedNames) do
+        table.insert(bedHashes, GetHashKey(v))
+    end
+end)
+
+RegisterCommand('bed', function()
+    TriggerEvent('hospital:client:PutPlayerOnBed', GetPlayerPed(-1))
+end)
+
+RegisterNetEvent('hospital:client:PutOnBed', function()
+    local player, distance = GetClosestPlayer()
+    if player ~= -1 and distance < 5.0 then
+        local playerPed = GetPlayerPed(player)
+        TriggerEvent('hospital:client:PutPlayerOnBed', playerPed)
+    else
+        ProjectRP.Functions.Notify('No Player Nearby', "error")
+    end
+end)
+
+RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
+    if playerPed then
+        if putOnBed then
+            DoScreenFadeOut(1000)
+            while not IsScreenFadedOut() do
+                Wait(100)
+            end
+
+            FreezeEntityPosition(playerPed, false)
+            SetEntityInvincible(playerPed, false)
+            RenderScriptCams(0, true, 200, true, true)
+            DestroyCam(cam, false)
+            ClearPedTasksImmediately(playerPed)
+
+            Wait(200)
+
+            DoScreenFadeIn(1000)
+            putOnBed = false
+            return
+        end
+
+        local playerPos = GetEntityCoords(playerPed, true)
+
+        local bed = nil
+        local bedHash = nil
+
+        for k, v in ipairs(bedHashes) do
+            bed = GetClosestObjectOfType(playerPos.x, playerPos.y, playerPos.z, 1.5, v, false, false, false)
+            if bed ~= 0 then
+                bedHash = v
+                break
+            end
+        end
+
+        if bed ~= nil and DoesEntityExist(bed) then
+            if not HasAnimDictLoaded(onBedAnimDict) then
+                RequestAnimDict(onBedAnimDict)
+            end
+            local bedCoords = GetEntityCoords(bed)
+
+            if bedHash == GetHashKey('hirurg_bath') then -- check for surgery bed
+                SetEntityCoords(playerPed, bedCoords.x, bedCoords.y, bedCoords.z+1, 1, 1, 0, 0)
+                SetEntityHeading(playerPed, GetEntityHeading(bed) + 270.0)
+            else
+                SetEntityCoords(playerPed, bedCoords.x, bedCoords.y, bedCoords.z, 1, 1, 0, 0)
+                SetEntityHeading(playerPed, GetEntityHeading(bed) + 180.0)
+            end
+            TaskPlayAnim(playerPed, onBedAnimDict, onBedAnimName, 8.0, 1.0, -1, 45, 1.0, 0, 0, 0)
+            putOnBed = true
+
+            FreezeEntityPosition(playerPed, true)
+
+            DoScreenFadeOut(1000)
+            while not IsScreenFadedOut() do
+                Wait(100)
+            end
+
+            cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", 1)
+            SetCamActive(cam, true)
+            RenderScriptCams(true, false, 1, true, true)
+            AttachCamToPedBone(cam, playerPed, 31085, 0, 1.0, 1.0 , true)
+            SetCamFov(cam, 90.0)
+            local heading = GetEntityHeading(playerPed)
+            heading = (heading > 180) and heading - 180 or heading + 180
+            SetCamRot(cam, -45.0, 0.0, heading, 2)
+
+            FreezeEntityPosition(playerPed, true)
+
+            DoScreenFadeIn(1000)
+        else
+            ProjectRP.Functions.Notify('No Bed Nearby', "error")
+        end
+    else
+        ProjectRP.Functions.Notify('No Player Nearby', "error")
     end
 end)
 
