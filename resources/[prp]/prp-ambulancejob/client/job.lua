@@ -142,7 +142,7 @@ function Status()
     if isStatusChecking then
         local statusMenu = {
             {
-                header = 'Heath Status',
+                header = 'Health Status | '..(GetEntityHealth(statusCheckPed)-100)..'%',
                 isMenuHeader = true
             }
         }

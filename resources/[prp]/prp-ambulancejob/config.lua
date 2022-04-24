@@ -215,7 +215,7 @@ Config.BleedMovementAdvance = 3
 --[[
     The Base Damage That Is Multiplied By Bleed Level Every Time A Bleed Tick Occurs
 ]]
-Config.BleedTickDamage = 8
+Config.BleedTickDamage = 4
 
 --[[
     FadeOutTimer : How many bleed ticks occur before fadeout happens
