@@ -397,12 +397,7 @@ AddEventHandler("mdt:submitNewWarrant", function(data)
 		TriggerClientEvent("mdt:completedWarrantAction", usource)
 		TriggerClientEvent("mdt:sendNotification", usource, "A new warrant has been created.")
 
-		print(GetCharacterName(usource))
-		print(data.name)
-		print(data.name)
-		print(data.charges)
-		print(data.notes)
-		
+
 		TriggerEvent('prp-log:server:CreateLog:MDT', 
 		'policeMDT',
 		 'Warrant Issued',
