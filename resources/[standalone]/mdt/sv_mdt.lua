@@ -251,6 +251,7 @@ AddEventHandler("mdt:submitNewReport", function(data)
 	MySQL.Async.insert('INSERT INTO `mdt_reports` (`char_id`, `title`, `incident`, `charges`, `author`, `name`, `date`) VALUES (?, ?, ?, ?, ?, ?, ?)', {data.char_id, data.title, data.incident, charges, author, data.name, data.date,}, function(id)
 		TriggerEvent("mdt:getReportDetailsById", id, usource)
 		TriggerClientEvent("mdt:sendNotification", usource, "A new report has been submitted.")
+		TriggerEvent('prp-log:server:CreateLog', 'policeMDT', '', 'orange', '**Arrest Logged**\n'..author..' logged an arrest for: '..data.name..'.\n**Charges**\n '..charges..'\n**Notes**\n'..data.incident..'')
 	end)
 
 	for offense, count in pairs(data.charges) do
@@ -385,9 +386,12 @@ AddEventHandler("mdt:submitNewWarrant", function(data)
 	data.charges = json.encode(data.charges)
 	data.author = GetCharacterName(source)
 	data.date = os.date('%m-%d-%Y %H:%M:%S', os.time())
+
+	-- TriggerEvent("")
 	MySQL.Async.insert('INSERT INTO `mdt_warrants` (`name`, `char_id`, `report_id`, `report_title`, `charges`, `date`, `expire`, `notes`, `author`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', {data.name, data.char_id, data.report_id, data.report_title, data.charges, data.date, data.expire, data.notes, data.author}, function()
 		TriggerClientEvent("mdt:completedWarrantAction", usource)
 		TriggerClientEvent("mdt:sendNotification", usource, "A new warrant has been created.")
+		TriggerEvent('prp-log:server:CreateLog', 'policeMDT', '', 'orange', '**Warrant Issued**\n'..GetCharacterName(source)..' issued a warrant for: '..data.name..'.\n**Charges**\n '..data.charges..'\n**Notes**\n'..data.notes..'')
 	end)
 end)
 
