@@ -1427,7 +1427,7 @@ PRPShared.Vehicles = {
 		['price'] = 12000,
 		['category'] = 'compacts',
 		['hash'] = `dilettante2`,
-		['shop'] = 'pdm',
+		['shop'] = 'none',
 	},
 	['kanjo'] = {
 		['name'] = 'Blista Kanjo',
