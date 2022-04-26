@@ -157,11 +157,15 @@ function TakeOutVehicle(vehicleInfo)
     local coords = Config.Locations["vehicle"][currentGarage]
     ProjectRP.Functions.SpawnVehicle(vehicleInfo, function(veh)
         SetCarItemsInfo()
-        SetVehicleModKit(veh, 0)
+        SetVehicleModKit(veh, 1)
         SetVehicleNumberPlateText(veh, "POLICE"..tostring(math.random(1000, 9999)))
+        if vehicleInfo == 'npolvic' then
+            SetVehicleCustomPrimaryColour(veh, 255, 255, 255)
+            SetVehicleCustomSecondaryColour(veh, 0, 0, 0)
+        end
         SetEntityHeading(veh, coords.w)
         SetVehicleDirtLevel(veh, 0.0)
-        SetVehicleLivery(veh, 2)
+        SetVehicleLivery(veh, 1)
         SetVehicleMod(veh, 0, 48)
         exports['prp-fuel']:SetFuel(veh, 100.0)
         closeMenuFull()

@@ -25,9 +25,9 @@ Crypto = {
     RefreshTimer = 10, -- In minutes.
 
     -- Crashes or luck
-    ChanceOfCrashOrLuck = 2, -- This is in % (1-100)
-    Crash = {20,80}, -- Min / Max
-    Luck = {20,45}, -- Min / Max
+    ChanceOfCrashOrLuck = 10, -- This is in % (1-100)
+    Crash = {80,99}, -- Min / Max
+    Luck = {10,15}, -- Min / Max
 
     -- If not not Chance of crash or luck, then this shit
     ChanceOfDown = 30, -- If out of 100 hits less or equal to

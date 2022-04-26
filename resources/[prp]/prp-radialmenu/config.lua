@@ -34,73 +34,74 @@ Config.MenuItems = {
                 type = 'client',
                 event = 'prp-hotdogjob:client:ToggleSell',
                 shouldClose = true
-            }, {
-                id = 'interactions',
-                title = 'Interaction',
-                icon = 'exclamation-triangle',
-                items = {
-                    {
-                        id = 'handcuff',
-                        title = 'Cuff',
-                        icon = 'user-lock',
-                        type = 'client',
-                        event = 'police:client:CuffPlayerSoft',
-                        shouldClose = true
-                    }, {
-                        id = 'playerinvehicle',
-                        title = 'Put In Vehicle',
-                        icon = 'car-side',
-                        type = 'client',
-                        event = 'police:client:PutPlayerInVehicle',
-                        shouldClose = true
-                    }, {
-                        id = 'playeroutvehicle',
-                        title = 'Take Out Of Vehicle',
-                        icon = 'car-side',
-                        type = 'client',
-                        event = 'police:client:SetPlayerOutVehicle',
-                        shouldClose = true
-                    }, {
-                        id = 'stealplayer',
-                        title = 'Rob',
-                        icon = 'mask',
-                        type = 'client',
-                        event = 'police:client:RobPlayer',
-                        shouldClose = true
-                    }, {
-                        id = 'escort',
-                        title = 'Kidnap',
-                        icon = 'user-friends',
-                        type = 'client',
-                        event = 'police:client:KidnapPlayer',
-                        shouldClose = true
-                    }, {
-                        id = 'escort2',
-                        title = 'Escort',
-                        icon = 'user-friends',
-                        type = 'client',
-                        event = 'police:client:EscortPlayer',
-                        shouldClose = true
-                    }, {
-                        id = 'escort554',
-                        title = 'Hostage',
-                        icon = 'child',
-                        type = 'client',
-                        event = 'A5:Client:TakeHostage',
-                        shouldClose = true
-                    }, {
-                        id = 'stealshoe',
-                        title = 'Steal Shoes',
-                        icon = 'shoe-prints',
-                        type = 'client',
-                        event = 'prp-stealshoes:client:TheftShoe',
-                        shouldClose = true
-                    }
-                }
             }
         }
     },
     [2] = {
+        id = 'interactions',
+        title = 'Interaction',
+        icon = 'exclamation-triangle',
+        items = {
+            {
+                id = 'handcuff',
+                title = 'Cuff',
+                icon = 'user-lock',
+                type = 'client',
+                event = 'police:client:CuffPlayerSoft',
+                shouldClose = true
+            }, {
+                id = 'playerinvehicle',
+                title = 'Put In Vehicle',
+                icon = 'car-side',
+                type = 'client',
+                event = 'police:client:PutPlayerInVehicle',
+                shouldClose = true
+            }, {
+                id = 'playeroutvehicle',
+                title = 'Take Out Of Vehicle',
+                icon = 'car-side',
+                type = 'client',
+                event = 'police:client:SetPlayerOutVehicle',
+                shouldClose = true
+            }, {
+                id = 'stealplayer',
+                title = 'Rob',
+                icon = 'mask',
+                type = 'client',
+                event = 'police:client:RobPlayer',
+                shouldClose = true
+            }, {
+                id = 'escort',
+                title = 'Kidnap',
+                icon = 'user-friends',
+                type = 'client',
+                event = 'police:client:KidnapPlayer',
+                shouldClose = true
+            }, {
+                id = 'escort2',
+                title = 'Escort',
+                icon = 'user-friends',
+                type = 'client',
+                event = 'police:client:EscortPlayer',
+                shouldClose = true
+            }, {
+                id = 'escort554',
+                title = 'Hostage',
+                icon = 'child',
+                type = 'client',
+                event = 'A5:Client:TakeHostage',
+                shouldClose = true
+            }, {
+                id = 'stealshoe',
+                title = 'Steal Shoes',
+                icon = 'shoe-prints',
+                type = 'client',
+                event = 'prp-stealshoes:client:TheftShoe',
+                shouldClose = true
+            }
+        }
+    },
+    [3] = {
         id = 'general',
         title = 'General',
         icon = 'list-alt',
@@ -702,7 +703,7 @@ Config.MenuItems = {
             }
         }
     },
-    [3] = {
+    [4] = {
         id = 'vehicle',
         title = 'Vehicle',
         icon = 'car',
@@ -871,7 +872,7 @@ Config.MenuItems = {
             }
         }
     },
-    [4] = {
+    [5] = {
         id = 'jobinteractions',
         title = 'Work',
         icon = 'briefcase',
@@ -888,35 +889,35 @@ Config.JobInteractions = {
             type = 'client',
             event = 'hospital:client:CheckStatus',
             shouldClose = true
-        },{
+        }, {
             id = 'revivep',
             title = 'Revive',
             icon = 'user-md',
             type = 'client',
             event = 'hospital:client:RevivePlayer',
             shouldClose = true
-        },{
+        }, {
             id = 'treatwounds',
             title = 'Heal wounds',
             icon = 'band-aid',
             type = 'client',
             event = 'hospital:client:TreatWounds',
-            shouldClose = true
+            shouldClose = false
         }, {
             id = 'heallorazepam',
             title = 'Give Lorazepam',
             icon = 'pills',
             type = 'client',
             event = 'hospital:client:lorazepam',
-            shouldClose = true
+            shouldClose = false
         }, {
             id = 'givepainkillers',
             title = 'Give Painkillers',
             icon = 'prescription-bottle-alt',
             type = 'client',
             event = 'hospital:client:givePainkillers',
-            shouldClose = true
-        },{
+            shouldClose = false
+        }, {
             id = 'emergencybutton2',
             title = 'Emergency button',
             icon = 'bell',
@@ -924,34 +925,35 @@ Config.JobInteractions = {
             event = 'police:client:SendPoliceEmergencyAlert',
             shouldClose = true
         }, {
-            id = 'escort',
-            title = 'Escort',
-            icon = 'user-friends',
-            type = 'client',
-            event = 'police:client:EscortPlayer',
-            shouldClose = true
-        }, {
-            id = 'stretcheroptions',
-            title = 'Stretcher',
+            id = 'putonbed',
+            title = 'Put on Bed',
             icon = 'procedures',
-            items = {
-                {
-                    id = 'spawnstretcher',
-                    title = 'Spawn Stretcher',
-                    icon = 'plus',
-                    type = 'client',
-                    event = 'prp-radialmenu:client:TakeStretcher',
-                    shouldClose = false
-                }, {
-                    id = 'despawnstretcher',
-                    title = 'Remove Stretcher',
-                    icon = 'minus',
-                    type = 'client',
-                    event = 'prp-radialmenu:client:RemoveStretcher',
-                    shouldClose = false
-                }
-            }
-        }
+            type = 'client',
+            event = 'hospital:client:PutOnBed',
+            shouldClose = true
+        },
+        -- {
+        --     id = 'stretcheroptions',
+        --     title = 'Stretcher',
+        --     icon = 'procedures',
+        --     items = {
+        --         {
+        --             id = 'spawnstretcher',
+        --             title = 'Spawn Stretcher',
+        --             icon = 'plus',
+        --             type = 'client',
+        --             event = 'prp-radialmenu:client:TakeStretcher',
+        --             shouldClose = false
+        --         }, {
+        --             id = 'despawnstretcher',
+        --             title = 'Remove Stretcher',
+        --             icon = 'minus',
+        --             type = 'client',
+        --             event = 'prp-radialmenu:client:RemoveStretcher',
+        --             shouldClose = false
+        --         }
+        --     }
+        -- }
     },
     ["taxi"] = {
         {
@@ -1143,9 +1145,6 @@ Config.JobInteractions = {
             shouldClose = true
         }
     }
-    -- ["taxi"] = {
-
-    -- },
 }
 
 Config.TrunkClasses = {
