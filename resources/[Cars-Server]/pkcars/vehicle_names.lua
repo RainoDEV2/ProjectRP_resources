@@ -5,6 +5,8 @@ Citizen.CreateThread(function()
 	AddTextEntry('speedoambo', 'Speedo Ambulance')
 	AddTextEntry('m5rb_vv', 'Unmarked BMW M5')
 	AddTextEntry('um18charger', 'Unmarked Dodge Charger')
+	AddTextEntry('lsfdfpiu', 'Fire Explorer')
+	AddTextEntry('ems2018charger', 'EMS Charger')
 	
 	-- Job cars
 	AddTextEntry('goldmk6', 'Golf Mk6')
