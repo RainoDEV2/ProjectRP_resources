@@ -34,8 +34,8 @@ statusCheckTime = 0
 isHealingPerson = false
 healAnimDict = "amb@medic@standing@tendtodead@idle_a"
 healAnim = "idle_a"
-reviveAnimDict = "mini@cpr@char_a@cpr_str"
-reviveAnim = "cpr_pumpchest"
+reviveAnimDict = "amb@medic@standing@tendtodead@idle_a"
+reviveAnim = "idle_a"
 injured = {}
 
 BodyParts = {
