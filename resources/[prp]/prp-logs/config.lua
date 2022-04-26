@@ -54,7 +54,7 @@ Config.Colors = { -- https://www.spycolor.com/
     ['green'] = 65280,
     ['white'] = 16777215,
     ['black'] = 0,
-    ['orange'] = 16744192,
+    ['orange'] = 16758102,
     ['yellow'] = 16776960,
     ['pink'] = 16761035,
 }
