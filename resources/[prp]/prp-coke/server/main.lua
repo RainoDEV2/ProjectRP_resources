@@ -1,6 +1,6 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
 
-local hiddenprocess = vector3(1101.15, -3198.83, -38.99) -- Change this to whatever location you want. This is server side to prevent people from dumping the coords
+local hiddenprocess = vector3(1095.4, -3194.92, -38.99) -- Change this to whatever location you want. This is server side to prevent people from dumping the coords
 local hiddenstart = vector3(382.81, 2576.6, 44.53) -- Change this to whatever location you want. This is server side to prevent people from dumping the coords
 
 RegisterNetEvent('coke:updateTable')
