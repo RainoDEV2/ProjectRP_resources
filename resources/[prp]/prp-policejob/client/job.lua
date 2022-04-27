@@ -159,10 +159,6 @@ function TakeOutVehicle(vehicleInfo)
         SetCarItemsInfo()
         SetVehicleModKit(veh, 1)
         SetVehicleNumberPlateText(veh, "POLICE"..tostring(math.random(1000, 9999)))
-        if vehicleInfo == 'npolvic' then
-            SetVehicleCustomPrimaryColour(veh, 255, 255, 255)
-            SetVehicleCustomSecondaryColour(veh, 0, 0, 0)
-        end
         SetEntityHeading(veh, coords.w)
         SetVehicleDirtLevel(veh, 0.0)
         SetVehicleLivery(veh, 1)

@@ -164,7 +164,7 @@ function trim(value)
     return (string.gsub(value, '^%s*(.-)%s*$', '%1'))
 end
 
---not a function, but a widely used event
+-- not a function, but a widely used event
 RegisterNetEvent('prp-mechanic:client:Menu:Close', function()
 	local playerPed	= PlayerPedId()
 	local coords = GetEntityCoords(playerPed)

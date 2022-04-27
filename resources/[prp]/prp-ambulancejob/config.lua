@@ -84,14 +84,20 @@ Config.AuthorizedVehicles = {
 	-- Grade 6
 	[6] = {
 		["emsnspeedo"] = "Ambulance",
+		["lsfdfpiu"] = "Explorer",
+		["ems2018charger"] = "Charger",
 	},
 	-- Grade 7
 	[7] = {
 		["emsnspeedo"] = "Ambulance",
+		["lsfdfpiu"] = "Explorer",
+		["ems2018charger"] = "Charger",
 	},
 	-- Grade 8
 	[8] = {
 		["emsnspeedo"] = "Ambulance",
+		["lsfdfpiu"] = "Explorer",
+		["ems2018charger"] = "Charger",
 	}
 }
 
@@ -112,7 +118,7 @@ Config.Items = {
         [2] = {
             name = "bandage",
             price = 0,
-            amount = 50,
+            amount = 250,
             info = {},
             type = "item",
             slot = 2,
@@ -120,7 +126,7 @@ Config.Items = {
         [3] = {
             name = "painkillers",
             price = 0,
-            amount = 50,
+            amount = 250,
             info = {},
             type = "item",
             slot = 3,
@@ -128,7 +134,7 @@ Config.Items = {
         [4] = {
             name = "lorazepam",
             price = 0,
-            amount = 50,
+            amount = 250,
             info = {},
             type = "item",
             slot = 4,
@@ -136,7 +142,7 @@ Config.Items = {
         [5] = {
             name = "firstaid",
             price = 0,
-            amount = 50,
+            amount = 100,
             info = {},
             type = "item",
             slot = 5,
@@ -152,7 +158,7 @@ Config.Items = {
         [7] = {
             name = "weapon_fireextinguisher",
             price = 0,
-            amount = 50,
+            amount = 25,
             info = {},
             type = "item",
             slot = 7 ,

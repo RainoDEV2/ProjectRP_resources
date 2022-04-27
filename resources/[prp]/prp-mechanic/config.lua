@@ -19,7 +19,7 @@ Config.RequiresJob = true  -- Do the specfic items require the mechanic job?
 
 Config.LocationBlips = false -- Enable to grab the blip locations from locations.lua
 
-Config.LocationRequired = false -- Are the mecahnics locked to specific locations? -- IF FALSE, DISABLES JobRequiredForLocation --
+Config.LocationRequired = true -- Are the mecahnics locked to specific locations? -- IF FALSE, DISABLES JobRequiredForLocation --
 
 Config.JobRequiredForLocation = true -- Enable this if the job locations require a SPECIFIED ROLE (specified in locations.lua)
 
@@ -42,22 +42,22 @@ Config.PreviewJob = false -- Enable this if you want the preview menu to require
 
 --THESE ARE MAX AMOUNTS
 Config.RepairEngine = "iron"  ---Engine repair item and its cost
-Config.RepairEngineCost = 5
+Config.RepairEngineCost = 15
 
 Config.RepairBody = "plastic"  ---Body Repair item and its cost
-Config.RepairBodyCost = 5
+Config.RepairBodyCost = 15
 
 Config.RepairRadiator = "plastic"  ---Radiator Repair item and its cost
-Config.RepairRadiatorCost = 5
+Config.RepairRadiatorCost = 6
 
 Config.RepairAxle = "steel"  ---DriveShaft Repair item and its cost
-Config.RepairAxleCost = 5
+Config.RepairAxleCost = 8
 
 Config.RepairBrakes = "iron"  ---Brakes Repair item and its cost
-Config.RepairBrakesCost = 5
+Config.RepairBrakesCost = 6
 
 Config.RepairClutch = "aluminum"  ---Clutch Repair item and its cost
-Config.RepairClutchCost = 5
+Config.RepairClutchCost = 8
 
 Config.RepairFuel = "plastic"  ---Fuel Repair item and its cost
 Config.RepairFuelCost = 5
