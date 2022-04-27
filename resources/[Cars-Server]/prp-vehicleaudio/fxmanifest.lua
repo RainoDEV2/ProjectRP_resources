@@ -18,6 +18,14 @@ files {
   'audioconfig/s63b44_sounds.dat54.rel',
   'sfx/dlc_s63b44/s63b44.awc',
   'sfx/dlc_s63b44/s63b44_npc.awc',
+  'audioconfig/b58b30.dat151',
+  'audioconfig/b58b30.dat151.nametable',
+  'audioconfig/b58b30_game.dat151.rel',
+  'audioconfig/b58b30_sounds.dat54',
+  'audioconfig/b58b30_sounds.dat54.nametable',
+  'audioconfig/b58b30_sounds.dat54.rel',
+  'sfx/dlc_b58b30/b58b30.awc',
+  'sfx/dlc_b58b30/b58b30_npc.awc',
   'audioconfig/sentinelsg4_game.dat151',
   'audioconfig/sentinelsg4_game.dat151.nametable',
   'audioconfig/sentinelsg4_game.dat151.rel',
@@ -283,6 +291,9 @@ data_file 'AUDIO_WAVEPACK' 'sfx/dlc_r34sound'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/hemisound_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/hemisound_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_hemisound'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/b58b30_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/b58b30_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_b58b30'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/s15sound_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/s15sound_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_s15sound'
