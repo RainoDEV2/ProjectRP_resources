@@ -2,7 +2,7 @@ Config = {}
 Config.Locale = 'en'
 
 Config.useCD = true -- change this if you want to have a global cooldown or not
-Config.cdTime = 1800000 -- global cooldown in ms.
+Config.cdTime = 3600000 -- global cooldown in ms.
 Config.doorHeading = 291.32 -- change this to the proper heading to look at the door you start the runs with
 Config.rentalReturnPrice = 2000 -- amount you get after the run
 Config.rentalAmount = 3000 --amount you have to pay to start a run 
