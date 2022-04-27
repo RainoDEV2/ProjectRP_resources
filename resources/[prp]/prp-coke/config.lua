@@ -2,18 +2,18 @@ Config = {}
 Config.Locale = 'en'
 
 Config.useCD = true -- change this if you want to have a global cooldown or not
-Config.cdTime = 3600000 -- global cooldown in ms.
+Config.cdTime = 1800000 -- global cooldown in ms.
 Config.doorHeading = 291.32 -- change this to the proper heading to look at the door you start the runs with
 Config.rentalReturnPrice = 2000 -- amount you get after the run
 Config.rentalAmount = 3000 --amount you have to pay to start a run 
 Config.cokeTime = 30000 -- time in ms the effects of coke will last for
 Config.pickupTime = 5000 -- time it takes to pick up the delivery 
 
-Config.bricksPerRunMin = 3 -- change the numbers to how much coke you want players to receive after breaking down bricks
+Config.bricksPerRunMin = 3 -- change the numbers to how much coke you want to make each run
 Config.bricksPerRunMax = 7
 
-Config.bagsPerBrickMin = 51 -- change the numbers to how much coke you want players to receive after breaking down bricks
-Config.bagsPerBrickMax = 59
+Config.bagsPerBrickMin = 48 -- change the numbers to how much coke you want players to receive after breaking down bricks
+Config.bagsPerBrickMax = 60
 
 Config.locations = {
 	[1] = { 
