@@ -2823,10 +2823,10 @@ PRPShared.Vehicles = {
 		['name'] = 'Buffalo STX',
 		['brand'] = 'Bravado',
 		['model'] = 'buffalo4',
-		['price'] = 155000,
+		['price'] = 175000,
 		['category'] = 'muscle',
 		['hash'] = `buffalo4`,
-		['shop'] = 'luxury',
+		['shop'] = 'none',
 	},
 	--- Off-Road
 	['bfinjection'] = {
