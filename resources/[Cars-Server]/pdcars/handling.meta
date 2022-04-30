@@ -19,7 +19,7 @@
 			<fBrakeForce value="1.200000" />
 			<fBrakeBiasFront value="0.650000" />
 			<fHandBrakeForce value="0.320000" />
-			<fSteeringLock value="42.000000" />
+			<fSteeringLock value="43.400000" />
 			<fTractionCurveMax value="1.900000" />
 			<fTractionCurveMin value="1.550000" />
 			<fTractionCurveLateral value="17.820000" />
@@ -249,16 +249,16 @@
   <Item type="CHandlingData">
       <handlingName>16Fpiu</handlingName>
       <fMass value="2104.000000" />
-      <fInitialDragCoeff value="8.000000" />
+      <fInitialDragCoeff value="7.600000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.011000" z="0.000000" />
       <vecInertiaMultiplier x="1.000000" y="1.600000" z="1.400000" />
       <fDriveBiasFront value="0.900000" />
       <nInitialDriveGears value="6" />
-      <fInitialDriveForce value="0.300000" />
+      <fInitialDriveForce value="0.340000" />
       <fDriveInertia value="1.000000" />
-      <fClutchChangeRateScaleUpShift value="3.000000" />
-      <fClutchChangeRateScaleDownShift value="3.000000" />
+      <fClutchChangeRateScaleUpShift value="3.200000" />
+      <fClutchChangeRateScaleDownShift value="3.200000" />
       <fInitialDriveMaxFlatVel value="175.000000" />
       <fBrakeForce value="0.700000" />
       <fBrakeBiasFront value="0.425000" />
