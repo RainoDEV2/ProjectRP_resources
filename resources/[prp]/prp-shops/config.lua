@@ -482,17 +482,17 @@ Config.Products = {
     },
     ["chemshop"] = {
         [1] = {
-            name = "acetone",
-            price = 100,
-            amount = 50,
+            name = "ecgonine",
+            price = 74,
+            amount = 100,
             info = {},
             type = "item",
             slot = 1,
         },
         [2] = {
-            name = "lithium",
-            price = 225,
-            amount = 50,
+            name = "methylamine",
+            price = 55,
+            amount = 100,
             info = {},
             type = "item",
             slot = 2,

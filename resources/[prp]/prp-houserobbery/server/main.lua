@@ -48,6 +48,20 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
         Tier = 3
     end
 
+    if math.random(1, 300) == 1 then
+        Player.Functions.AddItem("gunkey", 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, "gunkey", "add")
+    elseif math.random(1, 300) == 1 then
+        Player.Functions.AddItem("cokekey", 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, "cokekey", "add")
+    elseif math.random(1, 150) == 1 then
+        Player.Functions.AddItem("weedkey", 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, "weedkey", "add")
+    elseif math.random(1, 150) == 1 then
+        Player.Functions.AddItem("mwkey", 1)
+        TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+    end
+
     if itemFound < 4 then
         if luck == 10 then
             itemCount = 3

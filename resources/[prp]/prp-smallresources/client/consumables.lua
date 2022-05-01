@@ -433,8 +433,8 @@ RegisterNetEvent('consumables:client:Cokebaggy', function()
         flags = 49,
     }, {}, {}, function() -- Done
         StopAnimTask(ped, "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
-        TriggerServerEvent("ProjectRP:Server:RemoveItem", "cokebaggy", 1)
-        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["cokebaggy"], "remove")
+        TriggerServerEvent("ProjectRP:Server:RemoveItem", "coke_baggy", 1)
+        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["coke_baggy"], "remove")
         TriggerEvent("evidence:client:SetStatus", "widepupils", 200)
         CokeBaggyEffect()
     end, function() -- Cancel
@@ -526,7 +526,7 @@ function HealOxy()
     healing = false
 end
 
-RegisterNetEvent('consumables:client:meth', function()
+RegisterNetEvent('consumables:client:meth_baggy', function()
     ProjectRP.Functions.Progressbar("snort_meth", "Smoking Ass Meth", 1500, false, true, {
         disableMovement = false,
         disableCarMovement = false,
@@ -538,8 +538,8 @@ RegisterNetEvent('consumables:client:meth', function()
         flags = 49,
     }, {}, {}, function() -- Done
         StopAnimTask(PlayerPedId(), "switch@trevor@trev_smoking_meth", "trev_smoking_meth_loop", 1.0)
-        TriggerServerEvent("ProjectRP:Server:RemoveItem", "meth", 1)
-        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["meth"], "remove")
+        TriggerServerEvent("ProjectRP:Server:RemoveItem", "meth_baggy", 1)
+        TriggerEvent("inventory:client:ItemBox", ProjectRP.Shared.Items["meth_baggy"], "remove")
         TriggerEvent("evidence:client:SetStatus", "widepupils", 300)
 		TriggerEvent("evidence:client:SetStatus", "agitated", 300)
         MethBagEffect()

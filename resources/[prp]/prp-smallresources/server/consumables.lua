@@ -258,7 +258,7 @@ ProjectRP.Functions.CreateUseableItem("joint", function(source, item)
     end
 end)
 
-ProjectRP.Functions.CreateUseableItem("cokebaggy", function(source, item)
+ProjectRP.Functions.CreateUseableItem("coke_baggy", function(source, item)
     local src = source
     TriggerClientEvent("consumables:client:Cokebaggy", src)
 end)
@@ -278,9 +278,9 @@ ProjectRP.Functions.CreateUseableItem("oxy", function(source, item)
     TriggerClientEvent("consumables:client:oxy", src)
 end)
 
-ProjectRP.Functions.CreateUseableItem("meth", function(source, item)
+ProjectRP.Functions.CreateUseableItem("meth_baggy", function(source, item)
     local src = source
-    TriggerClientEvent("consumables:client:meth", src)
+    TriggerClientEvent("consumables:client:meth_baggy", src)
 end)
 
 ----------- / Tools

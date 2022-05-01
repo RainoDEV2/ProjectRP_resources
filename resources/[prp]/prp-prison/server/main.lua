@@ -18,7 +18,7 @@ RegisterNetEvent('prison:server:SaveJailItems', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Player.PlayerData.metadata["jailitems"] == nil or next(Player.PlayerData.metadata["jailitems"]) == nil then
-        local jailitems = Player.PlayerData.metadata["jailitems"]
+        local jailitems = Player.PlayerData.items
         TriggerEvent('prp-log:server:CreateLog', 'playerinventory', 'Jail Items', 'blue', '**Name**\n```Steam Name: ' .. GetPlayerName(Player.PlayerData.source) .. ' (citizenid: ' .. Player.PlayerData.citizenid .. ' | id: ' .. Player.PlayerData.source .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(Player.PlayerData.source).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(Player.PlayerData.source).PlayerData.charinfo.lastname .. ')```\n **Details**\n```Items Set: '..json.encode(jailitems)..'```')
         Player.Functions.SetMetaData("jailitems", Player.PlayerData.items)
         Player.Functions.AddMoney('cash', 80)
