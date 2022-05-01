@@ -1532,8 +1532,24 @@ ProjectRP.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", hel
 					info.uses = 20
 				elseif itemData["name"] == "markedbills" then
 					info.worth = math.random(5000, 10000)
-				elseif itemData["name"] == "labkey" then
-					info.lab = exports["prp-methlab"]:GenerateRandomLab()
+				elseif itemData["name"] == "meth_batch" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "meth_cured" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "meth_baggy" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "weed_batch" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "weed_cured" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "weed_baggy" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "coke_batch" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "coke_cured" then
+					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "coke_baggy" then
+					info.purity = math.random(1, 100)
 				elseif itemData["name"] == "printerdocument" then
 					info.url = "https://cdn.discordapp.com/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png"
 				end

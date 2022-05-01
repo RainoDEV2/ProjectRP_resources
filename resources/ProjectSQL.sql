@@ -769,3 +769,13 @@ ALTER TABLE `player_vehicles`
 ADD COLUMN `traveldistance` INT(50) NULL DEFAULT 0 AFTER `financetime`,
 ADD COLUMN `noslevel` INT(10) NULL DEFAULT 0 AFTER `traveldistance`,
 ADD COLUMN `hasnitro` TINYINT(0) NULL DEFAULT 0 AFTER `noslevel`;
+
+CREATE TABLE IF NOT EXISTS `configs` (
+  `name` varchar(20) NOT NULL,
+  `config` text DEFAULT NULL,
+  PRIMARY KEY (`name`)
+);
+
+INSERT INTO `configs` (`name`, `config`) VALUES (
+	'keylabs', '{"worth1":0,"worth3":0,"washer3":0,"cokelab":0,"weedlab":0,"worth4":0,"methlab":0,"methlab2":0,"washer1":0,"worth2":0,"washer4":0,"washer2":0}'
+);
