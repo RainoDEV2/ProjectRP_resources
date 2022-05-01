@@ -73,26 +73,3 @@ AddEventHandler('prp-vineyard:server:receiveGrapeJuice', function()
 	xPlayer.Functions.AddItem("grapejuice", Config.GrapeJuiceAmount, false)
 	TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items['grapejuice'], "add")
 end)
-
-
--- Hire/Fire
-
---[[ ProjectRP.Commands.Add("hirevineyard", "Hire a player to the Vineyard!", {{name="id", help="Player ID"}}, true, function(source, args)
-    local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
-    local Myself = ProjectRP.Functions.GetPlayer(source)
-    if Player ~= nil then 
-        if (Myself.PlayerData.gang.name == "la_familia") then
-            Player.Functions.SetJob("vineyard")
-        end
-    end
-end)
-
-ProjectRP.Commands.Add("firevineyard", "Fire a player to the Vineyard!", {{name="id", help="Player ID"}}, true, function(source, args)
-    local Player = ProjectRP.Functions.GetPlayer(tonumber(args[1]))
-    local Myself = ProjectRP.Functions.GetPlayer(source)
-    if Player ~= nil then 
-        if (Myself.PlayerData.gang.name == "la_familia") then
-            Player.Functions.SetJob("unemployed")
-        end
-    end
-end) ]]

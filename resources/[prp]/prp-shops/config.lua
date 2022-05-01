@@ -254,12 +254,20 @@ Config.Products = {
             slot = 19,
         },
         [20] = {
+            name = "stickynotepad",
+            price = 25,
+            amount = 250,
+            info = {},
+            type = "item",
+            slot = 20,
+        },
+        [21] = {
             name = "advancedrepairkit",
             price = 500,
             amount = 50,
             info = {},
             type = "item",
-            slot = 20,
+            slot = 21,
             requiredJob = { "mechanic" }
         },
     },

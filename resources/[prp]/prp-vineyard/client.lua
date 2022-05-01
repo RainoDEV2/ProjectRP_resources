@@ -79,14 +79,9 @@ Citizen.CreateThread(function()
 					Vineyard = true
 					if nearlocation <= 3 then
 						if not startVineyard then
-							DrawText3Ds(-1928.81, 2059.53, 140.84, "[E] Start Picking Grapes") 
-							
+							DrawText3Ds(-1928.81, 2059.53, 140.84, "[E] Start Picking Grapes")
 								if IsControlJustReleased(0,38) then
-									if PlayerJob.name == "vineyard" then
-										startVineyard = true
-									else
-										ProjectRP.Functions.Notify("I dont think I work here...", "error")
-									end
+									startVineyard = true
 								end
 						end
 					end
@@ -222,11 +217,7 @@ Citizen.CreateThread(function()
 								if #(pos - vector3(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y, Config.Vineyard["wine"].coords.z)) < 1 then
 									DrawText3Ds(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y,  Config.Vineyard["wine"].coords.z + 0.2, '[E] Load Ingredients')
 									if IsControlJustPressed(0, 38) then
-										if PlayerJob.name == "vineyard" then
-											TriggerServerEvent("prp-vineyard:server:loadIngredients")
-										else
-											ProjectRP.Functions.Notify("I dont think I work here...", "error")
-										end
+										TriggerServerEvent("prp-vineyard:server:loadIngredients")
 									end
 								end
 							else
@@ -234,25 +225,17 @@ Citizen.CreateThread(function()
 									if #(pos - vector3(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y, Config.Vineyard["wine"].coords.z)) < 1 then
 										DrawText3Ds(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y, Config.Vineyard["wine"].coords.z + 0.2, '[E] Start WineProcess')
 										if IsControlJustPressed(0, 38) then
-											if PlayerJob.name == "vineyard" then
-												StartWineProcess()
-											else
-												ProjectRP.Functions.Notify("I dont think I work here...", "error")
-											end
+											StartWineProcess()
 										end
 									end
 								else
 									if #(pos - vector3(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y, Config.Vineyard["wine"].coords.z)) < 1 then
 										DrawText3Ds(Config.Vineyard["wine"].coords.x, Config.Vineyard["wine"].coords.y, Config.Vineyard["wine"].coords.z + 0.2, '[E] Get Wine')
 										if IsControlJustPressed(0, 38) then
-											if PlayerJob.name == "vineyard" then
-												TriggerServerEvent("prp-vineyard:server:receiveWine")
-												finishedWine = false
-												loadIngredients = false
-												wineStarted = false
-											else
-												ProjectRP.Functions.Notify("I dont think I work here...", "error")
-											end
+											TriggerServerEvent("prp-vineyard:server:receiveWine")
+											finishedWine = false
+											loadIngredients = false
+											wineStarted = false
 										end
 									end
 								end
@@ -286,11 +269,7 @@ Citizen.CreateThread(function()
 					if #(pos - vector3(Config.Vineyard["grapejuice"].coords.x, Config.Vineyard["grapejuice"].coords.y, Config.Vineyard["grapejuice"].coords.z)) < 1 then
 						DrawText3Ds(Config.Vineyard["grapejuice"].coords.x, Config.Vineyard["grapejuice"].coords.y,  Config.Vineyard["grapejuice"].coords.z + 0.2, '[E] Make Grape Juice')
 						if IsControlJustPressed(0, 38) then
-							if PlayerJob.name == "vineyard" then
-								TriggerServerEvent("prp-vineyard:server:grapeJuice")
-							else
-								ProjectRP.Functions.Notify("I dont think I work here...", "error")
-							end
+							TriggerServerEvent("prp-vineyard:server:grapeJuice")
 						end
 					end
 					
