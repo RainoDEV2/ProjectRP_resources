@@ -13,15 +13,14 @@ AddEventHandler('prp-vineyard:server:loadIngredients', function()
 
 	if xPlayer.PlayerData.items ~= nil then 
         if grape ~= nil then 
-            if grape.amount >= 23 then 
+            if grape.amount >= 20 then 
 
-                xPlayer.Functions.RemoveItem("grapejuice", 23, false)
+                xPlayer.Functions.RemoveItem("grapejuice", 20, false)
                 TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items['grapejuice'], "remove")
                 
                 TriggerClientEvent("prp-vineyard:client:loadIngredients", source)
-
             else
-                TriggerClientEvent('ProjectRP:Notify', source, "You do not have the correct items", 'error')   
+                TriggerClientEvent('ProjectRP:Notify', source, "You need 20 grape juice first", 'error')   
             end
         else
             TriggerClientEvent('ProjectRP:Notify', source, "You do not have the correct items", 'error')   
@@ -47,7 +46,7 @@ AddEventHandler('prp-vineyard:server:grapeJuice', function()
                 TriggerClientEvent("prp-vineyard:client:grapeJuice", source)
 
             else
-                TriggerClientEvent('ProjectRP:Notify', source, "You do not have the correct items", 'error')   
+                TriggerClientEvent('ProjectRP:Notify', source, "You need 16 grapes first", 'error')   
             end
         else
             TriggerClientEvent('ProjectRP:Notify', source, "You do not have the correct items", 'error')   

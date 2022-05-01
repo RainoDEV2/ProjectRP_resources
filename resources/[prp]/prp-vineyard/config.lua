@@ -18,6 +18,6 @@ Config.GrapeAmount = math.random(8, 12)
 
 Config.GrapeJuiceAmount = math.random(6, 10)
 
-Config.WineAmount = math.random(6, 10)
+Config.WineAmount = math.random(3, 4)
 
-Config.wineTimer = 180
+Config.wineTimer = 30
