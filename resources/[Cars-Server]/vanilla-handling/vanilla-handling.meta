@@ -1547,18 +1547,18 @@
 		<Item type="CHandlingData">
 			<handlingName>BANSHEE2</handlingName>
 			<fMass value="1150.000000" />
-			<fInitialDragCoeff value="12.500000" />
+			<fInitialDragCoeff value="7.500000" />
 			<fPercentSubmerged value="85.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000" />
 			<vecInertiaMultiplier x="1.000000" y="1.400000" z="1.200000" />
 			<fDriveBiasFront value="0.000000" />
 			<nInitialDriveGears value="5" />
-			<fInitialDriveForce value="0.347500" />
+			<fInitialDriveForce value="0.387500" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="6.000000" />
 			<fClutchChangeRateScaleDownShift value="6.000000" />
-			<fInitialDriveMaxFlatVel value="150.000000" />
-			<fBrakeForce value="1.000000" />
+			<fInitialDriveMaxFlatVel value="160.000000" />
+			<fBrakeForce value="1.400000" />
 			<fBrakeBiasFront value="0.550000" />
 			<fHandBrakeForce value="0.700000" />
 			<fSteeringLock value="40.000000" />
@@ -1862,13 +1862,13 @@
 		<Item type="CHandlingData">
 			<handlingName>BESTIAGTS</handlingName>
 			<fMass value="1800.000000" />
-			<fInitialDragCoeff value="9.500000" />
+			<fInitialDragCoeff value="9.900000" />
 			<fPercentSubmerged value="85.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000" />
 			<vecInertiaMultiplier x="1.000000" y="1.400000" z="1.200000" />
 			<fDriveBiasFront value="0.300000" />
 			<nInitialDriveGears value="6" />
-			<fInitialDriveForce value="0.340000" />
+			<fInitialDriveForce value="0.380000" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="5.200000" />
 			<fClutchChangeRateScaleDownShift value="5.200000" />
@@ -4932,18 +4932,18 @@
 		<Item type="CHandlingData">
 			<handlingName>CHAMPION</handlingName>
 			<fMass value="1500.000000"/>
-			<fInitialDragCoeff value="9.185000"/>
+			<fInitialDragCoeff value="7.785000"/>
 			<fPercentSubmerged value="85.000000"/>
 			<vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000"/>
 			<vecInertiaMultiplier x="1.000000" y="1.300000" z="1.45000"/>
 			<fDriveBiasFront value="0.000000"/>
 			<nInitialDriveGears value="6"/>
-			<fInitialDriveForce value="0.359000"/>
+			<fInitialDriveForce value="0.369440"/>
 			<fDriveInertia value="1.000000"/>
-			<fClutchChangeRateScaleUpShift value="4.80000"/>
-			<fClutchChangeRateScaleDownShift value="4.600000"/>
+			<fClutchChangeRateScaleUpShift value="5.50000"/>
+			<fClutchChangeRateScaleDownShift value="5.200000"/>
 			<fInitialDriveMaxFlatVel value="160.80000"/>
-			<fBrakeForce value="1.15000"/>
+			<fBrakeForce value="1.85000"/>
 			<fBrakeBiasFront value="0.498500"/>
 			<fHandBrakeForce value="0.650000"/>
 			<fSteeringLock value="40.000000"/>
@@ -8898,16 +8898,16 @@
 			<handlingName>ENTITY2</handlingName>
 			<fMass value="1400.000000" />
 			<fDownforceModifier value="175.000" />
-			<fInitialDragCoeff value="6.80500" />
+			<fInitialDragCoeff value="6.20500" />
 			<fPercentSubmerged value="85.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="-0.0" z="-0.100000" />
 			<vecInertiaMultiplier x="1.000000" y="1.300000" z="1.100000" />
 			<fDriveBiasFront value="0.00000" />
 			<nInitialDriveGears value="6" />
-			<fInitialDriveForce value="0.380000" />
+			<fInitialDriveForce value="0.397000" />
 			<fDriveInertia value="1.000000" />
-			<fClutchChangeRateScaleUpShift value="6.000000" />
-			<fClutchChangeRateScaleDownShift value="6.000000" />
+			<fClutchChangeRateScaleUpShift value="5.800000" />
+			<fClutchChangeRateScaleDownShift value="5.800000" />
 			<fInitialDriveMaxFlatVel value="170.000" />
 			<fBrakeForce value="1.30000" />
 			<fBrakeBiasFront value="0.60000" />
@@ -12509,18 +12509,18 @@
 		<Item type="CHandlingData">
 			<handlingName>IGNUS</handlingName>
 			<fMass value="1600.000000"/>
-			<fInitialDragCoeff value="9.850000"/>
+			<fInitialDragCoeff value="7.250000"/>
 			<fPercentSubmerged value="85.000000"/>
 			<vecCentreOfMassOffset x="0.000000" y="-0.00000" z="-0.040000"/>
 			<vecInertiaMultiplier x="1.000000" y="1.600000" z="1.600000"/>
 			<fDriveBiasFront value="0.485000"/>
 			<nInitialDriveGears value="7"/>
-			<fInitialDriveForce value="0.383500"/>
+			<fInitialDriveForce value="0.373500"/>
 			<fDriveInertia value="1.000000"/>
-			<fClutchChangeRateScaleUpShift value="7.800000"/>
-			<fClutchChangeRateScaleDownShift value="7.400000"/>
+			<fClutchChangeRateScaleUpShift value="7.000000"/>
+			<fClutchChangeRateScaleDownShift value="7.000000"/>
 			<fInitialDriveMaxFlatVel value="160.25000"/>
-			<fBrakeForce value="1.00000"/>
+			<fBrakeForce value="1.30000"/>
 			<fBrakeBiasFront value="0.495000"/>
 			<fHandBrakeForce value="0.650000"/>
 			<fSteeringLock value="40.500000"/>
@@ -17918,12 +17918,12 @@
 			<vecInertiaMultiplier x="1.000000" y="1.600000" z="1.80000" />
 			<fDriveBiasFront value="0.400000" />
 			<nInitialDriveGears value="8" />
-			<fInitialDriveForce value="0.300000" />
+			<fInitialDriveForce value="0.320000" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="5.800000" />
 			<fClutchChangeRateScaleDownShift value="5.800000" />
 			<fInitialDriveMaxFlatVel value="153.000000" />
-			<fBrakeForce value="0.800000" />
+			<fBrakeForce value="1.400000" />
 			<fBrakeBiasFront value="0.580000" />
 			<fHandBrakeForce value="0.60000" />
 			<fSteeringLock value="37.50000" />
@@ -18447,17 +18447,17 @@
 		<Item type="CHandlingData">
 			<handlingName>OUTLAW</handlingName>
 			<fMass value="850.000000" />
-			<fInitialDragCoeff value="30.000000" />
+			<fInitialDragCoeff value="15.000000" />
 			<fPercentSubmerged value="105.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="0.110000" z="-0.15000" />
 			<vecInertiaMultiplier x="1.100000" y="1.10000" z="1.600000" />
 			<fDriveBiasFront value="0.3750" />
 			<nInitialDriveGears value="3" />
-			<fInitialDriveForce value="0.4750" />
+			<fInitialDriveForce value="0.385000" />
 			<fDriveInertia value="1.000000" />
-			<fClutchChangeRateScaleUpShift value="2.300000" />
-			<fClutchChangeRateScaleDownShift value="2.300000" />
-			<fInitialDriveMaxFlatVel value="117.000000" />
+			<fClutchChangeRateScaleUpShift value="3.300000" />
+			<fClutchChangeRateScaleDownShift value="3.300000" />
+			<fInitialDriveMaxFlatVel value="140.000000" />
 			<fBrakeForce value="0.60000" />
 			<fBrakeBiasFront value="0.500000" />
 			<fHandBrakeForce value="0.37500" />
@@ -27421,7 +27421,7 @@
 		<Item type="CHandlingData">
 			<handlingName>TEMPESTA</handlingName>
 			<fMass value="1422.000000" />
-			<fInitialDragCoeff value="10.500000" />
+			<fInitialDragCoeff value="8.800000" />
 			<fPercentSubmerged value="85.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="0.050000" z="0.10000" />
 			<vecInertiaMultiplier x="1.000000" y="1.600000" z="1.700000" />
@@ -27431,7 +27431,7 @@
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="6.000000" />
 			<fClutchChangeRateScaleDownShift value="6.000000" />
-			<fInitialDriveMaxFlatVel value="157.000000" />
+			<fInitialDriveMaxFlatVel value="160.000000" />
 			<fBrakeForce value="1.000000" />
 			<fBrakeBiasFront value="0.450000" />
 			<fHandBrakeForce value="0.500000" />
@@ -28177,7 +28177,7 @@
 			<vecInertiaMultiplier x="1.000000" y="1.600000" z="1.600000" />
 			<fDriveBiasFront value="0.400000" />
 			<nInitialDriveGears value="8" />
-			<fInitialDriveForce value="0.320000" />
+			<fInitialDriveForce value="0.340000" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="5.800000" />
 			<fClutchChangeRateScaleDownShift value="5.800000" />
@@ -29466,13 +29466,13 @@
 		<Item type="CHandlingData">
 			<handlingName>VAGRANT</handlingName>
 			<fMass value="670.00000" />
-			<fInitialDragCoeff value="10.55000" />
+			<fInitialDragCoeff value="9.55000" />
 			<fPercentSubmerged value="105.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="-0.180000" z="-0.17000" />
 			<vecInertiaMultiplier x="1.200000" y="1.3000" z="1.300000" />
 			<fDriveBiasFront value="0.00000" />
 			<nInitialDriveGears value="6" />
-			<fInitialDriveForce value="0.33250" />
+			<fInitialDriveForce value="0.35250" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="2.300000" />
 			<fClutchChangeRateScaleDownShift value="2.300000" />
@@ -31547,8 +31547,8 @@
 		</Item>
 		<Item type="CHandlingData">
 			<handlingName>ZENO</handlingName>
-			<fMass value="1250.000000"/>
-			<fInitialDragCoeff value="9.450000"/>
+			<fMass value="1350.000000"/>
+			<fInitialDragCoeff value="8.450000"/>
 			<fPercentSubmerged value="85.000000"/>
 			<vecCentreOfMassOffset x="0.000000" y="0.00000" z="0.000000"/>
 			<vecInertiaMultiplier x="1.000000" y="1.600000" z="1.700000"/>
