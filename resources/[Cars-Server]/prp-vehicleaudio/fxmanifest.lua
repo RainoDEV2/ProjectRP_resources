@@ -18,6 +18,14 @@ files {
   'audioconfig/s63b44_sounds.dat54.rel',
   'sfx/dlc_s63b44/s63b44.awc',
   'sfx/dlc_s63b44/s63b44_npc.awc',
+  'audioconfig/ta028viper_game.dat151',
+  'audioconfig/ta028viper_game.dat151.nametable',
+  'audioconfig/ta028viper_game.dat151.rel',
+  'audioconfig/ta028viper_sounds.dat54',
+  'audioconfig/ta028viper_sounds.dat54.nametable',
+  'audioconfig/ta028viper_sounds.dat54.rel',
+  'sfx/dlc_ta028viper/ta028viper.awc',
+  'sfx/dlc_ta028viper/ta028viper_npc.awc',
   'audioconfig/b58b30.dat151',
   'audioconfig/b58b30.dat151.nametable',
   'audioconfig/b58b30_game.dat151.rel',
@@ -241,6 +249,9 @@ data_file 'AUDIO_WAVEPACK' 'sfx/dlc_npcul'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/s63b44_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/s63b44_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_s63b44'
+data_file 'AUDIO_GAMEDATA' 'audioconfig/ta028viper_game.dat'
+data_file 'AUDIO_SOUNDDATA' 'audioconfig/ta028viper_sounds.dat'
+data_file 'AUDIO_WAVEPACK' 'sfx/dlc_ta028viper'
 data_file 'AUDIO_GAMEDATA' 'audioconfig/sentinelsg4_game.dat'
 data_file 'AUDIO_SOUNDDATA' 'audioconfig/sentinelsg4_sounds.dat'
 data_file 'AUDIO_WAVEPACK' 'sfx/dlc_sentinelsg4'
