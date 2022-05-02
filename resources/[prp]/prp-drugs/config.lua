@@ -144,11 +144,11 @@ Config.DrugsPrice = {
         max = 100,
     },
     ["crack_baggy"] = {
-        min = 200,
-        max = 246,
+        min = 190,
+        max = 220,
     },
     ["coke_baggy"] = {
-        min = 162,
+        min = 140,
         max = 184,
     },
     ["meth_baggy"] = {
