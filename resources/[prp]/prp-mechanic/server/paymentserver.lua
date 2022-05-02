@@ -11,7 +11,10 @@ ProjectRP.Commands.Add('charge', 'Charge A Player', {{name = 'id', help = 'Playe
 	for k, v in pairs(Config.JobRoles) do if v == biller.PlayerData.job.name then havejob = true end end if havejob then
 		if billed ~= nil then
 				if billtype == "cash" then balance = billed.Functions.GetMoney(billtype)
-					if balance >= amount then billed.Functions.RemoveMoney('cash', amount) TriggerEvent("prp-bossmenu:server:addAccountMoney", tostring(biller.PlayerData.job.name), amount)	TriggerEvent('prp-payments:Tickets:Give', amount, tostring(biller.PlayerData.job.name))
+					if balance >= amount then 
+						billed.Functions.RemoveMoney('cash', amount)
+						exports["prp-management"]:AddMoney(tostring(biller.PlayerData.job.name), amount)
+						TriggerEvent('prp-payments:Tickets:Give', amount, tostring(biller.PlayerData.job.name))
 					else 
 						TriggerClientEvent("ProjectRP:Notify", source, "Customer doesn't have enough cash to pay", "error")
 						TriggerClientEvent("ProjectRP:Notify", tonumber(citizen), "You don't have enough cash to pay", "error")

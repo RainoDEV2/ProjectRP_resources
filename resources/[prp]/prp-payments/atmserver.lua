@@ -80,13 +80,11 @@ RegisterServerEvent('prp-payments:server:ATM:use', function(amount, billtype, ba
 				TriggerClientEvent("ProjectRP:Notify", src, "Withdrew $"..cv(amount).." from the "..Player.PlayerData.job.label.." account", "success")
 				Player.Functions.AddMoney('bank', amount)
 				exports["prp-management"]:RemoveMoney(tostring(Player.PlayerData.job.name), amount)
-				--TriggerEvent("prp-bossmenu:server:removeAccountMoney", tostring(Player.PlayerData.job.name), amount)
 			end
 		elseif billtype == "deposit" then
 			if bankB < amount then TriggerClientEvent("ProjectRP:Notify", src, "Not enough money in your bank", "error")
 			elseif bankB >= amount then
 				exports["prp-management"]:AddMoney(tostring(Player.PlayerData.job.name), amount)
-				--TriggerEvent("prp-bossmenu:server:addAccountMoney", tostring(Player.PlayerData.job.name), amount)
 				Player.Functions.RemoveMoney('bank', amount) Wait(1500)
 				TriggerClientEvent("ProjectRP:Notify", src, "Deposited $"..cv(amount).." into the "..Player.PlayerData.job.label.." account", "success")
 			end

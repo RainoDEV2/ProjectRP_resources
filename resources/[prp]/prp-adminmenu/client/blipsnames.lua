@@ -1,10 +1,9 @@
-ProjectRP = exports['prp-core']:GetCoreObject()
 local ShowBlips = false
 local ShowNames = false
 local NetCheck1 = false
 local NetCheck2 = false
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         Wait(1000)
         if NetCheck1 or NetCheck2 then
@@ -14,24 +13,26 @@ Citizen.CreateThread(function()
 end)
 
 RegisterNetEvent('prp-admin:client:toggleBlips', function()
+    TriggerServerEvent('prp-admin:server:check')
     if not ShowBlips then
         ShowBlips = true
         NetCheck1 = true
-        ProjectRP.Functions.Notify("Blips activated", "success")
+        ProjectRP.Functions.Notify(Lang:t("success.blips_activated"), "success")
     else
         ShowBlips = false
-        ProjectRP.Functions.Notify("Blips deactivated", "error")
+        ProjectRP.Functions.Notify(Lang:t("error.blips_deactivated"), "error")
     end
 end)
 
 RegisterNetEvent('prp-admin:client:toggleNames', function()
+    TriggerServerEvent('prp-admin:server:check')
     if not ShowNames then
         ShowNames = true
         NetCheck2 = true
-        ProjectRP.Functions.Notify("Names activated", "success")
+        ProjectRP.Functions.Notify(Lang:t("success.names_activated"), "success")
     else
         ShowNames = false
-        ProjectRP.Functions.Notify("Names deactivated", "error")
+        ProjectRP.Functions.Notify(Lang:t("error.names_deactivated"), "error")
     end
 end)
 
@@ -40,21 +41,34 @@ RegisterNetEvent('prp-admin:client:Show', function(players)
         local playeridx = GetPlayerFromServerId(player.id)
         local ped = GetPlayerPed(playeridx)
         local blip = GetBlipFromEntity(ped)
-        local name = player.id..'# '..player.name
+        local name = 'ID: '..player.id..' | '..player.name
 
-        -- Names Logic
-        local idTesta = CreateFakeMpGamerTag(ped, name, false, false, "", false)
+        local Tag = CreateFakeMpGamerTag(ped, name, false, false, "", false)
+        SetMpGamerTagAlpha(Tag, 0, 255) -- Sets "MP_TAG_GAMER_NAME" bar alpha to 100% (not needed just as a fail safe)
+        SetMpGamerTagAlpha(Tag, 2, 255) -- Sets "MP_TAG_HEALTH_ARMOUR" bar alpha to 100%
+        SetMpGamerTagAlpha(Tag, 4, 255) -- Sets "MP_TAG_AUDIO_ICON" bar alpha to 100%
+        SetMpGamerTagAlpha(Tag, 6, 255) -- Sets "MP_TAG_PASSIVE_MODE" bar alpha to 100%
+        SetMpGamerTagHealthBarColour(Tag, 25)  --https://wiki.rage.mp/index.php?title=Fonts_and_Colors
 
         if ShowNames then
-            SetMpGamerTagVisibility(idTesta, 0, true)
+            SetMpGamerTagVisibility(Tag, 0, true) -- Activates the player ID Char name and FiveM name
+            SetMpGamerTagVisibility(Tag, 2, true) -- Activates the health (and armor if they have it on) bar below the player names
             if NetworkIsPlayerTalking(playeridx) then
-                SetMpGamerTagVisibility(idTesta, 4, true)
+                SetMpGamerTagVisibility(Tag, 4, true) -- If player is talking a voice icon will show up on the left side of the name
             else
-                SetMpGamerTagVisibility(idTesta, 4, false)
+                SetMpGamerTagVisibility(Tag, 4, false)
+            end
+            if GetPlayerInvincible(playeridx) then
+                SetMpGamerTagVisibility(Tag, 6, true) -- If player is in godmode a circle with a line through it will show up
+            else
+                SetMpGamerTagVisibility(Tag, 6, false)
             end
         else
-            SetMpGamerTagVisibility(idTesta, 4, false)
-            SetMpGamerTagVisibility(idTesta, 0, false)
+            SetMpGamerTagVisibility(Tag, 0, false)
+            SetMpGamerTagVisibility(Tag, 2, false)
+            SetMpGamerTagVisibility(Tag, 4, false)
+            SetMpGamerTagVisibility(Tag, 6, false)
+            RemoveMpGamerTag(Tag) -- Unloads the tags till you activate it again
             NetCheck2 = false
         end
 

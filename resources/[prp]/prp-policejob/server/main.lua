@@ -244,12 +244,12 @@ end)
 
 
 RegisterServerEvent("axel:bill:player")
-AddEventHandler("axel:bill:player",function(playerID,price)
+AddEventHandler("axel:bill:player",function(playerId, price)
     local biller = ProjectRP.Functions.GetPlayer(source)
-    local billed = ProjectRP.Functions.GetPlayer(tonumber(playerID))
+    local billed = ProjectRP.Functions.GetPlayer(tonumber(playerId))
 
     billed.Functions.RemoveMoney("bank", price, "Paid PD Fine")
-    TriggerEvent('prp-bossmenu:server:addAccountMoney', "police", price)
+    exports["prp-management"]:AddMoney('police', price)
 end)
 
 ProjectRP.Commands.Add("fine", "Fine Player (Police Only)", {{name = "id", help = "Player ID"}, {name = "Fine", help = "Fine they are gonna recieve"}}, true, function(source, args)
@@ -257,10 +257,10 @@ ProjectRP.Commands.Add("fine", "Fine Player (Police Only)", {{name = "id", help 
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty then
         local playerId = tonumber(args[1])
-        local time = tonumber(args[2])
+        local amount = tonumber(args[2])
 
-        if time > 0 then
-            TriggerClientEvent("police:client:FineCommand", src, playerId, time)
+        if amount > 0 then
+            TriggerClientEvent("police:client:FineCommand", src, playerId, amount)
         else
             TriggerClientEvent('ProjectRP:Notify', src, 'Cannot fine for 0', 'error')
         end
@@ -784,7 +784,7 @@ RegisterNetEvent('police:server:BillPlayer', function(playerId, price)
     if Player.PlayerData.job.name == "police" then
         if OtherPlayer then
             OtherPlayer.Functions.RemoveMoney("bank", price, "paid-bills")
-            TriggerEvent('prp-bossmenu:server:addAccountMoney', "police", price)
+            exports["prp-management"]:AddMoney('police', price)
             TriggerClientEvent('ProjectRP:Notify', OtherPlayer.PlayerData.source, "You received a fine of $" .. price)
         end
     end

@@ -35,8 +35,7 @@ AddEventHandler('prp-pizzeria:server:pay:receipt', function(Price, Note, Id)
             Config.ActivePaymentsPizza[tonumber(Id)] = nil
             TriggerEvent('prp-pizzeria:give:receipt:to:workers', Note, Price)
             TriggerClientEvent('prp-pizzeria:client:sync:register', -1, Config.ActivePaymentsPizza)
-        
-            TriggerEvent('prp-bossmenu:server:addAccountMoney', 'pizza', Price)
+            exports["prp-management"]:AddMoney('pizza', Price)
         else
             TriggerClientEvent('ProjectRP:Notify', src, 'Error..', 'error')
         end

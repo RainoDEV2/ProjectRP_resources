@@ -71,23 +71,23 @@ AddEventHandler('prp-taxing:server:paytaxes', function(amount)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax.."in taxes.")
     elseif bankamount > poor and bankamount <= notbad then
         Player.Functions.RemoveMoney('bank', toint(tax), "Taxes paid")
-        TriggerEvent("prp-bossmenu:server:addAccountMoney", Config.Job, tax)
+        exports["prp-management"]:AddMoney(Config.Job, tax)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax1.."in taxes.")
     elseif bankamount > notbad and bankamount <= medium then
         Player.Functions.RemoveMoney('bank', toint(tax1), "Taxes paid")
-        TriggerEvent("prp-bossmenu:server:addAccountMoney", Config.Job, tax1)
+        exports["prp-management"]:AddMoney(Config.Job, tax1)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax1.."in taxes.")
     elseif bankamount > medium and bankamount <= rich then
         Player.Functions.RemoveMoney('bank', toint(tax2), "Taxes paid")
-        TriggerEvent("prp-bossmenu:server:addAccountMoney", Config.Job, tax2)
+        exports["prp-management"]:AddMoney(Config.Job, tax2)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax2.."in taxes.")
     elseif bankamount > rich and bankamount <= toorich then
         Player.Functions.RemoveMoney('bank', toint(tax3), "Taxes paid")
-        TriggerEvent("prp-bossmenu:server:addAccountMoney", Config.Job, tax3)
+        exports["prp-management"]:AddMoney(Config.Job, tax3)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax3.."in taxes.")
     elseif bankamount > toorich then
         Player.Functions.RemoveMoney('bank', toint(tax4), "Taxes paid")
-        TriggerEvent("prp-bossmenu:server:addAccountMoney", Config.Job, tax4)
+        exports["prp-management"]:AddMoney(Config.Job, tax4)
         TriggerEvent("prp-log:server:CreateLog", Config.Logs, "Taxes", "red", "**"..GetPlayerName(src) .. "** has paid $"..tax4.."in taxes.")
     end
 end)
