@@ -236,9 +236,9 @@ end)
 
 function PoliceCall()
     local pos = GetEntityCoords(PlayerPedId())
-    local chance = 75
+    local chance = 80
     if GetClockHours() >= 1 and GetClockHours() <= 6 then
-        chance = 25
+        chance = 40
     end
     if math.random(1, 100) <= chance then
         local closestPed = GetNearbyPed()
