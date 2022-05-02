@@ -113,7 +113,6 @@ end)
 
 -- Coke baggies
 ProjectRP.Functions.CreateUseableItem("coke_cured", function(source, item)
-    print('test')
     local Player = ProjectRP.Functions.GetPlayer(source)
 	if Player.Functions.GetItemByName('coke_cured') ~= nil then
         TriggerClientEvent('prp-labs:client:MakeCokeBags', source)
