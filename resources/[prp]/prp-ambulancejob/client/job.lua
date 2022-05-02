@@ -183,7 +183,7 @@ RegisterNetEvent('hospital:client:CheckStatus', function()
                             TriggerEvent('chat:addMessage', {
                                 color = { 255, 0, 0},
                                 multiline = false,
-                                args = {'Status Check', WeaponDamageList[v]}
+                                args = {'Status Check', ProjectRP.Shared.Weapons[v].damagereason}
                             })
                         end
                     elseif result["BLEED"] > 0 then
@@ -566,11 +566,11 @@ CreateThread(function()
         boxZone:onPlayerInOut(function(isPointInside)
             if isPointInside and PlayerJob.name =="ambulance" and onDuty then
                 inVehicle = true
-                exports['prp-core']:DrawText('[E] - Grab / Take Helicopter', 'left')
+                exports['prp-core']:DrawText('[E] - Grab / Store Helicopter', 'left')
                 EMSHelicopter(k)
             else
                 inVehicle = false
-                CheckHelicopter = false
+                CheckHeli = false
                 exports['prp-core']:HideText()
             end
         end)
