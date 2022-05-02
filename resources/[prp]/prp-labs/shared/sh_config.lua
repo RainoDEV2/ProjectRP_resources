@@ -49,7 +49,7 @@ Locales = { -- Interaction locales
 
 Config.Resupply = {
     enable = true,
-    amount = 5, -- Amount of ingredients that get added every x minutes in the druglabs.
+    amount = 4, -- Amount of ingredients that get added every x minutes in the druglabs.
     time = 30 -- In minutes
 }
 
