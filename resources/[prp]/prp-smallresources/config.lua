@@ -83,19 +83,19 @@ Config.Teleports = {
             drawText = '[E] Take Elevator Down'
         },
     },
-    --Coke Processing Enter/Exit
-    [2] = {
-        [1] = {
-            coords = vector4(909.49, -1589.22, 30.51, 92.24),
-            ["AllowVehicle"] = false, 
-            drawText = '[E] Enter Coke Processing'
-        },
-        [2] = {
-            coords = vector4(1088.81, -3187.57, -38.99, 181.7),
-            ["AllowVehicle"] = false,
-            drawText = '[E] Leave'
-        },
-    },
+    -- --Coke Processing Enter/Exit
+    -- [2] = {
+    --     [1] = {
+    --         coords = vector4(909.49, -1589.22, 30.51, 92.24),
+    --         ["AllowVehicle"] = false, 
+    --         drawText = '[E] Go inside'
+    --     },
+    --     [2] = {
+    --         coords = vector4(1088.81, -3187.57, -38.99, 181.7),
+    --         ["AllowVehicle"] = false,
+    --         drawText = '[E] Leave'
+    --     },
+    -- },
     -- Estate Agents Office Enter/Exit
     [3] = {
         [1] = {

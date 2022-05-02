@@ -532,50 +532,56 @@ ProjectRP.Functions.CreateCallback('prp-racing:server:GetTrackData', function(so
 end)
 
 ProjectRP.Commands.Add('createracingfob', 'Create a Racing Fob (Admin)', { {name='type', help='Basic/Master'}, {name='identifier', help='CitizenID or ID'}, {name='Racer Name', help='Racer Name to associate with Fob'} }, true, function(source, args)
-    local type = args[1]
-    local citizenid = args[2]
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    if Player.PlayerData.job.name == "mechanic" and Player.PlayerData.job.onduty then
+        local type = args[1]
+        local citizenid = args[2]
 
-    local name = {}
-    for i = 3, #args do
-        name[#name+1] = args[i]
-    end
-    name = table.concat(name, ' ')
+        local name = {}
+        for i = 3, #args do
+            name[#name+1] = args[i]
+        end
+        name = table.concat(name, ' ')
 
-    local fobTypes = {
-        ['basic'] = "fob_racing_basic",
-        ['master'] = "fob_racing_master"
-    }
+        local fobTypes = {
+            ['basic'] = "fob_racing_basic",
+            ['master'] = "fob_racing_master"
+        }
 
-    if fobTypes[type:lower()] then 
-        type = fobTypes[type:lower()]
-    else
-        TriggerClientEvent('ProjectRP:Notify', source, "Invalid fob type.", "error")
-        return
-    end
-
-    if tonumber(citizenid) then
-        local Player = ProjectRP.Functions.GetPlayer(tonumber(citizenid))
-        if Player then
-            citizenid = Player.PlayerData.citizenid
+        if fobTypes[type:lower()] then 
+            type = fobTypes[type:lower()]
         else
-            TriggerClientEvent('ProjectRP:Notify', source, "Citizen by that ID was not found.", "error")
+            TriggerClientEvent('ProjectRP:Notify', source, "Invalid fob type.", "error")
             return
         end
-    end
 
-    if #name >= Config.MaxRacerNameLength then
-        TriggerClientEvent('ProjectRP:Notify', source, 'The name is too long.', "error")
-        return
-    end
+        if tonumber(citizenid) then
+            local Player = ProjectRP.Functions.GetPlayer(tonumber(citizenid))
+            if Player then
+                citizenid = Player.PlayerData.citizenid
+            else
+                TriggerClientEvent('ProjectRP:Notify', source, "Citizen by that ID was not found.", "error")
+                return
+            end
+        end
 
-    if #name <= Config.MinRacerNameLength then
-        TriggerClientEvent('ProjectRP:Notify', source, 'The name is too short.', "error")
-        return
-    end
+        if #name >= Config.MaxRacerNameLength then
+            TriggerClientEvent('ProjectRP:Notify', source, 'The name is too long.', "error")
+            return
+        end
 
-    ProjectRP.Functions.GetPlayer(source).Functions.AddItem(type, 1, nil, { owner = citizenid, name = name })
-    TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items[type], 'add', 1)
-end, 'admin')
+        if #name <= Config.MinRacerNameLength then
+            TriggerClientEvent('ProjectRP:Notify', source, 'The name is too short.', "error")
+            return
+        end
+
+        ProjectRP.Functions.GetPlayer(source).Functions.AddItem(type, 1, nil, { owner = citizenid, name = name })
+        TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items[type], 'add', 1)
+    else
+        TriggerClientEvent('ProjectRP:Notify', src, 'Only an on-duty mechanic can do this', 'error')
+    end
+end)
 
 ProjectRP.Functions.CreateUseableItem("fob_racing_basic", function(source, item)
     UseRacingFob(source, item)

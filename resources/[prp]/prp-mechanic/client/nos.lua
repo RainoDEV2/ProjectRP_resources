@@ -2,7 +2,7 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 --========================================================== NOS
 
 local NitrousActivated = false -- LEAVE THIS FALSE
-local NitrousBoost = 25.0 -- This changes boost power, have fun.
+local NitrousBoost = 10.0 -- This changes boost power, have fun.
 local NitrousUseRate = 0.5 -- How fast the nitrous drains
 local VehicleNitrous = {}
 local OldFlame = true -- Enable to enable ProjectRP flame effect.

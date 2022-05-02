@@ -139,10 +139,11 @@ RegisterNetEvent('prison:client:Enter', function(time)
 	ProjectRP.Functions.Notify("You're in jail for " .. time .. " months..", "error")
 
 	ProjectRP.Functions.Notify("Your property has been seized, you'll get everything back when your time is up..")
-	DoScreenFadeOut(500)
+	DoScreenFadeOut(100)
 	while not IsScreenFadedOut() do
-		Wait(10)
+		Wait(100)
 	end
+	Wait(500)
 	local RandomStartPosition = Config.Locations.spawns[math.random(1, #Config.Locations.spawns)]
 	SetEntityCoords(PlayerPedId(), RandomStartPosition.coords.x, RandomStartPosition.coords.y, RandomStartPosition.coords.z - 0.9, 0, 0, 0, false)
 	SetEntityHeading(PlayerPedId(), RandomStartPosition.coords.w)

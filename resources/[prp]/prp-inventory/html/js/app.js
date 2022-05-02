@@ -632,9 +632,33 @@ function FormatItemInfo(itemData, dom) {
             var res = str.slice(12);
             var cardNumber = "************" + res;
             $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
-        } else if (itemData.name == "labkey") {
+        } else if (itemData.name == "meth_batch") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Lab: " + itemData.info.lab + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "meth_cured") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "meth_baggy") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "coke_batch") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "coke_cured") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "coke_baggy") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "weed_batch") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "weed_cured") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "weed_baggy") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
         } else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>" + itemData.description + "</p>");
