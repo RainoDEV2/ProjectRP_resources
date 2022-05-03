@@ -66,11 +66,11 @@ Crafting.Oven = {
 }
 
 Crafting.Coffee = {
-	[1] = { ['coffee'] = { ["coffee"] = 0 }, },
-	[2] = { ['nekolatte'] = { ["coffee"] = 0 },  },
+	[1] = { ['coffee'] = { ["milk"] = 1 }, },
+	[2] = { ['nekolatte'] = { ["milk"] = 1 },  },
 	[3] = { ['bobatea'] = { ['boba'] = 1, ['milk'] = 1, }, },
 	[4] = { ['bbobatea'] = { ['boba'] = 1, ['milk'] = 1, ['sugar'] = 1, }, },
-	[5] = { ['gbobatea'] = { ['boba'] = 1, ['milk'] = 1, ['strawberry'] = 1, }, },
+	[5] = { ['gbobatea'] = { ['boba'] = 1, ['milk'] = 1, ['mint'] = 1, }, },
 	[6] = { ['obobatea'] = { ['boba'] = 1, ['milk'] = 1, ['orange'] = 1, }, },
 	[7] = { ['pbobatea'] = { ['boba'] = 1, ['milk'] = 1, ['strawberry'] = 1, }, },
 	[8] = { ['mocha'] = { ['milk'] = 1, ['sugar'] = 1, }, },

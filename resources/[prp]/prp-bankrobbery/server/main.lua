@@ -142,9 +142,9 @@ RegisterNetEvent('prp-bankrobbery:server:recieveItem', function(type)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.item], "add")
                 elseif Config.RewardTypes[itemType].type == "money" then
                     local info = {
-                        worth = math.random(2300, 3200)
+                        worth = math.random(2000, 3650)
                     }
-                    ply.Functions.AddItem('markedbills', math.random(2,3), false, info)
+                    ply.Functions.AddItem('markedbills', math.random(2,5), false, info)
                     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['markedbills'], "add")
                 end
             else

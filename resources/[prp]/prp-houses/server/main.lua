@@ -225,7 +225,7 @@ RegisterNetEvent('prp-houses:server:buyHouse', function(house)
         exports.oxmysql:execute('UPDATE houselocations SET owned = ? WHERE name = ?', {1, house})
         TriggerClientEvent('prp-houses:client:SetClosestHouse', src)
         pData.Functions.RemoveMoney('bank', HousePrice, "bought-house") -- 21% Extra house costs
-        TriggerEvent('prp-bossmenu:server:addAccountMoney', "realestate", (HousePrice / 100) * math.random(18, 25))
+        exports["prp-management"]:AddMoney("realestate", (HousePrice / 100) * math.random(18, 25))
         TriggerEvent('prp-log:server:CreateLog', 'house', 'House Purchased:', 'green', '**Address**:\n'..house:upper()..'\n\n**Purchase Price**:\n$'..HousePrice..'\n\n**Purchaser**:\n'..pData.PlayerData.charinfo.firstname..' '..pData.PlayerData.charinfo.lastname)
     else
         TriggerClientEvent('ProjectRP:Notify', source, "You dont have enough money..", "error")

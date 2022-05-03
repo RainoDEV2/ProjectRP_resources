@@ -1,20 +1,30 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'prp-AdminMenu'
-version '1.0.0'
-
 ui_page 'html/index.html'
+
+shared_scripts {
+    '@prp-core/shared/locale.lua',
+    'locales/en.lua', -- Change to the language you want
+}
 
 client_scripts {
     '@menuv/menuv.lua',
     'client/noclip.lua',
     'client/blipsnames.lua',
-    'client/client.lua',
-    'client/events.lua'
+    'client/main.lua',
+    'client/selfmenu.lua',
+    'client/playersmenu.lua',
+    'client/servermenu.lua',
+    'client/vehiclemenu.lua',
+    'client/devmenu.lua'
 }
 
-server_script 'server/server.lua'
+server_scripts {
+    '@oxmysql/lib/MySQL.lua',
+    'server/main.lua',
+    'server/commands.lua',
+}
 
 files { -- Credits to https://github.com/LVRP-BEN/bl_coords for clipboard copy method
     'html/index.html',
@@ -22,3 +32,5 @@ files { -- Credits to https://github.com/LVRP-BEN/bl_coords for clipboard copy m
 }
 
 dependency 'menuv'
+
+lua54 'yes'

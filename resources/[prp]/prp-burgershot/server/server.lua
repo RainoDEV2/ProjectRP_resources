@@ -154,7 +154,7 @@ AddEventHandler('prp-burgershot:server:pay:receipt', function(Price, Note, Id)
         if Config.ActivePayments[tonumber(Id)] ~= nil then
             Config.ActivePayments[tonumber(Id)] = nil
             TriggerEvent('prp-burgershot:give:receipt:to:workers', Note, Price)
-            TriggerEvent('prp-bossmenu:server:addAccountMoney', 'burger', Price)
+            exports["prp-management"]:AddMoney("burger", Price)
             TriggerClientEvent('prp-burgershot:client:sync:register', -1, Config.ActivePayments)
         else
             TriggerClientEvent('ProjectRP:Notify', src, 'Error..', 'error')
@@ -188,7 +188,6 @@ AddEventHandler('prp-burgershot:server:sell:tickets', function()
             for i = 1, v.amount do
                 Player.Functions.RemoveItem('burger-ticket', 1)
                 Player.Functions.AddMoney('cash', math.random(54, 109), 'burgershot-payment')
-                -- TriggerEvent('prp-bossmenu:server:addAccountMoney', 'burger', math.random(60, 150))
                 Citizen.Wait(1000)
             end
         end

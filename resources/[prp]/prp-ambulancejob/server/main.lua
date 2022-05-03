@@ -20,7 +20,7 @@ RegisterNetEvent('hospital:server:SendToBed', function(bedId, isRevive)
 	TriggerClientEvent('hospital:client:SendToBed', src, bedId, Config.Locations["beds"][bedId], isRevive)
 	TriggerClientEvent('hospital:client:SetBed', -1, bedId, true)
 	Player.Functions.RemoveMoney("bank", Config.BillCost , "Checked in at hospital")
-	TriggerEvent('prp-bossmenu:server:addAccountMoney', "ambulance", Config.BillCost)
+	exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
 	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
@@ -37,7 +37,7 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 				TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken...', 'error')
 			end
 			Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned at hospital")
-			TriggerEvent('prp-bossmenu:server:addAccountMoney', "ambulance", Config.BillCost)
+			exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
 			TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 			return
 		end
@@ -52,7 +52,7 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 		TriggerClientEvent('ProjectRP:Notify', src, 'All your possessions have been taken...', 'error')
 	end
 	Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned at hospital")
-	TriggerEvent('prp-bossmenu:server:addAccountMoney', "ambulance", Config.BillCost)
+	exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
 	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 

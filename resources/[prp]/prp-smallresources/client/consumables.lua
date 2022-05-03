@@ -106,26 +106,25 @@ end)
 
 RegisterNetEvent('animation:armor')
 AddEventHandler('animation:armor', function()
-		inanimation = true
-		local lPed = GetPlayerPed(-1)
-		RequestAnimDict("clothingshirt")
-		while not HasAnimDictLoaded("clothingshirt") do
-			Citizen.Wait(0)
-		end
+    inanimation = true
+    local lPed = GetPlayerPed(-1)
+    RequestAnimDict("clothingshirt")
+    while not HasAnimDictLoaded("clothingshirt") do
+        Citizen.Wait(0)
+    end
 
-		if IsEntityPlayingAnim(lPed, "clothingshirt", "try_shirt_positive_d", 3) then
-			ClearPedSecondaryTask(lPed)
-		else
-			TaskPlayAnim(lPed, "clothingshirt", "try_shirt_positive_d", 8.0, -8, -1, 49, 0, 0, 0, 0)
-			seccount = 4
-			while seccount > 0 do
-				Citizen.Wait(7500)
-				seccount = seccount - 1
-			end
-			ClearPedSecondaryTask(lPed)
-		end		
-		inanimation = false
-
+    if IsEntityPlayingAnim(lPed, "clothingshirt", "try_shirt_positive_d", 3) then
+        ClearPedSecondaryTask(lPed)
+    else
+        TaskPlayAnim(lPed, "clothingshirt", "try_shirt_positive_d", 8.0, -8, -1, 49, 0, 0, 0, 0)
+        seccount = 4
+        while seccount > 0 do
+            Citizen.Wait(7500)
+            seccount = seccount - 1
+        end
+        ClearPedSecondaryTask(lPed)
+    end		
+    inanimation = false
 end)
 
 RegisterNetEvent('consumables:client:UseArmor', function()
@@ -146,68 +145,66 @@ end)
 
 RegisterNetEvent('prp-items:client:eat')
 AddEventHandler('prp-items:client:eat', function(ItemName, PropName)
- 			Citizen.SetTimeout(1000, function()
-				exports['prp-smallresources']:AddProp(PropName)
-				TriggerEvent('prp-inventory:client:set:busy', true)
-				exports['prp-smallresources']:RequestAnimationDict("mp_player_inteat@burger")
-				TaskPlayAnim(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 8.0, 1.0, -1, 49, 0, 0, 0, 0)
- 				ProjectRP.Functions.Progressbar("eat", "Eating..", 10000, false, true, {
- 					disableMovement = false,
- 					disableCarMovement = false,
- 					disableMouse = false,
- 					disableCombat = true,
-				 }, {}, {}, {}, function() -- Done
-					 exports['prp-smallresources']:RemoveProp()
-					 TriggerEvent('prp-inventory:client:set:busy', false)
-					-- TriggerServerEvent('hud:server:RelieveStress', math.random(2, 3))
-					 TriggerServerEvent('ProjectRP:Server:RemoveItem', ItemName, 1)
-					 StopAnimTask(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 1.0)
-					 TriggerEvent("prp-inventory:client:ItemBox", ProjectRP.Shared.Items[ItemName], "remove")
-					 if ItemName == 'burger-heartstopper' then
-						TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(30, 50))
-						TriggerServerEvent('hud:server:RelieveStress', math.random(30, 50))
-                     elseif ItemName == 'burger-moneyshot' then 
-                        TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(20, 24))
-						TriggerServerEvent('hud:server:RelieveStress', math.random(20, 25))
-                     elseif ItemName == 'burger-torpedo' then 
-                        TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(14, 18))
-						TriggerServerEvent('hud:server:RelieveStress', math.random(14, 18))
-                     else   
-						TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(20, 35))
-					 end
-				 	end, function()
-					exports['prp-smallresources']:RemoveProp()
-					TriggerEvent('prp-inventory:client:set:busy', false)
- 					ProjectRP.Functions.Notify("Cancelled..", "error")
-					StopAnimTask(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 1.0)
- 				end)
- 			end)
+    Citizen.SetTimeout(1000, function()
+        exports['prp-smallresources']:AddProp(PropName)
+        TriggerEvent('prp-inventory:client:set:busy', true)
+        exports['prp-smallresources']:RequestAnimationDict("mp_player_inteat@burger")
+        TaskPlayAnim(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 8.0, 1.0, -1, 49, 0, 0, 0, 0)
+        ProjectRP.Functions.Progressbar("eat", "Eating..", 10000, false, true, {
+            disableMovement = false,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = true,
+            }, {}, {}, {}, function() -- Done
+                exports['prp-smallresources']:RemoveProp()
+                TriggerEvent('prp-inventory:client:set:busy', false)
+                TriggerServerEvent('ProjectRP:Server:RemoveItem', ItemName, 1)
+                StopAnimTask(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 1.0)
+                TriggerEvent("prp-inventory:client:ItemBox", ProjectRP.Shared.Items[ItemName], "remove")
+                if ItemName == 'burger-heartstopper' then
+                    TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(30, 50))
+                    TriggerServerEvent('hud:server:RelieveStress', math.random(30, 50))
+                elseif ItemName == 'burger-moneyshot' then 
+                    TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(20, 24))
+                    TriggerServerEvent('hud:server:RelieveStress', math.random(20, 25))
+                elseif ItemName == 'burger-torpedo' then 
+                    TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(14, 18))
+                    TriggerServerEvent('hud:server:RelieveStress', math.random(14, 18))
+                else   
+                    TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + math.random(20, 35))
+                end
+            end, function()
+            exports['prp-smallresources']:RemoveProp()
+            TriggerEvent('prp-inventory:client:set:busy', false)
+            ProjectRP.Functions.Notify("Cancelled..", "error")
+            StopAnimTask(PlayerPedId(), 'mp_player_inteat@burger', 'mp_player_int_eat_burger', 1.0)
+        end)
+    end)
 end)
-
 
 RegisterNetEvent('prp-items:client:drinkbeer')
 AddEventHandler('prp-items:client:drinkbeer', function(ItemName, PropName)
 	TriggerServerEvent('ProjectRP:Server:RemoveItem', ItemName, 1)
- Citizen.SetTimeout(1000, function()
- 	TriggerEvent('prp-smallresources:addprop:with:anim', PropName, 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 10000)
- 	ProjectRP.Functions.Progressbar("drink", "Drinking...", 1000, false, true, {
-		disableMovement = true,
-		disableCarMovement = false,
-		disableMouse = false,
-		disableCombat = true,
-	 }, {}, {}, {}, function() -- Done
-		 exports['prp-smallresources']:RemoveProp()
-     TriggerEvent("prp-inventory:client:ItemBox", ProjectRP.Shared.Items["carapils"], "remove")
-     TriggerServerEvent('prp-hud:Server:RelieveStress', math.random(2, 6))
-		 TriggerEvent("prp-police:client:SetStatus", "alcohol", math.random(1, 2))
-     TriggerEvent("prp-items:client:Biertjuh")
-     SetPedIsDrunk(PlayerPedId(), true)
-	 end, function()
-		exports['prp-smallresources']:RemoveProp()
- 		ProjectRP.Functions.Notify("Cancelled.", "error")
-		 TriggerServerEvent('ProjectRP:Server:AddItem', ItemName, 1)
- 	end)
- end)
+    Citizen.SetTimeout(1000, function()
+        TriggerEvent('prp-smallresources:addprop:with:anim', PropName, 'amb@world_human_drinking@coffee@male@idle_a', "idle_c", 10000)
+        ProjectRP.Functions.Progressbar("drink", "Drinking...", 1000, false, true, {
+            disableMovement = true,
+            disableCarMovement = false,
+            disableMouse = false,
+            disableCombat = true,
+        }, {}, {}, {}, function() -- Done
+            exports['prp-smallresources']:RemoveProp()
+        TriggerEvent("prp-inventory:client:ItemBox", ProjectRP.Shared.Items["carapils"], "remove")
+        TriggerServerEvent('prp-hud:Server:RelieveStress', math.random(2, 6))
+            TriggerEvent("prp-police:client:SetStatus", "alcohol", math.random(1, 2))
+        TriggerEvent("prp-items:client:Biertjuh")
+        SetPedIsDrunk(PlayerPedId(), true)
+        end, function()
+            exports['prp-smallresources']:RemoveProp()
+            ProjectRP.Functions.Notify("Cancelled.", "error")
+            TriggerServerEvent('ProjectRP:Server:AddItem', ItemName, 1)
+        end)
+    end)
 end)
 
 RegisterNetEvent('prp-items:client:drink:slushy')

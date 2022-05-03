@@ -1,14 +1,14 @@
 -- Front Door created by Quackers
 Config.DoorList['Front Door'] = {
+    audioRemote = false,
     doorType = 'double',
     distance = 2,
     doorRate = 1.0,
     doors = {
-        {objName = 526179188, objYaw = 0.0, objCoords = vec3(-581.667786, -1069.627197, 22.489748)},
-        {objName = -69331849, objYaw = 0.0, objCoords = vec3(-580.361084, -1069.627197, 22.489748)}
+        {objName = -69331849, objYaw = 0.0, objCoords = vec3(-580.361084, -1069.627197, 22.489748)},
+        {objName = 526179188, objYaw = 0.0, objCoords = vec3(-581.667786, -1069.627197, 22.489748)}
     },
     authorizedJobs = { ['catcafe'] = 0 },
-    audioRemote = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
