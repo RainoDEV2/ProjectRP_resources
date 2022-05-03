@@ -362,7 +362,7 @@ RegisterNetEvent('prp-catcafe:client:Eat', function(itemName)
         TriggerEvent('animations:client:EmoteCommandStart', {"c"})
 		if ProjectRP.Shared.Items[itemName].thirst then TriggerServerEvent("ProjectRP:Server:SetMetaData", "thirst", ProjectRP.Functions.GetPlayerData().metadata["thirst"] + ProjectRP.Shared.Items[itemName].thirst) end
 		if ProjectRP.Shared.Items[itemName].hunger then TriggerServerEvent("ProjectRP:Server:SetMetaData", "hunger", ProjectRP.Functions.GetPlayerData().metadata["hunger"] + ProjectRP.Shared.Items[itemName].hunger) end
-        TriggerServerEvent('hud:server:RelieveStress', math.random(2, 4))
+        TriggerServerEvent('hud:server:RelieveStress', math.random(20, 30))
     end)
 end)
 
