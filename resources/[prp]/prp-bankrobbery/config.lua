@@ -4,14 +4,14 @@ Config.UseTarget = true -- Use prp-target interactions (don't change this, go to
 
 Config.ItemTiers = 1
 
-Config.MinimumPaletoPolice = 3
+Config.MinimumPaletoPolice = 2
 Config.MinimumPacificPolice = 3
-Config.MinimumFleecaPolice = 1
-Config.MinimumThermitePolice = 1
+Config.MinimumFleecaPolice = 2
+Config.MinimumThermitePolice = 2
 Config.DispatchCooldown = 5 -- The amount of minutes it takes for the cops to be able to be called again after they were called
 
 Config.HitsNeeded = 7 -- The amount of powerstation needed to be hit to cause a blackout
-Config.BlackoutTimer = 8 -- The amount of minutes a blackout will take until all power comes back
+Config.BlackoutTimer = 15 -- The amount of minutes a blackout will take until all power comes back
 
 Config.RewardTypes = {
     [1] = {
