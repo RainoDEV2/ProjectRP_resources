@@ -90,27 +90,27 @@ Config.ArmoryWhitelist = {
 }
 
 Config.Prices = {
-	['copper'] = { name = 'copper', amount = 1 },
-	['plastic'] = { name = 'plastic', amount = 1 },
-	['metalscrap'] = { name = 'metalscrap', amount = 1 },
-	['steel'] = { name = 'steel', amount = 1 },
-	['glass'] = { name = 'glass', amount = 1 },
-	['iron'] = { name = 'iron', amount = 1 },
-	['rubber'] = { name = 'rubber', amount = 1 },
-	['aluminum'] = { name = 'aluminium', amount = 1 },
-	['bottle'] = { name = 'bottle', amount = 1 },
-	['can'] = { name = 'bottle', amount = 1 },
+	['copper'] = { name = 'copper', amount = 40 },
+	['plastic'] = { name = 'plastic', amount = 40 },
+	['metalscrap'] = { name = 'metalscrap', amount = 40 },
+	['steel'] = { name = 'steel', amount = 40 },
+	['glass'] = { name = 'glass', amount = 40 },
+	['iron'] = { name = 'iron', amount = 40 },
+	['rubber'] = { name = 'rubber', amount = 40 },
+	['aluminum'] = { name = 'aluminium', amount = 40 },
+	['bottle'] = { name = 'bottle', amount = 24 },
+	['can'] = { name = 'bottle', amount = 24 },
 }
 
 Config.DumpItems = {
-    "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "bottle"
+    "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "rubber"
 }
 
-Config.tenmin = "2"
-Config.tenmax = "5"
+Config.tenmin = "8"
+Config.tenmax = "12"
 
-Config.bulkmin = "5"
-Config.bulkmax = "14"
+Config.bulkmin = "30"
+Config.bulkmax = "36"
 
 Config.PedList = {
 	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Recycle'].location, heading = Config.Locations['Recycle'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine

@@ -17,6 +17,7 @@ data_file 'FIVEM_LOVES_YOU_341B23A2F0E0F131' 'popgroups.ymt'
 
 files {
 	'events.meta',
+	'mapzoomdata.meta',
 	'popgroups.ymt',
 	'relationships.dat'
 }

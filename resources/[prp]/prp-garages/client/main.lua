@@ -78,31 +78,31 @@ local function CreateZone(type, garage, index)
 
     if type == 'in' then
         size = 4
-        coords = vector3(garage.putVehicle.x, garage.putVehicle.y, garage.putVehicle.z) 
+        coords = vector3(garage.putVehicle.x, garage.putVehicle.y, garage.putVehicle.z)
         heading = garage.spawnPoint.w
         minz = coords.z - 1.0
         maxz = coords.z + 2.0
     elseif type == 'out' then
         size = 2
-        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
         heading = garage.spawnPoint.w
         minz = coords.z - 1.0
         maxz = coords.z + 2.0
     elseif type == 'marker' then
         size = 60
-        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
         heading = garage.spawnPoint.w
         minz = coords.z - 7.5
         maxz = coords.z + 7.0
     elseif type == 'hmarker' then
         size = 20
-        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
         heading = 0
         minz = coords.z - 4.0
         maxz = coords.z + 2.0
     elseif type == 'house' then
         size = 2
-        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z) 
+        coords = vector3(garage.takeVehicle.x, garage.takeVehicle.y, garage.takeVehicle.z)
         heading = 0
         minz = coords.z - 1.0
         maxz = coords.z + 2.0
