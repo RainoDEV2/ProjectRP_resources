@@ -1,7 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'prp-Menu'
+description 'PRP-Menu'
 version '0.0.1'
 
 client_script 'client/main.lua'
@@ -13,3 +13,5 @@ files {
     'html/script.js',
     'html/style.css'
 }
+
+lua54 'yes'

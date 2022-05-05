@@ -779,3 +779,101 @@ CREATE TABLE IF NOT EXISTS `configs` (
 INSERT INTO `configs` (`name`, `config`) VALUES (
 	'keylabs', '{"worth1":0,"worth3":0,"washer3":0,"cokelab":0,"weedlab":0,"worth4":0,"methlab":0,"methlab2":0,"washer1":0,"worth2":0,"washer4":0,"washer2":0}'
 );
+
+
+-- LOAF HOUSING
+CREATE TABLE IF NOT EXISTS `loaf_properties` (
+  `owner` VARCHAR(100) NOT NULL,
+  `propertyid` INT NOT NULL,
+  `shell` VARCHAR(75) NOT NULL,
+  `furniture` LONGTEXT,
+  `id` VARCHAR(10),
+  `rent` VARCHAR(100),
+  PRIMARY KEY (`owner`, `propertyid`)
+);
+
+CREATE TABLE IF NOT EXISTS `loaf_rent` (
+  `rent_wallet` VARCHAR(100) NOT NULL,
+  `owner` VARCHAR(100) NOT NULL,
+  `propertyid` INT NOT NULL,
+  `balance` INT NOT NULL DEFAULT 0,
+  `rent_due` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`rent_wallet`)
+);
+
+CREATE TABLE IF NOT EXISTS `loaf_furniture` (
+  `identifier` VARCHAR(100) NOT NULL,
+  `object` VARCHAR(100) NOT NULL,
+  `amount` INT NOT NULL DEFAULT 0,
+  PRIMARY KEY (`identifier`, `object`)
+);
+
+CREATE TABLE IF NOT EXISTS `loaf_current_property` (
+  `identifier` VARCHAR(100) NOT NULL,
+  `propertyid` INT NOT NULL,
+  `id` VARCHAR(10) NOT NULL,
+  PRIMARY KEY (`identifier`)
+);
+
+-- LOAF REALATOR
+CREATE TABLE IF NOT EXISTS `loaf_houses` (
+  `id` INT NOT NULL,
+  
+  `label` VARCHAR(40) NOT NULL DEFAULT "Property",
+  `house_apart` VARCHAR(40) NOT NULL DEFAULT "house",
+
+  `interior_type` VARCHAR(40) NOT NULL DEFAULT "shell",
+  `interior` VARCHAR(40) NOT NULL,
+  `category` VARCHAR(40),
+
+  `entrance` VARCHAR(255) NOT NULL,
+  `price` INT NOT NULL DEFAULT 100000,
+
+  `garage_entrance` VARCHAR(255),
+  `garage_exit` VARCHAR(255),
+
+  PRIMARY KEY(`id`)
+);
+
+-- LOAF GARAGE
+ALTER TABLE `player_vehicles` ADD COLUMN IF NOT EXISTS `damages` LONGTEXT;
+ALTER TABLE `player_vehicles` ADD COLUMN IF NOT EXISTS `garage` VARCHAR(50) NOT NULL DEFAULT "square";
+
+UPDATE `player_vehicles` SET `damages`=NULL WHERE `damages` IS NOT NULL;
+
+-- LOAF BILLING
+CREATE TABLE IF NOT EXISTS `loaf_invoices` (
+  `id` VARCHAR(15), -- unique bill id
+  `issued` DATE DEFAULT CURRENT_DATE, -- the date the bill was issued
+
+  `biller` VARCHAR(150) NOT NULL, -- the identifier who issued the bill
+  `biller_name` VARCHAR(150) NOT NULL, -- the name of the person who issued the bill
+  `billed` VARCHAR(150) NOT NULL, -- the identifier who received the bill
+  `billed_name` VARCHAR(150) NOT NULL, -- the name of the person who received the bill
+  `owner` VARCHAR(150) NOT NULL, -- current person that has the bill
+
+  `due` DATE NOT NULL, -- last date for signing, before interest starts
+  `interest` INT NOT NULL DEFAULT 0, -- interest, in percent 
+  `late` INT NOT NULL DEFAULT 0, -- how many days late the invoice was paid
+
+  `amount` INT NOT NULL DEFAULT 0, -- the price of the bill
+  `name` VARCHAR(150) NOT NULL, -- the name of the bill, used by scripts
+  `description` VARCHAR(150) NOT NULL DEFAULT "Unknown", -- the bill description (shown to players)
+
+  `company` VARCHAR(50),
+  `company_name` VARCHAR(150),
+
+  `signed` BOOLEAN NOT NULL DEFAULT 0, -- if the bill has been paid
+  `signature` LONGTEXT, -- image data (url/base64) for the signature
+
+  PRIMARY KEY (`id`)
+);
+
+-- LOAF KEY SYSTEM
+CREATE TABLE IF NOT EXISTS `loaf_keys` (
+  `unique_id` VARCHAR(15) NOT NULL,
+  `key_id` VARCHAR(255) NOT NULL,
+  `identifier` VARCHAR(255) NOT NULL,
+  `key_data` LONGTEXT,
+  PRIMARY KEY (`unique_id`)
+);

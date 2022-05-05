@@ -1030,6 +1030,29 @@ PRPShared.Jobs = {
             },
         },
 	},
+    ['rea'] = {
+        label = "Real estate agent",
+        defaultDuty = true,
+        grades = {
+            ['0'] = {
+                name = 'Trainee',
+                payment = 75
+            },
+            ['1'] = {
+                name = 'Agent',
+                payment = 100
+            },
+            ['2'] = {
+                name = 'Manager',
+                payment = 150
+            },
+            ['3'] = {
+                name = 'Boss',
+                payment = 200,
+                isboss = true
+            },
+        },
+    },
 	['realestate'] = {
 		label = 'Real Estate',
 		defaultDuty = true,
