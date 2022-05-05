@@ -1,10 +1,10 @@
 -- Event Handler
 
-AddEventHandler('playerDropped', function()
+AddEventHandler('playerDropped', function(reason)
     local src = source
     if ProjectRP.Players[src] then
         local Player = ProjectRP.Players[src]
-        TriggerEvent('prp-log:server:CreateLog', 'joinleave', 'Dropped', 'red', '**' .. GetPlayerName(src) .. '** (' .. Player.PlayerData.license .. ') left..')
+        TriggerEvent('prp-log:server:CreateLog', 'joinleave', 'Dropped', 'red', '**' .. GetPlayerName(src) .. '** (' .. Player.PlayerData.license .. ') left..\n**Reason**:\n '..reason..'')
         Player.Functions.Save()
         ProjectRP.Players[src] = nil
     end
@@ -36,6 +36,9 @@ AddEventHandler('chatMessage', function(source, n, message)
         end
     end
 end)
+
+
+
 
 -- Player Connecting
 
