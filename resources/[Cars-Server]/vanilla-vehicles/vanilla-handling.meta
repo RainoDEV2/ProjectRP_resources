@@ -1546,14 +1546,14 @@
 		</Item>
 		<Item type="CHandlingData">
 			<handlingName>BANSHEE2</handlingName>
-			<fMass value="1150.000000" />
-			<fInitialDragCoeff value="7.500000" />
+			<fMass value="1250.000000" />
+			<fInitialDragCoeff value="7.900000" />
 			<fPercentSubmerged value="85.000000" />
 			<vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000" />
 			<vecInertiaMultiplier x="1.000000" y="1.400000" z="1.200000" />
 			<fDriveBiasFront value="0.000000" />
 			<nInitialDriveGears value="5" />
-			<fInitialDriveForce value="0.387500" />
+			<fInitialDriveForce value="0.372500" />
 			<fDriveInertia value="1.000000" />
 			<fClutchChangeRateScaleUpShift value="6.000000" />
 			<fClutchChangeRateScaleDownShift value="6.000000" />
