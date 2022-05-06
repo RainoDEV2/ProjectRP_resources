@@ -121,7 +121,7 @@ Config.Dispatcher = {
         refresh_timer = 5, --(in seconds) The amount of time it takes to refresh the player blips (the lower the number the higher the resource usage).
     },
 
-    VoipResource = 'toko' ---[ 'toko' / 'mumble' / 'pmavoice' / 'other' ] Choose your servers voip resource.
+    VoipResource = 'pmavoice' ---[ 'toko' / 'mumble' / 'pmavoice' / 'other' ] Choose your servers voip resource.
 }
 
 
@@ -242,7 +242,7 @@ Config.PoliceAlerts = {
         cooldown = 20, --(in seconds) This cooldown is to prevent alerts from being spammed by the same player.
         
         WhitelistedZones = { --If the player is within the distance of these coords, gunshot alerts will not notify the police.
-            [1] = {coords = vector3(0,0,0), distance = 10},
+            [1] = {coords = vector3(0,0,0), distance = 1},
             --[2] = {coords = vector3(0,0,0), distance = 10},
         },
         WhitelistedWeapons = { --Whitelist weapons so when fired they don't alert police.

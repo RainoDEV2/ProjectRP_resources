@@ -477,8 +477,8 @@ Config.BoxZones = {
     width = 1,
     heading = 0,
     debugPoly = false,
-    -- minZ=14.33,
-    -- maxZ=18.33,
+    minZ=29.0,
+    maxZ=31.0,
     options = {
       {
         type = "client",
@@ -496,6 +496,26 @@ Config.BoxZones = {
       }, 
     },
     distance = 2.0
+  },
+  ["printpolicebadge"] = {
+    name = "printpolicebadge",
+    coords = vector3(444.83, -981.27, 30.81),
+    length = 1,
+    width = 1,
+    heading = 0,
+    debugPoly = false,
+    minZ=30.0,
+    maxZ=31.0,
+    options = {
+      {
+        type = "server",
+        event = "policebadge:server:create",
+        icon = "fas fa-id-badge",
+        label = "Print New Badge",
+        job = "police",
+      },
+    },
+    distance = 1.0
   },
 }
 

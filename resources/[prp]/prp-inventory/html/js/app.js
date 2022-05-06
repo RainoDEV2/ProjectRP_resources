@@ -656,6 +656,9 @@ function FormatItemInfo(itemData, dom) {
         } else if (itemData.name == "weed_baggy") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        } else if (itemData.name == "policebadge") {
+            $(".item-info-title").html("<p>" + itemData.label + "</p>");
+            $(".item-info-description").html("<p>" + itemData.info.name + "</p>");
         } else {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>" + itemData.description + "</p>");

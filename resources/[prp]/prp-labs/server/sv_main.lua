@@ -134,7 +134,7 @@ RegisterNetEvent('prp-labs:server:MakeCokeBags', function()
             Player.Functions.AddItem("coke_baggy", 150, false, info)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["coke_baggy"], "add")
         else
-            TriggerClientEvent('ProjectRP:Notify', src, "You need more plastic baggies (150)...", "error", 2500)
+            TriggerClientEvent('ProjectRP:Notify', src, "You need 150 plastic baggies...", "error", 2500)
         end
     else
         TriggerClientEvent('ProjectRP:Notify', src, "You don't have any smaller plastic bags...", "error", 2500)

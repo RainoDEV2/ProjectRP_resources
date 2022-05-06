@@ -1550,8 +1550,11 @@ ProjectRP.Commands.Add("giveitem", "Give An Item (Admin Only)", {{name="id", hel
 					info.purity = math.random(1, 100)
 				elseif itemData["name"] == "coke_baggy" then
 					info.purity = math.random(1, 100)
+				elseif itemData["name"] == "policebadge" then
+					info.name = "Andy Pandy"
+					info.rank = "PD Janitor"
 				elseif itemData["name"] == "printerdocument" then
-					info.url = "https://cdn.discordapp.com/attachments/870094209783308299/870104331142189126/Logo_-_Display_Picture_-_Stylized_-_Red.png"
+					info.url = "https://cdn.musicfeeds.com.au/assets/uploads/2021/02/Rick-roll-2021.png"
 				end
 
 				if Player.Functions.AddItem(itemData["name"], amount, false, info) then

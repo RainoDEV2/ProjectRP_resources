@@ -48,18 +48,35 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
         Tier = 3
     end
 
-    if math.random(1, 300) == 1 then
-        Player.Functions.AddItem("gunkey", 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, "gunkey", "add")
-    elseif math.random(1, 300) == 1 then
-        Player.Functions.AddItem("cokekey", 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, "cokekey", "add")
-    elseif math.random(1, 150) == 1 then
-        Player.Functions.AddItem("weedkey", 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, "weedkey", "add")
-    elseif math.random(1, 150) == 1 then
-        Player.Functions.AddItem("mwkey", 1)
-        TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+    local cops = GetCurrentCops()
+    if cops >= 1 then
+        if math.random(1, 500) == 1 then
+            Player.Functions.AddItem("gunkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "gunkey", "add")
+        elseif math.random(1, 500) == 2 then
+            Player.Functions.AddItem("cokekey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "cokekey", "add")
+        elseif math.random(1, 250) == 3 then
+            Player.Functions.AddItem("weedkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "weedkey", "add")
+        elseif math.random(1, 500) == 4 then
+            Player.Functions.AddItem("mwkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+        end
+    else
+        if math.random(1, 2000) == 1 then
+            Player.Functions.AddItem("gunkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "gunkey", "add")
+        elseif math.random(1, 2000) == 2 then
+            Player.Functions.AddItem("cokekey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "cokekey", "add")
+        elseif math.random(1, 1500) == 3 then
+            Player.Functions.AddItem("weedkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "weedkey", "add")
+        elseif math.random(1, 2000) == 4 then
+            Player.Functions.AddItem("mwkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+        end
     end
 
     if itemFound < 4 then
@@ -119,3 +136,16 @@ AddEventHandler('prp-houserobbery:server:SetBusyState', function(cabin, house, b
     Config.Houses[house]["furniture"][cabin]["isBusy"] = bool
     TriggerClientEvent('prp-houserobbery:client:SetBusyState', -1, cabin, house, bool)
 end)
+
+function GetCurrentCops()
+    local amount = 0
+    for k, v in pairs(ProjectRP.Functions.GetPlayers()) do
+        local Player = ProjectRP.Functions.GetPlayer(v)
+        if Player ~= nil then
+            if (Player.PlayerData.job.name == "police" and Player.PlayerData.job.onduty) then
+                amount = amount + 1
+            end
+        end
+    end
+    return amount
+end

@@ -1,9 +1,7 @@
 const open = (data) => {
-  $('#name').css('color', '#282828');
-
+  $('#rank').text(data.rank);
   $('#name').text(data.name);
-  $('#dob').text(data.dateofbirth);
-  $('#signature').text(data.name);
+  // $('#signature').text(data.name);
 
   $('#id-card').css('background', 'url(assets/images/lspd.png)');
 
@@ -11,8 +9,8 @@ const open = (data) => {
 }
 
 const close = () => {
+  $('#rank').text('');
   $('#name').text('');
-  $('#dob').text('');
   $('#height').text('');
   $('#signature').text('');
   $('#sex').text('');

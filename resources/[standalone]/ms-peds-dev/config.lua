@@ -20,5 +20,4 @@ Config.PedList = {
 		coords = vector4(-678.82, 5839.77, 17.33, 231.26), -- Hawick Ave (X, Y, Z, Heading)
 		gender = 'male' -- The gender of the ped, used for the CreatePed native.
 	},
-
 }

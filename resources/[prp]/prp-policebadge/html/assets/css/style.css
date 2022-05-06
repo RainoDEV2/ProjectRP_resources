@@ -35,25 +35,19 @@ img {
   top:5px;
 }
 
-#name {
+#inline {
+  position: absolute;
+  top: 279px;
+  left: 40px;
+}
+
+#name, #rank {
   font-weight: bolder;
   font-size: 18px;
   font-style: normal;
   font-variant: small-caps;
   text-transform: none; 
-  color: #000000;
-}
-
-#inline {
-  position: absolute;
-  top: 279px;
-  left: 60px;
-}
-
-#dob {
-  position: absolute;
-  left: 0;
-  width: 100px;
+  color: #282828;
 }
 
 #sex {
@@ -65,7 +59,7 @@ img {
   position: absolute;
   bottom: 0px;
   left: 0px;
-  color: #00000000;
+  color: #000;
   font-size: 19px;
   text-decoration: none;
   font-style: normal;

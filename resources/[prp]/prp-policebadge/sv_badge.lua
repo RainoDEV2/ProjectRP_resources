@@ -1,18 +1,32 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
 
-RegisterServerEvent('badge:open')
-AddEventHandler('badge:open', function(ID, targetID, type)
+RegisterServerEvent('policebadge:server:open')
+AddEventHandler('policebadge:server:open', function(item, targetID, type)
 	local Player = ProjectRP.Functions.GetPlayer(ID)
 
 	local data = {
-		name = Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname,
-		dob = Player.PlayerData.charinfo.dob
+		name = item.info.name,
+		rank = item.info.rank
 	}
 
-	TriggerClientEvent('badge:open', targetID, data)
-	TriggerClientEvent( 'badge:shot', targetID, source )
+	TriggerClientEvent('policebadge:client:open', targetID, data)
+	TriggerClientEvent('policebadge:client:show', targetID, source)
 end)
 
-ProjectRP.Functions.CreateUseableItem('specialbadge', function(source, item)
-    TriggerClientEvent('badge:openPD', source, true)
+RegisterServerEvent('policebadge:server:create')
+AddEventHandler('policebadge:server:create', function()
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+
+	local info = {
+		name = Player.PlayerData.charinfo.firstname.." "..Player.PlayerData.charinfo.lastname,
+		rank = Player.PlayerData.job.grade.name.." ("..Player.PlayerData.metadata['callsign']..")"
+	}
+
+	Player.Functions.AddItem("policebadge", 1, false, info)
+	TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["policebadge"], "add")
+end)
+
+ProjectRP.Functions.CreateUseableItem('policebadge', function(source, item)
+    TriggerClientEvent('policebadge:client:openPD', source, item)
 end)
