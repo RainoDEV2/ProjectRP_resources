@@ -3,42 +3,48 @@ CarryPackage = nil
 
 -- Opens the menu to lock/unlock and enter a lab
 -- @param lab string - Name of the lab
-function LockUnlock(lab)
-    local menu = {
-        {
-            header = "< Close",
-            txt = "ESC or click to close",
-            params = {
-                event = "prp-menu:closeMenu",
+function LockUnlock(lab, key)
+    ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
+        if HasItem then
+            local menu = {
+                {
+                    header = "< Close",
+                    txt = "ESC or click to close",
+                    params = {
+                        event = "prp-menu:closeMenu",
+                    }
+                },
             }
-        },
-    }
-    if Config.Labs[lab].locked then
-        menu[#menu+1] = {
-            header = "Unlock Door",
-            txt = "",
-            params = {
-                isServer = true,
-                event = "prp-labs:server:unlock",
-                args = {
-                    lab = lab
+            if Config.Labs[lab].locked then
+                menu[#menu+1] = {
+                    header = "Unlock Door",
+                    txt = "",
+                    params = {
+                        isServer = true,
+                        event = "prp-labs:server:unlock",
+                        args = {
+                            lab = lab
+                        }
+                    }
                 }
-            }
-        }
-    else
-        menu[#menu+1] = {
-            header = "Lock Door",
-            txt = "",
-            params = {
-                isServer = true,
-                event = "prp-labs:server:lock",
-                args = {
-                    lab = lab
+            else
+                menu[#menu+1] = {
+                    header = "Lock Door",
+                    txt = "",
+                    params = {
+                        isServer = true,
+                        event = "prp-labs:server:lock",
+                        args = {
+                            lab = lab
+                        }
+                    }
                 }
-            }
-        }
-    end
-    exports['prp-menu']:openMenu(menu)
+            end
+            exports['prp-menu']:openMenu(menu)
+        else
+            ProjectRP.Functions.Notify('You need a key to unlock this door..', 'error', 2500)
+        end
+    end, key)
 end
 
 -- Teleports the player ped inside a given lab

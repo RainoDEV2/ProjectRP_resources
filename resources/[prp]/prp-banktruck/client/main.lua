@@ -27,13 +27,13 @@ AddEventHandler('prp-truckrob:client:UseCard', function()
     local PedPos = GetEntityCoords(PlayerPedId())
     local GetTruckCoords = GetOffsetFromEntityInWorldCoords(Vehicle, 0.0, -2.0, 1.0)
     local TruckDist = GetDistanceBetweenCoords(PedPos.x, PedPos.y, PedPos.z, GetTruckCoords.x, GetTruckCoords.y, GetTruckCoords.z, true)
-    local Plate = GetVehicleNumberPlateText(Vehicle)
 
-    --   local StreetLabel = ProjectRP.Functions.GetStreetLabel()
-    TriggerEvent('prp-inventory:client:set:busy', true)
-    --   TriggerServerEvent('prp-police:server:send:banktruck:alert', GetEntityCoords(PlayerPedId()), Plate, StreetLabel)
-    StartRobbingVan(Vehicle)
-
+    if model == 'STOCKADE' and TruckDist < 4 then
+        TriggerEvent('prp-inventory:client:set:busy', true)
+        StartRobbingVan(Vehicle)
+    else
+        return
+    end
 end)
 
 RegisterNetEvent('prp-banktruck:plate:table')
@@ -43,14 +43,14 @@ end)
 
 function StartRobbingVan(Veh)
     IsRobbing = true
-    local TimeSearch = math.random(25000, 55000)
+    local TimeSearch = math.random(25000, 40000)
     local Coords = GetEntityCoords(Veh)
     local PedPos = GetEntityCoords(PlayerPedId())
     if math.random(1, 100) <= 65 and not IsWearingHandshoes() then
         TriggerServerEvent("prp-police:server:CreateFingerDrop", GetEntityCoords(PlayerPedId()))
     end
     SearchAnim()
-    ProjectRP.Functions.Progressbar("open_locker", "Using bank card...", math.random(25000, 50000), false, true, {
+    ProjectRP.Functions.Progressbar("open_locker", "Using bank card...", math.random(25000, 40000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -101,21 +101,21 @@ AddEventHandler('prp-banktruck:client:OpenTruck', function(Veh)
     SetVehicleBodyHealth(Veh, 100.0)
     SetEntityAsNoLongerNeeded(Veh)
     for i = -1, 4 do
-    Citizen.Wait(1) 
-    local Yew = CreatePedInsideVehicle(Veh, 5, "s_m_m_strpreach_01", i, 1, 1)
-    SetPedShootRate(Yew, 750)
-    SetPedCombatAttributes(Yew, 46, true)
-    SetPedFleeAttributes(Yew, 0, 0)
-    SetPedAsEnemy(Yew,true)
-    SetPedArmour(Yew, 200.0)
-    SetPedMaxHealth(Yew, 900.0)
-    SetPedAlertness(Yew, 3)
-    SetPedCombatRange(Yew, 0)
-    SetPedCombatMovement(Yew, 3)
-    TaskCombatPed(Yew, PlayerPedId(), 0,16)
-    TaskLeaveVehicle(Yew, Veh, 0)
-    GiveWeaponToPed(Yew, GetHashKey("WEAPON_SMG"), 5000, true, true)
-    SetPedRelationshipGroupHash(Yew, GetHashKey("HATES_PLAYER"))
+        Citizen.Wait(1) 
+        local Yew = CreatePedInsideVehicle(Veh, 5, "s_m_m_strpreach_01", i, 1, 1)
+        SetPedShootRate(Yew, 750)
+        SetPedCombatAttributes(Yew, 46, true)
+        SetPedFleeAttributes(Yew, 0, 0)
+        SetPedAsEnemy(Yew,true)
+        SetPedArmour(Yew, 200.0)
+        SetPedMaxHealth(Yew, 900.0)
+        SetPedAlertness(Yew, 3)
+        SetPedCombatRange(Yew, 0)
+        SetPedCombatMovement(Yew, 3)
+        TaskCombatPed(Yew, PlayerPedId(), 0,16)
+        TaskLeaveVehicle(Yew, Veh, 0)
+        GiveWeaponToPed(Yew, GetHashKey("WEAPON_SMG"), 5000, true, true)
+        SetPedRelationshipGroupHash(Yew, GetHashKey("HATES_PLAYER"))
     end
     SetVehicleDoorOpen(Veh, 6, false, true)
     SetVehicleDoorOpen(Veh, 7, false, true)
@@ -146,7 +146,7 @@ function KankerJanken()
     if math.random(1, 100) <= 85 and not IsWearingHandshoes() then
         TriggerServerEvent("prp-police:server:CreateFingerDrop", GetEntityCoords(PlayerPedId()))
     end
-    ProjectRP.Functions.Progressbar("open_locker", "Stealing things...", math.random(34000, 120000), false, true, {
+    ProjectRP.Functions.Progressbar("open_locker", "Stealing things...", math.random(34000, 54000), false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,

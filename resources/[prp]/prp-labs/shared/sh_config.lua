@@ -398,7 +398,7 @@ Config.CraftingCost = {
         item1 = "metalscrap",
         cost1 = 28,
         item2 = "aluminum",
-        cost2 = 25,
+        cost2 = 45,
         item3 = "copper",
         cost3 = 35
     },
@@ -412,11 +412,11 @@ Config.CraftingCost = {
     },
     ["mg_ammo"] = {
         item1 = "metalscrap",
-        cost1 = 410,
+        cost1 = 210,
         item2 = "aluminum",
         cost2 = 265,
         item3 = "copper",
-        cost3 = 400
+        cost3 = 260
     },
     ["weapon_microsmg"] = {
         item1 = "aluminum",
@@ -438,7 +438,7 @@ Config.CraftingCost = {
         item1 = "aluminum",
         cost1 = 155,
         item2 = "glass",
-        cost2 = 200,
+        cost2 = 180,
         item3 = "rubber",
         cost3 = 85
     },
@@ -452,26 +452,26 @@ Config.CraftingCost = {
     },
     ["weapon_assaultrifle"] = {
         item1 = "metalscrap",
-        cost1 = 380,
+        cost1 = 310,
         item2 = "steel",
-        cost2 = 500,
+        cost2 = 380,
         item3 = "rubber",
-        cost3 = 480
+        cost3 = 280
     },
     ["weapon_specialcarbine"] = {
         item1 = "metalscrap",
-        cost1 = 395,
+        cost1 = 295,
         item2 = "steel",
-        cost2 = 520,
+        cost2 = 420,
         item3 = "rubber",
-        cost3 = 495
+        cost3 = 295
     },
     ["weapon_advancedrifle"] = {
         item1 = "metalscrap",
-        cost1 = 390,
+        cost1 = 290,
         item2 = "steel",
-        cost2 = 510,
+        cost2 = 410,
         item3 = "rubber",
-        cost3 = 455
+        cost3 = 255
     }
 }

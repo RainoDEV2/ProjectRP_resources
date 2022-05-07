@@ -20,11 +20,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("cokelab")
+                    LockUnlock("cokelab", "cokekey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "cokekey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5
@@ -50,11 +49,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("cokelab")
+                    LockUnlock("cokelab", "cokekey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "cokekey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5

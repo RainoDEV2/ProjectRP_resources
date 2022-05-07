@@ -922,10 +922,9 @@ Citizen.CreateThread(function()
             DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
 		end
 
-
         for k, v in pairs(Config.Locations["armory"]) do
             LockerDist = GetDistanceBetweenCoords(vector3(v.x, v.y, v.z),GetEntityCoords(GetPlayerPed(-1)),true)
-        
+
             if LockerDist < 3.0 then
                 -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then

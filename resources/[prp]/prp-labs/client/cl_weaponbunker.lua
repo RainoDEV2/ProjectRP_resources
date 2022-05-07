@@ -270,11 +270,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("gunbunker")
+                    LockUnlock("gunbunker", "gunkey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "gunkey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5
@@ -300,11 +299,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("gunbunker")
+                    LockUnlock("gunbunker", "gunkey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "gunkey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5

@@ -140,11 +140,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("moneywash")
+                    LockUnlock("moneywash", "mwkey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "mwkey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5
@@ -170,11 +169,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("moneywash")
+                    LockUnlock("moneywash", "mwkey")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "mwkey"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5

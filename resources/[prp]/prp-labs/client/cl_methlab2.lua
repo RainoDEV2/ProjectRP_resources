@@ -20,11 +20,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("methlab2")
+                    LockUnlock("methlab2", "methkey2")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "methkey2"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5
@@ -50,11 +49,10 @@ CreateThread(function()
             },
             {
                 action = function()
-                    LockUnlock("methlab2")
+                    LockUnlock("methlab2", "methkey2")
                 end,
                 icon = "fas fa-key",
-                label = "Lock/Unlock Door",
-                item = "methkey2"
+                label = "Lock/Unlock Door"
             }
         },
         distance = 1.5
