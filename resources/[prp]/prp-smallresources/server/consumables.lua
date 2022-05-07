@@ -433,7 +433,7 @@ ProjectRP.Functions.CreateUseableItem("gdonut", function(source, item)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
 	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
-        TriggerClientEvent("consumables:client:Eat", src, item.name, 'donut')
+        TriggerClientEvent("consumables:client:Eat", src, item.name)
     end
 end)
 

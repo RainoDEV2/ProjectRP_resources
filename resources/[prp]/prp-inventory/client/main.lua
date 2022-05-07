@@ -554,9 +554,9 @@ RegisterCommand('inventory', function()
                 local vehicle = ProjectRP.Functions.GetClosestVehicle()
                 if vehicle ~= 0 and vehicle ~= nil then
                     local pos = GetEntityCoords(ped)
-                    local trunkpos = GetOffsetFromEntityInWorldCoords(vehicle, 0, -2.5, 0)
+                    local trunkpos = GetOffsetFromEntityInWorldCoords(vehicle, 0, -1.5, 0)
                     if (IsBackEngine(GetEntityModel(vehicle))) then
-                        trunkpos = GetOffsetFromEntityInWorldCoords(vehicle, 0, 2.5, 0)
+                        trunkpos = GetOffsetFromEntityInWorldCoords(vehicle, 0, 1.5, 0)
                     end
                     if #(pos - trunkpos) < 2.0 and not IsPedInAnyVehicle(ped) then
                         if GetVehicleDoorLockStatus(vehicle) < 2 then

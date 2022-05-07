@@ -25,7 +25,7 @@ Citizen.CreateThread(function()
     exports['prp-target']:AddBoxZone("galaxyFridge1", vector3(351.8, 289.0, 91.19), 3, 1, {
         name = "galaxyFridge1",
         heading = 76,
-        debugPoly = true,
+        debugPoly = false,
         minZ=90.0,
         maxZ=92.0,
     }, {
