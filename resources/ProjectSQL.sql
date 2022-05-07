@@ -748,6 +748,7 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('tequilala', 0, 'boss'),
 ('recycling', 0, 'boss'),
 ('mechanic', 0, 'boss'),
+('galaxy', 0, 'boss'),
 ('lostmc', 0, 'gang'),
 ('ballas', 0, 'gang'),
 ('vagos', 0, 'gang'),

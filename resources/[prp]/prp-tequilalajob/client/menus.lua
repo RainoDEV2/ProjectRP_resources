@@ -3,6 +3,62 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 -- prp-target
 
 Citizen.CreateThread(function()
+    -- GALAXY STUFF
+    exports['prp-target']:AddBoxZone("galaxyDuty", vector3(391.38, 269.45, 94.88), 1.5, 1.5, {
+        name = "galaxyDuty",
+        heading = 32,
+        debugPoly = false,
+        minZ=94.0,
+        maxZ=96.0,
+    }, {
+        options = {
+            {  
+                event = "prp-galaxy:ToggleDuty",
+                icon = "far fa-clipboard",
+                label = "Clock On/Off",
+                job = "galaxy",
+            },
+        },
+        distance = 1.5
+    })
+
+    exports['prp-target']:AddBoxZone("galaxyFridge1", vector3(351.8, 289.0, 91.19), 3, 1, {
+        name = "galaxyFridge1",
+        heading = 76,
+        debugPoly = true,
+        minZ=90.0,
+        maxZ=92.0,
+    }, {
+        options = {
+            {  
+                event = "prp-galaxy:client:openShop",
+                icon = "fas fa-box",
+                label = "Storage",
+                job = "galaxy",
+            },
+        },
+        distance = 1.5
+    })
+
+    exports['prp-target']:AddBoxZone("galaxyFridge2", vector3(355.26, 282.5, 94.61), 2, 3, {
+        name = "galaxyFridge2",
+        heading = 76,
+        debugPoly = false,
+        minZ=93.0,
+        maxZ=95.0,
+    }, {
+        options = {
+            {  
+                event = "prp-galaxy:client:openShop",
+                icon = "fas fa-box",
+                label = "Storage",
+                job = "galaxy",
+            },
+        },
+        distance = 1.5
+    })
+
+    -- TEQUI-LA-LA STUFF
     exports['prp-target']:AddBoxZone("tequilalaDuty", vector3(-564.37, 278.34, 83.14), 1, 1.2, {
         name = "tequilalaDuty",
         heading = 32,

@@ -403,3 +403,79 @@ ProjectRP.Functions.CreateUseableItem("crisps", function(source, item)
         TriggerClientEvent("consumables:client:Eat", source, item.name)
     end
 end)
+
+-- Galaxy Food
+ProjectRP.Functions.CreateUseableItem("baconfries", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", src, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("chickenstars", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", src, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("moonrock", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", src, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("gdonut", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", src, item.name, 'donut')
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("ethertacos", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+	if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Eat", src, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("galaxyslush", function(source, item)
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:Drink", source, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("junojs", function(source, item)
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:DrinkCock", source, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("blackhole", function(source, item)
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:DrinkCock", source, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("stardust", function(source, item)
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:DrinkCock", source, item.name)
+    end
+end)
+
+ProjectRP.Functions.CreateUseableItem("venus", function(source, item)
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:DrinkCock", source, item.name)
+    end
+end)

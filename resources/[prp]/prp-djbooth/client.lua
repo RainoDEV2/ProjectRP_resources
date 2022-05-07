@@ -101,14 +101,32 @@ end
 
 -- DJ Booths
 
-local vanilla = BoxZone:Create(Config.Locations['vanilla'].coords, 1, 1, {
-    name="vanilla",
-    heading=0
-})
-
+local vanilla = BoxZone:Create(Config.Locations['vanilla'].coords, 1, 1, { name="vanilla", heading=0 })
 vanilla:onPlayerInOut(function(isPointInside)
     if isPointInside and PlayerData.job.name == Config.Locations['vanilla'].job then
         currentZone = 'vanilla'
+        exports['prp-menu']:showHeader(musicHeader)
+    else
+        currentZone = nil
+        exports['prp-menu']:closeMenu()
+    end
+end)
+
+local galaxy1 = BoxZone:Create(Config.Locations['galaxy1'].coords, 1, 1, { name="galaxy1", heading=0 })
+galaxy1:onPlayerInOut(function(isPointInside)
+    if isPointInside and PlayerData.job.name == Config.Locations['galaxy1'].job then
+        currentZone = 'galaxy1'
+        exports['prp-menu']:showHeader(musicHeader)
+    else
+        currentZone = nil
+        exports['prp-menu']:closeMenu()
+    end
+end)
+
+local galaxy2 = BoxZone:Create(Config.Locations['galaxy2'].coords, 1, 1, { name="galaxy2", heading=0 })
+galaxy2:onPlayerInOut(function(isPointInside)
+    if isPointInside and PlayerData.job.name == Config.Locations['galaxy2'].job then
+        currentZone = 'galaxy2'
         exports['prp-menu']:showHeader(musicHeader)
     else
         currentZone = nil

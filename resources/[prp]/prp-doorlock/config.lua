@@ -650,38 +650,38 @@ Config.DoorList = {
 		distance = 1.0
 	},
 	-- To CheckingRoom
-	{
-		objName = 'v_ilev_gtdoor',
-		objYaw = 0.0,
-		objCoords  = vec3(1827.521, 2583.905, 45.28576),
-		textCoords = vec3(1828.638, 2584.675, 45.95233),
-		authorizedJobs = { 'police' },
-		locked = true,
-		pickable = false,
-		distance = 2
-	},
+	-- {
+	-- 	objName = 'v_ilev_gtdoor',
+	-- 	objYaw = 0.0,
+	-- 	objCoords  = vec3(1827.521, 2583.905, 45.28576),
+	-- 	textCoords = vec3(1828.638, 2584.675, 45.95233),
+	-- 	authorizedJobs = { 'police' },
+	-- 	locked = true,
+	-- 	pickable = false,
+	-- 	distance = 2
+	-- },
 	-- Checking Gate
-	{
-		objName = 'v_ilev_gtdoor',
-		objYaw = 270.0,
-		objCoords  = vec3(1837.714, 2595.185, 46.09929),
-		textCoords = vec3(1837.714, 2595.185, 46.09929),
-		authorizedJobs = { 'police' },
-		locked = true,
-		pickable = false,
-		distance = 1.5
-	},
+	-- {
+	-- 	objName = 'v_ilev_gtdoor',
+	-- 	objYaw = 270.0,
+	-- 	objCoords  = vec3(1837.714, 2595.185, 46.09929),
+	-- 	textCoords = vec3(1837.714, 2595.185, 46.09929),
+	-- 	authorizedJobs = { 'police' },
+	-- 	locked = true,
+	-- 	pickable = false,
+	-- 	distance = 1.5
+	-- },
 	-- To CheckingRoomFromCheck
-	{
-		objName = 'v_ilev_gtdoor',
-		objYaw = 90.0,
-		objCoords  = vec3(1837.697, 2585.24, 46.09929),
-		textCoords = vec3(1837.697, 2585.24, 46.09929),
-		authorizedJobs = { 'police' },
-		locked = true,
-		pickable = false,
-		distance = 1.5
-	},
+	-- {
+	-- 	objName = 'v_ilev_gtdoor',
+	-- 	objYaw = 90.0,
+	-- 	objCoords  = vec3(1837.697, 2585.24, 46.09929),
+	-- 	textCoords = vec3(1837.697, 2585.24, 46.09929),
+	-- 	authorizedJobs = { 'police' },
+	-- 	locked = true,
+	-- 	pickable = false,
+	-- 	distance = 1.5
+	-- },
 	-- To SecondCheckGate
 	{
 		objName = 'v_ilev_gtdoor',
@@ -705,16 +705,16 @@ Config.DoorList = {
 		distance = 2.0
 	},
 	-- To VisitorRoom
-	{
-		objName = 'prison_prop_door2',
-		objYaw = 90.0,
-		objCoords  = vec3(1784, 2599, 46),
-		textCoords = vec3(1785.808, 2590.02, 44.79703),
-		authorizedJobs = { 'police' },
-		locked = true,
-		pickable = false,
-		distance = 2.0
-	},
+	-- {
+	-- 	objName = 'prison_prop_door2',
+	-- 	objYaw = 90.0,
+	-- 	objCoords  = vec3(1784, 2599, 46),
+	-- 	textCoords = vec3(1785.808, 2590.02, 44.79703),
+	-- 	authorizedJobs = { 'police' },
+	-- 	locked = true,
+	-- 	pickable = false,
+	-- 	distance = 2.0
+	-- },
 	{
 		objName = 'prison_prop_door1',
 		objYaw = 0.0,

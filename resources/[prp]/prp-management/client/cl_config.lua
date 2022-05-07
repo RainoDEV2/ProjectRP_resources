@@ -40,6 +40,9 @@ Config.BossMenus = {
     ['catcafe'] = {
         vector3(-596.26, -1053.52, 21.85),
     },
+    ['galaxy'] = {
+        vector3(389.56, 272.5, 94.99),
+    },
 }
 
 Config.BossMenuZones = {
@@ -78,6 +81,9 @@ Config.BossMenuZones = {
     },
     ['catcafe'] = {
         { coords = vector3(-596.26, -1053.52, 21.85), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
+    },
+    ['galaxy'] = {
+        { coords = vector3(389.56, 272.5, 94.99), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
     },
 }
 

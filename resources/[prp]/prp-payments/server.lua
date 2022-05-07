@@ -11,7 +11,7 @@ local function cv(amount)
     return formatted
 end
 
--- ProjectRP.Commands.Add("cashregister", "Use mobile cash register", {}, false, function(source) TriggerClientEvent("prp-payments:client:Charge", source, true) end)
+ProjectRP.Commands.Add("cashregister", "Use mobile cash register", {}, false, function(source) TriggerClientEvent("prp-payments:client:Charge", source, true) end)
 
 RegisterServerEvent('prp-payments:Tickets:Give', function(data, biller)
 	--Find the biller from their citizenid

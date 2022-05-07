@@ -33,4 +33,5 @@ Config.Jobs = {
 	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 	['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.70, },
+	['galaxy'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 }

@@ -16,12 +16,19 @@ ConsumeablesEat = {
     ["twerks_candy"] = math.random(10, 20),
     ["snikkel_candy"] = math.random(10, 20),
     ["crisps"] = math.random(10, 20),
+    ["baconfries"] = math.random(30, 40),
+    ["chickenstars"] = math.random(30, 35),
+    ["moonrock"] = math.random(15, 25),
+    ["gdonut"] = math.random(15, 25),
+    ["ethertacos"] = math.random(20, 30),
 }
 
 ConsumeablesDrink = {
     ["water_bottle"] = math.random(35, 54),
     ["cola"] = math.random(35, 54),
     ["coffee"] = math.random(40, 50),
+    ["cola"] = math.random(35, 54),
+    ["galaxyslush"] = math.random(30, 40),
 }
 
 ConsumeablesAlcohol = {
@@ -34,6 +41,10 @@ ConsumeablesAlcohol = {
     ["am-beer"] = math.random(5, 15),
     ["logger-beer"] = math.random(5, 15),
     ["rum"] = math.random(20, 30),
+    ["junojs"] = math.random(5, 15),
+    ["blackhole"] = math.random(20, 30),
+    ["stardust"] = math.random(20, 30),
+    ["venus"] = math.random(20, 30),
 }
 
 

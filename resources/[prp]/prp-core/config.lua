@@ -14,8 +14,8 @@ PRPConfig.Money.PayCheckTimeOut = 10 -- The time in minutes that it will give th
 PRPConfig.Player = {}
 PRPConfig.Player.MaxWeight = 120000 -- Max weight a player can carry (currently 120kg, written in grams)
 PRPConfig.Player.MaxInvSlots = 41 -- Max inventory slots for a player
-PRPConfig.Player.HungerRate = 4.2 -- Rate at which hunger goes down.
-PRPConfig.Player.ThirstRate = 3.8 -- Rate at which thirst goes down.
+PRPConfig.Player.HungerRate = 4.0 -- Rate at which hunger goes down.
+PRPConfig.Player.ThirstRate = 3.6 -- Rate at which thirst goes down.
 PRPConfig.Player.Bloodtypes = {
     "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-",
 }

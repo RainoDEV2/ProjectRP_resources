@@ -666,6 +666,19 @@ PRPShared.Items = {
     ["milk"]                        = {["name"] = "milk",                       ["label"] = "Milk",                     ["weight"] = 300,       ["type"] = "item",      ["image"] = "burger-milk.png",      ["unique"] = false,     ["useable"] = true,     ["shouldClose"] = true,     ["combinable"] = nil,   ["description"] = "Carton of Milk", ['thirst'] = math.random(35, 54) },
     ["onion"]                       = {["name"] = "onion",                      ["label"] = "Onion",                    ["weight"] = 500,       ["type"] = "item",      ["image"] = "burger-onion.png",     ["unique"] = false,     ["useable"] = false,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "An onion"},
 
+	-- Galaxy Items
+	["baconfries"] 					= {["name"] = "baconfries",  	     		["label"] = "Bacon Cheese Fries",	 	["weight"] = 100, 		["type"] = "item", 		["image"] = "baconfries.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Standard bar fare in any GALAXY", ['hunger'] = math.random(40, 45) },
+	["chickenstars"] 				= {["name"] = "chickenstars",  	     		["label"] = "Chicken Stars",	 		["weight"] = 100, 		["type"] = "item", 		["image"] = "chickenstars.png", 	["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Who said chickens can't fly?", ['hunger'] = math.random(40, 45) },
+	["moonrock"] 					= {["name"] = "moonrock",  	     			["label"] = "Moon Rocks",	 			["weight"] = 100, 		["type"] = "item", 		["image"] = "moonrock.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Comes in a pair so you don't have to grow one", ['hunger'] = math.random(30, 35) },
+	["gdonut"] 						= {["name"] = "gdonut",  	     			["label"] = "Saturn's Rings",	 		["weight"] = 100, 		["type"] = "item", 		["image"] = "gdonut.png",		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Tasty GALAXY iced donuts", ['hunger'] = math.random(30, 35) },
+	["ethertacos"] 					= {["name"] = "ethertacos",  	     		["label"] = "Ether Tacos",	 			["weight"] = 100, 		["type"] = "item", 		["image"] = "ethertacos.png",		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "3 Out Of This World Tacos", ['hunger'] = math.random(30, 35) },
+
+	["galaxyslush"] 			    = {["name"] = "galaxyslush",  	     		["label"] = "Galaxy Freeze",	 	    ["weight"] = 100, 		["type"] = "item", 		["image"] = "galaxyslush.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Experience the icy chill of space", ['thirst'] = math.random(30, 35) },
+	["junojs"] 				        = {["name"] = "junojs",  	     		    ["label"] = "Juno Jelloshot",	 		["weight"] = 100, 		["type"] = "item", 		["image"] = "junojs.png", 	        ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "Juno where you are right now? If you do, order more.", ['thirst'] = math.random(20, 25) },
+	["blackhole"] 					= {["name"] = "blackhole",  	     		["label"] = "Blackhole Cocktail",	 	["weight"] = 100, 		["type"] = "item", 		["image"] = "blackhole.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "You won't be coming back from this one.", ['thirst'] = math.random(20, 25) },
+	["stardust"] 					= {["name"] = "stardust",  	     			["label"] = "Stardust Cocktail",	 	["weight"] = 100, 		["type"] = "item", 		["image"] = "stardust.png",		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "It shines like a star in the dark!", ['thirst'] = math.random(20, 25) },
+	["venus"] 					    = {["name"] = "venus",  	     		    ["label"] = "Venus Martini",	 		["weight"] = 100, 		["type"] = "item", 		["image"] = "venus.png",		    ["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "COCKtail or not, everyone can be from Venus with this drink", ['thirst'] = math.random(20, 25) },
+
     -- Tequilala Food
     ["crisps"]                       = {["name"] = "crisps",                        ["label"] = "Chips",                    ["weight"] = 250,       ["type"] = "item",      ["image"] = "crisps.png",               ["unique"] = false,     ["useable"] = true,     ["shouldClose"] = true,    ["combinable"] = nil,   ["description"] = "Hmmm nice."},
 
@@ -994,38 +1007,38 @@ PRPShared.Jobs = {
 		grades = {
             ['0'] = {
                 name = 'EMT',
-                payment = 220
+                payment = 320
             },
 			['1'] = {
                 name = 'Paramedic',
-                payment = 245
+                payment = 345
             },
 			['2'] = {
                 name = 'Nurse',
-                payment = 270
+                payment = 370
             },
 			['3'] = {
                 name = 'Student Doctor',
-                payment = 295
+                payment = 395
             },
 			['4'] = {
                 name = 'Doctor',
-                payment = 325
+                payment = 425
             },
 			['5'] = {
                 name = 'Head Physician',
 				isboss = true,
-                payment = 360
+                payment = 460
             },
 			['6'] = {
                 name = 'Assistant Medical Director',
 				isboss = true,
-                payment = 380
+                payment = 480
             },
 			['7'] = {
                 name = 'Medical Director',
 				isboss = true,
-                payment = 400
+                payment = 500
             },
         },
 	},
@@ -1443,11 +1456,22 @@ PRPShared.Jobs = {
 		label = 'Cat Cafe',
 		defaultDuty = true,
 		grades = {
-            ['0'] = { name = 'Trainee', payment = 50 },
-			['1'] = { name = 'Wait Staff', payment = 75 },
-			['2'] = { name = 'Host', payment = 100 },
-			['3'] = { name = 'Manager', payment = 125 },
-			['4'] = { name = 'Owner', isboss = true, payment = 150 },
+            ['0'] = { name = 'Trainee', payment = 100 },
+			['1'] = { name = 'Wait Staff', payment = 125 },
+			['2'] = { name = 'Host', payment = 150 },
+			['3'] = { name = 'Manager', payment = 275 },
+			['4'] = { name = 'Owner', isboss = true, payment = 200 },
+        },
+	},
+	['galaxy'] = {
+		label = 'Galaxy',
+		defaultDuty = true,
+		grades = {
+            ['0'] = { name = 'Entertainer', payment = 50 },
+			['1'] = { name = 'Bartender', payment = 75 },
+			['2'] = { name = 'Security', payment = 100 },
+			['3'] = { name = 'Manager', isboss = true, payment = 125 },
+			['4'] = { name = 'Boss', isboss = true, payment = 150 },
         },
 	},
 }

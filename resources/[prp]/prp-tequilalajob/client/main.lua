@@ -305,3 +305,19 @@ RegisterNetEvent("prp-tequilalajob:shop")
 AddEventHandler("prp-tequilalajob:shop", function()
     TriggerServerEvent("inventory:server:OpenInventory", "shop", "tequilala", Config.Items)
 end)
+
+
+--- GALAXY CODE
+RegisterNetEvent('prp-galaxy:client:openShop')
+AddEventHandler('prp-galaxy:client:openShop', function()
+    local ShopItems = {}
+    ShopItems.label = "Galaxy"
+    ShopItems.items = Config.GalaxyItems
+    ShopItems.slots = #Config.GalaxyItems
+    TriggerServerEvent("inventory:server:OpenInventory", "shop", "Galaxy"..math.random(1, 99), ShopItems)
+end)
+
+RegisterNetEvent("prp-galaxy:ToggleDuty")
+AddEventHandler("prp-galaxy:ToggleDuty", function()
+    TriggerServerEvent("ProjectRP:ToggleDuty")
+end)

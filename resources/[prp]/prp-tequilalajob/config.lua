@@ -38,7 +38,7 @@ Config.Locations = {
 
 
 Config.Items = {
-label = "Shop",
+    label = "Shop",
     slots = 7,
     items = {
         [1] = {
@@ -82,4 +82,87 @@ label = "Shop",
             slot = 5,
         },
     }
+}
+
+Config.GalaxyItems = {
+    [1] = {
+        name = "baconfries",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 1,
+    },
+    [2] = {
+        name = "chickenstars",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 2,
+    },
+    [3] = {
+        name = "moonrock",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 3,
+    },
+    [4] = {
+        name = "gdonut",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 4,
+    },
+    [5] = {
+        name = "ethertacos",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 5,
+    },
+    [6] = {
+        name = "galaxyslush",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 6,
+    },
+    [7] = {
+        name = "junojs",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 7,
+    },
+    [8] = {
+        name = "blackhole",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 8,
+    },
+    [9] = {
+        name = "stardust",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 9,
+    },
+    [10] = {
+        name = "venus",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 10,
+    },
 }
