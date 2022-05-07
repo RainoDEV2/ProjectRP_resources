@@ -28,7 +28,6 @@ ConsumeablesDrink = {
     ["cola"] = math.random(35, 54),
     ["coffee"] = math.random(40, 50),
     ["cola"] = math.random(35, 54),
-    ["galaxyslush"] = math.random(30, 40),
 }
 
 ConsumeablesAlcohol = {
@@ -41,12 +40,12 @@ ConsumeablesAlcohol = {
     ["am-beer"] = math.random(5, 15),
     ["logger-beer"] = math.random(5, 15),
     ["rum"] = math.random(20, 30),
-    ["junojs"] = math.random(5, 15),
+    ["galaxyslush"] = math.random(20, 30),
+    ["junojs"] = math.random(20, 30),
     ["blackhole"] = math.random(20, 30),
     ["stardust"] = math.random(20, 30),
     ["venus"] = math.random(20, 30),
 }
-
 
 Config.BlacklistedScenarios = {
     ['TYPES'] = {

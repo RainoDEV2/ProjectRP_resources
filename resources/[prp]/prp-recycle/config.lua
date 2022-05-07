@@ -22,13 +22,13 @@ Config = {
 
 Config['delivery'] = {
 	OutsideLocation = {x=53.18,y=6338.09,z=31.38,a=209.01},
-	
+
 	InsideLocation = {x=993.16,y=-3097.61,z=-39.9,a=82.95},
 
 	SellLocation = {x=1157.49,y=-3197.64,z=-39.01,a=267.6},
 	PersonalStash = {x=994.64,y=-3100.34,z=-39.0,a=267.42}, -- Company Stash (Only Recycle Job Employees Use)
 	TradeItems = {x=1162.79,y=-3190.79,z=-39.01,a=267.42},
-	
+
 	officeOut = {x= 1173.77,y= -3196.58,z = -39.00,a = 91.61 },
 	officeIn = {x= 997.76,y= -3091.90,z = -39.0,a = 270.76 },
 
@@ -90,27 +90,27 @@ Config.ArmoryWhitelist = {
 }
 
 Config.Prices = {
-	['copper'] = { name = 'copper', amount = 40 },
-	['plastic'] = { name = 'plastic', amount = 40 },
-	['metalscrap'] = { name = 'metalscrap', amount = 40 },
-	['steel'] = { name = 'steel', amount = 40 },
-	['glass'] = { name = 'glass', amount = 40 },
-	['iron'] = { name = 'iron', amount = 40 },
-	['rubber'] = { name = 'rubber', amount = 40 },
-	['aluminum'] = { name = 'aluminium', amount = 40 },
-	['bottle'] = { name = 'bottle', amount = 24 },
-	['can'] = { name = 'bottle', amount = 24 },
+	['copper'] = { name = 'copper', amount = 24 },
+	['plastic'] = { name = 'plastic', amount = 28 },
+	['metalscrap'] = { name = 'metalscrap', amount = 30 },
+	['steel'] = { name = 'steel', amount = 30 },
+	['glass'] = { name = 'glass', amount = 36 },
+	['iron'] = { name = 'iron', amount = 34 },
+	['rubber'] = { name = 'rubber', amount = 32 },
+	['aluminum'] = { name = 'aluminium', amount = 36 },
+	['bottle'] = { name = 'bottle', amount = 18 },
+	['can'] = { name = 'bottle', amount = 14 },
 }
 
 Config.DumpItems = {
     "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "rubber"
 }
 
-Config.tenmin = "8"
-Config.tenmax = "12"
+Config.tenmin = "2"
+Config.tenmax = "3"
 
-Config.bulkmin = "30"
-Config.bulkmax = "36"
+Config.bulkmin = "25"
+Config.bulkmax = "30"
 
 Config.PedList = {
 	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Recycle'].location, heading = Config.Locations['Recycle'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine

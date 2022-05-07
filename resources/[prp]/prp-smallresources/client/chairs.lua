@@ -27,7 +27,6 @@ function loadAnimDict(dict)
     end
 end
 
-
 RegisterNetEvent("prp-chairs:Use")
 AddEventHandler("prp-chairs:Use", function(item)
     local ped = PlayerPedId()

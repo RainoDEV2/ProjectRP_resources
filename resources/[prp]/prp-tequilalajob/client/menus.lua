@@ -58,6 +58,24 @@ Citizen.CreateThread(function()
         distance = 1.5
     })
 
+    exports['prp-target']:AddBoxZone("galaxyFridge3", vector3(407.8, 247.92, 92.18), 1, 1.2, {
+        name = "galaxyFridge3",
+        heading = 76,
+        debugPoly = false,
+        minZ=91.0,
+        maxZ=93.0,
+    }, {
+        options = {
+            {  
+                event = "prp-galaxy:client:openShop",
+                icon = "fas fa-box",
+                label = "Storage",
+                job = "galaxy",
+            },
+        },
+        distance = 1.5
+    })
+
     -- TEQUI-LA-LA STUFF
     exports['prp-target']:AddBoxZone("tequilalaDuty", vector3(-564.37, 278.34, 83.14), 1, 1.2, {
         name = "tequilalaDuty",
