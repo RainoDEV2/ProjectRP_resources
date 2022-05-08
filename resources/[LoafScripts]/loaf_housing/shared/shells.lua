@@ -117,6 +117,12 @@ Shells = {
         doorOffset = vector3(-2.828491, 4.395538, -1.609535),
         doorHeading = 177.08
     },
+    ["Container"] = {
+        object = `container_shell`,
+        category = "shittier_house",
+        doorOffset = vector3(0.08, -5.73, -1.24),
+        doorHeading = 359.32
+    },
 }
 
 local packs = {
