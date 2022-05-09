@@ -5,7 +5,12 @@ lua54 "yes"
 
 shared_script "config/*.lua"
 client_script {
-    "client/**.lua"
+    "client/**.lua",
+	'@PolyZone/client.lua',
+    '@PolyZone/BoxZone.lua',
+    '@PolyZone/EntityZone.lua',
+    '@PolyZone/CircleZone.lua',
+    '@PolyZone/ComboZone.lua',
 }
 server_script {
     "@mysql-async/lib/MySQL.lua",

@@ -22,7 +22,7 @@ Config = {
         * parking - multiple parking lots, use qtarget or prp-target to retrieve/store vehicle
     ]]
 
-    PingAlreadyOut = true, -- should the vehicle be pinged if it is already out? false = don't ping, true = ping
+    PingAlreadyOut = false, -- should the vehicle be pinged if it is already out? false = don't ping, true = ping
     IndependentGarage = true, -- should you only be able to take out the car from the garage you stored it at?
     SaveDamages = true, -- https://www.youtube.com/watch?v=-gAgVyG7vJw Requires https://github.com/Kiminaze/VehicleDeformation
     DebugPoly = false, -- debug poly for qtarget / prp-target
@@ -48,12 +48,12 @@ Config = {
     },
 
     Garages = {
-        ["motel"] = {
+        ["motelgarage"] = {
             retrieve = vector3(277.37646484375, -345.60275268555, 43.919891357422),
             spawn = vector4(290.06335449219, -339.18823242188, 44.506492614746, 156.48341369629),
             store = vector3(274.81018066406, -330.51040649414, 43.923034667969),
             vehicleTypes = {"car"},
-            jobs = "civ", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
 
             parkingLots = {
                 vector4(266.17074584961, -332.22232055664, 44.49560546875, 250.17141723633),
@@ -82,15 +82,163 @@ Config = {
                 vector4(293.28854370117, -349.62084960938, 44.514511108398, 69.956901550293),
             },
         },
+        ["spanishave"] = {
+            retrieve = vector3(-93.87, 89.32, 71.77),
+            spawn = vector4(-93.86, 89.31, 71.77, 62.21),
+            store = vector3(-103.41, 94.58, 71.82),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(-94.96, 82.59, 71.57, 330.63),
+                vector4(-97.88, 84.25, 71.55, 327.44),
+                vector4(-100.95, 85.94, 71.52, 340.36),
+                vector4(-103.96, 87.74, 71.5, 332.9),
+                vector4(-107.15, 89.33, 71.46, 327.82),
+                vector4(-101.45, 99.92, 72.47, 160.47),
+                vector4(-98.45, 98.25, 72.41, 155.4),
+                vector4(-95.27, 96.42, 72.34, 158.85),
+                vector4(-92.13, 94.65, 72.3, 154.81),
+                vector4(-88.83, 93.53, 72.34, 160.03),
+                vector4(-76.53, 89.21, 71.53, 242.28)
+            },
+        },
+        ["caears24"] = {
+            retrieve = vector3(-466.17, -803.3, 30.54),
+            spawn = vector4(-466.17, -803.3, 30.54, 88.41),
+            store = vector3(-460.41, -803.75, 30.54),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(-466.33, -806.8, 30.54, 88.82),
+                vector4(-466.07, -803.5, 30.54, 89.81),
+                vector4(-466.28, -800.22, 30.54, 90.49),
+                vector4(-460.62, -800.43, 30.54, 270.64),
+                vector4(-460.54, -803.5, 30.54, 270.65),
+                vector4(-460.53, -806.67, 30.54, 270.6)
+            },
+        },
+        ["lagunapi"] = {
+            retrieve = vector3(374.9, 294.89, 103.28),
+            spawn = vector4(374.9, 294.89, 103.28, 155.44),
+            store = vector3(-460.41, -803.75, 30.54),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(374.9, 294.89, 103.28, 162.44),
+                vector4(378.84, 293.5, 103.2, 162.64),
+                vector4(382.63, 292.07, 103.12, 162.03),
+                vector4(371.06, 284.86, 103.26, 339.08),
+                vector4(375.04, 283.54, 103.18, 339.48),
+                vector4(378.89, 282.0, 103.11, 342.7)
+            },
+        },
+        ["beachp"] = {
+            retrieve = vector3(-1183.16, -1495.65, 4.38),
+            spawn = vector4(-1183.16, -1495.65, 4.38, 127.13),
+            store = vector3(-1186.41, -1490.27, 4.38),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(-1182.98, -1495.8, 4.38, 125.73),
+                vector4(-1184.77, -1493.0, 4.38, 125.05),
+                vector4(-1186.41, -1490.27, 4.38, 125.05),
+                vector4(-1188.43, -1487.69, 4.38, 124.52),
+            },
+        },
+        ["themotorhotel"] = {
+            retrieve = vector3(1124.39, 2648.1, 38.0),
+            spawn = vector4(1124.25, 2647.52, 38.0, 359.05),
+            store = vector3(1129.41, 2647.56, 38.0),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(1131.58, 2647.65, 38.0, 0.31),
+                vector4(1127.63, 2647.82, 38.0, 358.36),
+                vector4(1124.25, 2647.52, 38.0, 359.05),
+                vector4(1120.6, 2647.24, 38.0, 1.12),
+            },
+        },
+        ["mountainviewdrive"] = {
+            retrieve = vector3(1707.42, 3762.61, 34.27),
+            spawn = vector4(1707.42, 3762.61, 34.27, 318.43),
+            store = vector3(1704.6, 3765.37, 34.38),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(1707.42, 3762.61, 34.27, 318.43),
+                vector4(1704.6, 3765.37, 34.38, 316.72),
+            },
+        },
+        ["bellfarm"] = {
+            retrieve = vector3(75.51, 6401.56, 31.23),
+            spawn = vector4(75.51, 6401.56, 31.23, 134.66),
+            store = vector3(78.69, 6398.85, 31.23),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(72.42, 6404.19, 31.23, 135.48),
+                vector4(75.51, 6401.56, 31.23, 134.66),
+                vector4(78.55, 6398.97, 31.23, 131.01),
+                vector4(81.21, 6396.25, 31.23, 136.36)
+            },
+        },
+        ["voodooplace"] = {
+            retrieve = vector3(163.3, -3182.76, 5.94),
+            spawn = vector4(163.3, -3182.76, 5.94, 267.57),
+            store = vector3(164.21, -3176.55, 5.92),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(163.3, -3182.76, 5.94, 267.57)
+            },
+        },
+        ["pillboxgarage"] = {
+            retrieve = vector3(216.33, -801.74, 30.79),
+            spawn = vector4(216.33, -801.74, 30.79, 68.59),
+            store = vector3(218.07, -798.06, 30.77),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(216.33, -801.74, 30.79, 68.59),
+                vector4(217.71, -798.49, 30.77, 68.37),
+                vector4(218.92, -795.28, 30.76, 72.68),
+                vector4(221.78, -803.92, 30.68, 247.9),
+                vector4(223.11, -800.64, 30.66, 250.14),
+                vector4(224.66, -797.03, 30.66, 250.48)
+            },
+        },
+        ["southrockford"] = {
+            retrieve = vector3(-696.53, -1104.96, 14.53),
+            spawn = vector4(-696.53, -1104.96, 14.53, 212.55),
+            store = vector3(-700.05, -1106.97, 14.53),
+            vehicleTypes = {"car"},
+            jobs = "all", -- civ = only show vehicles without job in db. all = show all vehicles. you can also put a table with the allowed job vehicles, e.g.: {"police"}
+
+            parkingLots = {
+                vector4(-703.74, -1108.95, 14.53, 213.67),
+                vector4(-700.46, -1106.47, 14.53, 210.37),
+                vector4(-697.1, -1104.46, 14.53, 214.81),
+                vector4(-693.51, -1102.1, 14.53, 214.86)
+            },
+        },
         ["Mission Row PD"] = {
             retrieve = vector3(458.62069702148, -1011.9958496094, 27.248506546021),
             spawn = vector4(441.84899902344, -1021.0112915039, 28.211936950684, 92.883972167969),
             store = vector3(450.14782714844, -1006.6174316406, 26.048715591431),
             vehicleTypes = {"car"},
             jobs = {"police"},
-            
+
             parkingLots = {
-                vector4(446.15393066406, -1024.90234375, 28.229749679565, 3.3737599849701),
+                vector4(446.15393066406, -1024.90234375, 28.229749679565, 130.3737599849701),
                 vector4(442.43511962891, -1025.4991455078, 28.305545806885, 6.4385643005371),
                 vector4(438.65930175781, -1025.73828125, 28.375896453857, 3.7558765411377),
                 vector4(434.86602783203, -1025.9569091797, 28.443691253662, 5.851438999176),

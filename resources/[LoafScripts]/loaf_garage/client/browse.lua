@@ -55,18 +55,18 @@ function TakeOutVehicle(args)
                 TogglePassive(false)
             end)
         end
-        
+
         SetVehicleNumberPlateText(vehicle, data.plate)
         if ESX then
             ESX.Game.SetVehicleProperties(vehicle, data.vehicle)
         elseif ProjectRP then
             ProjectRP.Functions.SetVehicleProperties(vehicle, json.decode(data.mods))
             TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(vehicle))
-            if GetResourceState("LegacyFuel") == "started" and data.fuel then
-                exports.LegacyFuel:SetFuel(vehicle, data.fuel)
+            if GetResourceState("prp-fuel") == "started" and data.fuel then
+                exports['prp-fuel']:SetFuel(vehicle, data.fuel)
             end
         end
-        
+
         SetVehicleHasBeenOwnedByPlayer(vehicle, true)
         SetVehicleNeedsToBeHotwired(vehicle, false)
         SetVehRadioStation(vehicle, "OFF")

@@ -118,40 +118,66 @@ function ReloadGarages()
             if Config.TargetSystem == "qtarget" or Config.TargetSystem == "prp-target" then
                 for location, coords in pairs(data.parkingLots) do
                     local name = garage .. "_" .. location
-                    exports[Config.TargetSystem]:RemoveZone(name)
+                    -- exports[Config.TargetSystem]:RemoveZone(name)
 
-                    exports[Config.TargetSystem]:AddBoxZone(name, coords.xyz, 5.9, 3.2, {
-                            name = name,
+                    -- exports[Config.TargetSystem]:AddBoxZone(name, coords.xyz, 5.9, 3.2, {
+                    --         name = name,
+                    --         heading = coords.w,
+                    --         debugPoly = Config.DebugPoly,
+                    --         minZ = coords.z - 1.0,
+                    --         maxZ = coords.z + 1.0,
+                    --     }, {
+                    --     options = {
+                    --         {
+                    --             icon = "fas fa-parking",
+                    --             label = Strings["store_vehicle"],
+                    --             action = function(entity)
+                    --                 local vehicle = IsPedInAnyVehicle(PlayerPedId()) and GetVehiclePedIsIn(PlayerPedId()) or entity
+                    --                 StoreVehicle(garage, vehicle)
+                    --             end,
+                    --             canInteract = function(entity)
+                    --                 return ( IsPedInAnyVehicle(PlayerPedId()) or IsEntityAVehicle(entity) )
+                    --             end
+                    --         },
+                    --         {
+                    --             icon = "fas fa-car",
+                    --             label = Strings["browse_vehicles"],
+                    --             action = function()
+                    --                 BrowseVehicles(garage, coords)
+                    --             end,
+                    --             canInteract = function(entity)
+                    --                 return not IsEntityAVehicle(entity) and not IsPedInAnyVehicle(PlayerPedId())
+                    --             end
+                    --         },
+                    --     },
+                    --     distance = 3.0,
+                    -- })
+
+                    CreateThread(function()
+                        local garagezone = BoxZone:Create(coords.xyz, 5.0, 3.0, {
+                            name=name..math.random(111,999),
+                            debugPoly=Config.DebugPoly,
                             heading = coords.w,
-                            debugPoly = Config.DebugPoly,
                             minZ = coords.z - 1.0,
-                            maxZ = coords.z + 1.0,
-                        }, {
-                        options = {
-                            {
-                                icon = "fas fa-parking",
-                                label = Strings["store_vehicle"],
-                                action = function(entity)
-                                    local vehicle = IsPedInAnyVehicle(PlayerPedId()) and GetVehiclePedIsIn(PlayerPedId()) or entity
-                                    StoreVehicle(garage, vehicle)
-                                end,
-                                canInteract = function(entity)
-                                    return ( IsPedInAnyVehicle(PlayerPedId()) or IsEntityAVehicle(entity) )
+                            maxZ = coords.z + 2.0,
+                        })
+                        garagezone:onPlayerInOut(function(isPointInside)
+                            if isPointInside then
+                                if IsPedInAnyVehicle(PlayerPedId()) then
+                                    exports['prp-core']:DrawText("[E] - "..Strings["store_vehicle"], 'left')
+                                    checkInGarage = true
+                                    GarageControls('StoreVehicle', garage)
+                                else
+                                    exports['prp-core']:DrawText("[E] - "..Strings["browse_vehicles"], 'left')
+                                    checkInGarage = true
+                                    GarageControls('BrowseVehicles', garage, coords)
                                 end
-                            },
-                            {
-                                icon = "fas fa-car",
-                                label = Strings["browse_vehicles"],
-                                action = function()
-                                    BrowseVehicles(garage, coords)
-                                end,
-                                canInteract = function(entity)
-                                    return not IsEntityAVehicle(entity) and not IsPedInAnyVehicle(PlayerPedId())
-                                end
-                            },
-                        },
-                        distance = 3.0,
-                    })
+                            else
+                                checkInGarage = false
+                                exports['prp-core']:HideText()
+                            end
+                        end)
+                    end)
                 end
             end
         end
@@ -185,6 +211,24 @@ function ReloadGarages()
             end)
         end
     end
+end
+
+checkInGarage = false
+function GarageControls(variable, garage, coords)
+    CreateThread(function()
+        checkInGarage = true
+        while checkInGarage do
+            if IsControlJustPressed(0, 38) then
+                exports['prp-core']:KeyPressed(38)
+                if variable == "BrowseVehicles" then
+                    BrowseVehicles(garage, coords)
+                elseif variable == "StoreVehicle" then
+                    StoreVehicle(garage, GetVehiclePedIsIn(PlayerPedId()))
+                end
+            end
+            Wait(1)
+        end
+    end)
 end
 
 -- damages
