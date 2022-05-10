@@ -890,7 +890,7 @@ Config.Locations = {
         ["label"] = "Chemical Shop",
         ["type"] = "chemicals",
         ["coords"] = {
-            [1] = vector3(vector3(3525.3, 3682.18, 20.99))
+            [1] = vector3(3525.3, 3682.18, 20.99)
         },
         ["products"] = Config.Products["chemshop"],
         ["showblip"] = false,
@@ -899,7 +899,7 @@ Config.Locations = {
         ["label"] = "Pillbox Shop",
         ["type"] = "pillbox",
         ["coords"] = {
-            [1] = vector3(vector3(315.9563, -588.5955, 43.2928))
+            [1] = vector3(312.43, -592.89, 43.28)
         },
         ["products"] = Config.Products["pillboxshop"],
         ["showblip"] = false,

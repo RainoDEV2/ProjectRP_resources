@@ -907,7 +907,8 @@ local checking = false
 Citizen.CreateThread(function()
 	while true do
 		local waitTimer = 1500
-        local hspDist = GetDistanceBetweenCoords(310.0739, -595.4513, 43.2928,GetEntityCoords(GetPlayerPed(-1)),true)
+        local checkInCoords = Config.Locations["checking"][1]
+        local hspDist = GetDistanceBetweenCoords(checkInCoords.x, checkInCoords.y, checkInCoords.z, GetEntityCoords(GetPlayerPed(-1)),true)
 
 		if hspDist < 3.0 then
             waitTimer = 0
@@ -919,7 +920,7 @@ Citizen.CreateThread(function()
                 checking = false
 			end
 
-            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
+            DrawText3D(Config.Locations["checking"][1], "Press [~g~E~w~] to Check In")
 		end
 
         for k, v in pairs(Config.Locations["armory"]) do

@@ -379,19 +379,15 @@ local function EMSControls(variable)
 end
 
 RegisterNetEvent('prp-ambulancejob:stash', function()
-    if onDuty then
-        TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
-        TriggerEvent("inventory:client:SetCurrentStash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
-    else
-        ProjectRP.Functions.Notify('You gotta be on duty.', 'error')
-    end
+    TriggerServerEvent("inventory:server:OpenInventory", "stash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
+    TriggerEvent("inventory:client:SetCurrentStash", "ambulancestash_"..ProjectRP.Functions.GetPlayerData().citizenid)
 end)
 
 RegisterNetEvent('prp-ambulancejob:armory', function()
     if onDuty then
         TriggerServerEvent("inventory:server:OpenInventory", "shop", "hospital", Config.Items)
     else
-        ProjectRP.Functions.Notify('You gotta be on duty.', 'error')
+        ProjectRP.Functions.Notify('You must be on duty.', 'error')
     end
 end)
 
@@ -685,7 +681,7 @@ else
     CreateThread(function()
         local signPoly = {}
         for k, v in pairs(Config.Locations["duty"]) do
-            signPoly[#signPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1.5, 1, {
+            signPoly[#signPoly+1] = BoxZone:Create(vector3(vector3(v.x, v.y, v.z)), 1.5, 2, {
                 name="sign"..k,
                 debugPoly = false,
                 heading = -20,
@@ -696,7 +692,7 @@ else
 
         local signCombo = ComboZone:Create(signPoly, {name = "signcombo", debugPoly = false})
         signCombo:onPlayerInOut(function(isPointInside)
-            if isPointInside and PlayerJob.name =="ambulance" then
+            if isPointInside and PlayerJob.name == "ambulance" then
                 inDuty = true
                 if not onDuty then
                     exports['prp-core']:DrawText('[E] - Go On Duty','left')

@@ -282,3 +282,20 @@ Config.DoorList['training class room'] = {
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
+
+
+-- Main Hall created by Quackers
+Config.DoorList['Main Hall'] = {
+    doors = {
+        {objName = -1700911976, objYaw = 340.00003051758, objCoords = vec3(305.221863, -582.305603, 43.433910)},
+        {objName = -434783486, objYaw = 340.00003051758, objCoords = vec3(302.803070, -581.424561, 43.433910)}
+    },
+    distance = 2,
+    authorizedJobs = { ['ambulance'] = 0 },
+    doorRate = 1.0,
+    audioRemote = false,
+    doorType = 'double',
+    --audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    --audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+    --autoLock = 1000,
+}
