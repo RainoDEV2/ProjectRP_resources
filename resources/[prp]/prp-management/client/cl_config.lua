@@ -8,7 +8,7 @@ Config.BossMenus = {
         vector3(461.44, -986.2, 30.7),
     },
     ['ambulance'] = {
-        vector3(361.58, -588.23, 47.32),
+        vector3(334.81, -594.16, 43.28),
     },
     ['realestate'] = {
         vector3(-124.786, -641.486, 168.820),
@@ -50,7 +50,7 @@ Config.BossMenuZones = {
         { coords = vector3(461.44, -986.2, 30.7), length = 0.35, width = 0.45, heading = 351.0, minZ = 30.58, maxZ = 30.68 } ,
     },
     ['ambulance'] = {
-        { coords = vector3(361.58, -588.23, 47.32), length = 1.2, width = 0.6, heading = 341.0, minZ = 43.13, maxZ = 43.73 },
+        { coords = vector3(334.81, -594.16, 43.28), length = 1.2, width = 0.6, heading = 341.0, minZ = 43.13, maxZ = 43.73 },
     },
     ['realestate'] = {
         { coords = vector3(-124.786, -641.486, 168.820), length = 0.6, width = 1.0, heading = 25.0, minZ = 83.943, maxZ = 84.74 },
