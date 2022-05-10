@@ -3174,7 +3174,7 @@ PRPShared.Vehicles = {
 		['category'] = 'offroad',
 		['model'] = 'verus',
 		['hash'] = `verus`,
-		['shop'] = 'pdm',
+		['shop'] = 'luxury',
 	},
 	['winky'] = {
 		['name'] = 'Winky',
@@ -4913,7 +4913,7 @@ PRPShared.Vehicles = {
 		['name'] = 'Banshee 900R',
 		['brand'] = 'Bravado',
 		['model'] = 'banshee2',
-		['price'] = 210000,
+		['price'] = 342000,
 		['category'] = 'super',
 		['hash'] = `banshee2`,
 		['shop'] = 'luxury',
