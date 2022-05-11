@@ -42,7 +42,6 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 			return
 		end
 	end
-	--print("All beds were full, placing in first bed as fallback")
 
 	TriggerClientEvent('hospital:client:SendToBed', src, 1, Config.Locations["beds"][1], true)
 	TriggerClientEvent('hospital:client:SetBed', -1, 1, true)
@@ -506,7 +505,6 @@ AddEventHandler('sv:log', function (killer,deathreason,deathweapon)
         },
       }, "https://discord.com/api/webhooks/938943739936788595/S5Tt17XPuVmQ-buHey5xxf66VGD5VEUs2_GRFlX6Eh-cFJiGG19l92M_vhEciOQ7_9dU", false, link)
 
-    --    print("sdsd"
     end
 end)
 

@@ -933,7 +933,6 @@ Citizen.CreateThread(function()
             LockerDist = GetDistanceBetweenCoords(vector3(v.x, v.y, v.z),GetEntityCoords(GetPlayerPed(-1)),true)
 
             if LockerDist < 3.0 then
-                -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then
                     waitTimer = 0
                     DrawText3D(vector3(v.x, v.y, v.z), "Press ~g~E~w~ to open ~b~ Armory")
@@ -948,7 +947,6 @@ Citizen.CreateThread(function()
         for k, v in pairs(Config.Locations["stash"]) do
             LockerDist = GetDistanceBetweenCoords(vector3(v.x, v.y, v.z),GetEntityCoords(GetPlayerPed(-1)),true)
             if LockerDist < 3.0 then
-                -- print(PlayerJob.name)
                 if PlayerJob.name == "ambulance" then
                     waitTimer = 0
                     DrawText3D(vector3(v.x, v.y, v.z), "Press ~g~E~w~ to open ~b~ Personal Stash")
@@ -1036,7 +1034,6 @@ RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
 
         for k, v in ipairs(bedHashes) do
             bed = GetClosestObjectOfType(playerPos.x, playerPos.y, playerPos.z, 1.5, v, false, false, false)
-            print(GetEntityModel(bed))
             if bed ~= 0 then
                 bedHash = v
                 break

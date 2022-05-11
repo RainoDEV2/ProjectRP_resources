@@ -1,4 +1,4 @@
-# prp-metaldetecting
+# metaldetecting
 An in-depth & multi-feature metal detecting script made for the qbcore framework.
 This is my first release, I would appreciate all feedback good or bad. Feel free PR this repository with any improvements you suggest.
 Made by <a href="https://github.com/plasmaFPS">plasma#2782</a> & <a href="https://github.com/euenvy">EU ENVY#9641</a>.

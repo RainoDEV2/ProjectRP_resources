@@ -8,13 +8,14 @@ shared_script 'config.lua'
 
 client_scripts {
 	'client/main.lua',
-	'client/camera.lua',
+	'client/security_camera.lua',
 	'client/interactions.lua',
 	'client/job.lua',
 	'client/heli.lua',
 	--'client/anpr.lua',
 	'client/evidence.lua',
 	'client/objects.lua',
+	'client/evidence_camera.lua',
 	'client/tracker.lua'
 }
 

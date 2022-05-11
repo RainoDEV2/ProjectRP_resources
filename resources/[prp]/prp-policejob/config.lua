@@ -1,5 +1,13 @@
 Config = {}
 
+Config.EvidenceWebhook = "https://discord.com/api/webhooks/974036399923822733/45UPmgKm_EZECa2L8ShuTDJnGOd-NpnLRfyCxJ3ttFnDb2bZnNQVSZwoH2Ms6Z5K3bwa"
+
+Config.MaxFOV = 90 --How wide the FOV is (fisheye)
+Config.MinFOV = 10 --How cropped the FOV is (zoom)
+Config.ZoomSpeed = 5 -- camera zoom speed
+Config.LRspeed = 10 --Left and right panning speed
+Config.UDspeed = 10 -- up and down panning speed
+
 Config.Objects = {
     ["cone"] = {model = `prop_roadcone02a`, freeze = false},
     ["barier"] = {model = `prop_barrier_work06a`, freeze = true},
@@ -500,6 +508,15 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 21,
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
+        },
+        [22] = {
+            name = "dslrcamera",
+            price = 0,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 22,
             authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8,}
         },
     }

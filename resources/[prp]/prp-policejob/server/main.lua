@@ -1134,11 +1134,8 @@ AddEventHandler("Axel:Get:Weapon", function(query)
     str = query:sub(5)
 
     exports.oxmysql:query("SELECT * FROM `players` WHERE `citizenid` = ?", {str}, function(result)
-
         if result[1] ~= nil then
-
             for index, data in ipairs(result) do
-
                 if data.charinfo then
                     local player = json.decode(data.charinfo)
                     local metadata = json.decode(data.metadata)
@@ -1159,7 +1156,6 @@ AddEventHandler("Axel:Get:Fingerprint", function(query)
 	local matches = {}
 
 	exports.oxmysql:query("SELECT * FROM `players` WHERE `metadata` LIKE ?", {string.lower('%'..query..'%')}, function(result) -- % wildcard, needed to search for all alike results
-
 		for index, data in ipairs(result) do
 			if data.charinfo then
 				local player = json.decode(data.charinfo)
@@ -1173,4 +1169,14 @@ AddEventHandler("Axel:Get:Fingerprint", function(query)
 			end
 		end
 	end)
+end)
+
+ProjectRP.Functions.CreateUseableItem("dslrcamera", function(source, item)
+    local src = source
+    TriggerClientEvent("prp-policejob:client:UseCamera", src)
+end)
+
+local WebHook = Config.EvidenceWebhook
+ProjectRP.Functions.CreateCallback("prp-policejob:evidence-camera:WebHook",function(source,cb)
+	cb(WebHook)
 end)

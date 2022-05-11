@@ -23,10 +23,54 @@ local function AttachEntity(ped, model)
     end
 end
 
+CreateThread(function()
+    exports['prp-target']:SpawnPed({
+        model = DetectorConfig.CommonPed,
+        coords = DetectorConfig.CommonPedLocation, 
+        minusOne = true, 
+        freeze = true, 
+        invincible = true, 
+        blockevents = true,
+        scenario = 'WORLD_HUMAN_DRUG_DEALER',
+        target = { 
+            options = {
+                {
+                    type="client",
+                    event = "prp-metaldetector:CommonTradingMenu",
+                    icon = "fas fa-user-secret",
+                    label = "Trade your Finds"
+                }
+            },
+            distance = 2.5,
+        },
+    })
+
+    exports['prp-target']:SpawnPed({
+        model = DetectorConfig.RarePed, 
+        coords = DetectorConfig.RarePedLocation,
+        minusOne = true, 
+        freeze = true, 
+        invincible = true, 
+        blockevents = true,
+        scenario = 'WORLD_HUMAN_DRUG_DEALER',
+        target = { 
+            options = {
+                {
+                    type = "client",
+                    event = "prp-metaldetector:RareTradingMenu",
+                    icon = "fas fa-user-secret",
+                    label = "Trade your Rare Finds"
+                }
+            },
+            distance = 2.5,
+        },
+    })
+end)
+
 RegisterNetEvent('prp-metaldetecting:startdetect', function(data)
     if inZone == 1 then 
         if not overheated then 
-            ProjectRP.Functions.Progressbar('start_detect', 'Detecting...', Config.DetectTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
+            ProjectRP.Functions.Progressbar('start_detect', 'Detecting...', DetectorConfig.DetectTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
                 disableMovement = false,
                 disableCarMovement = true,
                 disableMouse = false,
@@ -40,10 +84,10 @@ RegisterNetEvent('prp-metaldetecting:startdetect', function(data)
                 Wait(2000)
                 TriggerServerEvent('prp-metaldetecting:DetectReward')
                 breakchance = math.random(1,100)
-                if breakchance <= Config.OverheatChance then
+                if breakchance <= DetectorConfig.OverheatChance then
                     overheated = true
                     ProjectRP.Functions.Notify('Your metal detector has overheated! Let it cool down.', 'error', 4000)
-                    Wait(Config.OverheatTime)
+                    Wait(DetectorConfig.OverheatTime)
                     overheated = false
                     ProjectRP.Functions.Notify('Your metal detector has cooled down.', 'primary', 4000)
                 end
@@ -59,10 +103,10 @@ RegisterNetEvent('prp-metaldetecting:startdetect', function(data)
 end)
 
 CreateThread(function() 
-    for k, v in pairs(Config.DetectZones) do
+    for k, v in pairs(DetectorConfig.DetectZones) do
         local MetalZone = PolyZone:Create(v.zones, {
             name = v.label,
-            debugPoly = Config.DebugPoly
+            debugPoly = DetectorConfig.DebugPoly
         })
 
         MetalZone:onPlayerInOut(function(isPointInside)

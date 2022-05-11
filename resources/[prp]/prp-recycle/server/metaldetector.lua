@@ -13,17 +13,17 @@ RegisterNetEvent('prp-metaldetecting:DetectReward', function()
     local Player = ProjectRP.Functions.GetPlayer(src)
     local chance = math.random(1,100)
 
-    if chance <= Config.CommonChance then 
-        local item = Config.CommonItems[math.random(1, #Config.CommonItems)]
-        local amount = Config.CommonAmount
+    if chance <= DetectorConfig.CommonChance then 
+        local item = DetectorConfig.CommonItems[math.random(1, #DetectorConfig.CommonItems)]
+        local amount = DetectorConfig.CommonAmount
 
         Player.Functions.AddItem(item, amount)
         TriggerClientEvent("inventory:client:ItemBox", src, ProjectRP.Shared.Items[item], "add")
         TriggerClientEvent('ProjectRP:Notify', src, 'You found '.. item ..'!', 'success')
-    elseif chance >= Config.RareChance then 
-        local item = Config.RareItems[math.random(1, #Config.RareItems)]
-        local amount = Config.RareAmount
-        
+    elseif chance >= DetectorConfig.RareChance then 
+        local item = DetectorConfig.RareItems[math.random(1, #DetectorConfig.RareItems)]
+        local amount = DetectorConfig.RareAmount
+
         Player.Functions.AddItem(item, amount)
         TriggerClientEvent("inventory:client:ItemBox", src, ProjectRP.Shared.Items[item], "add")
         TriggerClientEvent('ProjectRP:Notify', src, 'You found '.. item ..'!', 'success')
@@ -39,7 +39,7 @@ RegisterServerEvent('prp-metaldetector:server:CommonTrade', function(data)
     local Player = ProjectRP.Functions.GetPlayer(src)
     local item = tostring(data.item)
     local check = Player.Functions.GetItemByName(item)
-    
+
     if data.id == 2 then
         if check ~= nil then
             if check.amount >= 50 then
@@ -158,7 +158,7 @@ RegisterServerEvent('prp-metaldetector:server:RareTrade', function(data)
     local Player = ProjectRP.Functions.GetPlayer(src)
     local item = tostring(data.item)
     local check = Player.Functions.GetItemByName(item)
-    
+
     if data.id == 2 then
         if check ~= nil then
             if check.amount >= 1 then

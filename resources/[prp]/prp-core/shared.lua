@@ -768,9 +768,11 @@ PRPShared.Items = {
 	["internals"] 					= {["name"] = "internals", 					["label"] = "Internal Cosmetics", 		["weight"] = 0, 		["type"] = "item", 		["image"] = "internals.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
 	["externals"] 					= {["name"] = "externals", 					["label"] = "Exterior Cosmetics", 		["weight"] = 0, 		["type"] = "item", 		["image"] = "mirror.png", 				["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,   ["combinable"] = nil,   ["description"] = ""},
 
-	["payticket"] 					= {["name"] = "payticket", 					["label"] = "Receipt", 	     			["weight"] = 150, 		["type"] = "item", 		["image"] = "ticket.png", 				["unique"] = false,   	["useable"] = false,    ["shouldClose"] = false,    ["combinable"] = nil,   ["description"] = "Cash these in at the bank!"},
+	["payticket"] 					= {["name"] = "payticket", 					["label"] = "Receipt", 	     			["weight"] = 150, 		["type"] = "item", 		["image"] = "ticket.png", 				["unique"] = false,   	["useable"] = false,    ["shouldClose"] = false,  ["combinable"] = nil,  ["description"] = "Cash these in at the bank!"},
 
 	['weapon_shoe'] 		        = {['name'] = 'weapon_shoe', 		 	  	['label'] = 'Shoe', 				    ['weight'] = 100, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_shoe.png', 		['unique'] = true, 		['useable'] = false, 	['description'] = 'A shoe'},
+
+	["dslrcamera"]					= {["name"] = "dslrcamera", 				["label"] = "PD Camera", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "dslrcamera.png", 			["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "DSLR Camera, with cloud uplink.. cool right?"},
 
 	-- Chairs
 	["chair1"] 						= {["name"] = "chair1",  	    			["label"] = "Green Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair1.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },

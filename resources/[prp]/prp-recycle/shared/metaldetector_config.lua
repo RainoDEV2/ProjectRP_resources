@@ -1,40 +1,40 @@
-Config = {}
+DetectorConfig = {}
 
 -- display polyzones (green boxes)
-Config.DebugPoly = false 
+DetectorConfig.DebugPoly = false 
 
 -- common trade ped location & ped hash
-Config.CommonPedLocation = vector4(-1154.11, -1990.46, 13.16, 316.86)
-Config.CommonPed = 'mp_m_forgery_01'
+DetectorConfig.CommonPedLocation = vector4(-1154.11, -1990.46, 13.16, 316.86)
+DetectorConfig.CommonPed = 'mp_m_forgery_01'
 
 -- rare trade ped location & ped hash
-Config.RarePedLocation = vector4(-2085.17, -1017.98, 12.78, 74.19)
-Config.RarePed = 'mp_m_weapexp_01'
+DetectorConfig.RarePedLocation = vector4(-2085.17, -1017.98, 12.78, 74.19)
+DetectorConfig.RarePed = 'mp_m_weapexp_01'
 
 -- the amount of time it takes to detect items. (progressbar)
-Config.DetectTime = math.random(6000, 10000)
+DetectorConfig.DetectTime = math.random(6000, 10000)
 
 -- if doesnt land on common or rare you get nothing.
 -- 70% chance of receiving common item.
-Config.CommonChance = 70
+DetectorConfig.CommonChance = 70
 
 -- 5% chance of receiving rare item.
-Config.RareChance = 95
+DetectorConfig.RareChance = 95
 
 -- The amount of common items received when detected.
-Config.CommonAmount = math.random(2,4)
+DetectorConfig.CommonAmount = math.random(2,4)
 
 -- The amount of rare items received when detected.
-Config.RareAmount = 1
+DetectorConfig.RareAmount = 1
 
 -- %6 chance of overheating.
-Config.OverheatChance = 8
+DetectorConfig.OverheatChance = 8
 
 -- how long the detecter gets overheated for
-Config.OverheatTime = math.random(40000, 60000) 
+DetectorConfig.OverheatTime = math.random(40000, 60000) 
 
 -- list of common items detectable
-Config.CommonItems = {
+DetectorConfig.CommonItems = {
     'metaltrash',
     'irontrash',
     'bulletcasings',
@@ -47,7 +47,7 @@ Config.CommonItems = {
 }
 
 -- list of rare items detectable
-Config.RareItems = {
+DetectorConfig.RareItems = {
     'burriedtreasure',
     'treasurekey',
     'antiquecoin',
@@ -60,7 +60,7 @@ Config.RareItems = {
 }
 
 -- metal detection zones
-Config.DetectZones = {
+DetectorConfig.DetectZones = {
     [1] = {
         label = "PierBeach",
         zones = {
