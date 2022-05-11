@@ -13,4 +13,11 @@ Citizen.CreateThread(function()
 
 	--First Pack (4 Doors)
 	AddTextEntry('G632019', '2019 Mercedes G63')
+	AddTextEntry('mers18', 'Renault Megane')
+	AddTextEntry('a8fsi', 'Audi A8')
+	AddTextEntry('rubicon20', 'Jeep Rubicon')
+	AddTextEntry('kiagt', 'Kia Stinger')
+
+
+	
 end)
