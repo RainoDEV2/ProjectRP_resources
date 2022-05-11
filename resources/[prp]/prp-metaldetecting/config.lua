@@ -1,10 +1,10 @@
 Config = {}
 
 -- display polyzones (green boxes)
-Config.DebugPoly = true 
+Config.DebugPoly = false 
 
 -- common trade ped location & ped hash
-Config.CommonPedLocation = vector4(-1158.44, -1986.14, 13.16, 322.02)
+Config.CommonPedLocation = vector4(-1154.11, -1990.46, 13.16, 316.86)
 Config.CommonPed = 'mp_m_forgery_01'
 
 -- rare trade ped location & ped hash
@@ -22,7 +22,7 @@ Config.CommonChance = 70
 Config.RareChance = 95
 
 -- The amount of common items received when detected.
-Config.CommonAmount = math.random(1,5)
+Config.CommonAmount = math.random(2,4)
 
 -- The amount of rare items received when detected.
 Config.RareAmount = 1
