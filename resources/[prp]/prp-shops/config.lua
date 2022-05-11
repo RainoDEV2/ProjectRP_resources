@@ -262,12 +262,20 @@ Config.Products = {
             slot = 20,
         },
         [21] = {
+            name = "metaldetector",
+            price = 800,
+            amount = 50,
+            info = {},
+            type = "item",
+            slot = 21,
+        },
+        [22] = {
             name = "advancedrepairkit",
             price = 500,
             amount = 50,
             info = {},
             type = "item",
-            slot = 21,
+            slot = 22,
             requiredJob = { "mechanic" }
         },
     },
