@@ -20054,7 +20054,7 @@
 		</Item>
 		<Item type="CHandlingData">
       <handlingName>POLICE2</handlingName>
-      <fMass value="1625.000000" />
+      <fMass value="3500.000000" />
       <fInitialDragCoeff value="6.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.250000" z="-0.450000" />
