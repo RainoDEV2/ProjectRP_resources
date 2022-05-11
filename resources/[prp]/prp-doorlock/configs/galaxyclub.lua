@@ -1,15 +1,16 @@
--- bookshelf created by Parker
-Config.DoorList['bookshelf'] = {
+-- Front Door 2 created by Quackers
+Config.DoorList['Front Door 2'] = {
+    locked = true,
+    objCoords = vec3(343.696472, 290.112427, 95.955147),
+    objYaw = 344.59246826172,
+    objName = -1989765534,
+    fixText = false,
+    audioRemote = false,
+    distance = 2,
+    authorizedJobs = { ['galaxy'] = 0 },
     authorizedGangs = { ['celestial'] = 0 },
     doorType = 'door',
-    fixText = false,
-    distance = 1,
-    objCoords = vec3(403.953217, 248.795425, 92.185333),
-    objName = -957944942,
     doorRate = 1.0,
-    objYaw = 164.07965087891,
-    locked = true,
-    audioRemote = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -26,6 +27,7 @@ Config.DoorList['Front Door'] = {
     fixText = false,
     audioRemote = false,
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -42,6 +44,7 @@ Config.DoorList['VIP Area'] = {
     fixText = false,
     audioRemote = false,
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -58,6 +61,7 @@ Config.DoorList['Boss Area'] = {
     fixText = false,
     audioRemote = false,
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -74,6 +78,7 @@ Config.DoorList['Upstairs Bar'] = {
     fixText = false,
     audioRemote = false,
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -90,6 +95,7 @@ Config.DoorList['Security Room'] = {
     fixText = false,
     audioRemote = false,
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
 }
@@ -104,7 +110,24 @@ Config.DoorList['X Room'] = {
         {objName = 390840000, objYaw = 254.59246826172, objCoords = vec3(390.864136, 257.391602, 92.219200)}
     },
     authorizedJobs = { ['galaxy'] = 0 },
+    authorizedGangs = { ['celestial'] = 0 },
     doorRate = 1.0,
+    audioRemote = false,
+    audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
+    audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},
+}
+
+-- bookshelf created by Parker
+Config.DoorList['bookshelf'] = {
+    authorizedGangs = { ['celestial'] = 0 },
+    doorType = 'door',
+    fixText = false,
+    distance = 1,
+    objCoords = vec3(403.953217, 248.795425, 92.185333),
+    objName = -957944942,
+    doorRate = 1.0,
+    objYaw = 164.07965087891,
+    locked = true,
     audioRemote = false,
     audioLock = {['file'] = 'metal-locker.ogg', ['volume'] = 0.6},
     audioUnlock = {['file'] = 'metallic-creak.ogg', ['volume'] = 0.7},

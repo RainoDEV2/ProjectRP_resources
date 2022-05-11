@@ -7,10 +7,10 @@ Config.WipeInventoryOnRespawn = true
 
 Config.Locations = {
     ["checking"] = {
-        [1] = vector3(308.19, -595.35, 43.29),
+        [1] = vector3(307.59, -595.41, 43.22),
     },
     ["duty"] = {
-        [1] = vector3(305.21, -598.15, 43.29),
+        [1] = vector3(301.15, -595.37, 43.28),
     },
     ["vehicle"] = {
         [1] = vector4(294.578, -574.761, 43.179, 35.79),
@@ -23,33 +23,34 @@ Config.Locations = {
         [2] = vector4(-475.43, 5988.353, 31.716, 31.34),
     },
     ["armory"] = {
-        [1] = vector3(303.7, -595.5, 48.22),
+        [1] = vector3(309.95, -568.83, 43.28),
     },
     ["roof"] = {
-        [1] = vector4(335.91, -580.38, 74.07, 160.41),
+        [1] = vector3(338.7, -583.59, 74.16),
     },
     ["main"] = {
-        [1] = vector3(331.25, -592.59, 43.28),
+        [1] = vector3(327.11, -603.79, 43.28),
     },
     ["main2"] = {
-        [1] = vector3(335.92, -580.28, 43.29),
+        [1] = vector3(332.3, -595.71, 43.28),
     },
     ["bottomFloor"] = {
-        [1] = vector3(335.88, -580.31, 28.9),
-        [2] = vector3(331.12, -592.84, 28.9),
+        [1] = vector3(344.33, -586.27, 28.8),
+        [2] = vector3(345.64, -582.62, 28.8),
     },
     ["stash"] = {
-        [1] = vector3(313.0234, -604.5322, 43.2928),
+        [1] = vector3(306.83, -601.83, 43.28),
     },
     ["beds"] = {
-        [1] = {coords = vector4(351.82, -576.51, 44.21, 152.57), taken = false, model = 2117668672},
-        [2] = {coords = vector4(356.63, -585.0, 44.21, 338.39), taken = false, model = 1631638868},
-        [3] = {coords = vector4(354.28, -577.44, 44.21, 157.45), taken = false, model = 2117668672},
-        [4] = {coords = vector4(354.31, -584.13, 44.21, 335.0), taken = false, model = 2117668672},
-        [5] = {coords = vector4(356.74, -578.31, 44.21, 157.95), taken = false, model = 2117668672},
-        [6] = {coords = vector4(351.64, -583.25, 44.21, 339.11), taken = false, model = -1091386327},
-        [7] = {coords = vector4(359.03, -579.29, 44.21, 155.93), taken = false, model = -1091386327},
-        [8] = {coords = vector4(349.1, -582.25, 44.21, 335.3), taken = false, model = -1091386327},
+        [1] = {coords = vector4(322.63, -587.46, 42.2, 339.4), taken = false, model = 1631638868},
+        [2] = {coords = vector4(324.25, -582.71, 42.2, 155.92), taken = false, model = 1631638868},
+        [3] = {coords = vector4(317.76, -585.44, 42.2, 338.34), taken = false, model = 1631638868},
+        [4] = {coords = vector4(314.56, -584.23, 42.2, 340.9), taken = false, model = 1631638868},
+        [5] = {coords = vector4(311.1, -583.04, 42.2, 335.06), taken = false, model = 1631638868},
+        [6] = {coords = vector4(307.76, -581.82, 42.2, 340.04), taken = false, model = -1631638868},
+        [7] = {coords = vector4(309.36, -577.19, 42.2, 155.06), taken = false, model = -1631638868},
+        [8] = {coords = vector4(313.92, -578.83, 42.2, 158.46), taken = false, model = -1631638868},
+        [9] = {coords = vector4(319.38, -580.89, 42.2, 158.43), taken = false, model = -1631638868},
     },
     ["stations"] = {
         [1] = {label = 'Pillbox Hospital', coords = vector4(304.27, -600.33, 43.28, 272.249)}

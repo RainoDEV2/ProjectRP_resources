@@ -2057,102 +2057,104 @@ DP.PropEmotes = {
        EmoteMoving = true,
    }},
 
-   ["dancepole"] = {"mini@strip_club@pole_dance@pole_dance1", "pd_dance_01", "Pole Dance", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-   
-   ["dancepole2"] = {"mini@strip_club@pole_dance@pole_dance2", "pd_dance_02", "Pole Dance 2", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-      
-   ["dancepole3"] = {"mini@strip_club@pole_dance@pole_dance3", "pd_dance_03", "Pole Dance", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vupole"] = {"mini@strip_club@pole_dance@stage_2_pole_a", "stage_2_pole_a", "Pole Dance", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vudance"] = {"mini@strip_club@private_dance@part1", "priv_dance_p1", "VU Dance", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vudance2"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "VU Dance 2", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-   ["vudance3"] = {"mini@strip_club@private_dance@part3", "priv_dance_p3", "VU Dance 3", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vutitties"] = {"mini@strip_club@backroom@", "stripper_d_leadin_backroom_idle_b", "VU Titties", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vubouncer"] = {"mini@strip_club@idles@bouncer@base", "base", "VU Bouncer", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vuidle"] = {"mini@strip_club@idles@stripper", "stripper_idle_01", "VU Idle", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vuidle2"] = {"mini@strip_club@idles@stripper", "stripper_idle_02", "VU Idle 2", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vuidle3"] = {"mini@strip_club@idles@stripper", "stripper_idle_04", "VU Idle 3", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vuidle4"] = {"mini@strip_club@idles@stripper", "stripper_idle_05", "VU Idle 4", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vuidle5"] = {"mini@strip_club@idles@stripper", "stripper_idle_06", "VU Idle 5", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vupose"] = {"mini@strip_club@lap_dance@ld_girl_a_approach", "ld_girl_a_approach_f", "VU Pose", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vupose2"] = {"mini@strip_club@lap_dance@ld_girl_a_approach", "ld_girl_a_approach_f_face", "VU Pose 2", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["vushowoff"] = {"mini@strip_club@backroom@", "stripper_b_backroom_idle_b", "VU Show Off", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-
-   ["lapdance2"] = {"mini@strip_club@private_dance@idle", "priv_dance_idle", "Lapdance 2", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-   ["lapdance3"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "Lapdance 3", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
-   ["lapdance4"] = {"mini@strip_club@private_dance@part3", "priv_dance_p3", "Lapdance 4", AnimationOptions =
-   {
-       EmoteLoop = true,
-   }},
+    ["dancepole"] = {"mini@strip_club@pole_dance@pole_dance1", "pd_dance_01", "Pole Dance", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    
+    ["dancepole2"] = {"mini@strip_club@pole_dance@pole_dance2", "pd_dance_02", "Pole Dance 2", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+        
+    ["dancepole3"] = {"mini@strip_club@pole_dance@pole_dance3", "pd_dance_03", "Pole Dance", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vupole"] = {"mini@strip_club@pole_dance@stage_2_pole_a", "stage_2_pole_a", "Pole Dance", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vudance"] = {"mini@strip_club@private_dance@part1", "priv_dance_p1", "VU Dance", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vudance2"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "VU Dance 2", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vudance3"] = {"mini@strip_club@private_dance@part3", "priv_dance_p3", "VU Dance 3", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vutitties"] = {"mini@strip_club@backroom@", "stripper_d_leadin_backroom_idle_b", "VU Titties", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vubouncer"] = {"mini@strip_club@idles@bouncer@base", "base", "VU Bouncer", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vuidle"] = {"mini@strip_club@idles@stripper", "stripper_idle_01", "VU Idle", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vuidle2"] = {"mini@strip_club@idles@stripper", "stripper_idle_02", "VU Idle 2", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vuidle3"] = {"mini@strip_club@idles@stripper", "stripper_idle_04", "VU Idle 3", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vuidle4"] = {"mini@strip_club@idles@stripper", "stripper_idle_05", "VU Idle 4", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vuidle5"] = {"mini@strip_club@idles@stripper", "stripper_idle_06", "VU Idle 5", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vupose"] = {"mini@strip_club@lap_dance@ld_girl_a_approach", "ld_girl_a_approach_f", "VU Pose", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vupose2"] = {"mini@strip_club@lap_dance@ld_girl_a_approach", "ld_girl_a_approach_f_face", "VU Pose 2", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["vushowoff"] = {"mini@strip_club@backroom@", "stripper_b_backroom_idle_b", "VU Show Off", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["lapdance2"] = {"mini@strip_club@private_dance@idle", "priv_dance_idle", "Lapdance 2", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["lapdance3"] = {"mini@strip_club@private_dance@part2", "priv_dance_p2", "Lapdance 3", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["lapdance4"] = {"mini@strip_club@private_dance@part3", "priv_dance_p3", "Lapdance 4", AnimationOptions =
+    {
+        EmoteLoop = true,
+    }},
+    ["medicalecg"] = {"missheistdocksprep1hold_cellphone", "static", "Medical Ecg", AnimationOptions =
+    {
+        Prop = "prop_ld_purse_01",
+        PropBone = 57005,
+        PropPlacement = {0.10, 0.0, 0.0, 0.0, 280.0, 53.0},
+        EmoteLoop = true,
+        EmoteMoving = true,
+    }},
+    ["medicalbag"] = {"missheistdocksprep1hold_cellphone", "static", "Medical Bag", AnimationOptions =
+    {
+        Prop = "prop_ld_bomb",
+        PropBone = 57005,
+        PropPlacement = {0.39, 0.0, 0.0, 0.0, 266.0, 60.0},
+        EmoteLoop = true,
+        EmoteMoving = true,
+    }}, 
 }
 
 DP.ExtraDances = {

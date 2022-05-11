@@ -537,7 +537,7 @@ Config.Stores = {
 Config.ClothingRooms = {
     [1] = {requiredJob = 'police', isGang = false, coords = vector3(461.55, -998.99, 30.69), width = 5, length = 5, cameraLocation = vector4(461.55, -998.99, 30.69, 90.73)},
     [2] = {requiredJob = 'police', isGang = false, coords = vector3(384.04, 794.19, 187.68), width = 5, length = 5, cameraLocation = vector4(384.04, 794.19, 187.68, 187.68)},
-    [3] = {requiredJob = 'ambulance', isGang = false, coords = vector3(317.16, -601.53, 43.29), width = 5, length = 5, cameraLocation = vector4(317.16, -601.53, 43.29, 71.57)},
+    [3] = {requiredJob = 'ambulance', isGang = false, coords = vector3(301.73, -599.19, 43.28), width = 3, length = 3, cameraLocation = vector4(302.28, -597.57, 43.28, 156.19)},
     [4] = {requiredJob = 'burger', isGang = false, coords = vector3(-1185.88, -900.03, 13.98), width = 5, length = 5, cameraLocation = vector4(-1186.09, -900.26, 13.98, 127.55)},
 }
 

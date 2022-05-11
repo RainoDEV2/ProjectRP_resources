@@ -8,7 +8,7 @@ Citizen.CreateThread(function()
 	AddTextEntry('ems2018charger', 'EMS Charger')
 
 	-- Job cars
-	AddTextEntry('goldmk6', 'Golf Mk6')
+	AddTextEntry('golfmk6', 'Golf Mk6')
 	AddTextEntry('m3e36', 'BMW M3 E36')
 
 	--First Pack (4 Doors)

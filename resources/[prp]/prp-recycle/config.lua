@@ -98,8 +98,8 @@ Config.Prices = {
 	['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
 	['aluminum'] = { name = 'aluminium', amount = 36 },
-	['bottle'] = { name = 'bottle', amount = 18 },
-	['can'] = { name = 'bottle', amount = 14 },
+	['bottle'] = { name = 'bottle', amount = 8 },
+	['can'] = { name = 'bottle', amount = 6 },
 }
 
 Config.DumpItems = {

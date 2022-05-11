@@ -11,7 +11,7 @@ local doctorCount = 0
 local CurrentDamageList = {}
 local inCheckin = false
 local inBed = false
-bedNames = { 'v_med_bed1', 'v_med_bed2', 'v_med_emptybed', 'hirurg_bath' } -- Add more model strings here if you'd like
+bedNames = { 'v_med_bed1', 'v_med_bed2', 'v_med_emptybed', 'gabz_pillbox_diagnostics_bed_02', 'gabz_pillbox_diagnostics_bed_03' } -- Add more model strings here if you'd like
 bedHashes = {}
 onBedAnimDict = 'anim@gangops@morgue@table@'
 onBedAnimName = 'body_search'
@@ -620,9 +620,15 @@ RegisterNetEvent('hospital:client:Revive', function()
 
     if isInHospitalBed then
         loadAnimDict(inBedDict)
-        TaskPlayAnim(player, inBedDict, inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0 )
+        TaskPlayAnim(player, inBedDict, inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0)
         SetEntityInvincible(player, true)
         canLeaveBed = true
+    end
+
+    if putOnBed then
+        loadAnimDict(inBedDict)
+        TaskPlayAnim(player, inBedDict, inBedAnim, 8.0, 1.0, -1, 1, 0, 0, 0, 0)
+        TakePlayerOffBed(player, true)
     end
 
     -- TriggerServerEvent("hospital:server:RestoreWeaponDamage")
@@ -907,7 +913,8 @@ local checking = false
 Citizen.CreateThread(function()
 	while true do
 		local waitTimer = 1500
-        local hspDist = GetDistanceBetweenCoords(310.0739, -595.4513, 43.2928,GetEntityCoords(GetPlayerPed(-1)),true)
+        local checkInCoords = Config.Locations["checking"][1]
+        local hspDist = GetDistanceBetweenCoords(checkInCoords.x, checkInCoords.y, checkInCoords.z, GetEntityCoords(GetPlayerPed(-1)),true)
 
 		if hspDist < 3.0 then
             waitTimer = 0
@@ -919,7 +926,7 @@ Citizen.CreateThread(function()
                 checking = false
 			end
 
-            DrawText3D(vector3(310.0739, -595.4513, 43.2928), "Press [~g~E~w~] to Check In")
+            DrawText3D(Config.Locations["checking"][1], "Press [~g~E~w~] to Check In")
 		end
 
         for k, v in pairs(Config.Locations["armory"]) do
@@ -1016,22 +1023,9 @@ end)
 
 RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
     if playerPed then
+        -- If the player is already on a bed, leave the bed
         if putOnBed then
-            DoScreenFadeOut(1000)
-            while not IsScreenFadedOut() do
-                Wait(100)
-            end
-
-            FreezeEntityPosition(playerPed, false)
-            SetEntityInvincible(playerPed, false)
-            RenderScriptCams(0, true, 200, true, true)
-            DestroyCam(cam, false)
-            ClearPedTasksImmediately(playerPed)
-
-            Wait(200)
-
-            DoScreenFadeIn(1000)
-            putOnBed = false
+            TakePlayerOffBed(playerPed, false)
             return
         end
 
@@ -1042,6 +1036,7 @@ RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
 
         for k, v in ipairs(bedHashes) do
             bed = GetClosestObjectOfType(playerPos.x, playerPos.y, playerPos.z, 1.5, v, false, false, false)
+            print(GetEntityModel(bed))
             if bed ~= 0 then
                 bedHash = v
                 break
@@ -1054,11 +1049,11 @@ RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
             end
             local bedCoords = GetEntityCoords(bed)
 
-            if bedHash == GetHashKey('hirurg_bath') then -- check for surgery bed
+            if bedHash == GetHashKey('gabz_pillbox_diagnostics_bed_02') or bedHash == GetHashKey('gabz_pillbox_diagnostics_bed_03') then -- check for surgery bed
                 SetEntityCoords(playerPed, bedCoords.x, bedCoords.y, bedCoords.z+1, 1, 1, 0, 0)
-                SetEntityHeading(playerPed, GetEntityHeading(bed) + 270.0)
+                SetEntityHeading(playerPed, GetEntityHeading(bed) + 180.0)
             else
-                SetEntityCoords(playerPed, bedCoords.x, bedCoords.y, bedCoords.z, 1, 1, 0, 0)
+                SetEntityCoords(playerPed, bedCoords.x, bedCoords.y, bedCoords.z+0.5, 1, 1, 0, 0)
                 SetEntityHeading(playerPed, GetEntityHeading(bed) + 180.0)
             end
             TaskPlayAnim(playerPed, onBedAnimDict, onBedAnimName, 8.0, 1.0, -1, 45, 1.0, 0, 0, 0)
@@ -1090,6 +1085,27 @@ RegisterNetEvent('hospital:client:PutPlayerOnBed', function(playerPed)
         ProjectRP.Functions.Notify('No Player Nearby', "error")
     end
 end)
+
+function TakePlayerOffBed(playerPed, wasRevived)
+    DoScreenFadeOut(1000)
+    while not IsScreenFadedOut() do
+        Wait(100)
+    end
+
+    FreezeEntityPosition(playerPed, false)
+    SetEntityInvincible(playerPed, false)
+    RenderScriptCams(0, true, 200, true, true)
+    DestroyCam(cam, false)
+
+    if not wasRevived then
+        ClearPedTasksImmediately(playerPed)
+        putOnBed = false
+    end
+
+    Wait(200)
+
+    DoScreenFadeIn(1000)
+end
 
 -- Convar Turns into strings
 if Config.UseTarget == 'true' then
