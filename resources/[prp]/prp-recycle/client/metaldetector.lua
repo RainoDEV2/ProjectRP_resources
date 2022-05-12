@@ -68,32 +68,39 @@ CreateThread(function()
 end)
 
 RegisterNetEvent('prp-metaldetecting:startdetect', function(data)
-    if inZone == 1 then 
-        if not overheated then 
-            ProjectRP.Functions.Progressbar('start_detect', 'Detecting...', DetectorConfig.DetectTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
-                disableMovement = false,
-                disableCarMovement = true,
-                disableMouse = false,
-                disableCombat = true,
-            }, {
-                animDict = 'mini@golfai',
-                anim = 'wood_idle_a',
-                flags = 49,
-            }, {}, {}, function()
-                TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, 'metaldetector', 0.2)
-                Wait(2000)
-                TriggerServerEvent('prp-metaldetecting:DetectReward')
-                breakchance = math.random(1,100)
-                if breakchance <= DetectorConfig.OverheatChance then
-                    overheated = true
-                    ProjectRP.Functions.Notify('Your metal detector has overheated! Let it cool down.', 'error', 4000)
-                    Wait(DetectorConfig.OverheatTime)
-                    overheated = false
-                    ProjectRP.Functions.Notify('Your metal detector has cooled down.', 'primary', 4000)
+    if inZone == 1 then
+        if not overheated then
+            ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
+                if HasItem then
+                    AttachEntity(PlayerPedId(), "w_am_digiscanner")
+                    ProjectRP.Functions.Progressbar('start_detect', 'Detecting...', DetectorConfig.DetectTime, false, true, { -- Name | Label | Time | useWhileDead | canCancel
+                        disableMovement = false,
+                        disableCarMovement = true,
+                        disableMouse = false,
+                        disableCombat = true,
+                    }, {
+                        animDict = 'mini@golfai',
+                        anim = 'wood_idle_a',
+                        flags = 49,
+                    }, {}, {}, function()
+                        TriggerServerEvent("InteractSound_SV:PlayWithinDistance", 10, 'metaldetector', 0.2)
+                        DetachEntity(ent, 0, 0)
+                        DeleteEntity(ent)
+                        Wait(2000)
+                        TriggerServerEvent('prp-metaldetecting:DetectReward')
+                        breakchance = math.random(1,100)
+                        if breakchance <= DetectorConfig.OverheatChance then
+                            overheated = true
+                            ProjectRP.Functions.Notify('Your metal detector has overheated! Let it cool down.', 'error', 4000)
+                            Wait(DetectorConfig.OverheatTime)
+                            overheated = false
+                            ProjectRP.Functions.Notify('Your metal detector has cooled down.', 'primary', 4000)
+                        end
+                    end, function() 
+                        Wait(100)
+                    end)
                 end
-            end, function() 
-                Wait(100)
-            end)
+            end, 'metaldetector')
         else 
             ProjectRP.Functions.Notify('Your metal detector is still too hot!', 'error', 5000)
         end 
@@ -112,11 +119,6 @@ CreateThread(function()
         MetalZone:onPlayerInOut(function(isPointInside)
             if isPointInside then
                 inZone = 1
-                ProjectRP.Functions.TriggerCallback('ProjectRP:HasItem', function(HasItem)
-                    if HasItem then
-                        AttachEntity(PlayerPedId(), "w_am_digiscanner")
-                    end
-                end, 'metaldetector') 
             else
                 inZone = 0
                 DetachEntity(ent, 0, 0)
