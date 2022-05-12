@@ -5920,7 +5920,7 @@ PRPShared.Vehicles = {
 	},
 	-- Imports
 	['a8fsi'] = {
-		['name'] = 'A8',
+		['name'] = 'Audi A8',
 		['brand'] = 'Audi',
 		['model'] = 'a8fsi',
 		['price'] = 485000,
@@ -5929,7 +5929,7 @@ PRPShared.Vehicles = {
 		['shop'] = 'luxury',
 	},
 	['kiagt'] = {
-		['name'] = 'Stinger GT',
+		['name'] = 'Kia Stinger GT',
 		['brand'] = 'Kia',
 		['model'] = 'kiagt',
 		['price'] = 592500,
@@ -5938,7 +5938,7 @@ PRPShared.Vehicles = {
 		['shop'] = 'luxury',
 	},
 	['mers18'] = {
-		['name'] = 'Megane',
+		['name'] = 'Renault Megane',
 		['brand'] = 'Renault',
 		['model'] = 'mers18',
 		['price'] = 448500,
