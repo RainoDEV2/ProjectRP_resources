@@ -49,7 +49,7 @@ Config.OrePositions = {
 
 Config.RewardPool = {
 	'carbon', 'carbon', 'carbon', 'carbon', --4x
-	'copperore', 'copperore', 'copperore', 'copperore', 'copperore', 'copperore', -- 6x
+	'copperore', 'copperore', 'copperore', 'copperore', 'copperore', -- 5x
 	'goldore', 'goldore', 'goldore', --'goldore', -- 3x
 	'ironore', 'ironore', 'ironore', 'ironore', -- 4x
     'metalscrap', 'metalscrap',
@@ -91,7 +91,6 @@ Config.SellItems = { -- Selling Prices
     ['gold_ring'] = 430,
     ['goldchain'] = 500,
     ['10kgoldchain'] = 450,
-
 }
 
 ------------------------------------------------------------
