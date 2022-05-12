@@ -380,7 +380,7 @@ AddEventHandler('prp-mining:SellAnim:Jewel', function(data)
 	if data == -2 then
 		exports['prp-menu']:closeMenu()
 		return
-	end	
+	end
 	local pid = PlayerPedId()
 	loadAnimDict("mp_common")
 	TriggerServerEvent('prp-mining:SellJewel', data) -- Had to slip in the sell command during the animation command
@@ -388,14 +388,13 @@ AddEventHandler('prp-mining:SellAnim:Jewel', function(data)
         pCoords = GetEntityCoords(PlayerPedId())
         ppCoords = GetEntityCoords(v)
         dist = #(pCoords - ppCoords)
-        if dist < 2 then 
+        if dist < 2 then
 			TaskPlayAnim(pid, "mp_common", "givetake2_a", 100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0)
             TaskPlayAnim(v, "mp_common", "givetake2_a", 100.0, 200.0, 0.3, 120, 0.2, 0, 0, 0)
             Wait(1500)
             StopAnimTask(pid, "mp_common", "givetake2_a", 1.0)
             StopAnimTask(v, "mp_common", "givetake2_a", 1.0)
             RemoveAnimDict("mp_common")
-
 			break
 		end
 	end	

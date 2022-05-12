@@ -216,7 +216,7 @@ RegisterNetEvent('prp-metaldetector:CommonTradingMenu', function(data)
         {
             id = 8,
             header = "Broken Metal Detectors",
-            txt = "Trade 1 Broken Metal Detectors for $30!",
+            txt = "Sell All Broken Metal Detectors for $60 each!",
             params = {
                 isServer = true,
                 event = "prp-metaldetector:server:CommonTrade",
@@ -240,15 +240,15 @@ RegisterNetEvent('prp-metaldetector:CommonTradingMenu', function(data)
             }
         },
         {
-        id = 10,
-        header = "Broken Phones",
-        txt = "Trade 1 Broken Phones for $25!",
-        params = {
-            isServer = true,
-            event = "prp-metaldetector:server:CommonTrade",
-            args = {
-                id = 10,
-                item = 'brokenphone'
+            id = 10,
+            header = "Broken Phones",
+            txt = "Sell All Broken Phones for $45!",
+            params = {
+                isServer = true,
+                event = "prp-metaldetector:server:CommonTrade",
+                args = {
+                    id = 10,
+                    item = 'brokenphone'
                 }
             }
         },

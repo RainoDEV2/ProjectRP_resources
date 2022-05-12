@@ -387,7 +387,7 @@ PRPShared.Items = {
 	-- Boosting 
 	['pixellaptop'] = {['name'] = 'pixellaptop', ['label'] = 'pixellaptop', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'tunerchip.png', ['unique'] = true, ['useable'] = true,  ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'Boosting Laptop'}, 
 	['disabler'] = {['name'] = 'disabler', ['label'] = 'disabler', ['weight'] = 500, ['type'] = 'item', ['image'] = 'tablet.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'for the boosting contracts'},
-	
+
 	-- Storages -- soonTM
 	['bigcontainer'] = {['name'] = 'bigcontainer', ['label'] = 'Big Mobile Container', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'container_l.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A container duh'},
 	['mediumcontainer'] = {['name'] = 'mediumcontainer', ['label'] = 'Medium Mobile Container', ['weight'] = 2000, ['type'] = 'item', ['image'] = 'container_m.png', ['unique'] = false, ['useable'] = true, ['shouldClose'] = true, ['combinable'] = nil, ['description'] = 'A container duh'},

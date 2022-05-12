@@ -28,7 +28,7 @@ DetectorConfig.CommonAmount = math.random(2,4)
 DetectorConfig.RareAmount = 1
 
 -- %6 chance of overheating.
-DetectorConfig.OverheatChance = 8
+DetectorConfig.OverheatChance = 6
 
 -- how long the detecter gets overheated for
 DetectorConfig.OverheatTime = math.random(40000, 60000) 

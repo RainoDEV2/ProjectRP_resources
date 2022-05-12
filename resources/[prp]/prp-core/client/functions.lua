@@ -75,6 +75,38 @@ ProjectRP.Functions.Draw2DText = function(x, y, text, scale)
     DrawText(x, y)
 end
 
+function ProjectRP.Functions.RequestAnimDict(animDict)
+	if HasAnimDictLoaded(animDict) then return end
+	RequestAnimDict(animDict)
+	while not HasAnimDictLoaded(animDict) do
+		Wait(0)
+	end
+end
+
+function ProjectRP.Functions.PlayAnim(animDict, animName, upperbodyOnly, duration)
+    local flags = upperbodyOnly == true and 16 or 0
+    local runTime = duration ~= nil and duration or -1
+    ProjectRP.Functions.RequestAnimDict(animDict)
+    TaskPlayAnim(PlayerPedId(), animDict, animName, 8.0, 1.0, runTime, flags, 0.0, false, false, true)
+    RemoveAnimDict(animDict)
+end
+
+function ProjectRP.Functions.LoadModel(model)
+    if HasModelLoaded(model) then return end
+	RequestModel(model)
+	while not HasModelLoaded(model) do
+		Wait(0)
+	end
+end
+
+function ProjectRP.Functions.LoadAnimSet(animSet)
+    if HasAnimSetLoaded(animSet) then return end
+    RequestAnimSet(animSet)
+    while not HasAnimSetLoaded(animSet) do
+        Wait(0)
+    end
+end
+
 RegisterNUICallback('getNotifyConfig', function(_, cb)
     cb(ProjectRP.Config.Notify)
 end)
@@ -852,7 +884,7 @@ function ProjectRP.Functions.SetVehicleProperties(vehicle, props)
         if props.wheels then SetVehicleWheelType(vehicle, props.wheels) end
         if props.tireHealth then for wheelIndex, health in pairs(props.tireHealth) do SetVehicleWheelHealth(vehicle, wheelIndex, health) end end
         if props.tireBurstState then for wheelIndex, burstState in pairs(props.tireBurstState) do 
-			if burstState then SetVehicleTyreBurst(vehicle, tonumber(wheelIndex), false, 1000.0) end end end
+        if burstState then SetVehicleTyreBurst(vehicle, tonumber(wheelIndex), false, 1000.0) end end end
         if props.tireBurstCompletely then
             for wheelIndex, burstState in pairs(props.tireBurstCompletely) do
                 if burstState then SetVehicleTyreBurst(vehicle, tonumber(wheelIndex), true, 1000.0) end

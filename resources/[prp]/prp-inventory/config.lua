@@ -212,7 +212,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 140,
-                ["steel"] = 250,
+                ["steel"] = 150,
                 ["rubber"] = 60,
             },
             type = "item",
@@ -226,7 +226,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 165,
-                ["steel"] = 285,
+                ["steel"] = 215,
                 ["rubber"] = 75,
             },
             type = "item",
@@ -240,7 +240,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 190,
-                ["steel"] = 305,
+                ["steel"] = 205,
                 ["rubber"] = 85,
             },
             type = "item",
@@ -254,7 +254,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 205,
-                ["steel"] = 340,
+                ["steel"] = 240,
                 ["rubber"] = 110,
             },
             type = "item",
@@ -268,7 +268,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 230,
-                ["steel"] = 365,
+                ["steel"] = 265,
                 ["rubber"] = 130,
             },
             type = "item",
@@ -282,7 +282,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 255,
-                ["steel"] = 390,
+                ["steel"] = 290,
                 ["rubber"] = 145,
             },
             type = "item",
@@ -296,7 +296,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 270,
-                ["steel"] = 435,
+                ["steel"] = 235,
                 ["rubber"] = 155,
                 ["smg_extendedclip"] = 1,
             },
@@ -311,7 +311,7 @@ Config.AttachmentCrafting = {
             info = {},
             costs = {
                 ["metalscrap"] = 300,
-                ["steel"] = 469,
+                ["steel"] = 269,
                 ["rubber"] = 170,
                 ["smg_extendedclip"] = 2,
             },
@@ -367,8 +367,8 @@ BackEngineVehicles = {
 }
 
 Config.MaximumAmmoValues = {
-    ["pistol"] = 250,
-    ["smg"] = 250,
+    ["pistol"] = 200,
+    ["smg"] = 300,
     ["shotgun"] = 200,
-    ["rifle"] = 250,
+    ["rifle"] = 300,
 }

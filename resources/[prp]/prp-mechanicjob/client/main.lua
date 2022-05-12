@@ -140,12 +140,8 @@ Citizen.CreateThread(function()
                             else
                                 DrawText3Ds(Config.Locations["vehicle"].x, Config.Locations["vehicle"].y, Config.Locations["vehicle"].z, '[E] Get Vehicle')
                                 if IsControlJustPressed(0, 38) then
-                                    if IsControlJustPressed(0, 38) then
-                                        VehicleList()
-                                        Menu.hidden = not Menu.hidden
-                                    end
+                                    VehicleList()
                                 end
-                                Menu.renderGUI()
                             end
                         end
                     end
@@ -232,14 +228,23 @@ function OpenMenu()
 end
 
 function VehicleList()
-    ClearMenu()
-    for k, v in pairs(Config.Vehicles) do
-        Menu.addButton(v, "SpawnListVehicle", k)
-    end
-    Menu.addButton("Close Menu", "CloseMenu", nil)
+    exports['prp-menu']:openMenu({
+        { isMenuHeader = true, header = "Mechanic Vehicles", txt = "", },
+		{ header = "Flatbed", txt = "", params = { event = "prp-mechanicjob:client:SpawnListVehicle", args = { model = "flatbed" } } },
+        { header = "Towtruck", txt = "", params = { event = "prp-mechanicjob:client:SpawnListVehicle", args = { model = "towtruck" } } },
+        { header = "Blista", txt = "", params = { event = "prp-mechanicjob:client:SpawnListVehicle", args = { model = "blista" } } },
+		{ header = "", txt = "Close", params = { event = "" } },
+    })
+    -- ClearMenu()
+    -- for k, v in pairs(Config.Vehicles) do
+    --     Menu.addButton(v, "SpawnListVehicle", k)
+    -- end
+    -- Menu.addButton("Close Menu", "CloseMenu", nil)
 end
 
-function SpawnListVehicle(model)
+RegisterNetEvent('prp-mechanicjob:client:SpawnListVehicle')
+AddEventHandler('prp-mechanicjob:client:SpawnListVehicle', function(args)
+    local model = args.model
     local coords = {
         x = Config.Locations["vehicle"].x,
         y = Config.Locations["vehicle"].y,
@@ -251,12 +256,11 @@ function SpawnListVehicle(model)
         SetVehicleNumberPlateText(veh, "ACBV"..tostring(math.random(1000, 9999)))
         SetEntityHeading(veh, coords.w)
         exports['prp-fuel']:SetFuel(veh, 100.0)
-        Menu.hidden = true
         TaskWarpPedIntoVehicle(PlayerPedId(), veh, -1)
         TriggerEvent("vehiclekeys:client:SetOwner", ProjectRP.Functions.GetPlate(veh))
         SetVehicleEngineOn(veh, true, true)
     end, coords, true)
-end
+end)
 
 function VehicleOptions()
     ClearMenu()

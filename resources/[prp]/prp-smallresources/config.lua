@@ -40,6 +40,7 @@ ConsumeablesAlcohol = {
     ["am-beer"] = math.random(5, 15),
     ["logger-beer"] = math.random(5, 15),
     ["rum"] = math.random(20, 30),
+    ["wine"] = math.random(20, 30),
     ["galaxyslush"] = math.random(20, 30),
     ["junojs"] = math.random(20, 30),
     ["blackhole"] = math.random(20, 30),
@@ -415,7 +416,7 @@ Config.PropList = {
             ['YR'] = 160.0,
             ['ZR'] = 0.0,
         },
-    }, 
+    },
     ['StolenTv'] = {
         ['name'] = 'A tv',
         ['prop'] = 'prop_tv_flat_02',

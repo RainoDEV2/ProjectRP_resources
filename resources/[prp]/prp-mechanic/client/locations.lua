@@ -19,7 +19,8 @@ AddEventHandler('onResourceStart', function(resource)
 		ProjectRP.Functions.GetPlayerData(function(PlayerData)
 			PlayerJob = PlayerData.job
 			for k, v in pairs(Config.JobRoles) do if v == PlayerJob.name then havejob = true end end
-			if havejob then onDuty = PlayerJob.onduty end end) 
+			if havejob then onDuty = PlayerJob.onduty end
+		end) 
 	end
 	Wait(500)
 end)
@@ -27,10 +28,10 @@ end)
 Config.Locations = {
 	{	label = "mechanic", -- Set this to the required job
 		zones = {
-			vector2(-39.657638549805, -1026.12890625),
-			vector2(-54.971218109131, -1066.3665771484),
+			vector2(-39.157638549805, -1008.12890625),
+			vector2(-60.271218109131, -1064.3665771484),
 			vector2(-20.210899353027, -1079.1593017578),
-			vector2(-6.8900542259216, -1038.0417480469),
+			vector2(-1.3900542259216, -1022.0417480469),
 		},
 		blip = vector3(-43.05, -1043.99, 28.76),
 		bliplabel = "Bennys Workshop",    -- Bennys Workshop next to PDM

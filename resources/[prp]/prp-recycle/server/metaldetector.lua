@@ -46,106 +46,120 @@ RegisterServerEvent('prp-metaldetector:server:CommonTrade', function(data)
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('metalscrap', 30)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 Metal Trash'..' for 30 Metal Scrap.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Metal Scrap..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Metal Trash.", 'error')
         end
-    elseif data.id == 3 then 
+    elseif data.id == 3 then
         if check ~= nil then
             if check.amount >= 50 then
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('iron', 30)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 Iron Trash'..' for 30 Iron.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Iron Scrap..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Iron Trash.", 'error')
         end
-    elseif data.id == 4 then 
+    elseif data.id == 4 then
         if check ~= nil then
             if check.amount >= 50 then
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('copper', 30)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 Bullet Casings'..' for 30 Bullet Casings.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Bullet Casings..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Bullet Casings.", 'error')
         end
-    elseif data.id == 5 then 
+    elseif data.id == 5 then
         if check ~= nil then
             if check.amount >= 50 then
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('aluminum', 30)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 Aluminum Cans'..' for 30 Aluminum.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Aluminum Cans..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Aluminum Cans.", 'error')
         end
-    elseif data.id == 6 then 
+    elseif data.id == 6 then
         if check ~= nil then
             if check.amount >= 50 then
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('steel', 25)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 Steel Trash'..' for 25 Steel.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Steel Trash..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Steel Trash.", 'error')
         end
-    elseif data.id == 7 then 
+    elseif data.id == 7 then
         if check ~= nil then
             if check.amount >= 5 then
-                Player.Functions.RemoveItem(item, 5)
+                Player.Functions.RemoveItem(item, 20)
                 Player.Functions.AddItem('weapon_dagger', 1)
-                TriggerClientEvent('ProjectRP:Notify', src, 'You traded 5 Broken Knives'..' for 1 Dagger.', 'success')
-            else 
+                TriggerClientEvent('ProjectRP:Notify', src, 'You traded 20 Broken Knives for 1 Dagger.', 'success')
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Broken Knives..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Broken Knives.", 'error')
         end
-    elseif data.id == 8 then 
+    elseif data.id == 8 then
         if check ~= nil then
             if check.amount >= 1 then
-                Player.Functions.RemoveItem(item, 1)
-                Player.Functions.AddMoney('cash', 30)
-                TriggerClientEvent('ProjectRP:Notify', src, 'You traded 1 broken Metal Detector'..' for $30.', 'success')
-            else 
-                TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Metal Detectors..", 'error')
-            end 
-        else 
-            TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Metal Detectors.", 'error')
+                if Player.Functions.GetItemByName(item) ~= nil then
+                    local amount = Player.Functions.GetItemByName(item).amount
+                    local pay = (amount * 60)
+                    Player.Functions.RemoveItem(item, amount)
+                    Player.Functions.AddMoney('cash', pay, "Selling Broken Metal Detectors")
+                    TriggerClientEvent('inventory:client:ItemBox', src, item, 'remove', amount)
+                    TriggerClientEvent('ProjectRP:Notify', src, 'You sold '..amount..' broken metal detectors for $'..pay, 'success')
+                else
+                    TriggerClientEvent("ProjectRP:Notify", src, "You don't have any broken metal detectors", "error")
+                end
+            else
+                TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough broken metal detectors..", 'error')
+            end
+        else
+            TriggerClientEvent('ProjectRP:Notify', src, "You do not have any broken metal detectors.", 'error')
         end
-    elseif data.id == 9 then 
+    elseif data.id == 9 then
         if check ~= nil then
             if check.amount >= 50 then
                 Player.Functions.RemoveItem(item, 50)
                 Player.Functions.AddItem('copper', 30)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 50 House Keys'..' for 30 Copper.', 'success')
-            else 
+            else
                 TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough House Keys..", 'error')
-            end 
-        else 
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any House Keys.", 'error')
         end
-    elseif data.id == 10 then 
+    elseif data.id == 10 then
         if check ~= nil then
             if check.amount >= 1 then
-                Player.Functions.RemoveItem(item, 1)
-                Player.Functions.AddMoney('cash', 30)
-                TriggerClientEvent('ProjectRP:Notify', src, 'You traded 1 Broken Phone'..' for $30.', 'success')
+                if Player.Functions.GetItemByName(item) ~= nil then
+                    local amount = Player.Functions.GetItemByName(item).amount
+                    local pay = (amount * 45)
+                    Player.Functions.RemoveItem(item, amount)
+                    Player.Functions.AddMoney('cash', pay, "Selling Broken Phones")
+                    TriggerClientEvent('inventory:client:ItemBox', src, item, 'remove', amount)
+                    TriggerClientEvent('ProjectRP:Notify', src, 'You sold '..amount..' broken phones for $'..pay, 'success')
+                else
+                    TriggerClientEvent("ProjectRP:Notify", src, "You don't have any broken phones", "error")
+                end
             else 
-                TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Broken Phones..", 'error')
-            end 
-        else 
+                TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough broken phones..", 'error')
+            end
+        else
             TriggerClientEvent('ProjectRP:Notify', src, "You do not have any Broken Phones.", 'error')
         end
     end

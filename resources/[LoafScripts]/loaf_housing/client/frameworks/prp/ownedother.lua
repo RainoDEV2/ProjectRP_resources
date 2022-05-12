@@ -15,7 +15,8 @@ CreateThread(function()
                         CloseMenu()
 
                         local sequenceId = OpenSequenceTask()
-                        TaskAchieveHeading(0, Houses[propertyId].entrance.w - 180.0, 1500)
+                        -- TaskAchieveHeading(0, Houses[propertyId].entrance.w - 180.0, 1500) stop people from turning around when knocking
+                        TaskAchieveHeading(0, Houses[propertyId].entrance.w, 1500)
                         TaskPlayAnim(0, LoadDict("timetable@jimmy@doorknock@"), "knockdoor_idle", 8.0, -8.0, -1, 0, 0, false, false, false)
                         CloseSequenceTask(sequenceId)
                         

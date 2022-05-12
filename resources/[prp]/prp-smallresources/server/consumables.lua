@@ -404,6 +404,14 @@ ProjectRP.Functions.CreateUseableItem("crisps", function(source, item)
     end
 end)
 
+ProjectRP.Functions.CreateUseableItem("wine", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(source)
+    if Player.Functions.RemoveItem(item.name, 1, item.slot) then
+        TriggerClientEvent("consumables:client:DrinkAlcohol", src, item.name, 'whiskey')
+    end
+end)
+
 -- Galaxy Food
 ProjectRP.Functions.CreateUseableItem("baconfries", function(source, item)
     local src = source
