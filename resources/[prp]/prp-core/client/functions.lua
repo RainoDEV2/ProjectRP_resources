@@ -896,7 +896,7 @@ function ProjectRP.Functions.SetVehicleProperties(vehicle, props)
                 if not smashWindow then SmashVehicleWindow(vehicle, windowIndex) end
             end
         end
-        if props.doorStatus then for doorIndex, breakDoor in pairs(props.doorStatus) do if breakDoor then SetVehicleDoorBroken(vehicle, doorIndex, true) end end end
+        -- if props.doorStatus then for doorIndex, breakDoor in pairs(props.doorStatus) do if breakDoor then SetVehicleDoorBroken(vehicle, doorIndex, true) end end end
         if props.neonEnabled then for neonIndex, enableNeons in pairs(props.neonEnabled) do SetVehicleNeonLightEnabled(vehicle, neonIndex, enableNeons) end end
         if props.neonColor then SetVehicleNeonLightsColour(vehicle, props.neonColor[1], props.neonColor[2], props.neonColor[3]) end
         if props.headlightColor then SetVehicleHeadlightsColour(vehicle, props.headlightColor) end
