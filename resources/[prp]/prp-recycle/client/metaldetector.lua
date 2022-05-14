@@ -205,7 +205,7 @@ RegisterNetEvent('prp-metaldetector:CommonTradingMenu', function(data)
         {
             id = 7,
             header = "Broken Knives",
-            txt = "Trade 5 Broken Knives for a Dagger!",
+            txt = "Trade 20 Broken Knives for a Dagger!",
             params = {
                 isServer = true,
                 event = "prp-metaldetector:server:CommonTrade",

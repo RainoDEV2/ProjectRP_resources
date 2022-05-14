@@ -36,7 +36,7 @@ RegisterNetEvent('prp-scrapyard:server:ScrapVehicle', function(listKey)
         local Luck = math.random(1, 8)
         local Odd = math.random(1, 8)
         if Luck == Odd then
-            local random = math.random(2, 5)
+            local random = math.random(8, 15)
             Player.Functions.AddItem("rubber", random)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["rubber"], 'add')
 

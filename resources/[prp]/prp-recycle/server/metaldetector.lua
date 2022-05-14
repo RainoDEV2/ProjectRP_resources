@@ -102,7 +102,7 @@ RegisterServerEvent('prp-metaldetector:server:CommonTrade', function(data)
         end
     elseif data.id == 7 then
         if check ~= nil then
-            if check.amount >= 5 then
+            if check.amount >= 20 then
                 Player.Functions.RemoveItem(item, 20)
                 Player.Functions.AddItem('weapon_dagger', 1)
                 TriggerClientEvent('ProjectRP:Notify', src, 'You traded 20 Broken Knives for 1 Dagger.', 'success')

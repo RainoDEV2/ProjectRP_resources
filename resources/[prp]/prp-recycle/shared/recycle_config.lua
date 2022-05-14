@@ -90,12 +90,12 @@ Config.ArmoryWhitelist = {
 }
 
 Config.Prices = {
-	['copper'] = { name = 'copper', amount = 24 },
+	-- ['copper'] = { name = 'copper', amount = 24 },
 	['plastic'] = { name = 'plastic', amount = 28 },
 	['metalscrap'] = { name = 'metalscrap', amount = 30 },
-	['steel'] = { name = 'steel', amount = 30 },
+	-- ['steel'] = { name = 'steel', amount = 30 },
 	['glass'] = { name = 'glass', amount = 36 },
-	['iron'] = { name = 'iron', amount = 34 },
+	-- ['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
 	['aluminum'] = { name = 'aluminium', amount = 36 },
 	['bottle'] = { name = 'bottle', amount = 8 },
@@ -103,7 +103,7 @@ Config.Prices = {
 }
 
 Config.DumpItems = {
-    "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "rubber"
+    "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "metalscrap", "metalscrap"
 }
 
 Config.tenmin = "2"

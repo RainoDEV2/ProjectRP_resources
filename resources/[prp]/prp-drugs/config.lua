@@ -97,16 +97,17 @@ Config.Products = {
 Config.Dealers = {}
 
 Config.CornerSellingDrugsList = {
+    "weed_bag",
     "weed_white-widow",
     "weed_skunk",
     "weed_purple-haze",
     "weed_og-kush",
     "weed_amnesia",
     "weed_ak47",
+    "weed_baggy",
     "crack_baggy",
     "coke_baggy",
     "meth_baggy",
-    "weed_bag",
     "xtcbaggy"
 }
 
@@ -142,6 +143,10 @@ Config.DrugsPrice = {
     ["weed_ak47"] = {
         min = 75,
         max = 100,
+    },
+    ["weed_baggy"] = {
+        min = 145,
+        max = 180,
     },
     ["crack_baggy"] = {
         min = 190,

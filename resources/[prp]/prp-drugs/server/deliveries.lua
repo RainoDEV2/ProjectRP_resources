@@ -3,8 +3,7 @@ AddEventHandler('prp-drugs:server:updateDealerItems', function(itemData, amount,
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Config.Dealers[dealer]["products"][itemData.slot].amount - 1 >= 0 then
-        Config.Dealers[dealer]["products"][itemData.slot].amount =
-            Config.Dealers[dealer]["products"][itemData.slot].amount - amount
+        Config.Dealers[dealer]["products"][itemData.slot].amount = Config.Dealers[dealer]["products"][itemData.slot].amount - amount
         TriggerClientEvent('prp-drugs:client:setDealerItems', -1, itemData, amount, dealer)
     else
         Player.Functions.RemoveItem(itemData.name, amount)
@@ -71,8 +70,7 @@ AddEventHandler('prp-drugs:server:succesDelivery', function(deliveryData, inTime
 
             if Player.Functions.GetItemByName('weed_brick').amount ~= nil then
                 Player.Functions.RemoveItem('weed_brick', Player.Functions.GetItemByName('weed_brick').amount)
-                Player.Functions
-                    .AddMoney('cash', (Player.Functions.GetItemByName('weed_brick').amount * 6000 / 100 * 5))
+                Player.Functions.AddMoney('cash', (Player.Functions.GetItemByName('weed_brick').amount * 6000 / 100 * 5))
             end
 
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["weed_brick"], "remove")
