@@ -35,12 +35,12 @@ RegisterNetEvent('prp-log:server:CreateLog:MDT', function(name, title, color, me
                 ['text'] = "⭐ Project RP MDT",
             },
             ['fields'] = {
-                 {
-                  ['name'] = "Arrest Officer",
-                  ['value'] = ''..arrestofficer..'',
-                  ['inline'] = true
-                 },
-                 {
+                {
+                    ['name'] = "Arrest Officer",
+                    ['value'] = ''..arrestofficer..'',
+                    ['inline'] = true
+                },
+                {
                     ['name'] = "Offender Name",
                     ['value'] = ''..offendername..'',
                     ['inline'] = true
@@ -55,7 +55,6 @@ RegisterNetEvent('prp-log:server:CreateLog:MDT', function(name, title, color, me
                     ['value'] = ''..notes..'',
                     ['inline'] = false
                 },
-
             },
             
             ['description'] = message,
@@ -68,7 +67,6 @@ RegisterNetEvent('prp-log:server:CreateLog:MDT', function(name, title, color, me
     PerformHttpRequest(webHook, function(err, text, headers) end, 'POST', json.encode({ username = "Project RP MDT", embeds = embedData}), { ['Content-Type'] = 'application/json' })
     Citizen.Wait(100)
 end)
-
 
 ProjectRP.Commands.Add('testwebhook', 'Test Your Discord Webhook For Logs (God Only)', {}, false, function(source, args)
     TriggerEvent('prp-log:server:CreateLog', 'testwebhook', 'Test Webhook', 'default', 'Webhook setup successfully')

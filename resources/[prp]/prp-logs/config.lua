@@ -16,7 +16,7 @@ Config.Webhooks = {
 
     ['vehicleshop'] = 'https://discord.com/api/webhooks/938972730001330177/nEjISZLJFzehEKzC2V58YbdGzAT11z-0InA0s5XnnxYj8wvO4KYk2KGxeF6IQ3rWThZc',
     ['vehicleupgrades'] = 'https://discord.com/api/webhooks/938972730001330177/nEjISZLJFzehEKzC2V58YbdGzAT11z-0InA0s5XnnxYj8wvO4KYk2KGxeF6IQ3rWThZc',
-    
+
     ['shops'] = 'https://discord.com/api/webhooks/939449232975355935/SvrjhD7nSJprWYoyoWq9sUBd9hM6reDVURFE-d9FR99zrGvRQmjU9Ayoo12jgg2M3dVO',
     ['dealers'] = 'https://discord.com/api/webhooks/939449286884732929/pWdKNV4yoo_97uZvtITsgvuVN8yYKSlrV1m6SqpVowxmkFvKHq2yLv_CmGgH0JtRcw1q',
     ['storerobbery'] = 'https://discord.com/api/webhooks/938943350386589756/7E4rL10ad8nNYQxRRobyTiw26-CaiGXY20LyiHsraQ-Cxjdbnak3h9nE7Rs-8NBvJ7PV',
@@ -45,6 +45,7 @@ Config.Webhooks = {
     ['bugreport'] = 'https://discord.com/api/webhooks/960323026971422722/6YhrO5zWUer7d5U-x61odcEcd-Rx-7-dxL2L0zUKCf_7TMjtj5op7P3j8tKb708iv8gy',
     ['policeMDT'] = 'https://discord.com/api/webhooks/968271401620500551/kjnQqqB8CnZZaxx2Jg8vu8ZkkXB2wGumdzlpI4W2NIy0TIPzjr8jO7l9RQSkOv9IjEhs',
     ['keylabs'] = "https://discord.com/api/webhooks/970488993068245066/CtRL9GBdBjUGVg6TliOGhmod6wKvztt1FD_7cQVtrT_H1fEnXy1PMGVV4kpYUQAlSp_z",
+    ['shiftlog'] = "https://discord.com/api/webhooks/975223916605874217/Q2sa7KUirqIimuV_Jo9qKuYSR-j2ljN-SFmsDtjs6OjuZZvrGLazZqffGv1pY4Is8pEu",
 }
 
 Config.Colors = { -- https://www.spycolor.com/

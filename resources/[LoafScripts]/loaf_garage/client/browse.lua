@@ -13,11 +13,11 @@ function TakeOutVehicle(args)
     end
 
     lib.TriggerCallback("loaf_garage:take_out", function(success, vehicle)
-        if not success then
-            return DoScreenFadeIn(0)
-        end
-        
-        DoScreenFadeOut(0)
+        -- if not success then
+        --     return DoScreenFadeIn(0)
+        -- end
+
+        -- DoScreenFadeOut(0)
         if not Config.SpawnServer then
             LoadModel(vehicle)
             vehicle = CreateVehicle(vehicle, spawnLocation.xyz, spawnLocation.w, true, true)
@@ -32,9 +32,9 @@ function TakeOutVehicle(args)
                     return DoScreenFadeIn(0)
                 end
             end
-            
+
             vehicle = NetworkGetEntityFromNetworkId(vehicle)
-    
+
             timer = GetGameTimer() + 5000
             while not NetworkHasControlOfEntity(vehicle) do
                 Wait(0)
@@ -46,7 +46,7 @@ function TakeOutVehicle(args)
         end
 
         SetVehicleOnGroundProperly(vehicle)
-        TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
+        -- TaskWarpPedIntoVehicle(PlayerPedId(), vehicle, -1)
         SetVehicleFixed(vehicle)
 
         if Config.Passive then
@@ -78,8 +78,8 @@ function TakeOutVehicle(args)
             end)
         end
 
-        Wait(1000)
-        DoScreenFadeIn(1000)
+        -- Wait(1000)
+        -- DoScreenFadeIn(1000)
     end, garage, data.plate, spawnLocation, args.impound)
 end
 RegisterNetEvent("loaf_garage:take_out_vehicle", TakeOutVehicle)
@@ -122,7 +122,7 @@ function SelectVehicleMenu(garage, spawnLocation, impound)
         if (not impound and ((Config.IndependentGarage and vehicle.garage ~= garage) or not VehicleVisibleGarage(vehicle.job, garage))) or not IsInTable(vehicleTypes, vehicle.type) then
             goto continue
         end
-        
+
         vehicle.vehicle = json.decode(vehicle.vehicle)
         local params = {}
         if (impound and not vehicle.stored) or (not impound and vehicle.stored) then
