@@ -254,9 +254,8 @@ AddEventHandler("mdt:submitNewReport", function(data)
 
 		TriggerEvent('prp-log:server:CreateLog:MDT', 
 		'policeMDT',
-		 'Arrest Logged',
-		 'orange', ''..author.. 'logged an arrest for:' ..data.name..'.',author,data.name,charges,data.incident)
-	
+		'Arrest Logged',
+		'blue', ''..author.. ' logged an arrest for: ' ..data.name, author, data.name, charges, data.incident)
 	end)
 
 	for offense, count in pairs(data.charges) do
@@ -392,19 +391,14 @@ AddEventHandler("mdt:submitNewWarrant", function(data)
 	data.author = GetCharacterName(source)
 	data.date = os.date('%m-%d-%Y %H:%M:%S', os.time())
 
-	-- TriggerEvent("")
 	MySQL.Async.insert('INSERT INTO `mdt_warrants` (`name`, `char_id`, `report_id`, `report_title`, `charges`, `date`, `expire`, `notes`, `author`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', {data.name, data.char_id, data.report_id, data.report_title, data.charges, data.date, data.expire, data.notes, data.author}, function()
 		TriggerClientEvent("mdt:completedWarrantAction", usource)
 		TriggerClientEvent("mdt:sendNotification", usource, "A new warrant has been created.")
 
-
 		TriggerEvent('prp-log:server:CreateLog:MDT', 
 		'policeMDT',
-		 'Warrant Issued',
-		 'orange', ''..GetCharacterName(usource).. ' issued a warrant for:' ..data.name..'.',GetCharacterName(usource),data.name,data.charges,data.notes)
-	
-
-
+		'Warrant Issued',
+		'red', ''..GetCharacterName(usource).. ' issued a warrant for: ' ..data.name.., GetCharacterName(usource), data.name, data.charges, data.notes)
 	end)
 end)
 
@@ -445,7 +439,7 @@ AddEventHandler("mdt:newCall", function(details, caller, coords, sendNotificatio
 				TriggerClientEvent("mythic_notify:client:SendAlert", source, {type="inform", text="You have received a new call.", 5000, style = { ['background-color'] = '#ffffff', ['color'] = '#000000' }})
 			end
 
-				TriggerClientEvent("mdt:newCall", source, details, caller, coords, call_index)
+			TriggerClientEvent("mdt:newCall", source, details, caller, coords, call_index)
 		end
 	end
 end)
@@ -549,7 +543,7 @@ end
 function GetCharacterName(source)
 	local xPlayer = ProjectRP.Functions.GetPlayer(source)
 	if xPlayer then
-		return xPlayer.PlayerData.charinfo.firstname
+		return xPlayer.PlayerData.charinfo.firstname..' '..xPlayer.PlayerData.charinfo.lastname
 	end
 end
 

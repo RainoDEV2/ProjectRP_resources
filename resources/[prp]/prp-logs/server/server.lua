@@ -25,7 +25,7 @@ RegisterNetEvent('prp-log:server:CreateLog', function(name, title, color, messag
 end)
 
 
-RegisterNetEvent('prp-log:server:CreateLog:MDT', function(name, title, color, message, arrestofficer,offendername,charges,notes)        
+RegisterNetEvent('prp-log:server:CreateLog:MDT', function(name, title, color, message, arrestofficer, offendername, charges, notes)        
     local webHook = Config.Webhooks[name] or Config.Webhooks['default']
     local embedData = {
         {
