@@ -2,19 +2,19 @@ const { useQuasar } = Quasar
 const { ref } = Vue
 
 const app = Vue.createApp({
-  setup () {
-    return {
-        options: ref(false),
-        help: ref(false),
-        showblur: ref(true),
+    setup () {
+        return {
+            options: ref(false),
+            help: ref(false),
+            showblur: ref(true),
+        }
+    },
+    methods: {
+        select: function(event) {
+            targetId = event.currentTarget.id;
+            showBlur()
+        }
     }
-  },
-  methods: {
-    select: function(event) {
-        targetId = event.currentTarget.id;
-        showBlur()
-    }
-}
 })
 
 app.use(Quasar, { config: {} })
@@ -629,33 +629,33 @@ function FormatItemInfo(itemData, dom) {
             var res = str.slice(12);
             var cardNumber = "************" + res;
             $(".item-info-description").html('<p><strong>Card Holder: </strong><span>' + itemData.info.name + '</span></p><p><strong>Citizen ID: </strong><span>' + itemData.info.citizenid + '</span></p><p><strong>Card Number: </strong><span>' + cardNumber + '</span></p>');
-        } else if (itemData.name == "meth_batch") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "meth_cured") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "meth_baggy") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "coke_batch") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "coke_cured") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "coke_baggy") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "weed_batch") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "weed_cured") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
-        } else if (itemData.name == "weed_baggy") {
-            $(".item-info-title").html("<p>" + itemData.label + "</p>");
-            $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "meth_batch") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "meth_cured") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "meth_baggy") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "coke_batch") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "coke_cured") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "coke_baggy") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "weed_batch") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "weed_cured") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
+        // } else if (itemData.name == "weed_baggy") {
+        //     $(".item-info-title").html("<p>" + itemData.label + "</p>");
+        //     $(".item-info-description").html("<p>Purity: " + itemData.info.purity + "%</p>");
         } else if (itemData.name == "policebadge") {
             $(".item-info-title").html("<p>" + itemData.label + "</p>");
             $(".item-info-description").html("<p>" + itemData.info.name + "</p>");
@@ -2966,9 +2966,9 @@ var requiredItemOpen = false;
         }
         var type = "Used " + data.itemAmount + "x";
         if (data.type == "add") {
-          type = "Received " + data.itemAmount + "x";
+            type = "Received " + data.itemAmount + "x";
         } else if (data.type == "remove") {
-          type = "Removed " + data.itemAmount + "x";
+            type = "Removed " + data.itemAmount + "x";
         }
 
         var $itembox = $(".itembox-container.template").clone();

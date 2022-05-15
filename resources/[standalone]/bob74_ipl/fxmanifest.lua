@@ -108,6 +108,6 @@ client_scripts {
 
 	-- Key labs
 	, "keylabs/cocaine.lua"
-	, "keylabs/mketh.lua"
+	, "keylabs/meth.lua"
 	, "keylabs/weed.lua"
 }
