@@ -11,7 +11,7 @@ Config = {
             * esx       - ESX v1.1, v1.2, v1 final, esx legacy, overextended
             * prp        - prpcore 
     --]]
-    
+
     SpawnAboveHouse = true, --[[
         should the shell be spawned above the house/apartment? 
         pros: 
@@ -26,7 +26,6 @@ Config = {
     --         "qtarget" - qtarget: https://github.com/BerkieBb/prp-target, https://www.youtube.com/watch?v=oWyukyZHtcI
     --         "prp-target" - prp-target: https://github.com/BerkieBb/prp-target, 
     -- --]]
-
 
     RentInterval = week,
 
@@ -109,14 +108,14 @@ Config = {
         ["Mansion Housing"] = false, -- purchase here: https://www.k4mb1maps.com/package/4783251
         ["Medium Housing V1"] = false, -- purchase here: https://www.k4mb1maps.com/package/4672307
         ["Modern Housing V1"] = false, -- purchase here: https://www.k4mb1maps.com/package/4673169
-        
+
         -- V2 PACKS
         ["Default Housing V2"] = false, -- purchase here: https://www.k4mb1maps.com/package/5015832
         ["Medium Housing V2"] = false, -- purchase here: https://www.k4mb1maps.com/package/5043821
         ["Modern Housing V2"] = false, -- purchase here: https://www.k4mb1maps.com/package/5043818
         ["Deluxe Housing V2"] = false, -- purchase here: https://www.k4mb1maps.com/package/5043817
         ["Highend Housing V2"] = false, -- purchase here: https://www.k4mb1maps.com/package/5043819
-    
+
         -- misc k4mb1 shells
         ["Highend Lab Shells"] = false, -- purchase here: https://www.k4mb1maps.com/package/4698329
         ["Lab Shells Pack"] = false, -- purchase here: https://www.k4mb1maps.com/package/4672285
@@ -139,40 +138,40 @@ Config = {
             enabled = true,
             sprite = 40,
             color = 2,
-            scale = 1.0
+            scale = 0.5
         },
         ownedOther = { -- if another player owns the house
             enabled = false,
             sprite = 40,
             color = 3,
-            scale = 0.75
+            scale = 0.5
         },
         furnitureStore = {
             enabled = true,
             sprite = 605,
             color = 0,
-            scale = 0.75
+            scale = 0.5
         },
     },
 
     Interiors = { -- https://wiki.rage.mp/index.php?title=Interiors_and_Locations
         ["modern_apartment_1"] = {
             label = "Modern apartment 1",
-            coords = vector3(-786.8663, 315.7642, 216.6385),
-            ipl = "apa_v_mp_h_01_a",
+            coords = vector3(-786.81, 315.73, 186.91),
+            ipl = "apa_v_mp_h_01_c",
             disableFurnishing = true,
             lockpick = 1,
             locations = {
                 -- the key here is a unique identifier which will be used for storage
                 ["location_1"] = {
-                    coords = vector3(-795.96, 327.43, 217.04),
+                    coords = vector3(-796.28, 328.17, 187.31),
                     scale = vector3(3.0, 3.0, 0.5),
                     storage = true,
                     wardrobe = false,
                     weight = 50000, -- storage weight limit
                 },
                 ["location_2"] = {
-                    coords = vector3(-797.58, 328.29, 220.44),
+                    coords = vector3(-797.59, 327.77, 190.72),
                     scale = vector3(3.0, 3.0, 0.5),
                     storage = false,
                     wardrobe = true,

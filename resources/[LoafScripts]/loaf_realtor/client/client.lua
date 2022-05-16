@@ -81,7 +81,7 @@ function GetPlayers()
             local playerPed = GetPlayerPed(player)
             if #(GetEntityCoords(PlayerPedId()) - GetEntityCoords(playerPed)) <= 5.0 then
                 local foundName, startedSearch, name = false, GetGameTimer(), GetPlayerName(player)
-                
+
                 if Config.UseRPName then
                     name = lib.TriggerCallbackSync("loaf_billing:get_name", GetPlayerServerId(player)) or name
                 end

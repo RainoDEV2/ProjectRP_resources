@@ -118,7 +118,7 @@ CreateThread(function()
                     markerData.alpha, 
                     false, false, 2, nil, nil, false
                 )
-                
+
                 if shouldCheck then
                     local bottomLeft = vector3(markerData.coords.x - markerData.scale.x/2, markerData.coords.y - markerData.scale.y/2, markerData.coords.z - markerData.scale.z)
                     local topRight = vector3(markerData.coords.x + markerData.scale.x/2, markerData.coords.y + markerData.scale.y/2, markerData.coords.z + 1.5)

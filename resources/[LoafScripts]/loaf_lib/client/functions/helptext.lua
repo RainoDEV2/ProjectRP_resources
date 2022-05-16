@@ -5,14 +5,15 @@ local wrap = 0.2
 local textEntry = GetCurrentResourceName() .. "_helptext"
 
 function functions.HideHelpText()
-    if currentHelptext then 
+    if currentHelptext then
         if Config.HelpTextStyle == "luke" then
             TriggerEvent("luke_textui:HideUI")
         elseif Config.HelpTextStyle == "cd" then
             TriggerEvent("cd_drawtextui:HideUI")
         elseif Config.HelpTextStyle == "gta" then
-            ClearAllHelpMessages()
-            ClearHelp(true)
+            -- ClearAllHelpMessages()
+            -- ClearHelp(true)
+            exports['prp-core']:HideText()
         end
     end
 
@@ -23,7 +24,8 @@ function functions.DrawHelpText(text, coords, key)
     functions.HideHelpText()
     if key then
         if Config.HelpTextStyle == "gta" or Config.HelpTextStyle == "3d-gta" then
-            text = functions.GetInstructional(key) .. " " .. text
+            -- text = functions.GetInstructional(key) .. " " .. text
+            text = string.format("[%s] %s", string.gsub(GetControlInstructionalButton(0, functions.GetKey(key).joaat, 1), "t_", ""), text)
         elseif Config.HelpTextStyle == "3d" then
             text = string.format("~b~[~s~%s~b~]~s~ %s", string.gsub(GetControlInstructionalButton(0, functions.GetKey(key).joaat, 1), "t_", ""), text)
         else
@@ -38,9 +40,10 @@ function functions.DrawHelpText(text, coords, key)
     elseif Config.HelpTextStyle == "cd" then
         TriggerEvent("cd_drawtextui:ShowUI", "show", currentHelptext)
     elseif Config.HelpTextStyle == "gta" then
-        AddTextEntry(textEntry, currentHelptext)
-        BeginTextCommandDisplayHelp(textEntry)
-        EndTextCommandDisplayHelp(0, true, true, 0)
+        -- AddTextEntry(textEntry, currentHelptext)
+        -- BeginTextCommandDisplayHelp(textEntry)
+        -- EndTextCommandDisplayHelp(0, true, true, 0)
+        exports['prp-core']:DrawText(currentHelptext, 'left')
     end
 end
 
