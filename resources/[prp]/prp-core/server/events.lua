@@ -142,12 +142,16 @@ RegisterNetEvent('ProjectRP:UpdatePlayer', function()
     end
 end)
 
-
 RegisterNetEvent('ProjectRP:UpdatePlayerSalary', function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     if Player then
-        Player.Functions.AddMoney("bank", Player.PlayerData.job.payment,"Salary Recieved")
+        local playerJob = tostring(Player.PlayerData.job.name)
+        local playerSalary = Player.PlayerData.job.payment
+        Player.Functions.AddMoney("bank", playerSalary, "Salary Recieved")
+        if not playerJob == 'police' and not playerJob == 'ambulance' and not playerJob == 'unemployed' then
+            exports["prp-management"]:RemoveMoney(playerJob, playerSalary)
+        end
         TriggerClientEvent('ProjectRP:Notify', src, 'You have received your salary!')
         Player.Functions.Save()
     end
