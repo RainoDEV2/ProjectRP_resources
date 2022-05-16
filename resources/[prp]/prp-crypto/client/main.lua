@@ -62,8 +62,8 @@ end
 
 CreateThread(function()
 	while true do
-		sleep = 5000
-		if LocalPlayer.state['isLoggedIn'] then
+		local sleep = 5000
+		if LocalPlayer.state.isLoggedIn then
 			local ped = PlayerPedId()
 			local pos = GetEntityCoords(ped)
 			local dist = #(pos - Crypto.Exchange.coords)
@@ -76,7 +76,7 @@ CreateThread(function()
 							requiredItemsShowed = true
 							TriggerEvent('inventory:client:requiredItems', requiredItems, true)
 						end
-						
+
 						if IsControlJustPressed(0, 38) then
 							ProjectRP.Functions.TriggerCallback('prp-crypto:server:HasSticky', function(HasItem)
 								if HasItem then
@@ -110,7 +110,6 @@ RegisterNetEvent('prp-crypto:client:SyncReboot', function()
 end)
 
 RegisterNetEvent('ProjectRP:Client:OnPlayerLoaded', function()
-	isLoggedIn = true
 	TriggerServerEvent('prp-crypto:server:FetchWorth')
 	TriggerServerEvent('prp-crypto:server:GetRebootState')
 end)
