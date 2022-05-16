@@ -3,8 +3,8 @@ CreateThread(function()
         name = "weedentrance",
         heading = Config.Labs.weedlab.entrance.w,
         debugPoly = false,
-        minZ = 40.05,
-        maxZ = 42.05,
+        minZ = 30.05,
+        maxZ = 33.05,
         }, {
             options = {
             {

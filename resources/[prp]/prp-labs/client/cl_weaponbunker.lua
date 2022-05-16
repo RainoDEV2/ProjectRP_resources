@@ -249,12 +249,12 @@ RegisterNetEvent('prp-labs:weaponbunker:CraftAmmo', function(data)
 end)
 
 CreateThread(function()
-    exports["prp-target"]:AddBoxZone("gunentrance", Config.Labs.gunbunker.entrance.xyz, 0.8, 1.4, {
+    exports["prp-target"]:AddBoxZone("gunentrance", Config.Labs.gunbunker.entrance.xyz, 0.4, 2.4, {
         name = "gunentrance",
         heading = Config.Labs.gunbunker.entrance.w,
         debugPoly = false,
-        minZ = 143.20,
-        maxZ = 145.20,
+        minZ = 165.20,
+        maxZ = 167.40,
         }, {
             options = {
             {

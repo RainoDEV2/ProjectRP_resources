@@ -1,10 +1,10 @@
 CreateThread(function()
-    exports["prp-target"]:AddBoxZone("cokeentrance", vector3(806.6, -2380.7, 29.1), 0.4, 1.2, {
+    exports["prp-target"]:AddBoxZone("cokeentrance", Config.Labs.cokelab.entrance.xyz, 0.4, 1.2, {
         name = "cokeentrance",
         heading = Config.Labs.cokelab.entrance.w,
         debugPoly = false,
-        minZ = 28.40,
-        maxZ = 30.60,
+        minZ = 6.20,
+        maxZ = 8.70,
         }, {
             options = {
             {

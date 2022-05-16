@@ -55,7 +55,7 @@ Config.Resupply = {
 
 Config.Labs = {
     ["methlab"] = {
-        entrance = vector4(1002.47, -1527.42, 30.98, 0.0),
+        entrance = vector4(996.3, -1486.73, 31.3, 93.3),
         exit = vector4(996.61, -3200.65, -36.4, 90.0),
         locked = true,
         tasks = {
@@ -171,7 +171,7 @@ Config.Labs = {
         }
     },
     ["cokelab"] = {
-        entrance = vector4(806.28, -2380.69, 29.1, 85.00),
+        entrance = vector4(167.84, -2221.52, 7.32, 358.48),
         exit = vector4(1088.7, -3187.5, -38.99, 180.00),
         locked = true,
         tasks = {
@@ -229,7 +229,7 @@ Config.Labs = {
         }
     },
     ["weedlab"] = {
-        entrance = vector4(711.28, 4185.47, 41.08, 270.00),
+        entrance = vector4(-325.93, -1300.48, 31.5, 269.88),
         exit = vector4(1066.39, -3183.5, -39.16, 90.00),
         locked = true,
         tasks = {
@@ -287,7 +287,7 @@ Config.Labs = {
         }
     },
     ["moneywash"] = {
-        entrance = vector4(206.65, -1851.5, 27.48, 320.00),
+        entrance = vector4(-103.07, -12.4, 74.4, 162.68),
         exit = vector4(1138.04, -3199.44, -39.67, 180.00),
         locked = true,
         maxBags = 5,
@@ -331,7 +331,7 @@ Config.Labs = {
         }
     },
     ["gunbunker"] = {
-        entrance = vector4(-354.16, 4825.45, 144.29, 320.00),
+        entrance = vector4(1657.02, 5.78, 166.12, 35.46),
         exit = vector4(903.19659, -3182.285, -97.05294, 90.00),
         locked = true,
         key = "gunkey",

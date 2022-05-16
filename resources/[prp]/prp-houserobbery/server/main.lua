@@ -62,6 +62,9 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
         elseif math.random(1, 500) == 4 then
             Player.Functions.AddItem("mwkey", 1)
             TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+        elseif math.random(1, 500) == 5 then
+            Player.Functions.AddItem("methkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "methkey", "add")
         end
     else
         if math.random(1, 2000) == 1 then
@@ -76,6 +79,9 @@ AddEventHandler('prp-houserobbery:server:searchCabin', function(cabin, house)
         elseif math.random(1, 2000) == 4 then
             Player.Functions.AddItem("mwkey", 1)
             TriggerClientEvent('inventory:client:ItemBox', src, "mwkey", "add")
+        elseif math.random(1, 2000) == 5 then
+            Player.Functions.AddItem("methkey", 1)
+            TriggerClientEvent('inventory:client:ItemBox', src, "methkey", "add")
         end
     end
 

@@ -4,7 +4,7 @@ CreateThread(function()
         heading = Config.Labs.methlab.entrance.w,
         debugPoly = false,
         minZ = 30.20,
-        maxZ = 32.00,
+        maxZ = 33.00,
         }, {
             options = {
             {

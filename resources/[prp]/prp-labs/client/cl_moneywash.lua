@@ -123,8 +123,8 @@ CreateThread(function()
         name = "mwentrance",
         heading = Config.Labs.moneywash.entrance.w,
         debugPoly = false,
-        minZ = 26.38,
-        maxZ = 28.78,
+        minZ = 73.08,
+        maxZ = 75.78,
         }, {
             options = {
             {
