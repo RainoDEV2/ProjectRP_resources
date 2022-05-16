@@ -1482,7 +1482,7 @@ PRPShared.Jobs = {
             ['0'] = { name = 'Trainee', payment = 100 },
 			['1'] = { name = 'Wait Staff', payment = 125 },
 			['2'] = { name = 'Host', payment = 150 },
-			['3'] = { name = 'Manager', payment = 275 },
+			['3'] = { name = 'Manager', payment = 175 },
 			['4'] = { name = 'Owner', isboss = true, payment = 200 },
         },
 	},
