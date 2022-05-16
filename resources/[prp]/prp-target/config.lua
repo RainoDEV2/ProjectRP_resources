@@ -604,24 +604,6 @@ Config.TargetModels = {
     },
     distance = 4.0
   },
-  ["VehicleRental"] = {
-    models = {`prop_printer_01`},
-    options = {
-      {
-        type = "client",
-        event = "prp-printer:client:UsePrinter",
-        icon = "fas fa-file-alt",
-        label = "Print Document",
-      },
-      {
-        type = "client",
-        event = "prp-printer:client:PickupPrinter",
-        icon = "fas fa-box",
-        label = "Pickup Printer",
-      },
-    },
-    distance = 3.0
-  },
 }
 
 Config.GlobalPedOptions = {
