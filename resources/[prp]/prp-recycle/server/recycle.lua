@@ -5,14 +5,18 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 local ItemTable = {
     "metalscrap",
     "plastic",
-    "copper",
-    "iron",
+    -- "copper",
+    -- "iron",
     "aluminum",
-    "steel",
-    "steel",
+    -- "steel",
+    -- "steel",
     "glass",
     "rubber",
 	"bottle",
+	"bottle",
+	"bottle",
+	"can",
+	"can",
 	"can",
 }
 

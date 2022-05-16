@@ -90,12 +90,12 @@ Config.ArmoryWhitelist = {
 }
 
 Config.Prices = {
-	-- ['copper'] = { name = 'copper', amount = 24 },
+	['copper'] = { name = 'copper', amount = 24 },
 	['plastic'] = { name = 'plastic', amount = 28 },
 	['metalscrap'] = { name = 'metalscrap', amount = 30 },
-	-- ['steel'] = { name = 'steel', amount = 30 },
+	['steel'] = { name = 'steel', amount = 30 },
 	['glass'] = { name = 'glass', amount = 36 },
-	-- ['iron'] = { name = 'iron', amount = 34 },
+	['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
 	['aluminum'] = { name = 'aluminium', amount = 36 },
 	['bottle'] = { name = 'bottle', amount = 8 },
@@ -106,11 +106,11 @@ Config.DumpItems = {
     "bottle", "can", "bottle", "can", "bottle", "can", "bottle", "can", "metalscrap", "metalscrap"
 }
 
-Config.tenmin = "2"
-Config.tenmax = "3"
+Config.tenmin = "1"
+Config.tenmax = "2"
 
-Config.bulkmin = "25"
-Config.bulkmax = "30"
+Config.bulkmin = "15"
+Config.bulkmax = "23"
 
 Config.PedList = {
 	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Recycle'].location, heading = Config.Locations['Recycle'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine
