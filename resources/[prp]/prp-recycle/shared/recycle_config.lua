@@ -98,8 +98,8 @@ Config.Prices = {
 	['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
 	['aluminum'] = { name = 'aluminium', amount = 36 },
-	['bottle'] = { name = 'bottle', amount = 8 },
-	['can'] = { name = 'bottle', amount = 6 },
+	-- ['bottle'] = { name = 'bottle', amount = 8 },
+	-- ['can'] = { name = 'bottle', amount = 6 },
 }
 
 Config.DumpItems = {
@@ -110,7 +110,7 @@ Config.tenmin = "1"
 Config.tenmax = "2"
 
 Config.bulkmin = "15"
-Config.bulkmax = "23"
+Config.bulkmax = "20"
 
 Config.PedList = {
 	{ model = "S_M_Y_Construct_01", coords = Config.Locations['Recycle'].location, heading = Config.Locations['Recycle'].heading, gender = "male", scenario = "WORLD_HUMAN_CLIPBOARD", }, -- Outside Mine

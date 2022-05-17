@@ -61,36 +61,35 @@ Config.RewardPool = {
 
 ------------------------------------------------------------
 Config.SellItems = { -- Selling Prices
-    ['copperore'] = 27,
-    ['goldore'] = 70,
-    ['ironore'] = 9,
-    ['carbon'] = 18,
+    ['copperore'] = 15,
+    ['goldore'] = 40,
+    ['ironore'] = 20,
+    ['carbon'] = 20,
 
+    ['uncut_ruby'] = 140,
+    ['uncut_diamond'] = 160,
+    ['uncut_emerald'] = 180,
+    ['uncut_sapphire'] = 200,
+
+    ['ruby'] = 400,
+    ['diamond'] = 450,
+    ['emerald'] = 500,
+    ['sapphire'] = 550,
+
+    ['ruby_ring'] = 600,
+    ['diamond_ring'] = 700,
+    ['emerald_ring'] = 800,
+    ['sapphire_ring'] = 900,
+
+    ['ruby_necklace'] = 1000,
+    ['diamond_necklace'] = 1200,
+    ['emerald_necklace'] = 1400,
+    ['sapphire_necklace'] = 1600,
+
+    ['gold_ring'] = 400,
+    ['goldchain'] = 480,
+    ['10kgoldchain'] = 420,
     ['goldbar'] = 1000,
-
-    ['uncut_emerald'] = 290,
-    ['uncut_ruby'] = 290,
-    ['uncut_diamond'] = 378,
-    ['uncut_sapphire'] = 290,
-
-    ['emerald'] = 400,
-    ['ruby'] = 430,
-    ['diamond'] = 600,
-    ['sapphire'] = 480,
-
-    ['diamond_ring'] = 1000,
-    ['emerald_ring'] = 780,
-    ['ruby_ring'] = 790,
-    ['sapphire_ring'] = 795,
-
-    ['diamond_necklace'] = 1600,
-    ['emerald_necklace'] = 1275,
-    ['ruby_necklace'] = 1400,
-    ['sapphire_necklace'] = 1420,
-
-    ['gold_ring'] = 430,
-    ['goldchain'] = 500,
-    ['10kgoldchain'] = 450,
 }
 
 ------------------------------------------------------------

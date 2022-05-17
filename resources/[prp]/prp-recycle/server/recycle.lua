@@ -7,16 +7,11 @@ local ItemTable = {
     "plastic",
     -- "copper",
     -- "iron",
+    -- "steel",
     "aluminum",
-    -- "steel",
-    -- "steel",
     "glass",
     "rubber",
 	"bottle",
-	"bottle",
-	"bottle",
-	"can",
-	"can",
 	"can",
 }
 
@@ -29,7 +24,7 @@ RegisterServerEvent("prp-recycle:getrecyclablematerial")
 AddEventHandler("prp-recycle:getrecyclablematerial", function()
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    local amount = math.random(18, 28)
+    local amount = math.random(12, 18)
     Player.Functions.AddItem("recyclablematerial", amount)
     TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["recyclablematerial"], 'add', amount)
     Citizen.Wait(500)
@@ -63,12 +58,6 @@ AddEventHandler("prp-recycle:TradeItems", function(data)
 			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[randItem], 'add', amount)
 			Citizen.Wait(1000)
 
-			randItem = ItemTable[math.random(1, #ItemTable)]
-			amount = math.random(Config.tenmin, Config.tenmax)
-			Player.Functions.AddItem(randItem, amount)
-			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[randItem], 'add', amount)
-			Citizen.Wait(1000)
-
 			else
 				TriggerClientEvent('ProjectRP:Notify', src, "You Don't Have Enough Items")
 			end
@@ -83,12 +72,6 @@ AddEventHandler("prp-recycle:TradeItems", function(data)
 			Player.Functions.AddItem(randItem, amount)
 			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[randItem], 'add', amount)
 			Citizen.Wait(1000) 
-
-			randItem = ItemTable[math.random(1, #ItemTable)]
-			amount = math.random(Config.bulkmin, Config.bulkmax)
-			Player.Functions.AddItem(randItem, amount)
-			TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[randItem], 'add', amount)
-			Citizen.Wait(1000)
 
 			randItem = ItemTable[math.random(1, #ItemTable)]
 			amount = math.random(Config.bulkmin, Config.bulkmax)

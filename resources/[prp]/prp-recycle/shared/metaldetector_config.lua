@@ -55,7 +55,7 @@ DetectorConfig.RareItems = {
     'goldcoin',
     'ancientcoin',
     'ww2relic',
-    'brokengamboy',
+    'brokengameboy',
     'pocketwatch',
 }
 

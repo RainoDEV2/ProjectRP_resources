@@ -10,6 +10,7 @@ local ItemListHardware = {
     ["iphone"] = math.random(50, 125),
     ["samsungphone"] = math.random(75, 150),
     ["laptop"] = math.random(50, 135),
+    ["gameboy"] = math.random(50, 135),
 }
 
 local MeltItems = {
