@@ -16,7 +16,7 @@ CreateThread(function()
 end)
 
 RegisterNetEvent('tackle:client:GetTackled', function()
-	SetPedToRagdoll(PlayerPedId(), math.random(1000, 6000), math.random(1000, 6000), 0, 0, 0, 0) 
+	SetPedToRagdoll(PlayerPedId(), math.random(2000, 5000), math.random(2000, 5000), 0, 0, 0, 0) 
 	TimerEnabled = true
 	Wait(1500)
 	TimerEnabled = false

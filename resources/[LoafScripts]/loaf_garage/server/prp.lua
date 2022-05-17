@@ -82,7 +82,7 @@ CreateThread(function()
                     ["@plate"] = plate
                 })
             end
-            
+
             if Config.SpawnServer then
                 local vehicle = SpawnVehicle(source, tonumber(model), spawnLocation)
                 Entity(vehicle).state.plate = plate

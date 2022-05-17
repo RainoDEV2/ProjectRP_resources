@@ -1479,11 +1479,11 @@ PRPShared.Jobs = {
 		label = 'Cat Cafe',
 		defaultDuty = true,
 		grades = {
-            ['0'] = { name = 'Trainee', payment = 100 },
-			['1'] = { name = 'Wait Staff', payment = 125 },
+            ['0'] = { name = 'Trainee', payment = 50 },
+			['1'] = { name = 'Wait Staff', payment = 100 },
 			['2'] = { name = 'Host', payment = 150 },
 			['3'] = { name = 'Manager', payment = 175 },
-			['4'] = { name = 'Owner', isboss = true, payment = 200 },
+			['4'] = { name = 'Owner', isboss = true, payment = 25 },
         },
 	},
 	['galaxy'] = {

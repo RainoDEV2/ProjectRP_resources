@@ -5,7 +5,8 @@ ProjectRP = exports['prp-core']:GetCoreObject()
 RegisterServerEvent('prp-mining:MineReward')
 AddEventHandler('prp-mining:MineReward', function()
     local Player = ProjectRP.Functions.GetPlayer(source)
-    local randomChance = math.random(1, 3)
+    -- local randomChance = math.random(1, 3)
+    local randomChance = 1
     Player.Functions.AddItem('stone', randomChance)
     TriggerClientEvent("inventory:client:ItemBox", source, ProjectRP.Shared.Items["stone"], "add", randomChance)
 end)
@@ -76,7 +77,7 @@ ProjectRP.Functions.CreateCallback('prp-mining:Smelting:Check:2', function(sourc
 	local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
 	local item = Player.Functions.GetItemByName('goldore')
-	if item ~= nil and item.amount >= 4 then cb(true)
+	if item ~= nil and item.amount >= 5 then cb(true)
 	else cb(false)
 	end
 end)
@@ -100,7 +101,8 @@ end)
 ProjectRP.Functions.CreateCallback('prp-mining:Smelting:Check:5', function(source, cb)
 	local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('bottle') ~= nil then cb(true)
+	local item = Player.Functions.GetItemByName('bottle')
+	if item ~= nil and item.amount >= 10 then cb(true)
 	else cb(false)
 	end
 end)
@@ -108,7 +110,8 @@ end)
 ProjectRP.Functions.CreateCallback('prp-mining:Smelting:Check:6', function(source, cb)
 	local src = source
     local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemByName('can') ~= nil then cb(true)
+	local item = Player.Functions.GetItemByName('can')
+	if item ~= nil and item.amount >= 5 then cb(true)
 	else cb(false)
 	end
 end)
@@ -122,17 +125,17 @@ AddEventHandler('prp-mining:Smelting:Reward', function(data)
 	if data == 1 then
 		Player.Functions.RemoveItem('copperore', 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['copperore'], 'remove', 1)
-		Player.Functions.AddItem("copper", 10)
+		Player.Functions.AddItem("copper", 8)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["copper"], 'add', 10)
 	elseif data == 2 then
-		Player.Functions.RemoveItem('goldore', 4)
+		Player.Functions.RemoveItem('goldore', 5)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['goldore'], 'remove', 4)
 		Player.Functions.AddItem("goldbar", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["goldbar"], 'add', 1)
 	elseif data == 3 then
 		Player.Functions.RemoveItem('ironore', 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['ironore'], 'remove', 1)
-		Player.Functions.AddItem("iron", 10)
+		Player.Functions.AddItem("iron", 6)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["iron"], 'add', 10)
 	elseif data == 4 then
 		Player.Functions.RemoveItem('ironore', 1)
@@ -142,12 +145,12 @@ AddEventHandler('prp-mining:Smelting:Reward', function(data)
 		Player.Functions.AddItem("steel", 2)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["steel"], 'add', 2)
 	elseif data == 5 then
-		Player.Functions.RemoveItem('bottle', 1)
+		Player.Functions.RemoveItem('bottle', 10)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['bottle'], 'remove', 1)
 		Player.Functions.AddItem("glass", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["glass"], 'add', 1)
 	elseif data == 6 then
-		Player.Functions.RemoveItem('can', 1)
+		Player.Functions.RemoveItem('can', 5)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['can'], 'remove', 1)
 		Player.Functions.AddItem("aluminum", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["aluminum"], 'add', 1)
@@ -329,7 +332,6 @@ AddEventHandler('prp-mining:Cutting:Reward', function(data)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['uncut_sapphire'], 'remove', 1)
 		Player.Functions.AddItem("sapphire", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["sapphire"], 'add', 1)
-		
 	elseif data == 5 then
 		Player.Functions.RemoveItem('goldbar', 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['goldbar'], 'remove', 1)
@@ -363,7 +365,6 @@ AddEventHandler('prp-mining:Cutting:Reward', function(data)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['sapphire'], 'remove', 1)
 		Player.Functions.AddItem("sapphire_ring", 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["sapphire_ring"], 'add', 1)
-
 	elseif data == 10 then
 		Player.Functions.RemoveItem('goldbar', 1)
 		TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items['goldbar'], 'remove', 1)

@@ -607,10 +607,10 @@ RegisterCommand('inventory', function()
                     maxweight = 25000
                     slots = 15
                 elseif vehicleClass == 9 then
-                    maxweight = 175000
+                    maxweight = 190000
                     slots = 35
                 elseif vehicleClass == 12 then
-                    maxweight = 250000
+                    maxweight = 300000
                     slots = 40
                 elseif vehicleClass == 13 then
                     maxweight = 0
@@ -622,7 +622,22 @@ RegisterCommand('inventory', function()
                     maxweight = 140000
                     slots = 50
                 elseif vehicleClass == 16 then
-                    maxweight = 500000
+                    maxweight = 300000
+                    slots = 50
+                elseif vehicleClass == 17 then
+                    maxweight = 300000
+                    slots = 50
+                elseif vehicleClass == 18 then
+                    maxweight = 300000
+                    slots = 50
+                elseif vehicleClass == 19 then
+                    maxweight = 300000
+                    slots = 50
+                elseif vehicleClass == 20 then
+                    maxweight = 300000
+                    slots = 50
+                elseif vehicleClass == 21 then
+                    maxweight = 300000
                     slots = 50
                 else
                     maxweight = 70000
