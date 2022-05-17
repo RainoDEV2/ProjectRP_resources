@@ -398,7 +398,7 @@ AddEventHandler("mdt:submitNewWarrant", function(data)
 		TriggerEvent('prp-log:server:CreateLog:MDT', 
 		'policeMDT',
 		'Warrant Issued',
-		'red', ''..GetCharacterName(usource).. ' issued a warrant for: ' ..data.name.., GetCharacterName(usource), data.name, data.charges, data.notes)
+		'red', ''..GetCharacterName(usource).. ' issued a warrant for: ' ..data.name, GetCharacterName(usource), data.name, data.charges, data.notes)
 	end)
 end)
 
