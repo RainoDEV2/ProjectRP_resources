@@ -318,17 +318,16 @@ end)
 RegisterNetEvent('prp-mining:Smelting:Begin')
 AddEventHandler('prp-mining:Smelting:Begin', function (data)
 	ProjectRP.Functions.TriggerCallback("prp-mining:Smelting:Check:"..data,function(hasReq) 
-		if hasReq then 
+		if hasReq then
 			local pos = GetEntityCoords(GetPlayerPed(-1))
 			loadAnimDict('amb@prop_human_parking_meter@male@idle_a')
 			TaskPlayAnim(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a' , 3.0, 3.0, -1, 1, 0, false, false, false)
 			ProjectRP.Functions.Progressbar("open_locker_drill", "Smelting..", math.random(5000,8000), false, true, {
 				disableMovement = true, disableCarMovement = true,disableMouse = false,	disableCombat = true, }, {}, {}, {}, function() -- Done
 				StopAnimTask(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a', 1.0)
-	
-					TriggerServerEvent('prp-mining:Smelting:Reward', data) -- When animations finished this is called and does the correct reward command via the ID it received from the menu
-					TriggerEvent('prp-mining:SmeltMenu')
-					IsDrilling = false
+				TriggerServerEvent('prp-mining:Smelting:Reward', data) -- When animations finished this is called and does the correct reward command via the ID it received from the menu
+				TriggerEvent('prp-mining:SmeltMenu')
+				IsDrilling = false
 			end, function() -- Cancel
 				StopAnimTask(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a', 1.0)
 				IsDrilling = false
@@ -503,9 +502,9 @@ RegisterNetEvent('prp-mining:SmeltMenu', function()
     exports['prp-menu']:openMenu({
 	{ header = "Smelter", txt = "Smelt ores down into usable materials", isMenuHeader = true }, 
 	{ header = "", txt = "✘ Close", params = { event = "prp-mining:SellAnim", args = -2 } },
-	{ header = "Smelt Copper Ore", txt = "Smelt Copper Ore into 10 Copper", params = { event = "prp-mining:Smelting:Begin", args = 1 } },
-	{ header = "Smelt Gold", txt = "Smelt 4 Gold Ore into 1 Gold Bar", params = { event = "prp-mining:Smelting:Begin", args = 2 } },
-	{ header = "Smelt Iron", txt = "Smelt Iron Ore into 10 Iron", params = { event = "prp-mining:Smelting:Begin", args = 3 } },
+	{ header = "Smelt Copper Ore", txt = "Smelt Copper Ore into 8 Copper", params = { event = "prp-mining:Smelting:Begin", args = 1 } },
+	{ header = "Smelt Gold", txt = "Smelt 6 Gold Ore into 1 Gold Bar", params = { event = "prp-mining:Smelting:Begin", args = 2 } },
+	{ header = "Smelt Iron", txt = "Smelt Iron Ore into 6 Iron", params = { event = "prp-mining:Smelting:Begin", args = 3 } },
 	{ header = "Smelt Steel", txt = "Smelt Iron Ore and Carbon into Steel", params = { event = "prp-mining:Smelting:Begin", args = 4 } },
 	--{ header = "Melt Bottle", txt = "Melt down a glass bottle", params = { event = "prp-mining:Smelting:Begin", args = 5 } },
 	--{ header = "Melt Can", txt = "Melt down an empty can", params = { event = "prp-mining:Smelting:Begin", args = 6 } },
