@@ -202,11 +202,11 @@ RegisterServerEvent('prp-crypto:server:ExchangeSuccess', function(LuckChance)
     local ItemData = Player.Functions.GetItemByName("cryptostick")
 
     if ItemData ~= nil then
-        local LuckyNumber = math.random(1, 10)
-        local DeelNumber = 1000000
-        local Amount = (math.random(611111, 1599999) / DeelNumber)
+        local LuckyNumber = math.random(1, 20)
+        local DeelNumber = 100
+        local Amount = (math.random(10, 30) / DeelNumber)
         if LuckChance == LuckyNumber then
-            Amount = (math.random(1599999, 2599999) / DeelNumber)
+            Amount = (math.random(30, 50) / DeelNumber)
         end
 
         Player.Functions.RemoveItem("cryptostick", 1)

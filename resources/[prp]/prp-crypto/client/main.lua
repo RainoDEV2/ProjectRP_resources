@@ -21,7 +21,7 @@ local function DrawText3Ds(coords, text)
 end
 
 local function ExchangeSuccess()
-	TriggerServerEvent('prp-crypto:server:ExchangeSuccess', math.random(1, 10))
+	TriggerServerEvent('prp-crypto:server:ExchangeSuccess', math.random(1, 20))
 end
 
 local function ExchangeFail()
@@ -81,14 +81,14 @@ CreateThread(function()
 							ProjectRP.Functions.TriggerCallback('prp-crypto:server:HasSticky', function(HasItem)
 								if HasItem then
 									TriggerEvent("mhacking:show")
-									TriggerEvent("mhacking:start", math.random(4, 6), 45, HackingSuccess)
+									TriggerEvent("mhacking:start", math.random(4, 6), 22, HackingSuccess)
 								else
 									ProjectRP.Functions.Notify('You have no Cryptostick', 'error')
 								end
 							end)
 						end
 					else
-						DrawText3Ds(Crypto.Exchange.coords, 'Systeem is rebooting - '..Crypto.Exchange.RebootInfo.percentage..'%')
+						DrawText3Ds(Crypto.Exchange.coords, 'System is rebooting - '..Crypto.Exchange.RebootInfo.percentage..'%')
 					end
 				else
 					if requiredItemsShowed then
