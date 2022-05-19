@@ -878,3 +878,9 @@ CREATE TABLE IF NOT EXISTS `loaf_keys` (
   `key_data` LONGTEXT,
   PRIMARY KEY (`unique_id`)
 );
+
+CREATE TABLE `PLAYER_JOBS` (
+  `cid` varchar(100) NOT NULL,
+  `job` varchar(100) NOT NULL,
+  `grade` int(11) NOT NULL
+);
