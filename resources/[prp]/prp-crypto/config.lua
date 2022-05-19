@@ -15,7 +15,7 @@ Crypto = {
     },
 
     Exchange = {
-        coords = vector3(1276.21, -1709.88, 54.57),
+        coords = vector3(-558.24, -916.27, 23.64),
         RebootInfo = {
             state = false,
             percentage = 0
@@ -27,7 +27,7 @@ Crypto = {
     RefreshTimer = 10, -- In minutes, so every 10 minutes.
 
     -- Crashes or luck
-    ChanceOfCrashOrLuck = 2, -- This is in % (1-100)
+    ChanceOfCrashOrLuck = 5, -- This is in % (1-100)
     Crash = {20,80}, -- Min / Max
     Luck = {20,45}, -- Min / Max
 

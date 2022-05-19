@@ -350,37 +350,41 @@ local carryPackage = nil
 local onDuty = false
 
 local recyclesleep = 3500
-Citizen.CreateThread(function ()
+Citizen.CreateThread(function()
     while true do
         local pos = GetEntityCoords(GetPlayerPed(-1), true)
 
         if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].OutsideLocation.x, Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z, true) < 1.3 then
 			recyclesleep = 1
-            if Config.EnableOpeningHours then
-                local ClockTime = GetClockHours()
-                if ClockTime >= Config.OpenHour and ClockTime <= Config.CloseHour - 1 then
-                    if (ClockTime >= Config.OpenHour and ClockTime < 24) or (ClockTime <= Config.CloseHour -1 and ClockTime > 0) then
-
-                        DrawText3D(Config['delivery'].OutsideLocation.x, Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z + 0.5, "[~g~E~w~] to enter")
+            -- if Config.EnableOpeningHours then
+            --     local ClockTime = GetClockHours()
+            --     if ClockTime >= Config.OpenHour and ClockTime <= Config.CloseHour - 1 then
+            --         if (ClockTime >= Config.OpenHour and ClockTime < 24) or (ClockTime <= Config.CloseHour -1 and ClockTime > 0) then
+                        DrawText3D(Config['delivery'].OutsideLocation.x, Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z, "[~g~E~w~] to enter")
 
                         if IsControlJustReleased(0, 38) then
-                            renderPropsWhereHouse()
-                            DoScreenFadeOut(500)
-                            while not IsScreenFadedOut() do
-                                Citizen.Wait(10)
-                            end
-                            SetEntityCoords(GetPlayerPed(-1), Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z)
-                            DoScreenFadeIn(500)
+							local CriminalRecord = ProjectRP.Functions.GetPlayerData().metadata["criminalrecord"]
+							if CriminalRecord["hasRecord"] then
+								TriggerEvent('ProjectRP:Notify', 'You didn\'t pass the background checks, no criminals allowed!', 'error')
+							else
+								renderPropsWhereHouse()
+								DoScreenFadeOut(500)
+								while not IsScreenFadedOut() do
+									Citizen.Wait(10)
+								end
+								SetEntityCoords(GetPlayerPed(-1), Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z)
+								DoScreenFadeIn(500)
+							end
                         end
-                    end
-                end
-            end
-                DrawText3D(Config['delivery'].OutsideLocation.x,Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z, "Recycle Center, opens at ~r~" .. Config.OpenHour ..":00")
-            end
-    
-            if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, true) < 15 and not IsPedInAnyVehicle(GetPlayerPed(-1), false) and not onDuty then
-				recyclesleep = 1
-                --DrawMarker(25, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5001, 98, 102, 185,100, 0, 0, 0,0)
+            --         end
+            --     end
+            -- end
+			-- DrawText3D(Config['delivery'].OutsideLocation.x,Config['delivery'].OutsideLocation.y, Config['delivery'].OutsideLocation.z, "Recycle Center opens at ~r~" .. Config.OpenHour ..":00")
+		end
+
+		if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, true) < 15 and not IsPedInAnyVehicle(GetPlayerPed(-1), false) and not onDuty then
+			recyclesleep = 1
+			--DrawMarker(25, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, 0, 0, 0, 0, 0, 0, 1.0, 1.0, 0.5001, 98, 102, 185,100, 0, 0, 0,0)
             if GetDistanceBetweenCoords(pos.x, pos.y, pos.z, Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z, true) < 1.3 then
                 DrawText3D(Config['delivery'].InsideLocation.x, Config['delivery'].InsideLocation.y, Config['delivery'].InsideLocation.z + 1, "Exit The Recycle Center [~g~E~w~] ")
                 if IsControlJustReleased(0, 38) then
@@ -400,7 +404,6 @@ end)
 
 local packagePos = nil
 
---
 Citizen.CreateThread(function ()
     while true do
         Citizen.Wait(4)

@@ -25,12 +25,29 @@ local function ExchangeSuccess()
 end
 
 local function ExchangeFail()
-	local Odd = 5
-	local RemoveChance = math.random(1, Odd)
-	local LosingNumber = math.random(1, Odd)
-	if RemoveChance == LosingNumber then
+	local RemoveChance = math.random(1, 2)
+	if RemoveChance == 1 then
 		TriggerServerEvent('prp-crypto:server:ExchangeFail')
 		TriggerServerEvent('prp-crypto:server:SyncReboot')
+		local pCoords = GetEntityCoords(PlayerPedId())
+		local description = "A secure server alarm has been triggered inside Weasel News"
+		TriggerServerEvent('cd_dispatch:AddNotification', {
+			job_table = {'police'},
+			coords = pCoords,
+			title = '10-31 - Secure Server Alarm',
+			message = description,
+			flash = 0,
+			unique_id = tostring(math.random(0000000,9999999)),
+			blip = {
+				sprite = 459,
+				scale = 1,
+				colour = 3,
+				flashes = false,
+				text = 'Secure Server Alarm',
+				time = (5*60*1000),
+				sound = 1,
+			}
+		})
 	end
 end
 

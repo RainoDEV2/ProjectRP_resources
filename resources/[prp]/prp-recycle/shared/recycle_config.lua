@@ -23,7 +23,7 @@ Config = {
 Config['delivery'] = {
 	OutsideLocation = {x=53.18,y=6338.09,z=31.38,a=209.01},
 
-	InsideLocation = {x=993.16,y=-3097.61,z=-39.9,a=82.95},
+	InsideLocation = {x=992.37,y=-3097.76,z=-39.9,a=82.95},
 
 	SellLocation = {x=1157.49,y=-3197.64,z=-39.01,a=267.6},
 	PersonalStash = {x=994.64,y=-3100.34,z=-39.0,a=267.42}, -- Company Stash (Only Recycle Job Employees Use)
@@ -53,12 +53,11 @@ Config['delivery'] = {
 		[18] = {x=1025.1221923828,y=-3091.4680175781,z=-38.999885559082,a=183.88},
 		[19] = {x=1024.9321289063,y=-3096.4670410156,z=-38.999885559082,a=181.36},
 	},
-	
+
 	DropLocation = {x =999.17, y =-3112.27, z =-39.0, a = 274.810},
-	
+
 	DropLocationop = {
 		[1] =  {x =1022.26, y =-3095.89, z =-39.0, a = 274.810},
-		
 	},
 	WareHouseObjects = {
 		"prop_toolchest_05",
@@ -74,20 +73,9 @@ Config.Locations =  {
 	['BottleBank4'] = { name = "Bottle Bank", location = vector3(29.08,-1769.99,29.61-1.0), heading = 50.0, blipTrue = true, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
 	['BottleBank5'] = { name = "Bottle Bank", location = vector3(394.08,-877.48,29.35-1.0), heading = 310.12, blipTrue = true, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
 	['BottleBank6'] = { name = "Bottle Bank", location = vector3(-1267.97,-812.08,17.11-1.0), heading = 128.12, blipTrue = true, Sprite = 642, Scale = 0.8, Colour = 2,}, -- The location where you enter the mine 
-
 }
 
-
-Config.ArmoryWhitelist = {
-    "FUN28030",
-    "HHV33808",
-    "MWE31087",
-    "UOH84809",
-    "ONT04484",
-    "SUC74168",
-    "KGV59544",
-    "OEJ87427",
-}
+Config.ArmoryWhitelist = {}
 
 Config.Prices = {
 	['copper'] = { name = 'copper', amount = 24 },
@@ -98,8 +86,8 @@ Config.Prices = {
 	['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
 	['aluminum'] = { name = 'aluminium', amount = 36 },
-	-- ['bottle'] = { name = 'bottle', amount = 8 },
-	-- ['can'] = { name = 'bottle', amount = 6 },
+	['bottle'] = { name = 'bottle', amount = 8 },
+	['can'] = { name = 'bottle', amount = 6 },
 }
 
 Config.DumpItems = {

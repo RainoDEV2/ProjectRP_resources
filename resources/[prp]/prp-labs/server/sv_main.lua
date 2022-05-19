@@ -95,16 +95,16 @@ RegisterNetEvent('prp-labs:server:MakeMethBags', function()
     local item = Player.Functions.GetItemByName('meth_cured')
     local baggies = Player.Functions.GetItemByName('empty_plastic_bag')
     if item and baggies then
-        if baggies.amount >= 150 then
+        if baggies.amount >= 125 then
             local info = {purity = item.info.purity}
             Player.Functions.RemoveItem(item.name, 1, item.slot)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.name], "remove")
-            Player.Functions.RemoveItem("empty_plastic_bag", 150)
+            Player.Functions.RemoveItem("empty_plastic_bag", 125)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["empty_plastic_bag"], "remove")
-            Player.Functions.AddItem("meth_baggy", 150, false, info)
+            Player.Functions.AddItem("meth_baggy", 125, false, info)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["meth_baggy"], "add")
         else
-            TriggerClientEvent('ProjectRP:Notify', src, "You need more plastic baggies (150)...", "error", 2500)
+            TriggerClientEvent('ProjectRP:Notify', src, "You need more plastic baggies (125)...", "error", 2500)
         end
     else
         TriggerClientEvent('ProjectRP:Notify', src, "You don't have any smaller plastic bags...", "error", 2500)
@@ -125,16 +125,16 @@ RegisterNetEvent('prp-labs:server:MakeCokeBags', function()
     local item = Player.Functions.GetItemByName('coke_cured')
     local baggies = Player.Functions.GetItemByName('empty_plastic_bag')
     if item and baggies then
-        if baggies.amount >= 150 then
+        if baggies.amount >= 125 then
             local info = {purity = item.info.purity}
             Player.Functions.RemoveItem(item.name, 1, item.slot)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.name], "remove")
-            Player.Functions.RemoveItem("empty_plastic_bag", 150)
+            Player.Functions.RemoveItem("empty_plastic_bag", 125)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["empty_plastic_bag"], "remove")
-            Player.Functions.AddItem("coke_baggy", 150, false, info)
+            Player.Functions.AddItem("coke_baggy", 125, false, info)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["coke_baggy"], "add")
         else
-            TriggerClientEvent('ProjectRP:Notify', src, "You need 150 plastic baggies...", "error", 2500)
+            TriggerClientEvent('ProjectRP:Notify', src, "You need 125 plastic baggies...", "error", 2500)
         end
     else
         TriggerClientEvent('ProjectRP:Notify', src, "You don't have any smaller plastic bags...", "error", 2500)
@@ -155,16 +155,16 @@ RegisterNetEvent('prp-labs:server:MakeWeedBags', function()
     local item = Player.Functions.GetItemByName('weed_cured')
     local baggies = Player.Functions.GetItemByName('empty_plastic_bag')
     if item and baggies then
-        if baggies.amount >= 150 then
+        if baggies.amount >= 125 then
             local info = {purity = item.info.purity}
             Player.Functions.RemoveItem(item.name, 1, item.slot)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item.name], "remove")
-            Player.Functions.RemoveItem("empty_plastic_bag", 150)
+            Player.Functions.RemoveItem("empty_plastic_bag", 125)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["empty_plastic_bag"], "remove")
-            Player.Functions.AddItem("weed_baggy", 150, false, info)
+            Player.Functions.AddItem("weed_baggy", 125, false, info)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["weed_baggy"], "add")
         else
-            TriggerClientEvent('ProjectRP:Notify', src, "You need more plastic baggies (150)...", "error", 2500)
+            TriggerClientEvent('ProjectRP:Notify', src, "You need more plastic baggies (125)...", "error", 2500)
         end
     else
         TriggerClientEvent('ProjectRP:Notify', src, "You don't have any smaller plastic bags...", "error", 2500)

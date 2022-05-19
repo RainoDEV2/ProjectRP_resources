@@ -128,7 +128,7 @@ AddEventHandler("prp-recycle:Selling:Mat", function(data)
         Player.Functions.RemoveItem(data, amount)
         Player.Functions.AddMoney('cash', pay)
         TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[data], 'remove', amount)
-        TriggerClientEvent("ProjectRP:Notify", src, "Total: $"..pay, "error")
+        TriggerClientEvent("ProjectRP:Notify", src, "Total: $"..pay, "success")
     else
         TriggerClientEvent("ProjectRP:Notify", src, "You don't have any "..ProjectRP.Shared.Items[data].label.. "", "error")
     end

@@ -28,7 +28,7 @@ Config.CommissionLimit = false -- If true, this limits the Commission to only be
 
 Config.Jobs = {
 	['burgershot'] = { MinAmountforTicket = 50, PayPerTicket = 50 , Commission = 0.70,},
-	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
 	['pizza'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 	['vanilla'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
