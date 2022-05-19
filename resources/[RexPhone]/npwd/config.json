@@ -1,0 +1,30 @@
+{
+  "PhoneAsItem": {
+    "enabled": true,
+    "exportResource": "prp-npwd",
+    "exportFunction": "HasPhone"
+  },
+  "general": {
+    "useResourceIntegration": true,
+    "toggleKey": "f2",
+    "toggleCommand": "rexphone",
+    "defaultLanguage": "en"
+  },
+  "profanityFilter": {
+    "enabled": false,
+    "badWords": ["esx"]
+  },
+  "database": {
+    "useIdentifierPrefix": false,
+    "playerTable": "players",
+    "identifierColumn": "citizenid",
+    "identifierType": "license",
+    "profileQueries": true,
+    "phoneNumberColumn": "phone_number"
+  },
+  "debug": {
+    "level": "error",
+    "enabled": true,
+    "sentryEnabled": true
+  }
+}
