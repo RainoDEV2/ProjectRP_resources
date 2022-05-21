@@ -46,6 +46,7 @@ Config.Webhooks = {
     ['policeMDT'] = 'https://discord.com/api/webhooks/968271401620500551/kjnQqqB8CnZZaxx2Jg8vu8ZkkXB2wGumdzlpI4W2NIy0TIPzjr8jO7l9RQSkOv9IjEhs',
     ['keylabs'] = "https://discord.com/api/webhooks/970488993068245066/CtRL9GBdBjUGVg6TliOGhmod6wKvztt1FD_7cQVtrT_H1fEnXy1PMGVV4kpYUQAlSp_z",
     ['shiftlog'] = "https://discord.com/api/webhooks/975223916605874217/Q2sa7KUirqIimuV_Jo9qKuYSR-j2ljN-SFmsDtjs6OjuZZvrGLazZqffGv1pY4Is8pEu",
+    ['police-armory'] = "https://discord.com/api/webhooks/977717736346103848/VK_LCqbbNUsk49xqYrnxENrSs0NoaPZNHEMu7dcf8Y6HUUbBSwg9cUD9xdbCrB14ttV3",
 }
 
 Config.Colors = { -- https://www.spycolor.com/
