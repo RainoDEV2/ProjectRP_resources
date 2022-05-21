@@ -27,6 +27,7 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('vagos', 0, 'gang'),
 ('cartel', 0, 'gang'),
 ('families', 0, 'gang'),
-('triads', 0, 'gang');
-('celestial', 0, 'gang');
-('flowersociety', 0, 'gang');
+('triads', 0, 'gang'),
+('celestial', 0, 'gang'),
+('flowersociety', 0, 'gang'),
+('zerotolerance', 0, 'gang');

@@ -112,6 +112,9 @@ Config.GangMenus = {
     ['flowersociety'] = {
         vector3(0, 0, 0),
     },
+    ['zerotolerance'] = {
+        vector3(1002.59, -1528.0, 30.84),
+    },
 }
 
 Config.GangMenuZones = {

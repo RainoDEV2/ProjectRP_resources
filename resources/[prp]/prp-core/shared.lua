@@ -779,7 +779,7 @@ PRPShared.Items = {
 	["chair2"] 						= {["name"] = "chair2",  	    			["label"] = "Blue Camping Chair",		["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair2.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
 	["chair3"] 						= {["name"] = "chair3",  	    			["label"] = "Striped Camping Chair",	["weight"] = 5000, 		["type"] = "item", 		["image"] = "chair3.png", 				["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true,   	["combinable"] = nil,   ["description"] = "" },
 
-	["outfitbag"] 			    	= {["name"] = "outfitbag", 				    ["label"] = "Outfit bag",	 		    ["weight"] = 4000, 		["type"] = "item", 		["image"] = "outfitbag.png",   	 		["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,     ["combinable"] = nil,   ["description"] = "Holds different outfits"},
+	["outfitbag"] 			    	= {["name"] = "outfitbag", 				    ["label"] = "Outfit bag",	 		    ["weight"] = 10000, 	["type"] = "item", 		["image"] = "outfitbag.png",   	 		["unique"] = true, 		["useable"] = true, 	["shouldClose"] = true,     ["combinable"] = nil,   ["description"] = "Holds different outfits"},
 
 	["metaldetector"] 				= {["name"] = "metaldetector", 				["label"] = "Metal Detector", 			["weight"] = 200, 		["type"] = "item", 		["image"] = "metaldetector.png", 		["unique"] = false, 	["useable"] = true, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "Detect Metal beep" },
 	["metaltrash"] 					= {["name"] = "metaltrash", 				["label"] = "Metal Trash", 				["weight"] = 200, 		["type"] = "item", 		["image"] = "metaltrash.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, 	["combinable"] = nil, 	["description"] = "Trashed Metal" },
@@ -800,7 +800,11 @@ PRPShared.Items = {
 	["ww2relic"] 					= {["name"] = "ww2relic",		 			["label"] = "WW2 Relic", 				["weight"] = 200, 		["type"] = "item", 		["image"] = "ww2relic.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, 	["combinable"] = nil, 	["description"] = "I rememeber this from history class." },
 	["steeltrash"] 					= {["name"] = "steeltrash", 				["label"] = "Steel Trash", 				["weight"] = 200, 		["type"] = "item", 		["image"] = "steelcan.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, 	["combinable"] = nil, 	["description"] = "A steel can" },
 	["pocketwatch"] 				= {["name"] = "pocketwatch", 				["label"] = "Pocket Watch", 			["weight"] = 200, 		["type"] = "item", 		["image"] = "pocketwatch.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "A pocket watch" },
-	["gameboy"] 					= {["name"] = "gameboy", 					["label"] = "Gameboy", 					["weight"] = 200, 		["type"] = "item", 		["image"] = "gameboy.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "A working Gameboy." }
+	["gameboy"] 					= {["name"] = "gameboy", 					["label"] = "Gameboy", 					["weight"] = 200, 		["type"] = "item", 		["image"] = "gameboy.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = true, 	["combinable"] = nil, 	["description"] = "A working Gameboy." },
+
+	['stolencard'] 				 	= {['name'] = 'stolencard', 			    ['label'] = 'Stolen ATM Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'visacard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,     ['combinable'] = {accept = {'electronickit'}, reward = 'hackcard', anim = {['dict'] = 'anim@amb@business@bgen@bgen_inspecting@', ['lib'] = 'inspecting_low_idle_01_inspector', ['text'] = 'Crafting ATM hacking card', ['timeOut'] = 7500,}},   ['description'] = 'What will you do with someone else\'s ATM card?'},
+	['hackcard'] 				 	= {['name'] = 'hackcard', 			    	['label'] = 'Hacking Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'hackcard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Modified debit card'},
+	['decryptor'] 				 	= {['name'] = 'decryptor', 			    	['label'] = 'Decrypt-o-matic', 			['weight'] = 300, 	    ['type'] = 'item', 		['image'] = 'decryptomatic.png', 		['unique'] = true, 	    ['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Decrypt PIN based encryptions'},
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT
@@ -1316,24 +1320,29 @@ PRPShared.Jobs = {
 		grades = {
 			['0'] = {
 				name = 'Bartender',
-				payment = 100
+				payment = 50
 			},
 			['1'] = {
 				name = 'DJ',
-				payment = 120
+				payment = 75
 			},
 			['2'] = {
 				name = 'Bouncer',
-				payment = 140
+				payment = 100
 			},
 			['3'] = {
 				name = 'Dancer',
-				payment = 150
+				payment = 125
 			},
 			['4'] = {
 				name = 'Management',
 				isboss = true,
-				payment = 200
+				payment = 150
+			},
+			['5'] = {
+				name = 'Management',
+				isboss = true,
+				payment = 175
 			},
 		},
 	},
