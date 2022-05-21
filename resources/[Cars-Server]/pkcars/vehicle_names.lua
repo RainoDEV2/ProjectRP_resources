@@ -10,6 +10,8 @@ Citizen.CreateThread(function()
 	-- Job cars
 	AddTextEntry('golfmk6', 'Golf Mk6')
 	AddTextEntry('m3e36', 'BMW M3 E36')
+	AddTextEntry('nspeedo', 'Vapid Speedo Express')
+
 
 	--First Pack (4 Doors)
 	AddTextEntry('G632019', '2019 Mercedes G63')
