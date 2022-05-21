@@ -155,7 +155,7 @@ PRPShared.Gangs = {
         },
 	},
     ['zerotolerance'] = {
-		label = 'Zero Bitches',
+		label = 'Zero Tolerance',
 		grades = {
             ['0'] = {
                 name = 'Prospect'
@@ -171,7 +171,7 @@ PRPShared.Gangs = {
 				isboss = true
             },
 			['4'] = {
-                name = 'Underboss',
+                name = 'Boss',
 				isboss = true
             },
         },

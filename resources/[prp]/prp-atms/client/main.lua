@@ -51,7 +51,7 @@ RegisterNetEvent('prp-atms:client:loadATM', function(cards)
             if atm then 
                 local obj = GetClosestObjectOfType(playerCoords.x, playerCoords.y, playerCoords.z, 2.0, hash, false, false, false)
                 local atmCoords = GetEntityCoords(obj, false)
-                    PlayATMAnimation('enter')
+                PlayATMAnimation('enter')
                 ProjectRP.Functions.Progressbar("accessing_atm", "Accessing ATM", 1500, false, true, {
                     disableMovement = false,
                     disableCarMovement = false,

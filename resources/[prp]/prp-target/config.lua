@@ -540,6 +540,13 @@ Config.TargetModels = {
         event = 'atm',
         icon = 'fab fa-cc-visa',
         label = 'Use ATM'
+      },
+      {
+        type = "client",
+        event = "decrypto:client:starthack",
+        icon = "fas fa-tablet-alt",
+        label = "Hack ATM",
+        item = "decryptor",
       }
 		},
     distance = 1.0

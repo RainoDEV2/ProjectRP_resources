@@ -13,7 +13,7 @@ $(function () {
                 <div class='card-content'>
                     <div class="itemscode">${event.data.item[i].itemscode}</div>
                 
-                    <div class='top-bar'><span>${event.data.item[i].price} Bits</span><span class='float-right lnr lnr-heart'></span></div>
+                    <div class='top-bar'><span>${event.data.item[i].price} QBits</span><span class='float-right lnr lnr-heart'></span></div>
                     <div class='img' ><img  src="${event.data.item[i].image}"></div> 
                 </div>
                 <div class='card-description'>
