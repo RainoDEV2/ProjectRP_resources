@@ -5,15 +5,16 @@ local ProjectRP = exports['prp-core']:GetCoreObject()
 -------------------- Events --------------------
 
 RegisterServerEvent('prp-blackmarket:server:itemgo', function(money, itemcode, itemstring)
-    local source = source
-    local Player = ProjectRP.Functions.GetPlayer(source)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
     local moneyPlayer = tonumber(Player.PlayerData.money.crypto)
 
     if moneyPlayer <= money then
-        TriggerClientEvent('ProjectRP:Notify', source, "You don't have enough Crypto!", 'error')
+        TriggerClientEvent('ProjectRP:Notify', src, "You don't have enough Crypto!", 'error')
     else
         Player.Functions.RemoveMoney('crypto', tonumber(money), 'black-market')
         Player.Functions.AddItem(itemcode, 1, false)
+        TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[itemcode], "add")
     end
 end)
 

@@ -24,7 +24,7 @@ Config = {
             price = 1,
             name = 'Stolen ATM Card',
             image = 'images/visacard.png',
-            itemscode = "hackcard"
+            itemscode = "stolencard"
         },
         [5] = {
             price = 5,

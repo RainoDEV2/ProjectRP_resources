@@ -54,15 +54,15 @@ RegisterNetEvent('prp-blackmarket:client:CreatePed', function(x, y, z, w) --- Pe
 end)
 
 RegisterNetEvent('prp-blackmarket:client:openstore', function()
-    if GetClockHours() >= Config['Open'] and GetClockHours() <= Config['Close'] then
+    -- if GetClockHours() >= Config['Open'] and GetClockHours() <= Config['Close'] then
         SetNuiFocus(true, true)
         SendNUIMessage({
             type = "data",
             item = Config['items']
         })
-    else
-        ProjectRP.Functions.Notify("Come back another time.", 'error', 500)
-    end    
+    -- else
+    --     ProjectRP.Functions.Notify("Come back another time.", 'error', 500)
+    -- end    
 end)
 
 -------------------- NUI --------------------

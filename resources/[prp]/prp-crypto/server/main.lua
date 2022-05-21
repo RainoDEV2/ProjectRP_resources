@@ -210,7 +210,7 @@ RegisterServerEvent('prp-crypto:server:ExchangeSuccess', function(LuckChance)
         end
 
         Player.Functions.RemoveItem("cryptostick", 1)
-        Player.Functions.AddMoney('crypto', Amount)
+        Player.Functions.AddMoney('crypto', Amount, 'cryptostick')
         TriggerClientEvent('ProjectRP:Notify', src, "You have exchanged your Cryptostick for: "..Amount.." QBit(\'s)", "success", 3500)
         TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["cryptostick"], "remove")
         TriggerClientEvent('prp-phone:client:AddTransaction', src, Player, {}, "There are "..Amount.." Qbit('s) credited!", "Credit")
@@ -252,7 +252,7 @@ ProjectRP.Functions.CreateCallback('prp-crypto:server:BuyCrypto', function(sourc
             Portfolio = Player.PlayerData.money.crypto + tonumber(data.Coins),
             WalletId = Player.PlayerData.metadata["walletid"],
         }
-        Player.Functions.RemoveMoney('bank', total_price)
+        Player.Functions.RemoveMoney('bank', total_price, 'buy-crypto')
         TriggerClientEvent('prp-phone:client:AddTransaction', source, Player, data, "You have "..tonumber(data.Coins).." Qbit('s) purchased!", "Credit")
         Player.Functions.AddMoney('crypto', tonumber(data.Coins))
         cb(CryptoData)
@@ -271,7 +271,7 @@ ProjectRP.Functions.CreateCallback('prp-crypto:server:SellCrypto', function(sour
             Portfolio = Player.PlayerData.money.crypto - tonumber(data.Coins),
             WalletId = Player.PlayerData.metadata["walletid"],
         }
-        Player.Functions.RemoveMoney('crypto', tonumber(data.Coins))
+        Player.Functions.RemoveMoney('crypto', tonumber(data.Coins), 'sold-crypto')
         TriggerClientEvent('prp-phone:client:AddTransaction', source, Player, data, "You have "..tonumber(data.Coins).." Qbit('s) sold!", "Depreciation")
         Player.Functions.AddMoney('bank', tonumber(data.Coins) * tonumber(Crypto.Worth["qbit"]))
         cb(CryptoData)
