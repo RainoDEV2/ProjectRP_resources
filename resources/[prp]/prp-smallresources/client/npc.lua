@@ -329,7 +329,7 @@ end
 
 RegisterNetEvent('prp-rental:spawncar')
 AddEventHandler('prp-rental:spawncar', function(data)
-    local money =data.money
+    local money = data.money
     local model = data.model
     local player = PlayerPedId()
     ProjectRP.Functions.SpawnVehicle(model, function(vehicle)
@@ -393,7 +393,7 @@ RegisterNetEvent('prp-rental:openMenu', function()
         {
             id = 2,
             header = "Asterope",
-            txt = "$250.00",
+            txt = "$250",
             params = {
                 event = "prp-rental:spawncar",
                 args = {
@@ -404,8 +404,8 @@ RegisterNetEvent('prp-rental:openMenu', function()
         },
         {
             id = 3,
-            header = "Bison ",
-            txt = "$500.00",
+            header = "Bison",
+            txt = "$500",
             params = {
                 event = "prp-rental:spawncar",
                 args = {
@@ -417,12 +417,24 @@ RegisterNetEvent('prp-rental:openMenu', function()
         {
             id = 4,
             header = "Sanchez",
-            txt = "$3000.00",
+            txt = "$3000",
             params = {
                 event = "prp-rental:spawncar",
                 args = {
                     model = 'sanchez',
                     money = 3000,
+                }
+            }
+        },
+        {
+            id = 5,
+            header = "Verus",
+            txt = "$10",
+            params = {
+                event = "prp-rental:spawncar",
+                args = {
+                    model = 'verus',
+                    money = 10,
                 }
             }
         },

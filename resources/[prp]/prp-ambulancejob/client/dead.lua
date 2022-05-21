@@ -2,6 +2,7 @@ local deadAnimDict = "dead"
 local deadAnim = "dead_a"
 local hold = 5
 deathTime = 0
+knockOutTime = 0
 
 -- Functions
 
@@ -12,9 +13,61 @@ local function loadAnimDict(dict)
     end
 end
 
+function OnKnockOut()
+    if not isKnockedOut then
+        isKnockedOut = true
+        TriggerServerEvent("hospital:server:SetDeathStatus", true)
+        TriggerServerEvent("InteractSound_SV:PlayOnSource", "demo", 0.1)
+        local player = PlayerPedId()
+        while GetEntitySpeed(player) > 0.5 or IsPedRagdoll(player) do
+            Wait(10)
+        end
+
+        if isKnockedOut then
+            local pos = GetEntityCoords(player)
+            local heading = GetEntityHeading(player)
+
+            local ped = PlayerPedId()
+            if IsPedInAnyVehicle(ped) then
+                -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                local veh = GetVehiclePedIsIn(ped)
+                local vehseats = GetVehicleModelNumberOfSeats(GetHashKey(GetEntityModel(veh)))
+                for i = -1, vehseats do
+                    local occupant = GetPedInVehicleSeat(veh, i)
+                    if occupant == ped then
+                        NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                        SetPedIntoVehicle(ped, veh, i)
+                    end
+                end
+            else
+                NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+            end
+
+            SetEntityHealth(player, GetEntityMaxHealth(player))
+            if IsPedInAnyVehicle(player, false) then
+                -- NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z + 0.5, heading, true, false)
+                loadAnimDict("veh@low@front_ps@idle_duck")
+                TaskPlayAnim(player, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+            else
+                loadAnimDict(deadAnimDict)
+                TaskPlayAnim(player, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+            end
+            -- TriggerServerEvent('hospital:server:ambulanceAlert', 'Civilian Died')
+        end
+    end
+end
+
+function KnockOutTimer()
+    while isKnockedOut do
+        Wait(1000)
+        knockOutTime = knockOutTime - 1
+    end
+end
+
 function OnDeath()
     if not isDead then
         isDead = true
+        isKnockedOut = false
         TriggerServerEvent("hospital:server:SetDeathStatus", true)
         TriggerServerEvent("InteractSound_SV:PlayOnSource", "demo", 0.1)
         local player = PlayerPedId()
@@ -148,7 +201,7 @@ emsNotified = false
 CreateThread(function()
 	while true do
         sleep = 1000
-		if isDead or InLaststand then
+		if isDead or InLaststand or isKnockedOut then
             sleep = 5
             local ped = PlayerPedId()
             DisableAllControlActions(0)
@@ -164,9 +217,41 @@ CreateThread(function()
             EnableControlAction(0, 46, true)
             EnableControlAction(0, 47, true)
 
-            if isDead then
+            if isKnockedOut then
                 if not isInHospitalBed then
+                    if knockOutTime > 0 then
+                        local knockOutTime = math.ceil(knockOutTime)
+                        DrawTxt(0.93, 1.44, 1.0,1.0,0.6, 'WAKE UP IN: ~r~' .. knockOutTime .. '~s~ SECONDS', 255, 255, 255, 255)
+                    else
+                        TriggerEvent('hospital:client:Revive')
+                    end
+                end
 
+                if IsPedInAnyVehicle(ped, false) then
+                    local vehicle = GetVehiclePedIsIn(ped,false)
+
+                    local pos = GetEntityCoords(PlayerPedId())
+                    loadAnimDict("veh@low@front_ps@idle_duck")
+                    if not IsEntityPlayingAnim(ped, "veh@low@front_ps@idle_duck", "sit", 3) then
+                        TaskPlayAnim(ped, "veh@low@front_ps@idle_duck", "sit", 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+                    end
+                else
+                    if isInHospitalBed then
+                        if not IsEntityPlayingAnim(ped, inBedDict, inBedAnim, 3) then
+                            loadAnimDict(inBedDict)
+                            TaskPlayAnim(ped, inBedDict, inBedAnim, 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+                        end
+                    else
+                        if not IsEntityPlayingAnim(ped, deadAnimDict, deadAnim, 3) then
+                            loadAnimDict(deadAnimDict)
+                            TaskPlayAnim(ped, deadAnimDict, deadAnim, 1.0, 1.0, -1, 1, 0, 0, 0, 0)
+                        end
+                    end
+                end
+
+                SetCurrentPedWeapon(ped, `WEAPON_UNARMED`, true)
+            elseif isDead then
+                if not isInHospitalBed then
                     if deathTime > 0 then
                         local deathtime = math.ceil(deathTime)
                         DrawTxt(0.93, 1.44, 1.0,1.0,0.6, 'RESPAWN IN: ~r~' .. deathtime .. '~s~ SECONDS', 255, 255, 255, 255)
@@ -183,7 +268,6 @@ CreateThread(function()
                                 emsNotified = true
                             end
                         end
-
                     else
                         local holdtime = hold
                         local cost = Config.BillCost
@@ -267,7 +351,6 @@ CreateThread(function()
                         end
                     end
                 end
-
             end
 		end
         Wait(sleep)
@@ -300,18 +383,20 @@ function GetKiller()
         Killer = NetworkGetPlayerIndexFromPed(GetPedInVehicleSeat(player_source_of_death, -1))
     end
     return GetPlayerServerId(Killer)
-  end
+end
 
 AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
-       local DeathReason = nil
+    local DeathReason = nil
     DeathCauseHash = GetPedCauseOfDeath(PlayerPedId())
-    
+
     if (GetKiller() == PlayerId()) then
         DeathReason = 'committed suicide'
     elseif (GetKiller()== nil) then
         DeathReason = 'died'
     else
-        if IsMelee(DeathCauseHash) then
+        if IsFists(DeathCauseHash) then
+            DeathReason = 'punched'
+        elseif IsMelee(DeathCauseHash) then
             DeathReason = 'murdered'
         elseif IsTorch(DeathCauseHash) then
             DeathReason = 'torched'
@@ -343,39 +428,41 @@ AddEventHandler('baseevents:onPlayerDied', function(killerType, coords)
             DeathReason = 'killed'
         end
     end
-    
+
     if DeathReason ~= 'killed ' or 'died' or 'committed suicide' then
         TriggerServerEvent("sv:log",GetKiller(), DeathReason, "No Weapon cuz dumbass died to nobody")
-        else
+    else
         TriggerServerEvent("sv:log",GetKiller(), DeathReason, DeathCauseHash)
     end
-    
-    deathTime = Config.DeathTime
-    OnDeath()
-    DeathTimer()
 
-
+    if DeathReason == 'punched' then
+        knockOutTime = Config.KnockOutTime
+        OnKnockOut()
+        KnockOutTimer()
+    else
+        deathTime = Config.DeathTime
+        OnDeath()
+        DeathTimer()
+    end
 end)
 
 RegisterNetEvent("Grab:Kill:Screenshot")
 AddEventHandler("Grab:Kill:Screenshot", function()
+    exports['screenshot-basic']:requestScreenshotUpload("https://discord.com/api/webhooks/879076978492342342/RqoN9t_05-LBL0mMciFfaMHUSh_z_zTocb07Lgq_aTvzTOITgaxUU927QKTEAyMA-ezs", "files[]", function(data)
+        local image = json.decode(data)
+        local link = ""
+        if json.encode(image.attachments[1].proxy_url) ~= nil then
+            link = image.attachments[1].proxy_url 
+        else
+            link = "https://i.imgur.com/XqQlZ8l.png" -- error image
+        end
 
-        exports['screenshot-basic']:requestScreenshotUpload("https://discord.com/api/webhooks/879076978492342342/RqoN9t_05-LBL0mMciFfaMHUSh_z_zTocb07Lgq_aTvzTOITgaxUU927QKTEAyMA-ezs", "files[]", function(data)
-            local image = json.decode(data)
-            local link = ""
-            if json.encode(image.attachments[1].proxy_url) ~= nil then
-
-                link = image.attachments[1].proxy_url 
-            else
-                link = "https://i.imgur.com/XqQlZ8l.png" -- error image
-            end
-
-            TriggerServerEvent("sv:log:picture", link)
-        end)
+        TriggerServerEvent("sv:log:picture", link)
+    end)
 end)
-AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
 
-        local DeathReason = nil
+AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
+    local DeathReason = nil
     DeathCauseHash = GetPedCauseOfDeath(PlayerPedId())
 
     if (Killer == PlayerId()) then
@@ -383,7 +470,9 @@ AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
     elseif (Killer == nil) then
         DeathReason = 'died'
     else
-        if IsMelee(DeathCauseHash) then
+        if IsFists(DeathCauseHash) then
+            DeathReason = 'punched'
+        elseif IsMelee(DeathCauseHash) then
             DeathReason = 'murdered'
         elseif IsTorch(DeathCauseHash) then
             DeathReason = 'torched'
@@ -416,27 +505,36 @@ AddEventHandler('baseevents:onPlayerKilled', function(killerId, data)
         end
     end
 
-
-
     if DeathReason ~= 'killed ' or 'died' or 'committed suicide' then
         TriggerServerEvent("sv:log",killerId, DeathReason, "No Weapon cuz dumbass died to nobody")
-        else
+    else
         TriggerServerEvent("sv:log",killerId, DeathReason, DeathCauseHash)
     end
 
-    deathTime = Config.DeathTime
-    OnDeath()
-    DeathTimer()
-
+    if DeathReason == 'punched' then
+        knockOutTime = Config.KnockOutTime
+        OnKnockOut()
+        KnockOutTimer()
+    else
+        deathTime = Config.DeathTime
+        OnDeath()
+        DeathTimer()
+    end
 end)
 
 
-
-
-
+function IsFists(Weapon)
+	local Weapons = {'WEAPON_UNARMED'}
+	for i, CurrentWeapon in ipairs(Weapons) do
+		if GetHashKey(CurrentWeapon) == Weapon then
+			return true
+		end
+	end
+	return false
+end
 
 function IsMelee(Weapon)
-	local Weapons = {'WEAPON_UNARMED', 'WEAPON_CROWBAR', 'WEAPON_BAT', 'WEAPON_GOLFCLUB', 'WEAPON_HAMMER', 'WEAPON_NIGHTSTICK'}
+	local Weapons = {'WEAPON_CROWBAR', 'WEAPON_BAT', 'WEAPON_GOLFCLUB', 'WEAPON_HAMMER', 'WEAPON_NIGHTSTICK'}
 	for i, CurrentWeapon in ipairs(Weapons) do
 		if GetHashKey(CurrentWeapon) == Weapon then
 			return true

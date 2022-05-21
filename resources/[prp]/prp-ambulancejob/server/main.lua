@@ -21,7 +21,6 @@ RegisterNetEvent('hospital:server:SendToBed', function(bedId, isRevive)
 	TriggerClientEvent('hospital:client:SetBed', -1, bedId, true)
 	Player.Functions.RemoveMoney("bank", Config.BillCost , "Checked in at hospital")
 	exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
-	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
 RegisterNetEvent('hospital:server:RespawnAtHospital', function()
@@ -38,7 +37,6 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 			end
 			Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned at hospital")
 			exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
-			TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 			return
 		end
 	end
@@ -52,7 +50,6 @@ RegisterNetEvent('hospital:server:RespawnAtHospital', function()
 	end
 	Player.Functions.RemoveMoney("bank", Config.BillCost, "respawned at hospital")
 	exports["prp-management"]:AddMoney("ambulance", Config.BillCost)
-	TriggerClientEvent('hospital:client:SendBillEmail', src, Config.BillCost)
 end)
 
 RegisterNetEvent('hospital:server:ambulanceAlert', function(text)

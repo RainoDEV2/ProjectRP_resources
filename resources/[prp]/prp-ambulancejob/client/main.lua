@@ -28,6 +28,7 @@ armcount = 0
 headCount = 0
 playerHealth = nil
 isDead = false
+isKnockedOut = false
 isStatusChecking = false
 statusChecks = {}
 statusCheckTime = 0
@@ -610,12 +611,17 @@ end)
 RegisterNetEvent('hospital:client:Revive', function()
     local player = PlayerPedId()
 
-    if isDead or InLaststand then
+    if isDead or InLaststand or isKnockedOut then
         local pos = GetEntityCoords(player, true)
         NetworkResurrectLocalPlayer(pos.x, pos.y, pos.z, GetEntityHeading(player), true, false)
         isDead = false
         SetEntityInvincible(player, false)
         SetLaststand(false)
+        if isKnockedOut then
+            isKnockedOut = false
+            Wait(1000)
+            ClearPedTasksImmediately(PlayerPedId())
+        end
     end
 
     if isInHospitalBed then
@@ -750,7 +756,9 @@ RegisterNetEvent('ProjectRP:Client:OnPlayerUnload', function()
         TriggerServerEvent("hospital:server:LeaveBed", bedOccupying)
     end
     isDead = false
+    isKnockedOut = false
     deathTime = 0
+    knockOutTime = 0
     SetEntityInvincible(ped, false)
     SetPedArmour(ped, 0)
     ResetAll()

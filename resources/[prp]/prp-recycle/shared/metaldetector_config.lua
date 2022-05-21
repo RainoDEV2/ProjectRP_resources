@@ -31,7 +31,7 @@ DetectorConfig.RareAmount = 1
 DetectorConfig.OverheatChance = 6
 
 -- how long the detecter gets overheated for
-DetectorConfig.OverheatTime = math.random(40000, 60000) 
+DetectorConfig.OverheatTime = math.random(30000, 50000) 
 
 -- list of common items detectable
 DetectorConfig.CommonItems = {
