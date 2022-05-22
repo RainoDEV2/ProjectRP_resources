@@ -962,7 +962,7 @@ PRPShared.Jobs = {
 	},
 	['police'] = {
 		label = 'Law Enforcement',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Cadet',
@@ -1007,7 +1007,7 @@ PRPShared.Jobs = {
 	},
 	['fib'] = {
 		label = 'FIB',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
 			['0'] = {
 				name = 'Field Agent',
@@ -1030,7 +1030,7 @@ PRPShared.Jobs = {
 	},
 	['ambulance'] = {
 		label = 'EMS',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'EMT',
@@ -1121,7 +1121,7 @@ PRPShared.Jobs = {
 	},
 	['burger'] = {
 		label = 'Burgershot',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Cashier',
@@ -1148,7 +1148,7 @@ PRPShared.Jobs = {
 	},
 	['taxi'] = {
 		label = 'Taxi',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -1175,7 +1175,7 @@ PRPShared.Jobs = {
 	},
 	['cardealer'] = {
 		label = 'Vehicle Dealer',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Recruit',
@@ -1202,7 +1202,7 @@ PRPShared.Jobs = {
 	},
 	['mechanic'] = {
 		label = 'Mechanic',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Salvager',
@@ -1234,8 +1234,7 @@ PRPShared.Jobs = {
 	},
 	["pizza"] = {
 		label = "Pizzaria employee",
-		payment = 250,
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = "Employee",
@@ -1254,7 +1253,7 @@ PRPShared.Jobs = {
 	},
 	['judge'] = {
 		label = 'Honorary',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Judge',
@@ -1298,25 +1297,9 @@ PRPShared.Jobs = {
 		},
 		defaultDuty = true,
 	},
-	["vanilla"] = {
-		label = "vanilla",
-		defaultDuty = true,
-		grades = {
-			['0'] = {
-				name = "Vanilla Unicorn",
-				payment = 0
-			},
-			['1'] = {
-				ame = "Owner",
-				isboss = true,
-				payment = 150
-			},
-		},
-		defaultDuty = true,
-	},
 	['vu'] = {
 		label = 'Vanilla Unicorn',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
 			['0'] = {
 				name = 'Bartender',
@@ -1337,18 +1320,18 @@ PRPShared.Jobs = {
 			['4'] = {
 				name = 'Management',
 				isboss = true,
-				payment = 150
+				payment = 200
 			},
 			['5'] = {
-				name = 'Management',
+				name = 'Owner',
 				isboss = true,
-				payment = 175
+				payment = 200
 			},
 		},
 	},
 	["tequilala"] = {
 		label = "Tequi-la-la",
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
 			['0'] = {
 				name = "Security",
@@ -1413,25 +1396,45 @@ PRPShared.Jobs = {
 	},
 	['reporter'] = {
 		label = 'Reporter',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = {
                 name = 'Journalist',
-                payment = 250
+                payment = 100
             },
             ['1'] = {
                 name = 'Manager',
-                payment = 450
+                payment = 125
+            },
+            ['2'] = {
+                name = 'Owner',
+                payment = 150
             },
         },
 	},
 	['trucker'] = {
-		label = 'Trucker',
-		defaultDuty = true,
+		label = 'Jaggo',
+		defaultDuty = false,
 		grades = {
             ['0'] = {
-                name = 'Driver',
+                name = 'Trainee',
                 payment = 50
+            },
+            ['1'] = {
+                name = 'Worker',
+                payment = 75
+            },
+            ['2'] = {
+                name = 'Experienced Worker',
+                payment = 100
+            },
+            ['3'] = {
+                name = 'Manager',
+                payment = 125
+            },
+            ['4'] = {
+                name = 'Owner',
+                payment = 150
             },
         },
 	},
@@ -1486,7 +1489,7 @@ PRPShared.Jobs = {
 	},
 	['catcafe'] = {
 		label = 'Cat Cafe',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = { name = 'Trainee', payment = 50 },
 			['1'] = { name = 'Wait Staff', payment = 100 },
@@ -1497,7 +1500,7 @@ PRPShared.Jobs = {
 	},
 	['galaxy'] = {
 		label = 'Galaxy',
-		defaultDuty = true,
+		defaultDuty = false,
 		grades = {
             ['0'] = { name = 'Entertainer', payment = 50 },
 			['1'] = { name = 'Bartender', payment = 75 },
@@ -5492,8 +5495,8 @@ PRPShared.Vehicles = {
 		['shop'] = 'pdm',
 	},
 	['nspeedo'] = {
-		['name'] = 'Speedo Van',
-		['brand'] = 'Jaggo',
+		['name'] = 'Speedo Express',
+		['brand'] = 'Vapid',
 		['model'] = 'nspeedo',
 		['price'] = 475000,
 		['category'] = 'vans',

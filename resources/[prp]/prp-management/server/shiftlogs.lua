@@ -23,7 +23,6 @@ local function HasJob(Job)
     or Job == 'lawyer'
     or Job == 'farmer'
     or Job == 'courier'
-    or Job == 'vanilla'
     or Job == 'vu'
     or Job == 'tequilala'
     or Job == 'fruitpicker'

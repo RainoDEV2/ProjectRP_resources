@@ -49,9 +49,9 @@ Config.OrePositions = {
 
 Config.RewardPool = {
 	'carbon', 'carbon', 'carbon', 'carbon', --4x
+	'ironore', 'ironore', 'ironore', 'ironore', -- 4x
 	'copperore', 'copperore', 'copperore', 'copperore', 'copperore', -- 5x
 	'goldore', 'goldore', 'goldore', --'goldore', -- 3x
-	'ironore', 'ironore', 'ironore', 'ironore', -- 4x
     'metalscrap', 'metalscrap',
 	'uncut_ruby',
 	'uncut_emerald',
@@ -119,10 +119,11 @@ Config.MineLights = {
 Config.Items = {
     label = "Mining Store",  slots = 7,
     items = {
-	[1] = { name = "water_bottle", price = 15, amount = 100, info = {}, type = "item", slot = 1, },
-	[2] = { name = "sandwich", price = 30, amount = 250, info = {}, type = "item", slot = 2, },
-	[3] = { name = "weapon_flashlight", price = 500, amount = 100, info = {}, type = "item", slot = 3, }, 
-	[4] = { name = "drill",	price = 5000, amount = 10000, info = {}, type = "item", slot = 4, }, 
-	[5] = { name = "handdrill",	price = 1000, amount = 1000, info = {}, type = "item",	slot = 5, },
-	[6] = { name = "drillbit", price = 100, amount = 500,	info = {}, type = "item", slot = 6, }, }		
+		[1] = { name = "water_bottle", price = 15, amount = 100, info = {}, type = "item", slot = 1, },
+		[2] = { name = "sandwich", price = 30, amount = 250, info = {}, type = "item", slot = 2, },
+		[3] = { name = "weapon_flashlight", price = 500, amount = 100, info = {}, type = "item", slot = 3, }, 
+		[4] = { name = "drill",	price = 5000, amount = 10000, info = {}, type = "item", slot = 4, }, 
+		[5] = { name = "handdrill",	price = 1000, amount = 1000, info = {}, type = "item",	slot = 5, },
+		[6] = { name = "drillbit", price = 100, amount = 500,	info = {}, type = "item", slot = 6, },
+	}		
 }

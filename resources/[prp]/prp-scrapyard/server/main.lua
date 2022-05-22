@@ -24,19 +24,19 @@ end)
 
 
 RegisterNetEvent('prp-scrapyard:server:ScrapVehicle', function(listKey)
-    local src = source 
+    local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
-    if Config.CurrentVehicles[listKey] ~= nil then 
-        for i = 1, math.random(2, 4), 1 do
+    if Config.CurrentVehicles[listKey] ~= nil then
+        local amount = math.random(4, 5)
+        for i = 1, amount, 1 do
             local item = Config.Items[math.random(1, #Config.Items)]
             Player.Functions.AddItem(item, math.random(15, 25))
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items[item], 'add')
             Citizen.Wait(500)
         end
         local Luck = math.random(1, 8)
-        local Odd = math.random(1, 8)
-        if Luck == Odd then
-            local random = math.random(8, 15)
+        if Luck == 1 then
+            local random = math.random(8, 12)
             Player.Functions.AddItem("rubber", random)
             TriggerClientEvent('inventory:client:ItemBox', src, ProjectRP.Shared.Items["rubber"], 'add')
 
