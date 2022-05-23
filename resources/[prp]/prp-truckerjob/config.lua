@@ -1,15 +1,17 @@
 Config = {}
 
-Config.BailPrice = 250
+Config.UseTarget = true
+
+Config.BailPrice = 500
 
 Config.Locations = {
     ["main"] = {
         label = "Truck Shed",
-        coords = vector4(153.68, -3211.88, 5.91, 274.5),
+        coords = vector4(1213.18, -3261.0, 5.75, 82.46),
     },
     ["vehicle"] = {
         label = "Truck Storage",
-        coords = vector4(141.12, -3204.31, 5.85, 267.5),
+        coords = vector4(1201.3, -3240.9, 5.98, 359.15),
     },
     ["stores"] ={
         [1] = {
@@ -100,5 +102,5 @@ Config.Locations = {
 }
 
 Config.Vehicles = {
-    ["rumpo"] = "Dumbo Delivery",
+    ["nspeedo"] = "Speedo Express",
 }
