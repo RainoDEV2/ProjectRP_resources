@@ -81,11 +81,11 @@ Config.Prices = {
 	['copper'] = { name = 'copper', amount = 24 },
 	['plastic'] = { name = 'plastic', amount = 28 },
 	['metalscrap'] = { name = 'metalscrap', amount = 30 },
-	['steel'] = { name = 'steel', amount = 30 },
+	['steel'] = { name = 'steel', amount = 36 },
 	['glass'] = { name = 'glass', amount = 36 },
 	['iron'] = { name = 'iron', amount = 34 },
 	['rubber'] = { name = 'rubber', amount = 32 },
-	['aluminum'] = { name = 'aluminium', amount = 36 },
+	['aluminum'] = { name = 'aluminium', amount = 28 },
 	['bottle'] = { name = 'bottle', amount = 8 },
 	['can'] = { name = 'bottle', amount = 6 },
 }
