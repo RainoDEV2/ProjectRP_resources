@@ -65,10 +65,8 @@ local AvailableJobs = {
     "courier",
     "builder",
     "warehouse",
-    "trucker",
     "taxi",
     "tow",
-    "reporter",
     "garbage",
 }
 

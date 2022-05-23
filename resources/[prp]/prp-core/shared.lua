@@ -1399,14 +1399,22 @@ PRPShared.Jobs = {
 		defaultDuty = false,
 		grades = {
             ['0'] = {
-                name = 'Journalist',
+                name = 'Trainee',
                 payment = 100
             },
             ['1'] = {
+                name = 'Journalist',
+                payment = 100
+            },
+            ['2'] = {
+                name = 'Experienced Journalist',
+                payment = 100
+            },
+            ['3'] = {
                 name = 'Manager',
                 payment = 125
             },
-            ['2'] = {
+            ['4'] = {
                 name = 'Owner',
                 payment = 150
             },

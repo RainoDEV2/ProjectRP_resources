@@ -1,57 +1,132 @@
+local ProjectRP = exports['prp-core']:GetCoreObject()
 local CurrentWeather = Config.StartWeather
 local baseTime = Config.BaseTime
 local timeOffset = Config.TimeOffset
 local freezeTime = Config.FreezeTime
 local blackout = Config.Blackout
 local newWeatherTimer = Config.NewWeatherTimer
-local ProjectRP = exports['prp-core']:GetCoreObject()
 
-local function isAllowedToChange(player)
-    if ProjectRP.Functions.HasPermission(player, "admin") or IsPlayerAceAllowed(player, 'command') then
-        return true
-    else
-        return false
+--- Is the source a client or the server
+--- @param src string | number - source to check
+--- @return int - source
+local function getSource(src)
+    if src == '' then
+        return 0
     end
+    return src
 end
 
-local function ShiftToMinute(minute)
+--- Does source have permissions to run admin commands
+--- @param src number - Source to check
+--- @return boolean - has permission
+local function isAllowedToChange(src)
+    if src == 0 or ProjectRP.Functions.HasPermission(src, "admin") or IsPlayerAceAllowed(src, 'command') then
+        return true
+    end
+    return false
+end
+
+--- Sets time offset based on minutes provided
+--- @param minute number - Minutes to offset by
+local function shiftToMinute(minute)
     timeOffset = timeOffset - ( ( (baseTime+timeOffset) % 60 ) - minute )
 end
 
-local function ShiftToHour(hour)
+--- Sets time offset based on hour provided
+--- @param hour number - Hour to offset by
+local function shiftToHour(hour)
     timeOffset = timeOffset - ( ( ((baseTime+timeOffset)/60) % 24 ) - hour ) * 60
 end
 
-local function NextWeatherStage()
+--- Triggers event to switch weather to next stage
+local function nextWeatherStage()
     if CurrentWeather == "CLEAR" or CurrentWeather == "CLOUDS" or CurrentWeather == "EXTRASUNNY"  then
-        local new = math.random(1,2)
-        if new == 1 then
-            CurrentWeather = "CLEARING"
-        else
-            CurrentWeather = "OVERCAST"
-        end
+        CurrentWeather = (math.random(1,5) > 2) and "CLEARING" or "OVERCAST" -- 60/40 chance
     elseif CurrentWeather == "CLEARING" or CurrentWeather == "OVERCAST" then
         local new = math.random(1,6)
-        if new == 1 then
-            if CurrentWeather == "CLEARING" then CurrentWeather = "FOGGY" else CurrentWeather = "RAIN" end
-        elseif new == 2 then
-            CurrentWeather = "CLOUDS"
-        elseif new == 3 then
-            CurrentWeather = "CLEAR"
-        elseif new == 4 then
-            CurrentWeather = "EXTRASUNNY"
-        elseif new == 5 then
-            CurrentWeather = "SMOG"
-        else
-            CurrentWeather = "FOGGY"
+        if new == 1 then CurrentWeather = (CurrentWeather == "CLEARING") and "FOGGY" or "RAIN"
+        elseif new == 2 then CurrentWeather = "CLOUDS"
+        elseif new == 3 then CurrentWeather = "CLEAR"
+        elseif new == 4 then CurrentWeather = "EXTRASUNNY"
+        elseif new == 5 then CurrentWeather = "SMOG"
+        else CurrentWeather = "FOGGY"
         end
-    elseif CurrentWeather == "THUNDER" or CurrentWeather == "RAIN" then
-        CurrentWeather = "CLEARING"
-    elseif CurrentWeather == "SMOG" or CurrentWeather == "FOGGY" then
-        CurrentWeather = "CLEAR"
+    elseif CurrentWeather == "THUNDER" or CurrentWeather == "RAIN" then CurrentWeather = "CLEARING"
+    elseif CurrentWeather == "SMOG" or CurrentWeather == "FOGGY" then CurrentWeather = "CLEAR"
+    else CurrentWeather = "CLEAR"
     end
     TriggerEvent("prp-weathersync:server:RequestStateSync")
 end
+
+--- Switch to a specified weather type
+--- @param weather string - Weather type from Config.AvailableWeatherTypes
+--- @return boolean - success
+local function setWeather(weather)
+    local validWeatherType = false
+    for _,weatherType in pairs(Config.AvailableWeatherTypes) do
+        if weatherType == string.upper(weather) then
+            validWeatherType = true
+        end
+    end
+    if not validWeatherType then return false end
+    CurrentWeather = string.upper(weather)
+    newWeatherTimer = Config.NewWeatherTimer
+    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    return true
+end
+
+--- Sets sun position based on time to specified
+--- @param hour number|string - Hour to set (0-24)
+--- @param minute number|string `optional` - Minute to set (0-60)
+--- @return boolean - success
+local function setTime(hour, minute)
+    local argh = tonumber(hour)
+    local argm = tonumber(minute) or 0
+    if argh == nil or argh > 24 then
+        print(Lang:t('time.invalid'))
+        return false
+    end
+    shiftToHour((argh < 24) and argh or 0)
+    shiftToMinute((argm < 60) and argm or 0)
+    print(Lang:t('time.change', {value = argh, value2 = argm}))
+    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    return true
+end
+
+--- Sets or toggles blackout state and returns the state
+--- @param state boolean `optional` - enable blackout?
+--- @return boolean - blackout state
+local function setBlackout(state)
+    if state == nil then state = not blackout end
+    if state then blackout = true
+    else blackout = false end
+    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    return blackout
+end
+
+--- Sets or toggles time freeze state and returns the state
+--- @param state boolean `optional` - Enable time freeze?
+--- @return boolean - Time freeze state
+local function setTimeFreeze(state)
+    if state == nil then state = not freezeTime end
+    if state then freezeTime = true
+    else freezeTime = false end
+    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    return freezeTime
+end
+
+--- Sets or toggles dynamic weather state and returns the state
+--- @param state boolean `optional` - Enable dynamic weather?
+--- @return boolean - Dynamic Weather state
+local function setDynamicWeather(state)
+    if state == nil then state = not Config.DynamicWeather end
+    if state then Config.DynamicWeather = true
+    else Config.DynamicWeather = false end
+    TriggerEvent('prp-weathersync:server:RequestStateSync')
+    return Config.DynamicWeather
+end
+
+-- EVENTS
 
 RegisterNetEvent('prp-weathersync:server:RequestStateSync', function()
     TriggerClientEvent('prp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
@@ -66,305 +141,233 @@ RegisterNetEvent('prp-weathersync:server:RequestCommands', function()
 end)
 
 RegisterNetEvent('prp-weathersync:server:setWeather', function(weather)
-    local validWeatherType = false
-    for i,wtype in ipairs(Config.AvailableWeatherTypes) do
-        if wtype == string.upper(weather) then
-            validWeatherType = true
+    local src = getSource(source)
+    if isAllowedToChange(src) then
+        local success = setWeather(weather)
+        if src > 0 then
+            if (success) then TriggerClientEvent('ProjectRP:Notify', src, Lang:t('weather.updated'))
+            else TriggerClientEvent('ProjectRP:Notify', src, Lang:t('weather.invalid'))
+            end
         end
-    end
-    if validWeatherType then
-        print(_U('weather_updated'))
-        CurrentWeather = string.upper(weather)
-        newWeatherTimer = Config.NewWeatherTimer
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
-    else
-        print(_U('weather_invalid'))
     end
 end)
 
 RegisterNetEvent('prp-weathersync:server:setTime', function(hour, minute)
-    if hour and minute then
-        local argh = tonumber(hour)
-        local argm = tonumber(minute)
-        if argh < 24 then
-            ShiftToHour(argh)
-        else
-            ShiftToHour(0)
+    local src = getSource(source)
+    if isAllowedToChange(src) then
+        local success = setTime(hour, minute)
+        if src > 0 then
+            if (success) then TriggerClientEvent('ProjectRP:Notify', src, Lang:t('time.change', {value = hour, value2 = minute or "00"}))
+            else TriggerClientEvent('ProjectRP:Notify', src, Lang:t('time.invalid'))
+            end
         end
-        if argm < 60 then
-            ShiftToMinute(argm)
-        else
-            ShiftToMinute(0)
-        end
-        print(_U('time_change', argh, argm))
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
-    else
-        print(_U('time_invalid'))
     end
 end)
 
-RegisterNetEvent('prp-weathersync:server:toggleBlackout', function()
-    blackout = not blackout
-    TriggerEvent('prp-weathersync:server:RequestStateSync')
+RegisterNetEvent('prp-weathersync:server:toggleBlackout', function(state)
+    local src = getSource(source)
+    if isAllowedToChange(src) then
+        local newstate = setBlackout(state)
+        if src > 0 then
+            if (newstate) then TriggerClientEvent('ProjectRP:Notify', src, Lang:t('blackout.enabled'))
+            else TriggerClientEvent('ProjectRP:Notify', src, Lang:t('blackout.disabled'))
+            end
+        end
+    end
 end)
+
+RegisterNetEvent('prp-weathersync:server:toggleFreezeTime', function(state)
+    local src = getSource(source)
+    if isAllowedToChange(src) then
+        local newstate = setTimeFreeze(state)
+        if src > 0 then
+            if (newstate) then TriggerClientEvent('ProjectRP:Notify', src, Lang:t('time.now_frozen'))
+            else TriggerClientEvent('ProjectRP:Notify', src, Lang:t('time.now_unfrozen'))
+            end
+        end
+    end
+end)
+
+RegisterNetEvent('prp-weathersync:server:toggleDynamicWeather', function(state)
+    local src = getSource(source)
+    if isAllowedToChange(src) then
+        local newstate = setDynamicWeather(state)
+        if src > 0 then
+            if (newstate) then TriggerClientEvent('ProjectRP:Notify', src, Lang:t('weather.now_unfrozen'))
+            else TriggerClientEvent('ProjectRP:Notify', src, Lang:t('weather.now_frozen'))
+            end
+        end
+    end
+end)
+
+-- COMMANDS
 
 RegisterCommand('freezetime', function(source)
-    if source then
-        if isAllowedToChange(source) then
-            freezeTime = not freezeTime
-            if freezeTime then
-                TriggerClientEvent('ProjectRP:Notify', source, _U('time_frozenc'))
-            else
-                TriggerClientEvent('ProjectRP:Notify', source, _U('time_unfrozenc'))
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, _U('not_allowed'), 'error')
+    if isAllowedToChange(source) then
+        local newstate = setTimeFreeze()
+        if source > 0 then
+            if (newstate) then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.frozenc')) end
+            return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.unfrozenc'))
         end
-    else
-        freezeTime = not freezeTime
-        if freezeTime then
-            print(_U('time_now_frozen'))
-        else
-            print(_U('time_now_unfrozen'))
-        end
+        if (newstate) then return print(Lang:t('time.now_frozen')) end
+        return print(Lang:t('time.now_unfrozen'))
     end
+    TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
 end)
 
 RegisterCommand('freezeweather', function(source)
-    if source ~= 0 then
-        if isAllowedToChange(source) then
-            Config.DynamicWeather = not Config.DynamicWeather
-            if not Config.DynamicWeather then
-                TriggerClientEvent('ProjectRP:Notify', source, _U('dynamic_weather_disabled'))
-            else
-                TriggerClientEvent('ProjectRP:Notify', source, _U('dynamic_weather_enabled'))
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, _U('not_allowed'), 'error')
+    if isAllowedToChange(source) then
+        local newstate = setDynamicWeather()
+        if source > 0 then
+            if (newstate) then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('dynamic_weather.enabled')) end
+            return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('dynamic_weather.disabled'))
         end
-    else
-        Config.DynamicWeather = not Config.DynamicWeather
-        if not Config.DynamicWeather then
-            print(_U('weather_now_frozen'))
-        else
-            print(_U('weather_now_unfrozen'))
-        end
+        if (newstate) then return print(Lang:t('weather.now_unfrozen')) end
+        return print(Lang:t('weather.now_frozen'))
     end
+    TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
 end)
 
 RegisterCommand('weather', function(source, args)
-    if source == 0 then
-        local validWeatherType = false
+    if isAllowedToChange(source) then
         if args[1] == nil then
-            print(_U('weather_invalid_syntax'))
-            return
-        else
-            for i,wtype in ipairs(Config.AvailableWeatherTypes) do
-                if wtype == string.upper(args[1]) then
-                    validWeatherType = true
-                end
-            end
-            if validWeatherType then
-                print(_U('weather_updated'))
-                CurrentWeather = string.upper(args[1])
-                newWeatherTimer = Config.NewWeatherTimer
-                TriggerEvent('prp-weathersync:server:RequestStateSync')
-            else
-                print(_U('weather_invalid'))
-            end
+            if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('weather.invalid_syntaxc'), 'error') end
+            return print(Lang:t('weather.invalid_syntax'))
         end
+        local success = setWeather(args[1])
+        if source > 0 then
+            if (success) then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('weather.willchangeto', {value = string.lower(args[1])})) end
+            return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('weather.invalidc'), 'error')
+        end
+        if (success) then return print(Lang:t('weather.updated')) end
+        return print(Lang:t('weather.invalid'))
     else
-        if isAllowedToChange(source) then
-            local validWeatherType = false
-            if args[1] == nil then
-                TriggerClientEvent('ProjectRP:Notify', source, _U('weather_invalid_syntaxc'), 'error')
-            else
-                for i,wtype in ipairs(Config.AvailableWeatherTypes) do
-                    if wtype == string.upper(args[1]) then
-                        validWeatherType = true
-                    end
-                end
-                if validWeatherType then
-                    TriggerClientEvent('ProjectRP:Notify', source, _U('weather_willchangeto', string.lower(args[1])))
-                    CurrentWeather = string.upper(args[1])
-                    newWeatherTimer = Config.NewWeatherTimer
-                    TriggerEvent('prp-weathersync:server:RequestStateSync')
-                else
-                    TriggerClientEvent('ProjectRP:Notify', source, _U('weather_invalidc'), 'error')
-                end
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, _U('not_access'), 'error')
-            print(_U('weather_accessdenied'))
-        end
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_access'), 'error')
     end
 end)
 
 RegisterCommand('blackout', function(source)
-    if source == 0 then
-        blackout = not blackout
-        if blackout then
-            print(_U('blackout_enabled'))
-        else
-            print(_U('blackout_disabled'))
+    local src = source
+    if isAllowedToChange(src) then
+        local newstate = setBlackout()
+        if src > 0 then
+            if (newstate) then return TriggerClientEvent('ProjectRP:Notify', src, Lang:t('blackout.enabledc')) end
+            return TriggerClientEvent('ProjectRP:Notify', src, Lang:t('blackout.disabledc'))
         end
-    else
-        if isAllowedToChange(source) then
-            blackout = not blackout
-            if blackout then
-                TriggerClientEvent('ProjectRP:Notify', source, _U('blackout_enabledc'))
-            else
-                TriggerClientEvent('ProjectRP:Notify', source, _U('blackout_disabledc'))
-            end
-            TriggerEvent('prp-weathersync:server:RequestStateSync')
-        end
+        if (newstate) then return print(Lang:t('blackout.enabled')) end
+        return print(Lang:t('blackout.disabled'))
     end
+    TriggerClientEvent('ProjectRP:Notify', src, Lang:t('error.not_allowed'), 'error')
 end)
 
 RegisterCommand('morning', function(source)
-    if source == 0 then
-        print(_U('time_console'))
-        return
-    end
     if isAllowedToChange(source) then
-        ShiftToMinute(0)
-        ShiftToHour(9)
-        TriggerClientEvent('ProjectRP:Notify', source, _U('time_morning'))
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        setTime(9, 0)
+        if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.morning')) end
+    else
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
     end
 end)
 
 RegisterCommand('noon', function(source)
-    if source == 0 then
-        print(_U('time_console'))
-        return
-    end
     if isAllowedToChange(source) then
-        ShiftToMinute(0)
-        ShiftToHour(12)
-        TriggerClientEvent('ProjectRP:Notify', source, _U('time_noon'))
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        setTime(12, 0)
+        if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.noon')) end
+    else
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
     end
 end)
 
 RegisterCommand('evening', function(source)
-    if source == 0 then
-        print(_U('time_console'))
-        return
-    end
     if isAllowedToChange(source) then
-        ShiftToMinute(0)
-        ShiftToHour(18)
-        TriggerClientEvent('ProjectRP:Notify', source, _U('time_evening'))
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        setTime(18, 0)
+        if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.evening')) end
+    else
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
     end
 end)
 
 RegisterCommand('night', function(source)
-    if source == 0 then
-        print(_U('time_console'))
-        return
-    end
     if isAllowedToChange(source) then
-        ShiftToMinute(0)
-        ShiftToHour(23)
-        TriggerClientEvent('ProjectRP:Notify', source, _U('time_night'))
-        TriggerEvent('prp-weathersync:server:RequestStateSync')
+        setTime(23, 0)
+        if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.night')) end
+    else
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('error.not_allowed'), 'error')
     end
 end)
 
 RegisterCommand('time', function(source, args)
-    if source == 0 then
-        if tonumber(args[1]) and tonumber(args[2]) then
-            local argh = tonumber(args[1])
-            local argm = tonumber(args[2])
-            if argh < 24 then
-                ShiftToHour(argh)
-            else
-                ShiftToHour(0)
-            end
-            if argm < 60 then
-                ShiftToMinute(argm)
-            else
-                ShiftToMinute(0)
-            end
-            print(_U('time_change', argh, argm))
-            TriggerEvent('prp-weathersync:server:RequestStateSync')
-        else
-            print(_U('time_invalid'))
+    if isAllowedToChange(source) then
+        if args[1] == nil then
+            if source > 0 then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.invalidc'), 'error') end
+            return print(Lang:t('time.invalid'))
         end
-    elseif source ~= 0 then
-        if isAllowedToChange(source) then
-            if tonumber(args[1]) and tonumber(args[2]) then
-                local argh = tonumber(args[1])
-                local argm = tonumber(args[2])
-                if argh < 24 then
-                    ShiftToHour(argh)
-                else
-                    ShiftToHour(0)
-                end
-                if argm < 60 then
-                    ShiftToMinute(argm)
-                else
-                    ShiftToMinute(0)
-                end
-                local newtime = math.floor(((baseTime+timeOffset)/60)%24) .. ":"
-				local minute = math.floor((baseTime+timeOffset)%60)
-                if minute < 10 then
-                    newtime = newtime .. "0" .. minute
-                else
-                    newtime = newtime .. minute
-                end
-                TriggerClientEvent('ProjectRP:Notify', source, _U('time_changec', newtime))
-                TriggerEvent('prp-weathersync:server:RequestStateSync')
-            else
-                TriggerClientEvent('ProjectRP:Notify', source, _U('time_invalid'), 'error')
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, _U('not_access'), 'error')
-            print(_U('time_access'))
+        local success = setTime(args[1], args[2])
+        if source > 0 then
+            if (success) then return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.changec', {value = args[1]..':'..(args[2] or "00")})) end
+            return TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.invalidc'), 'error')
         end
+        if (success) then return print(Lang:t('time.change', {value = args[1], value2 = args[2] or "00"})) end
+        return print(Lang:t('time.invalid'))
+    else
+        TriggerClientEvent('ProjectRP:Notify', source, Lang:t('time.access'), 'error')
     end
 end)
 
-Citizen.CreateThread(function()
+-- THREAD LOOPS
+
+CreateThread(function()
     local previous = 0
     while true do
-        Citizen.Wait(0)
+        Wait(0)
         local newBaseTime = os.time(os.date("!*t"))/2 + 360         --Set the server time depending of OS time
         if (newBaseTime % 60) ~= previous then                      --Check if a new minute is passed
             previous = newBaseTime % 60                             --Only update time with plain minutes, seconds are handled in the client
             if freezeTime then
-                timeOffset = timeOffset + baseTime - newBaseTime			
+                timeOffset = timeOffset + baseTime - newBaseTime
             end
             baseTime = newBaseTime
-        end 
+        end
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(2000)                                          --Change to send every minute in game sync
+        Wait(2000)                                          --Change to send every minute in game sync
         TriggerClientEvent('prp-weathersync:client:SyncTime', -1, baseTime, timeOffset, freezeTime)
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
-        Citizen.Wait(300000)
+        Wait(300000)
         TriggerClientEvent('prp-weathersync:client:SyncWeather', -1, CurrentWeather, blackout)
     end
 end)
 
-Citizen.CreateThread(function()
+CreateThread(function()
     while true do
         newWeatherTimer = newWeatherTimer - 1
-        Citizen.Wait((1000 * 60) * Config.NewWeatherTimer)
+        Wait((1000 * 60) * Config.NewWeatherTimer)
         if newWeatherTimer == 0 then
             if Config.DynamicWeather then
-                NextWeatherStage()
+                nextWeatherStage()
             end
             newWeatherTimer = Config.NewWeatherTimer
         end
     end
 end)
+
+-- EXPORTS
+
+exports('nextWeatherStage', nextWeatherStage)
+exports('setWeather', setWeather)
+exports('setTime', setTime)
+exports('setBlackout', setBlackout)
+exports('setTimeFreeze', setTimeFreeze)
+exports('setDynamicWeather', setDynamicWeather)
+exports('getBlackoutState', function() return blackout end)
+exports('getTimeFreezeState', function() return freezeTime end)
+exports('getWeatherState', function() return CurrentWeather end)
+exports('getDynamicWeather', function() return Config.DynamicWeather end)
+

@@ -1,5 +1,5 @@
 # prp-newsjob
-News Job For prp-Core
+News Job For PRP-Core
 
 # License
 

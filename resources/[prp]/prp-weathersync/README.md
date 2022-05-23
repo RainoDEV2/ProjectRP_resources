@@ -1,5 +1,5 @@
 # prp-weathersync
-Synced weather and time for prp-Core Framework :sunrise:
+Synced weather and time for PRP-Core Framework :sunrise:
 
 # License
 
@@ -21,21 +21,14 @@ Synced weather and time for prp-Core Framework :sunrise:
 
 
 ## Dependencies
-- [prp-core](https://github.com/ProjectRP-framework/prp-core)
+- [prp-core](https://github.com/qbcore-framework/qb-core)
 
 ## Features
 - Syncs the weather for all players
 
-### Commands
-- /blackout - Toggles blackout
-- /clock [hour] [minute] - Sets the exact time
-- /time [morning/noon/evening/night] - Sets the generic time
-- /weather [type] - Changes the weather type 
-- /freeze [weather/time] - Freezes the current weather/time
-
 ## Installation
 ### Manual
-- Download the script and put it in the `[qb]` directory.
+- Download the script and put it in the `[prp]` directory.
 - Add the following code to your server.cfg/resouces.cfg
 ```
 ensure prp-core
@@ -43,4 +36,167 @@ ensure prp-weathersync
 ```
 
 ## Configuration
-You can adjust available weather and time types in prp-weathersync\server\main.lua
+You can adjust available weather and defaults in `config.lua`
+to adjust weather patterns you need to modify nextWeatherStage() in `server/server.lua`
+
+
+
+## Commands
+
+`/freezetime` - Toggle time progression
+
+`/freezeweather` - Toggle dynamic weather
+
+`/weather [type]` - Set weather
+
+`/blackout` - Toggle blackout
+
+`/morning` - Set time to 9am
+
+`/noon` - Set time to 12pm
+
+`/evening` - Set time to 6pm
+
+`/night` - Set time to 11pm
+
+`/time [hour] (minute)` - Set time to whatever you want
+
+## Exports
+
+### nextWeatherStage
+Triggers event to switch weather to next stage
+```lua
+-- LUA EXAMPLE
+local success = exports["prp-weathersync"]:nextWeatherStage();
+```
+```js
+// JAVASCRIPT EXAMPLE
+const success = global.exports["prp-weathersync"].nextWeatherStage();
+```
+
+
+### setWeather [type]
+Switch to a specified weather type from Config.AvailableWeatherTypes
+```lua
+-- LUA EXAMPLE
+local success = exports["prp-weathersync"]:setWeather("snow");
+```
+```js
+// JAVASCRIPT EXAMPLE
+const success = global.exports["prp-weathersync"].setWeather("snow");
+```
+
+
+### setTime [hour] (minute)
+Sets sun position based on time to specified
+```lua
+-- LUA EXAMPLE
+local success = exports["prp-weathersync"]:setTime(8, 10); -- 8:10 AM
+```
+```js
+// JAVASCRIPT EXAMPLE
+const success = global.exports["prp-weathersync"].setTime(15, 30); // 3:30PM
+```
+
+
+### setBlackout (true|false)
+Sets or toggles blackout state and returns the state
+```lua
+-- LUA EXAMPLE
+local newStatus = exports["prp-weathersync"]:setBlackout(); -- Toggle
+```
+```js
+// JAVASCRIPT EXAMPLE
+const newStatus = global.exports["prp-weathersync"].setBlackout(true); // Enable
+```
+
+
+### setTimeFreeze (true|false)
+Sets or toggles time freeze state and returns the state
+```lua
+-- LUA EXAMPLE
+local newStatus = exports["prp-weathersync"]:setTimeFreeze(); -- Toggle
+```
+```js
+// JAVASCRIPT EXAMPLE
+const newStatus = global.exports["prp-weathersync"].setTimeFreeze(true); // Enable
+```
+
+
+### setDynamicWeather (true|false)
+Sets or toggles dynamic weather state and returns the state
+```lua
+-- LUA EXAMPLE
+local newStatus = exports["prp-weathersync"]:setDynamicWeather(); -- Toggle
+```
+```js
+// JAVASCRIPT EXAMPLE
+const newStatus = global.exports["prp-weathersync"].setDynamicWeather(true); // Enable
+```
+
+
+### getBlackoutState
+Returns if blackout is enabled or disabled
+```lua
+-- LUA EXAMPLE
+local state = exports["prp-weathersync"]:getBlackoutState();
+```
+```js
+// JAVASCRIPT EXAMPLE
+const state = global.exports["prp-weathersync"].getBlackoutState();
+```
+
+
+### getTimeFreezeState
+Returns if time progression is enabled or disabled
+```lua
+-- LUA EXAMPLE
+local state = exports["prp-weathersync"]:getTimeFreezeState();
+```
+```js
+// JAVASCRIPT EXAMPLE
+const state = global.exports["prp-weathersync"].getTimeFreezeState();
+```
+
+
+### getWeatherState
+Returns the current weather type
+```lua
+-- LUA EXAMPLE
+local currentWeather = exports["prp-weathersync"]:getWeatherState();
+```
+```js
+// JAVASCRIPT EXAMPLE
+const currentWeather = global.exports["prp-weathersync"].getWeatherState();
+```
+
+
+### getDynamicWeather
+Returns if time progression is enabled or disabled
+```lua
+-- LUA EXAMPLE
+local state = exports["prp-weathersync"]:getDynamicWeather();
+```
+```js
+// JAVASCRIPT EXAMPLE
+const state = global.exports["prp-weathersync"].getDynamicWeather();
+```
+
+
+## Events
+
+
+`prp-weathersync:server:RequestStateSync` - Sync time and weather for everyone
+
+`prp-weathersync:server:RequestCommands` - Check if permission avaiable for client
+
+`prp-weathersync:server:setWeather` [type] - Set Weather type (List in Config)
+
+`prp-weathersync:server:setTime` [hour] (minute) - Set simulated time
+
+`prp-weathersync:server:toggleBlackout` (true|false) - Enable, disable or toggle blackout
+
+`prp-weathersync:server:toggleFreezeTime` (true|false) (minute) - Enable, disable or toggle time progression
+
+`prp-weathersync:server:toggleDynamicWeather` (true|false) - Enable, disable or toggle dynamic weather
+
