@@ -71,11 +71,11 @@ Config.MenuItems = {
                 event = 'police:client:RobPlayer',
                 shouldClose = true
             }, {
-                id = 'escort',
-                title = 'Kidnap',
+                id = 'carry',
+                title = 'Carry',
                 icon = 'user-friends',
                 type = 'client',
-                event = 'police:client:KidnapPlayer',
+                event = 'CarryPeople:carryTarget',
                 shouldClose = true
             }, {
                 id = 'escort2',

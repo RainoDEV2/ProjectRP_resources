@@ -1284,7 +1284,6 @@ PRPShared.Jobs = {
 				payment = 0
 			},
 		},
-		defaultDuty = true,
 	},
 	["courier"] = {
 		label = "courier",
@@ -1295,7 +1294,6 @@ PRPShared.Jobs = {
 				payment = 50
 			},
 		},
-		defaultDuty = true,
 	},
 	['vu'] = {
 		label = 'Vanilla Unicorn',
@@ -1370,7 +1368,6 @@ PRPShared.Jobs = {
 				payment = 50
 			},
 		},
-		defaultDuty = true,
 	},
 	["builder"] = {
 		label = "builder",
@@ -1381,7 +1378,6 @@ PRPShared.Jobs = {
 				payment = 50
 			},
 		},
-		defaultDuty = true,
 	},
 	["warehouse"] = {
 		label = "Warehouse",
@@ -1392,7 +1388,6 @@ PRPShared.Jobs = {
 				payment = 0
 			},
 		},
-		defaultDuty = true,
 	},
 	['reporter'] = {
 		label = 'Reporter',

@@ -59,7 +59,8 @@ local function ensureAnimDict(animDict)
     return animDict
 end
 
-RegisterCommand("carry",function(source, args)
+RegisterNetEvent("CarryPeople:carryTarget")
+AddEventHandler("CarryPeople:carryTarget", function(targetSrc)
 	if not carry.InProgress then
 		local closestPlayer = GetClosestPlayer(3)
 		if closestPlayer then
@@ -83,7 +84,7 @@ RegisterCommand("carry",function(source, args)
 		TriggerServerEvent("CarryPeople:stop",carry.targetSrc)
 		carry.targetSrc = 0
 	end
-end,false)
+end)
 
 RegisterNetEvent("CarryPeople:syncTarget")
 AddEventHandler("CarryPeople:syncTarget", function(targetSrc)
