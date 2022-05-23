@@ -25,7 +25,7 @@ function openMenu(onDuty, job, jobInfo, currentGrade)
     SetNuiFocus(true, true)
 end
 
-RegisterNUICallback('close', function() 
+RegisterNUICallback('close', function()
     SetNuiFocus(false, false)
 end)
 
@@ -33,17 +33,17 @@ RegisterNUICallback('deleteJob', function(data)
     TriggerServerEvent('prp-multijob:server:deleteJob', data.job)
 end)
 
-RegisterNUICallback('changeJob', function(data) 
+RegisterNUICallback('changeJob', function(data)
     TriggerServerEvent('prp-multijob:server:changeJob', data.job, data.grade)
 end)
 
-RegisterNUICallback('toggleDuty', function() 
+RegisterNUICallback('toggleDuty', function()
     local player = ProjectRP.Functions.GetPlayerData()
     local jobName = player.job.name
-    if jobName ~= 'police' and jobName ~= 'ambulance' then 
-        TriggerServerEvent("ProjectRP:ToggleDuty")
+    if jobName == 'police' or jobName == 'ambulance' or jobName == 'mechanic' then
+        ProjectRP.Functions.Notify('Please use the duty system at the station', 'error')
     else
-        ProjectRP.Functions.Notify('Please use the duty system at the station', 'error') 
+        TriggerServerEvent("ProjectRP:ToggleDuty")
     end
 end)
 
