@@ -247,12 +247,12 @@ end)
 
 RegisterNetEvent('prp-mining:CrackStart')
 AddEventHandler('prp-mining:CrackStart', function ()
-	ProjectRP.Functions.TriggerCallback("ProjectRP:HasItem", function(item) 
-		if item then 
+	ProjectRP.Functions.TriggerCallback("ProjectRP:HasItem", function(item)
+		if item then
 			local pos = GetEntityCoords(GetPlayerPed(-1))
 			loadAnimDict('amb@prop_human_parking_meter@male@idle_a')
 			TaskPlayAnim(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a' , 3.0, 3.0, -1, 1, 0, false, false, false)
-			ProjectRP.Functions.Progressbar("open_locker_drill", "Cracking Stone..", math.random(10000,15000), false, true, {
+			ProjectRP.Functions.Progressbar("open_locker_drill", "Cracking Stone..", math.random(8000,10000), false, true, {
 				disableMovement = true,	disableCarMovement = true, disableMouse = false, disableCombat = true, }, {}, {}, {}, function() -- Done
 				StopAnimTask(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a', 1.0)
 				TriggerServerEvent('prp-mining:CrackReward')
@@ -261,9 +261,9 @@ AddEventHandler('prp-mining:CrackStart', function ()
 				StopAnimTask(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a', 1.0)
 				IsDrilling = false
 			end)
-		else 
+		else
 			TriggerEvent('ProjectRP:Notify', "You don't have any Stone", 'error')
-		end 
+		end
 	end, "stone")
 end)
 
@@ -278,7 +278,7 @@ AddEventHandler('prp-mining:Cutting:Begin', function (data)
 					local pos = GetEntityCoords(GetPlayerPed(-1))
 					loadAnimDict('amb@prop_human_parking_meter@male@idle_a')
 					TaskPlayAnim(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a' , 3.0, 3.0, -1, 1, 0, false, false, false)
-					ProjectRP.Functions.Progressbar("open_locker_drill", "Cutting..", math.random(10000,15000), false, true, {
+					ProjectRP.Functions.Progressbar("open_locker_drill", "Cutting..", math.random(8000,10000), false, true, {
 						disableMovement = true, disableCarMovement = true,disableMouse = false,	disableCombat = true, }, {}, {}, {}, function() -- Done
 						StopAnimTask(GetPlayerPed(-1), 'amb@prop_human_parking_meter@male@idle_a', 'idle_a', 1.0)
 							TriggerServerEvent('prp-mining:Cutting:Reward', data)
