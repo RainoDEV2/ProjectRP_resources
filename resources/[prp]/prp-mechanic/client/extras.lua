@@ -88,7 +88,7 @@ RegisterNetEvent("prp-mechanic:seat", function(seat)
 		if IsSeatFree then
 			if kmh <= 100.0 then
 				SetPedIntoVehicle(PlayerPedId(), vehicle, tonumber(seat))
-				ProjectRP.Functions.Notify(Loc[Config.Lan]["extras"].moveseat..seat.."!")
+				-- ProjectRP.Functions.Notify(Loc[Config.Lan]["extras"].moveseat..seat.."!")
 			else
 				ProjectRP.Functions.Notify(Loc[Config.Lan]["extras"].fastseat)
 			end

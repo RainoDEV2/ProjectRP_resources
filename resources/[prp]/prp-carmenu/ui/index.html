@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/6b037c9e5a.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="main.js" defer></script>
+        <link href="style.css" rel="stylesheet" id="ron">
+    </head>
+<body>
+    <div id="main-container">
+        <div id="main-car-menu">
+            <img id="car-image" src="https://cdn.discordapp.com/attachments/770206133583085568/842759080061304852/75-750271_car-top-view-png-audi-transparent-png-removebg-preview.png">
+            <div id="car-seats">
+                <div data-name="engine" data-door="4" class="door" id="engine">Hood</div>
+            
+                <div id="doors-front">
+                    <div data-name="frontRight" data-seat="-1"  data-door="0" class="seat" id="frontRight"><i class="fas fa-user-alt"></i></div>
+                    <div data-name="frontLeft" data-seat="0" data-door="1" class="seat" id="frontLeft"><i class="fas fa-user-alt"></i></div>
+                </div>
+                <div id="doors-back">
+                    <div data-name="backLeft" data-seat="1" data-door="2" class="seat" id="backLeft"><i class="fas fa-user-alt"></i></div>
+                    <div data-name="backRight" data-seat="2" data-door="3" class="seat" id="backRight"><i class="fas fa-user-alt"></i></div>
+                </div>
+                <div data-name="trunk" data-door="5" class="door" id="trunk">Trunk</div>
+            </div>
+            <div id="main-window">
+                <div id="front">
+                    <div data-name="windowFrontLeft" data-window="0" class="window" id="windowFrontLeft">W</div>
+                    <div data-name="windowFrontRight" data-window="1" class="window" id="windowFrontRight">W</div>
+                </div>
+                <div id="back">
+                    <div data-name="windowBackLeft" data-window="2" class="window" id="windowBackLeft">W</div>
+                    <div data-name="windowBackRight" data-window="3" class="window" id="windowBackRight">W</div>
+                </div>
+            </div>
+        </div>
+        <div id="main-car-info">
+            <div class="info" id="car-name">Name: sultan</div>
+            <div class="info" id="car-plate">Plate: 44SIE219</div>
+            <div class="info" id="main-car-fuel">
+                <div id="car-fuel-icon"><i class="fas fa-gas-pump"></i></div>
+                <div class="text" id="car-fuel">Fuel: 70%</div>
+                <div id="car-fuel-bar"></div>
+            </div>
+            <div class="info" id="main-car-health">
+                <div id="car-health-icon"><i class="fas fa-car-crash"></i></div>
+                <div class="text" id="car-health">Health: 100%</div>
+                <div id="car-health-bar"></div>
+            </div>
+        </div>
+        <div id="btn-main">
+            <div id="btn-icon"><i class="fas fa-power-off"></i></div>
+        </div>
+    </div>
+</body>
+</html>    
+
+
