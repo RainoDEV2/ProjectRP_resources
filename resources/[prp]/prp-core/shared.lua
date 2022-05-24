@@ -5492,10 +5492,10 @@ PRPShared.Vehicles = {
 		['name'] = 'Mule',
 		['brand'] = 'Box Truck',
 		['model'] = 'mule5',
-		['price'] = 180000,
-		['category'] = 'vans',
+		['price'] = 275000,
+		['category'] = 'commercial',
 		['hash'] = `mule5`,
-		['shop'] = 'pdm',
+		['shop'] = 'none',
 	},
 	['nspeedo'] = {
 		['name'] = 'Speedo Express',

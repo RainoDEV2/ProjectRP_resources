@@ -426,17 +426,6 @@ RegisterNetEvent('prp-rental:openMenu', function()
                 }
             }
         },
-        {
-            id = 5,
-            header = "Verus",
-            txt = "$10",
-            params = {
-                event = "prp-rental:spawncar",
-                args = {
-                    model = 'verus',
-                    money = 10,
-                }
-            }
-        },
+        
     })
 end)
