@@ -31,7 +31,7 @@ Config.Jobs = {
 	['catcafe'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.60, },
 	['pizza'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 	['tequilala'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
-	['vu'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
+	['vu'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.40, },
 	['mechanic'] = { MinAmountforTicket = 1000, PayPerTicket = 500, Commission = 0.70, },
 	['galaxy'] = { MinAmountforTicket = 50, PayPerTicket = 50, Commission = 0.70, },
 }
