@@ -11,8 +11,7 @@ client_script 'client/main.lua'
 files {
     'html/index.html',
     'html/script.js',
-    'html/style.css',
-    'html/VerdanaBold.ttf'
+    'html/style.css'
 }
 
 exports {

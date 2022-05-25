@@ -42,14 +42,34 @@ local function StoreStock()
 end
 
 local function AddStock()
-    Config.Labs["methlab"].ingredients.stock = Config.Labs["methlab"].ingredients.stock + Config.Resupply.amount
+    if Config.Labs["methlab"].ingredients.stock + Config.Resupply.amount > 30 then
+        Config.Labs["methlab"].ingredients.stock = 30
+    else
+        Config.Labs["methlab"].ingredients.stock = Config.Labs["methlab"].ingredients.stock + Config.Resupply.amount
+    end
     TriggerClientEvent("prp-labs:client:UpdateStock", -1, 'methlab', Config.Labs["methlab"].ingredients.stock)
-    Config.Labs["methlab2"].ingredients.stock = Config.Labs["methlab2"].ingredients.stock + Config.Resupply.amount
+
+    if Config.Labs["methlab2"].ingredients.stock + Config.Resupply.amount > 30 then
+        Config.Labs["methlab2"].ingredients.stock = 30
+    else
+        Config.Labs["methlab2"].ingredients.stock = Config.Labs["methlab2"].ingredients.stock + Config.Resupply.amount
+    end
     TriggerClientEvent("prp-labs:client:UpdateStock", -1, 'methlab2', Config.Labs["methlab2"].ingredients.stock)
-    Config.Labs["cokelab"].ingredients.stock = Config.Labs["cokelab"].ingredients.stock + Config.Resupply.amount
+
+    if Config.Labs["cokelab"].ingredients.stock + Config.Resupply.amount > 30 then
+        Config.Labs["cokelab"].ingredients.stock = 30
+    else
+        Config.Labs["cokelab"].ingredients.stock = Config.Labs["cokelab"].ingredients.stock + Config.Resupply.amount
+    end
     TriggerClientEvent("prp-labs:client:UpdateStock", -1, 'cokelab', Config.Labs["cokelab"].ingredients.stock)
-    Config.Labs["weedlab"].ingredients.stock = Config.Labs["weedlab"].ingredients.stock + Config.Resupply.amount
+
+    if Config.Labs["weedlab"].ingredients.stock + Config.Resupply.amount > 30 then
+        Config.Labs["weedlab"].ingredients.stock = 30
+    else
+        Config.Labs["weedlab"].ingredients.stock = Config.Labs["weedlab"].ingredients.stock + Config.Resupply.amount
+    end
     TriggerClientEvent("prp-labs:client:UpdateStock", -1, 'weedlab', Config.Labs["weedlab"].ingredients.stock)
+
     print("^3[prp-labs] ^5Adding "..Config.Resupply.amount.." stock to labs^7")
     SetTimeout(Config.Resupply.time * (60 * 1000), AddStock) -- 30 minutes
 end
