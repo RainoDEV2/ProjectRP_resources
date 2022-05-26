@@ -749,6 +749,7 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('recycling', 0, 'boss'),
 ('mechanic', 0, 'boss'),
 ('galaxy', 0, 'boss'),
+('fightclub', 0, 'boss'),
 ('lostmc', 0, 'gang'),
 ('ballas', 0, 'gang'),
 ('vagos', 0, 'gang'),
@@ -756,8 +757,8 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('families', 0, 'gang'),
 ('triads', 0, 'gang'),
 ('celestial', 0, 'gang'),
-('flowersociety', 0, 'gang'),
-('zerotolerance', 0, 'gang');
+('zerotolerance', 0, 'gang'),
+('the70s', 0, 'gang');
 
 CREATE TABLE IF NOT EXISTS `cd_dispatch` (
 	`identifier` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8mb4_bin',

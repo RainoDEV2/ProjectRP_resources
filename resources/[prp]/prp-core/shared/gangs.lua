@@ -136,26 +136,30 @@ PRPShared.Gangs = {
             },
         },
 	},
-    ['flowersociety'] = {
-		label = 'Flower Society',
+    ['zerotolerance'] = {
+		label = 'Zero Tolerance',
 		grades = {
             ['0'] = {
-                name = 'Recruit'
+                name = 'Prospect'
             },
 			['1'] = {
-                name = 'Enforcer'
+                name = 'Soldier'
             },
 			['2'] = {
-                name = 'Vice President'
+                name = 'Enforcer'
             },
 			['3'] = {
-                name = 'President',
+                name = 'Underboss',
+				isboss = true
+            },
+			['4'] = {
+                name = 'Boss',
 				isboss = true
             },
         },
 	},
-    ['zerotolerance'] = {
-		label = 'Zero Tolerance',
+    ['the70s'] = {
+		label = 'The 70s',
 		grades = {
             ['0'] = {
                 name = 'Prospect'

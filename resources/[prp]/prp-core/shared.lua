@@ -1512,6 +1512,17 @@ PRPShared.Jobs = {
 			['4'] = { name = 'Boss', isboss = true, payment = 150 },
         },
 	},
+	['fightclub'] = {
+		label = 'Parlays Fight Club',
+		defaultDuty = false,
+		grades = {
+            ['0'] = { name = 'Trainee', payment = 50 },
+			['1'] = { name = 'Fighter', payment = 75 },
+			['2'] = { name = 'Coach', payment = 100 },
+			['3'] = { name = 'Vice President', isboss = true, payment = 125 },
+			['4'] = { name = 'President', isboss = true, payment = 150 },
+        },
+	},
 }
 
 -- Vehicles
