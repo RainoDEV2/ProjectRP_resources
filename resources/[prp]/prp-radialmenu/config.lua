@@ -1163,7 +1163,7 @@ Config.JobInteractions = {
             shouldClose = true,
             img = "<center><p><img src=https://static.wixstatic.com/media/9ea32b_f3565e8b4bfd4e819efd69eeea4b0c49~mv2.png/v1/fill/w_530,h_141,al_c,lg_1,q_85,enc_auto/galaxy.png width=150px></p>"
         }
-    }
+    },
     ["fightclub"] = {
         {
             id = 'fightclubcharage',
