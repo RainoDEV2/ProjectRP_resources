@@ -1,4 +1,4 @@
- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 
 <CHandlingDataMgr>
   <HandlingData>
@@ -54,12 +54,14 @@
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+		      <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>COMET6</handlingName>
       <fMass value="1550.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -115,11 +117,12 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+          <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>CYPHER</handlingName>
       <fMass value="1625.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -172,13 +175,13 @@
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
         <Item type="CCarHandlingData">
-          <strAdvancedFlags>14008000</strAdvancedFlags>
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>DOMINATOR7</handlingName>
       <fMass value="1665.000000" />
       <fInitialDragCoeff value="3.005000" />
@@ -234,12 +237,13 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>DOMINATOR8</handlingName>
       <fMass value="1465.000000" />
       <fInitialDragCoeff value="3.050000" />
@@ -295,12 +299,13 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>EUROS</handlingName>
       <fMass value="1466.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -352,14 +357,16 @@
       <strDamageFlags>20</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+          <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>FUTO2</handlingName>
-      <fMass value="950.000000" />
+       <fMass value="950.000000" />
       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000" />
@@ -414,14 +421,15 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>GROWLER</handlingName>
-      <fMass value="1420.000000" />
+       <fMass value="1420.000000" />
       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.000000" z="0.000000" />
@@ -475,11 +483,12 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+          <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>JESTER4</handlingName>
       <fMass value="1575.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -531,12 +540,14 @@
       <strDamageFlags>20</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+          <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>PREVION</handlingName>
       <fMass value="1300.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -588,12 +599,14 @@
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+          <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>REMUS</handlingName>
       <fMass value="1105.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -649,14 +662,15 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.050000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>RT3000</handlingName>
-      <fMass value="1275.000000" />
+     <fMass value="1275.000000" />
       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.00000" z="0.025000" />
@@ -710,12 +724,13 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>SULTAN3</handlingName>
       <fMass value="1150.000000" />
       <fInitialDragCoeff value="3.00000" />
@@ -767,12 +782,14 @@
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+            <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>TAILGATER2</handlingName>
       <fMass value="1340.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -828,12 +845,13 @@
           <fBackEndPopUpCarImpulseMult value="0.100000" />
           <fBackEndPopUpBuildingImpulseMult value="0.030000" />
           <fBackEndPopUpMaxDeltaSpeed value="0.600000" />
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
         </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>VECTRE</handlingName>
       <fMass value="1765.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -885,12 +903,14 @@
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>WARRENER2</handlingName>
       <fMass value="965.000000" />
       <fInitialDragCoeff value="3.000000" />
@@ -942,14 +962,16 @@
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
       <SubHandlingData>
-        <Item type="NULL" />
-        <Item type="NULL" />
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+		  <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
+        <Item type="" />
+        <Item type="" />
       </SubHandlingData>
     </Item>
-    <Item type="CHandlingData">
+	<Item type="CHandlingData">
       <handlingName>ZR350</handlingName>
-      <fMass value="1300.000000" />
+      fMass value="1300.000000" />
       <fInitialDragCoeff value="3.000000" />
       <fPercentSubmerged value="85.000000" />
       <vecCentreOfMassOffset x="0.000000" y="0.060000" z="-0.0900000" />
@@ -998,9 +1020,11 @@
       <strHandlingFlags>0</strHandlingFlags>
       <strDamageFlags>0</strDamageFlags>
       <AIHandling>AVERAGE</AIHandling>
-      <fPopUpLightRotation value="39.3000" />
+	  <fPopUpLightRotation value="39.3000"/>
       <SubHandlingData>
-        <Item type="NULL" />
+        <Item type="CCarHandlingData">
+          <strAdvancedFlags>14008000</strAdvancedFlags>
+        </Item>
         <Item type="NULL" />
         <Item type="NULL" />
       </SubHandlingData>
