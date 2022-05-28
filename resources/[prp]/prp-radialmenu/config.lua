@@ -1174,6 +1174,17 @@ Config.JobInteractions = {
             shouldClose = true,
             img = "<center><p><img src=https://cdn.discordapp.com/attachments/812831286082666537/979108299368714320/unknown.png width=150px></p>"
         }
+    },
+    ["vu"] = {
+        {
+            id = 'vucharge',
+            title = 'Charage Customer',
+            icon = 'coins',
+            type = 'client',
+            event = "prp-payments:client:Charge",
+            shouldClose = true,
+            img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/1/10/VanillaUnicorn-GTAV-Logo.png width=150px></p>"
+        }
     }
 }
 
