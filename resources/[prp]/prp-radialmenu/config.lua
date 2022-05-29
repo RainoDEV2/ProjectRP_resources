@@ -1172,7 +1172,7 @@ Config.JobInteractions = {
             type = 'client',
             event = "prp-payments:client:Charge",
             shouldClose = true,
-            img = "<center><p><img src=https://cdn.discordapp.com/attachments/812831286082666537/979108299368714320/unknown.png width=150px></p>"
+            img = "<center><p><img src=https://cdn.discordapp.com/attachments/812831286082666537/980261907623739453/fightclub.png width=150px></p>"
         }
     },
     ["vu"] = {
