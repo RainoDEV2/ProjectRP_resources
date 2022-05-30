@@ -805,6 +805,9 @@ PRPShared.Items = {
 	['stolencard'] 				 	= {['name'] = 'stolencard', 			    ['label'] = 'Stolen ATM Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'visacard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,     ['combinable'] = {accept = {'electronickit'}, reward = 'hackcard', anim = {['dict'] = 'anim@amb@business@bgen@bgen_inspecting@', ['lib'] = 'inspecting_low_idle_01_inspector', ['text'] = 'Crafting ATM hacking card', ['timeOut'] = 7500,}},   ['description'] = 'What will you do with someone else\'s ATM card?'},
 	['hackcard'] 				 	= {['name'] = 'hackcard', 			    	['label'] = 'Hacking Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'hackcard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Modified debit card'},
 	['decryptor'] 				 	= {['name'] = 'decryptor', 			    	['label'] = 'Decrypt-o-matic', 			['weight'] = 300, 	    ['type'] = 'item', 		['image'] = 'decryptomatic.png', 		['unique'] = true, 	    ['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Decrypt PIN based encryptions'},
+
+	['spray'] 				 		= {['name'] = 'spray', 			    		['label'] = 'Spray', 					['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'spray.png', 				['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Spray paint'},
+	['spray_remover'] 				= {['name'] = 'spray_remover', 			    ['label'] = 'Spray Remover', 			['weight'] = 300, 	    ['type'] = 'item', 		['image'] = 'spray.png', 				['unique'] = true, 	    ['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Spray paint remover'},
 }
 
 -- // HASH WEAPON ITEMS, NEED SOMETIMES TO GET INFO FOR CLIENT
@@ -943,9 +946,6 @@ PRPShared.Weapons = {
 	[`weapon_fireextinguisher`] 	 = {['name'] = 'weapon_fireextinguisher',      	['label'] = 'Fire Extinguisher', 		['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = nil,						['image'] = 'weapon_fireextinguisher.png', 	['unique'] = true, 	['useable'] = false, 	['description'] = 'A portable device that discharges a jet of water, foam, gas, or other material to extinguish a fire'},
 	[`weapon_hazardcan`]			 = {['name'] = 'weapon_hazardcan',				['label'] = 'Weapon Hazardcan',			['weight'] = 1000, 		['type'] = 'weapon', 	['ammotype'] = 'AMMO_PETROLCAN',		['image'] = 'weapon_hazardcan.png',		['unique'] = true, 		['useable'] = true, 	['description'] = 'Weapon Hazardcan'},
 }
-
--- Gangs
--- PRPShared.Gangs = json.decode(LoadResourceFile("prp-gangs", "gangs.json"))
 
 -- Jobs
 PRPShared.ForceJobDefaultDutyAtLogin = true -- true: Force duty state to jobdefaultDuty | false: set duty state from database last saved
