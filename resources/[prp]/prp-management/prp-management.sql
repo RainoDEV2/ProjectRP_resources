@@ -31,4 +31,5 @@ INSERT INTO `management_funds` (`job_name`, `amount`, `type`) VALUES
 ('triads', 0, 'gang'),
 ('celestial', 0, 'gang'),
 ('zerotolerance', 0, 'gang'),
+('ssk', 0, 'gang'),
 ('the70s', 0, 'gang');

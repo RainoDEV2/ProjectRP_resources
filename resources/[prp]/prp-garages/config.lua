@@ -178,17 +178,29 @@ Garages = {
         type = 'depot',                --public, job, gang, depot
         vehicle = 'car'                 --car, air, sea
     },
-    ["ballas"] = {
-        label = "Ballas",
+    -- ["ballas"] = {
+    --     label = "Ballas",
+    --     takeVehicle = vector3(85.53, -1970.19, 20.75),
+    --     spawnPoint = vector4(85.53, -1970.19, 20.75, 319.78),
+    --     putVehicle = vector3(91.21, -1964.09, 20.75),
+    --     showBlip = false,
+    --     blipName = "Ballas",
+    --     blipNumber = 357,
+    --     type = 'gang',                --public, job, gang, depot
+    --     vehicle = 'car',              --car, air, sea
+    --     job = "ballas"
+    -- },
+    ["ssk"] = {
+        label = "South Side Kings",
         takeVehicle = vector3(85.53, -1970.19, 20.75),
         spawnPoint = vector4(85.53, -1970.19, 20.75, 319.78),
         putVehicle = vector3(91.21, -1964.09, 20.75),
         showBlip = false,
-        blipName = "Ballas",
+        blipName = "South Side Kings",
         blipNumber = 357,
         type = 'gang',                --public, job, gang, depot
         vehicle = 'car',              --car, air, sea
-        job = "ballas"
+        job = "ssk"
     },
     ["families"] = {
         label = "La Familia",

@@ -98,7 +98,7 @@ Config.GangMenus = {
         vector3(0, 0, 0),
     },
     ['ballas'] = {
-        vector3(110.33, -1967.71, 21.33),
+        vector3(0, 0, 0),
     },
     ['vagos'] = {
         vector3(350.02, -2031.86, 22.39),
@@ -117,6 +117,9 @@ Config.GangMenus = {
     },
     ['zerotolerance'] = {
         vector3(1002.59, -1528.0, 30.84),
+    },
+    ['ssk'] = {
+        vector3(110.33, -1967.71, 21.33),
     },
     ['the70s'] = {
         vector3(412.09, -1502.69, 33.81),

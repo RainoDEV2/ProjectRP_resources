@@ -158,6 +158,28 @@ PRPShared.Gangs = {
             },
         },
 	},
+    ['ssk'] = {
+		label = 'South Side Kings',
+		grades = {
+            ['0'] = {
+                name = 'Prospect'
+            },
+			['1'] = {
+                name = 'Soldier'
+            },
+			['2'] = {
+                name = 'Enforcer'
+            },
+			['3'] = {
+                name = 'Underboss',
+				isboss = true
+            },
+			['4'] = {
+                name = 'Boss',
+				isboss = true
+            },
+        },
+	},
     ['the70s'] = {
 		label = 'The 70s',
 		grades = {

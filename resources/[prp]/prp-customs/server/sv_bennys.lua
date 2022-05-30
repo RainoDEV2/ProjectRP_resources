@@ -7,14 +7,14 @@ RegisterNetEvent('prp-customs:attemptPurchase', function(type, upgradeLevel)
     local Player = ProjectRP.Functions.GetPlayer(source)
     local balance = nil
     if Player.PlayerData.job.name == "mechanic" then
-        balance = exports['prp-bossmenu']:GetAccount(Player.PlayerData.job.name)
+        balance = exports['prp-management']:GetAccount(Player.PlayerData.job.name)
     else
         balance = Player.Functions.GetMoney(moneyType)
     end
     if type == "repair" then
         if balance >= chicken then
             if Player.PlayerData.job.name == "mechanic" then
-                TriggerEvent('prp-bossmenu:server:removeAccountMoney', Player.PlayerData.job.name, chicken)
+                TriggerEvent('prp-management:server:removeAccountMoney', Player.PlayerData.job.name, chicken)
             else
                 Player.Functions.RemoveMoney(moneyType, chicken, "bennys")
             end
@@ -26,7 +26,7 @@ RegisterNetEvent('prp-customs:attemptPurchase', function(type, upgradeLevel)
         if balance >= vehicleCustomisationPrices[type].prices[upgradeLevel] then
             TriggerClientEvent('prp-customs:purchaseSuccessful', source)
             if Player.PlayerData.job.name == "mechanic" then
-                TriggerEvent('prp-bossmenu:server:removeAccountMoney', Player.PlayerData.job.name,
+                TriggerEvent('prp-management:server:removeAccountMoney', Player.PlayerData.job.name,
                     vehicleCustomisationPrices[type].prices[upgradeLevel])
             else
                 Player.Functions.RemoveMoney(moneyType, vehicleCustomisationPrices[type].prices[upgradeLevel], "bennys")
@@ -38,7 +38,7 @@ RegisterNetEvent('prp-customs:attemptPurchase', function(type, upgradeLevel)
         if balance >= vehicleCustomisationPrices[type].price then
             TriggerClientEvent('prp-customs:purchaseSuccessful', source)
             if Player.PlayerData.job.name == "mechanic" then
-                TriggerEvent('prp-bossmenu:server:removeAccountMoney', Player.PlayerData.job.name,
+                TriggerEvent('prp-management:server:removeAccountMoney', Player.PlayerData.job.name,
                     vehicleCustomisationPrices[type].price)
             else
                 Player.Functions.RemoveMoney(moneyType, vehicleCustomisationPrices[type].price, "bennys")
