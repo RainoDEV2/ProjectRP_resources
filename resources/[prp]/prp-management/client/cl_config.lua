@@ -43,6 +43,9 @@ Config.BossMenus = {
     ['galaxy'] = {
         vector3(389.56, 272.5, 94.99),
     },
+    ['fightclub'] = {
+        vector3(6.49, -1664.4, 29.9),
+    },
 }
 
 Config.BossMenuZones = {
@@ -83,7 +86,10 @@ Config.BossMenuZones = {
         { coords = vector3(-596.26, -1053.52, 21.85), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
     },
     ['galaxy'] = {
-        { coords = vector3(389.56, 272.5, 94.99), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
+        { coords = vector3(6.49, -1664.4, 29.9), length = 1.15, width = 2.6, heading = 353.0, minZ = 43.59, maxZ = 44.99 },
+    },
+    ['fightclub'] = {
+        { coords = vector3(6.49, -1664.4, 29.9), length = 1.15, width = 2.6, heading = 353.0, minZ = 28.0, maxZ = 32.0 },
     },
 }
 
@@ -92,7 +98,7 @@ Config.GangMenus = {
         vector3(0, 0, 0),
     },
     ['ballas'] = {
-        vector3(110.33, -1967.71, 21.33),
+        vector3(0, 0, 0),
     },
     ['vagos'] = {
         vector3(350.02, -2031.86, 22.39),
@@ -109,11 +115,14 @@ Config.GangMenus = {
     ['celestial'] = {
         vector3(408.65, 244.41, 92.05),
     },
-    ['flowersociety'] = {
-        vector3(0, 0, 0),
-    },
     ['zerotolerance'] = {
         vector3(1002.59, -1528.0, 30.84),
+    },
+    ['ssk'] = {
+        vector3(110.33, -1967.71, 21.33),
+    },
+    ['the70s'] = {
+        vector3(412.09, -1502.69, 33.81),
     },
 }
 

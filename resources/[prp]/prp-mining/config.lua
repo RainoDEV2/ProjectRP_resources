@@ -48,8 +48,8 @@ Config.OrePositions = {
 -----------------------------------------------------------
 
 Config.RewardPool = {
-	'carbon', 'carbon', 'carbon', 'carbon', --4x
-	'ironore', 'ironore', 'ironore', 'ironore', -- 4x
+	'carbon', 'carbon', 'carbon', 'carbon', 'carbon', --5x
+	'ironore', 'ironore', 'ironore', 'ironore', 'ironore', -- 5x
 	'copperore', 'copperore', 'copperore', 'copperore', 'copperore', -- 5x
 	'goldore', 'goldore', 'goldore', --'goldore', -- 3x
     'metalscrap', 'metalscrap',

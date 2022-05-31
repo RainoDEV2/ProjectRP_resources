@@ -14,7 +14,7 @@ Config.Webhooks = {
     ['glovebox'] = 'https://discord.com/api/webhooks/938943026670239814/Wb3J82LVkcxnmHuN3AFd8afoBasCVrE9YRoi10zwS9WknEAdAwx43rCF-0LqWFPxmF3B',
     ['banking'] = 'https://discord.com/api/webhooks/938943485673881651/VxAr0Dp1csTOZC4Gi6KovWyU3xLvebt5SIjDjTsu9H5qP6cRcsEcprXpLQiLAQllCHyT',
 
-    ['vehicleshop'] = 'https://discord.com/api/webhooks/938972730001330177/nEjISZLJFzehEKzC2V58YbdGzAT11z-0InA0s5XnnxYj8wvO4KYk2KGxeF6IQ3rWThZc',
+    ['vehicleshop'] = 'https://discord.com/api/webhooks/979147394690187304/1ZBnhFWQOLD5lCeplaZDQzwRa5nAVm4XDx6qv_8zCEUEYy6NJuV0mTEYk3hIdxf2tA68',
     ['vehicleupgrades'] = 'https://discord.com/api/webhooks/938972730001330177/nEjISZLJFzehEKzC2V58YbdGzAT11z-0InA0s5XnnxYj8wvO4KYk2KGxeF6IQ3rWThZc',
 
     ['shops'] = 'https://discord.com/api/webhooks/939449232975355935/SvrjhD7nSJprWYoyoWq9sUBd9hM6reDVURFE-d9FR99zrGvRQmjU9Ayoo12jgg2M3dVO',

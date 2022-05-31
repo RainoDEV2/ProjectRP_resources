@@ -256,6 +256,28 @@ local function lockpickFinish(success)
 	end
 end
 
+local function stormramFinish(success)
+	if success then
+		ProjectRP.Functions.Notify("Success", 'success', 2500)
+		if closestDoor.data.coords then
+			TaskTurnPedToFaceCoord(playerPed, closestDoor.data.doors[1].objCoords.x, closestDoor.data.doors[1].objCoords.y, closestDoor.data.doors[1].objCoords.z, 0)
+		else
+			TaskTurnPedToFaceCoord(playerPed, closestDoor.data.objCoords.x, closestDoor.data.objCoords.y, closestDoor.data.objCoords.z, 0)
+		end
+		Wait(300)
+		local count = 0
+		while GetIsTaskActive(playerPed, 225) do
+			Wait(10)
+			count += 1
+			if count == 150 then break end
+		end
+		Wait(1800)
+		TriggerServerEvent('prp-doorlock:server:updateState', closestDoor.id, false, false, true, false) -- Broadcast new state of the door to everyone
+	else
+		ProjectRP.Functions.Notify("Failed", 'error', 2500)
+	end
+end
+
 local function isAuthorized(door)
 	if door.allAuthorized then return true end
 
@@ -403,6 +425,58 @@ RegisterNetEvent('prp-doorlock:client:setState', function(serverId, doorID, stat
 		end
 		Wait(0)
 	end
+end)
+
+local function DoRamAnimation(bool)
+    local ped = PlayerPedId()
+    local dict = "missheistfbi3b_ig7"
+    local anim = "lift_fibagent_loop"
+    if bool then
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do
+            Citizen.Wait(1)
+        end
+        TaskPlayAnim(ped, dict, anim, 8.0, 8.0, -1, 1, -1, false, false, false)
+    else
+        RequestAnimDict(dict)
+        while not HasAnimDictLoaded(dict) do
+            Citizen.Wait(1)
+        end
+        TaskPlayAnim(ped, dict, "exit", 8.0, 8.0, -1, 1, -1, false, false, false)
+    end
+end
+
+RamsDone = 0
+RegisterNetEvent('prp-houses:client:HomeInvasion', function()
+	if not closestDoor.data or not next(closestDoor.data) or PlayerData.metadata['isdead'] or PlayerData.metadata['ishandcuffed'] or not closestDoor.data.locked then return end
+	-- TriggerEvent('prp-lockpick:client:openLockpick', stormramFinish)
+    local ped = PlayerPedId()
+    local pos = GetEntityCoords(ped)
+    local Skillbar = exports['prp-skillbar']:GetSkillbarObject()
+	DoRamAnimation(true)
+	Skillbar.Start({
+		duration = math.random(5000, 10000),
+		pos = math.random(10, 30),
+		width = math.random(10, 20),
+	}, function()
+		if RamsDone + 1 >= 2 then
+			ProjectRP.Functions.Notify('It worked the door is now out.', 'success')
+			stormramFinish(true)
+			DoRamAnimation(false)
+		else
+			DoRamAnimation(true)
+			Skillbar.Repeat({
+				duration = math.random(500, 1000),
+				pos = math.random(10, 30),
+				width = math.random(5, 12),
+			})
+			RamsDone = RamsDone + 1
+		end
+	end, function()
+		RamsDone = 0
+		ProjectRP.Functions.Notify('It failed try again.', 'error')
+		DoRamAnimation(false)
+	end)
 end)
 
 RegisterNetEvent('lockpicks:UseLockpick', function(isAdvanced)

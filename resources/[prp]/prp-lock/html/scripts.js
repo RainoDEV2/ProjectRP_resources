@@ -8,7 +8,7 @@ let new_degrees = 0;
 let time = 0;
 let color = "#ffffff";
 let bgcolor = "#404b57";
-let bgcolor2 = "#41a491";
+let bgcolor2 = "#861bf2";
 let key_to_press;
 let g_start, g_end;
 let animation_loop;

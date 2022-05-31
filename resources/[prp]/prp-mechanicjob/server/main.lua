@@ -222,60 +222,6 @@ function IsAuthorized(CitizenId)
     return retval
 end
 
-ProjectRP.Commands.Add("setmechanic", "Give Someone The Mechanic job", {{
-    name = "id",
-    help = "ID Of The Player"
-}}, false, function(source, args)
-    local Player = ProjectRP.Functions.GetPlayer(source)
-
-    if IsAuthorized(Player.PlayerData.citizenid) then
-        local TargetId = tonumber(args[1])
-        if TargetId ~= nil then
-            local TargetData = ProjectRP.Functions.GetPlayer(TargetId)
-            if TargetData ~= nil then
-                TargetData.Functions.SetJob("mechanic")
-                TriggerClientEvent('ProjectRP:Notify', TargetData.PlayerData.source,
-                    "You Were Hired As An Autocare Employee!")
-                TriggerClientEvent('ProjectRP:Notify', source, "You have (" .. TargetData.PlayerData.charinfo.firstname ..
-                    ") Hired As An Autocare Employee!")
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, "You Must Provide A Player ID!")
-        end
-    else
-        TriggerClientEvent('ProjectRP:Notify', source, "You Cannot Do This!", "error")
-    end
-end)
-
-ProjectRP.Commands.Add("firemechanic", "Fire A Mechanic", {{
-    name = "id",
-    help = "ID Of The Player"
-}}, false, function(source, args)
-    local Player = ProjectRP.Functions.GetPlayer(source)
-
-    if IsAuthorized(Player.PlayerData.citizenid) then
-        local TargetId = tonumber(args[1])
-        if TargetId ~= nil then
-            local TargetData = ProjectRP.Functions.GetPlayer(TargetId)
-            if TargetData ~= nil then
-                if TargetData.PlayerData.job.name == "mechanic" then
-                    TargetData.Functions.SetJob("unemployed")
-                    TriggerClientEvent('ProjectRP:Notify', TargetData.PlayerData.source,
-                        "You Were Fired As An Autocare Employee!")
-                    TriggerClientEvent('ProjectRP:Notify', source,
-                        "You have (" .. TargetData.PlayerData.charinfo.firstname .. ") Fired As Autocare Employee!")
-                else
-                    TriggerClientEvent('ProjectRP:Notify', source, "Youre Not An Employee of Autocare!", "error")
-                end
-            end
-        else
-            TriggerClientEvent('ProjectRP:Notify', source, "You Must Provide A Player ID!", "error")
-        end
-    else
-        TriggerClientEvent('ProjectRP:Notify', source, "You Cannot Do This!", "error")
-    end
-end)
-
 ProjectRP.Functions.CreateCallback('prp-vehicletuning:server:GetStatus', function(source, cb, plate)
     if VehicleStatus[plate] ~= nil and next(VehicleStatus[plate]) ~= nil then
         cb(VehicleStatus[plate])

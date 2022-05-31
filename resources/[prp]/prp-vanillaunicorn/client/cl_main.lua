@@ -37,7 +37,6 @@ end)
 
 CreateThread(function() -- Thread to handle original context menu setup
     setupContext()
-   
     while true do
         Wait(0)
         plyCoords = GetEntityCoords(PlayerPedId())
@@ -103,13 +102,6 @@ CreateThread(function() -- Thread to handle original context menu setup
     end
 end)
 
-
-if Config.debug then 
-    RegisterCommand('hayden:test', function() -- debug command
-        TriggerServerEvent('hayden:test')
-    end, false)
-end
-
 RegisterNetEvent('prp-vanillaunicorn:Client:accessBarMenu', function(data) -- Access bar menu, exploit checks
     canUse = data.args.canUse
     plyCoords = GetEntityCoords(PlayerPedId())
@@ -173,11 +165,7 @@ RegisterNetEvent('prp-vanillaunicorn:Client:employeeManagement', function() -- O
     exports["prp-menu"]:openMenu(bossMenu)
 end)
 
-
-
-
 Citizen.CreateThread(function()
-
     local vuBlip = AddBlipForCoord(134.1635, -1302.5160, 29.2144)
     SetBlipAsFriendly(vuBlip, true)
     SetBlipSprite(vuBlip, 121)
@@ -188,4 +176,3 @@ Citizen.CreateThread(function()
     AddTextComponentString(tostring("Vanilla Unicorn"))
     EndTextCommandSetBlipName(vuBlip)
 end)
-

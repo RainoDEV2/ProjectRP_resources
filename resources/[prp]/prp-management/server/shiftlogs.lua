@@ -36,6 +36,7 @@ local function HasJob(Job)
     or Job == 'hotdog'
     or Job == 'catcafe'
     or Job == 'galaxy'
+    or Job == 'fightclub'
     or Job == 'taxi' then
         return true
     end
