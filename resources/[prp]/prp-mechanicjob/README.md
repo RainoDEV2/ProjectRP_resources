@@ -31,8 +31,6 @@ Mechanic Job for prp-Core Framework :mechanic:
 ![On Duty/Off Duty](https://i.imgur.com/CM34EsL.png)
 
 ## Features
-- /setmechanic - Sets someone mechanic
-- /firemechanic - Fires a mechanic worker
 - On Duty/Off Duty
 - Placing vehicles to platform for repairing it part by part.
 - Towtruck, Blista, Minivan, Flatbed for workers.

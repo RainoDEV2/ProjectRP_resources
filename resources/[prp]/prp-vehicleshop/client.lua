@@ -179,8 +179,12 @@ local function createVehZones(shopName, entity)
             if isPointInside then
                 -- print(json.encode(PlayerData.job))
                 -- print(insideShop)
-                if (PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[insideShop]['Job']) or Config.Shops[insideShop]['Job'] == 'none' then
-                    exports['prp-menu']:showHeader(vehHeaderMenu)
+                if insideShop ~= nil then
+                    if (PlayerData.job ~= nil and PlayerData.job.name == Config.Shops[insideShop]['Job']) or Config.Shops[insideShop]['Job'] == 'none' then
+                        exports['prp-menu']:showHeader(vehHeaderMenu)
+                    end
+                else
+                    print("[Project-RP Error] InsideShop Is Nil")
                 end
             else
                 exports['prp-menu']:closeMenu()
