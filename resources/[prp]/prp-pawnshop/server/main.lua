@@ -58,7 +58,6 @@ AddEventHandler("prp-pawnshop:server:sellHardwarePawnItems", function()
         Player.Functions.AddMoney("cash", price, "sold pawnable items")
         TriggerClientEvent('ProjectRP:Notify', src, "You have sold your items")
     end
-
 end)
 
 RegisterServerEvent("prp-pawnshop:server:getGoldBars")

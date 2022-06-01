@@ -8,97 +8,97 @@ Config.JewelleryLocation = {
 
 Config.WhitelistedWeapons = {
     [`weapon_assaultrifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_carbinerifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_pumpshotgun`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_sawnoffshotgun`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_compactrifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_microsmg`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_autoshotgun`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_pistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_pistol_mk2`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_combatpistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_pistol50`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_1911`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_heavypistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_smg_mk2`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_assaultsmg`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_machinepistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_appistol`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_combatpdw`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_minismg`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_smg`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_pumpshotgun_mk2`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_assaultrifle2`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_specialcarbine`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_advancedrifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_bullpuprifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_militaryrifle`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_m4`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_glock`] = {
-        ["timeOut"] = 25000
+        ["timeOut"] = 15000
     },
     [`weapon_assaultrifle_mk2`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
     [`weapon_specicalcarbine_mk2`] = {
-        ["timeOut"] = 10000
+        ["timeOut"] = 5000
     },
 }
 
@@ -107,20 +107,20 @@ Config.VitrineRewards = {
         ["item"] = "rolex",
         ["amount"] = {
             ["min"] = 2,
-            ["max"] = 4
+            ["max"] = 5
         },
     },
     [2] = {
         ["item"] = "diamond_ring",
         ["amount"] = {
-            ["min"] = 1,
-            ["max"] = 2
+            ["min"] = 2,
+            ["max"] = 3
         },
     },
     [3] = {
         ["item"] = "goldchain",
         ["amount"] = {
-            ["min"] = 2,
+            ["min"] = 3,
             ["max"] = 4
         },
     },
