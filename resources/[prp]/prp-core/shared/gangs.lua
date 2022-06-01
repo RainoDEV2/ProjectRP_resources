@@ -165,17 +165,17 @@ PRPShared.Gangs = {
                 name = 'Prospect'
             },
 			['1'] = {
-                name = 'Soldier'
+                name = 'Member'
             },
 			['2'] = {
-                name = 'Enforcer'
+                name = 'Warlord'
             },
 			['3'] = {
-                name = 'Underboss',
+                name = 'Crown',
 				isboss = true
             },
 			['4'] = {
-                name = 'Boss',
+                name = 'Top Crown',
 				isboss = true
             },
         },

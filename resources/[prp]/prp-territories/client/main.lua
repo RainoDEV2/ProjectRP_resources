@@ -44,14 +44,14 @@ CreateThread(function()
         SetBlipAlpha(blip, 80) -- Change opacity here
         SetBlipColour(blip, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
 
-        local blip2 = AddBlipForCoord(v.centre.x, v.centre.y, v.centre.z)
-        SetBlipSprite (blip2, v.blip)
-        SetBlipDisplay(blip2, 4)
-        SetBlipAsShortRange(blip2, true)
-        SetBlipColour(blip2, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentSubstringPlayerName(Zones["Gangs"][v.winner].name)
-        EndTextCommandSetBlipName(blip2)
+        -- local blip2 = AddBlipForCoord(v.centre.x, v.centre.y, v.centre.z)
+        -- SetBlipSprite (blip2, v.blip)
+        -- SetBlipDisplay(blip2, 4)
+        -- SetBlipAsShortRange(blip2, true)
+        -- SetBlipColour(blip2, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
+        -- BeginTextCommandSetBlipName("STRING")
+        -- AddTextComponentSubstringPlayerName(Zones["Gangs"][v.winner].name)
+        -- EndTextCommandSetBlipName(blip2)
 
         Territories[k] = {
             zone = zone,

@@ -1,6 +1,20 @@
 local minGangMemberConnected = 0
 local ProjectRP = exports['prp-core']:GetCoreObject()
 
+Citizen.CreateThread(function()
+    local result = exports.oxmysql:executeSync('SELECT * FROM sprays', {})
+    if result[1] then
+        for k, v in pairs(result) do
+            Zones["Territories"][k] = {
+                centre = vector3(v.x, v.y, v.z),
+                radius = 75.0,
+                winner = "tarteret",
+                occupants={}
+            }
+        end
+    end
+end)
+
 function checkGroup(table, val)
     for k, v in pairs(table) do
         if val == v.label then

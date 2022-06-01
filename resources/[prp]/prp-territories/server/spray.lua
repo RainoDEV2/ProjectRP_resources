@@ -7,10 +7,7 @@ FastBlacklist = {}
 
 ProjectRP.Functions.CreateUseableItem("spray", function(source, item)
 	local src = source
-	local Player = ProjectRP.Functions.GetPlayer(src)
-	if Player.Functions.GetItemByName(item.name) ~= nil then
-        TriggerClientEvent('rcore_spray:removeClosestSpray', src)
-	end
+    TriggerEvent('rcore_spray:startSpraying', src)
 end)
 
 Citizen.CreateThread(function()
@@ -111,14 +108,15 @@ AddEventHandler('rcore_spray:playerSpawned', function()
     TriggerClientEvent('rcore_spray:setSprays', src, SPRAYS)
 end)
 
-RegisterNetEvent('rcore_spray:playerSpawned')
-AddEventHandler('rcore_spray:playerSpawned', function()
+RegisterNetEvent('rcore_spray:startSpraying')
+AddEventHandler('rcore_spray:startSpraying', function(source)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
     local item = Player.Functions.GetItemByName("spray")
 
     if item.amount > 0 then
         local gang = Player.PlayerData.gang.name
+        print(gang)
         local sprayText = gang
 
         if FastBlacklist[sprayText] then
@@ -129,7 +127,7 @@ AddEventHandler('rcore_spray:playerSpawned', function()
         else
             if sprayText then
                 if sprayText:len() <= 9 then
-                    TriggerClientEvent('rcore_spray:spray', source, args[1])
+                    TriggerClientEvent('rcore_spray:spray', source, sprayText)
                 else
                     TriggerClientEvent('chat:addMessage', source, {
                         template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',

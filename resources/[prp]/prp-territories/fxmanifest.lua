@@ -10,9 +10,22 @@ shared_scripts {
 client_scripts {
 	'@PolyZone/client.lua',
 	'@PolyZone/CircleZone.lua',
-	'client/main.lua'
+	'client/main.lua',
+	'client/warmenu.lua',
+	'client/fonts.lua',
+	'client/determinant.lua',
+	'client/raycast.lua',
+	'client/spray.lua',
+	'client/spray_rotation.lua',
+	'client/control.lua',
+	'client/remove.lua',
+	'client/time.lua',
+	'client/cancellable_progress.lua',
 }
 
 server_scripts {
-	'server/main.lua'
+	'server/main.lua',
+    '@oxmysql/lib/MySQL.lua',
+	'server/spray.lua',
+	'server/remove.lua',
 }
