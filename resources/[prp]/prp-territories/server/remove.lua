@@ -12,7 +12,6 @@ RegisterNetEvent('rcore_spray:remove')
 AddEventHandler('rcore_spray:remove', function(pos)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
-
     local item = Player.Functions.GetItemByName("spray_remover")
 
     if item.amount > 0 then

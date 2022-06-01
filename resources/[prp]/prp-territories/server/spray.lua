@@ -31,6 +31,8 @@ AddEventHandler('rcore_spray:addSpray', function(spray)
 	local src = source
 	local Player = ProjectRP.Functions.GetPlayer(src)
     local item = Player.Functions.GetItemByName("spray")
+    local Gang = Player.PlayerData.gang
+    spray.gang = Gang.name
 
     if item.amount > 0 then
         Player.Functions.RemoveItem('spray', 1)
@@ -48,19 +50,16 @@ AddEventHandler('rcore_spray:addSpray', function(spray)
         TriggerEvent('rcore_sprays:addSpray', src, spray.text, spray.location)
         TriggerClientEvent('rcore_spray:setSprays', -1, SPRAYS)
     else
-        TriggerClientEvent('chat:addMessage', src, {
-            template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',
-            args = {Config.Text.NEED_SPRAY}
-        })
+        ProjectRP.Functions.Notify(Config.Text.NEED_SPRAY, 'error')
     end
 end)
 
 function PersistSpray(spray)
     MySQL.Async.execute([[
         INSERT sprays
-        (`x`, `y`, `z`, `rx`, `ry`, `rz`, `scale`, `text`, `font`, `color`, `interior`)
+        (`x`, `y`, `z`, `rx`, `ry`, `rz`, `scale`, `text`, `font`, `color`, `interior`, `gang`)
         VALUES
-        (@x, @y, @z, @rx, @ry, @rz, @scale, @text, @font, @color, @interior)
+        (@x, @y, @z, @rx, @ry, @rz, @scale, @text, @font, @color, @interior, @gang)
     ]], {
         ['@x'] = spray.location.x,
         ['@y'] = spray.location.y,
@@ -73,17 +72,19 @@ function PersistSpray(spray)
         ['@font'] = spray.font,
         ['@color'] = spray.originalColor,
         ['@interior'] = spray.interior,
+        ['@gang'] = spray.gang,
     })
 end
 
 Citizen.CreateThread(function()
-    MySQL.Sync.execute([[
-        DELETE FROM sprays 
-        WHERE DATEDIFF(NOW(), created_at) >= @days
-    ]], {['days'] = Config.SPRAY_PERSIST_DAYS})
+    -- Remove sprays after being there for configured time
+    -- MySQL.Sync.execute([[
+    --     DELETE FROM sprays 
+    --     WHERE DATEDIFF(NOW(), created_at) >= @days
+    -- ]], {['days'] = Config.SPRAY_PERSIST_DAYS})
 
     local results = MySQL.Sync.fetchAll([[
-        SELECT x, y, z, rx, ry, rz, scale, text, font, color, created_at, interior
+        SELECT x, y, z, rx, ry, rz, scale, text, font, color, created_at, interior, gang
         FROM sprays
     ]])
 
@@ -96,6 +97,7 @@ Citizen.CreateThread(function()
             font = s.font,
             originalColor = s.color,
             interior = (s.interior == 1) and true or false,
+            gang = s.gang
         })
     end
 
@@ -115,37 +117,31 @@ AddEventHandler('rcore_spray:startSpraying', function(source)
     local item = Player.Functions.GetItemByName("spray")
 
     if item.amount > 0 then
-        local gang = Player.PlayerData.gang.name
-        print(gang)
-        local sprayText = gang
+        local gang = Player.PlayerData.gang
+        local sprayText = ''
+        if gang ~= nil and ProjectRP.Shared.Gangs[gang.name] then
+            sprayText = ProjectRP.Shared.Gangs[gang.name].spray
+        end
 
         if FastBlacklist[sprayText] then
-            TriggerClientEvent('chat:addMessage', source, {
-                template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',
-                args = {Config.Text.BLACKLISTED}
-            })
+            ProjectRP.Functions.Notify(Config.Text.BLACKLISTED, 'error')
         else
             if sprayText then
                 if sprayText:len() <= 9 then
-                    TriggerClientEvent('rcore_spray:spray', source, sprayText)
+                    if sprayText:len() == 0 then
+                        TriggerClientEvent('ProjectRP:Notify', src, Config.Text.NO_GANG, 'error')
+                    else
+                        TriggerClientEvent('rcore_spray:spray', source, sprayText)
+                    end
                 else
-                    TriggerClientEvent('chat:addMessage', source, {
-                        template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',
-                        args = {Config.Text.WORD_LONG}
-                    })
+                    TriggerClientEvent('ProjectRP:Notify', src, Config.Text.WORD_LONG, 'error')
                 end
             else
-                TriggerClientEvent('chat:addMessage', source, {
-                    template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',
-                    args = {Config.Text.USAGE}
-                })
+                TriggerClientEvent('ProjectRP:Notify', src, Config.Text.USAGE, 'error')
             end
         end
     else
-        TriggerClientEvent('chat:addMessage', source, {
-            template = '<div style="background: rgb(180, 136, 29); color: rgb(255, 255, 255); padding: 5px;">{0}</div>',
-            args = {Config.Text.NEED_SPRAY}
-        })
+        TriggerClientEvent('ProjectRP:Notify', src, Config.Text.NEED_SPRAY, 'error')
     end
 end, false)
 

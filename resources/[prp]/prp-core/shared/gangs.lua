@@ -2,6 +2,7 @@ PRPShared = PRPShared or {}
 PRPShared.Gangs = {
 	['none'] = {
 		label = 'No Gang',
+        spray = "",
 		grades = {
             ['0'] = {
                 name = 'Unaffiliated'
@@ -10,6 +11,7 @@ PRPShared.Gangs = {
 	},
 	['lostmc'] = {
 		label = 'The Lost MC',
+        spray = "Lost",
 		grades = {
             ['0'] = {
                 name = 'Recruit'
@@ -28,6 +30,7 @@ PRPShared.Gangs = {
 	},
 	['ballas'] = {
 		label = 'Ballas',
+        spray = "Ballas",
 		grades = {
             ['0'] = {
                 name = 'Recruit'
@@ -64,6 +67,7 @@ PRPShared.Gangs = {
 	},
 	['cartel'] = {
 		label = 'Cartel',
+        spray = "Cartel",
 		grades = {
             ['0'] = {
                 name = 'Recruit'
@@ -82,6 +86,7 @@ PRPShared.Gangs = {
 	},
 	['families'] = {
 		label = 'Families',
+        spray = "GSF",
 		grades = {
             ['0'] = {
                 name = 'Recruit'
@@ -100,6 +105,7 @@ PRPShared.Gangs = {
 	},
 	['triads'] = {
 		label = 'Triads',
+        spray = "Triads",
 		grades = {
             ['0'] = {
                 name = 'Recruit'
@@ -118,6 +124,7 @@ PRPShared.Gangs = {
 	},
     ['celestial'] = {
 		label = 'CELESTIAL',
+        spray = "CLSTL",
 		grades = {
             ['0'] = {
                 name = 'IN-ORBIT'
@@ -138,6 +145,7 @@ PRPShared.Gangs = {
 	},
     ['zerotolerance'] = {
 		label = 'Zero Tolerance',
+        spray = "ZT",
 		grades = {
             ['0'] = {
                 name = 'Prospect'
@@ -160,6 +168,7 @@ PRPShared.Gangs = {
 	},
     ['ssk'] = {
 		label = 'South Side Kings',
+        spray = "SSK",
 		grades = {
             ['0'] = {
                 name = 'Prospect'
@@ -182,6 +191,7 @@ PRPShared.Gangs = {
 	},
     ['the70s'] = {
 		label = 'The 70s',
+        spray = "70s",
 		grades = {
             ['0'] = {
                 name = 'Prospect'

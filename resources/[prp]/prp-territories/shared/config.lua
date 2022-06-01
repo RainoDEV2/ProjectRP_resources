@@ -1,5 +1,5 @@
 Config = {
-    SPRAY_PERSIST_DAYS = 2,
+    SPRAY_PERSIST_DAYS = 100,
     SPRAY_PROGRESSBAR_DURATION = 20000,
     SPRAY_REMOVE_DURATION = 30000,
 
@@ -31,6 +31,7 @@ Config = {
         NO_SPRAY_NEARBY = 'There is no spray nearby to remove',
         NEED_SPRAY = 'You do not have any spray to spray with',
         WORD_LONG = 'Spray word can be at most 9 characters',
+        NO_GANG = 'You are part of a recognised gang.',
         USAGE = 'Usage: /spray <word>',
         BLACKLISTED = 'This word is blacklisted.'
     }

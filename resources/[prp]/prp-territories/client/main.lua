@@ -27,37 +27,50 @@ AddEventHandler('ProjectRP:Client:OnGangUpdate', function(GangInfo)
 end)
 
 RegisterNetEvent('ProjectRP:Client:OnJobUpdate')
-AddEventHandler('ProjectRP:Client:OnGangUpdate', function(JobInfo)
+AddEventHandler('ProjectRP:Client:OnJobUpdate', function(JobInfo)
     PlayerJob = JobInfo
     isLoggedIn = true
 end)
 
-CreateThread(function()
-    Wait(500)
-    for k, v in pairs(Zones["Territories"]) do
-        local zone = CircleZone:Create(v.centre, v.radius, {
-            name = "greenzone-"..k,
-            debugPoly = Zones["Config"].debug,
-        })
+AddEventHandler('onResourceStart', function(resourceName)
+    if resourceName == GetCurrentResourceName() then
+        isLoggedIn = true
+        PlayerGang = ProjectRP.Functions.GetPlayerData().gang
+        PlayerJob = ProjectRP.Functions.GetPlayerData().job
+    end
+end)
 
-        local blip = AddBlipForRadius(v.centre.x, v.centre.y, v.centre.z, v.radius)
-        SetBlipAlpha(blip, 80) -- Change opacity here
-        SetBlipColour(blip, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
+RegisterNetEvent("prp-gangs:client:updateTerritories")
+AddEventHandler("prp-gangs:client:updateTerritories", function(newTerritories)
+    if PlayerGang.name ~= "none" then
+        Wait(500)
+        CreateThread(function()
+            for k, v in pairs(newTerritories) do
+                local zone = CircleZone:Create(v.centre, v.radius, {
+                    name = "greenzone-"..k,
+                    debugPoly = Zones["Config"].debug,
+                })
 
-        -- local blip2 = AddBlipForCoord(v.centre.x, v.centre.y, v.centre.z)
-        -- SetBlipSprite (blip2, v.blip)
-        -- SetBlipDisplay(blip2, 4)
-        -- SetBlipAsShortRange(blip2, true)
-        -- SetBlipColour(blip2, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
-        -- BeginTextCommandSetBlipName("STRING")
-        -- AddTextComponentSubstringPlayerName(Zones["Gangs"][v.winner].name)
-        -- EndTextCommandSetBlipName(blip2)
+                local blip = AddBlipForRadius(v.centre.x, v.centre.y, v.centre.z, v.radius)
+                SetBlipAlpha(blip, 80) -- Change opacity here
+                SetBlipColour(blip, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
 
-        Territories[k] = {
-            zone = zone,
-            id = k,
-            blip = blip
-        }
+                -- local blip2 = AddBlipForCoord(v.centre.x, v.centre.y, v.centre.z)
+                -- SetBlipSprite (blip2, v.blip)
+                -- SetBlipDisplay(blip2, 4)
+                -- SetBlipAsShortRange(blip2, true)
+                -- SetBlipColour(blip2, Zones["Gangs"][v.winner].color ~= nil and Zones["Gangs"][v.winner].color or Zones["Gangs"]["neutral"].color)
+                -- BeginTextCommandSetBlipName("STRING")
+                -- AddTextComponentSubstringPlayerName(Zones["Gangs"][v.winner].name)
+                -- EndTextCommandSetBlipName(blip2)
+
+                Territories[k] = {
+                    zone = zone,
+                    id = k,
+                    blip = blip
+                }
+            end
+        end)
     end
 end)
 
@@ -111,20 +124,20 @@ CreateThread(function()
                 if Territories[k].zone:isPointInside(pedCoords) then
                     insidePoint = true
                     activeZone = Territories[k].id
-                    TriggerEvent("ProjectRP:Notify",Lang:t("error.enter_gangzone"), "error")
+                    -- TriggerEvent("ProjectRP:Notify",Lang:t("error.enter_gangzone"), "error")
 
                     while insidePoint == true do   
                         exports['prp-core']:DrawText(Lang:t("error.hostile_zone"),'right')
                         if PlayerGang.name ~= "none" then
                             TriggerServerEvent("prp-gangs:server:updateterritories", activeZone, true) 
-                        end   
+                        end
                         if not Territories[k].zone:isPointInside(GetEntityCoords(PlayerPed)) then
                             if PlayerGang.name ~= "none" then
                                 TriggerServerEvent("prp-gangs:server:updateterritories", activeZone, false)
                             end
                             insidePoint = false
                             activeZone = nil
-                            ProjectRP.Functions.Notify(Lang:t("error.leave_gangzone"), "error")
+                            -- ProjectRP.Functions.Notify(Lang:t("error.leave_gangzone"), "error")
                         end
                         Wait(1000)
                     end

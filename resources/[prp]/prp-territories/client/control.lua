@@ -46,10 +46,7 @@ AddEventHandler('rcore_spray:spray', function(text)
             ResetFormattedText()
             WarMenu.OpenMenu('spray')
         else
-            TriggerEvent('chat:addMessage', {
-                templateId = 'warning',
-                args = {Config.Text.USAGE}
-            })
+            TriggerClientEvent('ProjectRP:Notify', src, Config.Text.USAGE, 'error')
         end
     end
 end, false)
@@ -92,17 +89,16 @@ end)
 
 function PersistSpray()
     IsSpraying = false
-        
+
     local rayEndCoords, rayNormal, sprayFwdVector = FindRaycastedSprayCoords()
     if rayEndCoords and rayNormal then
         local sprayLocation = rayEndCoords + sprayFwdVector * SPRAY_FORWARD_OFFSET
-        
 
         local ped = PlayerPedId()
 
         local canPos = vector3(0.072, 0.041, -0.06)
         local canRot = vector3(33.0, 38.0, 0.0)
-    
+
         local canObj = CreateObject(
             `ng_proc_spraycan01b`,
             0.0, 0.0, 0.0,
@@ -134,8 +130,7 @@ function PersistSpray()
             function() -- success
                 TriggerServerEvent('rcore_spray:addSpray', {
                     location = sprayLocation,
-                    realRotation = currentComputedRotation, 
-                    
+                    realRotation = currentComputedRotation,
                     scale = (SprayScaleSelect[SprayScale] / 10.0) * FONTS[SprayFont].sizeMult,
                     text = FormattedSprayText,
                     font = FONTS[SprayFont].font,
@@ -181,7 +176,7 @@ function SprayEffects()
 	end
 
 	local pointers = {}
-    
+
     local color = COLORS[SprayColor]['color'].rgb
 
     local heading = GetEntityHeading(ped)

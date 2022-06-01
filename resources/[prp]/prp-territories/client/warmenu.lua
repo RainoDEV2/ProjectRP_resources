@@ -207,9 +207,9 @@ function WarMenu.CreateMenu(id, title)
 	menus[id].currentOption = 1
 	menus[id].maxOptionCount = 10
 
-	menus[id].titleFont = 1
+	menus[id].titleFont = 4
 	menus[id].titleColor = { r = 0, g = 0, b = 0, a = 255 }
-	menus[id].titleBackgroundColor = { r = 245, g = 127, b = 23, a = 255 }
+	menus[id].titleBackgroundColor = { r = 134, g = 27, b = 242, a = 255 }
 	menus[id].titleBackgroundSprite = nil
 
 	menus[id].menuTextColor = { r = 255, g = 255, b = 255, a = 255 }

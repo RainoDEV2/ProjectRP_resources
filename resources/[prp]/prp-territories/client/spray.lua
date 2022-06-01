@@ -58,6 +58,19 @@ AddEventHandler('rcore_spray:setSprays', function(s)
     SPRAYS = s
 
     SetSprayTimeCorrectColor()
+
+    local NEW_TERREITORIES = {}
+    for k, v in pairs(SPRAYS) do
+        NEW_TERREITORIES[k] = {
+            centre = v.location,
+            radius = 75.0,
+            winner = v.gang,
+            occupants={}
+        }
+    end
+    Zones["Territories"] = NEW_TERREITORIES
+    Wait(500)
+    TriggerEvent("prp-gangs:client:updateTerritories", Zones["Territories"])
 end)
 
 AddEventHandler('playerSpawned', function()
