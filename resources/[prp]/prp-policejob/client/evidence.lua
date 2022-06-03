@@ -30,6 +30,7 @@ local WhitelistedWeapons = {
     `weapon_stungun`,
     `weapon_petrolcan`,
     `weapon_hazardcan`,
+    `weapon_shoe`,
     `weapon_fireextinguisher`
 }
 
