@@ -103,8 +103,8 @@ Config.SecurityCameras = {
 Config.AuthorizedVehicles = {
 	-- Grade 0
 	[0] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -115,8 +115,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 1
 	[1] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -127,8 +127,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 2
 	[2] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -139,8 +139,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 3
 	[3] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -151,8 +151,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 4
 	[4] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -163,8 +163,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 5
 	[5] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -175,8 +175,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 6
 	[6] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -190,8 +190,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 7
 	[7] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
@@ -205,8 +205,8 @@ Config.AuthorizedVehicles = {
 	},
 	-- Grade 8
 	[8] = {
-		["npolvic"] = "Crown Vic",
-		["11cvpiv"] = "Crown Vic (2011)",
+		-- ["npolvic"] = "Crown Vic",
+		["11cvpiv"] = "Crown Vic",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
