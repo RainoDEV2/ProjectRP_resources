@@ -105,12 +105,25 @@ Config.AuthorizedVehicles = {
 	[0] = {
 		["npolvic"] = "Crown Vic",
 		["11cvpiv"] = "Crown Vic (2011)",
+		["18taurusvw"] = "Police Taurus",
+		["13capricevw"] = "Police Caprice",
+		["16fpiuvw"] = "Police Explorer",
+		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
+        ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 1
 	[1] = {
 		["npolvic"] = "Crown Vic",
 		["11cvpiv"] = "Crown Vic (2011)",
 		["18taurusvw"] = "Police Taurus",
+		["13capricevw"] = "Police Caprice",
+		["16fpiuvw"] = "Police Explorer",
+		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
+        ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 2
 	[2] = {
@@ -118,6 +131,11 @@ Config.AuthorizedVehicles = {
 		["11cvpiv"] = "Crown Vic (2011)",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
+		["16fpiuvw"] = "Police Explorer",
+		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
+        ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 3
 	[3] = {
@@ -125,7 +143,11 @@ Config.AuthorizedVehicles = {
 		["11cvpiv"] = "Crown Vic (2011)",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
+		["16fpiuvw"] = "Police Explorer",
 		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
+        ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 4
 	[4] = {
@@ -133,8 +155,11 @@ Config.AuthorizedVehicles = {
 		["11cvpiv"] = "Crown Vic (2011)",
 		["18taurusvw"] = "Police Taurus",
 		["13capricevw"] = "Police Caprice",
-		["psp_bmwgs"] = "Police Bike",
 		["16fpiuvw"] = "Police Explorer",
+		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
+        ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 5
 	[5] = {
@@ -144,7 +169,9 @@ Config.AuthorizedVehicles = {
 		["13capricevw"] = "Police Caprice",
 		["16fpiuvw"] = "Police Explorer",
 		["psp_bmwgs"] = "Police Bike",
+		["18f150vw"] = "Police F150",
         ["18chargervw"] = "Police Charger",
+        ["21durangovw"] = "Police Durango",
 	},
 	-- Grade 6
 	[6] = {
@@ -332,7 +359,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 3,
-            authorizedJobGrades = {2, 3, 4, 5, 6, 7, 8, 9}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [4] = {
             name = "weapon_smg",
@@ -347,7 +374,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 4,
-            authorizedJobGrades = {3, 4, 5, 6, 7, 8, 9}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [5] = {
             name = "weapon_m4",
@@ -362,7 +389,7 @@ Config.Items = {
             },
             type = "weapon",
             slot = 5,
-            authorizedJobGrades = {5, 6, 7, 8, 9}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         -- [6] = {
         --     name = "WEAPON_SPECIALCARBINE_MK2",
@@ -400,7 +427,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 9,
-            authorizedJobGrades = {2, 3, 4, 5, 6, 7, 8}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [10] = {
             name = "smg_ammo",
@@ -409,7 +436,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 10,
-            authorizedJobGrades = {3, 4, 5, 6, 7, 8}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [11] = {
             name = "rifle_ammo",
@@ -418,7 +445,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 11,
-            authorizedJobGrades = {5, 6, 7, 8}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [12] = {
             name = "handcuffs",
@@ -454,7 +481,7 @@ Config.Items = {
             info = {},
             type = "item",
             slot = 15,
-            authorizedJobGrades = {1, 2, 3, 4, 5, 6, 7, 8}
+            authorizedJobGrades = {0, 1, 2, 3, 4, 5, 6, 7, 8 ,9}
         },
         [16] = {
             name = "armor",
