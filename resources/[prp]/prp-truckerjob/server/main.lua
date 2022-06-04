@@ -53,12 +53,3 @@ RegisterNetEvent('prp-trucker:server:01101110', function(drops)
     Player.Functions.AddMoney("bank", payment, "trucker-salary")
     TriggerClientEvent('ProjectRP:Notify', src, Lang:t("success.you_earned", {value = payment}), 'success')
 end)
-
-RegisterNetEvent('prp-trucker:server:nano', function()
-    local chance = math.random(1,100)
-    if chance < 26 then
-        local xPlayer = ProjectRP.Functions.GetPlayer(tonumber(source))
-        xPlayer.Functions.AddItem("cryptostick", 1, false)
-        TriggerClientEvent('inventory:client:ItemBox', source, ProjectRP.Shared.Items["cryptostick"], "add")
-    end
-end)

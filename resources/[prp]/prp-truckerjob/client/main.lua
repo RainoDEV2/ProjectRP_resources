@@ -373,7 +373,6 @@ RegisterNetEvent('prp-truckerjob:client:PaySlip', function()
     else
         ProjectRP.Functions.Notify(Lang:t("error.no_work_done"), "error")
     end
-
 end)
 
 RegisterNetEvent('prp-trucker:client:GetInTrunk', function()
@@ -430,7 +429,6 @@ RegisterNetEvent('prp-trucker:client:Deliver', function()
             exports['prp-core']:HideText()
             Delivering = false
             showMarker = false
-            TriggerServerEvent('prp-trucker:server:nano')
             if CurrentBlip ~= nil then
                 RemoveBlip(CurrentBlip)
                 ClearAllBlipRoutes()
