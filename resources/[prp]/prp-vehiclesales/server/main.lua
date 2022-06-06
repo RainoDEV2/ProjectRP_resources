@@ -68,7 +68,7 @@ AddEventHandler('prp-occasions:server:sellVehicleBack', function(vData)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     local cid = Player.PlayerData.citizenid
-    local price = math.floor((vData.price / Config.SellAmount) * 100))
+    local price = math.floor(vData.price * Config.SellAmount)
     local plate = vData.plate
 
     Player.Functions.AddMoney('bank', price)
