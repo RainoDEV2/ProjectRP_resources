@@ -1086,6 +1086,13 @@ Config.JobInteractions = {
                 }
             }
         }, {
+            id = 'checkvin',
+            title = 'Check VIN',
+            icon = 'search',
+            type = 'client',
+            event = 'jl-carboost:client:checkvin',
+            shouldClose = true
+        }, {
             id = 'policeobjects',
             title = 'Objects',
             icon = 'road',

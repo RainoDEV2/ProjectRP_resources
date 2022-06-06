@@ -12,13 +12,13 @@ Citizen.CreateThread(function()
 	AddTextEntry('m3e36', 'BMW M3 E36')
 	AddTextEntry('nspeedo', 'Vapid Speedo Express')
 
-
 	--First Pack (4 Doors)
 	AddTextEntry('G632019', '2019 Mercedes G63')
 	AddTextEntry('mers18', 'Renault Megane')
 	AddTextEntry('a8fsi', 'Audi A8')
 	AddTextEntry('kiagt', 'Kia Stinger')
 
-
-	
+	-- Second Pack (Boosting)
+	AddTextEntry('subwrx', '2004 Subaru Impreza WRX STI')
+	AddTextEntry('trhawk', '2018 Jeep Grand Cherokee Trackhawk Series IV')
 end)

@@ -206,6 +206,7 @@ RegisterNetEvent('prp-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('ProjectRP:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('prp-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('cash', vehiclePrice, 'vehicle-bought-in-showroom')
+        exports['jl-carboost']:AddVIN(plate)
 
         TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (pdm)]", "blue",
         '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. cid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player bought a vehicle```\n **Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
@@ -223,9 +224,10 @@ RegisterNetEvent('prp-vehicleshop:server:buyShowroomVehicle', function(vehicle)
         TriggerClientEvent('ProjectRP:Notify', src, 'Congratulations on your purchase!', 'success')
         TriggerClientEvent('prp-vehicleshop:client:buyShowroomVehicle', src, vehicle, plate)
         pData.Functions.RemoveMoney('bank', vehiclePrice, 'vehicle-bought-in-showroom')
-            TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (pdm)]", "blue",
-            '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. cid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player bought a vehicle```\n **Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
-            )
+        exports['jl-carboost']:AddVIN(plate)
+        TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "[Vehicle Purchased (pdm)]", "blue",
+        '**Name**\n```Steam Name: ' .. GetPlayerName(src) .. ' (citizenid: ' .. cid .. ' | id: ' .. src .. ' | Character Name: ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.firstname .. ' ' .. ProjectRP.Functions.GetPlayer(src).PlayerData.charinfo.lastname .. ')```\n **Details**\n``` Player bought a vehicle```\n **Vehicle Details:** ```[Plate: '..plate..'] [Vehicle: '..vehicle..'] [Price: '..vehiclePrice..']``` '
+        )
     else
         TriggerClientEvent('ProjectRP:Notify', src, 'Not enough money', 'error')
     end

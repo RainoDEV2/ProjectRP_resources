@@ -1,5 +1,7 @@
 Config = Config or {}
 
+Config.SellAmount = 0.10 -- as a percentage so "0.10" = 10%
+
 Config.BusinessName = "Vehicle Sales Contract - Larry's Vehicle Sales"
 Config.SellVehicle = vector3(1235.43, 2730.95, 37.91)
 Config.SellVehicleBack = vector3(1235.1, 2740.7, 37.68)

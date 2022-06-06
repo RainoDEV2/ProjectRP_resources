@@ -32,6 +32,12 @@ Config = {
             image = 'images/decryptomatic.png',
             itemscode = "decryptor"
         },
+        [5] = {
+            price = 0.5,
+            name = 'Vehicle Hacking Device',
+            image = 'images/hacking_device.png',
+            itemscode = "hacking_device"
+        },
         --- Add More Here
     },
     ['LocationSets'] = {

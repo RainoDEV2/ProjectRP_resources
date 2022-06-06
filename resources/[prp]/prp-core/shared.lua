@@ -515,7 +515,7 @@ PRPShared.Items = {
 	['firework4'] 				 	 = {['name'] = 'firework4', 			  	  	['label'] = 'Weeping Willow', 			['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'firework4.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Fireworks'},
 	['iphone'] 				 	 	 = {['name'] = 'iphone', 			  	  		['label'] = 'iPhone', 				    ['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'iphone.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Very expensive phone'},
 	['samsungphone'] 				 = {['name'] = 'samsungphone', 			  	  	['label'] = 'Samsung S10', 				['weight'] = 1000, 		['type'] = 'item', 		['image'] = 'samsungphone.png', 		['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Very expensive phone'},
-	['laptop'] 				 		 = {['name'] = 'laptop', 			  	  		['label'] = 'Laptop', 					['weight'] = 4000, 		['type'] = 'item', 		['image'] = 'laptop.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Expensive laptop'},
+	['laptop'] 				 		 = {['name'] = 'laptop', 			  	  		['label'] = 'Laptop', 					['weight'] = 4000, 		['type'] = 'item', 		['image'] = 'laptop.png', 				['unique'] = true, 		['useable'] = true, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Expensive laptop'},
 	['tablet'] 				 		 = {['name'] = 'tablet', 			  	  		['label'] = 'Tablet', 					['weight'] = 2000, 		['type'] = 'item', 		['image'] = 'tablet.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Expensive tablet'},
 	['lighter'] 				 	 = {['name'] = 'lighter', 			  	  		['label'] = 'Lighter', 					['weight'] = 0, 		['type'] = 'item', 		['image'] = 'lighter.png', 				['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'On new years eve a nice fire to stand next to'},
 	['certificate'] 				 = {['name'] = 'certificate', 			  	  	['label'] = 'Certificate', 				['weight'] = 0, 		['type'] = 'item', 		['image'] = 'certificate.png', 			['unique'] = false, 	['useable'] = false, 	['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = 'Certificate that proves you own certain stuff'},
@@ -805,6 +805,11 @@ PRPShared.Items = {
 	['stolencard'] 				 	= {['name'] = 'stolencard', 			    ['label'] = 'Stolen ATM Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'visacard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = true,     ['combinable'] = {accept = {'electronickit'}, reward = 'hackcard', anim = {['dict'] = 'anim@amb@business@bgen@bgen_inspecting@', ['lib'] = 'inspecting_low_idle_01_inspector', ['text'] = 'Crafting ATM hacking card', ['timeOut'] = 7500,}},   ['description'] = 'What will you do with someone else\'s ATM card?'},
 	['hackcard'] 				 	= {['name'] = 'hackcard', 			    	['label'] = 'Hacking Card', 			['weight'] = 100, 	    ['type'] = 'item', 		['image'] = 'hackcard.png', 			['unique'] = false, 	['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Modified debit card'},
 	['decryptor'] 				 	= {['name'] = 'decryptor', 			    	['label'] = 'Decrypt-o-matic', 			['weight'] = 300, 	    ['type'] = 'item', 		['image'] = 'decryptomatic.png', 		['unique'] = true, 	    ['useable'] = true, 	['shouldClose'] = false,    ['combinable'] = nil,   ['description'] = 'Decrypt PIN based encryptions'},
+
+	-- Hacking
+	['hacking_device']			  	= {['name'] = "hacking_device",				['label'] = "Hacking device",			['weight'] = 500,		['type'] = 'item', 		['image'] = 'hacking_device.png',		['unique'] = true,		['useable']	= true,		['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = "A multi purpose hacking device"},
+	-- Fake Plate
+	['fake_plate']					= {['name'] = 'fake_plate',					['label'] = "Plate Number",				['weight'] = 500,		['type'] = 'item',		['image'] = 'fake_plate.png',			['unique'] = true,		['useable'] = true,		['shouldClose'] = true,	   ['combinable'] = nil,   ['description'] = "A fake plate?"},
 
     ["companionhusky"] = {
         ["name"] = "companionhusky",
@@ -3716,6 +3721,15 @@ PRPShared.Vehicles = {
 		['hash'] = `G632019`,
 		['shop'] = 'luxury',
 	},
+	['trhawk'] = {
+		['name'] = 'Trackhawk Series IV',
+		['brand'] = 'Jeep',
+		['model'] = 'trhawk',
+		['price'] = 845000,
+		['category'] = 'suvs',
+		['hash'] = `trhawk`,
+		['shop'] = 'none',
+	},
 	--- Sedans
 	['asea'] = {
 		['name'] = 'Asea',
@@ -4752,6 +4766,15 @@ PRPShared.Vehicles = {
 		['category'] = 'sports',
 		['hash'] = `rt3000`,
 		['shop'] = 'luxury',
+	},
+	['subwrx'] = {							--DLC +set sv_enforceGameBuild 2372
+		['name'] = '2004 WRX STI',
+		['brand'] = 'Subaru',
+		['model'] = 'subwrx',
+		['price'] = 669000,
+		['category'] = 'sports',
+		['hash'] = `subwrx`,
+		['shop'] = 'none',
 	},
 	--- Sports Classic
 	['ardent'] = {

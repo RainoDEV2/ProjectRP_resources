@@ -68,12 +68,15 @@ AddEventHandler('prp-occasions:server:sellVehicleBack', function(vData)
     local src = source
     local Player = ProjectRP.Functions.GetPlayer(src)
     local cid = Player.PlayerData.citizenid
-    local price = math.floor(vData.price / 2)
+    local price = math.floor((vData.price / Config.SellAmount) * 100))
     local plate = vData.plate
 
     Player.Functions.AddMoney('bank', price)
     TriggerClientEvent('ProjectRP:Notify', src, 'You have sold your car for $' .. price, 'success', 5500)
     exports.oxmysql:execute('DELETE FROM player_vehicles WHERE plate = ?', {plate})
+
+    TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "Vehicle Sold to Larry", "red",
+        "**" .. GetPlayerName(src) .. "** sold a " .. vData.model .. " for " .. vData.price)
 end)
 
 RegisterServerEvent('prp-occasions:server:buyVehicle')

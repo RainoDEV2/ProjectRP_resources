@@ -127,6 +127,13 @@ function ProjectRP.Player.CheckPlayerData(source, PlayerData)
     PlayerData.gang.grade = PlayerData.gang.grade or {}
     PlayerData.gang.grade.name = PlayerData.gang.grade.name or 'none'
     PlayerData.gang.grade.level = PlayerData.gang.grade.level or 0
+    -- Car Boosting
+    PlayerData.metadata['carboostclass'] = PlayerData.metadata['carboostclass'] or 'D'
+    PlayerData.metadata['carboostrep'] = PlayerData.metadata['carboostrep'] or 0
+    PlayerData.metadata['laptopdata'] = PlayerData.metadata['laptopdata'] or {
+        wallpaper = 'default',
+        apps = {}
+    }
     -- Other
     PlayerData.position = PlayerData.position or PRPConfig.DefaultSpawn
     PlayerData.LoggedIn = true

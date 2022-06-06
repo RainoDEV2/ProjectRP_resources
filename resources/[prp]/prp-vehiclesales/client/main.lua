@@ -56,7 +56,7 @@ Citizen.CreateThread(function()
                                 sellVehData.price = tonumber(v["price"])
                             end
                         end
-                    DrawText3Ds(Config.SellVehicleBack.x, Config.SellVehicleBack.y, Config.SellVehicleBack.z, '[~g~E~w~] - Sell Vehicle To Dealer For ~g~$'..math.floor(sellVehData.price / 2))
+                    DrawText3Ds(Config.SellVehicleBack.x, Config.SellVehicleBack.y, Config.SellVehicleBack.z, '[~g~E~w~] - Sell Vehicle To Dealer For ~g~$'..math.floor((sellVehData.price / Config.SellAmount) * 100))
                     if IsControlJustPressed(0, 38) then
                         ProjectRP.Functions.TriggerCallback('prp-garage:server:checkVehicleOwner', function(owned)
                             if owned then
