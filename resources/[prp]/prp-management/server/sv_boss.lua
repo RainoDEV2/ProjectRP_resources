@@ -163,6 +163,10 @@ RegisterNetEvent('prp-bossmenu:server:FireEmployee', function(target)
 
 	if Employee then
 		if target ~= Player.PlayerData.citizenid then
+			local cid = Employee.PlayerData.citizenid
+			local job = Player.PlayerData.job.name
+			MySQL.execute('DELETE FROM `player_jobs` WHERE `cid` = ? and `job` = ?', {cid, job})
+
 			if Player.PlayerData.job.name == Employee.PlayerData.job.name then
 				if Employee.Functions.SetJob("unemployed", '0') then
 					TriggerEvent("prp-log:server:CreateLog", "bossmenu", "Job Fire", "red", Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. ' successfully fired ' .. Employee.PlayerData.charinfo.firstname .. " " .. Employee.PlayerData.charinfo.lastname .. " (" .. Player.PlayerData.job.name .. ")", false)
@@ -172,9 +176,6 @@ RegisterNetEvent('prp-bossmenu:server:FireEmployee', function(target)
 					TriggerClientEvent('ProjectRP:Notify', src, "Error..", "error")
 				end
 			else
-				local cid = Employee.PlayerData.citizenid
-				local job = Player.PlayerData.job.name
-				MySQL.execute('DELETE FROM `player_jobs` WHERE `cid` = ? and `job` = ?', {cid, job})
 				TriggerEvent("prp-log:server:CreateLog", "bossmenu", "Job Fire", "red", Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. ' successfully fired ' .. Employee.PlayerData.charinfo.firstname .. " " .. Employee.PlayerData.charinfo.lastname .. " (" .. Player.PlayerData.job.name .. ")", false)
 				TriggerClientEvent('ProjectRP:Notify', src, "Employee fired!", "success")
 				TriggerClientEvent('ProjectRP:Notify', Employee.PlayerData.source , "You have been fired from " .. Player.PlayerData.job.label .. "!", "error")
