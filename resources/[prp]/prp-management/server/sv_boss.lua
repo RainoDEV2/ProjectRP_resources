@@ -103,7 +103,8 @@ ProjectRP.Functions.CreateCallback('prp-bossmenu:server:GetEmployees', function(
 	if not Player.PlayerData.job.isboss then ExploitBan(src, 'GetEmployees Exploiting') return end
 
 	local employees = {}
-	local players = MySQL.Sync.fetchAll("SELECT * FROM `players` WHERE `job` LIKE '%".. jobname .."%'", {})
+	-- local players = MySQL.Sync.fetchAll("SELECT * FROM `players` WHERE `job` LIKE '%".. jobname .."%'", {})
+	local players = MySQL.Sync.fetchAll("SELECT * FROM `players` WHERE `citizenid` IN (SELECT cid FROM player_jobs WHERE job LIKE '%".. jobname .."%')", {})
 	if players[1] ~= nil then
 		for key, value in pairs(players) do
 			local isOnline = ProjectRP.Functions.GetPlayerByCitizenId(value.citizenid)
@@ -162,12 +163,21 @@ RegisterNetEvent('prp-bossmenu:server:FireEmployee', function(target)
 
 	if Employee then
 		if target ~= Player.PlayerData.citizenid then
-			if Employee.Functions.SetJob("unemployed", '0') then
+			if Player.PlayerData.job.name == Employee.PlayerData.job.name then
+				if Employee.Functions.SetJob("unemployed", '0') then
+					TriggerEvent("prp-log:server:CreateLog", "bossmenu", "Job Fire", "red", Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. ' successfully fired ' .. Employee.PlayerData.charinfo.firstname .. " " .. Employee.PlayerData.charinfo.lastname .. " (" .. Player.PlayerData.job.name .. ")", false)
+					TriggerClientEvent('ProjectRP:Notify', src, "Employee fired!", "success")
+					TriggerClientEvent('ProjectRP:Notify', Employee.PlayerData.source , "You have been fired! Good luck.", "error")
+				else
+					TriggerClientEvent('ProjectRP:Notify', src, "Error..", "error")
+				end
+			else
+				local cid = Employee.PlayerData.citizenid
+				local job = Player.PlayerData.job.name
+				MySQL.execute('DELETE FROM `player_jobs` WHERE `cid` = ? and `job` = ?', {cid, job})
 				TriggerEvent("prp-log:server:CreateLog", "bossmenu", "Job Fire", "red", Player.PlayerData.charinfo.firstname .. " " .. Player.PlayerData.charinfo.lastname .. ' successfully fired ' .. Employee.PlayerData.charinfo.firstname .. " " .. Employee.PlayerData.charinfo.lastname .. " (" .. Player.PlayerData.job.name .. ")", false)
 				TriggerClientEvent('ProjectRP:Notify', src, "Employee fired!", "success")
-				TriggerClientEvent('ProjectRP:Notify', Employee.PlayerData.source , "You have been fired! Good luck.", "error")
-			else
-				TriggerClientEvent('ProjectRP:Notify', src, "Error..", "error")
+				TriggerClientEvent('ProjectRP:Notify', Employee.PlayerData.source , "You have been fired from " .. Player.PlayerData.job.label .. "!", "error")
 			end
 		else
 			TriggerClientEvent('ProjectRP:Notify', src, "You can\'t fire yourself", "error")

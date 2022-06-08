@@ -1192,6 +1192,17 @@ Config.JobInteractions = {
             shouldClose = true,
             img = "<center><p><img src=https://static.wikia.nocookie.net/gtawiki/images/1/10/VanillaUnicorn-GTAV-Logo.png width=150px></p>"
         }
+    },
+    ["catcafe"] = {
+        {
+            id = 'catcafecharge',
+            title = 'Charage Customer',
+            icon = 'coins',
+            type = 'client',
+            event = "prp-payments:client:Charge",
+            shouldClose = true,
+            img = "<center><p><img src=https://i.imgur.com/03eA7N0.png width=100px></p>"
+        }
     }
 }
 
