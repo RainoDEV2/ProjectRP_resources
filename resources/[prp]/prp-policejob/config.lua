@@ -97,6 +97,7 @@ Config.SecurityCameras = {
         [32] = {label = "Vangelico Jewelery CAM#2", coords = vector3(-627.51, -229.51, 40.24), r = {x = -35.0, y = 0.0, z = -95.78}, canRotate = true, isOnline = true},
         [33] = {label = "Vangelico Jewelery CAM#3", coords = vector3(-620.3, -224.31, 40.23), r = {x = -35.0, y = 0.0, z = 165.78}, canRotate = true, isOnline = true},
         [34] = {label = "Vangelico Jewelery CAM#4", coords = vector3(-622.57, -236.3, 40.31), r = {x = -35.0, y = 0.0, z = 5.78}, canRotate = true, isOnline = true},
+        [35] = {label = "Cat Cafe", coords = vector3(-586.19, -1057.19, 23.79), r = {x = -35.0, y = 0.0, z = 5.78}, canRotate = true, isOnline = true},
     },
 }
 
