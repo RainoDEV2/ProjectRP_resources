@@ -76,7 +76,7 @@ AddEventHandler('prp-occasions:server:sellVehicleBack', function(vData)
     exports.oxmysql:execute('DELETE FROM player_vehicles WHERE plate = ?', {plate})
 
     TriggerEvent("prp-log:server:CreateLog", "vehicleshop", "Vehicle Sold to Larry", "red",
-        "**" .. GetPlayerName(src) .. "** sold a " .. vData.model .. " for " .. vData.price)
+        "**" .. GetPlayerName(src) .. "** sold a " .. vData.model .. " for " .. price)
 end)
 
 RegisterServerEvent('prp-occasions:server:buyVehicle')

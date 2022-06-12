@@ -233,7 +233,7 @@ end)
 ProjectRP.Commands.Add('settier', 'Set Boosting Tier', {
    {
       name = 'tier',
-      help = 'Tier of contract, D,C,B,A,A+,S,S+'
+      help = 'Tier of contract, D,C,B,A,S,S+'
    },
    {
       name = 'id',
@@ -263,7 +263,7 @@ end, 'admin')
 ProjectRP.Commands.Add('giveContract', 'Give contract, admin only', {
    {
       name = 'tier',
-      help = 'Tier of contract, D, C, B, A, A+, S, S+',
+      help = 'Tier of contract, D, C, B, A, S, S+',
    },
    {
       name = 'playerid',
@@ -715,7 +715,6 @@ function RandomTier(tier)
       'C',
       'B',
       'A',
-      'A+',
       'S',
       'S+'
    }
@@ -730,12 +729,6 @@ function RandomTier(tier)
          return 'S'
       else
          return tierName[math.random(1, 5)]
-      end
-   elseif tier == 'A+' then
-      if chance >= 70 then
-         return 'A+'
-      else
-         return tierName[math.random(1, 4)]
       end
    elseif tier == 'A' then
       if chance >= 70 then

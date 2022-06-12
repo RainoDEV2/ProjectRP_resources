@@ -16,17 +16,17 @@ Config.Inventory = 'prp-inventory/html/images/' -- prp-inventory/html/images/
 
 Config.MinimumPolice = 1 -- Minimum police
 
-Config.WaitTime = 1 -- Time to wait to get first contract, (in minutes)
+Config.WaitTime = 8 -- Time to wait to get first contract, (in minutes)
 
 Config.MaxContract = 5 -- Max contract that you can handle
 
 Config.MaxQueueContract = 2 -- Max contract per session / per WaitTime
 
-Config.Expire = 6 -- Expire time it'll be random, from 1 to this config
+Config.Expire = 5 -- Expire time it'll be random, from 1 to this config
 
-Config.MinRep = 10 -- Minimum reputation that you can get after finish contract
+Config.MinRep = 8 -- Minimum reputation that you can get after finish contract
 
-Config.MaxRep = 30 -- Maximum reputation that you can get after finish contract
+Config.MaxRep = 14 -- Maximum reputation that you can get after finish contract
 
 Config.Payment = 'crypto' -- crypto / bank
 
@@ -88,7 +88,14 @@ Config.Tier = {
             },
         },
         car = {
-            'rebla',
+            'asbo',
+            'weevil',
+            'dynasty',
+            'superd',
+            'rhapsody',
+            'brioso2',
+            'camper',
+            'bison',
             'dilettante'
         },
         priceminimum = 4,
@@ -157,6 +164,11 @@ Config.Tier = {
             },
         },
         car = {
+            'blista3',
+            'kanjo',
+            'schwarzer',
+            'penumbra',
+            'streiter',
             'issi3',
             'rapidgt'
         },
@@ -179,7 +191,14 @@ Config.Tier = {
             }
         },
         car = {
+            'warrener2',
+            'rebla',
             'issi2',
+            'zion',
+            'kanjo',
+            'comet4',
+            'kuruma',
+            'sultan',
             'sentinel3'
         },
         priceminimum = 6,
@@ -200,34 +219,60 @@ Config.Tier = {
             }
         },
         car = {
-            'italigto',
-            'paragon'
+            'dominator8',
+            'dominator8',
+            'dominator8',
+            'remus',
+            'remus',
+            'remus',
+            'rt3000',
+            'rt3000',
+            'rt3000',
+            'jester4',
+            'jester4',
+            'jester4',
+            'growler',
+            'growler',
+            'growler',
+            'vectre',
+            'vectre',
+            'vectre',
+            'cypher',
+            'cypher',
+            'cypher',
+            'bullet',
+            'bullet',
+            'bullet',
+            'dominator7',
+            'dominator7',
+            'dominator7',
+            'zr350',
+            'zr350',
+            'zr350',
+            'previon',
+            'previon',
+            'previon',
+            'tailgater2',
+            'tailgater2',
+            'tailgater2',
+            'sultan3',
+            'sultan3',
+            'sultan3',
+            'komoda',
+            'komoda',
+            'komoda',
+            'euros',
+            'euros',
+            'euros',
+            'paragon',
+            'paragon',
+            'paragon',
+            'honcrx91',
         },
         priceminimum = 10,
-        pricemaximum = 12,
-        spawnnpc = true,
-        attempt = 4,
-        vinprice = 15
-    },
-    ['A+'] = {
-        location = {
-            [1] = {
-                car = vector4(215.31, 758.66, 204.65, 38.15),
-                npc = {
-                    vector3(228.68, 765.78, 204.98),
-                    vector3(199.77, 776.69, 205.97),
-                    vector3(214.39, 784.04, 204.34)
-                },
-            }
-        },
-        car = {
-            'jester4',
-            'subwrx'
-        },
-        priceminimum = 12,
         pricemaximum = 14,
         spawnnpc = true,
-        attempt = 6,
+        attempt = 5,
         vinprice = 18
     },
     ['S'] = {
@@ -250,8 +295,36 @@ Config.Tier = {
             }
         },
         car = {
+            'italigto',
+            'italigto',
+            'italigto',
+            'taipan',
+            'taipan',
+            'taipan',
+            'adder',
+            'adder',
+            'adder',
+            'zeno',
+            'zeno',
+            'zeno',
+            'reaper',
+            'reaper',
+            'reaper',
+            'sheava',
+            'sheava',
+            'sheava',
             't20',
-            'trhawk'
+            't20',
+            't20',
+            'jugular',
+            'jugular',
+            'jugular',
+            'nero2',
+            'nero2',
+            'nero2',
+            'gtr',
+            'majfd',
+            'subwrx'
         },
         priceminimum = 14,
         pricemaximum = 18,
@@ -272,8 +345,33 @@ Config.Tier = {
             },
         },
         car = {
+            'visione',
+            'visione',
+            'visione',
+            'vagner',
+            'vagner',
+            'vagner',
+            'xa21',
+            'xa21',
+            'xa21',
+            'krieger',
+            'krieger',
+            'krieger',
+            'autarch',
+            'autarch',
+            'autarch',
             'zentorno',
-            'emerus'
+            'zentorno',
+            'zentorno',
+            'ignus',
+            'ignus',
+            'ignus',
+            'emerus',
+            'emerus',
+            'emerus',
+            'trhawk',
+            'cp9a',
+            'rcf',
         },
         priceminimum = 18,
         pricemaximum = 24,

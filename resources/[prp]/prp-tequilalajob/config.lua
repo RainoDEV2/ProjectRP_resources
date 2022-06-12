@@ -165,4 +165,12 @@ Config.GalaxyItems = {
         type = "item",
         slot = 10,
     },
+    [11] = {
+        name = "hennessy",
+        price = 5,
+        amount = 500,
+        info = {},
+        type = "item",
+        slot = 11,
+    },
 }

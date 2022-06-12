@@ -26,6 +26,12 @@ ProjectRP.Functions.CreateUseableItem("rum", function(source, item)
     TriggerClientEvent("consumables:client:DrinkAlcohol", src, item.name)
 end)
 
+ProjectRP.Functions.CreateUseableItem("hennessy", function(source, item)
+    local src = source
+    local Player = ProjectRP.Functions.GetPlayer(src)
+    TriggerClientEvent("consumables:client:DrinkAlcohol", src, item.name)
+end)
+
 ProjectRP.Functions.CreateUseableItem("ecola", function(source, item)
 	local Player = ProjectRP.Functions.GetPlayer(source)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
@@ -54,13 +60,6 @@ ProjectRP.Functions.CreateUseableItem("whiskey", function(source, item)
 	local Player = ProjectRP.Functions.GetPlayer(source)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
         TriggerClientEvent('prp-items:client:drinkbeer', source, 'whiskey', 'whiskey')
-    end
-end)
-
-ProjectRP.Functions.CreateUseableItem("hennessy", function(source, item)
-	local Player = ProjectRP.Functions.GetPlayer(source)
-	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
-        TriggerClientEvent('prp-items:client:drinkbeer', source, 'hennessy', 'hennessy')
     end
 end)
 
