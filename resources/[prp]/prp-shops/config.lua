@@ -1042,17 +1042,18 @@ Config.Locations = {
         ["products"] = Config.Products["pillboxshop"],
         ["showblip"] = false,
     },
-    ["petshop"] = {
-        ["label"] = "Pet Shop",
-        ["coords"] = vector4(561.18, 2741.51, 42.87, 199.08),
-        ["ped"] = 'S_M_M_StrVend_01',
-        ["scenario"] = "WORLD_HUMAN_COP_IDLES",
-        ["radius"] = 1.5,
-        ["targetIcon"] = "fas fa-paw",
-        ["targetLabel"] = "Open Pet Shop",
-        ["products"] = Config.Products["petshop"],
-        ["showblip"] = false,
-        ["blipsprite"] = 267,
-        ["blipcolor"] = 5
-    },
+    -- ["petshop"] = {
+    --     ["label"] = "Pet Shop",
+    --     ["coords"] = vector4(561.18, 2741.51, 42.87, 199.08),
+    --     ["type"] = "normal",
+    --     ["ped"] = 'S_M_M_StrVend_01',
+    --     ["scenario"] = "WORLD_HUMAN_COP_IDLES",
+    --     ["radius"] = 1.5,
+    --     ["targetIcon"] = "fas fa-paw",
+    --     ["targetLabel"] = "Open Pet Shop",
+    --     ["products"] = Config.Products["petshop"],
+    --     ["showblip"] = false,
+    --     ["blipsprite"] = 267,
+    --     ["blipcolor"] = 5
+    -- },
 }
