@@ -120,6 +120,18 @@ Config.Teleports = {
             drawText = '[E] Leave Office'
         },
     },
+    [4] = {
+        [1] = {
+            coords = vector4(929.96, 33.92, 81.1, 151.62),
+            ["AllowVehicle"] = false, 
+            drawText = '[E] Go to roof'
+        },
+        [2] = {
+            coords = vector4(965.02, 58.63, 112.55, 63.69),
+            ["AllowVehicle"] = false,
+            drawText = '[E] Ground floor'
+        },
+    },
 }
 
 Config.Locations = { -- carwash

@@ -535,7 +535,7 @@ Config.Products = {
         },
         [2] = {
             name = 'collarpet',
-            price = 50000,
+            price = 30000,
             amount = 50,
             info = {},
             type = 'item',
@@ -543,7 +543,7 @@ Config.Products = {
         },
         [3] = {
             name = 'firstaidforpet',
-            price = 5000,
+            price = 2000,
             amount = 50,
             info = {},
             type = 'item',
@@ -559,7 +559,7 @@ Config.Products = {
         },
         [5] = {
             name = 'petwaterbottleportable',
-            price = 5000,
+            price = 2000,
             amount = 50,
             info = {},
             type = 'item',
@@ -567,7 +567,7 @@ Config.Products = {
         },
         [6] = {
             name = 'petgroomingkit',
-            price = 5000,
+            price = 2000,
             amount = 50,
             info = {},
             type = 'item',
@@ -1046,7 +1046,7 @@ Config.Locations = {
         ["label"] = "Pet Shop",
         ["type"] = "normal",
         ["coords"] = {
-            [1] = vector3(561.18, 2741.51, 42.87)
+            [1] = vector3(562.33, 2741.4, 42.87)
         },
         ["products"] = Config.Products["petshop"],
         ["showblip"] = false,

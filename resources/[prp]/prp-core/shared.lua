@@ -953,7 +953,7 @@ PRPShared.Items = {
         ["useable"] = true,
         ["shouldClose"] = true,
         ["combinable"] = true,
-        ["description"] = "Rename your pets!"
+        ["description"] = "Give your pet to a new owner!"
     },
     ["firstaidforpet"] = {
         ["name"] = "firstaidforpet",
@@ -1695,7 +1695,7 @@ PRPShared.Jobs = {
             ['0'] = { name = 'Trainee', payment = 50 },
 			['1'] = { name = 'Wait Staff', payment = 100 },
 			['2'] = { name = 'Host', payment = 125 },
-			['3'] = { name = 'Manager', payment = 150 },
+			['3'] = { name = 'Manager', isboss = true, payment = 150 },
 			['4'] = { name = 'Owner', isboss = true, payment = 25 },
         },
 	},

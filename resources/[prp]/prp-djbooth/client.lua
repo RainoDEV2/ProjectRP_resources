@@ -3,6 +3,7 @@
 local ProjectRP = exports['prp-core']:GetCoreObject()
 local currentZone = nil
 local PlayerData = {}
+local nextToBooth = false
 
 -- Handlers
 
@@ -105,10 +106,11 @@ local vanilla = BoxZone:Create(Config.Locations['vanilla'].coords, 1, 1, { name=
 vanilla:onPlayerInOut(function(isPointInside)
     if isPointInside and PlayerData.job.name == Config.Locations['vanilla'].job then
         currentZone = 'vanilla'
-        exports['prp-menu']:showHeader(musicHeader)
+        exports['prp-core']:DrawText('E - DJ Booth', 'left')
     else
         currentZone = nil
         exports['prp-menu']:closeMenu()
+        exports['prp-core']:HideText()
     end
 end)
 
@@ -116,10 +118,11 @@ local galaxy1 = BoxZone:Create(Config.Locations['galaxy1'].coords, 1, 1, { name=
 galaxy1:onPlayerInOut(function(isPointInside)
     if isPointInside and PlayerData.job.name == Config.Locations['galaxy1'].job then
         currentZone = 'galaxy1'
-        exports['prp-menu']:showHeader(musicHeader)
+        exports['prp-core']:DrawText('E - DJ Booth', 'left')
     else
         currentZone = nil
         exports['prp-menu']:closeMenu()
+        exports['prp-core']:HideText()
     end
 end)
 
@@ -127,11 +130,45 @@ local galaxy2 = BoxZone:Create(Config.Locations['galaxy2'].coords, 1, 1, { name=
 galaxy2:onPlayerInOut(function(isPointInside)
     if isPointInside and PlayerData.job.name == Config.Locations['galaxy2'].job then
         currentZone = 'galaxy2'
-        exports['prp-menu']:showHeader(musicHeader)
+        exports['prp-core']:DrawText('E - DJ Booth', 'left')
     else
         currentZone = nil
         exports['prp-menu']:closeMenu()
+        exports['prp-core']:HideText()
     end
+end)
+
+local casinoRoof = BoxZone:Create(Config.Locations['casinoRoof'].coords, 1, 1, { name="casinoRoof", heading=0 })
+casinoRoof:onPlayerInOut(function(isPointInside)
+    if isPointInside then
+        currentZone = 'casinoRoof'
+        exports['prp-core']:DrawText('E - DJ Booth', 'left')
+    else
+        currentZone = nil
+        exports['prp-menu']:closeMenu()
+        exports['prp-core']:HideText()
+    end
+end)
+
+CreateThread(function()
+    while true do
+        Wait(3)
+        if currentZone ~= nil then
+            if IsControlJustReleased(0, 38) then
+                TriggerEvent("prp-djbooth:client:playMusic")
+            end
+        end
+    end
+end)
+
+local djbooths = {}
+CreateThread(function()
+    -- casinoRoof
+    RequestModel(GetHashKey("v_club_vu_deckcase"))
+    while not HasModelLoaded(GetHashKey("v_club_vu_deckcase")) do Citizen.Wait(2) end
+    djbooths[#djbooths+1] = CreateObject(GetHashKey("v_club_vu_deckcase"), 937.75, 19.74, 112.02, false, false, false)
+    SetEntityHeading(djbooths[#djbooths], 239.6)
+    FreezeEntityPosition(djbooths[#djbooths], true)
 end)
 
 -- Events
