@@ -240,9 +240,9 @@ Garages = {
     },
     ["zerotolerance"] = {
         label = "Zero Tolerance",
-        takeVehicle = vector3(994.9, -1533.39, 30.48),
-        spawnPoint = vector4(994.9, -1533.39, 30.48, 92.71),
-        putVehicle = vector4(1000.79, -1533.17, 29.83, 91.25),
+        takeVehicle = vector3(1024.49, -2488.74, 28.53),
+        spawnPoint = vector4(1024.49, -2488.74, 28.53, 147.69),
+        putVehicle = vector3(1033.72, -2491.34, 28.52),
         showBlip = false,
         blipName = "Zero Tolerance",
         blipNumber = 357,

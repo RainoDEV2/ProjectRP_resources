@@ -394,7 +394,6 @@ end)
 
 RegisterNetEvent('police:client:GetCuffed', function(playerId, isSoftcuff)
     local ped = PlayerPedId()
-    
 
     if not isHandcuffed then
 

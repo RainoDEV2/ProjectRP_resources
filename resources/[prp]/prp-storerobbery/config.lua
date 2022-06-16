@@ -1,9 +1,9 @@
 Config = {}
 
-Config.minEarn = 243
+Config.minEarn = 643
 Config.maxEarn = 1268
 Config.RegisterEarnings = math.random(Config.minEarn, Config.maxEarn)
-Config.MinimumStoreRobberyPolice = 0
+Config.MinimumStoreRobberyPolice = 1
 
 Config.Registers = {
     [1] = {vector3(-47.24,-1757.65, 29.53), robbed = false, time = 0, safeKey = 1, camId = 4},
