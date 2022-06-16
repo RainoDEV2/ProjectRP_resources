@@ -525,56 +525,56 @@ Config.Products = {
         },
     },
     ["petshop"] = {
-        -- [1] = {
-        --     name = 'companionwesty',
-        --     price = 50000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 1
-        -- },
-        -- [2] = {
-        --     name = 'companionshepherd',
-        --     price = 150000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 2
-        -- },
-        -- [3] = {
-        --     name = 'companionretriever',
-        --     price = 50000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 3
-        -- },
-        -- [4] = {
-        --     name = 'companionrottweiler',
-        --     price = 75000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 4
-        -- },
-        -- [5] = {
-        --     name = 'companionpug',
-        --     price = 95000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 5
-        -- },
-        -- [6] = {
-        --     name = 'companionpoodle',
-        --     price = 50000,
-        --     amount = 5,
-        --     info = {},
-        --     type = 'item',
-        --     slot = 6
-        -- },
+        [1] = {
+            name = 'petfood',
+            price = 500,
+            amount = 1000,
+            info = {},
+            type = 'item',
+            slot = 1
+        },
+        [2] = {
+            name = 'collarpet',
+            price = 50000,
+            amount = 50,
+            info = {},
+            type = 'item',
+            slot = 2
+        },
+        [3] = {
+            name = 'firstaidforpet',
+            price = 5000,
+            amount = 50,
+            info = {},
+            type = 'item',
+            slot = 3
+        },
+        [4] = {
+            name = 'petnametag',
+            price = 5000,
+            amount = 50,
+            info = {},
+            type = 'item',
+            slot = 4
+        },
+        [5] = {
+            name = 'petwaterbottleportable',
+            price = 5000,
+            amount = 50,
+            info = {},
+            type = 'item',
+            slot = 5
+        },
+        [6] = {
+            name = 'petgroomingkit',
+            price = 5000,
+            amount = 50,
+            info = {},
+            type = 'item',
+            slot = 6
+        },
         -- [7] = {
-        --     name = 'companionmtlion2',
+        --     name = 'companionwesty',
         --     price = 50000,
         --     amount = 5,
         --     info = {},
@@ -582,15 +582,15 @@ Config.Products = {
         --     slot = 7
         -- },
         -- [8] = {
-        --     name = 'companioncat',
-        --     price = 50000,
+        --     name = 'companionshepherd',
+        --     price = 150000,
         --     amount = 5,
         --     info = {},
         --     type = 'item',
         --     slot = 8
         -- },
         -- [9] = {
-        --     name = 'companionmtlion',
+        --     name = 'companionretriever',
         --     price = 50000,
         --     amount = 5,
         --     info = {},
@@ -598,61 +598,61 @@ Config.Products = {
         --     slot = 9
         -- },
         -- [10] = {
-        --     name = 'companionhusky',
-        --     price = 50000,
+        --     name = 'companionrottweiler',
+        --     price = 75000,
         --     amount = 5,
         --     info = {},
         --     type = 'item',
         --     slot = 10
         -- },
-        [11] = {
-            name = 'petfood',
-            price = 500,
-            amount = 1000,
-            info = {},
-            type = 'item',
-            slot = 11
-        },
-        [12] = {
-            name = 'collarpet',
-            price = 50000,
-            amount = 50,
-            info = {},
-            type = 'item',
-            slot = 12
-        },
-        [13] = {
-            name = 'firstaidforpet',
-            price = 5000,
-            amount = 50,
-            info = {},
-            type = 'item',
-            slot = 13
-        },
-        [14] = {
-            name = 'petnametag',
-            price = 5000,
-            amount = 50,
-            info = {},
-            type = 'item',
-            slot = 14
-        },
-        [15] = {
-            name = 'petwaterbottleportable',
-            price = 5000,
-            amount = 50,
-            info = {},
-            type = 'item',
-            slot = 15
-        },
-        [16] = {
-            name = 'petgroomingkit',
-            price = 5000,
-            amount = 50,
-            info = {},
-            type = 'item',
-            slot = 16
-        },
+        -- [11] = {
+        --     name = 'companionpug',
+        --     price = 95000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 11
+        -- },
+        -- [12] = {
+        --     name = 'companionpoodle',
+        --     price = 50000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 12
+        -- },
+        -- [13] = {
+        --     name = 'companionmtlion2',
+        --     price = 50000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 13
+        -- },
+        -- [14] = {
+        --     name = 'companioncat',
+        --     price = 50000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 14
+        -- },
+        -- [15] = {
+        --     name = 'companionmtlion',
+        --     price = 50000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 15
+        -- },
+        -- [16] = {
+        --     name = 'companionhusky',
+        --     price = 50000,
+        --     amount = 5,
+        --     info = {},
+        --     type = 'item',
+        --     slot = 16
+        -- },
     },
 }
 
@@ -915,7 +915,7 @@ Config.Locations = {
         },
         ["products"] = Config.Products["hardware"],
         ["showblip"] = true,
-    },   
+    },
     ["coffeeshop"] = {
         ["label"] = "Superfly",
         ["type"] = "hardware",
@@ -1042,18 +1042,13 @@ Config.Locations = {
         ["products"] = Config.Products["pillboxshop"],
         ["showblip"] = false,
     },
-    -- ["petshop"] = {
-    --     ["label"] = "Pet Shop",
-    --     ["coords"] = vector4(561.18, 2741.51, 42.87, 199.08),
-    --     ["type"] = "normal",
-    --     ["ped"] = 'S_M_M_StrVend_01',
-    --     ["scenario"] = "WORLD_HUMAN_COP_IDLES",
-    --     ["radius"] = 1.5,
-    --     ["targetIcon"] = "fas fa-paw",
-    --     ["targetLabel"] = "Open Pet Shop",
-    --     ["products"] = Config.Products["petshop"],
-    --     ["showblip"] = false,
-    --     ["blipsprite"] = 267,
-    --     ["blipcolor"] = 5
-    -- },
+    ["petshop"] = {
+        ["label"] = "Pet Shop",
+        ["type"] = "normal",
+        ["coords"] = {
+            [1] = vector3(561.18, 2741.51, 42.87)
+        },
+        ["products"] = Config.Products["petshop"],
+        ["showblip"] = false,
+    },
 }
