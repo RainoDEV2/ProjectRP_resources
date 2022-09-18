@@ -1179,25 +1179,25 @@ PRPShared.Jobs = {
                 payment = 261
             },
 			['4'] = {
-                name = 'Sergeant',
+                name = 'PHS REKTOR',
                 payment = 288
             },
 			['5'] = {
-                name = 'Sergeant 2',
+                name = 'Vise-Politimester',
                 payment = 302
             },
 			['6'] = {
-                name = 'Lieutenant',
+                name = 'Politimester',
 				isboss = true,
                 payment = 343
             },
 			['7'] = {
-                name = 'Captain',
+                name = 'Vise-Politidirektør',
 				isboss = true,
                 payment = 357
             },
 			['8'] = {
-                name = 'Chief',
+                name = 'Politidirektør',
 				isboss = true,
                 payment = 371
             },
