@@ -618,7 +618,7 @@ PRPShared.Items = {
 	["carbon"] 					 	 = {["name"] = "carbon", 			  	  		["label"] = "Carbon", 					["weight"] = 1000, 		["type"] = "item", 		["image"] = "carbon.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "Carbon, a base ore."},
 	["ironore"] 					 = {["name"] = "ironore", 			  	  		["label"] = "Iron Ore", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "ironore.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "Iron, a base ore."},
 	["copperore"] 					 = {["name"] = "copperore", 			  	  	["label"] = "Copper Ore", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "copperore.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "Copper, a base ore."},
-	["goldore"] 					 = {["name"] = "goldore", 			  	  		["label"] = "Gold Ore", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "goldore.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "Gold Ore"},
+	["goldore"] 					 = {["name"] = "goldore", 			  	  		["label"] = "Gold Ore", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "goldore.png", 				["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "Gull Malm"},
 
 	["handdrill"] 					 = {["name"] = "handdrill", 			  	  	["label"] = "Hand Drill", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "handdrill.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A Hand Drill, can be used on jewellery"},
 	["drillbit"] 					 = {["name"] = "drillbit", 			  	  		["label"] = "Drill Bit", 				["weight"] = 1000, 		["type"] = "item", 		["image"] = "drillbit.png", 			["unique"] = false, 	["useable"] = false, 	["shouldClose"] = false, ["combinable"] = nil,   ["description"] = "A Drill Bit, needs to be used with a Hand Drill"},
@@ -1149,17 +1149,17 @@ PRPShared.Weapons = {
 PRPShared.ForceJobDefaultDutyAtLogin = true -- true: Force duty state to jobdefaultDuty | false: set duty state from database last saved
 PRPShared.Jobs = {
 	['unemployed'] = {
-		label = 'Civilian',
+		label = 'NAV',
 		defaultDuty = true,
 		grades = {
             ['0'] = {
-                name = 'Freelancer',
+                name = 'Arbeidsløs',
                 payment = 10
             },
         },
 	},
 	['police'] = {
-		label = 'Law Enforcement',
+		label = 'POLITIET',
 		defaultDuty = false,
 		grades = {
             ['0'] = {
@@ -1204,7 +1204,7 @@ PRPShared.Jobs = {
         },
 	},
 	['fib'] = {
-		label = 'FIB',
+		label = 'DELTA',
 		defaultDuty = false,
 		grades = {
 			['0'] = {
