@@ -1163,19 +1163,19 @@ PRPShared.Jobs = {
 		defaultDuty = false,
 		grades = {
             ['0'] = {
-                name = 'Cadet',
+                name = 'PHS-Student',
                 payment = 220
             },
 			['1'] = {
-                name = 'Officer',
+                name = 'Betjent',
                 payment = 234
             },
 			['2'] = {
-                name = 'Senior Officer',
+                name = 'Førstebetjent',
                 payment = 247
             },
 			['3'] = {
-                name = 'Corporal',
+                name = 'Overbetjent',
                 payment = 261
             },
 			['4'] = {
